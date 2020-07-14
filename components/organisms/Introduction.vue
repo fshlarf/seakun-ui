@@ -9,7 +9,7 @@
                     <button type="button" class="intro__btn btn btn-primary">Layanan</button>
                     <button type="button" class="intro__btn btn btn-secondary">Daftar</button>
                     <div class="intro__img">
-                        <img src="/images/patungan-2.svg" alt="Image not found">
+                        <img src="~static/images/patungan-2.svg" alt="Image not found">
                     </div>
                 </div>
             </div>

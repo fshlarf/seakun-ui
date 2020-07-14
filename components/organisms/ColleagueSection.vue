@@ -5,13 +5,13 @@
         </div>
         <div class="collega container" align="center">
             <div class="col collega__content">
-                <img src="/images/netflix.png" alt="Image not found">
+                <img src="~static/images/netflix.png" alt="Image not found">
             </div>
             <div class="col collega__content">
-                <img src="/images/spotify.png" alt="Image not found">
+                <img src="~static/images/spotify.png" alt="Image not found">
             </div>
             <div class="col collega__content">
-                <img src="/images/steam.png" alt="Image not found">
+                <img src="~static/images/steam.png" alt="Image not found">
             </div>
         </div>
     </div>
