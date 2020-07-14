@@ -16,7 +16,7 @@
                             </p>
                         </div>
                         <div class="facility__content-card">
-                            <img src="~static/images/waiting.jpg" alt="Image not found">
+                            <img src="/images/waiting.jpg" alt="Image not found">
                         </div>
                     </div>
                 </div>
