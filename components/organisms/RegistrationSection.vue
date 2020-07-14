@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div style="margin-left: 100px">
-                        <img src="/seakun/images/registration.png" alt="Image not found" style="width: 37rem;">
+                        <img src="/images/registration.png" alt="Image not found" style="width: 37rem;">
                     </div>
                 </div>
             </div>
