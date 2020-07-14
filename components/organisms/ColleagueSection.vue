@@ -5,13 +5,13 @@
         </div>
         <div class="collega container" align="center">
             <div class="col collega__content">
-                <img src="~/assets/images/netflix.png" alt="Image not found" style="width: 13rem;">
+                <img src="/images/netflix.png" alt="Image not found">
             </div>
             <div class="col collega__content">
-                <img src="~/assets/images/spotify.png" alt="Image not found" style="width: 13rem;">
+                <img src="/images/spotify.png" alt="Image not found">
             </div>
             <div class="col collega__content">
-                <img src="~/assets/images/steam.png" alt="Image not found" style="width: 13rem;">
+                <img src="/images/steam.png" alt="Image not found">
             </div>
         </div>
     </div>
@@ -33,6 +33,11 @@ export default {
     justify-content: center;
     align-items: baseline;
     margin-bottom: 40px;
+    &__content {
+        img {
+            width: 13rem;
+        }
+    }
 }
 @media (max-width: 800px) {
     img {
