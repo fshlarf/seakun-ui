@@ -55,7 +55,7 @@ export default {
   */
   buildModules: [
   ],
-  // router: { base: '/seakun/' },
+  router: { base: '/seakun/' },
   /*
   ** Nuxt.js modules
   */
