@@ -36,7 +36,6 @@ export default {
 <style lang="scss" scoped>
 .services {
     padding: 40px 0px !important;
-    // height: 680px;
     margin-top: 200px;
     .col {
         text-align: center;
@@ -96,6 +95,7 @@ export default {
 @media (max-width: 800px) {
     .services {
         padding: 0px 0px !important;
+        margin-top: 180px;
         &__img {
             text-align: center;
             margin-top: 20px;
@@ -103,8 +103,11 @@ export default {
         &__content {
             display: block;
             &-card {
-                margin: 25px 15px;
+                margin: 25px 40px;
                 width: auto;
+                p {
+                    margin: 0px !important;
+                }
             }
         }
         &__header {
@@ -114,7 +117,7 @@ export default {
         }
         img {
             width: 180px!important;
-            margin: 0 auto!important;
+            margin: 16px auto;
         }
         .row {
             display:block;

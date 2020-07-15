@@ -86,7 +86,7 @@ export default {
 }
 @media (max-width: 800px) {
     .reg {
-        padding: 10px 0px !important;
+        padding: 30px 0px 15px 0px !important;
         &__form {
             width: 100%;
             &-img {

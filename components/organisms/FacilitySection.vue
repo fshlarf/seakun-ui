@@ -104,6 +104,7 @@ export default {
 }
 @media (max-width: 800px) {
     .facility {
+        padding: 0px !important;
         &__content {
             display: block;
             &-content {
@@ -115,6 +116,11 @@ export default {
                 width: auto;
                 margin: 10px 0px;
                 padding: 16px 12px;
+            }
+        }
+        &__header {
+            &-h3 {
+                font-size: 24px;
             }
         }
         img {

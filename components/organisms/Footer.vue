@@ -66,7 +66,12 @@ export default {
         padding-top: 10px;
     }
    .footer__row {
+        padding: 10px 0px;
         display: block;
+        margin-bottom: 0px;
+        p {
+            margin-bottom: 0px;
+        }
     }
     .coloum {
         width: auto!important;

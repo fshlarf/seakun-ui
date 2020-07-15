@@ -46,6 +46,7 @@ export default {
     .collega {
         display: block;
         margin-top: -60px;
+        margin-bottom: 0px;
         img {
             width: inherit;
             margin: 0 auto;
