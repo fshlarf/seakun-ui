@@ -13,7 +13,7 @@
                         yang cepat, mudah, aman</b> dan <b>murah</b>.
                     </p>
                     <button type="button" class="intro__btn btn btn-primary">Layanan</button>
-                    <button type="button" class="intro__btn btn btn-secondary">Daftar</button>
+                    <button type="button" class="intro__btn btn btn-secondary" @click="toRegistrationElement">Daftar</button>
                     <div class="intro__img">
                         <img src="/images/patungan-2.svg" alt="Image not found">
                     </div>
@@ -25,6 +25,19 @@
 
 <script>
 export default {
+    data() {
+        return {
+            regElement: ''
+        }
+    },
+    mounted() {
+        this.regElement = document.getElementById('reg')
+    },
+    methods: {
+        toRegistrationElement() {
+            this.regElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
+        }
+    }
 }
 </script>
 
@@ -81,8 +94,7 @@ export default {
             font-size: 35px!important;
         }
         img {
-            margin: 0 auto!important;
-            width: 110%;
+            width: 100%;
         }
         .row {
             display:block;

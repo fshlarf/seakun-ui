@@ -1,5 +1,5 @@
 <template>
-    <div class="reg">
+    <div class="reg" id="reg">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -27,9 +27,9 @@
                             </form>
                         </div>
                     </div>
-                    <div class="reg__form-img">
+                    <!-- <div class="reg__form-img">
                         <img src="/images/registration.svg" alt="Image not found" style="width: 37rem;">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -117,6 +117,9 @@ export default {
                 margin: 10px 0px;
                 padding: 16px 12px;
             }
+            &-image {
+                width: 100%;
+            }
         }
         &__header {
             &-h3 {
@@ -124,8 +127,7 @@ export default {
             }
         }
         img {
-            width: 25rem!important;
-            margin: 0 auto!important;
+            width: 100%;
         }
         .row {
             display:block;
