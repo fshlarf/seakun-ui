@@ -3,9 +3,15 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="intro__header">seakun.com</h2>
-                    <h2>Patungan untuk Berlangganan<br/> Platform Digital Legal dan Murah</h2>
-                    <p>Berlangganan fitur premium di banyak Plaform Digital dengan sistem patungan bersama teman baru dari seluruh Indonesia</p>
+                    <h2 class="intro__header">seakun.id</h2>
+                    <h2 class="title">Berlangganan Bersama, Lebih Cepat, Aman dan Murah</h2>
+                    <p>
+                        Platform pertama di Indonesia yang memberikan layanan <b>Berlangganan 
+                        Bersama</b> dengan pengguna lain <b>(sharing subscription)</b> ke Penyedia Layanan
+                        Entertainment (Provider Entertainment) seperti <b>Netflix, Spotify, Youtube</b>
+                        dan lainnyan agar dapat menikmati fitur premium, dengan <b>proses berlangganan
+                        yang cepat, mudah, aman</b> dan <b>murah</b>.
+                    </p>
                     <button type="button" class="intro__btn btn btn-primary">Layanan</button>
                     <button type="button" class="intro__btn btn btn-secondary">Daftar</button>
                     <div class="intro__img">
@@ -26,7 +32,11 @@ export default {
 .intro {
     background-color: #f9f6fd;
     padding: 40px 0px !important;
-    height: 680px;
+    height: 800px;
+    .title {
+        max-width: 500px;
+        margin: 0 auto;
+    }
     .col {
         text-align: center;
         h2 {
@@ -34,9 +44,10 @@ export default {
         }
         p {
             margin: 0 auto;
-            max-width: 600px;
+            max-width: 832px;
             margin-top: 30px;
             margin-bottom: 40px;
+            font-size: 22px;
         }
         button {
             margin: 10px;

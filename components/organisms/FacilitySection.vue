@@ -3,20 +3,36 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h3 class="facility__header-h3">Kemudahan apa saja yang kami berikan?</h3>
+                    <h3 class="facility__header-h3">Mengapa Kamu Perlu Menggunakan Seakun.id?</h3>
                     <p>Ada banyak kemudahan yang kami berikan jika menggunakan layanan kami, diantaranya sebagai berikut.</p>
                     <div class="facility__content">
-                        <div class="facility__content-card">
-                            <h4>Kemudahan lain yang kamu dapatkan</h4>
+                        <div class="facility__content-content">
+                            <h4>Memudahkan Mencari Teman yang Satu Hobi dan Satu Keinginan</h4>
                             <p>
-                                Akan dibuatkan akun untuk berlangganan ke platform digital yang kamu inginkan. 
-                                Kami yang mengurus seluruh proses pembayaran bahkan yang menggunakan kartu kredit. 
-                                Kami akan maintenance akun tersebut dan tetap menjaga kerahasiaannya. 
-                                Kamu tinggal tunggu akun beserta passwordnya dari kami
+                                Kami memberikan kemudahan kepada kamu untuk menemukan teman satu hobi dann satu keinginan
+                                untuk berlangganan Provider Entertainment seperti Netflix, Spotify, Youtube dan lainnya
+                                mendapatkan fitur premium dengan biaya yang murah.
                             </p>
                         </div>
-                        <div class="facility__content-card">
-                            <img src="/images/waiting.jpg" alt="Image not found">
+                        <div class="facility__content-image">
+                            <img src="/images/search-friend.svg" alt="Image not found">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="facility__content">
+                        <div class="facility__content-image">
+                            <img src="/images/payment.svg" style="max-width: 25rem; margin-top: -43px" alt="Image not found">
+                        </div>
+                        <div class="facility__content-content">
+                            <h4>Memudahkan Proses Administrasi dan Payment Subscription</h4>
+                            <p>
+                                Kami juga memberikan kemudahan dengan mengurus semua proses administrasi subscription
+                                Provider Entertainment, termasuk pengurusan akun, pembayaran menggunakan kartu kredit
+                                dan reminder setiap bulannya.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -66,19 +82,22 @@ export default {
     &__content {
         display: flex;
         justify-content: center;
-        &-card {
-            width: 30rem;
+        &-content {
+            width: 50%;
             margin: 10px 40px;
             text-align: left;
             padding: 16px 24px;
+            h4 {
+                text-align: left;
+                font-weight: 700!important;
+            }
+        }
+        &-image {
+            width: 50%;
             img {
                 margin-top: 8px;
                 max-width: 35rem;
                 margin-bottom: 20px;
-            }
-            h4 {
-                text-align: left;
-                font-weight: 700!important;
             }
         }
     }
