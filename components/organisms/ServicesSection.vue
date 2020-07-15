@@ -94,19 +94,34 @@ export default {
     }
 }
 @media (max-width: 800px) {
-    img {
-        width: 180px!important;
-        margin: 0 auto!important;
-    }
-    .row {
-        display:block;
-    }
-    .services__img {
-        text-align: center;
-        margin-top: 20px;
-    }
-    h2 {
-        font-size: 20px;
+    .services {
+        padding: 0px 0px !important;
+        &__img {
+            text-align: center;
+            margin-top: 20px;
+        }
+        &__content {
+            display: block;
+            &-card {
+                margin: 25px 15px;
+                width: auto;
+            }
+        }
+        &__header {
+            &-h3 {
+                font-size: 22px;
+            }
+        }
+        img {
+            width: 180px!important;
+            margin: 0 auto!important;
+        }
+        .row {
+            display:block;
+        }
+        h2 {
+            font-size: 20px;
+        }
     }
 }
 @media  only screen and (min-width: 880px) and (max-width: 1020px) {

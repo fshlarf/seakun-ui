@@ -34,18 +34,21 @@ export default {
     }
 }
 @media (max-width: 800px) {
-    .container {
-        display: block!important;
-    }
-    .cp__title {
-        width: 100%;
-        p {
-            font-size: 18px!important;
+    .cp {
+        padding: 16px 8px;
+        .container {
+            display: block!important;
         }
-    }
-    .cp__channel {
-        width: fit-content;
-        margin: 0 auto;
+        &__title {
+            width: 100%;
+            p {
+                font-size: 15px!important;
+            }
+        }
+        &__channel {
+            width: fit-content;
+            margin: 0 auto;
+        }
     }
 }
 </style>

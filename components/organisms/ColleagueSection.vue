@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-collega">
         <div>
             <h4 style="font-weight: 700">Platform Digital yang Tersedia</h4>
         </div>
@@ -40,13 +40,20 @@ export default {
     }
 }
 @media (max-width: 800px) {
-    img {
-        width: 180px!important;
-        margin: 0 auto;
-        margin-top: 20px!important;
+    .container-collega {
+        margin-top: 70px;
     }
-     .row {
+    .collega {
         display: block;
+        margin-top: -60px;
+        img {
+            width: inherit;
+            margin: 0 auto;
+            margin-top: 20px!important;
+        }
+        .row {
+            display: block;
+        }
     }
 }
 </style>

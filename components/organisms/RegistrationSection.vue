@@ -27,7 +27,7 @@
                             </form>
                         </div>
                     </div>
-                    <div style="margin-left: 100px">
+                    <div class="reg__form-img">
                         <img src="/images/registration.svg" alt="Image not found" style="width: 37rem;">
                     </div>
                 </div>
@@ -50,6 +50,9 @@ export default {
         width: 50%;
         input {
             max-width: 300px;
+        }
+        &-img {
+            margin-left: 100px;
         }
     }
     .col {
@@ -82,19 +85,37 @@ export default {
     }
 }
 @media (max-width: 800px) {
-    img {
-        width: 180px!important;
-        margin: 0 auto!important;
-    }
-    .row {
-        display:block;
-    }
-    .reg__img {
-        text-align: center;
-        margin-top: 20px;
-    }
-    h2 {
-        font-size: 20px;
+    .reg {
+        padding: 10px 0px !important;
+        &__form {
+            width: 100%;
+            &-img {
+                margin-left: 0px;
+            }
+            input {
+                max-width: 100%;
+            }
+        }
+        .container {
+            padding: 0px 25px;
+        }
+        .col {
+            display: block;
+        }
+        img {
+            width: 26rem!important;
+            margin: 0 auto!important;
+        }
+        .row {
+            display:block;
+        }
+        &__img {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h2 {
+            font-size: 20px;
+        }
     }
 }
 @media  only screen and (min-width: 880px) and (max-width: 1020px) {

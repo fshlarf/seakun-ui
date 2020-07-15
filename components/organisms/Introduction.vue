@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="intro__header">seakun.id</h2>
+                    <h2 class="intro__header">Seakun.id</h2>
                     <h2 class="title">Berlangganan Bersama, Lebih Cepat, Aman dan Murah</h2>
                     <p>
                         Platform pertama di Indonesia yang memberikan layanan <b>Berlangganan 
@@ -72,19 +72,24 @@ export default {
     }
 }
 @media (max-width: 800px) {
-    img {
-        width: 180px!important;
-        margin: 0 auto!important;
-    }
-    .row {
-        display:block;
-    }
-    .intro__img {
-        text-align: center;
-        margin-top: 20px;
-    }
-    h2 {
-        font-size: 20px;
+    .intro {
+        &__img {
+            text-align: center;
+            margin-top: 20px;
+        }
+        &__header {
+            font-size: 35px!important;
+        }
+        img {
+            margin: 0 auto!important;
+            width: 110%;
+        }
+        .row {
+            display:block;
+        }
+        h2 {
+            font-size: 20px;
+        }
     }
 }
 @media  only screen and (min-width: 880px) and (max-width: 1020px) {

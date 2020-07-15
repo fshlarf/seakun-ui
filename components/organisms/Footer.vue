@@ -3,7 +3,7 @@
         <div class="container">
             <div class="footer__row">
                 <div class="footer__copyright">
-                    <p>Copyright ©2020 seakun.com </p>
+                    <p>Copyright ©2020 seakun.id </p>
                 </div>
                 <!-- <div class="footer__policy">
                     <p>Syarat dan Ketentuan | Kebijakan Privasi</p>
@@ -67,12 +67,6 @@ export default {
     }
    .footer__row {
         display: block;
-    }
-    .footer__contact-us, .footer__services-host, .footer__services, .footer__tutorial, .footer__payment, .footer__reasons {
-        display: none;
-    }
-    .footer__newsletter {
-        width: auto!important;
     }
     .coloum {
         width: auto!important;
