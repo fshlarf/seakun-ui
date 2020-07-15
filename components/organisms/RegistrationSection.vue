@@ -27,9 +27,9 @@
                             </form>
                         </div>
                     </div>
-                    <!-- <div class="reg__form-img">
-                        <img src="/images/registration.svg" alt="Image not found" style="width: 37rem;">
-                    </div> -->
+                    <div class="reg__form-img">
+                        <img src="/images/registration.svg" alt="Image not found">
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,6 +53,9 @@ export default {
         }
         &-img {
             margin-left: 100px;
+            img {
+                width: 37rem;
+            }
         }
     }
     .col {
@@ -70,11 +73,6 @@ export default {
         margin: 0 auto !important;
         padding: 0px 0px 0px 70px;
     }
-    &__img {
-        img {
-            width: 50rem;
-        }
-    }
     .row {
         padding: 0px 8px !important;
     }
@@ -91,6 +89,9 @@ export default {
             width: 100%;
             &-img {
                 margin-left: 0px;
+                img {
+                    width: 100%;
+                }
             }
             input {
                 max-width: 100%;
@@ -101,10 +102,6 @@ export default {
         }
         .col {
             display: block;
-        }
-        img {
-            width: 26rem!important;
-            margin: 0 auto!important;
         }
         .row {
             display:block;
