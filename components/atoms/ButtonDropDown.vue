@@ -32,4 +32,9 @@ export default {
     justify-content: space-between;
     height: calc(1.5em + .75rem + 4px)!important;
 }
+@media (max-width: 800px) {
+    .btn-drop { 
+        width: 100%;
+    }
+}
 </style>
