@@ -43,7 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
-    background-color: #f9f6fd;
+    // background-color: #f9f6fd;
     padding: 40px 0px !important;
     height: 800px;
     .title {
