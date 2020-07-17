@@ -31,8 +31,9 @@
                             </div>
                             <transition name="slide-fade">
                                 <div class="dropdown" v-if="showProvider">
-                                    <div v-for="(provider, id) in providers" :key="id" @click="chooseProvider(provider)">
+                                    <div v-for="(provider, id) in providers" :key="id" class="dropdown__item" @click="chooseProvider(provider)">
                                         <div>{{ provider.name }}</div>
+                                        <img :src="`/images/icon/${provider.name}-mini.svg`" alt="Image not found">
                                     </div>
                                 </div>
                             </transition>
@@ -88,8 +89,7 @@ export default {
                 {name: 'Spotify', active: true},
                 {name: 'Youtube', active: true},
                 {name: 'Steam', active: true},
-                {name: 'Joox', active: true},
-                {name: 'IBC Channel', active: true}
+                {name: 'Joox', active: true}
             ],
             packets: [
                 {name: 'Single', active: true, desc: 'Paket Untuk Pribadi'},
@@ -173,16 +173,27 @@ export default {
         border: 1px solid #ced4da;
         padding: 0px;
         margin-bottom: 20px;
+        max-width: 300px;
         div {
-            padding: 6px;
+            padding: 8px 16px;
             cursor: pointer;
             &:hover {
                 background-color: whitesmoke;
             }
         }
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            div {
+                padding: 0px;
+            }
+            img {
+                max-width: 20px;
+            }
+        }
     }
     &__form {
-        // margin-left: 100px;
         width: 50%;
         input {
             max-width: 300px;
@@ -236,9 +247,9 @@ export default {
 }
 @media (max-width: 800px) {
     .reg {
-        .btn-drop  {
+        .dropdown {
             max-width: 100%;
-        }
+        }   
         padding: 30px 0px 15px 0px !important;
         &__form {
             width: 100%;
