@@ -31,8 +31,11 @@
                             </div>
                             <transition name="slide-fade">
                                 <div class="dropdown" v-if="showProvider">
-                                    <div v-for="(provider, id) in providers" :key="id" class="dropdown__item" @click="chooseProvider(provider)">
-                                        <div>{{ provider.name }}</div>
+                                    <div v-for="(provider, id) in providers" :key="id" class="dropdown__item" @click="chooseProvider(provider)" :class="{'disable-content' : !provider.active}">
+                                        <div>
+                                            {{ provider.name }} 
+                                            <span v-if="!provider.active"><i>segera hadir</i></span>
+                                        </div>
                                         <img :src="`/images/icon/${provider.name}-mini.svg`" alt="Image not found">
                                     </div>
                                 </div>
@@ -48,8 +51,12 @@
                                 </div>
                                 <transition name="slide-fade">
                                     <div class="dropdown" v-if="showPacket">
-                                        <div v-for="(packet, id) in packets" :key="id" @click="choosePacket(packet)">
-                                            <div>{{ packet.name }}</div>
+                                        <div v-for="(packet, id) in packets" :key="id" style="padding: 0px" @click="choosePacket(packet)">
+                                            <div class="dropdown__item">
+                                                <div>{{ packet.name }}</div>
+                                                <div>{{ formatMoneyRupiah(packet.price) }}</div>
+                                            </div>
+                                            <div class="dropdown__item-info">{{ packet.desc }}</div>
                                         </div>
                                     </div>
                                 </transition>
@@ -82,18 +89,19 @@ export default {
             whatsapp: '',
             provider: 'Contoh: Netflix',
             packet: 'Contoh: Group(Family)',
+            price: null,
             showProvider: false,
             showPacket: false,
             providers: [
                 {name: 'Netflix', active: true},
-                {name: 'Spotify', active: true},
-                {name: 'Youtube', active: true},
-                {name: 'Steam', active: true},
-                {name: 'Joox', active: true}
+                {name: 'Spotify', active: false},
+                {name: 'Youtube', active: false},
+                {name: 'Steam', active: false},
+                {name: 'Joox', active: false}
             ],
             packets: [
-                {name: 'Single', active: true, desc: 'Paket Untuk Pribadi'},
-                {name: 'Group (Family)', active: true, desc: 'Satu akun dipakai maksimum 4 orang'}
+                {name: 'Personal', active: true, desc: 'Satu akun satu orang', price: 140000},
+                {name: 'Group (Family)', active: true, desc: 'Satu akun dipakai maksimum 4 orang', price: 43000}
             ],
             errorMsg: {
                 fullname: '',
@@ -139,7 +147,8 @@ export default {
                 email: this.email,
                 whatsapp: this.whatsapp,
                 provider: this.provider,
-                packet: this.packet
+                packet: this.packet,
+                price: this.price
             }
             this.fullname && axios.post('http://localhost:4000/registered-user', payload)
             .then(res => {
@@ -150,15 +159,20 @@ export default {
             })
         },
         chooseProvider(provider) {
+            if (this.provider != provider.name) this.packet = 'Contoh: Group (Family)'
             this.provider = provider.name
             this.showProvider = false
-            this.packet = 'Contoh: Group (Family)'
+            this.price = null
             this.errorMsg.provider = ''
         },
         choosePacket(packet) {
             this.packet = packet.name
             this.showPacket = false
             this.errorMsg.packet = ''
+            this.price = packet.price
+        },
+        formatMoneyRupiah(num) {
+            return num && `Rp ${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
         }
     }
 }
@@ -181,6 +195,10 @@ export default {
                 background-color: whitesmoke;
             }
         }
+        span {
+            color:coral;
+            font-size: 12px;
+        }
         &__item {
             display: flex;
             align-items: center;
@@ -190,6 +208,11 @@ export default {
             }
             img {
                 max-width: 20px;
+            }
+            &-info {
+                color: #bbbbbb;
+                font-weight: 400;
+                padding-top: 0px!important;
             }
         }
     }
@@ -243,6 +266,10 @@ export default {
         color: red;
         font-size: 14px;
         margin-top: 3px;
+    }
+    .disable-content {
+        pointer-events: none;
+        opacity: 0.4;
     }
 }
 @media (max-width: 800px) {
