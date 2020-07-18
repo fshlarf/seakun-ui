@@ -155,7 +155,7 @@ export default {
                 packet: this.packet,
                 price: this.price
             }
-            this.fullname && axios.post('http://localhost:4000/registered-user', payload)
+            this.fullname && axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
             .then(res => {
                 console.log(res);
             })
