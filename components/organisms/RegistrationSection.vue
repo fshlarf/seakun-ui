@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                             </transition>
-                            <Fragment v-if="provider != 'Contoh: Netflix'">
+                            <div v-if="provider != 'Contoh: Netflix'">
                                 <div class="form-group">
                                     <ButtonDrop
                                         @onClick="showPacket = !showPacket"
@@ -56,11 +56,15 @@
                                                 <div>{{ packet.name }}</div>
                                                 <div>{{ formatMoneyRupiah(packet.price) }}</div>
                                             </div>
+                                            <div style="padding: 0px" v-if="packet.oneMonthFree">
+                                                <LabelChecked title="Gratis Satu Bulan Pertama"/>
+                                            </div>
                                             <div class="dropdown__item-info">{{ packet.desc }}</div>
+                                            <hr v-if="id != packets.length - 1" style="margin: 0px!important">
                                         </div>
                                     </div>
                                 </transition>
-                            </Fragment>
+                            </div>
                             <button class="btn btn-primary" @click.prevent="clickSubmit">Submit</button>
                         </form>
                     </div>
@@ -77,10 +81,11 @@
 import axios from 'axios'
 import qs from 'querystring'
 import ButtonDrop from '~/components/atoms/ButtonDropDown'
-import { Fragment } from 'vue-fragment'
+import LabelChecked from '~/components/atoms/LabelChecked'
 export default {
     components: {
         ButtonDrop: ButtonDrop,
+        LabelChecked: LabelChecked,
     },
     data() {
         return {
@@ -100,8 +105,8 @@ export default {
                 {name: 'Joox', active: false}
             ],
             packets: [
-                {name: 'Personal', active: true, desc: 'Satu akun satu orang', price: 140000},
-                {name: 'Group (Family)', active: true, desc: 'Satu akun dipakai maksimum 4 orang', price: 43000}
+                {name: 'Personal', active: true, desc: 'Satu akun satu orang', price: 140000, oneMonthFree: true},
+                {name: 'Group (Family)', active: true, desc: 'Satu akun dipakai maksimum 4 orang', price: 43000, oneMonthFree: true}
             ],
             errorMsg: {
                 fullname: '',
@@ -173,7 +178,7 @@ export default {
         },
         formatMoneyRupiah(num) {
             return num && `Rp ${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
-        }
+        },
     }
 }
 </script>
