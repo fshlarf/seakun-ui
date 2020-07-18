@@ -54,7 +54,7 @@
                                         <div v-for="(packet, id) in packets" :key="id" style="padding: 0px" @click="choosePacket(packet)">
                                             <div class="dropdown__item">
                                                 <div>{{ packet.name }}</div>
-                                                <div>{{ formatMoneyRupiah(packet.price) }}</div>
+                                                <div>{{ formatMoneyRupiah(packet.price) }} / bln</div>
                                             </div>
                                             <div style="padding: 0px" v-if="packet.oneMonthFree">
                                                 <LabelChecked title="Gratis Satu Bulan Pertama"/>
