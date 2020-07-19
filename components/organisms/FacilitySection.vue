@@ -1,5 +1,5 @@
 <template>
-    <div class="facility">
+    <div class="facility" id="facility">
         <div class="container">
             <div class="row">
                 <div class="col">

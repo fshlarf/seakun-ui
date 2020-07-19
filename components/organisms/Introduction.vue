@@ -12,7 +12,7 @@
                         dan lainnya agar dapat menikmati fitur premium, dengan <b>proses berlangganan
                         yang praktis, aman</b> dan <b>murah</b>.
                     </p>
-                    <button type="button" class="intro__btn btn btn-primary">Layanan</button>
+                    <button type="button" class="intro__btn btn btn-primary" @click="toServiceElement">Layanan</button>
                     <button type="button" class="intro__btn btn btn-secondary" @click="toRegistrationElement">Daftar</button>
                     <div class="intro__img">
                         <img src="/images/patungan-2.svg" alt="Image not found">
@@ -27,15 +27,20 @@
 export default {
     data() {
         return {
-            regElement: ''
+            regElement: '',
+            serviceElement: ''
         }
     },
     mounted() {
         this.regElement = document.getElementById('reg')
+        this.serviceElement = document.getElementById('facility')
     },
     methods: {
         toRegistrationElement() {
-            this.regElement.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
+            this.regElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        },
+        toServiceElement() {
+            this.serviceElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
         }
     }
 }
@@ -43,7 +48,6 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
-    // background-color: #f9f6fd;
     padding: 40px 0px !important;
     height: 800px;
     .title {
