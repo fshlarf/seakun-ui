@@ -4,13 +4,13 @@
             <div class="row">
                 <div class="col">
                     <h2 class="intro__header">Seakun.id</h2>
-                    <h2 class="title">Berlangganan Bersama, Lebih Cepat, Aman dan Murah</h2>
+                    <h2 class="title">Berlangganan Bersama, Lebih Praktis, Aman dan Murah</h2>
                     <p>
                         Platform pertama di Indonesia yang memberikan layanan <b>Berlangganan 
                         Bersama</b> dengan pengguna lain <b>(sharing subscription)</b> ke Penyedia Layanan
                         Entertainment (Provider Entertainment) seperti <b>Netflix, Spotify, Youtube</b>
-                        dan lainnyan agar dapat menikmati fitur premium, dengan <b>proses berlangganan
-                        yang cepat, mudah, aman</b> dan <b>murah</b>.
+                        dan lainnya agar dapat menikmati fitur premium, dengan <b>proses berlangganan
+                        yang praktis, aman</b> dan <b>murah</b>.
                     </p>
                     <button type="button" class="intro__btn btn btn-primary">Layanan</button>
                     <button type="button" class="intro__btn btn btn-secondary" @click="toRegistrationElement">Daftar</button>
