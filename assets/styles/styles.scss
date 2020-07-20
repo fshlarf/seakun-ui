@@ -33,6 +33,12 @@ body {
     background-color: #e5dafc!important;
     color: #53417b !important;
     border-color: #e5dafc!important;
+    &:active {
+      background-color: #8a7aae!important;
+    }
+    &:focus {
+      background-color: #8a7aae!important;
+    }
   }
   
   .btn-secondary {

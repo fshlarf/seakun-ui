@@ -289,12 +289,15 @@ export default {
         text-align: center;
         border-radius: 2px;
         padding: 16px;
-        position: relative;
+        position: fixed;
         z-index: 1;
-        top: 30px;
+        top: 130px;
         font-size: 17px;
         margin: 0 auto;
         max-width: 600px;
+        left: 50%;
+        margin-left: -300px;
+        font-weight: 300;
     }
 
     #snackbar.show {
@@ -305,26 +308,35 @@ export default {
 
     @-webkit-keyframes fadein {
         from {top: 0; opacity: 0;} 
-        to {top: 30px; opacity: 1;}
+        to {top: 130px; opacity: 1;}
     }
 
     @keyframes fadein {
         from {top: 0; opacity: 0;}
-        to {top: 30px; opacity: 1;}
+        to {top: 130px; opacity: 1;}
     }
 
     @-webkit-keyframes fadeout {
-        from {top: 30px; opacity: 1;} 
+        from {top: 130px; opacity: 1;} 
         to {top: 0; opacity: 0;}
     }
 
     @keyframes fadeout {
-        from {top: 30px; opacity: 1;}
+        from {top: 130px; opacity: 1;}
         to {top: 0; opacity: 0;}
     }
 }
 @media (max-width: 800px) {
     .reg {
+        #snackbar {
+            top: 70px;
+            font-size: 12px;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            margin-left: 0px;
+            margin: 0 auto;
+        }
         .dropdown {
             max-width: 100%;
         }   
@@ -357,6 +369,25 @@ export default {
         h2 {
             font-size: 20px;
         }
+    }
+     @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;} 
+        to {top: 70px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 70px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+        from {top: 70px; opacity: 1;} 
+        to {top: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+        from {top: 70px; opacity: 1;}
+        to {top: 0; opacity: 0;}
     }
 }
 @media  only screen and (min-width: 880px) and (max-width: 1020px) {
