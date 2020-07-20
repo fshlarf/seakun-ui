@@ -1,5 +1,6 @@
 <template>
     <div class="reg" id="reg">
+        <div id="snackbar">Pendaftaran berhasil. Kamu akan segera dihubungi lewat email dan whatsapp. Ditunggu ya!</div>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -155,12 +156,12 @@ export default {
                 packet: this.packet,
                 price: this.price
             }
-            this.fullname && axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
+            axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
             .then(res => {
-                console.log(res);
+                if (res.data.message == "success") this.showSnackBar()
             })
             .catch(err => {
-                console.log(err);
+                console.log(err)
             })
         },
         chooseProvider(provider) {
@@ -178,6 +179,11 @@ export default {
         },
         formatMoneyRupiah(num) {
             return num && `Rp ${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+        },
+        showSnackBar() {
+            const snackBar = document.getElementById("snackbar")
+            snackBar.className = "show"
+            setTimeout(() => { snackBar.className = snackBar.className.replace("show", "")}, 6000)
         }
     }
 }
@@ -275,6 +281,46 @@ export default {
     .disable-content {
         pointer-events: none;
         opacity: 0.4;
+    }
+    #snackbar {
+        visibility: hidden;
+        background-color: #daeeef;
+        color: #66a095;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: relative;
+        z-index: 1;
+        top: 30px;
+        font-size: 17px;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+    #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;} 
+        to {top: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+        from {top: 30px; opacity: 1;} 
+        to {top: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+        from {top: 30px; opacity: 1;}
+        to {top: 0; opacity: 0;}
     }
 }
 @media (max-width: 800px) {
