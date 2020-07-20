@@ -66,7 +66,7 @@
                                     </div>
                                 </transition>
                             </div>
-                            <button class="btn btn-primary" @click.prevent="clickSubmit">Submit</button>
+                            <button class="btn btn-primary" @click.prevent="clickSubmit" :disabled="isDisableBtn">Submit</button>
                         </form>
                     </div>
                     <div class="reg__form-img">
@@ -115,7 +115,8 @@ export default {
                 whatsapp: '',
                 provider: '',
                 packet: ''
-            }
+            },
+            isDisableBtn: false
         }
     },
     methods: {
@@ -135,6 +136,7 @@ export default {
                 this.provider != 'Contoh: Netflix' && 
                 this.packet != 'Contoh: Group (Family)'
             ) {
+                this.isDisableBtn = true
                 this.postRegisteredUser()
             }
         },
@@ -159,9 +161,11 @@ export default {
             axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
             .then(res => {
                 if (res.data.message == "success") this.showSnackBar()
+                this.isDisableBtn = false
             })
             .catch(err => {
                 console.log(err)
+                this.isDisableBtn = false
             })
         },
         chooseProvider(provider) {
@@ -183,7 +187,7 @@ export default {
         showSnackBar() {
             const snackBar = document.getElementById("snackbar")
             snackBar.className = "show"
-            setTimeout(() => { snackBar.className = snackBar.className.replace("show", "")}, 6000)
+            setTimeout(() => { snackBar.className = snackBar.className.replace("show", "")}, 5000)
         }
     }
 }
@@ -316,15 +320,6 @@ export default {
         to {top: 130px; opacity: 1;}
     }
 
-    @-webkit-keyframes fadeout {
-        from {top: 130px; opacity: 1;} 
-        to {top: 0; opacity: 0;}
-    }
-
-    @keyframes fadeout {
-        from {top: 130px; opacity: 1;}
-        to {top: 0; opacity: 0;}
-    }
 }
 @media (max-width: 800px) {
     .reg {
@@ -378,16 +373,6 @@ export default {
     @keyframes fadein {
         from {top: 0; opacity: 0;}
         to {top: 70px; opacity: 1;}
-    }
-
-    @-webkit-keyframes fadeout {
-        from {top: 70px; opacity: 1;} 
-        to {top: 0; opacity: 0;}
-    }
-
-    @keyframes fadeout {
-        from {top: 70px; opacity: 1;}
-        to {top: 0; opacity: 0;}
     }
 }
 @media  only screen and (min-width: 880px) and (max-width: 1020px) {
