@@ -18,7 +18,7 @@ export default {
 .cp {
     padding: 20px 0px;
     background-color: #daeeef;
-    color: #86d0c1;
+    color: #2f524b;
     .container {
         max-width: 1120px!important;
         margin: 0 auto !important;

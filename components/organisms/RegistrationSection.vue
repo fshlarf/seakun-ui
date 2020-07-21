@@ -8,17 +8,17 @@
                         <h3>Daftar Sekarang</h3>
                         <form>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Lengkap</label>
+                                <label for="fullname">Nama Lengkap</label>
                                 <input type="text" class="form-control" placeholder="Contoh: John Doe" @keydown="onChangeFullname" v-model="fullname">
                                 <p class="error-msg" v-if="errorMsg.fullname">{{ errorMsg.fullname }}</p>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email</label>
+                                <label for="email">Email</label>
                                 <input type="email" class="form-control" placeholder="mail@gmail.com" @keydown="onChangeEmail" v-model="email">
                                 <p class="error-msg" v-if="errorMsg.email">{{ errorMsg.email }}</p>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nomor Handphone (Whatsapp)</label>
+                                <label for="whatsapp">Nomor Handphone (Whatsapp)</label>
                                 <input type="text" class="form-control" placeholder="08123435456" v-model="whatsapp" @keydown="onChangeWhatsapp">
                                 <p class="error-msg" v-if="errorMsg.whatsapp">{{ errorMsg.whatsapp }}</p>
                             </div>
