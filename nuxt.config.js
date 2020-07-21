@@ -18,11 +18,12 @@ export default {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000/seakun',
   },  
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Seakun',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content:'Seakun.id, Berlangganan Bersama Satu Akun Praktis, Aman dan Murah'},
+      { hid: 'keywords', name: 'keywords', content:'seakun, seakun.id, berlangganan, berlangganan bareng, satu akun, paket group, paket family, patungan, netflix, spotify, joox, youtube'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
