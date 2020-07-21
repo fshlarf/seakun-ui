@@ -9,17 +9,17 @@
                         <form>
                             <div class="form-group">
                                 <label for="fullname">Nama Lengkap</label>
-                                <input type="text" class="form-control" placeholder="Contoh: John Doe" @keydown="onChangeFullname" v-model="fullname">
+                                <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Contoh: John Doe" @keydown="onChangeFullname" v-model="fullname">
                                 <p class="error-msg" v-if="errorMsg.fullname">{{ errorMsg.fullname }}</p>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" placeholder="mail@gmail.com" @keydown="onChangeEmail" v-model="email">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="mail@gmail.com" @keydown="onChangeEmail" v-model="email">
                                 <p class="error-msg" v-if="errorMsg.email">{{ errorMsg.email }}</p>
                             </div>
                             <div class="form-group">
                                 <label for="whatsapp">Nomor Handphone (Whatsapp)</label>
-                                <input type="text" class="form-control" placeholder="08123435456" v-model="whatsapp" @keydown="onChangeWhatsapp">
+                                <input type="text" id="whatsapp" name="whatsapp" class="form-control" placeholder="08123435456" v-model="whatsapp" @keydown="onChangeWhatsapp">
                                 <p class="error-msg" v-if="errorMsg.whatsapp">{{ errorMsg.whatsapp }}</p>
                             </div>
                             <div class="form-group">

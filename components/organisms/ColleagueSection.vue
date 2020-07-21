@@ -50,7 +50,7 @@ export default {
         img {
             width: inherit;
             margin: 0 auto;
-            margin-top: 20px!important;
+            margin-top: 45px!important;
         }
         .row {
             display: block;
