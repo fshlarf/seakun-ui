@@ -80,7 +80,6 @@
 
 <script>
 import axios from 'axios'
-import qs from 'querystring'
 import ButtonDrop from '~/components/atoms/ButtonDropDown'
 import LabelChecked from '~/components/atoms/LabelChecked'
 export default {
