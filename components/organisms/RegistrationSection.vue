@@ -288,7 +288,7 @@ export default {
     #snackbar {
         visibility: hidden;
         background-color: #daeeef;
-        color: #66a095;
+        color: #2f524b;
         text-align: center;
         border-radius: 2px;
         padding: 16px;
@@ -300,7 +300,7 @@ export default {
         max-width: 600px;
         left: 50%;
         margin-left: -300px;
-        font-weight: 300;
+        font-weight: 400;
     }
 
     #snackbar.show {
