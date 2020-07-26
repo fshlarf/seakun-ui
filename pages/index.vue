@@ -8,6 +8,7 @@
     <RegistrationSection/>
     <ContactPerson/>
     <Footer/>
+    <div id="modal-backdrop" class=""></div>
   </div>
 </template>
 

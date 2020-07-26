@@ -1,5 +1,34 @@
 <template>
     <div class="reg" id="reg">
+        <Modal
+            :showPacket="showPacket"
+            @closeModal="showPacket = false"
+        >
+            <div class="dropdown modal-dropdown">
+                <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
+                    <div class="dropdown__item item">
+                        <div>{{ packet.name }}</div>
+                        <div>{{ formatMoneyRupiah(packet.price) }} / bln</div>
+                    </div>
+                    <div class="dropdown__item item">
+                        <div>Biaya Admin</div>
+                        <div>{{ formatMoneyRupiah(packet.adminFee) }} / bln</div>
+                    </div>
+                    <div class="dropdown__item item">
+                        <div>Total</div>
+                        <div>{{ formatMoneyRupiah(packet.grandTotal) }} / bln</div>
+                    </div>
+                    <div >
+                        {{packet.facilities.join(', ')}}
+                    </div>
+                    <div style="padding: 0px" v-if="packet.oneMonthFree">
+                        <LabelChecked title="Gratis Satu Bulan Pertama"/>
+                    </div>
+                    <div class="dropdown__item-info" style="padding-bottom: 15px">{{ packet.desc }}</div>
+                    <hr v-if="id != packets.length - 1" style="margin: 0px!important">
+                </div>
+            </div>
+        </Modal>
         <div id="snackbar">Pendaftaran berhasil. Kamu akan segera dihubungi lewat email dan whatsapp. Ditunggu ya!</div>
         <div class="container">
             <div class="row">
@@ -41,27 +70,34 @@
                                     </div>
                                 </div>
                             </transition>
-                            <div v-if="provider != 'Contoh: Netflix'">
+                            <div>
                                 <div class="form-group">
                                     <ButtonDrop
-                                        @onClick="showPacket = !showPacket"
+                                        @onClick="clickShowPacket"
                                         label="Pilih Paket"
                                         :btnText="packet"
                                     />
                                     <p class="error-msg" v-if="errorMsg.packet">{{ errorMsg.packet }}</p>
                                 </div>
                                 <transition name="slide-fade">
-                                    <div class="dropdown" v-if="showPacket">
-                                        <div v-for="(packet, id) in packets" :key="id" style="padding: 0px" @click="choosePacket(packet)">
+                                    <div class="dropdown choosed-packet" v-if="choosedPacket.name">
+                                        <div style="padding: 0px; font-size: 14px;">
                                             <div class="dropdown__item">
-                                                <div>{{ packet.name }}</div>
-                                                <div>{{ formatMoneyRupiah(packet.price) }} / bln</div>
+                                                <div>{{ choosedPacket.name }}</div>
+                                                <div>{{ formatMoneyRupiah(choosedPacket.price) }} / bln</div>
                                             </div>
-                                            <div style="padding: 0px" v-if="packet.oneMonthFree">
+                                            <div class="dropdown__item item">
+                                                <div>Biaya Admin</div>
+                                                <div>{{ formatMoneyRupiah(choosedPacket.adminFee) }} / bln</div>
+                                            </div>
+                                            <div class="dropdown__item item">
+                                                <div>Total</div>
+                                                <div>{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bln</div>
+                                            </div>
+                                            <div style="padding: 0px" v-if="choosedPacket.oneMonthFree">
                                                 <LabelChecked title="Gratis Satu Bulan Pertama"/>
                                             </div>
-                                            <div class="dropdown__item-info">{{ packet.desc }}</div>
-                                            <hr v-if="id != packets.length - 1" style="margin: 0px!important">
+                                            <div class="dropdown__item-info">{{ choosedPacket.desc }}</div>
                                         </div>
                                     </div>
                                 </transition>
@@ -82,10 +118,12 @@
 import axios from 'axios'
 import ButtonDrop from '~/components/atoms/ButtonDropDown'
 import LabelChecked from '~/components/atoms/LabelChecked'
+import Modal from '~/components/mollecules/Modal'
 export default {
     components: {
         ButtonDrop: ButtonDrop,
         LabelChecked: LabelChecked,
+        Modal: Modal
     },
     data() {
         return {
@@ -93,8 +131,9 @@ export default {
             email: '',
             whatsapp: '',
             provider: 'Contoh: Netflix',
-            packet: 'Contoh: Group(Family)',
+            packet: 'Contoh: Group (Family)',
             price: null,
+            choosedPacket: {},
             showProvider: false,
             showPacket: false,
             providers: [
@@ -105,8 +144,30 @@ export default {
                 {name: 'Joox', active: false}
             ],
             packets: [
-                {name: 'Personal', active: true, desc: 'Satu akun satu orang', price: 140000, oneMonthFree: true},
-                {name: 'Group (Family)', active: true, desc: 'Satu akun dipakai maksimum 4 orang', price: 43000, oneMonthFree: true}
+                {
+                    name: 'Paket Personal', 
+                    active: true, 
+                    desc: 'Satu akun satu orang', 
+                    adminFee: 2500, 
+                    price: 139000, 
+                    grandTotal: 141500, 
+                    oneMonthFree: true,
+                    facilities: [
+                        'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
+                    ]
+                },
+                {
+                    name: 'Paket Group (Family)', 
+                    active: true, 
+                    desc: 'Satu akun dipakai maksimum 4 orang', 
+                    adminFee: 2500, 
+                    price: 42500, 
+                    grandTotal: 45000, 
+                    oneMonthFree: true,
+                    facilities: [
+                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
+                    ]
+                },
             ],
             errorMsg: {
                 fullname: '',
@@ -115,7 +176,7 @@ export default {
                 provider: '',
                 packet: ''
             },
-            isDisableBtn: false
+            isDisableBtn: false,
         }
     },
     methods: {
@@ -173,8 +234,10 @@ export default {
             this.showProvider = false
             this.price = null
             this.errorMsg.provider = ''
+            this.errorMsg.packet = ''
         },
         choosePacket(packet) {
+            this.choosedPacket = packet
             this.packet = packet.name
             this.showPacket = false
             this.errorMsg.packet = ''
@@ -187,6 +250,20 @@ export default {
             const snackBar = document.getElementById("snackbar")
             snackBar.className = "show"
             setTimeout(() => { snackBar.className = snackBar.className.replace("show", "")}, 5000)
+        },
+        clickShowPacket() {
+            if (this.provider == 'Contoh: Netflix') {
+                this.errorMsg.packet = 'Media Entertainment belum dipilih'
+                return
+            } else {
+                this.showPacket = !this.showPacket
+            }
+        }
+    },
+    watch: {
+        showPacket() {
+            const modalBackdrop = document.getElementById('modal-backdrop')
+            this.showPacket ? modalBackdrop.classList += 'modal-backdrop fade show' : modalBackdrop.classList.value = ''
         }
     }
 }
@@ -196,6 +273,15 @@ export default {
 .reg {
     padding: 40px 0px !important;
     background-color: white;
+    .modal-dropdown {
+        border-radius: .25rem;
+        border:none!important;
+        margin-bottom: 0px!important;
+        max-width: unset!important;
+        .item {
+            padding: 0px 16px!important;
+        }
+    }
     .dropdown {
         border-radius: .25rem;
         border: 1px solid #ced4da;
@@ -214,6 +300,7 @@ export default {
             font-size: 12px;
         }
         &__item {
+            padding: 8px 16px!important;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -318,7 +405,15 @@ export default {
         from {top: 0; opacity: 0;}
         to {top: 130px; opacity: 1;}
     }
-
+    .show {
+        display: block;
+    }
+    .choosed-packet {
+        cursor: unset!important;
+        &:hover {
+            background-color: unset!important;
+        }
+    }
 }
 @media (max-width: 800px) {
     .reg {
