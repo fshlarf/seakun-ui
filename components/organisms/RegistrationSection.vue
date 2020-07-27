@@ -65,7 +65,7 @@
                             <div class="form-group">
                                 <ButtonDrop
                                     @onClick="showProvider = !showProvider"
-                                    label="Media Entertainment"
+                                    label="Provider Entertainment"
                                     :btnText="provider"
                                 />
                                 <p class="error-msg" v-if="errorMsg.provider">{{ errorMsg.provider }}</p>
@@ -204,7 +204,7 @@ export default {
             !this.fullname ? this.errorMsg.fullname = 'Nama Lengkap harus diisi' : this.errorMsg.fullname = ''
             !this.email ? this.errorMsg.email = 'Email harus diisi' : this.errorMsg.email = ''
             !this.whatsapp ? this.errorMsg.whatsapp = 'Whatsapp harus diisi' : this.errorMsg.whatsapp = ''
-            this.provider == 'Contoh: Netflix' ? this.errorMsg.provider = 'Media Entertainment harus dipilih' : this.errorMsg.provider = ''
+            this.provider == 'Contoh: Netflix' ? this.errorMsg.provider = 'Provider Entertainment harus dipilih' : this.errorMsg.provider = ''
             this.packet == 'Contoh: Group (Family)' ? this.errorMsg.packet = 'Paket harus dipilih' : this.errorMsg.packet = ''
         },
         clickSubmit() {
@@ -268,7 +268,7 @@ export default {
         },
         clickShowPacket() {
             if (this.provider == 'Contoh: Netflix') {
-                this.errorMsg.packet = 'Media Entertainment belum dipilih'
+                this.errorMsg.packet = 'Provider Entertainment belum dipilih'
                 return
             } else {
                 this.showPacket = !this.showPacket
