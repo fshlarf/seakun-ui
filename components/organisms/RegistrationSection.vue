@@ -1,35 +1,46 @@
 <template>
     <div class="reg" id="reg">
-        <Modal
-            :showPacket="showPacket"
-            @closeModal="showPacket = false"
-        >
-            <div class="dropdown modal-dropdown">
-                <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
-                    <div class="dropdown__item item">
-                        <div>{{ packet.name }}</div>
-                        <div>{{ formatMoneyRupiah(packet.price) }} / bln</div>
+        <transition name="slide-fade">
+            <Modal
+                :showPacket="showPacket"
+                @closeModal="showPacket = false"
+            >
+                <div class="dropdown modal-dropdown">
+                    <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
+                        <div class="dropdown__item item">
+                            <div>{{ packet.name }}</div>
+                            <div>{{ formatMoneyRupiah(packet.price) }} / bln</div>
+                        </div>
+                        <div class="dropdown__item item">
+                            <div>Biaya Admin</div>
+                            <div>{{ formatMoneyRupiah(packet.adminFee) }} / bln</div>
+                        </div>
+                        <div class="dropdown__item item">
+                            <div>Total</div>
+                            <div>{{ formatMoneyRupiah(packet.grandTotal) }} / bln</div>
+                        </div>
+                        <div class="dropdown__item item">
+                            <div>Tipe Paket</div>
+                            <div :class="{'premium' : packet.typePacket == 'Premium'}">{{ packet.typePacket }}</div>
+                        </div>
+                        <div >
+                            {{packet.facilities.join(', ')}}
+                        </div>
+                        <div style="padding: 0px" v-if="packet.oneMonthFree">
+                            <LabelChecked title="Gratis Satu Bulan Pertama"/>
+                        </div>
+                        <div class="dropdown__item-info" style="padding-bottom: 15px">**{{ packet.desc }}</div>
+                        <hr v-if="id != packets.length - 1" style="margin: 0px!important">
                     </div>
-                    <div class="dropdown__item item">
-                        <div>Biaya Admin</div>
-                        <div>{{ formatMoneyRupiah(packet.adminFee) }} / bln</div>
-                    </div>
-                    <div class="dropdown__item item">
-                        <div>Total</div>
-                        <div>{{ formatMoneyRupiah(packet.grandTotal) }} / bln</div>
-                    </div>
-                    <div >
-                        {{packet.facilities.join(', ')}}
-                    </div>
-                    <div style="padding: 0px" v-if="packet.oneMonthFree">
-                        <LabelChecked title="Gratis Satu Bulan Pertama"/>
-                    </div>
-                    <div class="dropdown__item-info" style="padding-bottom: 15px">{{ packet.desc }}</div>
-                    <hr v-if="id != packets.length - 1" style="margin: 0px!important">
                 </div>
+            </Modal>
+        </transition>
+        <transition name="slide-fade">
+            <div v-if="showSnackBar" id="snackbar">
+                <span style="text-align: end;" @click="showSnackBar = false">&times;</span>
+                <p>Pendaftaran berhasil. Kamu akan segera dihubungi lewat email dan whatsapp. Ditunggu ya :)</p>
             </div>
-        </Modal>
-        <div id="snackbar">Pendaftaran berhasil. Kamu akan segera dihubungi lewat email dan whatsapp. Ditunggu ya!</div>
+        </transition>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -102,7 +113,13 @@
                                     </div>
                                 </transition>
                             </div>
-                            <button class="btn btn-primary" @click.prevent="clickSubmit" :disabled="isDisableBtn">Submit</button>
+                            <p v-if="isDisableBtn">
+                                Tunggu sebentar ya...
+                            </p>
+                            <button class="btn btn-primary" @click.prevent="clickSubmit" :disabled="isDisableBtn">
+                                <span v-if="isDisableBtn" class="spinner-border spinner-border-sm text-dark" role="status" aria-hidden="true"></span>
+                                Submit
+                            </button>
                         </form>
                     </div>
                     <div class="reg__form-img">
@@ -152,6 +169,7 @@ export default {
                     price: 139000, 
                     grandTotal: 141500, 
                     oneMonthFree: true,
+                    typePacket: 'Normal',
                     facilities: [
                         'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
                     ]
@@ -164,6 +182,7 @@ export default {
                     price: 42500, 
                     grandTotal: 45000, 
                     oneMonthFree: true,
+                    typePacket: 'Premium',
                     facilities: [
                         'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
                     ]
@@ -176,6 +195,7 @@ export default {
                 provider: '',
                 packet: ''
             },
+            showSnackBar: false,
             isDisableBtn: false,
         }
     },
@@ -220,7 +240,7 @@ export default {
             }
             axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
             .then(res => {
-                if (res.data.message == "success") this.showSnackBar()
+                if (res.data.message == "success") this.showSnackBar = true
                 this.isDisableBtn = false
             })
             .catch(err => {
@@ -245,11 +265,6 @@ export default {
         },
         formatMoneyRupiah(num) {
             return num && `Rp ${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
-        },
-        showSnackBar() {
-            const snackBar = document.getElementById("snackbar")
-            snackBar.className = "show"
-            setTimeout(() => { snackBar.className = snackBar.className.replace("show", "")}, 5000)
         },
         clickShowPacket() {
             if (this.provider == 'Contoh: Netflix') {
@@ -279,7 +294,7 @@ export default {
         margin-bottom: 0px!important;
         max-width: unset!important;
         .item {
-            padding: 0px 16px!important;
+            padding: 2px 16px!important;
         }
     }
     .dropdown {
@@ -311,9 +326,9 @@ export default {
                 max-width: 20px;
             }
             &-info {
-                color: #bbbbbb;
                 font-weight: 400;
                 padding-top: 0px!important;
+                font-style: italic;
             }
         }
     }
@@ -373,7 +388,6 @@ export default {
         opacity: 0.4;
     }
     #snackbar {
-        visibility: hidden;
         background-color: #daeeef;
         color: #2f524b;
         text-align: center;
@@ -388,31 +402,31 @@ export default {
         left: 50%;
         margin-left: -300px;
         font-weight: 400;
-    }
-
-    #snackbar.show {
-        visibility: visible;
-        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-
-    @-webkit-keyframes fadein {
-        from {top: 0; opacity: 0;} 
-        to {top: 130px; opacity: 1;}
-    }
-
-    @keyframes fadein {
-        from {top: 0; opacity: 0;}
-        to {top: 130px; opacity: 1;}
+        display: grid;
+        button {
+            margin-top: 0px!important;
+            margin-bottom: 10px!important;
+        }
+        span {
+            font-size: 28px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0px 12px;
+        }
     }
     .show {
         display: block;
     }
+
     .choosed-packet {
         cursor: unset!important;
         &:hover {
             background-color: unset!important;
         }
+    }
+    .premium {
+        color: green;
+        font-weight: 500;
     }
 }
 @media (max-width: 800px) {
