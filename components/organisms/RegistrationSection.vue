@@ -109,6 +109,11 @@
                                                 <LabelChecked title="Gratis Satu Bulan Pertama"/>
                                             </div>
                                             <div class="dropdown__item-info">{{ choosedPacket.desc }}</div>
+                                            <div v-if="choosedPacket.notes" class="notes">
+                                                <div style="padding: 0px">Catatan:</div>
+                                                <p :class="showMore ? 'show-text' : 'hide'">{{ choosedPacket.notes }}</p>
+                                            </div>
+                                            <div @click="showMore = !showMore" class="showmore">{{wordingShowMore(showMore)}}</div>
                                         </div>
                                     </div>
                                 </transition>
@@ -170,6 +175,7 @@ export default {
                     grandTotal: 141500, 
                     oneMonthFree: true,
                     typePacket: 'Normal',
+                    notes: 'Seakun.id akan membuat kan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
                     facilities: [
                         'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
                     ]
@@ -183,6 +189,7 @@ export default {
                     grandTotal: 45000, 
                     oneMonthFree: true,
                     typePacket: 'Premium',
+                    notes: 'Seakun.id akan mengelompokkan kamu bersama 3 orang lainnya ke dalam satu grup. Kemudian akan membuatkan satu buah akun Netflix yang bisa dipakai oleh 4 orang anggotanya (termasuk kamu). Proses payment Netflix dan pengelolaan akun Netflix akan dihandle oleh seakun.id. Tenang, semua aktivitas akun akan dipantau. Jadi hanya 4 orang anggota  (termasuk kamu) yang dapat menikmati layanan Netflix menggunakan akun tersebut.',
                     facilities: [
                         'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
                     ]
@@ -197,6 +204,7 @@ export default {
             },
             showSnackBar: false,
             isDisableBtn: false,
+            showMore: false
         }
     },
     methods: {
@@ -273,6 +281,9 @@ export default {
             } else {
                 this.showPacket = !this.showPacket
             }
+        },
+        wordingShowMore(showMore) {
+            return showMore ? 'Ciutkan' : 'Selengkapnya'
         }
     },
     watch: {
@@ -419,14 +430,37 @@ export default {
     }
 
     .choosed-packet {
-        cursor: unset!important;
-        &:hover {
-            background-color: unset!important;
+        div {
+            cursor: unset!important;
+            &:hover {
+                background-color: unset!important;
+            }
+        }
+        .showmore {
+            color:#04604d !important;
+            &:hover {
+                cursor: pointer !important;
+            }
         }
     }
     .premium {
         color: green;
         font-weight: 500;
+    }
+    .notes {
+        overflow: hidden;
+        .hide {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;  
+            height: 40px;
+        }
+        .show-text {
+            display: -webkit-box;
+            -webkit-line-clamp: unset;
+            -webkit-box-orient: vertical;  
+            height: auto;
+        }
     }
 }
 @media (max-width: 800px) {
