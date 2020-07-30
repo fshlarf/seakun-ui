@@ -169,7 +169,7 @@ export default {
                 {
                     name: 'Paket Personal', 
                     active: true, 
-                    desc: 'Satu akun satu orang', 
+                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
                     adminFee: 2500, 
                     price: 139000, 
                     grandTotal: 141500, 
@@ -183,7 +183,7 @@ export default {
                 {
                     name: 'Paket Group (Family)', 
                     active: true, 
-                    desc: 'Satu akun dipakai maksimum 4 orang', 
+                    desc: 'Sharing akun dengan 3 orang lainnya', 
                     adminFee: 2750, 
                     price: 42250, 
                     grandTotal: 45000, 
