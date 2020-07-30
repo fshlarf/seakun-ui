@@ -184,8 +184,8 @@ export default {
                     name: 'Paket Group (Family)', 
                     active: true, 
                     desc: 'Satu akun dipakai maksimum 4 orang', 
-                    adminFee: 2500, 
-                    price: 42500, 
+                    adminFee: 2750, 
+                    price: 42250, 
                     grandTotal: 45000, 
                     oneMonthFree: true,
                     typePacket: 'Premium',
@@ -269,7 +269,7 @@ export default {
             this.packet = packet.name
             this.showPacket = false
             this.errorMsg.packet = ''
-            this.price = packet.price
+            this.price = packet.grandTotal
         },
         formatMoneyRupiah(num) {
             return num && `Rp ${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
