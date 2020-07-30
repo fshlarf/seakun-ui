@@ -177,7 +177,7 @@ export default {
                     typePacket: 'Normal',
                     notes: 'Seakun.id akan membuat kan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
                     facilities: [
-                        'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
+                        'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
                     ]
                 },
                 {
@@ -191,7 +191,7 @@ export default {
                     typePacket: 'Premium',
                     notes: 'Seakun.id akan mengelompokkan kamu bersama 3 orang lainnya ke dalam satu grup. Kemudian akan membuatkan satu buah akun Netflix yang bisa dipakai oleh 4 orang anggotanya (termasuk kamu). Proses payment Netflix dan pengelolaan akun Netflix akan dihandle oleh seakun.id. Tenang, semua aktivitas akun akan dipantau. Jadi hanya 4 orang anggota  (termasuk kamu) yang dapat menikmati layanan Netflix menggunakan akun tersebut.',
                     facilities: [
-                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial TV', 'Cancel Kapanpun'
+                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
                     ]
                 },
             ],
