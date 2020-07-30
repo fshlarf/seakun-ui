@@ -175,7 +175,7 @@ export default {
                     grandTotal: 141500, 
                     oneMonthFree: true,
                     typePacket: 'Normal',
-                    notes: 'Seakun.id akan membuat kan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
+                    notes: 'Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
                     facilities: [
                         'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
                     ]
