@@ -248,7 +248,10 @@ export default {
             }
             axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
             .then(res => {
-                if (res.data.message == "success") this.showSnackBar = true
+                if (res.data.message == "success") {
+                    this.showSnackBar = true
+                    this.executeApiMailSeakun(payload)
+                }
                 this.isDisableBtn = false
             })
             .catch(err => {
@@ -284,6 +287,15 @@ export default {
         },
         wordingShowMore(showMore) {
             return showMore ? 'Ciutkan' : 'Selengkapnya'
+        },
+        executeApiMailSeakun(payload) {
+            axios.post('https://seakun-mail-api.herokuapp.com/', payload)
+            .then(res => {
+                console.log('Berhasil Daftar!')
+            })
+            .catch(err => {
+                console.log(err)
+            })
         }
     },
     watch: {
