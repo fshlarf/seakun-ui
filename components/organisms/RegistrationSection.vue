@@ -212,7 +212,7 @@ export default {
                     bestSeller: false,
                     notes: 'Tidak tersedia kualitas HD. Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
                     facilities: [
-                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
+                        'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
                     ]
                 },
                 {
