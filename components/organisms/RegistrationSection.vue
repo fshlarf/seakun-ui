@@ -98,15 +98,15 @@
                                     <div class="dropdown choosed-packet" v-if="choosedPacket.name">
                                         <div style="padding: 0px; font-size: 14px;">
                                             <div class="dropdown__item align-normal">
-                                                <div>{{ choosedPacket.name }}</div>
+                                                <div style="max-width: 9rem;">{{ choosedPacket.name }}</div>
                                                 <div>{{ formatMoneyRupiah(choosedPacket.price) }} / bln</div>
                                             </div>
                                             <div class="dropdown__item item align-normal">
-                                                <div>Biaya Admin</div>
+                                                <div style="max-width: 9rem;">Biaya Admin</div>
                                                 <div>{{ formatMoneyRupiah(choosedPacket.adminFee) }} / bln</div>
                                             </div>
                                             <div class="dropdown__item item align-normal">
-                                                <div>Total</div>
+                                                <div style="max-width: 9rem;">Total</div>
                                                 <div>{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bln</div>
                                             </div>
                                             <div style="padding: 0px" v-if="choosedPacket.oneMonthFree">
@@ -380,7 +380,6 @@ export default {
             justify-content: space-between;
             div {
                 padding: 0px;
-                max-width: 9rem;
             }
             img {
                 max-width: 20px;
@@ -539,7 +538,15 @@ export default {
         }
         .dropdown {
             max-width: 100%;
-        }   
+        }  
+        .modal-dropdown {
+            max-width: 100%;
+            .item {
+                div {
+                    max-width: 9rem;
+                }
+            }
+        }
         padding: 30px 0px 15px 0px !important;
         &__form {
             width: 100%;
