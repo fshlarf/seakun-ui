@@ -8,7 +8,7 @@
                         <span>&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body scroller">
                     <slot></slot>
                 </div>
                 <!-- <div class="modal-footer">
@@ -29,7 +29,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.modal-dialog {
+    max-width: 50rem;
+}
 .modal-body {
     padding: 0px!important;
+}
+@media (max-width: 800px) {
+    .modal-dialog {
+        max-width: auto!important;
+    }
 }
 </style>

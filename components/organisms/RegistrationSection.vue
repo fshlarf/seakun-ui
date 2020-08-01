@@ -7,24 +7,28 @@
             >
                 <div class="dropdown modal-dropdown">
                     <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
-                        <div class="dropdown__item item">
-                            <div>{{ packet.name }}</div>
-                            <div>{{ formatMoneyRupiah(packet.price) }} / bln</div>
+                        <div class="dropdown__item item align-normal">
+                            <div class="bold">{{ packet.name }}</div>
+                            <div class="bold">{{ formatMoneyRupiah(packet.price) }} / bln</div>
                         </div>
-                        <div class="dropdown__item item">
+                        <div class="dropdown__item item align-normal">
                             <div>Biaya Admin</div>
-                            <div>{{ formatMoneyRupiah(packet.adminFee) }} / bln</div>
+                            <div class="bold">{{ formatMoneyRupiah(packet.adminFee) }} / bln</div>
                         </div>
-                        <div class="dropdown__item item">
+                        <div class="dropdown__item item align-normal">
                             <div>Total</div>
-                            <div>{{ formatMoneyRupiah(packet.grandTotal) }} / bln</div>
+                            <div class="bold">{{ formatMoneyRupiah(packet.grandTotal) }} / bln</div>
                         </div>
-                        <div class="dropdown__item item">
+                        <div class="dropdown__item item align-normal">
                             <div>Tipe Paket</div>
                             <div :class="{'premium' : packet.typePacket == 'Premium'}">{{ packet.typePacket }}</div>
                         </div>
                         <div >
                             {{packet.facilities.join(', ')}}
+                        </div>
+                        <div class="dropdown__best-item" v-if="packet.bestSeller">
+                            <i class="fa fa-star" style="color: gold"></i>
+                            <div>Paling Laris di Netflix</div>
                         </div>
                         <div style="padding: 0px" v-if="packet.oneMonthFree">
                             <LabelChecked title="Gratis Satu Bulan Pertama"/>
@@ -93,15 +97,15 @@
                                 <transition name="slide-fade">
                                     <div class="dropdown choosed-packet" v-if="choosedPacket.name">
                                         <div style="padding: 0px; font-size: 14px;">
-                                            <div class="dropdown__item">
+                                            <div class="dropdown__item align-normal">
                                                 <div>{{ choosedPacket.name }}</div>
                                                 <div>{{ formatMoneyRupiah(choosedPacket.price) }} / bln</div>
                                             </div>
-                                            <div class="dropdown__item item">
+                                            <div class="dropdown__item item align-normal">
                                                 <div>Biaya Admin</div>
                                                 <div>{{ formatMoneyRupiah(choosedPacket.adminFee) }} / bln</div>
                                             </div>
-                                            <div class="dropdown__item item">
+                                            <div class="dropdown__item item align-normal">
                                                 <div>Total</div>
                                                 <div>{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bln</div>
                                             </div>
@@ -167,31 +171,63 @@ export default {
             ],
             packets: [
                 {
-                    name: 'Paket Personal', 
+                    name: 'Paket Premium Group (Family)', 
                     active: true, 
-                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
+                    desc: 'Sharing akun dengan 3 orang lainnya', 
                     adminFee: 2500, 
-                    price: 139000, 
-                    grandTotal: 141500, 
+                    price: 46500, 
+                    grandTotal: 49000, 
                     oneMonthFree: true,
-                    typePacket: 'Normal',
-                    notes: 'Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
+                    typePacket: 'Premium',
+                    bestSeller: true,
+                    notes: 'Seakun.id akan mengelompokkan kamu bersama 3 orang lainnya ke dalam satu grup. Kemudian akan membuatkan satu buah akun Netflix yang bisa dipakai oleh 4 orang anggotanya (termasuk kamu). Proses payment Netflix dan pengelolaan akun Netflix akan dihandle oleh seakun.id. Tenang, semua aktivitas akun akan dipantau. Jadi hanya 4 orang anggota (termasuk kamu) yang dapat menikmati layanan Netflix menggunakan akun tersebut.',
                     facilities: [
-                        'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
+                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
                     ]
                 },
                 {
-                    name: 'Paket Group (Family)', 
+                    name: 'Paket Mobile Personal', 
                     active: true, 
-                    desc: 'Sharing akun dengan 3 orang lainnya', 
-                    adminFee: 2750, 
-                    price: 42250, 
-                    grandTotal: 45000, 
+                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
+                    adminFee: 2500, 
+                    price: 54000, 
+                    grandTotal: 56500, 
                     oneMonthFree: true,
-                    typePacket: 'Premium',
-                    notes: 'Seakun.id akan mengelompokkan kamu bersama 3 orang lainnya ke dalam satu grup. Kemudian akan membuatkan satu buah akun Netflix yang bisa dipakai oleh 4 orang anggotanya (termasuk kamu). Proses payment Netflix dan pengelolaan akun Netflix akan dihandle oleh seakun.id. Tenang, semua aktivitas akun akan dipantau. Jadi hanya 4 orang anggota  (termasuk kamu) yang dapat menikmati layanan Netflix menggunakan akun tersebut.',
+                    typePacket: 'Mobile',
+                    bestSeller: false,
+                    notes: 'Tidak tersedia kualitas HD. Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
+                    facilities: [
+                        'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
+                    ]
+                },
+                {
+                    name: 'Paket Basic Personal', 
+                    active: true, 
+                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
+                    adminFee: 2500, 
+                    price: 120000, 
+                    grandTotal: 122500, 
+                    oneMonthFree: true,
+                    typePacket: 'Basic',
+                    bestSeller: false,
+                    notes: 'Tidak tersedia kualitas HD. Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
                     facilities: [
                         'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
+                    ]
+                },
+                {
+                    name: 'Paket Standar Personal', 
+                    active: true, 
+                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
+                    adminFee: 2500, 
+                    price: 153000, 
+                    grandTotal: 155500, 
+                    oneMonthFree: true,
+                    typePacket: 'Standar',
+                    bestSeller: false,
+                    notes: 'Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
+                    facilities: [
+                        'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
                     ]
                 },
             ],
@@ -344,6 +380,7 @@ export default {
             justify-content: space-between;
             div {
                 padding: 0px;
+                max-width: 9rem;
             }
             img {
                 max-width: 20px;
@@ -352,6 +389,17 @@ export default {
                 font-weight: 400;
                 padding-top: 0px!important;
                 font-style: italic;
+            }
+        }
+        .align-normal {
+            align-items: normal!important;
+        }
+        &__best-item {
+            display: flex;
+            align-items: center;
+            padding: 0px 16px!important;
+            div {
+                padding: 0px 10px;
             }
         }
     }
@@ -473,6 +521,9 @@ export default {
             -webkit-box-orient: vertical;  
             height: auto;
         }
+    }
+    .bold {
+        font-weight: 500;
     }
 }
 @media (max-width: 800px) {
