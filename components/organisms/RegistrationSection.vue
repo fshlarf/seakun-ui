@@ -9,13 +9,13 @@
                     <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
                         <div class="dropdown__item item align-normal">
                             <div class="bold">{{ packet.name }}</div>
-                            <div class="bold">{{ formatMoneyRupiah(packet.price) }} / bln</div>
+                            <div class="bold" v-if="packet.price > 0">{{ formatMoneyRupiah(packet.price) }} / bln</div>
                         </div>
-                        <div class="dropdown__item item align-normal">
+                        <div class="dropdown__item item align-normal" v-if="packet.adminFee > 0">
                             <div>Biaya Admin</div>
                             <div class="bold">{{ formatMoneyRupiah(packet.adminFee) }} / bln</div>
                         </div>
-                        <div class="dropdown__item item align-normal">
+                        <div class="dropdown__item item align-normal" v-if="packet.grandTotal > 0">
                             <div>Total</div>
                             <div class="bold">{{ formatMoneyRupiah(packet.grandTotal) }} / bln</div>
                         </div>
@@ -171,6 +171,21 @@ export default {
             ],
             packets: [
                 {
+                    name: 'Paket Trial (Gratis)', 
+                    active: true, 
+                    desc: 'Gratis, trial berbatas waktu', 
+                    adminFee: 0, 
+                    price: 0, 
+                    grandTotal: 0, 
+                    oneMonthFree: false,
+                    typePacket: 'Premium',
+                    bestSeller: false,
+                    notes: 'Paket trial ini gratis digunakan, cukup mendaftar di seakun.id. Paket ini berbatas waktunya',
+                    facilities: [
+                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
+                    ]
+                },
+                {
                     name: 'Paket Premium Group (Family)', 
                     active: true, 
                     desc: 'Sharing akun dengan 3 orang lainnya', 
@@ -311,7 +326,11 @@ export default {
             this.price = packet.grandTotal
         },
         formatMoneyRupiah(num) {
-            return num && `Rp ${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+            if (num) {
+                return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+            } else if (num == 0 ) {
+                return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+            }
         },
         clickShowPacket() {
             if (this.provider == 'Contoh: Netflix') {
