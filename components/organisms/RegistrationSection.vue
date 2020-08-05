@@ -170,21 +170,21 @@ export default {
                 {name: 'Joox', active: false}
             ],
             packets: [
-                {
-                    name: 'Paket Trial (Gratis)', 
-                    active: true, 
-                    desc: 'Gratis, trial berbatas waktu', 
-                    adminFee: 0, 
-                    price: 0, 
-                    grandTotal: 0, 
-                    oneMonthFree: false,
-                    typePacket: 'Premium',
-                    bestSeller: false,
-                    notes: 'Paket trial ini gratis digunakan, cukup mendaftar di seakun.id. Paket ini berbatas waktunya',
-                    facilities: [
-                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
-                    ]
-                },
+                // {
+                //     name: 'Paket Trial (Gratis)', 
+                //     active: true, 
+                //     desc: 'Gratis, trial berbatas waktu', 
+                //     adminFee: 0, 
+                //     price: 0, 
+                //     grandTotal: 0, 
+                //     oneMonthFree: false,
+                //     typePacket: 'Premium',
+                //     bestSeller: false,
+                //     notes: 'Paket trial ini gratis digunakan, cukup mendaftar di seakun.id. Paket ini berbatas waktunya',
+                //     facilities: [
+                //         'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
+                //     ]
+                // },
                 {
                     name: 'Paket Premium Group (Family)', 
                     active: true, 
@@ -192,7 +192,7 @@ export default {
                     adminFee: 2500, 
                     price: 46500, 
                     grandTotal: 49000, 
-                    oneMonthFree: true,
+                    oneMonthFree: false,
                     typePacket: 'Premium',
                     bestSeller: true,
                     notes: 'Seakun.id akan mengelompokkan kamu bersama 3 orang lainnya ke dalam satu grup. Kemudian akan membuatkan satu buah akun Netflix yang bisa dipakai oleh 4 orang anggotanya (termasuk kamu). Proses payment Netflix dan pengelolaan akun Netflix akan dihandle oleh seakun.id. Tenang, semua aktivitas akun akan dipantau. Jadi hanya 4 orang anggota (termasuk kamu) yang dapat menikmati layanan Netflix menggunakan akun tersebut.',
@@ -207,7 +207,7 @@ export default {
                     adminFee: 2500, 
                     price: 54000, 
                     grandTotal: 56500, 
-                    oneMonthFree: true,
+                    oneMonthFree: false,
                     typePacket: 'Mobile',
                     bestSeller: false,
                     notes: 'Tidak tersedia kualitas HD. Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
@@ -222,7 +222,7 @@ export default {
                     adminFee: 2500, 
                     price: 120000, 
                     grandTotal: 122500, 
-                    oneMonthFree: true,
+                    oneMonthFree: false,
                     typePacket: 'Basic',
                     bestSeller: false,
                     notes: 'Tidak tersedia kualitas HD. Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
@@ -237,7 +237,7 @@ export default {
                     adminFee: 2500, 
                     price: 153000, 
                     grandTotal: 155500, 
-                    oneMonthFree: true,
+                    oneMonthFree: false,
                     typePacket: 'Standar',
                     bestSeller: false,
                     notes: 'Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
