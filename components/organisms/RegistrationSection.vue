@@ -85,15 +85,22 @@
                                     </div>
                                 </div>
                             </transition>
+                            <div class="form-group">
+                                <ButtonDrop
+                                    @onClick="clickShowPacket"
+                                    label="Pilih Paket"
+                                    :btnText="packet"
+                                />
+                                <p class="error-msg" v-if="errorMsg.packet">{{ errorMsg.packet }}</p>
+                            </div>
+                            <p>Punya <b>Code Referal</b>? 
+                                <a @click="showFormReferalCode = !showFormReferalCode" class="referal-code">Masukkan Code</a>
+                            </p>
+                            <div class="form-group" v-if="showFormReferalCode">
+                                <label for="referalcode">Code Referal</label>
+                                <input type="text" id="referalcode" name="referalcode" class="form-control" placeholder="Contoh: si2324" v-model="referalcode">
+                            </div>
                             <div>
-                                <div class="form-group">
-                                    <ButtonDrop
-                                        @onClick="clickShowPacket"
-                                        label="Pilih Paket"
-                                        :btnText="packet"
-                                    />
-                                    <p class="error-msg" v-if="errorMsg.packet">{{ errorMsg.packet }}</p>
-                                </div>
                                 <transition name="slide-fade">
                                     <div class="dropdown choosed-packet" v-if="choosedPacket.name">
                                         <div style="padding: 0px; font-size: 14px;">
@@ -159,9 +166,12 @@ export default {
             provider: 'Contoh: Netflix',
             packet: 'Contoh: Group (Family)',
             price: null,
+            referalcode: '',
+            createddate: '',
             choosedPacket: {},
             showProvider: false,
             showPacket: false,
+            showFormReferalCode: false,
             providers: [
                 {name: 'Netflix', active: true},
                 {name: 'Spotify', active: false},
@@ -170,21 +180,6 @@ export default {
                 {name: 'Joox', active: false}
             ],
             packets: [
-                // {
-                //     name: 'Paket Trial (Gratis)', 
-                //     active: true, 
-                //     desc: 'Gratis, trial berbatas waktu', 
-                //     adminFee: 0, 
-                //     price: 0, 
-                //     grandTotal: 0, 
-                //     oneMonthFree: false,
-                //     typePacket: 'Premium',
-                //     bestSeller: false,
-                //     notes: 'Paket trial ini gratis digunakan, cukup mendaftar di seakun.id. Paket ini berbatas waktunya',
-                //     facilities: [
-                //         'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
-                //     ]
-                // },
                 {
                     name: 'Paket Premium Group (Family)', 
                     active: true, 
@@ -251,7 +246,7 @@ export default {
                 email: '',
                 whatsapp: '',
                 provider: '',
-                packet: ''
+                packet: '',
             },
             showSnackBar: false,
             isDisableBtn: false,
@@ -295,7 +290,9 @@ export default {
                 whatsapp: this.whatsapp,
                 provider: this.provider,
                 packet: this.packet,
-                price: this.price
+                price: this.price,
+                referalcode: this.referalcode,
+                createddate: this.setFullDate()
             }
             axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
             .then(res => {
@@ -309,6 +306,13 @@ export default {
                 console.log(err)
                 this.isDisableBtn = false
             })
+        },
+        setFullDate() {
+            let today = new Date()
+            const dd = String(today.getDate()).padStart(2, '0')
+            const mm = String(today.getMonth() + 1).padStart(2, '0')
+            const yyyy = today.getFullYear()
+            return today =  dd + '/' + mm + '/'+ yyyy
         },
         chooseProvider(provider) {
             if (this.provider != provider.name) this.packet = 'Contoh: Group (Family)'
@@ -542,6 +546,14 @@ export default {
     }
     .bold {
         font-weight: 500;
+    }
+    .referal-code {
+        color: dodgerblue;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+            opacity: .7;
+        }
     }
 }
 @media (max-width: 800px) {
