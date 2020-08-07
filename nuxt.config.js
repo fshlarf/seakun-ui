@@ -20,7 +20,7 @@ export default {
   head: {
     title: 'Seakun',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'id'
     },
     meta: [
       { charset: 'utf-8' },
