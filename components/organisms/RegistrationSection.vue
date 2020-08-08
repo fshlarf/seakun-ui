@@ -98,7 +98,7 @@
                             </p>
                             <div class="form-group" v-if="showFormReferalCode">
                                 <label for="referalcode">Code Referal</label>
-                                <input type="text" id="referalcode" name="referalcode" class="form-control" placeholder="Contoh: si2324" v-model="referalcode">
+                                <input type="text" id="referalcode" name="referalcode" class="form-control" placeholder="Contoh: seakuncuy" v-model="referalcode">
                             </div>
                             <div>
                                 <transition name="slide-fade">
