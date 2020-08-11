@@ -10,7 +10,7 @@
                         Bersama</b> dengan pengguna lain <b>(sharing subscription)</b> ke Penyedia Layanan
                         Entertainment (Provider Entertainment) seperti <b>Netflix, Spotify, Youtube</b>
                         dan lainnya agar dapat menikmati fitur premium, dengan <b>proses berlangganan
-                        yang praktis, aman</b> dan <b>murah</b>.
+                        yang praktis, legal, aman</b> dan <b>murah</b>.
                     </p>
                     <button type="button" class="intro__btn btn btn-primary" @click="toServiceElement">Layanan</button>
                     <button type="button" class="intro__btn btn btn-secondary" @click="toRegistrationElement">Daftar</button>

@@ -25,7 +25,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content:'Seakun.id, Berlangganan Bersama Satu Akun Praktis, Aman dan Murah'},
+      { hid: 'description', name: 'description', content:'Seakun.id, Berlangganan Bersama dalam Satu Akun, Lebih Praktis, Legal, Aman dan Murah'},
       { hid: 'keywords', name: 'keywords', content:'seakun, seakun.id, berlangganan, berlangganan bareng, satu akun, paket group, paket family, patungan, netflix, spotify, joox, youtube'}
     ],
     link: [
