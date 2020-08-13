@@ -121,7 +121,6 @@ export default {
 @media (max-width: 800px) {
     .testimoni {
         padding: 0px 0px !important;
-        margin-top: 180px;
         &__img {
             text-align: center;
             margin-top: 20px;
