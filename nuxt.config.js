@@ -47,6 +47,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~plugins/google-analytics.js', mode: 'client' }
   ],
   /*
   ** Auto import components
