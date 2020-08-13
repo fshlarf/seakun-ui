@@ -61,7 +61,7 @@ export default {
         }
         p {
             margin: 0 auto;
-            max-width: 832px;
+            max-width: 880px;
             margin-top: 30px;
             margin-bottom: 40px;
             font-size: 22px;
