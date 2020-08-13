@@ -25,7 +25,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content:'Seakun.id, Berlangganan Bersama dalam Satu Akun, Lebih Praktis, Legal, Aman dan Murah'},
+      { hid: 'description', name: 'description', content:'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama dengan pengguna lain (sharing subscription) ke Penyedia Layanan Entertainment (Provider Entertainment) seperti Netflix, Spotify, Youtube dan lainnya agar dapat menikmati fitur premium, dengan proses berlangganan yang praktis, legal, aman dan murah.'},
       { hid: 'keywords', name: 'keywords', content:'seakun, seakun.id, berlangganan, berlangganan bareng, satu akun, paket group, paket family, patungan, netflix, spotify, joox, youtube'}
     ],
     link: [
