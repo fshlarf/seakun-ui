@@ -97,8 +97,9 @@
                                 <a @click="showFormReferalCode = !showFormReferalCode" class="referal-code">Masukkan Code</a>
                             </p>
                             <div class="form-group" v-if="showFormReferalCode">
-                                <label for="referalcode">Code Referal</label>
-                                <input type="text" id="referalcode" name="referalcode" class="form-control" placeholder="Contoh: seakuncuy" v-model="referalcode">
+                                <label for="referalcode">Code Referral</label>
+                                <input v-model="referalcode" @blur="checkValidReferralCode" type="text" id="referalcode" name="referalcode" class="form-control" placeholder="Contoh: seakunid">
+                                <p v-if="isReferralValid" style="color: limegreen; margin-top: 6px; font-weight: 800">Code Referral Valid</p>
                             </div>
                             <div>
                                 <transition name="slide-fade">
@@ -114,7 +115,16 @@
                                             </div>
                                             <div class="dropdown__item item align-normal">
                                                 <div style="max-width: 9rem;">Total</div>
-                                                <div>{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bln</div>
+                                                <div style="font-weight: 900" :style="isReferralValid ? {'text-decoration' : 'line-through'} : {'text-decoration' : 'unset'}">{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bln</div>
+                                            </div>
+                                            <div class="dropdown__item item align-normal" style="margin-top: -8px" v-if="isReferralValid">
+                                                <div style="max-width: 9rem;"></div>
+                                                <div style="font-weight: 900">{{ formatMoneyRupiah(choosedPacket.referralGrandTotal) }} / bln</div>
+                                            </div>
+                                            <div class="dropdown__item item align-normal" style="margin: -8px 0px" v-if="isReferralValid">
+                                                <p style="color: limegreen; margin-top: 6px; font-weight: 500">
+                                                   Potongan harga penggunaan Code Referral {{formatMoneyRupiah(choosedPacket.discountReferral)}} 
+                                                </p>
                                             </div>
                                             <div style="padding: 0px" v-if="choosedPacket.oneMonthFree">
                                                 <LabelChecked title="Gratis Satu Bulan Pertama"/>
@@ -171,7 +181,6 @@ export default {
             choosedPacket: {},
             showProvider: false,
             showPacket: false,
-            showFormReferalCode: false,
             providers: [
                 {name: 'Netflix', active: true},
                 {name: 'Spotify', active: false},
@@ -187,6 +196,8 @@ export default {
                     adminFee: 2500, 
                     price: 46500, 
                     grandTotal: 49000, 
+                    referralGrandTotal: 44000,
+                    discountReferral: 5000,
                     oneMonthFree: false,
                     typePacket: 'Premium',
                     bestSeller: true,
@@ -202,6 +213,8 @@ export default {
                     adminFee: 2500, 
                     price: 54000, 
                     grandTotal: 56500, 
+                    referralGrandTotal: 51500,
+                    discountReferral: 5000,
                     oneMonthFree: false,
                     typePacket: 'Mobile',
                     bestSeller: false,
@@ -217,6 +230,8 @@ export default {
                     adminFee: 2500, 
                     price: 120000, 
                     grandTotal: 122500, 
+                    referralGrandTotal: 117500,
+                    discountReferral: 5000,
                     oneMonthFree: false,
                     typePacket: 'Basic',
                     bestSeller: false,
@@ -232,6 +247,8 @@ export default {
                     adminFee: 2500, 
                     price: 153000, 
                     grandTotal: 155500, 
+                    referralGrandTotal: 155000,
+                    discountReferral: 5000,
                     oneMonthFree: false,
                     typePacket: 'Standar',
                     bestSeller: false,
@@ -250,8 +267,14 @@ export default {
             },
             showSnackBar: false,
             isDisableBtn: false,
-            showMore: false
+            showMore: false,
+            referralsData: [],
+            showFormReferalCode: false,
+            isReferralValid: false
         }
+    },
+    mounted() {
+        this.checkReferralCode()
     },
     methods: {
         validateInput() {
@@ -355,6 +378,29 @@ export default {
             .catch(err => {
                 console.log(err)
             })
+        },
+        checkReferralCode() {
+            axios.get('https://seakun-referral-api.herokuapp.com/referrals')
+            .then(res => {
+                this.referralsData = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
+        checkValidReferralCode() {
+            let validateArray = []
+            this.referralsData.map (e => {
+                e.referral_code == this.referalcode && e.active ? validateArray.push(1) : validateArray.push(0)
+            })
+            validateArray.sort().reverse()
+            if (validateArray[0] == 1) {
+                this.isReferralValid = true
+                this.price = this.choosedPacket.referralGrandTotal
+            } else {
+                this.isReferralValid = false
+                this.price = this.choosedPacket.grandTotal
+            }
         }
     },
     watch: {
