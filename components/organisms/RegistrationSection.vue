@@ -389,17 +389,19 @@ export default {
             })
         },
         checkValidReferralCode() {
-            let validateArray = []
-            this.referralsData.map (e => {
-                e.referral_code == this.referalcode && e.active ? validateArray.push(1) : validateArray.push(0)
-            })
-            validateArray.sort().reverse()
-            if (validateArray[0] == 1) {
-                this.isReferralValid = true
-                this.price = this.choosedPacket.referralGrandTotal
-            } else {
-                this.isReferralValid = false
-                this.price = this.choosedPacket.grandTotal
+            if (this.price) {
+                let validateArray = []
+                this.referralsData.map (e => {
+                    e.referral_code == this.referalcode && e.active ? validateArray.push(1) : validateArray.push(0)
+                })
+                validateArray.sort().reverse()
+                if (validateArray[0] == 1) {
+                    this.isReferralValid = true
+                    this.price = this.choosedPacket.referralGrandTotal
+                } else {
+                    this.isReferralValid = false
+                    this.price = this.choosedPacket.grandTotal
+                }
             }
         }
     },
