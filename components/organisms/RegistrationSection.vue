@@ -520,7 +520,7 @@ export default {
     }
     .premium {
         color: green;
-        font-weight: 500;
+        font-weight: 800;
     }
     .notes {
         overflow: hidden;
