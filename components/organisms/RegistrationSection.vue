@@ -4,6 +4,7 @@
             <Modal
                 :showPacket="showPacket"
                 @closeModal="showPacket = false"
+                :titleModal="`Pilih Paket ${provider}`"
             >
                 <div class="dropdown modal-dropdown">
                     <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
@@ -28,7 +29,7 @@
                         </div>
                         <div class="dropdown__best-item" v-if="packet.bestSeller">
                             <i class="fa fa-star" style="color: gold"></i>
-                            <div>Paling Laris di Netflix</div>
+                            <div>Paling Laris di {{provider}}</div>
                         </div>
                         <div style="padding: 0px" v-if="packet.oneMonthFree">
                             <LabelChecked title="Gratis Satu Bulan Pertama"/>
@@ -183,81 +184,12 @@ export default {
             showPacket: false,
             providers: [
                 {name: 'Netflix', active: true},
-                {name: 'Spotify', active: false},
+                {name: 'Spotify', active: true},
                 {name: 'Youtube', active: false},
                 {name: 'Steam', active: false},
                 {name: 'Joox', active: false}
             ],
-            packets: [
-                {
-                    name: 'Paket Premium Group (Family)', 
-                    active: true, 
-                    desc: 'Sharing akun dengan 3 orang lainnya', 
-                    adminFee: 2500, 
-                    price: 46500, 
-                    grandTotal: 49000, 
-                    referralGrandTotal: 44000,
-                    discountReferral: 5000,
-                    oneMonthFree: false,
-                    typePacket: 'Premium',
-                    bestSeller: true,
-                    notes: 'Seakun.id akan mengelompokkan kamu bersama 3 orang lainnya ke dalam satu grup. Kemudian akan membuatkan satu buah akun Netflix yang bisa dipakai oleh 4 orang anggotanya (termasuk kamu). Proses payment Netflix dan pengelolaan akun Netflix akan dihandle oleh seakun.id. Tenang, semua aktivitas akun akan dipantau. Jadi hanya 4 orang anggota (termasuk kamu) yang dapat menikmati layanan Netflix menggunakan akun tersebut.',
-                    facilities: [
-                        'Tersedia HD', 'Tersedia Ultra HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
-                    ]
-                },
-                {
-                    name: 'Paket Mobile Personal', 
-                    active: true, 
-                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
-                    adminFee: 2500, 
-                    price: 54000, 
-                    grandTotal: 56500, 
-                    referralGrandTotal: 51500,
-                    discountReferral: 5000,
-                    oneMonthFree: false,
-                    typePacket: 'Mobile',
-                    bestSeller: false,
-                    notes: 'Tidak tersedia kualitas HD. Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
-                    facilities: [
-                        'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
-                    ]
-                },
-                {
-                    name: 'Paket Basic Personal', 
-                    active: true, 
-                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
-                    adminFee: 2500, 
-                    price: 120000, 
-                    grandTotal: 122500, 
-                    referralGrandTotal: 117500,
-                    discountReferral: 5000,
-                    oneMonthFree: false,
-                    typePacket: 'Basic',
-                    bestSeller: false,
-                    notes: 'Tidak tersedia kualitas HD. Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
-                    facilities: [
-                        'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
-                    ]
-                },
-                {
-                    name: 'Paket Standar Personal', 
-                    active: true, 
-                    desc: 'Akun hanya digunakan oleh kamu sendiri', 
-                    adminFee: 2500, 
-                    price: 153000, 
-                    grandTotal: 155500, 
-                    referralGrandTotal: 155000,
-                    discountReferral: 5000,
-                    oneMonthFree: false,
-                    typePacket: 'Standar',
-                    bestSeller: false,
-                    notes: 'Seakun.id akan membuatkan satu buah akun Netflix yang bisa dipakai hanya satu orang yaitu kamu. Proses payment Netflix akan dihandle oleh seakun.id.',
-                    facilities: [
-                        'Tersedia HD', 'Bisa di tonton dari Laptop dan TV', 'Bisa di tonton di Smartphone dan Tablet', 'Unlimitid Film dan Serial Netflix', 'Cancel Kapanpun'
-                    ]
-                },
-            ],
+            packets: [],
             errorMsg: {
                 fullname: '',
                 email: '',
@@ -296,6 +228,15 @@ export default {
                 this.isDisableBtn = true
                 this.postRegisteredUser()
             }
+        },
+        getPacketData(provider) {
+            axios.get(`https://seakun-packet-api.herokuapp.com/${provider.toLowerCase()}`)
+            .then(res => {
+                this.packets = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
         },
         onChangeFullname() {
             this.errorMsg.fullname = ''
@@ -338,7 +279,11 @@ export default {
             return today =  dd + '/' + mm + '/'+ yyyy
         },
         chooseProvider(provider) {
-            if (this.provider != provider.name) this.packet = 'Contoh: Group (Family)'
+            if (this.provider != provider.name) {
+                this.getPacketData(provider.name)
+                this.packet = 'Contoh: Group (Family)'
+                this.choosedPacket = {}
+            }
             this.provider = provider.name
             this.showProvider = false
             this.price = null

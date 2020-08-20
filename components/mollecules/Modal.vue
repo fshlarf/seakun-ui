@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pilih Paket</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{titleModal}}</h5>
                     <button @click="$emit('closeModal')" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span>&times;</span>
                     </button>
@@ -23,7 +23,8 @@
 <script>
 export default {
     props: {
-        showPacket: Boolean
+        showPacket: Boolean,
+        titleModal: String
     }
 }
 </script>
