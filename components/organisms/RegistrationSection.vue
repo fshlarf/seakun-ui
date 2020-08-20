@@ -283,6 +283,7 @@ export default {
                 this.getPacketData(provider.name)
                 this.packet = 'Contoh: Group (Family)'
                 this.choosedPacket = {}
+                this.packets = []
             }
             this.provider = provider.name
             this.showProvider = false
