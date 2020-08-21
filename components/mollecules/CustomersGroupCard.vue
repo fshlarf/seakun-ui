@@ -47,7 +47,22 @@ export default {
             return arrayNames.includes("") ? true : false
         },
         setName(name) {
-            return name == '' ? 'Slot Tersedia' : name
+            if (name == '') {
+                return 'Slot Tersedia'
+            } else {
+                const regex = /(?<!^).(?!$)/g;
+                let arrayName = name.split(" ")
+                let newArr = arrayName.map((e, i) => {
+                    if (i == arrayName.length - 1) {
+                        e = e.replace(regex, '*')
+                        return e
+                    } else {
+                        return e
+                    }
+                })
+                newArr = newArr.join(" ")
+                return newArr
+            }
         },
         setClassUserName(name) {
             return name == '' ? 'available-slot' : ''

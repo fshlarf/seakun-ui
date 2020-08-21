@@ -76,7 +76,6 @@ export default {
             })
             theArr.sort().reverse()
             this.customers = theArr
-            console.log(this.customers);
         }
     }
 
