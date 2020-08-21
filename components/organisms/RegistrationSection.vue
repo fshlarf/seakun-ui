@@ -24,7 +24,7 @@
                             <div>Tipe Paket</div>
                             <div :class="{'premium' : packet.typePacket == 'Premium'}">{{ packet.typePacket }}</div>
                         </div>
-                        <div >
+                        <div v-if="packet.facilities">
                             {{packet.facilities.join(', ')}}
                         </div>
                         <div class="dropdown__best-item" v-if="packet.bestSeller">

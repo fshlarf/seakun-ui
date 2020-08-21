@@ -6,6 +6,7 @@
     <FacilitySection/>
     <TestimoniSection/>
     <ProcessSection/>
+    <CustomersSection/>
     <RegistrationSection/>
     <ContactPerson/>
     <Footer/>
@@ -22,6 +23,7 @@ import RegistrationSection from '~/components/organisms/RegistrationSection.vue'
 import TestimoniSection from '~/components/organisms/TestimoniSection.vue'
 import ProcessSection from '~/components/organisms/ProcessSection.vue'
 import ContactPerson from '~/components/organisms/ContactPerson.vue'
+import CustomersSection from '~/components/organisms/CustomersSection.vue'
 import Footer from '~/components/organisms/Footer.vue'
 export default {
   components: {
@@ -33,6 +35,7 @@ export default {
     ProcessSection: ProcessSection,
     ContactPerson: ContactPerson,
     TestimoniSection: TestimoniSection,
+    CustomersSection: CustomersSection,
     Footer: Footer
   }
 }
