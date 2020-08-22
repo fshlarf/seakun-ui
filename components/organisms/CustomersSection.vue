@@ -37,7 +37,7 @@ export default {
             customers: []
         }
     },
-    mounted() {
+    beforeMount() {
         this.getCustomersData()
     },
     methods: {
