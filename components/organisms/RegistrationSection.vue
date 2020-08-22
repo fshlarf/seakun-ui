@@ -6,7 +6,7 @@
                 @closeModal="showPacket = false"
                 :titleModal="`Pilih Paket ${provider}`"
             >
-                <div class="dropdown modal-dropdown">
+                <div class="dropdown modal-dropdown" v-if="packets.length > 0">
                     <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
                         <div class="dropdown__item item align-normal">
                             <div class="bold">{{ packet.name }}</div>
@@ -37,6 +37,9 @@
                         <div class="dropdown__item-info" style="padding-bottom: 15px">**{{ packet.desc }}</div>
                         <hr v-if="id != packets.length - 1" style="margin: 0px!important">
                     </div>
+                </div>
+                <div class="dropdown modal-dropdown" style="text-align: center;"  v-else >
+                    <h5 style="margin: 10px 0px">Tunggu sebentar ya...</h5>
                 </div>
             </Modal>
         </transition>
@@ -207,6 +210,7 @@ export default {
     },
     mounted() {
         this.checkReferralCode()
+        this.getPacketData('netflix')
     },
     methods: {
         validateInput() {
