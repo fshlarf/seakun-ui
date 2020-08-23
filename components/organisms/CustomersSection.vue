@@ -137,11 +137,12 @@ export default {
         }
         &__content {
             &--carousell {
-                height: 24rem!important;
-                padding-top: 16px;
+                height: 20rem!important;
+                padding: 16px 10px 0px 16px;
             }
             &--chevron {
                 padding: 4px;
+                display: none;
             }
         }
     }

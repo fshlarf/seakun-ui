@@ -1,5 +1,5 @@
 <template>
-    <div @click="toRegistrationElement" :class="`card card-${setClassStatus(dataCustomer.names)}`" v-if="dataCustomer">
+    <div @click="clickRegisterBtn(dataCustomer.names)" :class="`card card-${setClassStatus(dataCustomer.names)}`" v-if="dataCustomer">
         <div class="card-header">
             <div class="card-header--title">
                 <h5>Group {{dataCustomer.group}}</h5>
@@ -13,7 +13,7 @@
             <ul>
                 <li v-for="(name,index) in dataCustomer.names" :key="index" :class="setClassUserName(name)">{{setName(name)}}</li>
             </ul>
-            <div style="text-align: center" v-if="isButtonShow(dataCustomer.names)" @click="toRegistrationElement">
+            <div style="text-align: center" v-if="isButtonShow(dataCustomer.names)" @click="clickRegisterBtn(dataCustomer.names)">
                 <button class="btn btn-register btn-sm">Daftar Sekarang</button>
             </div>
         </div>
@@ -34,8 +34,8 @@ export default {
         this.regElement = document.getElementById('reg')
     },
     methods: {
-        toRegistrationElement() {
-            this.regElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        clickRegisterBtn(arrayNames) {
+            if (arrayNames.includes("")) this.regElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
         },
         setStatus(arrayNames) {
             return arrayNames.includes("") ? 'Available' : 'Full'
