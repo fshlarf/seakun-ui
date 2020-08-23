@@ -50,7 +50,7 @@ export default {
             if (name == '') {
                 return 'Slot Tersedia'
             } else {
-                const regex = /(?<!^).(?!$)/g;
+                const regex = /(?!^)[\s\S](?!$)/g
                 let arrayName = name.split(" ")
                 let newArr = arrayName.map((e, i) => {
                     if (i == arrayName.length - 1) {
