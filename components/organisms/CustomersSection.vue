@@ -1,5 +1,5 @@
 <template>
-    <div class="customers">
+    <div class="customers" v-if="customers.length > 0">
         <div class="customers__heading">
             <h4>Pengguna Seakun.id</h4>
         </div>
