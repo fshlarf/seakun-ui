@@ -12,8 +12,8 @@
                         dan lainnya agar dapat menikmati fitur premium, dengan <b>proses berlangganan
                         yang praktis, legal, aman</b> dan <b>murah</b>.
                     </p>
-                    <button type="button" class="intro__btn btn btn-primary" @click="toServiceElement">Layanan</button>
-                    <button type="button" class="intro__btn btn btn-secondary" @click="toRegistrationElement">Daftar</button>
+                    <button type="button" class="intro__btn btn btn-secondary" @click="toServiceElement">Layanan</button>
+                    <button type="button" class="intro__btn btn btn-primary" @click="toRegistrationElement">Daftar</button>
                     <div class="intro__img">
                         <img src="/images/patungan-2.svg" alt="Image not found">
                     </div>
