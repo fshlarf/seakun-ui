@@ -7,7 +7,7 @@
                 :titleModal="`Pilih Paket ${provider}`"
             >
                 <div class="dropdown modal-dropdown" v-if="packets.length > 0">
-                    <div v-for="(packet, id) in packets" :key="id" style="padding: 16px 0px 0px 0px;" @click="choosePacket(packet)">
+                    <div class="modal-dropdown__list" v-for="(packet, id) in packets" :key="id" @click="choosePacket(packet)">
                         <div class="dropdown__item item align-normal">
                             <div class="bold">{{ packet.name }}</div>
                             <div class="bold" v-if="packet.price > 0">{{ formatMoneyRupiah(packet.price) }} / bln</div>
@@ -24,18 +24,17 @@
                             <div>Tipe Paket</div>
                             <div :class="{'premium' : packet.typePacket == 'Premium'}">{{ packet.typePacket }}</div>
                         </div>
-                        <div v-if="packet.facilities">
+                        <div v-if="packet.facilities" class="dropdown__item item">
                             {{packet.facilities.join(', ')}}
                         </div>
                         <div class="dropdown__best-item" v-if="packet.bestSeller">
                             <i class="fa fa-star" style="color: gold"></i>
                             <div>Paling Laris di {{provider}}</div>
                         </div>
-                        <div style="padding: 0px" v-if="packet.oneMonthFree">
+                        <div style="padding: 0px" v-if="packet.oneMonthFree" class="dropdown__item item">
                             <LabelChecked title="Gratis Satu Bulan Pertama"/>
                         </div>
-                        <div class="dropdown__item-info" style="padding-bottom: 15px">**{{ packet.desc }}</div>
-                        <hr v-if="id != packets.length - 1" style="margin: 0px!important">
+                        <div class="dropdown__item-info item">**{{ packet.desc }}</div>
                     </div>
                 </div>
                 <div class="dropdown modal-dropdown" style="text-align: center;"  v-else >
@@ -373,8 +372,14 @@ export default {
         border:none!important;
         margin-bottom: 0px!important;
         max-width: unset!important;
+        &__list {
+            padding: 16px 0px 0px 0px;
+            border: 1px solid #bbb;
+            margin: 16px;
+            border-radius: 8px;
+        }
         .item {
-            padding: 2px 16px!important;
+            padding: 2px 0px!important;
         }
     }
     .dropdown {
@@ -387,7 +392,8 @@ export default {
             padding: 8px 16px;
             cursor: pointer;
             &:hover {
-                background-color: whitesmoke;
+                background-color:#daeeef;
+                border-color: #c6e9eb;
             }
         }
         span {
@@ -417,7 +423,7 @@ export default {
         &__best-item {
             display: flex;
             align-items: center;
-            padding: 0px 16px!important;
+            padding: 0px 0px!important;
             div {
                 padding: 0px 10px;
             }
