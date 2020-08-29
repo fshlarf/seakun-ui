@@ -2,6 +2,12 @@
     <div>
         <Header />
         <div class="payment">
+            <transition name="slide-fade">
+                <div v-if="showSnackBar" id="snackbar">
+                    <span style="text-align: end;" @click="showSnackBar = false">&times;</span>
+                    <p>Rekening disalin</p>
+                </div>
+            </transition>
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -34,7 +40,14 @@
                             <div class="row mt-1">
                                 <div class="col box-title">Nomor Rekening</div>
                                 <div class="col col-lg-1">:</div>
-                                <div class="col box-item">115007389705</div>
+                                <div
+                                    id="noRek"
+                                    class="col box-item-noRek"
+                                    @click="handleCopyRekening"
+                                >
+                                    115007389705 &nbsp;&nbsp;
+                                    <i class="fa fa-copy"></i>
+                                </div>
                             </div>
                             <div class="row mt-1">
                                 <div class="col box-title">Nama Rekening</div>
@@ -75,12 +88,26 @@ export default {
             provider: "",
             packet: "",
             total: "-",
+            showSnackBar: false,
         };
     },
     mounted() {
         this.getPaymentDetail();
     },
     methods: {
+        handleCopyRekening() {
+            const text = "115007389705";
+
+            navigator.clipboard.writeText(text).then(
+                () => {
+                    this.showSnackBar = true;
+                    setTimeout(() => {
+                        this.showSnackBar = false;
+                    }, 2000);
+                },
+                (err) => console.log(err)
+            );
+        },
         formatMoneyRupiah(num) {
             if (num) {
                 return `Rp${num
@@ -143,6 +170,13 @@ export default {
             }
             &-item {
                 text-align: left;
+                &-noRek {
+                    cursor: pointer;
+                    text-align: left;
+                    &:hover {
+                        color: #86d0c1;
+                    }
+                }
             }
         }
         h3 {
@@ -173,6 +207,33 @@ export default {
     }
     .row {
         padding: 0px 8px !important;
+    }
+    #snackbar {
+        background-color: #daeeef;
+        color: #2f524b;
+        text-align: center;
+        border-radius: 4px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        top: 100px;
+        font-size: 17px;
+        margin: 0 auto;
+        max-width: 600px;
+        left: 65%;
+        margin-left: -300px;
+        font-weight: 400;
+        display: grid;
+        button {
+            margin-top: 0px !important;
+            margin-bottom: 10px !important;
+        }
+        span {
+            font-size: 28px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0px 12px;
+        }
     }
 }
 @media (max-width: 800px) {
