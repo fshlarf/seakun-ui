@@ -1,56 +1,61 @@
 <template>
-    <div class="payment">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="payment__img">
-                        <img src="/images/thank-you.png" alt="Image not found" />
+    <div>
+        <Header />
+        <div class="payment">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="payment__img">
+                            <img src="/images/thank-you.png" alt="Image not found" />
+                        </div>
+                        <h3 class="payment__header-h3">Thank You!</h3>
+                        <p>Segera lakukan pembayaran untuk memulai masa berlanggananmu</p>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col box-title">Provider</div>
+                                <div class="col col-lg-1">:</div>
+                                <div class="col box-item">{{ provider }}</div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col box-title">Paket</div>
+                                <div class="col col-lg-1">:</div>
+                                <div class="col box-item">{{ packet }}</div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col box-title">Metode Pembayaran</div>
+                                <div class="col col-lg-1">:</div>
+                                <div class="col box-item">Bank Transfer</div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col box-title">Bank Tujuan</div>
+                                <div class="col col-lg-1">:</div>
+                                <div class="col box-item">Mandiri</div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col box-title">Nomor Rekening</div>
+                                <div class="col col-lg-1">:</div>
+                                <div class="col box-item">115007389705</div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col box-title">Nama Rekening</div>
+                                <div class="col col-lg-1">:</div>
+                                <div class="col box-item">PT. Trivamas Tekno Solusindo</div>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col box-title">Total Pembayaran</div>
+                                <div class="col col-lg-1">:</div>
+                                <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
+                            </div>
+                        </div>
+                        <p>
+                            Setelah melakukan pembayaran,
+                            <br />kirimkan bukti pembayaran ke Whatsapp Seakun.id
+                            <a
+                                href="https://api.whatsapp.com/send?phone=6285774642738"
+                            >085774642738</a>
+                        </p>
+                        <p>Akun akan segera diproses setelah proses pembayaran selesai</p>
                     </div>
-                    <h3 class="payment__header-h3">Thank You!</h3>
-                    <p>Segera lakukan pembayaran untuk memulai masa berlanggananmu</p>
-                    <div class="box">
-                        <div class="row">
-                            <div class="col box-title">Provider</div>
-                            <div class="col col-lg-1">:</div>
-                            <div class="col box-item">{{ provider }}</div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col box-title">Paket</div>
-                            <div class="col col-lg-1">:</div>
-                            <div class="col box-item">{{ packet }}</div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col box-title">Metode Pembayaran</div>
-                            <div class="col col-lg-1">:</div>
-                            <div class="col box-item">Bank Transfer</div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col box-title">Bank Tujuan</div>
-                            <div class="col col-lg-1">:</div>
-                            <div class="col box-item">Mandiri</div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col box-title">Nomor Rekening</div>
-                            <div class="col col-lg-1">:</div>
-                            <div class="col box-item">115007389705</div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col box-title">Nama Rekening</div>
-                            <div class="col col-lg-1">:</div>
-                            <div class="col box-item">PT. Trivamas Tekno Solusindo</div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col box-title">Total Pembayaran</div>
-                            <div class="col col-lg-1">:</div>
-                            <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
-                        </div>
-                    </div>
-                    <p>
-                        Setelah melakukan pembayaran,
-                        <br />kirimkan bukti pembayaran ke Whatsapp Seakun.id
-                        <b>085774642738</b>
-                    </p>
-                    <p>Akun akan segera diproses setelah proses pembayaran selesai</p>
                 </div>
             </div>
         </div>
@@ -58,9 +63,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
+import Header from "~/components/mollecules/Header";
 
 export default {
+    component: {
+        Header: Header,
+    },
     data() {
         return {
             provider: "",
@@ -69,35 +78,42 @@ export default {
         };
     },
     mounted() {
-        this.getPaymentDetail()
+        this.getPaymentDetail();
     },
     methods: {
         formatMoneyRupiah(num) {
             if (num) {
-                return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
-            } else if (num == 0 ) {
-                return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+                return `Rp${num
+                    .toString()
+                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
+            } else if (num == 0) {
+                return `Rp${num
+                    .toString()
+                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
             }
         },
         getPaymentDetail() {
-            const { provider, packet } = this.$router.history.current.query
-            
-            const isNetflix = provider.toLowerCase() === 'netflix'
+            const { provider, packet } = this.$router.history.current.query;
+
+            const isNetflix = provider.toLowerCase() === "netflix";
             // const isSpotify = provider.toLowerCase() === 'spotify'
 
-            this.provider = provider,
-            this.packet = packet
-            
+            (this.provider = provider), (this.packet = packet);
+
             axios
-                .get(`https://seakun-packet-api.herokuapp.com/${isNetflix ? 'netflix' : 'spotify'}?name=${packet}`)
-                .then(res => {
-                    const { data, status } = res
+                .get(
+                    `https://seakun-packet-api.herokuapp.com/${
+                        isNetflix ? "netflix" : "spotify"
+                    }?name=${packet}`
+                )
+                .then((res) => {
+                    const { data, status } = res;
                     if (status === 200) {
-                        this.total = data?.[0]?.grandTotal ?? '-'
+                        this.total = data?.[0]?.grandTotal ?? "-";
                     }
-                })
-        }
-    }
+                });
+        },
+    },
 };
 </script>
 
@@ -140,8 +156,9 @@ export default {
             margin-top: 30px;
             margin-bottom: 40px;
         }
-        b {
+        a {
             font-weight: 700;
+            color: #0000ee;
         }
     }
     .container {
@@ -162,7 +179,7 @@ export default {
     .payment {
         padding: 0px 0px !important;
         margin-top: 180px;
-        &__img {
+        Ï &__img {
             text-align: center;
             margin-top: 20px;
         }
