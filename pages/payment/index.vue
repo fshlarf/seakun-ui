@@ -109,6 +109,7 @@ export default {
     .container {
         background: white;
         border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
     }
     .box {
         border: 1px solid #86d0c1;

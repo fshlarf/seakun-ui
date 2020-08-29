@@ -42,12 +42,6 @@
                 </div>
             </Modal>
         </transition>
-        <transition name="slide-fade">
-            <div v-if="showSnackBar" id="snackbar">
-                <span style="text-align: end;" @click="showSnackBar = false">&times;</span>
-                <p>Pendaftaran berhasil. Kamu akan segera dihubungi lewat email dan whatsapp. Ditunggu ya :)</p>
-            </div>
-        </transition>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -199,7 +193,6 @@ export default {
                 provider: '',
                 packet: '',
             },
-            showSnackBar: false,
             isDisableBtn: false,
             showMore: false,
             referralsData: [],
@@ -264,17 +257,6 @@ export default {
             axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
             .then(res => {
                 if (res.data.message == "success") {
-                    this.showSnackBar = true
-              
-                    // Redirect to thankyou page when successfully registration
-                    this.$router.push({
-                        path: '/payment',
-                        query: {
-                            provider: this.provider,
-                            packet: this.packet
-                        }
-                    })
-                    
                     this.executeApiMailSeakun(payload)
                 }
                 this.isDisableBtn = false
@@ -332,7 +314,14 @@ export default {
         executeApiMailSeakun(payload) {
             axios.post('https://seakun-mail-api.herokuapp.com/', payload)
             .then(res => {
-                console.log('Berhasil Daftar!')
+                // Redirect to thankyou page when successfully registration
+                this.$router.push({
+                    path: '/payment',
+                    query: {
+                        provider: this.provider,
+                        packet: this.packet
+                    }
+                })
             })
             .catch(err => {
                 console.log(err)
