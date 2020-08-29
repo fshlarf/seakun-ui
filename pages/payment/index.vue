@@ -15,7 +15,7 @@
                             <img src="/images/thank-you.png" alt="Image not found" />
                         </div>
                         <h3 class="payment__header-h3">Thank You!</h3>
-                        <p>Segera lakukan pembayaran untuk memulai masa berlanggananmu</p>
+                        <p v-html="setWordingInformation(provider, packet)"></p>
                         <div class="box">
                             <div class="row">
                                 <div class="col box-title">Provider</div>
@@ -67,7 +67,7 @@
                                 href="https://api.whatsapp.com/send?phone=6285774642738"
                             >085774642738</a>
                         </p>
-                        <p>Akun akan segera diproses setelah proses pembayaran selesai</p>
+                        <p>Proses yang dilakukan sekitar 10 menit sampai paling lama 60 menit setelah bukti pembayaran dikirimkan ke whatsapp Seakun.id</p>
                     </div>
                 </div>
             </div>
@@ -95,6 +95,26 @@ export default {
         this.getPaymentDetail();
     },
     methods: {
+        setWordingInformation(provider, packet) {
+            if (provider.toLowerCase() == 'netflix') {
+                if (packet == 'Paket Premium Group (Family)') {
+                    return 'Segera lakukan pembayaran agar Seakun.id bisa \
+                        langsung mengalokasikan kamu pada grup Netflix yang available, \
+                        mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
+                        <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
+                } else {
+                    return 'Segera lakukan pembayaran agar Seakun.id dapat \
+                        langsung memproses akun Netflix untuk kamu. \
+                        <b>Informasi Akun</b>, <b>Password</b> dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
+                }
+            } else if (provider.toLowerCase() == 'spotify') {
+                if (packet == 'Paket Premium Group (Family)') {
+                    return 'Segera lakukan pembayaran agar Seakun.id dapat \
+                        langsung mengirimkan link invitation plan paket Group (Family) Spotify\
+                        <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
+                }
+            }
+        },
         handleCopyRekening() {
             const text = "115007389705";
 
@@ -237,10 +257,17 @@ export default {
     }
 }
 @media (max-width: 800px) {
+    #snackbar {
+        position: absolute!important;
+        max-width: 200px !important; 
+        left: 30%!important; 
+        top: 60%!important;
+        margin-left: 0px!important; 
+    }
     .payment {
         padding: 0px 0px !important;
-        margin-top: 180px;
-        Ï &__img {
+        margin-top: 18px;
+    Ï   &__img {
             text-align: center;
             margin-top: 20px;
         }
@@ -251,14 +278,19 @@ export default {
             }
         }
         img {
-            width: 180px !important;
+            width: 330px !important;
             margin: 16px auto;
-        }
-        .row {
-            display: block;
         }
         h2 {
             font-size: 20px;
+        }
+        .box {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+            font-size: 13px;
+        }
+        .col-lg-1 {
+            max-width: 10px;
         }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand">Seakun.id</a>
         <button
             class="navbar-toggler"
@@ -30,6 +30,27 @@ export default {};
 
 <style lang="scss" scoped>
 .navbar {
-    padding: 0.5rem 1.5rem !important;
+    padding: 0.5rem 17.5rem !important;
+    background-color: #86d0c1!important;
+}
+@media (max-width: 800px) {
+    .navbar {
+        padding: 16px !important;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: unset;
+        a {
+            text-align: left;
+        }
+        .navbar-collapse {
+            display: block;
+            flex-basis: unset;
+            flex-grow: unset;
+            margin-right: 14px;
+        }
+        .navbar-toggler {
+            display: none!important;
+        } 
+    }
 }
 </style>

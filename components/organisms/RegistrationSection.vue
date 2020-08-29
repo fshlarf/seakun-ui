@@ -259,7 +259,6 @@ export default {
                 if (res.data.message == "success") {
                     this.executeApiMailSeakun(payload)
                 }
-                this.isDisableBtn = false
             })
             .catch(err => {
                 console.log(err)
@@ -314,6 +313,7 @@ export default {
         executeApiMailSeakun(payload) {
             axios.post('https://seakun-mail-api.herokuapp.com/', payload)
             .then(res => {
+                this.isDisableBtn = false
                 // Redirect to thankyou page when successfully registration
                 this.$router.push({
                     path: '/payment',
