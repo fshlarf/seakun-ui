@@ -265,6 +265,16 @@ export default {
             .then(res => {
                 if (res.data.message == "success") {
                     this.showSnackBar = true
+              
+                    // Redirect to thankyou page when successfully registration
+                    this.$router.push({
+                        path: '/payment',
+                        query: {
+                            provider: this.provider,
+                            packet: this.packet
+                        }
+                    })
+                    
                     this.executeApiMailSeakun(payload)
                 }
                 this.isDisableBtn = false
