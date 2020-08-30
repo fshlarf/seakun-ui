@@ -110,7 +110,7 @@ export default {
             } else if (provider.toLowerCase() == 'spotify') {
                 if (packet == 'Paket Premium Group (Family)') {
                     return 'Segera lakukan pembayaran agar Seakun.id dapat \
-                        langsung mengirimkan link invitation plan paket Group (Family) Spotify\
+                        langsung mengirimkan <b>Link invitation</b> plan paket Group (Family) Spotify.\
                         <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
                 }
             }
