@@ -136,7 +136,7 @@ export default {};
 
         &.author-thumbnail {
             position: relative;
-            margin: 0 auto 35px !important;
+            margin: 35px 35px !important;
             img {
                 border: 2px dashed;
                 border-radius: 50%;
@@ -177,11 +177,15 @@ export default {};
         &__content {
             display: block;
             &-card {
-                margin: 25px 40px;
+                margin: 25px 10px;
                 width: auto;
                 p {
                     margin: 0px !important;
                 }
+            }
+            &.author-thumbnail {
+                position: relative;
+                margin: 0 auto 0px !important;
             }
         }
         &__header {
@@ -190,7 +194,7 @@ export default {};
             }
         }
         img {
-            width: 180px !important;
+            width: 107px !important;
             margin: 16px auto;
         }
         .row {
@@ -198,6 +202,9 @@ export default {};
         }
         h2 {
             font-size: 20px;
+        }
+        .info {
+            margin-top: 16px;
         }
     }
 }
