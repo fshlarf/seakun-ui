@@ -236,18 +236,17 @@ export default {};
 }
 @media (max-width: 800px) {
     .footer {
-        padding-top: 10px;
-        &__row {
-            padding: 10px 0px;
-            display: block;
-            margin-bottom: 0px;
-            p {
-                margin-bottom: 0px;
+        &__widget {
+            &-title {
+                margin: 50px 0px;
             }
         }
-        &__copyright {
-            width: auto !important;
-        }
+    }
+}
+
+@media only screen and (min-width: 880px) and (max-width: 1020px) {
+    .container {
+        display: contents !important;
     }
 }
 </style>
