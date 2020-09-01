@@ -8,7 +8,7 @@
     <ProcessSection/>
     <CustomersSection/>
     <RegistrationSection/>
-    <ContactPerson/>
+    <!-- <ContactPerson/> -->
     <Footer/>
     <div id="modal-backdrop" class=""></div>
   </div>
