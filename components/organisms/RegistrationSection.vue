@@ -128,7 +128,7 @@
                                             </div>
                                             <div class="dropdown__item item align-normal" style="margin: -8px 0px" v-if="isVoucherValid">
                                                 <p style="color: limegreen; margin-top: 6px; font-weight: 500">
-                                                   Potongan harga penggunaan Voucher {{formatMoneyRupiah(choosedPacket.voucherDisc)}} 
+                                                   Potongan harga penggunaan Voucher {{formatMoneyRupiah(choosedPacket.voucherDisc)}} (Berlaku di bulan pertama)
                                                 </p>
                                             </div>
                                             <div style="padding: 0px" v-if="choosedPacket.oneMonthFree">
@@ -181,6 +181,7 @@ export default {
             provider: 'Contoh: Netflix',
             packet: 'Contoh: Group (Family)',
             price: null,
+            discountPrice: null,
             referalcode: '',
             voucher: '',
             createddate: '',
@@ -242,7 +243,6 @@ export default {
             axios.get(`https://seakun-packet-api.herokuapp.com/${provider.toLowerCase()}`)
             .then(res => {
                 this.packets = res.data
-                console.log(this.packets);
             })
             .catch(err => {
                 console.log(err)
@@ -265,6 +265,7 @@ export default {
                 provider: this.provider,
                 packet: this.packet,
                 price: this.price,
+                discountprice: this.discountPrice,
                 referalcode: this.referalcode,
                 voucher: this.voucher,
                 createddate: this.setFullDate()
@@ -382,16 +383,15 @@ export default {
             if (this.price) {
                 let validateArray = []
                 this.vouchersData.map (e => {
-                    console.log(e.voucher_code);
                     e.voucher_code == this.voucher.toLowerCase() && e.active ? validateArray.push(1) : validateArray.push(0)
                 })
                 validateArray.sort().reverse()
                 if (validateArray[0] == 1) {
                     this.isVoucherValid = true
-                    this.price = this.choosedPacket.voucherGrandTotal
+                    this.discountPrice = this.choosedPacket.voucherGrandTotal
                 } else {
                     this.isVoucherValid = false
-                    this.price = this.choosedPacket.grandTotal
+                    this.discountPrice = null
                 }
             }
         }
