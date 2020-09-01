@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col">
                     <h2 class="intro__header">Seakun.id</h2>
-                    <h2 class="title">Berlangganan Bersama, Lebih Praktis, Aman dan Murah</h2>
+                    <Title title="Berlangganan Bersama, Lebih Praktis, Aman dan Murah" />
                     <p>
                         Platform pertama di Indonesia yang memberikan layanan <b>Berlangganan 
                         Bersama</b> dengan pengguna lain <b>(sharing subscription)</b> ke Penyedia Layanan
@@ -24,7 +24,11 @@
 </template>
 
 <script>
+import Title from "~/components/atoms/Title"
 export default {
+    component: {
+        Title,
+    },
     data() {
         return {
             regElement: '',

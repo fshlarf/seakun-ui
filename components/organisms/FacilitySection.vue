@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h3 class="facility__header-h3">Mengapa Kamu Perlu Menggunakan Seakun.id?</h3>
+                    <Title title="Mengapa Kamu Perlu Menggunakan Seakun.id?" />
                     <p>Ada banyak kemudahan yang kami berikan jika menggunakan layanan kami, diantaranya sebagai berikut.</p>
                     <div class="facility__content">
                         <div class="facility__content-content">
@@ -15,7 +15,7 @@
                             </p>
                         </div>
                         <div class="facility__content-image">
-                            <img src="/images/search-friend.svg" alt="Image not found">
+                            <img src="/images/search-friend.svg" alt="Image not found" />
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,11 @@
                 <div class="col">
                     <div class="facility__content">
                         <div class="facility__content-image">
-                            <img src="/images/payment.svg" style="max-width: 25rem; margin-top: -43px" alt="Image not found">
+                            <img
+                                src="/images/payment.svg"
+                                style="max-width: 25rem; margin-top: -43px"
+                                alt="Image not found"
+                            />
                         </div>
                         <div class="facility__content-content">
                             <h4>Memudahkan Proses Administrasi dan Payment Subscription</h4>
@@ -42,8 +46,13 @@
 </template>
 
 <script>
+import Title from "~/components/atoms/Title";
+
 export default {
-}
+    component: {
+        Title,
+    },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -63,11 +72,11 @@ export default {
         }
         button {
             margin: 10px;
-            padding: 6px 35px !important
+            padding: 6px 35px !important;
         }
     }
     .container {
-        max-width: 1120px!important;
+        max-width: 1120px !important;
         font-weight: 500 !important;
         margin: 0 auto !important;
     }
@@ -89,7 +98,7 @@ export default {
             padding: 16px 24px;
             h4 {
                 text-align: left;
-                font-weight: 700!important;
+                font-weight: 700 !important;
             }
         }
         &-image {
@@ -130,7 +139,7 @@ export default {
             width: 100%;
         }
         .row {
-            display:block;
+            display: block;
         }
         .facility__img {
             text-align: center;
@@ -141,9 +150,9 @@ export default {
         }
     }
 }
-@media  only screen and (min-width: 880px) and (max-width: 1020px) {
+@media only screen and (min-width: 880px) and (max-width: 1020px) {
     .container {
-        display: contents!important;
+        display: contents !important;
     }
 }
 </style>
