@@ -57,8 +57,8 @@ export default {
 
 <style lang="scss" scoped>
 .services {
-    padding: 40px 0px !important;
-    margin-top: 200px;
+    padding: 50px 0px !important;
+    margin-top: 150px;
     .col {
         text-align: center;
         h3 {
@@ -119,8 +119,8 @@ export default {
 }
 @media (max-width: 800px) {
     .services {
-        padding: 0px 0px !important;
-        margin-top: 180px;
+        padding: 50px 0px !important;
+        margin-top: 200px;
         &__img {
             text-align: center;
             margin-top: 20px;

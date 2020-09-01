@@ -78,7 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 .testimoni {
-    padding: 40px 0px !important;
+    padding: 50px 0px !important;
     .col {
         text-align: center;
         h5 {
@@ -135,6 +135,7 @@ export default {
     &__content {
         display: flex;
         justify-content: space-around;
+        margin-top: 50px;
 
         &.author-thumbnail {
             position: relative;
@@ -171,7 +172,7 @@ export default {
 }
 @media (max-width: 800px) {
     .testimoni {
-        padding: 0px 0px !important;
+        padding: 50px 0px !important;
         &__img {
             text-align: center;
             margin-top: 20px;

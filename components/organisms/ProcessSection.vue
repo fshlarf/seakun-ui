@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .process {
-    padding: 40px 0px !important;
+    padding: 50px 0px !important;
     h4 {
         text-align: center;
         margin-bottom: 70px;
@@ -50,7 +50,7 @@ export default {
         justify-content: space-around;
         max-width: 1120px!important;
         margin: 0 auto;
-        padding: 0px 60px;
+        padding: 30px 60px 0px;
         img {
             max-width: 2.6rem;
         }
@@ -68,7 +68,7 @@ export default {
 }
 @media (max-width: 800px) {
     .process {
-        padding: 0px 0px 10px 0px !important;
+        padding: 50px 0px !important;
         h4 {
             font-size: 20px;
             margin-bottom: 30px;

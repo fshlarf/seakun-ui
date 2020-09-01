@@ -1,9 +1,7 @@
 <template>
-    <div class="container-collega">
-        <div>
-            <Title title="Platform Digital yang Tersedia" />
-        </div>
-        <div class="collega container" align="center">
+    <div class="collega">
+        <Title title="Platform Digital yang Tersedia" />
+        <div class="collega__provider container" align="center">
             <div class="col collega__content">
                 <img src="/images/netflix.png" alt="Image not found" />
             </div>
@@ -29,14 +27,16 @@ export default {
 
 <style lang="scss" scoped>
 .collega {
-    padding: 20px 40px;
-    text-align: center;
-    position: relative;
-    min-height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    margin-bottom: 40px;
+    padding: 50px 0 !important;
+    &__provider {
+        padding: 30px 40px;
+        text-align: center;
+        position: relative;
+        min-height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
     &__content {
         img {
             width: 13rem;
@@ -44,20 +44,18 @@ export default {
     }
 }
 @media (max-width: 800px) {
-    .container-collega {
-        margin-top: 70px;
-    }
     .collega {
-        display: block;
-        margin-top: -60px;
-        margin-bottom: 40px;
-        img {
-            width: inherit;
-            margin: 0 auto;
-            margin-top: 45px !important;
-        }
-        .row {
+        padding: 50px 0 !important;
+        &__provider {
             display: block;
+            img {
+                width: inherit;
+                margin: 0 auto;
+                margin-top: 30px !important;
+            }
+            .row {
+                display: block;
+            }
         }
     }
 }

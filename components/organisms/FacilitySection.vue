@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 .facility {
-    padding: 40px 0px !important;
+    padding: 50px 0px !important;
     .col {
         text-align: center;
         h3 {
@@ -113,7 +113,7 @@ export default {
 }
 @media (max-width: 800px) {
     .facility {
-        padding: 0px !important;
+        padding: 50px 0px !important;
         &__content {
             display: block;
             &-content {
