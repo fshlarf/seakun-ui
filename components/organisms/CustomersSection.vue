@@ -111,7 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 .customers {
-    padding: 3rem 10rem;
+    padding: 50px 10rem;
     &__heading {
         text-align: center;
         margin-bottom: 30px;
@@ -127,7 +127,7 @@ export default {
             justify-content: space-between;
             overflow-x: scroll;
             height: 28rem !important;
-            padding-top: 31px;
+            padding-top: 30px;
         }
         &--chevron {
             cursor: pointer;
@@ -158,7 +158,7 @@ export default {
 }
 @media (max-width: 800px) {
     .customers {
-        padding: 1rem 4px;
+        padding: 50px 4px;
         &__heading {
             margin-bottom: 0px;
         }
