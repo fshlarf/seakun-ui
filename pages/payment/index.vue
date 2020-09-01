@@ -89,10 +89,12 @@ export default {
             packet: "",
             total: "-",
             showSnackBar: false,
+            vouchersData: []
         };
     },
     mounted() {
         this.getPaymentDetail();
+        this.getVouchersData()
     },
     methods: {
         setWordingInformation(provider, packet) {
@@ -140,7 +142,7 @@ export default {
             }
         },
         getPaymentDetail() {
-            const { provider, packet } = this.$router.history.current.query;
+            const { provider, packet, voucher } = this.$router.history.current.query;
 
             const isNetflix = provider.toLowerCase() === "netflix";
             // const isSpotify = provider.toLowerCase() === 'spotify'
@@ -156,10 +158,32 @@ export default {
                 .then((res) => {
                     const { data, status } = res;
                     if (status === 200) {
-                        this.total = data?.[0]?.grandTotal ?? "-";
+                        if (!voucher) {
+                            this.total = data?.[0]?.grandTotal ?? "-";
+                        } else {
+                            this.checkValidVoucher(data?.[0], voucher)
+                        }
                     }
                 });
         },
+        getVouchersData() {
+            axios.get('https://seakun-referral-api.herokuapp.com/vouchers')
+            .then(res => {
+                this.vouchersData = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
+        checkValidVoucher(dataPacket, voucher) {
+            let validateArray = []
+            this.vouchersData.map (e => {
+                console.log(e.voucher_code);
+                e.voucher_code == voucher.toLowerCase() && e.active ? validateArray.push(1) : validateArray.push(0)
+            })
+            validateArray.sort().reverse()
+            validateArray[0] == 1 ? this.total = dataPacket.voucherGrandTotal : this.total = dataPacket.grandTotal
+        }
     },
 };
 </script>

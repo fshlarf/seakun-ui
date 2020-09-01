@@ -90,13 +90,21 @@
                                 />
                                 <p class="error-msg" v-if="errorMsg.packet">{{ errorMsg.packet }}</p>
                             </div>
-                            <p>Punya <b>Code Referal</b>? 
+                            <!-- <p>Punya <b>Code Referal</b>? 
                                 <a @click="showFormReferalCode = !showFormReferalCode" class="referal-code">Masukkan Code</a>
-                            </p>
+                            </p> -->
                             <div class="form-group" v-if="showFormReferalCode">
                                 <label for="referalcode">Code Referral</label>
                                 <input v-model="referalcode" @blur="checkValidReferralCode" type="text" id="referalcode" name="referalcode" class="form-control" placeholder="Contoh: seakunid">
                                 <p v-if="isReferralValid" style="color: limegreen; margin-top: 6px; font-weight: 800">Code Referral Valid</p>
+                            </div>
+                            <p>Punya <b>Voucher</b>? 
+                                <a @click="showFormVoucher = !showFormVoucher" class="referal-code">Masukkan Voucher</a>
+                            </p>
+                            <div class="form-group" v-if="showFormVoucher">
+                                <label for="voucher">Voucher</label>
+                                <input v-model="voucher" @blur="checkValidVoucher" type="text" id="voucher" name="voucher" class="form-control" placeholder="Contoh: SEPTCERIA">
+                                <p v-if="isVoucherValid" style="color: limegreen; margin-top: 6px; font-weight: 800">Voucher Valid</p>
                             </div>
                             <div>
                                 <transition name="slide-fade">
@@ -112,15 +120,15 @@
                                             </div>
                                             <div class="dropdown__item item align-normal">
                                                 <div style="max-width: 9rem;">Total</div>
-                                                <div style="font-weight: 900" :style="isReferralValid ? {'text-decoration' : 'line-through'} : {'text-decoration' : 'unset'}">{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bln</div>
+                                                <div style="font-weight: 900" :style="isVoucherValid ? {'text-decoration' : 'line-through'} : {'text-decoration' : 'unset'}">{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bln</div>
                                             </div>
-                                            <div class="dropdown__item item align-normal" style="margin-top: -8px" v-if="isReferralValid">
+                                            <div class="dropdown__item item align-normal" style="margin-top: -8px" v-if="isVoucherValid">
                                                 <div style="max-width: 9rem;"></div>
-                                                <div style="font-weight: 900">{{ formatMoneyRupiah(choosedPacket.referralGrandTotal) }} / bln</div>
+                                                <div style="font-weight: 900">{{ formatMoneyRupiah(choosedPacket.voucherGrandTotal) }} / bln</div>
                                             </div>
-                                            <div class="dropdown__item item align-normal" style="margin: -8px 0px" v-if="isReferralValid">
+                                            <div class="dropdown__item item align-normal" style="margin: -8px 0px" v-if="isVoucherValid">
                                                 <p style="color: limegreen; margin-top: 6px; font-weight: 500">
-                                                   Potongan harga penggunaan Code Referral {{formatMoneyRupiah(choosedPacket.discountReferral)}} 
+                                                   Potongan harga penggunaan Voucher {{formatMoneyRupiah(choosedPacket.voucherDisc)}} 
                                                 </p>
                                             </div>
                                             <div style="padding: 0px" v-if="choosedPacket.oneMonthFree">
@@ -174,6 +182,7 @@ export default {
             packet: 'Contoh: Group (Family)',
             price: null,
             referalcode: '',
+            voucher: '',
             createddate: '',
             choosedPacket: {},
             showProvider: false,
@@ -196,12 +205,16 @@ export default {
             isDisableBtn: false,
             showMore: false,
             referralsData: [],
+            vouchersData: [],
             showFormReferalCode: false,
-            isReferralValid: false
+            showFormVoucher: false,
+            isReferralValid: false,
+            isVoucherValid: false,
         }
     },
     mounted() {
-        this.checkReferralCode()
+        this.getVouchersData()
+        this.getReferralsCodeData()
         this.getPacketData('netflix')
     },
     methods: {
@@ -229,6 +242,7 @@ export default {
             axios.get(`https://seakun-packet-api.herokuapp.com/${provider.toLowerCase()}`)
             .then(res => {
                 this.packets = res.data
+                console.log(this.packets);
             })
             .catch(err => {
                 console.log(err)
@@ -252,6 +266,7 @@ export default {
                 packet: this.packet,
                 price: this.price,
                 referalcode: this.referalcode,
+                voucher: this.voucher,
                 createddate: this.setFullDate()
             }
             axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
@@ -291,6 +306,7 @@ export default {
             this.showPacket = false
             this.errorMsg.packet = ''
             this.price = packet.grandTotal
+            this.checkValidVoucher()
         },
         formatMoneyRupiah(num) {
             if (num) {
@@ -319,7 +335,8 @@ export default {
                     path: '/payment',
                     query: {
                         provider: this.provider,
-                        packet: this.packet
+                        packet: this.packet,
+                        voucher: this.voucher
                     }
                 })
             })
@@ -327,7 +344,7 @@ export default {
                 console.log(err)
             })
         },
-        checkReferralCode() {
+        getReferralsCodeData() {
             axios.get('https://seakun-referral-api.herokuapp.com/referrals')
             .then(res => {
                 this.referralsData = res.data
@@ -336,10 +353,19 @@ export default {
                 console.log(err)
             })
         },
+        getVouchersData() {
+            axios.get('https://seakun-referral-api.herokuapp.com/vouchers')
+            .then(res => {
+                this.vouchersData = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
         checkValidReferralCode() {
             if (this.price) {
                 let validateArray = []
-                this.referralsData.map (e => {
+                this.vouchersData.map (e => {
                     e.referral_code == this.referalcode && e.active ? validateArray.push(1) : validateArray.push(0)
                 })
                 validateArray.sort().reverse()
@@ -348,6 +374,23 @@ export default {
                     this.price = this.choosedPacket.referralGrandTotal
                 } else {
                     this.isReferralValid = false
+                    this.price = this.choosedPacket.grandTotal
+                }
+            }
+        },
+        checkValidVoucher() {
+            if (this.price) {
+                let validateArray = []
+                this.vouchersData.map (e => {
+                    console.log(e.voucher_code);
+                    e.voucher_code == this.voucher.toLowerCase() && e.active ? validateArray.push(1) : validateArray.push(0)
+                })
+                validateArray.sort().reverse()
+                if (validateArray[0] == 1) {
+                    this.isVoucherValid = true
+                    this.price = this.choosedPacket.voucherGrandTotal
+                } else {
+                    this.isVoucherValid = false
                     this.price = this.choosedPacket.grandTotal
                 }
             }
