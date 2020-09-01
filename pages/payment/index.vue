@@ -178,11 +178,10 @@ export default {
         checkValidVoucher(dataPacket, voucher) {
             let validateArray = []
             this.vouchersData.map (e => {
-                console.log(e.voucher_code);
                 e.voucher_code == voucher.toLowerCase() && e.active ? validateArray.push(1) : validateArray.push(0)
             })
             validateArray.sort().reverse()
-            validateArray[0] == 1 ? this.total = dataPacket.voucherGrandTotal : this.total = dataPacket.grandTotal
+            voucher && validateArray[0] == 1 ? this.total = dataPacket.voucherGrandTotal : this.total = dataPacket.grandTotal
         }
     },
 };
