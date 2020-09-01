@@ -3,10 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h5
-                        class="testimoni__header-h5"
-                        style="margin-bottom: 30px"
-                    >Apa kata mereka yang menggunakan Seakun.id?</h5>
+                    <Title title="Apa kata mereka yang menggunakan Seakun.id?" />
                     <div class="testimoni__content">
                         <div class="testimoni__content-card">
                             <figure class="testimoni__content author-thumbnail">
@@ -71,7 +68,12 @@
 </template>
 
 <script>
-export default {};
+import Title from "~/components/atoms/Title";
+export default {
+    component: {
+        Title
+    }
+};
 </script>
 
 <style lang="scss" scoped>

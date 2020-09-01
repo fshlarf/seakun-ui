@@ -1,26 +1,30 @@
 <template>
     <div class="container-collega">
         <div>
-            <h4 style="font-weight: 700">Platform Digital yang Tersedia</h4>
+            <Title title="Platform Digital yang Tersedia" />
         </div>
         <div class="collega container" align="center">
             <div class="col collega__content">
-                <img src="/images/netflix.png" alt="Image not found">
+                <img src="/images/netflix.png" alt="Image not found" />
             </div>
             <div class="col collega__content">
-                <img src="/images/spotify.png" alt="Image not found">
+                <img src="/images/spotify.png" alt="Image not found" />
             </div>
             <div class="col collega__content">
-                <img src="/images/steam.png" alt="Image not found">
+                <img src="/images/steam.png" alt="Image not found" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-export default {
+import Title from "~/components/atoms/Title";
 
-}
+export default {
+    component: {
+        Title,
+    },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -50,7 +54,7 @@ export default {
         img {
             width: inherit;
             margin: 0 auto;
-            margin-top: 45px!important;
+            margin-top: 45px !important;
         }
         .row {
             display: block;
