@@ -267,7 +267,7 @@ export default {
                 price: this.price,
                 discountprice: this.discountPrice,
                 referalcode: this.referalcode,
-                voucher: this.voucher,
+                voucher: this.isVoucherValid ? this.voucher : '',
                 createddate: this.setFullDate()
             }
             axios.post('https://seakun-api.herokuapp.com/registered-user', payload)

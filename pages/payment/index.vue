@@ -158,11 +158,9 @@ export default {
                 .then((res) => {
                     const { data, status } = res;
                     if (status === 200) {
-                        if (!voucher) {
-                            this.total = data?.[0]?.grandTotal ?? "-";
-                        } else {
-                            this.checkValidVoucher(data?.[0], voucher)
-                        }
+                        setTimeout(() => {
+                            this.checkValidVoucher(this.vouchersData, data?.[0], voucher)
+                        }, 500);
                     }
                 });
         },
@@ -175,9 +173,9 @@ export default {
                 console.log(err)
             })
         },
-        checkValidVoucher(dataPacket, voucher) {
+        checkValidVoucher(vouchersData, dataPacket, voucher) {
             let validateArray = []
-            this.vouchersData.map (e => {
+            vouchersData.map (e => {
                 e.voucher_code == voucher.toLowerCase() && e.active ? validateArray.push(1) : validateArray.push(0)
             })
             validateArray.sort().reverse()
