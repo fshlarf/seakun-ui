@@ -3,7 +3,13 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <nuxt-link class="navbar-brand" to="/">
-                    <img src="/images/seakunid.png" width="32" height="32" alt="image not found" />
+                    <img
+                        src="/images/seakunid.png"
+                        width="30"
+                        height="30"
+                        alt="image not found"
+                        class="d-inline-block align-top"
+                    />
                     <span>Seakun.id</span>
                 </nuxt-link>
                 <button
@@ -44,25 +50,24 @@ export default {
     background-color: #ffffff !important;
     border-bottom: 1px solid #eeeeee;
     box-shadow: 0px 0px 16px #dddddd;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
 
     .navbar-brand {
         cursor: pointer;
         span {
             color: #000000;
             font-weight: 700;
-            margin-left: 8px;
         }
     }
 }
 @media (max-width: 800px) {
     .navbar {
-        padding: 16px !important;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: unset;
-        a {
-            text-align: left;
-        }
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+
         .navbar-collapse {
             display: block;
             flex-basis: unset;

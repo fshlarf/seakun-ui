@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .intro {
-    padding-top: 50px !important;
+    padding-top: 100px !important;
     height: 800px;
     .title {
         max-width: 500px;
