@@ -45,7 +45,7 @@
                                     class="col box-item-noRek"
                                     @click="handleCopyRekening"
                                 >
-                                    115007389705 &nbsp;&nbsp;
+                                    1150007389705 &nbsp;&nbsp;
                                     <i class="fa fa-copy"></i>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ export default {
             }
         },
         handleCopyRekening() {
-            const text = "115007389705";
+            const text = "1150007389705";
 
             navigator.clipboard.writeText(text).then(
                 () => {
