@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header/>
     <Introduction/>
     <ServicesSection/>
     <ColleagueSection/>
@@ -25,8 +26,11 @@ import ProcessSection from '~/components/organisms/ProcessSection.vue'
 import ContactPerson from '~/components/organisms/ContactPerson.vue'
 import CustomersSection from '~/components/organisms/CustomersSection.vue'
 import Footer from '~/components/organisms/Footer.vue'
+import Header from '~/components/mollecules/Header.vue'
+
 export default {
   components: {
+    Header: Header,
     Introduction: Introduction,
     ServicesSection: ServicesSection,
     FacilitySection: FacilitySection,

@@ -1,37 +1,58 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand">Seakun.id</a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <nuxt-link class="navbar-brand" to="/">
+                    <img src="/images/seakunid.png" width="32" height="32" alt="image not found" />
+                    <span>Seakun.id</span>
+                </nuxt-link>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="mr-auto"></div>
-            <ul class="row navbar-nav">
-                <li class="nav-item">
-                    <nuxt-link class="nav-link" to='/'>Home</nuxt-link>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="mr-auto"></div>
+                <ul class="row navbar-nav">
+                    <li class="nav-item" v-for="(menu, index) in menus" :key="index">
+                        <nuxt-link class="nav-link" :to="menu.path">{{ menu.title }}</nuxt-link>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </template>
 
 <script>
-export default {};
+export default {
+    props: {
+        menus: Array,
+    },
+};
 </script>
 
 <style lang="scss" scoped>
 .navbar {
-    padding: 0.5rem 17.5rem !important;
-    background-color: #86d0c1!important;
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #eeeeee;
+    box-shadow: 0px 0px 16px #dddddd;
+
+    .navbar-brand {
+        cursor: pointer;
+        span {
+            color: #000000;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+    }
 }
 @media (max-width: 800px) {
     .navbar {
@@ -49,8 +70,8 @@ export default {};
             margin-right: 14px;
         }
         .navbar-toggler {
-            display: none!important;
-        } 
+            display: none !important;
+        }
     }
 }
 </style>

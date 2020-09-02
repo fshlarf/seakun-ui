@@ -3,7 +3,6 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="intro__header">Seakun.id</h2>
                     <Title title="Berlangganan Bersama, Lebih Praktis, Aman dan Murah" />
                     <p>
                         Platform pertama di Indonesia yang memberikan layanan <b>Berlangganan 
@@ -88,18 +87,12 @@ export default {
     .row {
         padding: 0px 8px !important;
     }
-    &__header {
-        font-weight: 700;
-    }
 }
 @media (max-width: 800px) {
     .intro {
         &__img {
             text-align: center;
             margin-top: 20px;
-        }
-        &__header {
-            font-size: 35px!important;
         }
         img {
             width: 100%;
