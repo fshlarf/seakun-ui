@@ -77,7 +77,7 @@ export default {
         toCollegaElement() {
             this.collegaElement.scrollIntoView({
                 behavior: "smooth",
-                block: "start",
+                block: "nearest",
                 inline: "nearest",
             });
         },

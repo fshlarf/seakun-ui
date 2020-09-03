@@ -158,7 +158,7 @@ export default {
 }
 @media (max-width: 800px) {
     .customers {
-        padding: 80px 4px;
+        padding: 40px 4px;
         &__heading {
             margin-bottom: 0px;
         }

@@ -45,7 +45,7 @@ export default {
 }
 @media (max-width: 800px) {
     .collega {
-        padding: 80px 0 !important;
+        padding: 40px 0 !important;
         &__provider {
             display: block;
             img {

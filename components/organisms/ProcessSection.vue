@@ -68,7 +68,7 @@ export default {
 }
 @media (max-width: 800px) {
     .process {
-        padding: 80px 0px !important;
+        padding: 40px 0px !important;
         h4 {
             font-size: 20px;
             margin-bottom: 30px;
