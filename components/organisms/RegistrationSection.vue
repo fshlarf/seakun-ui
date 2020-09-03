@@ -407,7 +407,7 @@ export default {
 
 <style lang="scss" scoped>
 .reg {
-    padding: 0px 0px 50px !important;
+    padding: 80px 0px !important;
     background-color: white;
     .modal-dropdown {
         border-radius: .25rem;
@@ -604,7 +604,7 @@ export default {
 }
 @media (max-width: 800px) {
     .reg {
-        padding: 50px 15px!important;
+        padding: 80px 15px!important;
         #snackbar {
             top: 70px;
             font-size: 12px;

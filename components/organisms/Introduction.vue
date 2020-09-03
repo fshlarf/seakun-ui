@@ -5,16 +5,23 @@
                 <div class="col">
                     <Title title="Berlangganan Bersama, Lebih Praktis, Aman dan Murah" />
                     <p>
-                        Platform pertama di Indonesia yang memberikan layanan <b>Berlangganan 
-                        Bersama</b> dengan pengguna lain <b>(sharing subscription)</b> ke Penyedia Layanan
-                        Entertainment (Provider Entertainment) seperti <b>Netflix, Spotify, Youtube</b>
-                        dan lainnya agar dapat menikmati fitur premium, dengan <b>proses berlangganan
-                        yang praktis, legal, aman</b> dan <b>murah</b>.
+                        Platform pertama di Indonesia yang memberikan layanan
+                        <b>
+                            Berlangganan
+                            Bersama
+                        </b> dengan pengguna lain
+                        <b>(sharing subscription)</b> ke Penyedia Layanan
+                        Entertainment (Provider Entertainment) seperti
+                        <b>Netflix, Spotify, Youtube</b>
+                        dan lainnya agar dapat menikmati fitur premium, dengan
+                        <b>
+                            proses berlangganan
+                            yang praktis, legal, aman
+                        </b> dan
+                        <b>murah</b>.
                     </p>
-                    <button type="button" class="intro__btn btn btn-secondary" @click="toServiceElement">Layanan</button>
-                    <button type="button" class="intro__btn btn btn-primary" @click="toRegistrationElement">Daftar</button>
                     <div class="intro__img">
-                        <img src="/images/patungan-2.svg" alt="Image not found">
+                        <img src="/images/patungan-2.svg" alt="Image not found" />
                     </div>
                 </div>
             </div>
@@ -23,30 +30,18 @@
 </template>
 
 <script>
-import Title from "~/components/atoms/Title"
+import Title from "~/components/atoms/Title";
 export default {
     component: {
         Title,
     },
     data() {
         return {
-            regElement: '',
-            serviceElement: ''
-        }
+            regElement: "",
+            serviceElement: "",
+        };
     },
-    mounted() {
-        this.regElement = document.getElementById('reg')
-        this.serviceElement = document.getElementById('facility')
-    },
-    methods: {
-        toRegistrationElement() {
-            this.regElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-        },
-        toServiceElement() {
-            this.serviceElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-        }
-    }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -71,11 +66,11 @@ export default {
         }
         button {
             margin: 10px;
-            padding: 6px 35px !important
+            padding: 6px 35px !important;
         }
     }
     .container {
-        max-width: 1120px!important;
+        max-width: 1120px !important;
         font-weight: 500 !important;
         margin: 0 auto !important;
     }
@@ -98,16 +93,16 @@ export default {
             width: 100%;
         }
         .row {
-            display:block;
+            display: block;
         }
         h2 {
             font-size: 20px;
         }
     }
 }
-@media  only screen and (min-width: 880px) and (max-width: 1020px) {
+@media only screen and (min-width: 880px) and (max-width: 1020px) {
     .container {
-        display: contents!important;
+        display: contents !important;
     }
 }
 </style>

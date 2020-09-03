@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
                 <nuxt-link class="navbar-brand" to="/">
                     <img
@@ -24,30 +24,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="mr-auto"></div>
-                <ul class="row navbar-nav">
-                    <li class="nav-item" v-for="(menu, index) in menus" :key="index">
-                        <nuxt-link class="nav-link" :to="menu.path">{{ menu.title }}</nuxt-link>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 </template>
 
 <script>
-export default {
-    props: {
-        menus: Array,
-    },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
 .navbar {
-    background-color: #ffffff !important;
+    background-color: #86d0c1 !important;
     border-bottom: 1px solid #eeeeee;
     box-shadow: 0px 0px 16px #dddddd;
     position: fixed;
@@ -57,7 +44,7 @@ export default {
     .navbar-brand {
         cursor: pointer;
         span {
-            color: #000000;
+            color: #ffffff;
             font-weight: 700;
         }
     }

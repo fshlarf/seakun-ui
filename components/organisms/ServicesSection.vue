@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 .services {
-    padding: 50px 0px !important;
+    padding: 80px 0px !important;
     margin-top: 150px;
     .col {
         text-align: center;
@@ -119,7 +119,7 @@ export default {
 }
 @media (max-width: 800px) {
     .services {
-        padding: 50px 0px !important;
+        padding: 80px 0px !important;
         margin-top: 200px;
         &__img {
             text-align: center;

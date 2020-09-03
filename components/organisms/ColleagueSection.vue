@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .collega {
-    padding: 50px 0 !important;
+    padding: 80px 0 !important;
     &__provider {
         padding: 30px 40px;
         text-align: center;
@@ -45,7 +45,7 @@ export default {
 }
 @media (max-width: 800px) {
     .collega {
-        padding: 50px 0 !important;
+        padding: 80px 0 !important;
         &__provider {
             display: block;
             img {
