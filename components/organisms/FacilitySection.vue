@@ -113,7 +113,7 @@ export default {
 }
 @media (max-width: 800px) {
     .facility {
-        padding: 40px 0px !important;
+        padding: 80px 0px 0px 0px !important;
         &__content {
             display: block;
             &-content {

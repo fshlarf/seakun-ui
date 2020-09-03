@@ -604,7 +604,7 @@ export default {
 }
 @media (max-width: 800px) {
     .reg {
-        padding: 40px 15px!important;
+        padding: 80px 15px!important;
         #snackbar {
             top: 70px;
             font-size: 12px;

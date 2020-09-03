@@ -74,12 +74,17 @@ export default {
         this.regElement = document.getElementById("reg");
     },
     methods: {
+        hideMenu() {
+            let menuContainer = document.getElementById('navbarSupportedContent')
+            menuContainer.classList.remove("show")
+        },
         toCollegaElement() {
             this.collegaElement.scrollIntoView({
                 behavior: "smooth",
-                block: "nearest",
+                block: "start",
                 inline: "nearest",
             });
+            this.hideMenu()
         },
         toServiceElement() {
             this.serviceElement.scrollIntoView({
@@ -87,6 +92,7 @@ export default {
                 block: "start",
                 inline: "nearest",
             });
+            this.hideMenu()
         },
         toTestimoniElement() {
             this.testimoniElement.scrollIntoView({
@@ -94,6 +100,7 @@ export default {
                 block: "start",
                 inline: "nearest",
             });
+            this.hideMenu()
         },
         toAboutUsElement() {
             this.aboutUsElement.scrollIntoView({
@@ -101,6 +108,7 @@ export default {
                 block: "start",
                 inline: "nearest",
             });
+            this.hideMenu()
         },
         toContactUsElement() {
             this.contactUsElement.scrollIntoView({
@@ -108,6 +116,7 @@ export default {
                 block: "start",
                 inline: "nearest",
             });
+            this.hideMenu()
         },
         toRegistrationElement() {
             this.regElement.scrollIntoView({
@@ -115,6 +124,7 @@ export default {
                 block: "start",
                 inline: "nearest",
             });
+            this.hideMenu()
         },
     },
 };

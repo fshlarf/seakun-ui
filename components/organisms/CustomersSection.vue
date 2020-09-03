@@ -111,7 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 .customers {
-    padding: 80px 10rem;
+    padding: 80px 10rem 10px 10rem;
     &__heading {
         text-align: center;
         margin-bottom: 30px;
@@ -126,7 +126,7 @@ export default {
             display: flex;
             justify-content: space-between;
             overflow-x: scroll;
-            height: 28rem !important;
+            height: 24rem !important;
             padding-top: 30px;
         }
         &--chevron {
