@@ -1,5 +1,5 @@
 <template>
-    <div class="collega">
+    <div class="collega" id="collega">
         <Title title="Platform Digital yang Tersedia" />
         <div class="collega__provider container" align="center">
             <div class="col collega__content">

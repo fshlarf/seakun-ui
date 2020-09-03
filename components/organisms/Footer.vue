@@ -3,7 +3,7 @@
         <div class="footer__widget">
             <div class="container">
                 <div class="row clearfix">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-sm-6 col-xs-12" id="about-us">
                         <h3 class="footer__widget-title">Tentang Kami</h3>
                         <div class="footer__widget-text">
                             Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar dapat menikmati fitur premium, dengan proses berlangganan yang praktis, legal, aman dan murah.
@@ -26,7 +26,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-sm-6 col-xs-12" id="contact-us">
                         <h3 class="footer__widget-title">Hubungi Kami</h3>
                         <div class="footer__widget-text">
                             <ul class="footer__widget-contact">

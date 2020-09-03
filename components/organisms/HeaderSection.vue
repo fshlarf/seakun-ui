@@ -30,10 +30,22 @@
                 <div class="mr-auto"></div>
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link" @click="toCollegaElement">Provider</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" @click="toServiceElement">Layanan</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" @click="toTestimoniElement">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" @click="toRegistrationElement">Daftar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @click="toAboutUsElement">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @click="toContactUsElement">Hubungi</a>
                     </li>
                 </ul>
             </div>
@@ -45,17 +57,25 @@
 export default {
     data() {
         return {
-            regElement: "",
+            collegaElement: "",
             serviceElement: "",
+            testimoniElement: "",
+            aboutUsElement: "",
+            contactElement: "",
+            regElement: "",
         };
     },
     mounted() {
-        this.regElement = document.getElementById("reg");
+        this.collegaElement = document.getElementById("collega");
         this.serviceElement = document.getElementById("facility");
+        this.testimoniElement = document.getElementById("testimoni");
+        this.aboutUsElement = document.getElementById("about-us");
+        this.contactUsElement = document.getElementById("contact-us");
+        this.regElement = document.getElementById("reg");
     },
     methods: {
-        toRegistrationElement() {
-            this.regElement.scrollIntoView({
+        toCollegaElement() {
+            this.collegaElement.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
                 inline: "nearest",
@@ -63,6 +83,34 @@ export default {
         },
         toServiceElement() {
             this.serviceElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            });
+        },
+        toTestimoniElement() {
+            this.testimoniElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            });
+        },
+        toAboutUsElement() {
+            this.aboutUsElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            });
+        },
+        toContactUsElement() {
+            this.contactUsElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            });
+        },
+        toRegistrationElement() {
+            this.regElement.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
                 inline: "nearest",
