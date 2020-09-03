@@ -204,7 +204,6 @@ export default {
     }
     .col {
         text-align: center;
-        padding-top: 30px;
         
         &.box {
             &-title {

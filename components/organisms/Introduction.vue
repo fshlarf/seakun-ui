@@ -20,6 +20,7 @@
                         </b> dan
                         <b>murah</b>.
                     </p>
+                    <button type="button" class="intro__btn btn btn-primary" @click="toRegistrationElement">Daftar</button>
                     <div class="intro__img">
                         <img src="/images/patungan-2.svg" alt="Image not found" />
                     </div>
@@ -38,8 +39,19 @@ export default {
     data() {
         return {
             regElement: "",
-            serviceElement: "",
         };
+    },
+    mounted() {
+        this.regElement = document.getElementById("reg");
+    },
+    methods: {
+        toRegistrationElement() {
+            this.regElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            });
+        },
     },
 };
 </script>
@@ -48,6 +60,7 @@ export default {
 .intro {
     padding-top: 100px !important;
     height: 800px;
+
     .title {
         max-width: 500px;
         margin: 0 auto;
@@ -85,6 +98,7 @@ export default {
 }
 @media (max-width: 800px) {
     .intro {
+
         &__img {
             text-align: center;
             margin-top: 20px;

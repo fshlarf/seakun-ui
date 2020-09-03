@@ -35,7 +35,6 @@ export default {};
 <style lang="scss" scoped>
 .navbar {
     background-color: #86d0c1 !important;
-    border-bottom: 1px solid #eeeeee;
     box-shadow: 0px 0px 16px #dddddd;
     position: fixed;
     width: 100%;

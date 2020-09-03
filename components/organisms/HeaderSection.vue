@@ -75,7 +75,6 @@ export default {
 <style lang="scss" scoped>
 .navbar {
     background-color: #86d0c1 !important;
-    border-bottom: 1px solid #eeeeee;
     box-shadow: 0px 0px 16px #dddddd;
     position: fixed;
     width: 100%;
@@ -111,16 +110,17 @@ export default {
         }
 
         .navbar-toggler {
-            background-color: #ffffff !important;
+            background-color: transparent !important;
             border-radius: 2px !important;
+            border: 1px solid #ffffff;
 
             span {
                 &.icon-bar {
                     display: block;
-                    width: 22px;
+                    width: 14px;
                     height: 2px;
                     border-radius: 1px;
-                    background: #000000;
+                    background: #ffffff;
                     margin: 2px 0px;
                 }
             }
