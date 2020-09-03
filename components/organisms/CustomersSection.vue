@@ -111,7 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 .customers {
-    padding: 50px 10rem;
+    padding: 80px 10rem;
     &__heading {
         text-align: center;
         margin-bottom: 30px;
@@ -158,7 +158,7 @@ export default {
 }
 @media (max-width: 800px) {
     .customers {
-        padding: 50px 4px;
+        padding: 40px 4px;
         &__heading {
             margin-bottom: 0px;
         }

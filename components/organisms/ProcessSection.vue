@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .process {
-    padding: 50px 0px !important;
+    padding: 80px 0px !important;
     h4 {
         text-align: center;
         margin-bottom: 70px;
@@ -68,7 +68,7 @@ export default {
 }
 @media (max-width: 800px) {
     .process {
-        padding: 50px 0px !important;
+        padding: 40px 0px !important;
         h4 {
             font-size: 20px;
             margin-bottom: 30px;

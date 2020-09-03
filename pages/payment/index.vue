@@ -187,7 +187,7 @@ export default {
 
 <style lang="scss" scoped>
 .payment {
-    padding: 40px 40px !important;
+    padding: 100px 40px 50px !important;
     background: #e5e5e5;
 
     .container {
@@ -204,6 +204,7 @@ export default {
     }
     .col {
         text-align: center;
+        
         &.box {
             &-title {
                 text-align: left;
@@ -286,8 +287,8 @@ export default {
         margin-left: 0px!important; 
     }
     .payment {
-        padding: 0px 0px !important;
-        margin-top: 18px;
+        padding: 50px 0px 0px !important;
+        // margin-top: 18px;
     Ï   &__img {
             text-align: center;
             margin-top: 20px;

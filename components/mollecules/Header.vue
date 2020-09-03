@@ -1,25 +1,29 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand">Seakun.id</a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="mr-auto"></div>
-            <ul class="row navbar-nav">
-                <li class="nav-item">
-                    <nuxt-link class="nav-link" to='/'>Home</nuxt-link>
-                </li>
-            </ul>
+        <div class="container">
+            <div class="navbar-header">
+                <nuxt-link class="navbar-brand" to="/">
+                    <img
+                        src="/images/seakunid.png"
+                        width="30"
+                        height="30"
+                        alt="image not found"
+                        class="d-inline-block align-top"
+                    />
+                    <span>Seakun.id</span>
+                </nuxt-link>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
     </nav>
 </template>
@@ -30,18 +34,26 @@ export default {};
 
 <style lang="scss" scoped>
 .navbar {
-    padding: 0.5rem 17.5rem !important;
-    background-color: #86d0c1!important;
+    background-color: #86d0c1 !important;
+    box-shadow: 0px 0px 16px #dddddd;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+
+    .navbar-brand {
+        cursor: pointer;
+        span {
+            color: #ffffff;
+            font-weight: 700;
+        }
+    }
 }
 @media (max-width: 800px) {
     .navbar {
-        padding: 16px !important;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: unset;
-        a {
-            text-align: left;
-        }
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+
         .navbar-collapse {
             display: block;
             flex-basis: unset;
@@ -49,8 +61,8 @@ export default {};
             margin-right: 14px;
         }
         .navbar-toggler {
-            display: none!important;
-        } 
+            display: none !important;
+        }
     }
 }
 </style>
