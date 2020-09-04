@@ -12,7 +12,7 @@
                         </b> dengan pengguna lain
                         <b>(sharing subscription)</b> ke Penyedia Layanan
                         Entertainment (Provider Entertainment) seperti
-                        <b>Netflix, Microsoft, Steam</b>
+                        <b>Netflix, Spotify, Steam</b>
                         dan lainnya agar dapat menikmati fitur premium, dengan
                         <b>
                             proses berlangganan
