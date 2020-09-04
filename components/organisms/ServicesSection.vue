@@ -120,7 +120,7 @@ export default {
 @media (max-width: 800px) {
     .services {
         padding: 80px 0px 0px 0px !important;
-        margin-top: 200px;
+        margin-top: 122px;
         &__img {
             text-align: center;
             margin-top: 20px;

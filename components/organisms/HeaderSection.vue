@@ -171,6 +171,7 @@ export default {
             background-color: transparent !important;
             border-radius: 2px !important;
             border: 1px solid #ffffff;
+            height: 34px;
 
             span {
                 &.icon-bar {

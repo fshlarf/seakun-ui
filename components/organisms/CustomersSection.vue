@@ -132,8 +132,11 @@ export default {
         &--chevron {
             cursor: pointer;
             padding: 20px;
-            background-color: #eeeeee;
+            background-color:rgba(221, 221, 221, 0.088);
             border-radius: 10px;
+            &:hover {
+                background-color:rgba(221, 221, 221, 0.415);
+            }
         }
     }
 }
