@@ -179,7 +179,7 @@ export default {
             email: '',
             whatsapp: '',
             provider: 'Contoh: Netflix',
-            packet: 'Contoh: Group (Family)',
+            packet: 'Contoh: Paket Grup',
             price: null,
             discountPrice: null,
             referalcode: '',
@@ -224,7 +224,7 @@ export default {
             !this.email ? this.errorMsg.email = 'Email harus diisi' : this.errorMsg.email = ''
             !this.whatsapp ? this.errorMsg.whatsapp = 'Whatsapp harus diisi' : this.errorMsg.whatsapp = ''
             this.provider == 'Contoh: Netflix' ? this.errorMsg.provider = 'Provider Entertainment harus dipilih' : this.errorMsg.provider = ''
-            this.packet == 'Contoh: Group (Family)' ? this.errorMsg.packet = 'Paket harus dipilih' : this.errorMsg.packet = ''
+            this.packet == 'Contoh: Paket Grup' ? this.errorMsg.packet = 'Paket harus dipilih' : this.errorMsg.packet = ''
         },
         clickSubmit() {
             this.validateInput()
@@ -233,7 +233,7 @@ export default {
                 this.email && 
                 this.whatsapp && 
                 this.provider != 'Contoh: Netflix' && 
-                this.packet != 'Contoh: Group (Family)'
+                this.packet != 'Contoh: Paket Grup'
             ) {
                 this.isDisableBtn = true
                 this.postRegisteredUser()
@@ -291,7 +291,7 @@ export default {
         chooseProvider(provider) {
             if (this.provider != provider.name) {
                 this.getPacketData(provider.name)
-                this.packet = 'Contoh: Group (Family)'
+                this.packet = 'Contoh: Paket Grup'
                 this.choosedPacket = {}
                 this.packets = []
             }

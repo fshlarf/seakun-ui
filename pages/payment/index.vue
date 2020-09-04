@@ -99,7 +99,7 @@ export default {
     methods: {
         setWordingInformation(provider, packet) {
             if (provider.toLowerCase() == 'netflix') {
-                if (packet == 'Paket Premium Group (Family)') {
+                if (packet == 'Paket Premium Grup') {
                     return 'Segera lakukan pembayaran agar Seakun.id bisa \
                         langsung mengalokasikan kamu pada grup Netflix yang available, \
                         mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
@@ -110,9 +110,9 @@ export default {
                         <b>Informasi Akun</b>, <b>Password</b> dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
                 }
             } else if (provider.toLowerCase() == 'spotify') {
-                if (packet == 'Paket Premium Group (Family)') {
+                if (packet == 'Paket Premium Grup') {
                     return 'Segera lakukan pembayaran agar Seakun.id dapat \
-                        langsung mengirimkan <b>Link invitation</b> plan paket Group (Family) Spotify.\
+                        langsung mengirimkan <b>Link invitation</b> plan paket Grup Spotify.\
                         <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
                 }
             }
