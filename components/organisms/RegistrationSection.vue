@@ -190,10 +190,9 @@ export default {
             showPacket: false,
             providers: [
                 {name: 'Netflix', active: true},
-                // {name: 'Spotify', active: true},
-                // {name: 'Youtube', active: false},
+                {name: 'Spotify', active: true},
+                {name: 'Youtube', active: false},
                 {name: 'Steam', active: false},
-                // {name: 'Joox', active: false}
             ],
             packets: [],
             errorMsg: {
