@@ -41,6 +41,26 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div class="facility__content">
+                        <div class="facility__content-content">
+                            <h4>Program User Host</h4>
+                            <p>
+                                Program untuk <b>memberikan kewenangan kesalah satu anggota 
+                                member di dalam satu grup berlangganan bersama untuk menggunakan kartu debit/kredit miliknya untuk melakukan pembayaran</b> 
+                                ke Provider Entertainment.
+                                <a class="facility__content-user-host" @click="handleRedirectInfoPage">
+                                    <b>Baca tentang <u>User Host.</u></b>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="facility__content-image">
+                            <img src="/images/user-host.svg" alt="Image not found" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -52,6 +72,11 @@ export default {
     component: {
         Title,
     },
+    methods: {
+        handleRedirectInfoPage() {
+            window.open('/info/user-host')
+        },
+    }
 };
 </script>
 
@@ -91,6 +116,11 @@ export default {
     &__content {
         display: flex;
         justify-content: center;
+        &-user-host {
+            &:hover {
+                cursor: pointer;
+            }
+        }
         &-content {
             width: 50%;
             margin: 10px 40px;

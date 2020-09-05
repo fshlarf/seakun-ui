@@ -106,7 +106,7 @@
                             </p>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="userHost">
-                                <label class="form-check-label text-host"> Bersedia menjadi <b>User Host</b>? <a @click="handleRedirectInfoPage">Baca tentang <b>User Host</b></a></label>
+                                <label class="form-check-label text-host" for="exampleCheck1">Bersedia menjadi <b>User Host</b>?</label>
                             </div>
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
@@ -228,9 +228,6 @@ export default {
         this.getPacketData('netflix')
     },
     methods: {
-        handleRedirectInfoPage() {
-            window.open('/info/user-host')
-        },
         validateInput() {
             !this.fullname ? this.errorMsg.fullname = 'Nama Lengkap harus diisi' : this.errorMsg.fullname = ''
             !this.email ? this.errorMsg.email = 'Email harus diisi' : this.errorMsg.email = ''

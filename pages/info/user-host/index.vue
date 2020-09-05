@@ -36,8 +36,10 @@
         <div class="info faq">
             <div class="container">
                 <div class="row">
-                    <div class="col">
-                        <h2 class="info__title">FAQ</h2>
+                    <div class="col-md-4 col-lg-6 faq-title-container">
+                        FAQ
+                    </div>
+                    <div class="col-md-8 col-lg-6">
                         <div id="accordion" class="accordion">
                             <!-- Start Accodion "Apa itu Host" -->
                             <div
@@ -156,6 +158,7 @@
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 </template>
 
@@ -163,12 +166,14 @@
 import Header from "~/components/mollecules/Header";
 import Accordion from "~/components/atoms/Accordion";
 import Title from "~/components/atoms/Title";
+import Footer from "~/components/organisms/Footer"
 
 export default {
     components: {
         Header,
         Accordion,
-        Title
+        Title,
+        Footer
     },
 };
 </script>
@@ -177,11 +182,13 @@ export default {
 .info {
     padding: 100px 0px 40px !important;
 
-    &__title {
-        font-size: 2.5rem;
-        color: #666;
-        font-weight: 300;
-        margin-bottom: 0.75rem;
+    .faq-title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10rem;
+        color: #e5e5e5;
+        font-weight: 700;
     }
 
     &__benefits {
@@ -214,6 +221,8 @@ export default {
     }
 
     .accordion {
+        padding-top: 0.75rem;
+
         .accordion-header {
             position: relative;
             cursor: pointer;
@@ -256,7 +265,7 @@ export default {
             h5 {
                 margin-bottom: 0;
                 padding-right: 2rem;
-                font-size: 1.25rem;
+                font-size: 1rem;
 
                 .icon-toggle:before {
                     top: 1.5rem;
@@ -313,6 +322,7 @@ export default {
     }
     &.faq {
         padding-top: 50px !important;
+        background-color: #f6f6f6;
     }
 }
 @media (max-width: 800px) {
