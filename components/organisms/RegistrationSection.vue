@@ -104,6 +104,10 @@
                             <p>Punya <b>Voucher</b>? 
                                 <a @click="showFormVoucher = !showFormVoucher" class="referal-code">Masukkan Voucher</a>
                             </p>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="userHost">
+                                <label class="form-check-label text-host" for="exampleCheck1">Bersedia menjadi <b>User Host</b>?</label>
+                            </div>
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
                                 <input v-model="voucher" @blur="checkValidVoucher" type="text" id="voucher" name="voucher" class="form-control" placeholder="Contoh: SEPTCERIA">
@@ -193,6 +197,7 @@ export default {
             choosedPacket: {},
             showProvider: false,
             showPacket: false,
+            userHost: false,
             providers: [
                 {name: 'Netflix', active: false},
                 {name: 'Spotify', active: false},
@@ -413,6 +418,13 @@ export default {
 .reg {
     padding: 80px 0px !important;
     background-color: white;
+
+    .text-host {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     .modal-dropdown {
         border-radius: .25rem;
         border:none!important;
