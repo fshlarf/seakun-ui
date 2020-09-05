@@ -43,7 +43,7 @@
             </Modal>
         </transition>
         <div class="container">
-            <Alert message="Kami informasikan bahwa saat ini untuk layanan Netflix sedang dalam tahap 
+            <Alert message="Kami informasikan bahwa saat ini untuk layanan mencari teman berlangganan provider Netflix, sedang dalam tahap 
                             pengembangan dan akan hadir lagi pada hari Minggu, 06 September 2020 pukul 19.00."
             />
             <div class="row">
@@ -195,7 +195,7 @@ export default {
             showPacket: false,
             providers: [
                 {name: 'Netflix', active: false},
-                {name: 'Spotify', active: true},
+                {name: 'Spotify', active: false},
                 {name: 'Youtube', active: false},
                 {name: 'Steam', active: false},
             ],
