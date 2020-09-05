@@ -61,9 +61,6 @@
                             >
                                 User Host adalah user yang berlangganan provider Entertainment via Seakun.id 
                                 dan <b>user yang bertanggung-jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya</b>.
-                                <!-- Hi teman seakun, di seakun.id kamu berkesempatan mendapatkan free biaya berlangganan
-                                di bulan ke-4 dengan bergabung sebagai
-                                <b>Host</b>. -->
                             </div>
                             <!-- End Accodion "Apa itu Host" -->
 
@@ -89,16 +86,16 @@
                             >
                                 Untuk menjadi Host kamu bisa mengikuti langkah-langkah sebagai berikut.
                                 <ol class="mt-2">
-                                    <li>Daftar sebagai Host dengan centang "√" kolom "Ingin jadi Host?" di bagian Registrasi</li>
-                                    <li>Lakukan pembayaran sesuai dengan petunjuk pembayaran normal dan mengirimkan bukti pembayaran ke admin</li>
-                                    <li>Memberikan foto KTP, dan foto selfi memegang KTP ke admin Seakun.id</li>
-                                    <li>Admin akan menghubungi kamu dan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan</li>
-                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya,Contoh: Netflix premium sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki</li>
-                                    <li>Segera lakukan konfirmasi ke admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil</li>
-                                    <li>Kirimkan Nomor Rekening Bank kamu kepada admin untuk proses penggantian uang</li>
-                                    <li>Admin akan mengganti keseluruhan biaya kamu yang terpakai untuk berlangganan provider entertainment secepatnya (paling lama 4 jam) setelah bukti transfer dikirim</li>
-                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host Netflix pun selesai</li>
-                                    <li>Untuk proses di bulan berikutnya akan memiliki langkah yang sama di mulai dari langkah nomor 5</li>
+                                    <li>Daftar sebagai Host dengan centang "√" kolom "Ingin jadi Host?" di bagian Registrasi.</li>
+                                    <li>Lakukan pembayaran sesuai dengan petunjuk pembayaran normal dan mengirimkan bukti pembayaran ke admin.</li>
+                                    <li>Memberikan foto KTP, dan foto selfi memegang KTP ke admin Seakun.id.</li>
+                                    <li>Admin akan menghubungi kamu dan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan.</li>
+                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya,C ontoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
+                                    <li>Segera lakukan konfirmasi ke admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil.</li>
+                                    <li>Kirimkan Nomor Rekening Bank kamu kepada admin untuk proses penggantian uang.</li>
+                                    <li>Admin akan mengganti keseluruhan biaya kamu yang terpakai untuk berlangganan provider entertainment secepatnya (paling lama 4 jam) setelah bukti transfer dikirim.</li>
+                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host Netflix pun selesai.</li>
+                                    <li>Untuk proses di bulan berikutnya akan memiliki langkah yang sama di mulai dari langkah nomor 5.</li>
                                 </ol>
                             </div>
                             <!-- End Accodion "Bagaimana cara daftar sebagai Host?" -->
@@ -125,8 +122,8 @@
                             >
                                 Untuk menjadi User Host ada beberapa syarat yang harus dipenuhi yaitu sebagai berikut.
                                 <ol class="mt-2">
-                                    <li>Memiliki kartu debit/kredit internasional seperti BNI, Mandiri, Jenius dan kartu lain yang memiliki logo VISA dan Mastercard</li>
-                                    <li>Bersedia mendahulukan pembayaran ke provider entertainment yang terkait dengan uang pribadi (paling lama 4 jam akan diganti Seakun.id Setelah menunjukkan bukti pembayaran)</li>
+                                    <li>Memiliki kartu debit/kredit internasional seperti BNI, Mandiri, Jenius dan kartu lain yang memiliki logo VISA dan Mastercard.</li>
+                                    <li>Bersedia mendahulukan pembayaran ke provider entertainment yang terkait dengan uang pribadi (akan diganti Seakun.id paling lama 4 jam setelah menunjukkan bukti pembayaran).</li>
                                 </ol>
                             </div>
                             <!-- Apa saja syarat menjadi User Host" -->

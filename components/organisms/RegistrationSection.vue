@@ -105,8 +105,8 @@
                                 <a @click="showFormVoucher = !showFormVoucher" class="referal-code">Masukkan Voucher</a>
                             </p>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label @click="handleRedirectInfoPage" class="form-check-label text-host"> Ingin jadi <b><u>Host</u></b>?</label>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="userHost">
+                                <label class="form-check-label text-host"> Bersedia menjadi <b>User Host</b>? <a @click="handleRedirectInfoPage">Baca tentang <b>User Host</b></a></label>
                             </div>
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
@@ -197,6 +197,7 @@ export default {
             choosedPacket: {},
             showProvider: false,
             showPacket: false,
+            userHost: false,
             providers: [
                 {name: 'Netflix', active: false},
                 {name: 'Spotify', active: false},
@@ -228,7 +229,7 @@ export default {
     },
     methods: {
         handleRedirectInfoPage() {
-            this.$router.push('/info')
+            window.open('/info/user-host')
         },
         validateInput() {
             !this.fullname ? this.errorMsg.fullname = 'Nama Lengkap harus diisi' : this.errorMsg.fullname = ''
