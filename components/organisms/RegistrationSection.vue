@@ -43,6 +43,9 @@
             </Modal>
         </transition>
         <div class="container">
+            <Alert message="Kami informasikan bahwa saat ini untuk layanan Netflix sedang dalam tahap 
+                            pengembangan dan akan hadir lagi pada hari Minggu, 06 September 2020 pukul 19.00."
+            />
             <div class="row">
                 <div class="col">
                     <div class="reg__form">
@@ -167,11 +170,13 @@ import axios from 'axios'
 import ButtonDrop from '~/components/atoms/ButtonDropDown'
 import LabelChecked from '~/components/atoms/LabelChecked'
 import Modal from '~/components/mollecules/Modal'
+import Alert from "~/components/atoms/Alert"
 export default {
     components: {
         ButtonDrop: ButtonDrop,
         LabelChecked: LabelChecked,
-        Modal: Modal
+        Modal: Modal,
+        Alert: Alert
     },
     data() {
         return {
@@ -189,8 +194,8 @@ export default {
             showProvider: false,
             showPacket: false,
             providers: [
-                {name: 'Netflix', active: true},
-                {name: 'Spotify', active: false},
+                {name: 'Netflix', active: false},
+                {name: 'Spotify', active: true},
                 {name: 'Youtube', active: false},
                 {name: 'Steam', active: false},
             ],
