@@ -104,6 +104,10 @@
                             <p>Punya <b>Voucher</b>? 
                                 <a @click="showFormVoucher = !showFormVoucher" class="referal-code">Masukkan Voucher</a>
                             </p>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label @click="handleRedirectInfoPage" class="form-check-label text-host"> Ingin jadi <b><u>Host</u></b>?</label>
+                            </div>
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
                                 <input v-model="voucher" @blur="checkValidVoucher" type="text" id="voucher" name="voucher" class="form-control" placeholder="Contoh: SEPTCERIA">
@@ -223,6 +227,9 @@ export default {
         this.getPacketData('netflix')
     },
     methods: {
+        handleRedirectInfoPage() {
+            this.$router.push('/info')
+        },
         validateInput() {
             !this.fullname ? this.errorMsg.fullname = 'Nama Lengkap harus diisi' : this.errorMsg.fullname = ''
             !this.email ? this.errorMsg.email = 'Email harus diisi' : this.errorMsg.email = ''
@@ -413,6 +420,13 @@ export default {
 .reg {
     padding: 80px 0px !important;
     background-color: white;
+
+    .text-host {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     .modal-dropdown {
         border-radius: .25rem;
         border:none!important;
