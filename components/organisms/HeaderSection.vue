@@ -39,6 +39,9 @@
                         <a class="nav-link" @click="toTestimoniElement">Testimoni</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" @click="toCustomersElement">Pengguna</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" @click="toRegistrationElement">Daftar</a>
                     </li>
                     <li class="nav-item">
@@ -63,6 +66,7 @@ export default {
             aboutUsElement: "",
             contactElement: "",
             regElement: "",
+            customersElement: ""
         };
     },
     mounted() {
@@ -72,6 +76,7 @@ export default {
         this.aboutUsElement = document.getElementById("about-us");
         this.contactUsElement = document.getElementById("contact-us");
         this.regElement = document.getElementById("reg");
+        this.customersElement = document.getElementById("customers");
     },
     methods: {
         hideMenu() {
@@ -112,6 +117,14 @@ export default {
         },
         toContactUsElement() {
             this.contactUsElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            });
+            this.hideMenu()
+        },
+        toCustomersElement() {
+            this.customersElement.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
                 inline: "nearest",
