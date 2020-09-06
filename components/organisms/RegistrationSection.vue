@@ -43,9 +43,7 @@
             </Modal>
         </transition>
         <div class="container">
-            <Alert message="Kami informasikan bahwa saat ini untuk layanan mencari teman berlangganan provider Netflix, sedang dalam tahap 
-                maintenance dan akan hadir lagi pada hari Minggu, 6 September 2020 pukul 19.00 WIB, ditunggu ya :)"
-            />
+            <Alert message="Layanan mencari teman berlangganan untuk Netflix udah kembali dibuka, silahkan daftar ya :)" typeAlert="success"/>
             <div class="row">
                 <div class="col">
                     <div class="reg__form">
@@ -202,8 +200,8 @@ export default {
             showPacket: false,
             userHost: false,
             providers: [
-                {name: 'Netflix', active: false},
-                {name: 'Spotify', active: false},
+                {name: 'Netflix', active: true},
+                {name: 'Spotify', active: true},
                 {name: 'Youtube', active: false},
                 {name: 'Steam', active: false},
             ],
