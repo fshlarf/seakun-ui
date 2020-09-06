@@ -96,7 +96,7 @@
                                     <li>Segera lakukan konfirmasi ke admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil.</li>
                                     <li>Kirimkan Nomor Rekening Bank kamu kepada admin untuk proses penggantian uang.</li>
                                     <li>Admin akan mengganti keseluruhan biaya kamu yang terpakai untuk berlangganan provider entertainment secepatnya (paling lama 4 jam) setelah bukti transfer dikirim.</li>
-                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host Netflix pun selesai.</li>
+                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host pun selesai.</li>
                                     <li>Untuk proses di bulan berikutnya akan memiliki langkah yang sama di mulai dari langkah nomor 5.</li>
                                 </ol>
                             </div>
@@ -153,6 +153,30 @@
                                 Bila kamu sebagai User Host ingin berhenti berlangganan harap hubungi admin paling lambat h-2 sebelum masa berlangganan selesai.
                             </div>
                             <!-- Bagaimana jika saya yang telah terdaftar menjadi User Host ingin berhenti berlangganan?" -->
+
+                            <!-- Start Accodion "Bagaimana agar saya mengetahui proses undian voucher e-Wallet dan Giveaway yang diadakan Seakun.id?" -->
+                            <div
+                                class="accordion-header collapsed"
+                                id="heading5"
+                                data-toggle="collapse"
+                                data-target="#collapse5"
+                                aria-expanded="false"
+                                aria-controls="collapse5"
+                            >
+                                <h5>
+                                    Bagaimana agar saya mengetahui event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id?
+                                    <span class="icon-toggle"></span>
+                                </h5>
+                            </div>
+                            <div
+                                id="collapse5"
+                                class="collapse accordion-body"
+                                aria-labelledby="heading5"
+                                data-parent="#accordion"
+                            >
+                                Follow instagram <a href="https://www.instagram.com/seakun.id/">@seakun.id</a> untuk mengetahui informasi event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id.
+                            </div>
+                            <!-- Bagaimana agar saya mengetahui proses undian voucher e-Wallet dan Giveaway yang diadakan Seakun.id?" -->
                         </div>
                     </div>
                 </div>
