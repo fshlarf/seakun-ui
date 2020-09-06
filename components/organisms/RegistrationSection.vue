@@ -108,6 +108,9 @@
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="userHost">
                                 <label class="form-check-label text-host" for="exampleCheck1">Bersedia menjadi <b>User Host</b>?</label>
                             </div>
+                            <div class="user-host">
+                                Benefit menjadi <a class="user-host__link" @click="$router.push('/info/user-host')"> User Host</a>
+                            </div>
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
                                 <input v-model="voucher" @blur="checkValidVoucher" type="text" id="voucher" name="voucher" class="form-control" placeholder="Contoh: SEPTCERIA">
@@ -275,6 +278,7 @@ export default {
                 packet: this.packet,
                 price: this.price,
                 discountprice: this.discountPrice,
+                userhost: this.userHost,
                 referalcode: this.referalcode,
                 voucher: this.isVoucherValid ? this.voucher : '',
                 createddate: this.setFullDate()
@@ -615,6 +619,16 @@ export default {
         &:hover {
             text-decoration: underline;
             opacity: .7;
+        }
+    }
+    .user-host {
+        padding-left: 21px;
+        font-size: 12px;
+        margin-bottom: 16px;
+        &__link {
+            color: dodgerblue;
+            text-decoration: underline !important;
+            cursor: pointer;
         }
     }
 }
