@@ -9,7 +9,7 @@
                         <div class="facility__content-content">
                             <h4>Memudahkan Mencari Teman yang Satu Hobi dan Satu Keinginan</h4>
                             <p>
-                                Kami memberikan kemudahan kepada kamu untuk menemukan teman satu hobi dann satu keinginan
+                                Kami memberikan kemudahan kepada kamu untuk menemukan teman satu hobi dan satu keinginan
                                 untuk berlangganan Provider Entertainment seperti Netflix, Spotify, Youtube dan lainnya
                                 mendapatkan fitur premium dengan biaya yang murah.
                             </p>

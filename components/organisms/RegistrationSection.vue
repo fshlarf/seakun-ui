@@ -44,7 +44,7 @@
         </transition>
         <div class="container">
             <Alert message="Kami informasikan bahwa saat ini untuk layanan mencari teman berlangganan provider Netflix, sedang dalam tahap 
-                            pengembangan dan akan hadir lagi pada hari Minggu, 06 September 2020 pukul 19.00."
+                maintenance dan akan hadir lagi pada hari Minggu, 6 September 2020 pukul 19.00 WIB, ditunggu ya :)"
             />
             <div class="row">
                 <div class="col">

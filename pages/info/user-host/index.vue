@@ -92,7 +92,7 @@
                                     <li>Lakukan pembayaran sesuai dengan petunjuk pembayaran normal dan mengirimkan bukti pembayaran ke admin.</li>
                                     <li>Memberikan foto KTP, dan foto selfi memegang KTP ke admin Seakun.id.</li>
                                     <li>Admin akan menghubungi kamu dan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan.</li>
-                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya,C ontoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
+                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya, Contoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
                                     <li>Segera lakukan konfirmasi ke admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil.</li>
                                     <li>Kirimkan Nomor Rekening Bank kamu kepada admin untuk proses penggantian uang.</li>
                                     <li>Admin akan mengganti keseluruhan biaya kamu yang terpakai untuk berlangganan provider entertainment secepatnya (paling lama 4 jam) setelah bukti transfer dikirim.</li>
