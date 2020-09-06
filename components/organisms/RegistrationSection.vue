@@ -109,7 +109,7 @@
                                 <label class="form-check-label text-host" for="exampleCheck1">Bersedia menjadi <b>User Host</b>?</label>
                             </div>
                             <div class="user-host">
-                                Benefit menjadi <a class="user-host__link" @click="$router.push('/info/user-host')"> User Host</a>
+                                Benefit menjadi <a class="user-host__link" @click="openUserHostPage"> User Host</a>
                             </div>
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
@@ -407,6 +407,9 @@ export default {
                     this.discountPrice = null
                 }
             }
+        },
+        openUserHostPage() {
+            window.open('/info/user-host')
         }
     },
     watch: {

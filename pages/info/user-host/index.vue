@@ -7,7 +7,7 @@
                     <div class="col">
                         <Title title="Program User Host Seakun.id" />
                         <div class="info__intro">
-                            Program User Host merupakan fitur yang dihadirkan oleh Seakun.id untuk <b>memberikan kewenangan kesalah satu anggota 
+                            Program User Host merupakan fitur yang dihadirkan oleh Seakun.id untuk <b>memberikan kewenangan ke salah satu anggota 
                             member di dalam satu grup berlangganan bersama untuk menggunakan kartu debit/kredit miliknya untuk melakukan pembayaran</b> 
                             ke Provider Entertainment.
                         </div>
@@ -88,7 +88,7 @@
                             >
                                 Untuk menjadi Host kamu bisa mengikuti langkah-langkah sebagai berikut.
                                 <ol class="mt-2">
-                                    <li>Daftar sebagai Host dengan centang "√" kolom "Ingin jadi Host?" di bagian Registrasi.</li>
+                                    <li>Daftar sebagai Host dengan centang "√" kolom "Bersedia menjadi User Host?" di bagian Registrasi.</li>
                                     <li>Lakukan pembayaran sesuai dengan petunjuk pembayaran normal dan mengirimkan bukti pembayaran ke admin.</li>
                                     <li>Memberikan foto KTP, dan foto selfi memegang KTP ke admin Seakun.id.</li>
                                     <li>Admin akan menghubungi kamu dan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan.</li>

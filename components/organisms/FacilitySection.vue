@@ -47,7 +47,7 @@
                         <div class="facility__content-content">
                             <h4>Program User Host</h4>
                             <p>
-                                Program untuk <b>memberikan kewenangan kesalah satu anggota 
+                                Program untuk <b>memberikan kewenangan ke salah satu anggota 
                                 member di dalam satu grup berlangganan bersama untuk menggunakan kartu debit/kredit miliknya untuk melakukan pembayaran</b> 
                                 ke Provider Entertainment.
                                 <a class="facility__content-user-host" @click="handleRedirectInfoPage">
