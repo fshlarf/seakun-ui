@@ -15,7 +15,7 @@ import Header from "~/components/mollecules/Header";
 import Footer from "~/components/organisms/Footer"
 
 export default {
-    props: ['error'],
+    layout: 'error',
     components: {
         Header,
         Footer
