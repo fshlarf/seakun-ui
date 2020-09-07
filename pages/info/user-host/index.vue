@@ -7,7 +7,7 @@
                     <div class="col">
                         <Title title="Program User Host Seakun.id" />
                         <div class="info__intro">
-                            Program User Host merupakan fitur yang dihadirkan oleh Seakun.id untuk <b>memberikan kewenangan kesalah satu anggota 
+                            Program User Host merupakan fitur yang dihadirkan oleh Seakun.id untuk <b>memberikan kewenangan ke salah satu anggota 
                             member di dalam satu grup berlangganan bersama untuk menggunakan kartu debit/kredit miliknya untuk melakukan pembayaran</b> 
                             ke Provider Entertainment.
                         </div>
@@ -88,15 +88,15 @@
                             >
                                 Untuk menjadi Host kamu bisa mengikuti langkah-langkah sebagai berikut.
                                 <ol class="mt-2">
-                                    <li>Daftar sebagai Host dengan centang "√" kolom "Ingin jadi Host?" di bagian Registrasi.</li>
+                                    <li>Daftar sebagai Host dengan centang "√" kolom "Bersedia menjadi User Host?" di bagian Registrasi.</li>
                                     <li>Lakukan pembayaran sesuai dengan petunjuk pembayaran normal dan mengirimkan bukti pembayaran ke admin.</li>
                                     <li>Memberikan foto KTP, dan foto selfi memegang KTP ke admin Seakun.id.</li>
                                     <li>Admin akan menghubungi kamu dan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan.</li>
-                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya,C ontoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
+                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya, Contoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
                                     <li>Segera lakukan konfirmasi ke admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil.</li>
                                     <li>Kirimkan Nomor Rekening Bank kamu kepada admin untuk proses penggantian uang.</li>
                                     <li>Admin akan mengganti keseluruhan biaya kamu yang terpakai untuk berlangganan provider entertainment secepatnya (paling lama 4 jam) setelah bukti transfer dikirim.</li>
-                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host Netflix pun selesai.</li>
+                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host pun selesai.</li>
                                     <li>Untuk proses di bulan berikutnya akan memiliki langkah yang sama di mulai dari langkah nomor 5.</li>
                                 </ol>
                             </div>
@@ -153,6 +153,30 @@
                                 Bila kamu sebagai User Host ingin berhenti berlangganan harap hubungi admin paling lambat h-2 sebelum masa berlangganan selesai.
                             </div>
                             <!-- Bagaimana jika saya yang telah terdaftar menjadi User Host ingin berhenti berlangganan?" -->
+
+                            <!-- Start Accodion "Bagaimana agar saya mengetahui proses undian voucher e-Wallet dan Giveaway yang diadakan Seakun.id?" -->
+                            <div
+                                class="accordion-header collapsed"
+                                id="heading5"
+                                data-toggle="collapse"
+                                data-target="#collapse5"
+                                aria-expanded="false"
+                                aria-controls="collapse5"
+                            >
+                                <h5>
+                                    Bagaimana agar saya mengetahui event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id?
+                                    <span class="icon-toggle"></span>
+                                </h5>
+                            </div>
+                            <div
+                                id="collapse5"
+                                class="collapse accordion-body"
+                                aria-labelledby="heading5"
+                                data-parent="#accordion"
+                            >
+                                Follow instagram <a href="https://www.instagram.com/seakun.id/">@seakun.id</a> untuk mengetahui informasi event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id.
+                            </div>
+                            <!-- Bagaimana agar saya mengetahui proses undian voucher e-Wallet dan Giveaway yang diadakan Seakun.id?" -->
                         </div>
                     </div>
                 </div>

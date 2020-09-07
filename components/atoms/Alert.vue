@@ -1,5 +1,5 @@
 <template>
-    <div class="alert alert-danger">
+    <div :class="`alert alert-${typeAlert}`">
         {{ message }}
     </div>
 </template>
@@ -8,6 +8,10 @@
 export default {
     props: {
         message: "",
+        typeAlert: {
+            type: String,
+            default: 'danger'
+        }
     },
 };
 </script>

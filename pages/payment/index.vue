@@ -63,25 +63,37 @@
                         <p>
                             Setelah melakukan pembayaran,
                             <br />kirimkan bukti pembayaran ke Whatsapp Seakun.id
-                            <a
-                                href="https://api.whatsapp.com/send?phone=6285774642738"
-                            >085774642738</a>
+                            <a href="https://api.whatsapp.com/send?phone=6285774642738">085774642738.</a>
                         </p>
-                        <p>Proses yang dilakukan sekitar 10 menit sampai paling lama 60 menit setelah bukti pembayaran dikirimkan ke whatsapp Seakun.id</p>
+                        <p>
+                            Proses yang dilakukan sekitar 10 menit sampai paling lama 120 menit setelah bukti pembayaran dikirimkan ke whatsapp Seakun.id.
+                            <br>
+                            Mohon bersabar karena proses payment ke provider butuh waktu beberapa menit dan butuh verifikasi data.
+                        </p>
+                        <p>
+                            <b>Waktu Operasional Seakun.id</b>
+                            <br>
+                            Setiap hari, jam <b>09.00 - 21.00 WIB</b>
+                            <br>
+                            Proses akan dilayani di jam operasional Seakun.id
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
 </template>
 
 <script>
 import axios from "axios";
 import Header from "~/components/mollecules/Header";
+import Footer from "~/components/organisms/Footer"
 
 export default {
     component: {
         Header: Header,
+        Footer: Footer,
     },
     data() {
         return {
@@ -158,9 +170,13 @@ export default {
                 .then((res) => {
                     const { data, status } = res;
                     if (status === 200) {
-                        setTimeout(() => {
-                            this.checkValidVoucher(this.vouchersData, data?.[0], voucher)
-                        }, 500);
+                        if (voucher) {
+                            setTimeout(() => {
+                                this.checkValidVoucher(this.vouchersData, data?.[0], voucher)
+                            }, 500);
+                        } else {
+                            this.total = data?.[0].grandTotal
+                        }
                     }
                 });
         },
@@ -179,7 +195,7 @@ export default {
                 e.voucher_code == voucher.toLowerCase() && e.active ? validateArray.push(1) : validateArray.push(0)
             })
             validateArray.sort().reverse()
-            voucher && validateArray[0] == 1 ? this.total = dataPacket.voucherGrandTotal : this.total = dataPacket.grandTotal
+            validateArray[0] == 1 ? this.total = dataPacket.voucherGrandTotal : this.total = dataPacket.grandTotal
         }
     },
 };
