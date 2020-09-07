@@ -68,14 +68,7 @@
                         <p>
                             Proses yang dilakukan sekitar 10 menit sampai paling lama 120 menit setelah bukti pembayaran dikirimkan ke whatsapp Seakun.id.
                             <br>
-                            Mohon bersabar karena proses payment ke provider butuh waktu beberapa menit dan butuh verifikasi data.
-                        </p>
-                        <p>
-                            <b>Waktu Operasional Seakun.id</b>
-                            <br>
-                            Setiap hari, jam <b>09.00 - 21.00 WIB</b>
-                            <br>
-                            Proses akan dilayani di jam operasional Seakun.id
+                            Mohon ditunggu karena proses payment ke provider butuh waktu beberapa menit dan butuh verifikasi data.
                         </p>
                     </div>
                 </div>
