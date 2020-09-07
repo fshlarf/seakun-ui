@@ -35,6 +35,8 @@
                                 </div>
                                 <li>+62857-7464-2738</li>
                                 <li>cs@seakun.id</li>
+                                <li><b>Jam Operasional</b></li>
+                                <li>Senin-Minggu: 09.00 - 21.00 WIB</li>
                             </ul>
                         </div>
                     </div>
