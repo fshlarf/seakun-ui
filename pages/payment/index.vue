@@ -108,17 +108,23 @@ export default {
                     return 'Segera lakukan pembayaran agar Seakun.id bisa \
                         langsung mengalokasikan kamu pada grup Netflix yang available, \
                         mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
-                        <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
+                        <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
+                } else if (packet == 'Paket Premium Grup User Host') {
+                    return 'Segera lakukan pembayaran agar Seakun.id bisa \
+                        langsung mengalokasikan kamu pada grup Netflix yang available, \
+                        mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
+                        <br/><br/>Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. \
+                        <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
                 } else {
                     return 'Segera lakukan pembayaran agar Seakun.id dapat \
                         langsung memproses akun Netflix untuk kamu. \
-                        <b>Informasi Akun</b>, <b>Password</b> dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
+                        <b>Informasi Akun</b>, <b>Password</b> dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
                 }
             } else if (provider.toLowerCase() == 'spotify') {
                 if (packet == 'Paket Premium Grup') {
                     return 'Segera lakukan pembayaran agar Seakun.id dapat \
                         langsung mengirimkan <b>Link invitation</b> plan paket Grup Spotify.\
-                        <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan'
+                        <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
                 }
             }
         },

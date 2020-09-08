@@ -12,9 +12,9 @@
                             <div class="bold">{{ packet.name }}</div>
                             <div class="bold" v-if="packet.price > 0">{{ formatMoneyRupiah(packet.price) }} / bln</div>
                         </div>
-                        <div class="dropdown__item item align-normal" v-if="packet.adminFee > 0">
+                        <div class="dropdown__item item align-normal">
                             <div>Biaya Admin</div>
-                            <div class="bold">{{ formatMoneyRupiah(packet.adminFee) }} / bln</div>
+                            <div class="bold">{{ setAdminFee(packet.adminFee) }}</div>
                         </div>
                         <div class="dropdown__item item align-normal" v-if="packet.grandTotal > 0">
                             <div>Total</div>
@@ -35,6 +35,9 @@
                             <LabelChecked title="Gratis Satu Bulan Pertama"/>
                         </div>
                         <div class="dropdown__item-info item">**{{ packet.desc }}</div>
+                        <div class="dropdown__item item" v-if="packet.userHost">
+                            <a @click="openUserHostPage" style="color: dodgerblue; cursor: pointer">Ketentuan User Host</a>
+                        </div>
                     </div>
                 </div>
                 <div class="dropdown modal-dropdown" style="text-align: center;"  v-else >
@@ -43,7 +46,7 @@
             </Modal>
         </transition>
         <div class="container">
-            <Alert message="Layanan mencari teman berlangganan untuk Netflix sedang maintenance, akan hadir lagi jam 12.00 WIB siang ini ya :)"/>
+            <Alert message="Layanan mencari teman berlangganan untuk Netflix sudah tersedia, silahkan daftar ya :)" typeAlert="success"/>
             <div class="row">
                 <div class="col">
                     <div class="reg__form">
@@ -143,6 +146,9 @@
                                                 <LabelChecked title="Gratis Satu Bulan Pertama"/>
                                             </div>
                                             <div class="dropdown__item-info">{{ choosedPacket.desc }}</div>
+                                            <div class="dropdown__item item align-normal" v-if="choosedPacket.userHost">
+                                                <a @click="openUserHostPage" style="color: dodgerblue; cursor: pointer">Ketentuan User Host</a>
+                                            </div>
                                             <div v-if="choosedPacket.notes" class="notes">
                                                 <div style="padding: 0px">Catatan:</div>
                                                 <p :class="showMore ? 'show-text' : 'hide'">{{ choosedPacket.notes }}</p>
@@ -200,7 +206,7 @@ export default {
             showPacket: false,
             userHost: false,
             providers: [
-                {name: 'Netflix', active: false},
+                {name: 'Netflix', active: true},
                 {name: 'Spotify', active: true},
                 {name: 'Youtube', active: false},
                 {name: 'Steam', active: false},
@@ -269,7 +275,7 @@ export default {
         },
         postRegisteredUser() {
             let payload = {
-                fullname: this.fullname,
+                fullname: this.capitalizeFirstLetter(this.fullname),
                 email: this.email,
                 whatsapp: this.whatsapp,
                 provider: this.provider,
@@ -319,6 +325,7 @@ export default {
             this.errorMsg.packet = ''
             this.price = packet.grandTotal
             this.checkValidVoucher()
+            this.userHost = packet.userHost
         },
         formatMoneyRupiah(num) {
             if (num) {
@@ -408,12 +415,28 @@ export default {
         },
         openUserHostPage() {
             window.open('/info/user-host')
+        },
+        capitalizeFirstLetter(str) {
+            let splitStr = str.toLowerCase().split(' ');
+            for (let i = 0; i < splitStr.length; i++) {
+                splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+            }
+            return splitStr.join(' '); 
+        },
+        setAdminFee(value) {
+            return value > 0 ? `${this.formatMoneyRupiah(value)}/bln` : `${this.formatMoneyRupiah(value)} / bln (FREE)`
         }
     },
     watch: {
         showPacket() {
             const modalBackdrop = document.getElementById('modal-backdrop')
             this.showPacket ? modalBackdrop.classList += 'modal-backdrop fade show' : modalBackdrop.classList.value = ''
+        },
+        userHost() {
+            if (!this.userHost && this.choosedPacket.id == 1 ) {
+                this.packet = 'Contoh: Paket Grup'
+                this.choosedPacket = {}
+            } 
         }
     }
 }
