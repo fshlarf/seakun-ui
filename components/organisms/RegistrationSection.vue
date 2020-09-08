@@ -43,7 +43,7 @@
             </Modal>
         </transition>
         <div class="container">
-            <Alert message="Layanan mencari teman berlangganan untuk Netflix udah kembali dibuka, silahkan daftar ya :)" typeAlert="success"/>
+            <Alert message="Layanan mencari teman berlangganan untuk Netflix sedang maintenance, akan hadir lagi jam 12.00 WIB siang ini ya :)"/>
             <div class="row">
                 <div class="col">
                     <div class="reg__form">
@@ -200,7 +200,7 @@ export default {
             showPacket: false,
             userHost: false,
             providers: [
-                {name: 'Netflix', active: true},
+                {name: 'Netflix', active: false},
                 {name: 'Spotify', active: true},
                 {name: 'Youtube', active: false},
                 {name: 'Steam', active: false},
