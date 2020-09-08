@@ -105,13 +105,13 @@
                             <p>Punya <b>Voucher</b>? 
                                 <a @click="showFormVoucher = !showFormVoucher" class="referal-code">Masukkan Voucher</a>
                             </p>
-                            <div class="form-check">
+                            <!-- <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="userHost">
                                 <label class="form-check-label text-host" for="exampleCheck1">Bersedia menjadi <b>User Host</b>?</label>
                             </div>
                             <div class="user-host">
                                 Benefit menjadi <a class="user-host__link" @click="openUserHostPage"> User Host</a>
-                            </div>
+                            </div> -->
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
                                 <input v-model="voucher" @blur="checkValidVoucher" type="text" id="voucher" name="voucher" class="form-control" placeholder="Contoh: SEPTCERIA">
