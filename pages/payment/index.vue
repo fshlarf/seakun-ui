@@ -114,7 +114,8 @@ export default {
                         langsung mengalokasikan kamu pada grup Netflix yang available, \
                         mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
                         <br/><br/>Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. \
-                        <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
+                        <a href="https://seakun.id/info/user-host">Ketentuan User Host</a>.\
+                        <br/><b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
                 } else {
                     return 'Segera lakukan pembayaran agar Seakun.id dapat \
                         langsung memproses akun Netflix untuk kamu. \
