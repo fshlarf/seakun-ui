@@ -33,7 +33,11 @@
                                 <div class="footer__widget-contact-icon">
                                     <span class="fa fa-phone"></span>
                                 </div>
-                                <li>+62857-7464-2738</li>
+                                <li>
+                                    <a target="_blank" class="footer__widget-contact-wa" href="https://api.whatsapp.com/send?phone=6285774642738">
+                                        +62857-7464-2738
+                                    </a>
+                                </li>
                                 <li>cs@seakun.id</li>
                                 <li><b>Jam Operasional</b></li>
                                 <li>Senin-Minggu: 09.00 - 21.00 WIB</li>
@@ -138,6 +142,13 @@ export default {};
                 font-size: 32px;
                 margin: 0 auto 20px;
                 line-height: 36px;
+            }
+
+            &-wa {
+                color: blue;
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
             li {
