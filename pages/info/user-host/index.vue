@@ -88,9 +88,9 @@
                             >
                                 Untuk menjadi Host kamu bisa mengikuti langkah-langkah sebagai berikut.
                                 <ol class="mt-2">
-                                    <li>Daftar sebagai Host dengan centang "√" kolom "Bersedia menjadi User Host?" di bagian Registrasi atau memilih paket dengan label User Host di pilihan paket yang tersedia.</li>
+                                    <li>Daftar sebagai User Host dengan memilih paket yang berlabel User Host di pilihan paket yang tersedia.</li>
                                     <li>Lakukan pembayaran sesuai dengan petunjuk pembayaran normal dan mengirimkan bukti pembayaran ke admin.</li>
-                                    <li>Memberikan foto KTP, dan foto selfi memegang KTP ke admin Seakun.id.</li>
+                                    <li>Memberikan foto KTP ke admin Seakun.id.</li>
                                     <li>Admin akan menghubungi kamu dan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan.</li>
                                     <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya, Contoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
                                     <li>Segera lakukan konfirmasi ke admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil.</li>
@@ -124,7 +124,7 @@
                             >
                                 Untuk menjadi User Host ada beberapa syarat yang harus dipenuhi yaitu sebagai berikut.
                                 <ol class="mt-2">
-                                    <li>Memiliki kartu debit/kredit internasional seperti BNI, Mandiri, Jenius dan kartu lain yang memiliki logo VISA dan Mastercard.</li>
+                                    <li>Memiliki <b>kartu debit/kredit internasional</b> seperti BNI, Mandiri, Jenius dan kartu lain yang memiliki logo VISA dan Mastercard.</li>
                                     <li>Bersedia mendahulukan pembayaran ke provider entertainment yang terkait dengan uang pribadi (akan diganti Seakun.id paling lama 4 jam setelah menunjukkan bukti pembayaran).</li>
                                 </ol>
                             </div>
@@ -202,7 +202,7 @@
                                 aria-labelledby="heading6"
                                 data-parent="#accordion"
                             >
-                                Follow instagram <a href="https://www.instagram.com/seakun.id/">@seakun.id</a> untuk mengetahui informasi event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id.
+                                Follow instagram <a href="https://www.instagram.com/seakun.id/">@seakun.id</a> untuk mengetahui informasi event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id secara berkala.
                             </div>
                             <!-- Bagaimana agar saya mengetahui proses undian voucher e-Wallet dan Giveaway yang diadakan Seakun.id?" -->
                         </div>
