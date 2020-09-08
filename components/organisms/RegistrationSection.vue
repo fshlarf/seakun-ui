@@ -36,7 +36,10 @@
                         </div>
                         <div class="dropdown__item-info item">**{{ packet.desc }}</div>
                         <div class="dropdown__item item" v-if="packet.userHost">
-                            <a @click="openUserHostPage" style="color: dodgerblue; cursor: pointer">Ketentuan User Host</a>
+                            <b>Syarat: Memiliki Kartu Debit/Kredit Internasional (Contoh: Jenius, BNI Internasional dan lainnya)</b>
+                        </div>
+                        <div class="dropdown__item item" v-if="packet.userHost">
+                            <a @click="openUserHostPage" style="color: dodgerblue; cursor: pointer">Baca Ketentuan User Host</a>
                         </div>
                     </div>
                 </div>
