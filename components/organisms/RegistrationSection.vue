@@ -427,7 +427,7 @@ export default {
             return splitStr.join(' '); 
         },
         setAdminFee(value) {
-            return value > 0 ? `${this.formatMoneyRupiah(value)}/bln` : `${this.formatMoneyRupiah(value)} / bln (FREE)`
+            return value > 0 ? `${this.formatMoneyRupiah(value)} / bln` : `${this.formatMoneyRupiah(value)} / bln (FREE)`
         }
     },
     watch: {
