@@ -70,6 +70,9 @@
                             <br>
                             Mohon ditunggu karena proses payment ke provider butuh waktu beberapa menit dan butuh verifikasi data.
                         </p>
+                        <p>
+                            <i>Note: Untuk alternatif pembayaran e-Wallet, bisa langsung hubungi Whatsapp admin Seakun.id</i>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -81,7 +84,7 @@
 <script>
 import axios from "axios";
 import Header from "~/components/mollecules/Header";
-import Footer from "~/components/organisms/Footer"
+import Footer from "~/components/organisms/Footer";
 
 export default {
     component: {
