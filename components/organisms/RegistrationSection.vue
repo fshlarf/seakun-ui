@@ -7,7 +7,7 @@
                 :titleModal="`Pilih Paket ${provider}`"
             >
                 <div class="dropdown modal-dropdown" v-if="packets.length > 0">
-                    <div class="modal-dropdown__list" v-for="(packet, id) in packets" :key="id" @click="choosePacket(packet)">
+                    <div :class="`modal-dropdown__list ${setClassInActivePacket(packet)}`" v-for="(packet, id) in packets" :key="id" @click="choosePacket(packet)">
                         <div class="dropdown__item item align-normal">
                             <div class="bold">{{ packet.name }}</div>
                             <div class="bold" v-if="packet.price > 0">{{ formatMoneyRupiah(packet.price) }} / bln</div>
@@ -40,6 +40,9 @@
                         </div>
                         <div class="dropdown__item item" v-if="packet.userHost">
                             <a @click="openUserHostPage" style="color: dodgerblue; cursor: pointer">Baca Ketentuan User Host</a>
+                        </div>
+                         <div class="dropdown__item item" v-if="!packet.active">
+                            Paket Sedang Tidak Aktif
                         </div>
                     </div>
                 </div>
@@ -428,6 +431,9 @@ export default {
         },
         setAdminFee(value) {
             return value > 0 ? `${this.formatMoneyRupiah(value)} / bln` : `${this.formatMoneyRupiah(value)} / bln (FREE)`
+        },
+        setClassInActivePacket(packet) {
+            return !packet.active &&  'inactive'
         }
     },
     watch: {
@@ -657,6 +663,10 @@ export default {
             text-decoration: underline !important;
             cursor: pointer;
         }
+    }
+    .inactive {
+        opacity: .6;
+        pointer-events: none;
     }
 }
 @media (max-width: 800px) {
