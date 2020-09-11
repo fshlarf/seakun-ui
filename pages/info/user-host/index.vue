@@ -97,7 +97,7 @@
                                     <li>Kirimkan Nomor Rekening Bank kamu kepada admin untuk proses penggantian uang.</li>
                                     <li>Admin akan mengganti keseluruhan biaya kamu yang terpakai untuk berlangganan provider entertainment secepatnya (paling lama 4 jam) setelah bukti transfer dikirim.</li>
                                     <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host pun selesai.</li>
-                                    <li>Untuk proses di bulan berikutnya akan memiliki langkah yang sama di mulai dari langkah nomor 5.</li>
+                                    <li>Untuk proses di bulan berikutnya, lakukan pembayaran sesuai dengan petunjuk pembayaran normal yang diinformasikan ke email kamu h-7 sebelum masa berlangganan berakhir dan mengirimkan bukti pembayaran ke admin. Selanjutnya akan memiliki langkah yang sama di mulai dari langkah nomor 5.</li>
                                 </ol>
                             </div>
                             <!-- End Accodion "Bagaimana cara daftar sebagai Host?" -->
