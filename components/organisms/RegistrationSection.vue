@@ -665,7 +665,7 @@ export default {
         }
     }
     .inactive {
-        opacity: .6;
+        opacity: .4;
         pointer-events: none;
     }
 }
