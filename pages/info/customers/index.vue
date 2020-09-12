@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <p class="card-text">
-                                Group information here
+                                Mulai Berlangganan {{ customer.startDate }}
                             </p>
                             <div class="card-text">
                                 <div class="row justify-content-between align-items-center">
@@ -130,7 +130,8 @@ export default {
                     theArr[parseInt(e.group) - 1] = {
                         group: parseInt(e.group),
                         names: [],
-                        provider: e.customer_email,
+                        provider: e.provider,
+                        startDate: e.start_date,
                     };
                 });
             customers &&
@@ -144,6 +145,7 @@ export default {
 
             theArr.sort().reverse();
             this.customers = theArr;
+            console.log(this.customers);
         },
     },
 };

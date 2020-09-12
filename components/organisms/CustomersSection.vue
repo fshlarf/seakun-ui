@@ -93,7 +93,7 @@ export default {
                     theArr[parseInt(e.group) - 1] = {
                         group: parseInt(e.group),
                         names: [],
-                        provider: e.customer_email,
+                        provider: e.provider,
                     };
                 });
             customers &&
