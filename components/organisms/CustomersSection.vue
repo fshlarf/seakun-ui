@@ -97,6 +97,7 @@ export default {
     &__content {
         display: flex;
         align-items: center;
+        justify-content: center;
         &--carousell {
             display: flex;
             justify-content: space-between;
