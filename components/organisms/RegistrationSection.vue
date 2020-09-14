@@ -41,7 +41,7 @@
                         <div class="dropdown__item item" v-if="packet.userHost">
                             <a @click="openUserHostPage" style="color: dodgerblue; cursor: pointer">Baca Ketentuan User Host</a>
                         </div>
-                         <div class="dropdown__item item" v-if="!packet.active">
+                         <div class="dropdown__item item" v-if="!packet.active" style="color: red">
                             Paket Sedang Tidak Aktif
                         </div>
                     </div>
@@ -665,7 +665,7 @@ export default {
         }
     }
     .inactive {
-        opacity: .6;
+        opacity: .4;
         pointer-events: none;
     }
 }
