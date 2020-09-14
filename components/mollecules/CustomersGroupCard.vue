@@ -1,5 +1,5 @@
 <template>
-    <div :class="`card card-${setClassStatus(dataCustomer.names)}`" v-if="dataCustomer">
+    <div @click="clickRegisterBtn(dataCustomer.names)" :class="`card card-${setClassStatus(dataCustomer.names)}`" v-if="dataCustomer">
         <div class="card-header">
             <div class="card-header--title">
                 <h5>Group {{dataCustomer.group}}</h5>
@@ -13,20 +13,29 @@
             <ul>
                 <li v-for="(name,index) in dataCustomer.names" :key="index" :class="setClassUserName(name)">{{setName(name)}}</li>
             </ul>
-            <div class="btn-container">
-                <a v-if="isButtonShow(dataCustomer.names)" class="btn btn-register btn-sm">Daftar Sekarang</a>
-                <a v-else class="btn-register btn-sm">&nbsp;</a>
+            <div style="text-align: center" v-if="isButtonShow(dataCustomer.names)" @click="clickRegisterBtn(dataCustomer.names)">
+                <button class="btn btn-register btn-sm">Daftar Sekarang</button>
             </div>
         </div>
     </div>
 </template>
-
 <script>
 export default {
     props: {
         dataCustomer: Object
     },
+    data() {
+        return {
+            regElement: '',
+        }
+    },
+    mounted() {
+        this.regElement = document.getElementById('reg')
+    },
     methods: {
+        clickRegisterBtn(arrayNames) {
+            if (arrayNames.includes("")) this.regElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        },
         setStatus(arrayNames) {
             return arrayNames.includes("") ? 'Available' : 'Full'
         },
@@ -63,9 +72,12 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+    width: 14rem;
+    margin: 0px 20px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-    border: none;
-
+    border-radius: 4px;
+    border: unset;
+    min-height: 17rem;
     &-header {
         background-color: white;
         display: flex;
@@ -84,9 +96,9 @@ export default {
         }
         &--status {
             color: white;
-            padding: 4px 16px !important;
+            padding: 5px 10px!important;
             border-radius: 4px;
-            font-size: .75rem;
+            font-size: 12px;
         }
     }
     &-content {
@@ -102,23 +114,30 @@ export default {
         color: green !important;
         font-weight: 600;
     }
-    .btn-container {
-        padding: 8px 16px 16px;
+    &.card-Available {
+        &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
     }
     .btn-register {
         background-color: white;
         border-color: green!important;
         color: green;
+        margin-bottom: 10px;
         width: 100%;
     }
 }
 ul, li {
     list-style: none;
-    padding: 5px 8px;
+    padding: 5px 14px;
+    font-size: 12px;
     margin-bottom: 0!important;
 }
 @media (max-width: 800px) {
     .card {
+        margin: 0px 6px;
+        max-width: 12rem;
         &-header {
             &--title {
                 img {
@@ -126,12 +145,16 @@ ul, li {
                 }
             }
             &--status {
-                color: white;
-                padding: 4px 16px !important;
-                border-radius: 4px;
-                font-size: .75rem;
+                padding: 5px 7px !important;
+                font-size: 10px;
             }
         }
+    }
+    ul, li {
+        font-size: 11px;
+    }
+    .btn-register {
+        font-size: 10px;
     }
 }
 </style>
