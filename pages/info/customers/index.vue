@@ -31,7 +31,7 @@
                                 <li v-for="(name,index) in customer.names" :key="index" :class="setClassUserName(name)">{{setName(name)}}</li>
                             </ul>
                             <div class="btn-container">
-                                <a v-if="isButtonShow(customer.names)" class="btn btn-register btn-sm">Daftar Sekarang</a>
+                                <a v-if="isButtonShow(customer.names)" class="btn btn-register btn-sm" @click="clickRegister">Daftar Sekarang</a>
                                 <a v-else class="btn-register btn-sm">&nbsp;</a>
                             </div>
                         </div>
@@ -131,6 +131,9 @@ export default {
         },
         setClassUserName(name) {
             return name == '' ? 'available-slot' : ''
+        },
+        clickRegister() {
+            this.$router.push('/?regist=true')
         }
     },
 };

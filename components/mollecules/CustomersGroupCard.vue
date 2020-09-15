@@ -125,7 +125,7 @@ export default {
         border-color: green!important;
         color: green;
         margin-bottom: 10px;
-        width: 100%;
+        padding: 4px 28px;
     }
 }
 ul, li {

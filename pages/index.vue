@@ -41,7 +41,7 @@ export default {
         TestimoniSection: TestimoniSection,
         CustomersSection: CustomersSection,
         Footer: Footer,
-    },
+    }
 };
 </script>
 
