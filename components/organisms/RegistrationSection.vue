@@ -237,7 +237,6 @@ export default {
     },
     mounted() {
         this.getVouchersData()
-        this.getReferralsCodeData()
         this.getPacketData('netflix')
     },
     methods: {
@@ -262,7 +261,7 @@ export default {
             }
         },
         getPacketData(provider) {
-            axios.get(`https://seakun-packet-api.herokuapp.com/${provider.toLowerCase()}`)
+            axios.get(`https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}`)
             .then(res => {
                 this.packets = res.data
             })
@@ -293,7 +292,7 @@ export default {
                 voucher: this.isVoucherValid ? this.voucher : '',
                 createddate: this.setFullDate()
             }
-            axios.post('https://seakun-api.herokuapp.com/registered-user', payload)
+            axios.post('https://seakun-api-v1.herokuapp.com/registered-user', payload)
             .then(res => {
                 if (res.data.message == "success") {
                     this.executeApiMailSeakun(payload)
@@ -352,7 +351,7 @@ export default {
             return showMore ? 'Ciutkan' : 'Selengkapnya'
         },
         executeApiMailSeakun(payload) {
-            axios.post('https://seakun-mail-api.herokuapp.com/', payload)
+            axios.post('https://seakun-mail-api-v1.herokuapp.com/', payload)
             .then(res => {
                 this.isDisableBtn = false
                 // Redirect to thankyou page when successfully registration
@@ -369,17 +368,8 @@ export default {
                 console.log(err)
             })
         },
-        getReferralsCodeData() {
-            axios.get('https://seakun-referral-api.herokuapp.com/referrals')
-            .then(res => {
-                this.referralsData = res.data
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        },
         getVouchersData() {
-            axios.get('https://seakun-referral-api.herokuapp.com/vouchers')
+            axios.get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
             .then(res => {
                 this.vouchersData = res.data
             })

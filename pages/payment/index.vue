@@ -166,7 +166,7 @@ export default {
 
             axios
                 .get(
-                    `https://seakun-packet-api.herokuapp.com/${
+                    `https://seakun-packet-api-v1.herokuapp.com/${
                         isNetflix ? "netflix" : "spotify"
                     }?name=${packet}`
                 )
@@ -184,7 +184,7 @@ export default {
                 });
         },
         getVouchersData() {
-            axios.get('https://seakun-referral-api.herokuapp.com/vouchers')
+            axios.get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
             .then(res => {
                 this.vouchersData = res.data
             })
