@@ -50,7 +50,7 @@
                                 >
                                     {{ val }}
                                 </li>
-                                <li>{{ packet.desc }}</li>
+                                <li v-if="packet.desc">{{ packet.desc }}</li>
                             </ul>
                         </div>
                         <div
