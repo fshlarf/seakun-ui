@@ -41,10 +41,9 @@
                             >085774642738</a>
                         </p>
                         <p>
-                            <a
-                                href="/info/pre-order"
-                                target="_blank"
-                            >Baca ketentuan Pre-Order selengkapnya</a>
+                            <a href="/info/pre-order" target="_blank">
+                                <i>Baca ketentuan Pre-Order selengkapnya</i>
+                            </a>
                         </p>
                     </div>
                 </div>
@@ -116,7 +115,7 @@ export default {
         }
         a {
             font-weight: 700;
-            color: #2895FF;
+            color: #2895ff;
         }
     }
     .container {
