@@ -333,4 +333,32 @@ export default {
         width: 546px;
     }
 }
+@media (max-width: 800px) {
+    .preorder {
+        &__flow {
+            padding: 0px 20px;
+            justify-content: space-between;
+            img {
+                max-width: 1rem;
+            }
+            &-content {
+                img {
+                    max-width: 3rem;
+                }
+                p {
+                    width: 58px;
+                    font-size: 12px;
+                    text-align: center;
+                    font-weight: 400;
+                }
+            }
+        }
+        &.faq {
+            padding-top: 20px !important;
+        }
+        .img-info {
+            width: 100%;
+        }
+    }
+}
 </style>
