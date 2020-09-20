@@ -39,7 +39,7 @@
                         <div class="dropdown__item item align-normal mt-2">
                             <div>Tipe Paket</div>
                             <div
-                                :class="{'premium' : packet.typePacket == 'Premium'}"
+                                class="packet-type"
                             >{{ packet.typePacket.toUpperCase() }}</div>
                         </div>
                         <div v-if="packet.facilities">
@@ -807,7 +807,7 @@ export default {
             }
         }
     }
-    .premium {
+    .packet-type {
         color: green;
         font-weight: 800;
     }
