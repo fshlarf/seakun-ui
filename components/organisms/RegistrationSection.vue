@@ -22,15 +22,15 @@
                             </div>
                             <div
                                 class="bold"
-                                v-if="packet.price > 0"
-                            >{{ formatMoneyRupiah(packet.price) }} / bulan</div>
+                                v-if="packet.grandTotal > 0"
+                            >{{ formatMoneyRupiah(packet.grandTotal) }} / bulan</div>
                         </div>
                         <div class="dropdown__item item align-normal">
                             <div class="is-size-6">Detail Harga</div>
                         </div>
-                        <div class="dropdown__item item align-normal" v-if="packet.grandTotal > 0">
-                            <div class="is-size-6">Harga</div>
-                            <div class="is-size-6">{{ formatMoneyRupiah(packet.grandTotal) }} / bulan</div>
+                        <div class="dropdown__item item align-normal" v-if="packet.price > 0">
+                            <div class="is-size-6">Harga Patungan</div>
+                            <div class="is-size-6">{{ formatMoneyRupiah(packet.price) }} / bulan</div>
                         </div>
                         <div class="dropdown__item item align-normal">
                             <div class="is-size-6">Biaya Admin</div>
