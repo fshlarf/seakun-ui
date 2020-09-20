@@ -14,7 +14,7 @@
                         @click="choosePacket(packet)"
                     >
                         <div class="dropdown__item item align-normal mb-2">
-                            <div class="bold">
+                            <div class="bold packet-name">
                                 {{ packet.name }}
                                 <span v-if="packet.bestSeller">
                                     <i class="fa fa-star" style="color: gold"></i>
@@ -30,11 +30,11 @@
                         </div>
                         <div class="dropdown__item item align-normal" v-if="packet.grandTotal > 0">
                             <div class="is-size-6">Harga</div>
-                            <div class="bold is-size-6">{{ formatMoneyRupiah(packet.grandTotal) }} / bulan</div>
+                            <div class="is-size-6">{{ formatMoneyRupiah(packet.grandTotal) }} / bulan</div>
                         </div>
                         <div class="dropdown__item item align-normal">
                             <div class="is-size-6">Biaya Admin</div>
-                            <div class="bold is-size-6">{{ setAdminFee(packet.adminFee) }}</div>
+                            <div class="is-size-6">{{ setAdminFee(packet.adminFee) }}</div>
                         </div>
                         <div class="dropdown__item item align-normal mt-2">
                             <div>Tipe Paket</div>
@@ -43,14 +43,14 @@
                             >{{ packet.typePacket.toUpperCase() }}</div>
                         </div>
                         <div v-if="packet.facilities">
-                            <ul class="list-unstyled">
+                            <ul style="padding-left: 0px;">
                                 <li
                                     v-for="(val, index) in packet.facilities"
                                     :key="index"
                                 >
-                                    - {{ val }}
+                                    {{ val }}
                                 </li>
-                                <li>- {{ packet.desc }}</li>
+                                <li>{{ packet.desc }}</li>
                             </ul>
                         </div>
                         <div
@@ -827,7 +827,7 @@ export default {
         }
     }
     .bold {
-        font-weight: 500;
+        font-weight: 800;
     }
     .referal-code {
         color: dodgerblue;
@@ -866,6 +866,9 @@ export default {
         }
         .dropdown {
             max-width: 100%;
+            .packet-name {
+                max-width: 180px;
+            }
         }
         .modal-dropdown {
             max-width: 100%;
