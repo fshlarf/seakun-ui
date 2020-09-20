@@ -871,7 +871,7 @@ export default {
             max-width: 100%;
             .item {
                 div {
-                    max-width: 9rem;
+                    // max-width: 9rem;
                 }
             }
         }
