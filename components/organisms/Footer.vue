@@ -145,7 +145,7 @@ export default {};
             }
 
             &-wa {
-                color: blue;
+                color: #2895FF;
                 &:hover {
                     cursor: pointer;
                 }

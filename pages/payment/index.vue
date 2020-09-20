@@ -253,7 +253,7 @@ export default {
         }
         a {
             font-weight: 700;
-            color: #0000ee;
+            color: #2895FF;
         }
     }
     .container {
