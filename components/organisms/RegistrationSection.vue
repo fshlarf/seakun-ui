@@ -13,7 +13,7 @@
                         :key="id"
                         @click="choosePacket(packet)"
                     >
-                        <div class="dropdown__item item align-normal mb-2">
+                        <div class="dropdown__item item align-normal mb-2 packet-title">
                             <div class="bold packet-name">
                                 {{ packet.name }}
                                 <span v-if="packet.bestSeller">
@@ -528,7 +528,7 @@ export default {
                         path: "/payment",
                         query: {
                             provider: this.provider,
-                            packet: this.packet,
+                            packet_id: this.choosedPacket.id,
                             voucher: this.voucher,
                         },
                     });
@@ -852,6 +852,7 @@ export default {
         pointer-events: none;
     }
 }
+
 @media (max-width: 800px) {
     .reg {
         padding: 80px 15px !important;

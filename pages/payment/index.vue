@@ -15,7 +15,7 @@
                             <img src="/images/thank-you.png" alt="Image not found" />
                         </div>
                         <h3 class="payment__header-h3">Thank You!</h3>
-                        <p v-html="setWordingInformation(provider, packet)"></p>
+                        <p v-html="setWordingInformation(provider, packetId)"></p>
                         <div class="box">
                             <div class="row">
                                 <div class="col box-title">Provider</div>
@@ -95,6 +95,7 @@ export default {
         return {
             provider: "",
             packet: "",
+            packetId: null,
             total: "-",
             showSnackBar: false,
             vouchersData: []
@@ -105,27 +106,27 @@ export default {
         this.getVouchersData()
     },
     methods: {
-        setWordingInformation(provider, packet) {
+        setWordingInformation(provider, packetId) {
             if (provider.toLowerCase() == 'netflix') {
-                if (packet == 'Paket Premium Grup') {
+                if (packetId == 2) {
                     return 'Segera lakukan pembayaran agar Seakun.id bisa \
                         langsung mengalokasikan kamu pada grup Netflix yang available, \
                         mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
                         <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
-                } else if (packet == 'Paket Premium Grup User Host') {
-                    return 'Segera lakukan pembayaran agar Seakun.id bisa \
-                        langsung mengalokasikan kamu pada grup Netflix yang available, \
-                        mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
-                        <br/><br/>Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. \
-                        <a href="https://seakun.id/info/user-host">Ketentuan User Host</a>.\
-                        <br/><b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
+                } else if (packetId == 1) {
+                    return 'Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. \
+                        <a href="https://seakun.id/info/user-host"> Baca ketentuan User Host</a>.\
+                        <br/><br/>Segera lakukan pembayaran agar Seakun.id bisa \
+                        langsung <b>mengalokasikan kamu pada grup Netflix yang available</b>, \
+                        <b>mencarikan teman berlangganan</b>, <b>memandu kamu untuk melakukan proses payment ke Netflix</b> dan <b>memproses akun Netflix</b>. \
+                        <br/><br/><b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
                 } else {
                     return 'Segera lakukan pembayaran agar Seakun.id dapat \
                         langsung memproses akun Netflix untuk kamu. \
                         <b>Informasi Akun</b>, <b>Password</b> dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
                 }
             } else if (provider.toLowerCase() == 'spotify') {
-                if (packet == 'Paket Premium Grup') {
+                if (packetId == 1) {
                     return 'Segera lakukan pembayaran agar Seakun.id dapat \
                         langsung mengirimkan <b>Link invitation</b> plan paket Grup Spotify.\
                         <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.'
@@ -157,31 +158,25 @@ export default {
             }
         },
         getPaymentDetail() {
-            const { provider, packet, voucher } = this.$router.history.current.query;
-
-            const isNetflix = provider.toLowerCase() === "netflix";
-            // const isSpotify = provider.toLowerCase() === 'spotify'
-
-            (this.provider = provider), (this.packet = packet);
-
-            axios
-                .get(
-                    `https://seakun-packet-api-v1.herokuapp.com/${
-                        isNetflix ? "netflix" : "spotify"
-                    }?name=${packet}`
-                )
-                .then((res) => {
-                    const { data, status } = res;
-                    if (status === 200) {
-                        if (voucher) {
-                            setTimeout(() => {
-                                this.checkValidVoucher(this.vouchersData, data?.[0], voucher)
-                            }, 500);
-                        } else {
-                            this.total = data?.[0].grandTotal
-                        }
+            const { provider, packet_id, voucher } = this.$router.history.current.query
+            this.provider = provider
+            axios.get(`https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}?id=${packet_id}`)
+            .then((res) => {
+                const { data, status } = res;
+                if (status === 200) {
+                    this.packet = data?.[0].name
+                    this.packetId = data?.[0].id
+                    console.log( this.packetId);
+                    if (voucher) {
+                        setTimeout(() => {
+                            this.checkValidVoucher(this.vouchersData, data?.[0], voucher)
+                        }, 500);
+                    } else {
+                        this.total = data?.[0].grandTotal
                     }
-                });
+                }
+            })
+            .catch(err => console.log(err))
         },
         getVouchersData() {
             axios.get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
