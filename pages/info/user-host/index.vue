@@ -89,15 +89,15 @@
                                 Untuk menjadi Host kamu bisa mengikuti langkah-langkah sebagai berikut.
                                 <ol class="mt-2">
                                     <li>Daftar sebagai User Host dengan memilih paket yang berlabel User Host di pilihan paket yang tersedia.</li>
-                                    <li>Lakukan pembayaran sesuai dengan petunjuk pembayaran normal dan mengirimkan bukti pembayaran ke admin.</li>
-                                    <li>Memberikan foto KTP ke admin Seakun.id.</li>
-                                    <li>Admin akan menghubungi kamu dan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan.</li>
-                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya, Contoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
-                                    <li>Segera lakukan konfirmasi ke admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil.</li>
-                                    <li>Kirimkan Nomor Rekening Bank kamu kepada admin untuk proses penggantian uang.</li>
-                                    <li>Admin akan mengganti keseluruhan biaya kamu yang terpakai untuk berlangganan provider entertainment secepatnya (paling lama 4 jam) setelah bukti transfer dikirim.</li>
-                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile serta Pin kepada kamu lewat email dan whatsap. Registrasi User Host pun selesai.</li>
-                                    <li>Untuk proses di bulan berikutnya, lakukan pembayaran sesuai dengan petunjuk pembayaran normal yang diinformasikan ke email kamu h-7 sebelum masa berlangganan berakhir dan mengirimkan bukti pembayaran ke admin. Selanjutnya akan memiliki langkah yang sama di mulai dari langkah nomor 5.</li>
+                                    <li>Pastikan nomor yang kamu daftarkan aktif di Whatsapp, Admin akan menghubungi kamu untuk konfirmasi.</li>
+                                    <li>Admin akan memberikan akun provider Entertainment (Contoh: Akun Netflix) yang belum memiliki plan berlangganan.</li>
+                                    <li>Kamu akan diminta untuk membayarkan terlebih dahulu biaya berlangganan plan paketnya. Contoh: Netflix premium dengan biaya sebesar Rp 186.000 menggunakan kartu debit/kredit yang kamu miliki.</li>
+                                    <li>Segera lakukan konfirmasi ke Admin jika proses pembayaran sudah berhasil dengan mengirim bukti pembayaran atau mutasi rekening yang menyatakan pembayaran berhasil.</li>
+                                    <li>Kirimkan foto KTP ke Admin Seakun.id untuk kelengkapan administrasi.</li>
+                                    <li>Kirimkan Nomor Rekening Bank kamu kepada Admin untuk proses penggantian uang.</li>
+                                    <li>Admin akan mengganti biaya yang kamu keluarkan dipotong dengan biaya berlangganan bulanan kamu, proses paling lama 4 jam setelah bukti transfer dikirim. Contoh: Netflix Rp 186.000 - Rp 46.500 (biaya berlangganan bulanan) = Rp 139.500</li>
+                                    <li>Admin akan mengirimkan Akun Netflix beserta Profile dan Pin kepada kamu melalui email dan Whatsapp. Registrasi User Host pun selesai.</li>
+                                    <li>Untuk proses di bulan berikutnya, lakukan pembayaran sesuai dengan petunjuk pembayaran normal yang diinformasikan ke email kamu H-7 sebelum masa berlangganan berakhir dan mengirimkan bukti pembayaran ke Admin. Selanjutnya akan memiliki langkah yang sama di mulai dari langkah nomor 4.</li>
                                 </ol>
                             </div>
                             <!-- End Accodion "Bagaimana cara daftar sebagai Host?" -->

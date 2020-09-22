@@ -519,13 +519,17 @@ export default {
             return showMore ? "Ciutkan" : "Selengkapnya";
         },
         executeApiMailSeakun(payload) {
+            const isUserHost = 1
+
             axios
                 .post("https://seakun-mail-api-v1.herokuapp.com/", payload)
                 .then((res) => {
                     this.isDisableBtn = false;
                     // Redirect to thankyou page when successfully registration
                     this.$router.push({
-                        path: "/payment",
+                        path: this.choosedPacket.id === isUserHost
+                            ? "/thankyou/user-host"
+                            : "/payment",
                         query: {
                             provider: this.provider,
                             packet_id: this.choosedPacket.id,
