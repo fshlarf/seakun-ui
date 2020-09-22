@@ -39,13 +39,14 @@
                             <div class="row mt-1">
                                 <div class="col box-title">Harga</div>
                                 <div class="col col-lg-1">:</div>
-                                <div class="col box-item">Rp{{ total }}</div>
+                                <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
                             </div>
                         </div>
                         <p>
                             Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi
-                            <br />oleh Admin melalui Whatsapp untuk proses selanjutnya.
-                            <br />Hubungi Admin
+                            oleh Admin melalui Whatsapp untuk proses selanjutnya.
+                            <br />
+                            <br />Hubungi Admin di
                             <a
                                 href="https://api.whatsapp.com/send?phone=6285774642738"
                             >085774642738</a>
@@ -122,6 +123,17 @@ export default {
             })
             validateArray.sort().reverse()
             validateArray[0] == 1 ? this.total = dataPacket.voucherGrandTotal : this.total = dataPacket.grandTotal
+        },
+        formatMoneyRupiah(num) {
+            if (num) {
+                return `Rp${num
+                    .toString()
+                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
+            } else if (num == 0) {
+                return `Rp${num
+                    .toString()
+                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
+            }
         }
     }
 };
@@ -141,16 +153,16 @@ export default {
         border: 1px solid #86d0c1;
         border-radius: 4px;
         padding: 16px;
-        margin-left: 250px !important;
-        margin-right: 250px !important;
+        max-width: 29rem;
+        margin: 0 auto;
     }
     .col {
         text-align: center;
-
         &.box {
             &-title {
                 text-align: left;
                 font-weight: 700;
+                max-width: 7rem;
             }
             &-item {
                 text-align: left;
