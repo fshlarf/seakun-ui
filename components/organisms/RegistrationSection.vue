@@ -359,7 +359,7 @@ export default {
             userHost: false,
             providers: [
                 { name: "Netflix", active: true },
-                { name: "Spotify", active: true },
+                { name: "Spotify", active: false },
                 { name: "Youtube", active: false },
                 { name: "Steam", active: false },
             ],
