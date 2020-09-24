@@ -95,7 +95,7 @@
         </transition>
         <div class="container">
             <Alert
-                message="Layanan mencari teman berlangganan untuk Netflix sudah tersedia, silahkan daftar ya :)"
+                message="Ada layanan baru nih dari Seakun.id untuk kamu yang hobi baca, layanan mencari teman berlangganan Gramedia kini telah hadir di Seakun.id. Langsung daftar kuy :)"
                 typeAlert="success"
             />
             <div class="row">
