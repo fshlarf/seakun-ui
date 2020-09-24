@@ -50,8 +50,10 @@
                                 >
                                     {{ val }}
                                 </li>
-                                <li v-if="packet.desc">{{ packet.desc }}</li>
                             </ul>
+                        </div>
+                        <div class="item" style="line-height: 16px;" v-if="packet.preOrderNotes">
+                            <label style="font-weight: 700;">Pre-Order:</label> {{packet.preOrderNotes}}
                         </div>
                         <div
                             style="padding: 0px"
@@ -72,6 +74,12 @@
                                 @click="openUserHostPage"
                                 style="color: #2895FF; cursor: pointer"
                             >Baca Ketentuan User Host Selengkapnya</a>
+                        </div>
+                        <div class="dropdown__item item" v-if="packet.isPreOrder">
+                            <a
+                                @click="openPreOrderPage"
+                                style="color: #2895FF; cursor: pointer; margin-top: 8px;"
+                            >Baca Ketentuan Pre-Order Selengkapnya</a>
                         </div>
                         <div
                             class="dropdown__item item"
@@ -208,13 +216,6 @@
                                     class="referal-code"
                                 >Masukkan Voucher</a>
                             </p>
-                            <!-- <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" v-model="userHost">
-                                <label class="form-check-label text-host" for="exampleCheck1">Bersedia menjadi <b>User Host</b>?</label>
-                            </div>
-                            <div class="user-host">
-                                Benefit menjadi <a class="user-host__link" @click="openUserHostPage"> User Host</a>
-                            </div>-->
                             <div class="form-group" v-if="showFormVoucher">
                                 <label for="voucher">Voucher</label>
                                 <input
@@ -359,8 +360,8 @@ export default {
             userHost: false,
             providers: [
                 { name: "Netflix", active: true },
+                { name: "Gramedia", active: true },
                 { name: "Spotify", active: false },
-                { name: "Youtube", active: false },
                 { name: "Steam", active: false },
             ],
             packets: [],
@@ -489,12 +490,12 @@ export default {
         },
         choosePacket(packet) {
             this.choosedPacket = packet;
-            this.packet = packet.name;
             this.showPacket = false;
+            this.packet = packet.name;
             this.errorMsg.packet = "";
             this.price = packet.grandTotal;
             this.checkValidVoucher();
-            this.userHost = packet.userHost;
+            packet.userHost && (this.userHost = packet.userHost)
         },
         formatMoneyRupiah(num) {
             if (num) {
@@ -519,27 +520,29 @@ export default {
             return showMore ? "Ciutkan" : "Selengkapnya";
         },
         executeApiMailSeakun(payload) {
-            const isUserHost = 1
-
-            axios
-                .post("https://seakun-mail-api-v1.herokuapp.com/", payload)
-                .then((res) => {
-                    this.isDisableBtn = false;
-                    // Redirect to thankyou page when successfully registration
-                    this.$router.push({
-                        path: this.choosedPacket.id === isUserHost
-                            ? "/thankyou/user-host"
-                            : "/payment",
-                        query: {
-                            provider: this.provider,
-                            packet_id: this.choosedPacket.id,
-                            voucher: this.voucher,
-                        },
-                    });
-                })
-                .catch((err) => {
-                    console.log(err);
+            this.choosedPacket.isPreOrder && (payload.isPreOrder = this.choosedPacket.isPreOrder)
+            axios.post("https://seakun-mail-api-v1.herokuapp.com/", payload)
+            .then((res) => {
+                this.isDisableBtn = false;
+                // Redirect to thankyou page when successfully registration
+                this.$router.push({path: this.setPathToRedirect(this.choosedPacket),
+                    query: {
+                        provider: this.provider,
+                        packet_id: this.choosedPacket.id,
+                        voucher: this.voucher,
+                    },
                 });
+            })
+            .catch((err) => {console.log(err)})
+        },
+        setPathToRedirect(choosedPacket) {
+            if (choosedPacket.userHost) {
+                return "/thankyou/user-host"
+            } else if (choosedPacket.isPreOrder) {
+                return "/thankyou/pre-order"
+            } else {
+                return "/payment"
+            }
         },
         getVouchersData() {
             axios
@@ -589,6 +592,9 @@ export default {
         },
         openUserHostPage() {
             window.open("/info/user-host");
+        },
+        openPreOrderPage() {
+            window.open("/info/pre-order");
         },
         capitalizeFirstLetter(str) {
             let splitStr = str.toLowerCase().split(" ");

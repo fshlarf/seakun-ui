@@ -166,7 +166,6 @@ export default {
                 if (status === 200) {
                     this.packet = data?.[0].name
                     this.packetId = data?.[0].id
-                    console.log( this.packetId);
                     if (voucher) {
                         setTimeout(() => {
                             this.checkValidVoucher(this.vouchersData, data?.[0], voucher)

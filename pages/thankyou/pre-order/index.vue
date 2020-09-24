@@ -18,23 +18,25 @@
                             <div class="row">
                                 <div class="col box-title">Provider</div>
                                 <div class="col col-lg-1">:</div>
-                                <div class="col box-item">-</div>
+                                <div class="col box-item">{{provider}}</div>
                             </div>
                             <div class="row mt-1">
                                 <div class="col box-title">Paket</div>
                                 <div class="col col-lg-1">:</div>
-                                <div class="col box-item">-</div>
+                                <div class="col box-item">{{packet}}</div>
                             </div>
                             <div class="row mt-1">
                                 <div class="col box-title">Harga</div>
                                 <div class="col col-lg-1">:</div>
-                                <div class="col box-item">Rp-</div>
+                                <div class="col box-item">{{formatMoneyRupiah(total)}}</div>
                             </div>
                         </div>
                         <p>
-                            Pembayaran akan dilakukan setelah satu grup full dan akun telah dibuat.
-                            <br />Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi
-                            <br />oleh Admin melalui Whatsapp untuk proses selanjutnya.
+                            Pembayaran akan dilakukan setelah satu grup full dan akun berhasil dibuat.
+                            <br />
+                            <br />
+                            Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi
+                            oleh Admin melalui Whatsapp untuk proses selanjutnya.
                             <br />Hubungi Admin
                             <a
                                 href="https://api.whatsapp.com/send?phone=6285774642738"
@@ -63,6 +65,59 @@ export default {
         Header: Header,
         Footer: Footer,
     },
+    data() {
+        return {
+            provider: '',
+            packet: '',
+            total: ''
+        }
+    },
+    mounted() {
+        this.getDataPacket()
+        this.getVouchersData()
+    },
+    methods: {
+        getDataPacket() {
+            const { provider, packet_id, voucher } = this.$router.history.current.query
+            this.provider = provider
+            axios.get(`https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}?id=${packet_id}`)
+            .then((res) => {
+                const { data, status } = res;
+                if (status === 200) {
+                    this.packet = data?.[0].name
+                    this.packetId = data?.[0].id
+                    if (voucher) {
+                        setTimeout(() => {
+                            this.checkValidVoucher(this.vouchersData, data?.[0], voucher)
+                        }, 500);
+                    } else {
+                        this.total = data?.[0].grandTotal
+                    }
+                }
+            })
+            .catch(err => console.log(err))
+        },
+        getVouchersData() {
+            axios.get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
+            .then(res => {
+                this.vouchersData = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
+        checkValidVoucher(vouchersData, dataPacket, voucher) {
+            let validateArray = []
+            vouchersData.map (e => {
+                e.voucher_code == voucher.toLowerCase() && e.active ? validateArray.push(1) : validateArray.push(0)
+            })
+            validateArray.sort().reverse()
+            validateArray[0] == 1 ? this.total = dataPacket.voucherGrandTotal : this.total = dataPacket.grandTotal
+        },
+        formatMoneyRupiah(num) {
+            return num && num > 0 ? `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}` : 'Rp0'
+        }
+    }
 };
 </script>
 
@@ -80,8 +135,8 @@ export default {
         border: 1px solid #86d0c1;
         border-radius: 4px;
         padding: 16px;
-        margin-left: 250px !important;
-        margin-right: 250px !important;
+        max-width: 26rem;
+        margin: 0 auto;
     }
     .col {
         text-align: center;
@@ -90,6 +145,7 @@ export default {
             &-title {
                 text-align: left;
                 font-weight: 700;
+                max-width: 7rem;
             }
             &-item {
                 text-align: left;
