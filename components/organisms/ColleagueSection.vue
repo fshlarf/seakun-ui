@@ -6,6 +6,9 @@
                 <img src="/images/netflix.png" alt="Image not found" />
             </div>
             <div class="col collega__content">
+                <img src="/images/gramedia.png" alt="Image not found" />
+            </div>
+            <div class="col collega__content">
                 <img src="/images/spotify.png" alt="Image not found" />
             </div>
             <div class="col collega__content">
