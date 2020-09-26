@@ -534,7 +534,7 @@ export default {
                     query: {
                         provider: this.provider,
                         packet_id: this.choosedPacket.id,
-                        voucher: this.voucher,
+                        voucher: this.isVoucherValid ? this.voucher : "",
                     },
                 });
             })
