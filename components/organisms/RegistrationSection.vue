@@ -231,6 +231,10 @@
                                     v-if="isVoucherValid"
                                     style="color: limegreen; margin-top: 6px; font-weight: 800"
                                 >Voucher Valid</p>
+                                <p
+                                    v-if="!isVoucherValid && showInvalidVoucher"
+                                    style="color: red; margin-top: 6px; font-weight: 800"
+                                >Voucher invalid</p>
                             </div>
                             <div>
                                 <transition name="slide-fade">
@@ -380,6 +384,7 @@ export default {
             showFormVoucher: false,
             isReferralValid: false,
             isVoucherValid: false,
+            showInvalidVoucher: false
         };
     },
     mounted() {
@@ -586,7 +591,11 @@ export default {
                     this.discountPrice = this.choosedPacket.voucherGrandTotal;
                 } else {
                     this.isVoucherValid = false;
+                    this.voucher && (this.showInvalidVoucher = true)
                     this.discountPrice = null;
+                    setTimeout(() => {
+                        this.showInvalidVoucher = false;  
+                    }, 5000);
                 }
             }
         },
