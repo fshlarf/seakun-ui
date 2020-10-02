@@ -95,7 +95,7 @@
         </transition>
         <div class="container">
             <Alert
-                message="Ada layanan baru nih dari Seakun.id untuk kamu yang hobi baca, layanan mencari teman berlangganan Gramedia kini telah hadir di Seakun.id. Langsung daftar kuy :)"
+                message="Layanan Teman Berlangganan Spotify sudah hadir lagi :)"
                 typeAlert="success"
             />
             <div class="row">
@@ -365,7 +365,7 @@ export default {
             providers: [
                 { name: "Netflix", active: true },
                 { name: "Gramedia", active: true },
-                { name: "Spotify", active: false },
+                { name: "Spotify", active: true },
                 { name: "Steam", active: false },
             ],
             packets: [],
