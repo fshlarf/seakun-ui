@@ -64,6 +64,8 @@
                             Setelah melakukan pembayaran,
                             <br />kirimkan bukti pembayaran ke Whatsapp Seakun.id
                             <a href="https://api.whatsapp.com/send?phone=6285774642738">085774642738.</a>
+                            <br />
+                            Jika <b>kamu ingin membayar sekaligus</b> untuk <b>3 bulan kedepan</b>, silahkan konfirmasi total pembayaran terlebih dahulu ke Admin.
                         </p>
                         <p>
                             Proses yang dilakukan sekitar 10 menit sampai paling lama 120 menit setelah bukti pembayaran dikirimkan ke whatsapp Seakun.id.
