@@ -10,18 +10,18 @@
                         </div>
                         <ul class="footer__widget-social">
                             <li>
-                                <a href="https://seakun.id">
+                                <a href="https://seakun.id" aria-label="web">
                                     <span class="fa fa-globe"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.instagram.com/seakun.id/">
-                                    <span class="fa fa-instagram"></span>
+                                    <span class="fa fa-instagram" aria-label="instagram"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="mailto:cs@seakun.id">
-                                    <span class="fa fa-envelope"></span>
+                                    <span class="fa fa-envelope" aria-label="email"></span>
                                 </a>
                             </li>
                         </ul>
@@ -30,9 +30,9 @@
                         <h3 class="footer__widget-title">Hubungi Kami</h3>
                         <div class="footer__widget-text">
                             <ul class="footer__widget-contact">
-                                <div class="footer__widget-contact-icon">
+                                <li class="footer__widget-contact-icon" style="margin-bottom: 24px;">
                                     <span class="fa fa-phone"></span>
-                                </div>
+                                </li>
                                 <li>
                                     <a target="_blank" class="footer__widget-contact-wa" href="https://api.whatsapp.com/send?phone=6285774642738">
                                         +62857-7464-2738
@@ -53,6 +53,7 @@
                         <div>
                             <form method="post">
                                 <div class="form-group">
+                                    <label for="email"></label>
                                     <input
                                         type="email"
                                         name="email"
@@ -60,7 +61,7 @@
                                         placeholder="Your Email"
                                         required
                                     />
-                                    <button type="submit">
+                                    <button type="submit" aria-label="Send Email">
                                         <span class="fa fa-paper-plane-o"></span>
                                     </button>
                                 </div>
