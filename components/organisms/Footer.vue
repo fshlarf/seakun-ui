@@ -53,7 +53,7 @@
                         <div>
                             <form method="post">
                                 <div class="form-group">
-                                    <label for="email"></label>
+                                    <label for="email" style="display:none;"></label>
                                     <input
                                         type="email"
                                         name="email"
