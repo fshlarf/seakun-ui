@@ -50,6 +50,9 @@
                     <li class="nav-item">
                         <a class="nav-link" @click="toContactUsElement">Hubungi</a>
                     </li>
+                    <li class="nav-item">
+                        <nuxt-link class="nav-link" to='/info/scheme-of-price'>Skema Harga</nuxt-link>
+                    </li>
                 </ul>
             </div>
         </div>

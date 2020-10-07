@@ -9,16 +9,20 @@
                         <div>
                             Paket Pre-Order adalah paket dimana
                             <b>
-                                akun akan dibuat setelah member dalam
-                                satu grup telah full
+                                akun akan dibuat setelah member dalam satu grup
+                                telah full
                             </b>
-                            (jumlah member dalam grup tergantung dari Provider Entertainment yang dipilih).
+                            (jumlah member dalam grup tergantung dari Provider
+                            Entertainment yang dipilih).
                         </div>
                         <div class="mt-3 mb-5">
-                            Setelah proses pendaftaran, Admin akan menghubungi kamu melalui Whatsapp untuk
-                            menginformasikan jumlah member saat ini, masa tunggu yang diperlukan, notifikasi
-                            grup jika telah full dan akun akan dibuat. Member melakukan pembayaran setelah grup
-                            full, akun akan dibagikan ke member setelah pembayaran diterima.
+                            Setelah proses pendaftaran, Admin akan menghubungi
+                            kamu melalui Whatsapp untuk menginformasikan jumlah
+                            member saat ini, masa tunggu yang diperlukan,
+                            notifikasi grup jika telah full dan akun akan
+                            dibuat. Member melakukan pembayaran setelah grup
+                            full, akun akan dibagikan ke member setelah
+                            pembayaran diterima.
                         </div>
                         <Title title="Flow Paket Pre-Order" />
                         <div class="preorder__flow">
@@ -68,106 +72,38 @@
                 <div class="row">
                     <div class="col-md-4 col-lg-6 faq-title-container">FAQ</div>
                     <div class="col-md-8 col-lg-6">
-                        <div id="accordion" class="accordion">
-                            <div
-                                class="accordion-header collapsed"
-                                id="heading1"
-                                data-toggle="collapse"
-                                data-target="#collapse1"
-                                aria-expanded="false"
-                                aria-controls="collapse1"
+                        <AccordionContainer>
+                            <Accordion
+                                name="faq1"
+                                title="Berapa lama saya harus menunggu grup full?"
                             >
-                                <h5>
-                                    Berapa lama saya harus menunggu grup full?
-                                    <span
-                                        class="icon-toggle"
-                                    ></span>
-                                </h5>
-                            </div>
-                            <div
-                                id="collapse1"
-                                class="collapse accordion-body"
-                                aria-labelledby="heading1"
-                                data-parent="#accordion"
+                                Masa tunggu biasanya 1 minggu, kami akan menginformasikan jika dalam 1 minggu 
+                                mendaftar apakah grup telah full atau masih ada slot kosong.
+                            </Accordion>
+                            <Accordion
+                                name="faq2"
+                                title="Kapan saya harus bayar?"
                             >
-                                Masa tunggu biasanya 1 minggu, kami akan menginformasikan jika dalam 1 minggu setelah mendaftar
-                                apakah grup telah full atau masih ada slot kosong.
-                            </div>
-
-                            <div
-                                class="accordion-header collapsed"
-                                id="heading2"
-                                data-toggle="collapse"
-                                data-target="#collapse2"
-                                aria-expanded="false"
-                                aria-controls="collapse2"
+                                Member melakukan pembayaran setelah grup full dan akun telah dibuat. 
+                                Admin akan menginformasikan setiap proses melalui Whatsapp.
+                            </Accordion>
+                            <Accordion
+                                name="faq3"
+                                title="Bagaimana jika saya ingin berhenti berlangganan?"
                             >
-                                <h5>
-                                    Kapan saya harus bayar?
-                                    <span class="icon-toggle"></span>
-                                </h5>
-                            </div>
-                            <div
-                                id="collapse2"
-                                class="collapse accordion-body"
-                                aria-labelledby="heading2"
-                                data-parent="#accordion"
+                                Akun berlangganan berlaku untuk 1 bulan setelah akun dibuat. Seminggu sebelum 
+                                masa berlangganan habis, Admin akan menginformasikan ke setiap member apakah ingin 
+                                lanjut atau berhenti berlangganan.
+                            </Accordion>
+                            <Accordion
+                                name="faq4"
+                                title="Bagaimana jika dalam 1 grup ada member yang berhenti berlangganan?"
                             >
-                                Member melakukan pembayaran setelah grup full dan akun telah dibuat. Admin akan menginformasikan
-                                setiap proses melalui Whatsapp.
-                            </div>
-
-                            <div
-                                class="accordion-header collapsed"
-                                id="heading3"
-                                data-toggle="collapse"
-                                data-target="#collapse3"
-                                aria-expanded="false"
-                                aria-controls="collapse3"
-                            >
-                                <h5>
-                                    Bagaimana jika saya ingin berhenti berlangganan?
-                                    <span
-                                        class="icon-toggle"
-                                    ></span>
-                                </h5>
-                            </div>
-                            <div
-                                id="collapse3"
-                                class="collapse accordion-body"
-                                aria-labelledby="heading3"
-                                data-parent="#accordion"
-                            >
-                                Akun berlangganan berlaku untuk 1 bulan setelah akun dibuat. Seminggu sebelum masa berlangganan
-                                habis, Admin akan menginformasikan ke setiap member apakah ingin lanjut atau berhenti berlangganan.
-                            </div>
-
-                            <div
-                                class="accordion-header collapsed"
-                                id="heading4"
-                                data-toggle="collapse"
-                                data-target="#collapse4"
-                                aria-expanded="false"
-                                aria-controls="collapse4"
-                            >
-                                <h5>
-                                    Bagaimana jika dalam 1 grup ada member yang berhenti berlangganan?
-                                    <span
-                                        class="icon-toggle"
-                                    ></span>
-                                </h5>
-                            </div>
-                            <div
-                                id="collapse4"
-                                class="collapse accordion-body"
-                                aria-labelledby="heading4"
-                                data-parent="#accordion"
-                            >
-                                Seminggu sebelum masa berlaku habis, Seakun.id akan mencarikan pengganti member yang berhenti
-                                berlangganan. Jika setelah masa berlangganan habis tapi belum ada member baru yang mengisi slot,
-                                maka Grup akan memasuki masa tunggu seperti proses di awal.
-                            </div>
-                        </div>
+                                Seminggu sebelum masa berlaku habis, Seakun.id akan mencarikan pengganti member 
+                                yang berhenti berlangganan. Jika setelah masa berlangganan habis tapi belum ada 
+                                member baru yang mengisi slot, maka Grup akan memasuki masa tunggu seperti proses di awal.
+                            </Accordion>
+                        </AccordionContainer>
                     </div>
                 </div>
             </div>
@@ -177,12 +113,16 @@
 </template>
 
 <script>
+import AccordionContainer from "~/components/atoms/AccordionContainer";
+import Accordion from "~/components/atoms/Accordion";
 import Header from "~/components/mollecules/Header";
 import Footer from "~/components/organisms/Footer";
 import Title from "~/components/atoms/Title";
 
 export default {
     components: {
+        AccordionContainer,
+        Accordion,
         Header,
         Footer,
         Title,
@@ -223,107 +163,7 @@ export default {
         color: #e5e5e5;
         font-weight: 700;
     }
-
-    .accordion {
-        padding-top: 0.75rem;
-
-        .accordion-header {
-            position: relative;
-            cursor: pointer;
-            padding: 0.75rem 0;
-
-            .icon-toggle {
-                color: #86d0c1;
-
-                &::before {
-                    top: 1rem;
-                    right: 0.5rem;
-                    content: "";
-                    position: absolute;
-                    display: block;
-                    width: 15px;
-                    height: 2px;
-                    font-size: 1rem;
-                    -webkit-transition: all 0.4s;
-                    -moz-transition: all 0.4s;
-                    -o-transition: all 0.4s;
-                    transition: all 0.4s;
-                }
-
-                &::after {
-                    top: 1rem;
-                    right: 0.5rem;
-                    content: "";
-                    position: absolute;
-                    display: block;
-                    width: 15px;
-                    height: 2px;
-                    font-size: 1rem;
-                    -webkit-transition: all 0.4s;
-                    -moz-transition: all 0.4s;
-                    -o-transition: all 0.4s;
-                    transition: all 0.4s;
-                }
-            }
-
-            h5 {
-                margin-bottom: 0;
-                padding-right: 2rem;
-                font-size: 1rem;
-
-                .icon-toggle:before {
-                    top: 1.5rem;
-                }
-
-                .icon-toggle:after {
-                    top: 1.5rem;
-                }
-            }
-
-            &[aria-expanded="false"] {
-                h5 {
-                    color: #666;
-                    font-weight: 700;
-                }
-
-                .icon-toggle {
-                    &::before {
-                        background: #999;
-                        transform: rotate(-180deg);
-                    }
-
-                    &::after {
-                        background: #999;
-                        transform: rotate(-90deg);
-                    }
-                }
-            }
-
-            &[aria-expanded="true"] {
-                h5 {
-                    color: #86d0c1;
-                    font-weight: 700;
-                }
-
-                .icon-toggle {
-                    &::before {
-                        background: #86d0c1;
-                        transform: rotate(0deg);
-                    }
-
-                    &::after {
-                        background: #86d0c1;
-                        transform: rotate(0deg);
-                    }
-                }
-            }
-        }
-
-        .accordion-body {
-            color: #999;
-            font-size: 0.9rem;
-        }
-    }
+    
     &.faq {
         padding-top: 50px !important;
         background-color: #f6f6f6;
