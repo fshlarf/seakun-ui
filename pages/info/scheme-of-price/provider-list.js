@@ -11,23 +11,23 @@ export const providerList = [
         ],
         informations: [
             {
-                title: 'Paket Premium Netflix',
+                title: 'Harga Paket Premium Netflix',
                 price: 'Rp186.000'
             },
             {
-                title: 'Jumlah Member / Grup',
+                title: 'Jumlah Member Dalam 1 Grup',
                 price: '4'
             },
             {
-                title: 'Patungan',
+                title: 'Harga Patungan',
                 price: 'Rp186.000 ÷ 4 = Rp46.500'
             },
             {
-                title: 'Biaya Admin',
+                title: 'Biaya Admin Seakun',
                 price: 'Rp6.500'
             },
             {
-                title: 'Paket Bulanan',
+                title: 'Harga Paket Bulanan',
                 price: 'Rp53.000',
                 is_total: true
             },
@@ -45,23 +45,23 @@ export const providerList = [
         ],
         informations: [
             {
-                title: 'Paket Premium Spotify',
+                title: 'Harga Paket Premium Spotify',
                 price: 'Rp86.900'
             },
             {
-                title: 'Jumlah Member / Grup',
+                title: 'Jumlah Member Dalam 1 Grup',
                 price: '5'
             },
             {
-                title: 'Patungan',
+                title: 'Harga Patungan',
                 price: 'Rp86.900 ÷ 5 = Rp17.380 ~Rp17.500'
             },
             {
-                title: 'Biaya Admin',
+                title: 'Biaya Admin Seakun',
                 price: 'Rp5.000'
             },
             {
-                title: 'Paket Bulanan',
+                title: 'Harga Paket Bulanan',
                 price: 'Rp22.500',
                 is_total: true
             },
@@ -76,23 +76,23 @@ export const providerList = [
         ],
         informations: [
             {
-                title: 'Paket Premium Gramedia Digital',
+                title: 'Harga Paket Premium Gramedia Digital',
                 price: 'Rp89.000'
             },
             {
-                title: 'Jumlah Member / Grup',
+                title: 'Jumlah Member Dalam 1 Grup',
                 price: '5'
             },
             {
-                title: 'Patungan',
+                title: 'Harga Patungan',
                 price: 'Rp89.000 ÷ 5 = Rp17.800 ~Rp18.000'
             },
             {
-                title: 'Biaya Admin',
+                title: 'Biaya Admin Seakun',
                 price: 'Rp5.000'
             },
             {
-                title: 'Paket Bulanan',
+                title: 'Harga Paket Bulanan',
                 price: 'Rp23.000',
                 is_total: true
             },

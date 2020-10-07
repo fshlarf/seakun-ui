@@ -9,19 +9,19 @@
                         <div class="card">
                             <img :src="item.img" alt="image not found" class="logo" />
                             <img :src="item.screenshot" alt="image not found" class="ss" />
-                                <p class="font-weight-bold">Detail Harga</p>
-                                <div class="row" v-for="(info, ind) in item.informations" :key="ind">
-                                    <div :class="`col ${info.is_total ? 'font-weight-bold' : ''}`">
+                                <p class="font-weight-bold info-mobile">Detail Harga</p>
+                                <div class="row pt-1" v-for="(info, ind) in item.informations" :key="ind">
+                                    <div :class="`col-md-auto info-mobile ${info.is_total ? 'font-weight-bold' : ''}`">
                                         {{ info.title }}
                                     </div>
-                                    <div :class="`col text-right ${info.is_total ? 'font-weight-bold' : ''}`">
+                                    <div :class="`col text-right info-mobile ${info.is_total ? 'font-weight-bold' : ''}`">
                                         {{ info.price }}
                                     </div>
                                 </div>
                             <div class="divider"></div>
                                 <p class="font-weight-bold">Skema Berlangganan</p>
                                 <ol style="padding-left: 1rem;">
-                                    <li v-for="(scheme, indx) in item.schemes" :key="indx">
+                                    <li class="pt-1" v-for="(scheme, indx) in item.schemes" :key="indx">
                                         {{ scheme }}
                                     </li>
                                 </ol>
@@ -99,8 +99,8 @@ export default {
         margin-left: 0 !important;
     }
 
-    .info-price {
-        font-size: 12px;
+    .info-mobile {
+        text-align: center !important;
     }
 
     .info {
