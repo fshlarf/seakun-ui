@@ -91,29 +91,38 @@ export default {
 }
 
 @media (max-width: 800px) {
-.scheme-price {
-    .content-mobile {
-        display: block !important;
-        width: 100%;
-        padding: 0 20px;
-        margin-left: 0 !important;
-    }
+    .scheme-price {
+        .content-mobile {
+            display: block !important;
+            width: 100%;
+            padding: 0 0px;
+            margin-left: 0 !important;
+            .card {
+                img {
+                    margin: 0 0;
+                }
+            }
+        }
 
-    .info-mobile {
-        text-align: center !important;
-    }
+        .info-mobile {
+            text-align: center !important;
+        }
 
-    .info {
-        font-size: 12px;
-        width: auto !important;
-        padding-right: 0 !important;
-    }
+        .info {
+            font-size: 12px;
+            width: auto !important;
+            padding-right: 0 !important;
+        }
 
-    .divider {
-        width: 100%;
-        height: 1px;
-        margin: 1rem 0;
+        .row {
+            margin-bottom: 5px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            margin: 1rem 0;
+        }
     }
-}
 }
 </style>
