@@ -243,7 +243,7 @@ import Header from "~/components/mollecules/Header";
 import Accordion from "~/components/atoms/Accordion";
 import AccordionContainer from "~/components/atoms/AccordionContainer";
 import Title from "~/components/atoms/Title";
-import Footer from "~/components/organisms/Footer";
+import Footer from "~/components/mollecules/Footer";
 
 export default {
     components: {

@@ -1,98 +1,21 @@
 <template>
     <div class="reg" id="reg">
-        <transition name="slide-fade">
-            <Modal
-                :showPacket="showPacket"
-                @closeModal="showPacket = false"
-                :titleModal="`Pilih Paket ${provider}`"
-            >
-                <div class="dropdown modal-dropdown" v-if="packets.length > 0">
-                    <div
-                        :class="`modal-dropdown__list ${setClassInActivePacket(packet)}`"
-                        v-for="(packet, id) in packets"
-                        :key="id"
-                        @click="choosePacket(packet)"
-                    >
-                        <div class="dropdown__item item align-normal mb-2 packet-title">
-                            <div class="bold packet-name">
-                                {{ packet.name }}
-                                <span v-if="packet.bestSeller">
-                                    <i class="fa fa-star" style="color: gold"></i>
-                                </span>
-                            </div>
-                            <div
-                                class="bold"
-                                v-if="packet.grandTotal > 0"
-                            >{{ formatMoneyRupiah(packet.grandTotal) }} / bulan</div>
-                        </div>
-                        <div class="dropdown__item item align-normal">
-                            <div class="is-size-6">Detail Harga</div>
-                        </div>
-                        <div class="dropdown__item item align-normal" v-if="packet.price > 0">
-                            <div class="is-size-6">Harga Patungan</div>
-                            <div class="is-size-6">{{ formatMoneyRupiah(packet.price) }} / bulan</div>
-                        </div>
-                        <div class="dropdown__item item align-normal">
-                            <div class="is-size-6">Biaya Admin</div>
-                            <div class="is-size-6">{{ setAdminFee(packet.adminFee) }}</div>
-                        </div>
-                        <div class="dropdown__item item align-normal mt-2">
-                            <div>Tipe Paket</div>
-                            <div
-                                class="packet-type"
-                            >{{ packet.typePacket.toUpperCase() }}</div>
-                        </div>
-                        <div v-if="packet.facilities">
-                            <ul style="padding-left: 0px;">
-                                <li
-                                    v-for="(val, index) in packet.facilities"
-                                    :key="index"
-                                >
-                                    {{ val }}
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="item" style="line-height: 16px;" v-if="packet.preOrderNotes">
-                            <label style="font-weight: 700;">Pre-Order:</label> {{packet.preOrderNotes}}
-                        </div>
-                        <div
-                            style="padding: 0px"
-                            v-if="packet.oneMonthFree"
-                            class="dropdown__item item"
-                        >
-                            <LabelChecked title="Gratis Satu Bulan Pertama" />
-                        </div>
-                        <div class="dropdown__item item" v-if="packet.userHost">
-                            <div>
-                                <b>Syarat menjadi User Host:</b>
-                                Memiliki Kartu Debit/Kredit Internasional yang dapat digunakan untuk
-                                melakukan pembayaran ke Netflix, Seperti Jenius, BNI Internasional dan lainnya.
-                            </div>
-                        </div>
-                        <div class="dropdown__item item" v-if="packet.userHost">
-                            <a
-                                @click="openUserHostPage"
-                                style="color: #2895FF; cursor: pointer"
-                            >Baca Ketentuan User Host Selengkapnya</a>
-                        </div>
-                        <div class="dropdown__item item" v-if="packet.isPreOrder">
-                            <a
-                                @click="openPreOrderPage"
-                                style="color: #2895FF; cursor: pointer; margin-top: 8px;"
-                            >Baca Ketentuan Pre-Order Selengkapnya</a>
-                        </div>
-                        <div
-                            class="dropdown__item item"
-                            v-if="!packet.active"
-                            style="color: red"
-                        >Paket Sedang Tidak Aktif</div>
-                    </div>
-                </div>
-                <div class="dropdown modal-dropdown" style="text-align: center;" v-else>
-                    <h5 style="margin: 10px 0px">Tunggu sebentar ya...</h5>
-                </div>
-            </Modal>
-        </transition>
+        <ModalPacket
+            :choosedPacket="choosedPacket"
+            :discountPrice="discountPrice"
+            :isVoucherValid="isVoucherValid"
+            :onCloseModal="onCloseModal"
+            :onChoosePacket="choosePacket"
+            :packet="packet"
+            :packets="packets"
+            :price="price"
+            :provider="provider"
+            :showInvalidVoucher="showInvalidVoucher"
+            :showPacket="showPacket"
+            :userHost="userHost"
+            :vouchersData="vouchersData"
+            :voucher="voucher"
+        />
         <div class="container">
             <Alert
                 message="Layanan Teman Berlangganan Spotify sudah hadir lagi :)"
@@ -208,106 +131,23 @@
                                     style="color: limegreen; margin-top: 6px; font-weight: 800"
                                 >Code Referral Valid</p>
                             </div>
-                            <p>
-                                Punya
-                                <b>Voucher</b>?
-                                <a
-                                    @click="showFormVoucher = !showFormVoucher"
-                                    class="referal-code"
-                                >Masukkan Voucher</a>
-                            </p>
-                            <div class="form-group" v-if="showFormVoucher">
-                                <label for="voucher">Voucher</label>
-                                <input
-                                    v-model="voucher"
-                                    @blur="checkValidVoucher"
-                                    type="text"
-                                    id="voucher"
-                                    name="voucher"
-                                    class="form-control"
-                                    placeholder="Contoh: SEPTCERIA"
-                                />
-                                <p
-                                    v-if="isVoucherValid"
-                                    style="color: limegreen; margin-top: 6px; font-weight: 800"
-                                >Voucher Valid</p>
-                                <p
-                                    v-if="!isVoucherValid && showInvalidVoucher"
-                                    style="color: red; margin-top: 6px; font-weight: 800"
-                                >Voucher invalid</p>
-                            </div>
-                            <div>
-                                <transition name="slide-fade">
-                                    <div class="dropdown choosed-packet" v-if="choosedPacket.name">
-                                        <div style="padding: 0px; font-size: 14px;">
-                                            <div class="dropdown__item align-normal">
-                                                <div
-                                                    style="max-width: 9rem;"
-                                                >{{ choosedPacket.name }}</div>
-                                                <div>{{ formatMoneyRupiah(choosedPacket.price) }} / bulan</div>
-                                            </div>
-                                            <div class="dropdown__item item align-normal">
-                                                <div style="max-width: 9rem;">Biaya Admin</div>
-                                                <div>{{ formatMoneyRupiah(choosedPacket.adminFee) }} / bulan</div>
-                                            </div>
-                                            <div class="dropdown__item item align-normal">
-                                                <div style="max-width: 9rem;">Total</div>
-                                                <div
-                                                    style="font-weight: 900"
-                                                    :style="isVoucherValid ? {'text-decoration' : 'line-through'} : {'text-decoration' : 'unset'}"
-                                                >{{ formatMoneyRupiah(choosedPacket.grandTotal) }} / bulan</div>
-                                            </div>
-                                            <div
-                                                class="dropdown__item item align-normal"
-                                                style="margin-top: -8px"
-                                                v-if="isVoucherValid"
-                                            >
-                                                <div style="max-width: 9rem;"></div>
-                                                <div
-                                                    style="font-weight: 900"
-                                                >{{ formatMoneyRupiah(choosedPacket.voucherGrandTotal) }} / bulan</div>
-                                            </div>
-                                            <div
-                                                class="dropdown__item item align-normal"
-                                                style="margin: -8px 0px"
-                                                v-if="isVoucherValid"
-                                            >
-                                                <p
-                                                    style="color: limegreen; margin-top: 6px; font-weight: 500"
-                                                >Potongan harga penggunaan Voucher {{formatMoneyRupiah(choosedPacket.voucherDisc)}} (Berlaku di bulan pertama)</p>
-                                            </div>
-                                            <div
-                                                style="padding: 0px"
-                                                v-if="choosedPacket.oneMonthFree"
-                                            >
-                                                <LabelChecked title="Gratis Satu Bulan Pertama" />
-                                            </div>
-                                            <div
-                                                class="dropdown__item-info"
-                                            >{{ choosedPacket.desc }}</div>
-                                            <div
-                                                class="dropdown__item item align-normal"
-                                                v-if="choosedPacket.userHost"
-                                            >
-                                                <a
-                                                    @click="openUserHostPage"
-                                                    style="color: dodgerblue; cursor: pointer"
-                                                >Ketentuan User Host</a>
-                                            </div>
-                                            <div v-if="choosedPacket.notes" class="notes">
-                                                <div style="padding: 0px">Catatan:</div>
-                                                <p
-                                                    :class="showMore ? 'show-text' : 'hide'"
-                                                >{{ choosedPacket.notes }}</p>
-                                            </div>
-                                            <div
-                                                @click="showMore = !showMore"
-                                                class="showmore"
-                                            >{{wordingShowMore(showMore)}}</div>
-                                        </div>
-                                    </div>
-                                </transition>
-                            </div>
+                            
+                            <Voucher
+                                :checkValidVoucher="checkValidVoucher"
+                                :isVoucherValid="isVoucherValid"
+                                :onShowVoucher="onShowVoucher"
+                                :showFormVoucher="showFormVoucher"
+                                :showInvalidVoucher="showInvalidVoucher"
+                                :voucher="voucher"
+                            />
+                            
+                            <ChoosedPacket
+                                :choosedPacket="choosedPacket"
+                                :isVoucherValid="isVoucherValid"
+                                :onShowMore="onShowMore"
+                                :showMore="showMore"
+                            />
+
                             <p v-if="isDisableBtn">Tunggu sebentar ya...</p>
                             <button
                                 class="btn btn-primary"
@@ -336,15 +176,19 @@
 <script>
 import axios from "axios";
 import ButtonDrop from "~/components/atoms/ButtonDropDown";
-import LabelChecked from "~/components/atoms/LabelChecked";
-import Modal from "~/components/mollecules/Modal";
 import Alert from "~/components/atoms/Alert";
+
+import ModalPacket from "./views/ModalPacket"
+import ChoosedPacket from "./views/ChoosedPacket"
+import Voucher from "./views/Voucher"
+
 export default {
     components: {
-        ButtonDrop: ButtonDrop,
-        LabelChecked: LabelChecked,
-        Modal: Modal,
-        Alert: Alert,
+        Alert,
+        ButtonDrop,
+        ChoosedPacket,
+        ModalPacket,
+        Voucher
     },
     data() {
         return {
@@ -392,6 +236,15 @@ export default {
         this.getPacketData("netflix");
     },
     methods: {
+        onShowMore() {
+            this.showMore = !this.showMore
+        },
+        onShowVoucher() {
+            this.showFormVoucher = !this.showFormVoucher
+        },
+        onCloseModal() {
+            this.showPacket = false
+        },
         validateInput() {
             !this.fullname
                 ? (this.errorMsg.fullname = "Nama Lengkap harus diisi")
@@ -614,14 +467,6 @@ export default {
             }
             return splitStr.join(" ");
         },
-        setAdminFee(value) {
-            return value > 0
-                ? `${this.formatMoneyRupiah(value)} / bulan`
-                : "FREE";
-        },
-        setClassInActivePacket(packet) {
-            return !packet.active && "inactive";
-        },
     },
     watch: {
         showPacket() {
@@ -655,77 +500,6 @@ export default {
         font-size: .9rem !important;
     }
 
-    .modal-dropdown {
-        border-radius: 0.25rem;
-        border: none !important;
-        margin-bottom: 0px !important;
-        max-width: unset !important;
-        &__list {
-            padding: 16px 0px 0px 0px;
-            border: 1px solid #bbb;
-            margin: 16px;
-            border-radius: 8px;
-        }
-        .item {
-            padding: 2px 0px !important;
-        }
-    }
-    .dropdown {
-        border-radius: 0.25rem;
-        border: 1px solid #ced4da;
-        padding: 0px;
-        margin-bottom: 20px;
-        max-width: 300px;
-        div {
-            padding: 8px 16px;
-            cursor: pointer;
-            &:hover {
-                background-color: #daeeef;
-                border-color: #c6e9eb;
-            }
-        }
-        span {
-            color: coral;
-            font-size: 12px;
-        }
-        &__item {
-            padding: 8px 16px !important;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            ul {
-                list-style-type: none;
-                margin: 0 !important;
-                li {
-                    font-size: .8rem !important;
-                }
-            }
-
-            div {
-                padding: 0px;
-            }
-            img {
-                max-width: 20px;
-            }
-            &-info {
-                font-weight: 400;
-                padding-top: 0px !important;
-                font-style: italic;
-            }
-        }
-        .align-normal {
-            align-items: normal !important;
-        }
-        &__best-item {
-            display: flex;
-            align-items: center;
-            padding: 0px 0px !important;
-            div {
-                padding: 0px 10px;
-            }
-        }
-    }
     &__form {
         width: 50%;
         input {
@@ -761,6 +535,62 @@ export default {
         padding: 5px 16px;
         min-width: 140px;
     }
+    .dropdown {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 0px;
+    margin-bottom: 20px;
+    max-width: 300px;
+    div {
+        padding: 8px 16px;
+        cursor: pointer;
+        &:hover {
+            background-color: #daeeef;
+            border-color: #c6e9eb;
+        }
+    }
+    span {
+        color: coral;
+        font-size: 12px;
+    }
+    &__item {
+        padding: 8px 16px !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        ul {
+            list-style-type: none;
+            margin: 0 !important;
+            li {
+                font-size: 0.8rem !important;
+            }
+        }
+
+        div {
+            padding: 0px;
+        }
+        img {
+            max-width: 20px;
+        }
+        &-info {
+            font-weight: 400;
+            padding-top: 0px !important;
+            font-style: italic;
+        }
+    }
+    .align-normal {
+        align-items: normal !important;
+    }
+    &__best-item {
+        display: flex;
+        align-items: center;
+        padding: 0px 0px !important;
+        div {
+            padding: 0px 10px;
+        }
+    }
+}
     .slide-fade-enter-active {
         transition: all 0.4s ease;
     }
@@ -830,21 +660,6 @@ export default {
         color: green;
         font-weight: 800;
     }
-    .notes {
-        overflow: hidden;
-        .hide {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            height: 40px;
-        }
-        .show-text {
-            display: -webkit-box;
-            -webkit-line-clamp: unset;
-            -webkit-box-orient: vertical;
-            height: auto;
-        }
-    }
     .bold {
         font-weight: 800;
     }
@@ -866,10 +681,6 @@ export default {
             cursor: pointer;
         }
     }
-    .inactive {
-        opacity: 0.4;
-        pointer-events: none;
-    }
 }
 
 @media (max-width: 800px) {
@@ -883,20 +694,6 @@ export default {
             left: 0;
             margin-left: 0px;
             margin: 0 auto;
-        }
-        .dropdown {
-            max-width: 100%;
-            .packet-name {
-                max-width: 180px;
-            }
-        }
-        .modal-dropdown {
-            max-width: 100%;
-            .item {
-                div {
-                    // max-width: 9rem;
-                }
-            }
         }
         &__form {
             width: 100%;
@@ -926,6 +723,12 @@ export default {
         }
         h2 {
             font-size: 20px;
+        }
+        .dropdown {
+            max-width: 100%;
+            .packet-name {
+                max-width: 180px;
+            }
         }
     }
     @-webkit-keyframes fadein {

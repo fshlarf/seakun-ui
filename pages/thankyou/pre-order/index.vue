@@ -58,7 +58,7 @@
 <script>
 import axios from "axios";
 import Header from "~/components/mollecules/Header";
-import Footer from "~/components/organisms/Footer";
+import Footer from "~/components/mollecules/Footer";
 
 export default {
     component: {

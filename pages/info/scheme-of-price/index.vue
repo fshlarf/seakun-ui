@@ -36,7 +36,7 @@
 
 <script>
 import Header from "~/components/mollecules/Header"
-import Footer from "~/components/organisms/Footer"
+import Footer from "~/components/mollecules/Footer"
 import Title from "~/components/atoms/Title"
 import { providerList } from "./provider-list"
 
