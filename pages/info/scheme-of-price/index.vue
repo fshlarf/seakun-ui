@@ -77,7 +77,7 @@ export default {
             display: flex;
             align-self: center;
             width: 100%;
-            height: 247px;
+            height: 224px;
             object-fit: contain;
             margin: 2rem 0;
         }
