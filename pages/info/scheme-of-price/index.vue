@@ -71,6 +71,7 @@ export default {
         border-radius: 8px;
         box-shadow: 0px 0px 4px #dddddd;
         margin: 3rem 0 0;
+        max-width: 500px;
 
         .ss {
             display: flex;
