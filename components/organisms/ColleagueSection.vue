@@ -12,6 +12,9 @@
                 <img src="/images/spotify.png" alt="Image not found" />
             </div>
             <div class="col collega__content">
+                <img src="/images/youtube.png" alt="Image not found" />
+            </div>
+            <div class="col collega__content">
                 <img src="/images/steam.png" alt="Image not found" />
             </div>
         </div>
@@ -42,7 +45,7 @@ export default {
     }
     &__content {
         img {
-            width: 13rem;
+            width: 10rem;
         }
     }
 }
