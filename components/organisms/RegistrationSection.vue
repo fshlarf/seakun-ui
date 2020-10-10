@@ -95,7 +95,7 @@
         </transition>
         <div class="container">
             <Alert
-                message="Layanan Teman Berlangganan Spotify sudah hadir lagi :)"
+                message="Ada Layanan Baru Loh di Seakun.id! Kini layanan <b>Teman Berlangganan Youtube Premium</b> telah hadir di Seakun.id. Silahkan daftar :)"
                 typeAlert="success"
             />
             <div class="row">
@@ -364,6 +364,7 @@ export default {
             userHost: false,
             providers: [
                 { name: "Netflix", active: true },
+                { name: "Youtube", active: true },
                 { name: "Gramedia", active: true },
                 { name: "Spotify", active: true },
                 { name: "Steam", active: false },

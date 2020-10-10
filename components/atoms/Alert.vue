@@ -1,7 +1,5 @@
 <template>
-    <div :class="`alert alert-${typeAlert}`">
-        {{ message }}
-    </div>
+    <div :class="`alert alert-${typeAlert}`" v-html="message"></div>
 </template>
 
 <script>
