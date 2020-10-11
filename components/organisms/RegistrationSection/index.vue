@@ -189,6 +189,7 @@ export default {
             userHost: false,
             providers: [
                 { name: "Netflix", active: true },
+                { name: "Youtube", active: true },
                 { name: "Gramedia", active: true },
                 { name: "Spotify", active: true },
                 { name: "Steam", active: false },
