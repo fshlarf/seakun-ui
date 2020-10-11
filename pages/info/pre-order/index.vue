@@ -116,7 +116,7 @@
 import AccordionContainer from "~/components/atoms/AccordionContainer";
 import Accordion from "~/components/atoms/Accordion";
 import Header from "~/components/mollecules/Header";
-import Footer from "~/components/organisms/Footer";
+import Footer from "~/components/mollecules/Footer";
 import Title from "~/components/atoms/Title";
 
 export default {

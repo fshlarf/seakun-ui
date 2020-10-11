@@ -47,7 +47,7 @@
 import axios from "axios";
 import Header from "~/components/mollecules/Header";
 import CardShimmer from "~/components/mollecules/CardShimmer";
-import Footer from "~/components/organisms/Footer";
+import Footer from "~/components/mollecules/Footer";
 import CustomersGroupCard from "~/components/mollecules/CustomersGroupCard";
 
 export default {
