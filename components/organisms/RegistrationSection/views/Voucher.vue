@@ -3,7 +3,7 @@
         <p>
             Punya
             <b>Voucher</b>?
-            <a @click="onShowVoucher" class="referal-code">Masukkan Voucher</a>
+            <a @click="showFormVoucher = !showFormVoucher" class="referal-code">Masukkan Voucher</a>
         </p>
         <div class="form-group" v-if="showFormVoucher">
             <label for="voucher">Voucher</label>
@@ -34,11 +34,14 @@
 
 <script>
 export default {
+    data() {
+        return {
+            showFormVoucher: false
+        }
+    },
     props: {
         checkValidVoucher: Function,
         isVoucherValid: Boolean,
-        onShowVoucher: Function,
-        showFormVoucher: Boolean,
         showInvalidVoucher: Boolean,
         voucher: String,
     },

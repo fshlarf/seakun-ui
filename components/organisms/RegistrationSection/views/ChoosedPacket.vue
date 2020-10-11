@@ -75,7 +75,7 @@
                         v-if="choosedPacket.userHost"
                     >
                         <a
-                            @click="openUserHostPage"
+                            @click="onOpenPage('user-host')"
                             style="color: dodgerblue; cursor: pointer"
                             >Ketentuan User Host</a
                         >
@@ -86,7 +86,7 @@
                             {{ choosedPacket.notes }}
                         </p>
                     </div>
-                    <div @click="onShowMore" class="showmore">
+                    <div @click="showMore = !showMore" class="showmore">
                         {{ wordingShowMore(showMore) }}
                     </div>
                 </div>
@@ -97,28 +97,23 @@
 
 <script>
 import LabelChecked from "~/components/atoms/LabelChecked";
+import { currencyFormat } from "~/helpers"
 
 export default {
     components: {
         LabelChecked,
     },
+    data() {
+        return {
+            showMore: false
+        }
+    },
     methods: {
         formatMoneyRupiah(num) {
-            if (num) {
-                return `Rp${num
-                    .toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
-            } else if (num == 0) {
-                return `Rp${num
-                    .toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
-            }
+            return currencyFormat(num)
         },
-        openUserHostPage() {
-            window.open("/info/user-host");
-        },
-        openPreOrderPage() {
-            window.open("/info/pre-order");
+        onOpenPage(page) {
+            window.open(`/info/${page}`)
         },
         wordingShowMore(showMore) {
             return showMore ? "Ciutkan" : "Selengkapnya";
@@ -127,8 +122,6 @@ export default {
     props: {
         choosedPacket: Object,
         isVoucherValid: Boolean,
-        onShowMore: Function,
-        showMore: Boolean,
     },
 };
 </script>

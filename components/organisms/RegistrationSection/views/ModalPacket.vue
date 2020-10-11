@@ -2,28 +2,24 @@
     <transition name="slide-fade">
         <Modal
             :showPacket="showPacket"
-            @closeModal="onCloseModal"
+            @closeModal="onCloseModalPacket"
             :titleModal="`Pilih Paket ${provider}`"
         >
             <div class="dropdown modal-dropdown" v-if="packets.length > 0">
                 <div
                     v-for="(packet, id) in packets"
                     :key="id"
-                    :class="`modal-dropdown__list ${setClassInActivePacket(
-                        packet
-                    )}`"
+                    :class="`modal-dropdown__list ${setClassInActivePacket(packet)}`"
                     @click="onChoosePacket(packet)"
                 >
-                    <div
-                        class="dropdown__item item align-normal mb-2 packet-title"
-                    >
-                        <div class="bold packet-name">
+                    <div class="dropdown__item item align-normal mb-2 packet-title">
+                        <div class="font-weight-bold packet-name">
                             {{ packet.name }}
                             <span v-if="packet.bestSeller">
                                 <i class="fa fa-star" style="color: gold"></i>
                             </span>
                         </div>
-                        <div class="bold" v-if="packet.grandTotal > 0">
+                        <div class="font-weight-bold" v-if="packet.grandTotal > 0">
                             {{ formatMoneyRupiah(packet.grandTotal) }} / bulan
                         </div>
                     </div>
@@ -86,14 +82,14 @@
                     </div>
                     <div class="dropdown__item item" v-if="packet.userHost">
                         <a
-                            @click="openUserHostPage"
+                            @click="openNewPage('user-host')"
                             style="color: #2895ff; cursor: pointer"
                             >Baca Ketentuan User Host Selengkapnya</a
                         >
                     </div>
                     <div class="dropdown__item item" v-if="packet.isPreOrder">
                         <a
-                            @click="openPreOrderPage"
+                            @click="openNewPage('pre-order')"
                             style="
                                 color: #2895ff;
                                 cursor: pointer;
@@ -125,29 +121,24 @@
 <script>
 import Modal from "~/components/mollecules/Modal";
 import LabelChecked from "~/components/atoms/LabelChecked";
+import { currencyFormat } from "~/helpers"
 
 export default {
     components: {
         LabelChecked,
         Modal,
     },
+    data() {
+        return {
+            isShowModal: this.$props.showPacket
+        }
+    },
     methods: {
         formatMoneyRupiah(num) {
-            if (num) {
-                return `Rp${num
-                    .toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
-            } else if (num == 0) {
-                return `Rp${num
-                    .toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
-            }
+            return currencyFormat(num)
         },
-        openUserHostPage() {
-            window.open("/info/user-host");
-        },
-        openPreOrderPage() {
-            window.open("/info/pre-order");
+        openNewPage(page) {
+            window.open(`/info/${page}`);
         },
         setAdminFee(value) {
             return value > 0
@@ -163,7 +154,7 @@ export default {
         discountPrice: Number,
         isVoucherValid: Boolean,
         onChoosePacket: Function,
-        onCloseModal: Function,
+        onCloseModalPacket: Function,
         packet: String,
         packets: Array,
         price: Number,
@@ -190,6 +181,11 @@ export default {
     /* .slide-fade-leave-active below version 2.1.8 */ {
     transform: translateY(-50px);
     opacity: 0.2;
+}
+
+.packet-type {
+    color: green;
+    font-weight: 800;
 }
 
 .inactive {

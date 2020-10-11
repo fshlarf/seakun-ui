@@ -4,8 +4,8 @@
             :choosedPacket="choosedPacket"
             :discountPrice="discountPrice"
             :isVoucherValid="isVoucherValid"
-            :onCloseModal="onCloseModal"
             :onChoosePacket="choosePacket"
+            :onCloseModalPacket="onCloseModalPacket"
             :packet="packet"
             :packets="packets"
             :price="price"
@@ -21,56 +21,37 @@
                 message="Layanan Teman Berlangganan Spotify sudah hadir lagi :)"
                 typeAlert="success"
             />
+
             <div class="row">
                 <div class="col">
                     <div class="reg__form">
                         <h3>Daftar Sekarang</h3>
                         <form>
-                            <div class="form-group">
-                                <label for="fullname">Nama Lengkap</label>
-                                <input
-                                    type="text"
-                                    id="fullname"
-                                    name="fullname"
-                                    class="form-control"
-                                    placeholder="Contoh: John Doe"
-                                    @keydown="onChangeFullname"
-                                    v-model="fullname"
-                                />
-                                <p
-                                    class="error-msg"
-                                    v-if="errorMsg.fullname"
-                                >{{ errorMsg.fullname }}</p>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="form-control"
-                                    placeholder="mail@gmail.com"
-                                    @keydown="onChangeEmail"
-                                    v-model="email"
-                                />
-                                <p class="error-msg" v-if="errorMsg.email">{{ errorMsg.email }}</p>
-                            </div>
-                            <div class="form-group">
-                                <label for="whatsapp">Nomor Handphone (Whatsapp)</label>
-                                <input
-                                    type="text"
-                                    id="whatsapp"
-                                    name="whatsapp"
-                                    class="form-control"
-                                    placeholder="08123435456"
-                                    v-model="whatsapp"
-                                    @keydown="onChangeWhatsapp"
-                                />
-                                <p
-                                    class="error-msg"
-                                    v-if="errorMsg.whatsapp"
-                                >{{ errorMsg.whatsapp }}</p>
-                            </div>
+                            <FormInput
+                                label="Nama Lengkap"
+                                placeholder="Contoh: John Doe"
+                                class="input"
+                                :errorMessage="errorMsg.fullname"
+                                @keydown="onChangeInput('fullname')"
+                                v-model="fullname"
+                            />
+                            <FormInput
+                                label="Email"
+                                placeholder="mail@gmail.com"
+                                class="input"
+                                :errorMessage="errorMsg.email"
+                                @keydown="onChangeInput('email')"
+                                v-model="email"
+                            />
+                            <FormInput
+                                label="Nomor Handphone (Whatsapp)"
+                                placeholder="08123435456"
+                                class="input"
+                                type="number"
+                                :errorMessage="errorMsg.whatsapp"
+                                @keydown="onChangeInput('whatsapp')"
+                                v-model="whatsapp"
+                            />
                             <div class="form-group">
                                 <ButtonDrop
                                     @onClick="showProvider = !showProvider"
@@ -135,8 +116,6 @@
                             <Voucher
                                 :checkValidVoucher="checkValidVoucher"
                                 :isVoucherValid="isVoucherValid"
-                                :onShowVoucher="onShowVoucher"
-                                :showFormVoucher="showFormVoucher"
                                 :showInvalidVoucher="showInvalidVoucher"
                                 :voucher="voucher"
                             />
@@ -144,8 +123,6 @@
                             <ChoosedPacket
                                 :choosedPacket="choosedPacket"
                                 :isVoucherValid="isVoucherValid"
-                                :onShowMore="onShowMore"
-                                :showMore="showMore"
                             />
 
                             <p v-if="isDisableBtn">Tunggu sebentar ya...</p>
@@ -175,8 +152,11 @@
 
 <script>
 import axios from "axios";
+import { capitalizeFirstLetter, fullDate } from "~/helpers"
+
 import ButtonDrop from "~/components/atoms/ButtonDropDown";
 import Alert from "~/components/atoms/Alert";
+import FormInput from "~/components/atoms/FormInput";
 
 import ModalPacket from "./views/ModalPacket"
 import ChoosedPacket from "./views/ChoosedPacket"
@@ -184,6 +164,7 @@ import Voucher from "./views/Voucher"
 
 export default {
     components: {
+        FormInput,
         Alert,
         ButtonDrop,
         ChoosedPacket,
@@ -221,7 +202,6 @@ export default {
                 packet: "",
             },
             isDisableBtn: false,
-            showMore: false,
             referralsData: [],
             vouchersData: [],
             showFormReferalCode: false,
@@ -236,13 +216,7 @@ export default {
         this.getPacketData("netflix");
     },
     methods: {
-        onShowMore() {
-            this.showMore = !this.showMore
-        },
-        onShowVoucher() {
-            this.showFormVoucher = !this.showFormVoucher
-        },
-        onCloseModal() {
+        onCloseModalPacket() {
             this.showPacket = false
         },
         validateInput() {
@@ -288,18 +262,12 @@ export default {
                     console.log(err);
                 });
         },
-        onChangeFullname() {
-            this.errorMsg.fullname = "";
-        },
-        onChangeEmail() {
-            this.errorMsg.email = "";
-        },
-        onChangeWhatsapp() {
-            this.errorMsg.whatsapp = "";
+        onChangeInput(name) {
+            this.errorMsg[name] = "";
         },
         postRegisteredUser() {
             let payload = {
-                fullname: this.capitalizeFirstLetter(this.fullname),
+                fullname: capitalizeFirstLetter(this.fullname),
                 email: this.email,
                 whatsapp: this.whatsapp,
                 provider: this.provider,
@@ -309,29 +277,23 @@ export default {
                 userhost: this.userHost,
                 referalcode: this.referalcode,
                 voucher: this.isVoucherValid ? this.voucher : "",
-                createddate: this.setFullDate(),
+                createddate: fullDate(),
             };
-            axios
-                .post(
-                    "https://seakun-api-v1.herokuapp.com/registered-user",
-                    payload
-                )
-                .then((res) => {
-                    if (res.data.message == "success") {
-                        this.executeApiMailSeakun(payload);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                    this.isDisableBtn = false;
-                });
-        },
-        setFullDate() {
-            let today = new Date();
-            const dd = String(today.getDate()).padStart(2, "0");
-            const mm = String(today.getMonth() + 1).padStart(2, "0");
-            const yyyy = today.getFullYear();
-            return (today = dd + "/" + mm + "/" + yyyy);
+            console.log(payload)
+            // axios
+            //     .post(
+            //         "https://seakun-api-v1.herokuapp.com/registered-user",
+            //         payload
+            //     )
+            //     .then((res) => {
+            //         if (res.data.message == "success") {
+            //             this.executeApiMailSeakun(payload);
+            //         }
+            //     })
+            //     .catch((err) => {
+            //         console.log(err);
+            //         this.isDisableBtn = false;
+            //     });
         },
         chooseProvider(provider) {
             if (this.provider != provider.name) {
@@ -355,17 +317,6 @@ export default {
             this.checkValidVoucher();
             packet.userHost && (this.userHost = packet.userHost)
         },
-        formatMoneyRupiah(num) {
-            if (num) {
-                return `Rp${num
-                    .toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
-            } else if (num == 0) {
-                return `Rp${num
-                    .toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`;
-            }
-        },
         clickShowPacket() {
             if (this.provider == "Contoh: Netflix") {
                 this.errorMsg.packet = "Provider Entertainment belum dipilih";
@@ -373,9 +324,6 @@ export default {
             } else {
                 this.showPacket = !this.showPacket;
             }
-        },
-        wordingShowMore(showMore) {
-            return showMore ? "Ciutkan" : "Selengkapnya";
         },
         executeApiMailSeakun(payload) {
             this.choosedPacket.isPreOrder && (payload.isPreOrder = this.choosedPacket.isPreOrder)
@@ -452,21 +400,6 @@ export default {
                 }
             }
         },
-        openUserHostPage() {
-            window.open("/info/user-host");
-        },
-        openPreOrderPage() {
-            window.open("/info/pre-order");
-        },
-        capitalizeFirstLetter(str) {
-            let splitStr = str.toLowerCase().split(" ");
-            for (let i = 0; i < splitStr.length; i++) {
-                splitStr[i] =
-                    splitStr[i].charAt(0).toUpperCase() +
-                    splitStr[i].substring(1);
-            }
-            return splitStr.join(" ");
-        },
     },
     watch: {
         showPacket() {
@@ -498,6 +431,10 @@ export default {
 
     .is-size-6 {
         font-size: .9rem !important;
+    }
+
+    .input {
+        max-width: 300px !important;
     }
 
     &__form {
@@ -640,28 +577,6 @@ export default {
     }
     .show {
         display: block;
-    }
-
-    .choosed-packet {
-        div {
-            cursor: unset !important;
-            &:hover {
-                background-color: unset !important;
-            }
-        }
-        .showmore {
-            color: #04604d !important;
-            &:hover {
-                cursor: pointer !important;
-            }
-        }
-    }
-    .packet-type {
-        color: green;
-        font-weight: 800;
-    }
-    .bold {
-        font-weight: 800;
     }
     .referal-code {
         color: dodgerblue;
