@@ -279,21 +279,20 @@ export default {
                 voucher: this.isVoucherValid ? this.voucher : "",
                 createddate: fullDate(),
             };
-            console.log(payload)
-            // axios
-            //     .post(
-            //         "https://seakun-api-v1.herokuapp.com/registered-user",
-            //         payload
-            //     )
-            //     .then((res) => {
-            //         if (res.data.message == "success") {
-            //             this.executeApiMailSeakun(payload);
-            //         }
-            //     })
-            //     .catch((err) => {
-            //         console.log(err);
-            //         this.isDisableBtn = false;
-            //     });
+            axios
+                .post(
+                    "https://seakun-api-v1.herokuapp.com/registered-user",
+                    payload
+                )
+                .then((res) => {
+                    if (res.data.message == "success") {
+                        this.executeApiMailSeakun(payload);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    this.isDisableBtn = false;
+                });
         },
         chooseProvider(provider) {
             if (this.provider != provider.name) {
