@@ -98,4 +98,42 @@ export const providerList = [
             },
         ]
     },
+    {
+        img: '/images/youtube.png',
+        screenshot: '/images/ss-youtube.png',
+        schemes: [
+            'Seakun membuat akun dan membeli Paket Premium di Youtube',
+            'Seakun bertindak sebagai user Host dalam grup ',
+            'Member membuat/menyediakan akun masing-masing ',
+            'Seakun mengundang 5 member untuk join 1 grup Premium',
+            'Member yang telah join ke grup dapat menikmati firut Premium'
+        ],
+        informations: [
+            {
+                title: 'Harga Paket Premium Youtube',
+                price: 'Rp89.000'
+            },
+            {
+                title: 'Harga setelah dikenakan pajak 10%',
+                price: 'Rp97.900 ~Rp98.000'
+            },
+            {
+                title: 'Jumlah Member Dalam 1 Grup',
+                price: '5'
+            },
+            {
+                title: 'Harga Patungan',
+                price: 'Rp98.000 ÷ 5 = Rp19.600'
+            },
+            {
+                title: 'Biaya Admin Seakun',
+                price: 'Rp5.400'
+            },
+            {
+                title: 'Harga Paket Bulanan',
+                price: 'Rp25.000',
+                is_total: true
+            },
+        ]
+    },
 ]
