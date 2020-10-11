@@ -623,6 +623,9 @@ export default {
                 max-width: 100%;
             }
         }
+        .input {
+            max-width: 100% !important;
+        }
         .container {
             padding: 0px 25px;
         }
