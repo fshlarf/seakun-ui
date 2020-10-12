@@ -18,7 +18,7 @@
         />
         <div class="container">
             <Alert
-                message="Layanan Teman Berlangganan Spotify sudah hadir lagi :)"
+                message="Ada layanan baru lho di Seakun.id! Kini layanan <b>Teman Berlangganan Youtube</b> telah hadir di Seakun.id. Silahkan mendaftar :)"
                 typeAlert="success"
             />
 
