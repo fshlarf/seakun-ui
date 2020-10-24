@@ -69,7 +69,7 @@ export default {
         },
         getCustomersData() {
             axios
-                .get("https://seakun-api-v1.herokuapp.com/registered-user/group")
+                .get("https://seakun-api.herokuapp.com/registered-user/group")
                 .then((res) => this.processDataCustomers(res.data))
                 .then(() => this.scrollToRegistrationSection())
                 .catch((err) => console.log(err))

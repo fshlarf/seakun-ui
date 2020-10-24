@@ -282,7 +282,7 @@ export default {
             };
             axios
                 .post(
-                    "https://seakun-api-v1.herokuapp.com/registered-user",
+                    "https://seakun-api.herokuapp.com/registered-user",
                     payload
                 )
                 .then((res) => {
