@@ -39,8 +39,9 @@
                                     </a>
                                 </li>
                                 <li>cs@seakun.id</li>
-                                <li><b>Jam Operasional</b></li>
-                                <li>Senin-Minggu: 09.00 - 21.00 WIB</li>
+                                <li style="margin-top: 20px;"><b>Jam Operasional</b></li>
+                                <li>Setiap Hari:</li>
+                                <li>09.00 - 21.00 WIB</li>
                             </ul>
                         </div>
                     </div>
