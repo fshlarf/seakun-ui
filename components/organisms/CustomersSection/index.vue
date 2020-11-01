@@ -37,7 +37,7 @@
                     <div class="provider gramedia">
                         <div class="provider-content">
                             <img src="/images/gramedia.png" alt="" >
-                            <p>Grup Gramedia Digital yang sudah berlanggan lewat Seakun.id</p>
+                            <p>Grup Gramedia yang sudah berlanggan lewat Seakun.id</p>
                             <button class="btn btn-primary" @click="showMore('gramedia')">Yuk lihat dulu!</button>
                         </div>
                     </div>
@@ -251,7 +251,7 @@ export default {
             }
         }
         .provider {
-            padding: 80px 0px;
+            padding: 76px 0px;
             margin-left: -16px;
             &-content {
                 img {
