@@ -73,7 +73,7 @@ export default {
 <style lang="scss" scoped>
 .card {
     width: 14rem;
-    margin: 0px 20px;
+    margin: 0px 8px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
     border: unset;

@@ -2,10 +2,7 @@
     <div>
         <Header />
         <div class="customer container">
-            <div class="row mb-3">
-                <h4 class="col text-left font-weight-bold">Group Berlangganan</h4>
-            </div>
-
+            <Title title="Group Berlangganan" />
             <div v-if="isLoading">
                 <div class="row row-cols-1 row-cols-md-4">
                     <div class="col" v-for="(item, index) in shimmerInitialData" :key="index">
@@ -13,7 +10,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row row-cols-1 row-cols-md-4" v-if="customers.length > 0">
                 <div class="col mb-4" v-for="(customer, index) in customers" :key="index">
                     <div :class="`card card-${setClassStatus(customer.names)}`" v-if="customer">
@@ -49,13 +45,15 @@ import Header from "~/components/mollecules/Header";
 import CardShimmer from "~/components/mollecules/CardShimmer";
 import Footer from "~/components/mollecules/Footer";
 import CustomersGroupCard from "~/components/mollecules/CustomersGroupCard";
+import Title from "~/components/atoms/Title";
 
 export default {
     components: {
         Header,
         Footer,
         CardShimmer,
-        CustomersGroupCard
+        CustomersGroupCard,
+        Title
     },
     data() {
         return {
@@ -65,16 +63,16 @@ export default {
         };
     },
     mounted() {
-        this.getCustomersData();
+        this.getCustomersData()
     },
     methods: {
         getCustomersData() {
+            let provider = this.$route.query.provider
             this.isLoading = true;
-            axios
-                .get("https://seakun-api.herokuapp.com/registered-user/group")
-                .then((res) => this.processDataCustomers(res.data))
-                .catch((err) => console.log(err))
-                .finally(() => (this.isLoading = false));
+            axios.get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
+            .then((res) => this.processDataCustomers(res.data))
+            .catch((err) => console.log(err))
+            .finally(() => (this.isLoading = false));
         },
         processDataCustomers(customers) {
             let newArr = [];
