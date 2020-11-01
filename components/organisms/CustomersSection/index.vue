@@ -7,38 +7,7 @@
                     <div v-for="(customer, index) in customers" :key="index">
                         <CustomersGroupCard :dataCustomer="customer" />
                     </div>
-                    <div class="customers__content--chevron mobile" @click="slideRight">
-                        <svg
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            class="bi bi-chevron-right"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                            />
-                        </svg>
-                        <span>Selengkapnya</span>
-                    </div>
-                </div>
-                <div class="customers__content--chevron desktop" @click="slideRight">
-                    <span>Selengkapnya</span>
-                    <svg
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 16 16"
-                        class="bi bi-chevron-right"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                        />
-                    </svg>
+                    <ButtonChevron @click-chevron="slideRight"/>
                 </div>
             </div>
         </div>
@@ -48,12 +17,14 @@
 <script>
 import CustomersGroupCard from "~/components/mollecules/CustomersGroupCard";
 import Title from "~/components/atoms/Title";
+import ButtonChevron from "~/components/atoms/ButtonChevron";
 import axios from "axios";
 
 export default {
     components: {
         CustomersGroupCard,
         Title,
+        ButtonChevron
     },
     data() {
         return {
@@ -133,16 +104,7 @@ export default {
             overflow-x: scroll;
             height: 24rem !important;
             padding-top: 30px;
-        }
-        &--chevron {
-            cursor: pointer;
-            padding: 20px;
-            background-color:rgba(221, 221, 221, 0.088);
-            border-radius: 10px;
-            &:hover {
-                background-color:#86d0c1;
-                color: #ffffff;
-            }
+            align-items: center;
         }
     }
 }
@@ -165,9 +127,7 @@ export default {
 .scroll::-webkit-scrollbar-thumb:hover {
     background: white;
 }
-.mobile {
-   display: none;
-}
+
 @media (max-width: 800px) {
     .customers {
         padding: 80px 4px 0px 4px;
@@ -181,36 +141,8 @@ export default {
             &--carousell {
                 height: 20rem !important;
                 padding: 16px 10px 0px 16px;
-                align-items: center;
-            }
-            &--chevron {
-                padding: 8px;
-                margin: 0px 16px !important;
-                background-color: #86d0c1;
-                color: white;
             }
         }
-    }
-    .mobile {
-        height: 37px;
-        display: block;
-        align-items: center;
-        padding: 0px 16px;
-        background-color: transparent;
-        text-align: center;
-        svg {
-            background-color: #86d0c1;
-            padding: 8px;
-            font-size: 36px;
-            border-radius: 25px;
-            margin-bottom: 10px;
-        }
-        span {
-            color: black;
-        }
-    }
-    .desktop {
-        display: none;
     }
 }
 </style>
