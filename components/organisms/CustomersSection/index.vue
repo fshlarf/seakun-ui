@@ -8,7 +8,7 @@
                         <div class="provider-content">
                             <img src="/images/netflix.png" alt="" >
                             <p>Grup Netflix yang sudah berlanggan lewat Seakun.id</p>
-                            <button class="btn btn-primary" @click="showMore('netflix')">Yuk Lihat dulu!</button>
+                            <button class="btn btn-primary" @click="showMore('netflix')">Yuk lihat dulu!</button>
                         </div>
                     </div>
                     <div v-for="(customer, index) in netflixCustomers" :key="index">
@@ -23,7 +23,7 @@
                         <div class="provider-content">
                             <img src="/images/spotify.png" alt="" >
                             <p>Grup Spotify yang sudah berlanggan lewat Seakun.id</p>
-                            <button class="btn btn-primary" @click="showMore('spotify')">Yuk Lihat dulu!</button>
+                            <button class="btn btn-primary" @click="showMore('spotify')">Yuk lihat dulu!</button>
                         </div>
                     </div>
                     <div v-for="(customer, index) in spotifyCustomers" :key="index">
@@ -38,7 +38,7 @@
                         <div class="provider-content">
                             <img src="/images/gramedia.png" alt="" >
                             <p>Grup Gramedia Digital yang sudah berlanggan lewat Seakun.id</p>
-                            <button class="btn btn-primary" @click="showMore('gramedia')">Yuk Lihat dulu!</button>
+                            <button class="btn btn-primary" @click="showMore('gramedia')">Yuk lihat dulu!</button>
                         </div>
                     </div>
                     <div v-for="(customer, index) in gramediaCustomers" :key="index">
@@ -53,7 +53,7 @@
                         <div class="provider-content">
                             <img src="/images/youtube.png" alt="" >
                             <p>Grup Youtube yang sudah berlanggan lewat Seakun.id</p>
-                            <button class="btn btn-primary" @click="showMore('youtube')">Yuk Lihat dulu!</button>
+                            <button class="btn btn-primary" @click="showMore('youtube')">Yuk lihat dulu!</button>
                         </div>
                     </div>
                     <div v-for="(customer, index) in youtubeCustomers" :key="index">
