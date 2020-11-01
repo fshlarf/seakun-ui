@@ -7,7 +7,7 @@
                     <div v-for="(customer, index) in customers" :key="index">
                         <CustomersGroupCard :dataCustomer="customer" />
                     </div>
-                    <ButtonChevron @click-chevron="slideRight"/>
+                    <ButtonChevron @click-chevron="showMore"/>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@ export default {
         this.getCustomersData();
     },
     methods: {
-        slideRight() {
+        showMore() {
             this.$router.push('/info/customers')
         },
         getCustomersData() {
