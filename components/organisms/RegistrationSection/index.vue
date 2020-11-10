@@ -279,6 +279,7 @@ export default {
                 referalcode: this.referalcode,
                 voucher: this.isVoucherValid ? this.voucher : "",
                 createddate: fullDate(),
+                ispreorder: this.choosedPacket.isPreOrder
             };
             axios
                 .post(
@@ -326,7 +327,6 @@ export default {
             }
         },
         executeApiMailSeakun(payload) {
-            this.choosedPacket.isPreOrder && (payload.ispreorder = this.choosedPacket.isPreOrder)
             axios.post("https://seakun-mail-api-v1.herokuapp.com/", payload)
             .then((res) => {
                 this.isDisableBtn = false;
