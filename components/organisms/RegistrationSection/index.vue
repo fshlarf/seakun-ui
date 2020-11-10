@@ -326,7 +326,7 @@ export default {
             }
         },
         executeApiMailSeakun(payload) {
-            this.choosedPacket.isPreOrder && (payload.isPreOrder = this.choosedPacket.isPreOrder)
+            this.choosedPacket.isPreOrder && (payload.ispreorder = this.choosedPacket.isPreOrder)
             axios.post("https://seakun-mail-api-v1.herokuapp.com/", payload)
             .then((res) => {
                 this.isDisableBtn = false;
