@@ -209,7 +209,8 @@ export default {
             showFormVoucher: false,
             isReferralValid: false,
             isVoucherValid: false,
-            showInvalidVoucher: false
+            showInvalidVoucher: false,
+            blockMail: ['bughunterv4n@gmail.com']
         };
     },
     mounted() {
@@ -239,6 +240,10 @@ export default {
                 : (this.errorMsg.packet = "");
         },
         clickSubmit() {
+            if (this.email == this.blockMail[0]) {
+                alert('You are blocked!')
+                return
+            }
             this.validateInput();
             if (
                 this.fullname &&
