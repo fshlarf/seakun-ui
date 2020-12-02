@@ -321,7 +321,7 @@ export default {
             this.errorMsg.packet = "";
             this.price = packet.grandTotal;
             this.checkValidVoucher();
-            packet.userHost && (this.userHost = packet.userHost)
+            this.userHost = packet.userHost
         },
         clickShowPacket() {
             if (this.provider == "Contoh: Netflix") {
