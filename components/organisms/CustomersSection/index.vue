@@ -134,7 +134,7 @@ export default {
                 this.gramediaCustomers = graArr;
                     break;
                 case 'youtube':
-                const youArr = theArr.sort().reverse()
+                const youArr = theArr.slice(theArr.length-4, theArr.length-0).sort().reverse()
                 this.youtubeCustomers = youArr;
                     break;
             }
