@@ -307,6 +307,7 @@ export default {
                 this.packet = "Contoh: Paket Grup";
                 this.choosedPacket = {};
                 this.packets = [];
+                this.userHost = false
             }
             this.provider = provider.name;
             this.showProvider = false;
@@ -321,7 +322,7 @@ export default {
             this.errorMsg.packet = "";
             this.price = packet.grandTotal;
             this.checkValidVoucher();
-            this.userHost = packet.userHost
+            this.provider.toLowerCase() == 'netflix' && (this.userHost = packet.userHost)
         },
         clickShowPacket() {
             if (this.provider == "Contoh: Netflix") {
