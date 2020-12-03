@@ -55,7 +55,8 @@ export default {
   .container {
     padding: 25px 0px 25px !important;
     ul {
-      list-style: number;
+      counter-reset: number;
+      list-style: none;
       padding: 0px 10px 10px !important;
       li {
         color:#1F2023;
@@ -64,6 +65,13 @@ export default {
         margin-bottom: 12px;
         margin-left: -15px;
         margin-right: -15px;
+        display: flex;
+      }
+      li:before {
+        content: counter(number)")";
+        counter-increment: number;
+        padding-right: 5px;
+        
       }
       img {
         padding: 25px 0px 25px !important;
