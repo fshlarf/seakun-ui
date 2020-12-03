@@ -25,7 +25,7 @@
           <p>6&#41; Jika proses pembayaran berhasil, saldo di kartu kamu akan terpotonh sebesar harga plan yang dipiluh dan kamu akan diarahkan ke halaman pengaturan profil</p>
           <p>7&#41; Isi profil menggunakan nama "Seakun" dan klik "Continue". Lakukan pengaturan bahasa dan preferensi (jika muncul)</p>
           <p>8&#41; Setelah berada di Home, klik icon profil dan buka halaman Accoung > Billing Details (https://www.netflix.com/BillingActivity)</p>
-          <p>9&#41; Pastikan riwayat pembayaran telah muncul di halaman Billing Details <br />
+          <p>9&#41; Pastikan riwayat pembayaran telah muncul di halaman Billing Details</p>
           <img 
             class="img-fluid"
             src="/images/netflix-payment-info.png"
