@@ -14,8 +14,11 @@
             <div class="col collega__content">
                 <img src="/images/youtube.png" alt="Image not found" />
             </div>
-            <div class="col collega__content">
+            <!-- <div class="col collega__content">
                 <img src="/images/steam.png" alt="Image not found" />
+            </div> -->
+            <div class="col collega__content">
+                <img src="/images/microsoft365.png" alt="Image not found" />
             </div>
         </div>
     </div>
@@ -55,7 +58,6 @@ export default {
         &__provider {
             display: block;
             img {
-                width: inherit;
                 margin: 0 auto;
                 margin-top: 30px !important;
             }

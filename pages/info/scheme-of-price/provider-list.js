@@ -135,5 +135,38 @@ export const providerList = [
                 is_total: true
             },
         ]
+    },{
+        img: '/images/microsoft365.png',
+        screenshot: '/images/ss-microsoft365.png',
+        schemes: [
+            'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
+            'Seakun bertindak sebagai user Host dalam grup',
+            'Member membuat/menyediakan akun masing-masing',
+            'Seakun mengundang 5 member untuk join 1 grup Premium',
+            'Member yang telah join ke grup dapat menikmati fitur Premium'
+        ],
+        informations: [
+            {
+                title: 'Harga Paket Premium Microsoft 365',
+                price: 'Rp129.999 ~Rp130.000'
+            },
+            {
+                title: 'Jumlah member dalam 1 grup',
+                price: '5'
+            },
+            {
+                title: 'Harga Patungan',
+                price: 'Rp130.000 ÷ 5 = Rp26.000'
+            },
+            {
+                title: 'Biaya Admin Seakun',
+                price: 'Rp6.500'
+            },
+            {
+                title: 'Harga Paket Bulanan',
+                price: 'Rp32.500',
+                is_total: true
+            },
+        ]
     },
 ]
