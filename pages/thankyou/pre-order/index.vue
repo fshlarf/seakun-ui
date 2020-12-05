@@ -32,6 +32,11 @@
                             </div>
                         </div>
                         <p>
+                            <a href="/info/pre-order" target="_blank">
+                                <i>Baca ketentuan Pre-Order selengkapnya</i>
+                            </a>
+                        </p>
+                        <p>
                             Pembayaran akan dilakukan setelah satu grup full dan akun berhasil dibuat.
                             <br />
                             <br />
@@ -41,11 +46,6 @@
                             <a
                                 href="https://api.whatsapp.com/send?phone=6285774642738"
                             >085774642738</a>
-                        </p>
-                        <p>
-                            <a href="/info/pre-order" target="_blank">
-                                <i>Baca ketentuan Pre-Order selengkapnya</i>
-                            </a>
                         </p>
                     </div>
                 </div>

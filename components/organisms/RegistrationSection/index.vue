@@ -192,6 +192,7 @@ export default {
                 { name: "Youtube", active: true },
                 { name: "Gramedia", active: true },
                 { name: "Spotify", active: true },
+                { name: "Microsoft365", active: true },
                 { name: "Steam", active: false },
             ],
             packets: [],
