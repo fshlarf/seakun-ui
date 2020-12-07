@@ -94,7 +94,7 @@ export default {
 @media (max-width: 800px) {
     .scheme-price {
         .content-mobile {
-            display: block !important;
+            display: block;
             width: 100%;
             padding: 0 0px;
             margin-left: 0 !important;

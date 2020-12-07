@@ -2,32 +2,34 @@
 <div>
   <Header />
   <div class="netflix">
-    <Title title="Proses Pendaftaran dan Pembayaran Netflix" />
     <div class="container">
-      <ul>
-        <li>Buka browser dan akses www.netflix.com</li>
-        <li>Lakukan Pendaftaran dengan memasukkan alamat email di kolom email dan klik "Get Started"</li>
-          <img 
-            src="/images/netflix-get-started.png"
-            alt="Image not found"/>
-        <li>Di halaman Step 1, tambahkan password sesuai dengan ketentuan yang diinformasikan oleh Admin Seakun, kemudian klik "Continue"</li>
-          <img 
-            src="/images/netflix-register-1.png"
-            alt="Image not found"/>
-        <li>Di halaman Step 2, pilih plan sesuai informasi dari Admin Seakun, kemudian klik "Continue"</li>
-        <li>Di halaman Step 3, masukkan informasi kartu kredit atau debit international kamu. Kemudian centang kotak "I agree" dan klik "Star Membership"</li>
-          <img 
-            src="/images/netflix-register-2.png"
-            alt="Image not found"/>
-        <li>Jika proses pembayaran berhasil, saldo di kartu kamu akan terpotonh sebesar harga plan yang dipiluh dan kamu akan diarahkan ke halaman pengaturan profil</li>
-        <li>Isi profil menggunakan nama "Seakun" dan klik "Continue". Lakukan pengaturan bahasa dan preferensi (jika muncul)</li>
-        <li>Setelah berada di Home, klik icon profil dan buka halaman Accoung > Billing Details (https://www.netflix.com/BillingActivity)</li>
-        <li>Pastikan riwayat pembayaran telah muncul di halaman Billing Details</li>
-          <img 
-            src="/images/netflix-payment-info.png"
-            alt="Image not found"/>
-        <li>Informasikan ke Admin Seakun bahwa proses pendaftaran dan pembayaran telah berhasil. Admin akan melakukan pengecekan dan pengaturan lebih lanjut terhadap akun yang didaftarkan</li>
-      </ul>
+      <Title title="Proses Pendaftaran dan Pembayaran Netflix" />
+      <div class="row justify-content-around content-mobile">
+        <ul>
+          <li>Buka browser dan akses www.netflix.com</li>
+          <li>Lakukan Pendaftaran dengan memasukkan alamat email di kolom email dan klik "Get Started"</li>
+            <img 
+              src="/images/netflix-get-started.png"
+              alt="Image not found"/>
+          <li>Di halaman Step 1, tambahkan password sesuai dengan ketentuan yang diinformasikan oleh Admin Seakun, kemudian klik "Continue"</li>
+            <img 
+              src="/images/netflix-register-1.png"
+              alt="Image not found"/>
+          <li>Di halaman Step 2, pilih plan sesuai informasi dari Admin Seakun, kemudian klik "Continue"</li>
+          <li>Di halaman Step 3, masukkan informasi kartu kredit atau debit international kamu. Kemudian centang kotak "I agree" dan klik "Star Membership"</li>
+            <img 
+              src="/images/netflix-register-2.png"
+              alt="Image not found"/>
+          <li>Jika proses pembayaran berhasil, saldo di kartu kamu akan terpotonh sebesar harga plan yang dipiluh dan kamu akan diarahkan ke halaman pengaturan profil</li>
+          <li>Isi profil menggunakan nama "Seakun" dan klik "Continue". Lakukan pengaturan bahasa dan preferensi (jika muncul)</li>
+          <li>Setelah berada di Home, klik icon profil dan buka halaman Accoung > Billing Details (https://www.netflix.com/BillingActivity)</li>
+          <li>Pastikan riwayat pembayaran telah muncul di halaman Billing Details</li>
+            <img 
+              src="/images/netflix-payment-info.png"
+              alt="Image not found"/>
+          <li>Informasikan ke Admin Seakun bahwa proses pendaftaran dan pembayaran telah berhasil. Admin akan melakukan pengecekan dan pengaturan lebih lanjut terhadap akun yang didaftarkan</li>
+        </ul>
+      </div>
     </div>
   </div>
   <Footer />
@@ -79,6 +81,20 @@ export default {
         max-height: 100%;
         display: block;
         margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .netflix {
+    .content-mobile {
+      display: block !important;
+      width: 100%;
+      padding: 0 0px;
+      margin-left: 0 !important;
+      img {
+        margin: 0 0;
       }
     }
   }
