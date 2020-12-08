@@ -126,10 +126,6 @@
                                         berhasil.
                                     </li>
                                     <li>
-                                        Kirimkan foto KTP ke Admin Seakun.id
-                                        untuk kelengkapan administrasi.
-                                    </li>
-                                    <li>
                                         Kirimkan Nomor Rekening Bank kamu kepada
                                         Admin untuk proses penggantian uang.
                                     </li>
