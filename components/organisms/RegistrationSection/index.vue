@@ -18,7 +18,7 @@
         />
         <div class="container">
             <Alert
-                message="Ada layanan baru lho di Seakun.id! Kini layanan <b>Teman Berlangganan Youtube</b> telah hadir di Seakun.id. Silahkan mendaftar :)"
+                message="Ada layanan baru lho di Seakun.id! Kini layanan <b>Teman Berlangganan Microsoft 365</b> telah hadir di Seakun.id. Silahkan mendaftar :)"
                 typeAlert="success"
             />
 
