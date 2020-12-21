@@ -4,10 +4,23 @@
         <div class="scheme-price">
             <div class="container">
                 <Title title="Bagaimana Seakun.id mengatur harga?" />
+                <div class="scheme-price__info">
+                    Dengan konsep patungan, melalui Seakun.id harga Paket Grup dari masing-masing provider akan dibagi 
+                    rata per jumah member dalam suatu grup. Sedangkan harga final yang dibayarkan oleh member adalah 
+                    harga patungan yang sudah termasuk biaya admin Seakun.id. 
+                </div>
+                <br />
+                <div class="scheme-price__info">
+                    <b>Perlu diperhatikan</b> bahwa harga paket dari provider bisa saja tidak bulat, 
+                    sehingga Seakun.id melakukan pembulatan harga patungan dengan tujuan untuk memudahkan 
+                    member dalam melihat nominal yang akan ditransfer. Hasil pembulatan akan masuk sebagai 
+                    keuntungan untuk Seakun.id dan dengan berlangganan melalui Seakun.id, member dinyatakan 
+                    sudah mengerti dan setuju dengan skema harga yang sudah ditetapkan.
+                </div>
                 <div class="row justify-content-around content-mobile">
                     <div v-for="(item, index) in providerList" :key="index">
                         <div class="card">
-                            <img :src="item.img" alt="image not found" class="logo" />
+                              <img :src="item.img" alt="image not found" class="logo" />
                             <img :src="item.screenshot" alt="image not found" class="ss" />
                                 <p class="font-weight-bold info-mobile">Detail Harga</p>
                                 <div class="row pt-1" v-for="(info, ind) in item.informations" :key="ind">
@@ -58,6 +71,11 @@ export default {
 .scheme-price {
     padding: 100px 0px 40px !important;
 
+    &__info {
+        padding: 0px 17px;
+        font-size: 14px;
+    }
+
     .divider {
         height: 1px;
         width: 100%;
@@ -93,6 +111,9 @@ export default {
 
 @media (max-width: 800px) {
     .scheme-price {
+        &__info {
+            padding: 0px 8px;
+        }
         .content-mobile {
             display: block;
             width: 100%;
