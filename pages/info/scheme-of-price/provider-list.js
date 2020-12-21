@@ -123,7 +123,7 @@ export const providerList = [
             },
             {
                 title: 'Harga Patungan',
-                price: 'Rp98.000 ÷ 5 = Rp19.580'
+                price: 'Rp97.900 ÷ 5 = Rp19.580'
             },
             {
                 title: 'Biaya Admin Seakun',
