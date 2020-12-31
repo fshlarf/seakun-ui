@@ -62,6 +62,21 @@
                     <ButtonChevron @click-chevron="showMore('youtube')"/>
                 </div>
             </div>
+            <!-- <div class="customers__content" v-if="microsoftCustomers.length > 0">
+                <div class="customers__content--carousell scroll" id="content">
+                    <div class="provider microsoft">
+                        <div class="provider-content">
+                            <img src="/images/microsoft365.png" alt="microsoft365" >
+                            <p>Grup Microsoft365 yang sudah berlanggan lewat Seakun.id</p>
+                            <button class="btn btn-primary" @click="showMore('microsoft')">Yuk lihat dulu!</button>
+                        </div>
+                    </div>
+                    <div v-for="(customer, index) in microsoftCustomers" :key="index">
+                        <CustomersGroupCard :dataCustomer="customer" />
+                    </div>
+                    <ButtonChevron @click-chevron="showMore('microsoft')"/>
+                </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -83,7 +98,8 @@ export default {
             netflixCustomers: [],
             spotifyCustomers: [],
             gramediaCustomers: [],
-            youtubeCustomers: []
+            youtubeCustomers: [],
+            microsoftCustomers: []
         };
     },
     mounted() {
@@ -91,6 +107,7 @@ export default {
         this.getCustomersData('spotify')
         this.getCustomersData('gramedia')
         this.getCustomersData('youtube')
+        this.getCustomersData('microsoft')
     },
     methods: {
         showMore(provider) {
@@ -136,6 +153,9 @@ export default {
                 case 'youtube':
                 const youArr = theArr.slice(theArr.length-4, theArr.length-0).sort().reverse()
                 this.youtubeCustomers = youArr;
+                case 'microsoft':
+                const micArr = theArr.slice(theArr.length-4, theArr.length-0).sort().reverse()
+                this.microsoftCustomers = micArr;
                     break;
             }
         },
@@ -210,6 +230,10 @@ export default {
         }
         &.youtube {
             background-image: url('/images/youtube-provider.png');
+            background-size: 650px;
+        }
+        &.microsoft {
+            background-image: url('/images/microsoft-provider.jpg');
             background-size: 650px;
         }
     }

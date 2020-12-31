@@ -260,7 +260,7 @@ export default {
         getPacketData(provider) {
             axios
                 .get(
-                    `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}`
+                    `https://seakun-packet-api.herokuapp.com/${provider.toLowerCase()}`
                 )
                 .then((res) => {
                     this.packets = res.data;
@@ -334,7 +334,7 @@ export default {
             }
         },
         executeApiMailSeakun(payload) {
-            axios.post("https://seakun-mail-api-v1.herokuapp.com/", payload)
+            axios.post("https://seakun-mail-api.herokuapp.com/", payload)
             .then((res) => {
                 this.isDisableBtn = false;
                 // Redirect to thankyou page when successfully registration
@@ -359,7 +359,7 @@ export default {
         },
         getVouchersData() {
             axios
-                .get("https://seakun-packet-api-v1.herokuapp.com/vouchers")
+                .get("https://seakun-packet-api.herokuapp.com/vouchers")
                 .then((res) => {
                     this.vouchersData = res.data;
                 })
