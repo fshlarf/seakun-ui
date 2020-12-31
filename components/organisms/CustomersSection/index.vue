@@ -62,7 +62,7 @@
                     <ButtonChevron @click-chevron="showMore('youtube')"/>
                 </div>
             </div>
-            <!-- <div class="customers__content" v-if="microsoftCustomers.length > 0">
+            <div class="customers__content" v-if="microsoftCustomers.length > 0">
                 <div class="customers__content--carousell scroll" id="content">
                     <div class="provider microsoft">
                         <div class="provider-content">
@@ -76,7 +76,7 @@
                     </div>
                     <ButtonChevron @click-chevron="showMore('microsoft')"/>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
@@ -153,6 +153,7 @@ export default {
                 case 'youtube':
                 const youArr = theArr.slice(theArr.length-4, theArr.length-0).sort().reverse()
                 this.youtubeCustomers = youArr;
+                    break;
                 case 'microsoft':
                 const micArr = theArr.slice(theArr.length-4, theArr.length-0).sort().reverse()
                 this.microsoftCustomers = micArr;
@@ -234,13 +235,14 @@ export default {
         }
         &.microsoft {
             background-image: url('/images/microsoft-provider.jpg');
-            background-size: 650px;
+            background-size: 650px 440px;
         }
     }
 }
 
 .scroll {
     overflow-x: scroll;
+    overflow-y: hidden;
     scrollbar-color: #408374 #eeeeee;
     scrollbar-width: unset;
     scroll-behavior: smooth;
