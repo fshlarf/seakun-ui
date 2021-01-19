@@ -89,19 +89,19 @@ export default {
             
             axios
                 .get(
-                    `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}?id=${packet_id}`
+                    `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
                 )
                 .then((res) => {
                     const { data, status } = res;
                     if (status === 200) {
-                        this.packet = data?.[0].name
-                        this.packetId = data?.[0].id
+                        this.packet = data.name
+                        this.packetId = data.id
                         if (voucher) {
                             setTimeout(() => {
-                                this.checkValidVoucher(this.vouchersData, data?.[0], voucher)
+                                this.checkValidVoucher(this.vouchersData, data, voucher)
                             }, 500);
                         } else {
-                            this.total = data?.[0].grandTotal
+                            this.total = data.grandTotal
                         }
                     }
                 })
