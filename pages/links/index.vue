@@ -66,7 +66,6 @@ export default {
         padding: 20px;
         background-color: white;
         border: 1px dashed #86D0C1;
-        min-height: 89vh;
         &-content {
             justify-content: space-around;
             display: flex;
