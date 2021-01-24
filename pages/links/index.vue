@@ -60,7 +60,12 @@ export default {
 
 <style lang="scss">
 .sider {
-    background-color: #86D0C1 !important; padding: 2px 0px; position: absolute; top: 0; bottom: 0;
+    background-color: #86D0C1 !important; padding: 2px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
 }
 .links {
     background-color: #86D0C1 !important;
