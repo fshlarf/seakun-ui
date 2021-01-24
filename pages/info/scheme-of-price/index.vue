@@ -20,7 +20,7 @@
                 <div class="row justify-content-around content-mobile">
                     <div v-for="(item, index) in providerList" :key="index">
                         <div class="card">
-                              <img :src="item.img" alt="image not found" class="logo" />
+                            <img :src="item.img" alt="image not found" class="logo" />
                             <img :src="item.screenshot" alt="image not found" class="ss" />
                                 <p class="font-weight-bold info-mobile">Detail Harga</p>
                                 <div class="row pt-1" v-for="(info, ind) in item.informations" :key="ind">
@@ -28,7 +28,7 @@
                                         {{ info.title }}
                                     </div>
                                     <div :class="`col text-right info-mobile ${info.is_total ? 'font-weight-bold' : ''}`">
-                                        {{ info.price }}
+                                        {{ info.value }}
                                     </div>
                                 </div>
                             <div class="divider"></div>
