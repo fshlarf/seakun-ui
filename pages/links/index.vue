@@ -1,5 +1,5 @@
 <template>
-<div style="background-color: #86D0C1 !important; padding: 2px 0px">
+<div class="sider">
     <div class="links">
         <div class="links__container">
             <h4 style="color: #52AF9C; margin-bottom: 8px">Halo, teman!</h4>
@@ -59,6 +59,9 @@ export default {
 </script>
 
 <style lang="scss">
+.sider {
+    background-color: #86D0C1 !important; padding: 2px 0px; position: absolute; top: 0; bottom: 0;
+}
 .links {
     background-color: #86D0C1 !important;
     margin: 20px;
@@ -66,6 +69,7 @@ export default {
         padding: 20px;
         background-color: white;
         border: 1px dashed #86D0C1;
+        min-height: 80vh;
         &-content {
             justify-content: space-around;
             display: flex;
