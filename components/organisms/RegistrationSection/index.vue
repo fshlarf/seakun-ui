@@ -480,61 +480,61 @@ export default {
         min-width: 140px;
     }
     .dropdown {
-    border-radius: 0.25rem;
-    border: 1px solid #ced4da;
-    padding: 0px;
-    margin-bottom: 20px;
-    max-width: 300px;
-    div {
-        padding: 8px 16px;
-        cursor: pointer;
-        &:hover {
-            background-color: #daeeef;
-            border-color: #c6e9eb;
-        }
-    }
-    span {
-        color: coral;
-        font-size: 12px;
-    }
-    &__item {
-        padding: 8px 16px !important;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        ul {
-            list-style-type: none;
-            margin: 0 !important;
-            li {
-                font-size: 0.8rem !important;
+        border-radius: 0.25rem;
+        border: 1px solid #ced4da;
+        padding: 0px;
+        margin-bottom: 20px;
+        max-width: 300px;
+        div {
+            padding: 8px 16px;
+            cursor: pointer;
+            &:hover {
+                background-color: #daeeef;
+                border-color: #c6e9eb;
             }
         }
+        span {
+            color: coral;
+            font-size: 12px;
+        }
+        &__item {
+            padding: 8px 16px !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-        div {
-            padding: 0px;
+            ul {
+                list-style-type: none;
+                margin: 0 !important;
+                li {
+                    font-size: 0.8rem !important;
+                }
+            }
+
+            div {
+                padding: 0px;
+            }
+            img {
+                max-width: 20px;
+            }
+            &-info {
+                font-weight: 400;
+                padding-top: 0px !important;
+                font-style: italic;
+            }
         }
-        img {
-            max-width: 20px;
+        .align-normal {
+            align-items: normal !important;
         }
-        &-info {
-            font-weight: 400;
-            padding-top: 0px !important;
-            font-style: italic;
+        &__best-item {
+            display: flex;
+            align-items: center;
+            padding: 0px 0px !important;
+            div {
+                padding: 0px 10px;
+            }
         }
     }
-    .align-normal {
-        align-items: normal !important;
-    }
-    &__best-item {
-        display: flex;
-        align-items: center;
-        padding: 0px 0px !important;
-        div {
-            padding: 0px 10px;
-        }
-    }
-}
     .slide-fade-enter-active {
         transition: all 0.4s ease;
     }

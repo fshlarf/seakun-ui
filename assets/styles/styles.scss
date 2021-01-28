@@ -68,3 +68,9 @@ body {
 .scroller::-webkit-scrollbar-thumb:hover {
   background: #408374; 
 }
+
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 3px;
+}
