@@ -287,10 +287,12 @@ export default {
                 createddate: fullDate(),
                 ispreorder: this.choosedPacket.isPreOrder
             };
+            const headers = { "Access-Control-Allow-Origin": "*"}
             axios
                 .post(
                     "https://seakun-api.herokuapp.com/registered-user",
-                    payload
+                    payload,
+                    {headers: headers}
                 )
                 .then((res) => {
                     if (res.data.message == "success") {
