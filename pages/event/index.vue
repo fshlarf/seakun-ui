@@ -2,34 +2,9 @@
     <div>
         <Header/>
         <div class="event">
-            <div class="event-detail mobile">
-                <h5 style="padding: 20px 16px 0px 16px">Detail Acara</h5>
-                <img src="https://gmedia.net.id/upload/foto_artikel/20200814NlwIohPBV4.png" alt="event image"/>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Jenis Acara</div>:<div class="event-detail__info--value">Webinar</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Pembicara</div>:<div class="event-detail__info--value">Udin</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Host</div>:<div class="event-detail__info--value">Ucok</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Topik</div>:<div class="event-detail__info--value">How to become founder</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Waktu</div>:<div class="event-detail__info--value">16 Februari 2021</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key"></div><div class="event-detail__info--value">11.00 WIB - 13.00 WIB</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Lokasi</div>:<div class="event-detail__info--value">Via Google Meet (link akan dibagikan via email)</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Giveaway</div>:<div class="event-detail__info--value">Voucher E-Wallet untuk 6 orang beruntung (masing-masing Rp50.000)</div>
-                </div>
-            </div>
+            <EventDetail
+                extendClass="mobile"
+            />
             <div class="event-reg">
                 <h5 class="heading-5">Daftar Webinar</h5>
                 <br>
@@ -129,34 +104,7 @@
                     </form>
                 </div>
             </div>
-            <div class="event-detail desktop">
-                <h5 style="padding: 20px 16px 0px 16px">Detail Acara</h5>
-                <img src="https://gmedia.net.id/upload/foto_artikel/20200814NlwIohPBV4.png" alt="event image"/>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Jenis Acara</div>:<div class="event-detail__info--value">Webinar</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Pembicara</div>:<div class="event-detail__info--value">Udin</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Host</div>:<div class="event-detail__info--value">Ucok</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Topik</div>:<div class="event-detail__info--value">How to become founder</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Waktu</div>:<div class="event-detail__info--value">16 Februari 2021</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key"></div><div class="event-detail__info--value">11.00 WIB - 13.00 WIB</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Lokasi</div>:<div class="event-detail__info--value">Via Google Meet (link akan dibagikan via email)</div>
-                </div>
-                <div class="event-detail__info">
-                    <div class="event-detail__info--key">Giveaway</div>:<div class="event-detail__info--value">Voucher E-Wallet untuk 6 orang beruntung (masing-masing Rp50.000)</div>
-                </div>
-            </div>
+            <EventDetail/>
         </div>
         <Footer/>
     </div>
@@ -167,13 +115,15 @@ import Header from "~/components/mollecules/Header"
 import Footer from "~/components/mollecules/Footer"
 import FormInput from "~/components/atoms/FormInput"
 import ButtonDrop from "~/components/atoms/ButtonDropDown"
+import EventDetail from "./views/event-detail"
 
 export default {
     components: {
         Header,
         Footer,
         FormInput,
-        ButtonDrop
+        ButtonDrop,
+        EventDetail
     },
     data() {
         return {
@@ -356,12 +306,6 @@ h5 {
         }
     }
 }
-.desktop {
-    display: block !important;
-}
-.mobile {
-    display: none !important;
-}
 @media (max-width: 800px) {
     .event {
         display: block;
@@ -384,12 +328,6 @@ h5 {
                 }
             }
         }
-    }
-    .desktop {
-        display: none !important;
-    }
-    .mobile {
-        display: block !important;
     }
     .form-control {
         font-size: 14px !important;
