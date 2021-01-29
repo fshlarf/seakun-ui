@@ -243,7 +243,7 @@ export default {
             let payload = {
                 ...this.dataUser,
                 title_event: this.dataEvent.title_event,
-                slug_event: this.dataEvent.title_event
+                slug_event: this.dataEvent.slug_event
             }
             axios.post('https://seakun-api.herokuapp.com/event/register-user', payload)
             .then(res => {
