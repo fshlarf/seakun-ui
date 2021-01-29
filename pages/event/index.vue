@@ -87,6 +87,18 @@
                             @keydown="onChangeInput('suggestion_theme')"
                             v-model="dataUser.suggestion_theme"
                         />
+                        <div class="form-know-seakun">
+                            <label for="seakun-user">Dari mana anda mengetahui Seakun.id?*</label>
+                            <br>
+                            <input type="radio" id="Teman/Saudara" value="Teman/Saudara" v-model="dataUser.source_info" @change="onChangeInput('source_info')"><label style="padding-left: 8px" for="Teman/Saudara">Teman/Saudara</label>
+                            <br>
+                            <input type="radio" id="Medsos (Twitter, IG, FB, Tiktok)" value="Medsos (Twitter, IG, FB, Tiktok)" v-model="dataUser.source_info" @change="onChangeInput('source_info')"><label style="padding-left: 8px" for="Medsos (Twitter, IG, FB, Tiktok)">Medsos (Twitter, IG, FB, Tiktok)</label>
+                            <br>
+                            <input type="radio" id="Pencarian Google" value="Pencarian Google" v-model="dataUser.source_info" @change="onChangeInput('source_info')"><label style="padding-left: 8px" for="Pencarian Google">Pencarian Google</label>
+                            <br>
+                            <input type="radio" id="LinkedIn" value="LinkedIn" v-model="dataUser.source_info" @change="onChangeInput('source_info')"><label style="padding-left: 8px" for="LinkedIn">LinkedIn</label>
+                            <p class="error-msg" v-if="errorMsg.source_info">{{ errorMsg.source_info }}</p>
+                        </div>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="send-notif" :value="true" v-model="dataUser.notification">
                             <label class="form-check-label" for="send-notif">Kirimi saya email tentang layanan baru Seakun.id?</label>
@@ -145,6 +157,7 @@ export default {
                 is_know_seakun: null,
                 motivation: "",
                 suggestion_theme: "",
+                source_info: '',
                 notification: false
             },
             showJobList: false,
@@ -156,8 +169,8 @@ export default {
                 is_seakun_user: "",
                 is_know_seakun: "",
                 motivation: "",
-                suggestion_theme: ""
-
+                suggestion_theme: "",
+                source_info: ''
             },
             jobs: ['Pelajar', 'Mahasiswa', 'Pegawai Negeri', 'Pegawai Swasta', 'Pegawai BUMN', 'Pegawai Startup', 'Wiraswasta'],
             isDisableBtn: false
@@ -193,7 +206,8 @@ export default {
                 this.dataUser.job != "Pilih Pekerjaan" &&
                 this.dataUser.is_seakun_user != null &&
                 this.dataUser.is_know_seakun != null && 
-                this.dataUser.motivation
+                this.dataUser.motivation &&
+                this.dataUser.source_info
             ) {
                 this.postRegisteredUser()
             }
@@ -220,6 +234,9 @@ export default {
             !this.dataUser.motivation
                 ? (this.errorMsg.motivation = "Motivasi mengikuti event ini harus diisi")
                 : (this.errorMsg.motivation = "")
+            !this.dataUser.source_info
+                ? (this.errorMsg.source_info = "Harus diisi")
+                : (this.errorMsg.source_info = "")
         },
         postRegisteredUser() {
             this.isDisableBtn = true
