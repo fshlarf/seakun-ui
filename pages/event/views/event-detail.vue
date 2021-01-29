@@ -12,7 +12,7 @@
             <div class="event-detail__info--key">Pembicara</div>:<div class="event-detail__info--value">{{ dataEvent.narasumber }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Host</div>:<div class="event-detail__info--value">{{ dataEvent.host }}</div>
+            <div class="event-detail__info--key">Host</div>:<div class="event-detail__info--value" v-if="dataEvent.host">{{ dataEvent.host }}</div>
         </div>
         <div class="event-detail__info">
             <div class="event-detail__info--key">Waktu</div>:<div class="event-detail__info--value">{{ dataEvent.date }}</div>
@@ -23,7 +23,7 @@
         <div class="event-detail__info">
             <div class="event-detail__info--key">Lokasi</div>:<div class="event-detail__info--value">{{ dataEvent.location }}</div>
         </div>
-        <div class="event-detail__info">
+        <div class="event-detail__info" v-if="dataEvent.giveaway">
             <div class="event-detail__info--key">Giveaway</div>:<div class="event-detail__info--value">{{ dataEvent.giveaway }}</div>
         </div>
     </div>
