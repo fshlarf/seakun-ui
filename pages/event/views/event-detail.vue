@@ -1,30 +1,30 @@
 <template>
-    <div :class="`event-detail ${extendClass}`">
-        <h5 style="padding: 20px 16px 0px 16px">Detail Acara</h5>
-        <img src="https://gmedia.net.id/upload/foto_artikel/20200814NlwIohPBV4.png" alt="event image"/>
+    <div :class="`event-detail ${extendClass}`" v-if="dataEvent">
+        <h5 style="padding: 20px 16px 0px 16px">Detail Acara {{ dataEvent.type_event }}</h5>
+        <img :src="dataEvent.url_banner" :alt="dataEvent.title_event"/>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Jenis Acara</div>:<div class="event-detail__info--value">Webinar</div>
+            <div class="event-detail__info--key">Jenis Acara</div>:<div class="event-detail__info--value">{{ dataEvent.type_event }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Pembicara</div>:<div class="event-detail__info--value">Udin</div>
+            <div class="event-detail__info--key">Topik</div>:<div class="event-detail__info--value">{{ dataEvent.title_event }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Host</div>:<div class="event-detail__info--value">Ucok</div>
+            <div class="event-detail__info--key">Pembicara</div>:<div class="event-detail__info--value">{{ dataEvent.narasumber }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Topik</div>:<div class="event-detail__info--value">How to become founder</div>
+            <div class="event-detail__info--key">Host</div>:<div class="event-detail__info--value">{{ dataEvent.host }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Waktu</div>:<div class="event-detail__info--value">16 Februari 2021</div>
+            <div class="event-detail__info--key">Waktu</div>:<div class="event-detail__info--value">{{ dataEvent.date }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key"></div><div class="event-detail__info--value">11.00 WIB - 13.00 WIB</div>
+            <div class="event-detail__info--key"></div><div class="event-detail__info--value">{{ dataEvent.time }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Lokasi</div>:<div class="event-detail__info--value">Via Google Meet (link akan dibagikan via email)</div>
+            <div class="event-detail__info--key">Lokasi</div>:<div class="event-detail__info--value">{{ dataEvent.location }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Giveaway</div>:<div class="event-detail__info--value">Voucher E-Wallet untuk 6 orang beruntung (masing-masing Rp50.000)</div>
+            <div class="event-detail__info--key">Giveaway</div>:<div class="event-detail__info--value">{{ dataEvent.giveaway }}</div>
         </div>
     </div>
 </template>
@@ -35,6 +35,10 @@ export default {
         extendClass: {
             type: String,
             default: 'desktop'
+        },
+        dataEvent: {
+            type: Object,
+            default: {}
         }
     }
 }

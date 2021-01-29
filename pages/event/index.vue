@@ -4,6 +4,7 @@
         <div class="event">
             <EventDetail
                 extendClass="mobile"
+                :dataEvent="dataEvent"
             />
             <div class="event-reg">
                 <h5 class="heading-5">Daftar Webinar</h5>
@@ -55,20 +56,20 @@
                         </transition>
                         <br>
                         <div class="form-seakun-user">
-                            <label for="seakun-user">Apakah anda tahu tentang Seakun.id?</label>
+                            <label for="seakun-user">Apakah anda tahu tentang Seakun.id?*</label>
                             <br>
-                            <input type="radio" id="trueSeakunUser" :value="true" v-model="dataUser.isKnowSeakun" @change="onChangeInput('isKnowSeakun')"><label style="padding-left: 8px" for="trueSeakunUser">Ya</label>
+                            <input type="radio" id="trueSeakunUser" :value="true" v-model="dataUser.is_know_seakun" @change="onChangeInput('is_know_seakun')"><label style="padding-left: 8px" for="trueSeakunUser">Ya</label>
                             <br>
-                            <input type="radio" id="falseSeakunUser" :value="false" v-model="dataUser.isKnowSeakun" @change="onChangeInput('isKnowSeakun')"><label style="padding-left: 8px" for="falseSeakunUser">Tidak</label>
-                            <p class="error-msg" v-if="errorMsg.isKnowSeakun">{{ errorMsg.isKnowSeakun }}</p>
+                            <input type="radio" id="falseSeakunUser" :value="false" v-model="dataUser.is_know_seakun" @change="onChangeInput('is_know_seakun')"><label style="padding-left: 8px" for="falseSeakunUser">Tidak</label>
+                            <p class="error-msg" v-if="errorMsg.is_know_seakun">{{ errorMsg.is_know_seakun }}</p>
                         </div>
                         <div class="form-know-seakun">
-                            <label for="seakun-user">Apakah anda pengguna Seakun.id?</label>
+                            <label for="seakun-user">Apakah anda pengguna Seakun.id?*</label>
                             <br>
-                            <input type="radio" id="Ya" :value="true" v-model="dataUser.isSeakunUser" @change="onChangeInput('isSeakunUser')"><label style="padding-left: 8px" for="Ya">Ya</label>
+                            <input type="radio" id="Ya" :value="true" v-model="dataUser.is_seakun_user" @change="onChangeInput('is_seakun_user')"><label style="padding-left: 8px" for="Ya">Ya</label>
                             <br>
-                            <input type="radio" id="Tidak" :value="false" v-model="dataUser.isSeakunUser" @change="onChangeInput('isSeakunUser')"><label style="padding-left: 8px" for="Tidak">Tidak</label>
-                            <p class="error-msg" v-if="errorMsg.isSeakunUser">{{ errorMsg.isSeakunUser }}</p>
+                            <input type="radio" id="Tidak" :value="false" v-model="dataUser.is_seakun_user" @change="onChangeInput('is_seakun_user')"><label style="padding-left: 8px" for="Tidak">Tidak</label>
+                            <p class="error-msg" v-if="errorMsg.is_seakun_user">{{ errorMsg.is_seakun_user }}</p>
                         </div>
                         <FormInput
                             label="Apa motivasi/ekspektasi anda mengikuti event ini?*"
@@ -79,13 +80,17 @@
                             v-model="dataUser.motivation"
                         />
                         <FormInput
-                            label="Apa saran anda untuk tema webinar/project selanjutnya?*"
+                            label="Apa saran anda untuk tema webinar/project selanjutnya?"
                             placeholder="Masukkan Jawaban Anda"
                             class="input"
-                            :errorMessage="errorMsg.suggestTheme"
-                            @keydown="onChangeInput('suggestTheme')"
-                            v-model="dataUser.suggestTheme"
+                            :errorMessage="errorMsg.suggestion_theme"
+                            @keydown="onChangeInput('suggestion_theme')"
+                            v-model="dataUser.suggestion_theme"
                         />
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="send-notif" :value="true" v-model="dataUser.notification">
+                            <label class="form-check-label" for="send-notif">Kirimi saya email tentang layanan baru Seakun.id?</label>
+                        </div>
                         <br>
                         <button
                             class="btn btn-primary"
@@ -104,7 +109,9 @@
                     </form>
                 </div>
             </div>
-            <EventDetail/>
+            <EventDetail 
+                :dataEvent="dataEvent"
+            />
         </div>
         <Footer/>
     </div>
@@ -116,6 +123,7 @@ import Footer from "~/components/mollecules/Footer"
 import FormInput from "~/components/atoms/FormInput"
 import ButtonDrop from "~/components/atoms/ButtonDropDown"
 import EventDetail from "./views/event-detail"
+import axios from 'axios'
 
 export default {
     components: {
@@ -127,15 +135,17 @@ export default {
     },
     data() {
         return {
+            dataEvent: {},
             dataUser: {
                 fullname: "",
                 email: "",
                 whatsapp: "",
                 job: "Pilih Pekerjaan",
-                isSeakunUser: null,
-                isKnowSeakun: null,
+                is_seakun_user: null,
+                is_know_seakun: null,
                 motivation: "",
-                suggestTheme: ""
+                suggestion_theme: "",
+                notification: false
             },
             showJobList: false,
             errorMsg: {
@@ -143,16 +153,29 @@ export default {
                 email: "",
                 whatsapp: "",
                 job: "",
-                isSeakunUser: "",
-                isKnowSeakun: "",
+                is_seakun_user: "",
+                is_know_seakun: "",
                 motivation: "",
-                suggestTheme: ""
+                suggestion_theme: ""
+
             },
             jobs: ['Pelajar', 'Mahasiswa', 'Pegawai Negeri', 'Pegawai Swasta', 'Pegawai BUMN', 'Pegawai Startup', 'Wiraswasta'],
             isDisableBtn: false
         }
     },
+    mounted() {
+        this.getDataEvent()
+    },
     methods: {
+        getDataEvent() {
+            axios.get(`https://seakun-api.herokuapp.com/event/${this.$route.query.name}`)
+            .then(res => {
+                this.dataEvent = res.data
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        },
         onChangeInput(name) {
             this.errorMsg[name] = "";
         },
@@ -168,10 +191,9 @@ export default {
                 this.dataUser.email &&
                 this.dataUser.whatsapp &&
                 this.dataUser.job != "Pilih Pekerjaan" &&
-                this.dataUser.isSeakunUser != null &&
-                this.dataUser.isKnowSeakun != null && 
-                this.dataUser.motivation && 
-                this.dataUser.suggestTheme
+                this.dataUser.is_seakun_user != null &&
+                this.dataUser.is_know_seakun != null && 
+                this.dataUser.motivation
             ) {
                 this.postRegisteredUser()
             }
@@ -189,26 +211,31 @@ export default {
             this.dataUser.job == "Pilih Pekerjaan"
                 ? (this.errorMsg.job = "Pekerjaan harus dipilih")
                 : (this.errorMsg.job = "")
-            this.dataUser.isSeakunUser == null
-                ? (this.errorMsg.isSeakunUser = "Harus dipilih")
-                : (this.errorMsg.isSeakunUser = "")
-            this.dataUser.isKnowSeakun == null
-                ? (this.errorMsg.isKnowSeakun = "Harus dipilih")
-                : (this.errorMsg.isKnowSeakun = "")
+            this.dataUser.is_seakun_user == null
+                ? (this.errorMsg.is_seakun_user = "Harus dipilih")
+                : (this.errorMsg.is_seakun_user = "")
+            this.dataUser.is_know_seakun == null
+                ? (this.errorMsg.is_know_seakun = "Harus dipilih")
+                : (this.errorMsg.is_know_seakun = "")
             !this.dataUser.motivation
                 ? (this.errorMsg.motivation = "Motivasi mengikuti event ini harus diisi")
                 : (this.errorMsg.motivation = "")
-            !this.dataUser.suggestTheme
-                ? (this.errorMsg.suggestTheme = "Saran tema untuk webinar berikutnya harus diisi")
-                : (this.errorMsg.suggestTheme = "")
         },
         postRegisteredUser() {
+            this.isDisableBtn = true
             let payload = {
                 ...this.dataUser,
-                eventTitle: 'Apa',
-                eventId: '1'
+                title_event: this.dataEvent.title_event,
+                slug_event: this.dataEvent.title_event
             }
-            console.log(payload);
+            axios.post('https://seakun-api.herokuapp.com/event/register-user', payload)
+            .then(res => {
+                this.isDisableBtn = false
+                this.$router.push('/thankyou/event-registered')
+            })
+            .catch(err => {
+                console.log(err)
+            })
         }
     }
 }
