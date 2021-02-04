@@ -344,7 +344,11 @@ export default {
             }
         },
         executeApiMailSeakun(payload) {
-            axios.post("https://seakun-mail-api-v1.herokuapp.com/", payload)
+            let newPayload = {
+                ...payload,
+                payment_type: this.choosedPacket.paymentType
+            }
+            axios.post("https://seakun-mail-api-v1.herokuapp.com/", newPayload)
             .then((res) => {
                 this.isDisableBtn = false;
                 // Redirect to thankyou page when successfully registration
