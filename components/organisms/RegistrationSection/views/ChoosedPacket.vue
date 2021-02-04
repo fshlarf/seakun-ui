@@ -8,14 +8,13 @@
                             {{ choosedPacket.name }}
                         </div>
                         <div>
-                            {{ formatMoneyRupiah(choosedPacket.price) }} / bulan
+                            {{ formatMoneyRupiah(choosedPacket.price) }} / {{ setPaymentType(choosedPacket) }}
                         </div>
                     </div>
                     <div class="dropdown__item item align-normal">
                         <div style="max-width: 9rem">Biaya Admin</div>
                         <div>
-                            {{ formatMoneyRupiah(choosedPacket.adminFee) }} /
-                            bulan
+                            {{ formatMoneyRupiah(choosedPacket.adminFee) }} / {{ setPaymentType(choosedPacket) }}
                         </div>
                     </div>
                     <div class="dropdown__item item align-normal">
@@ -28,8 +27,7 @@
                                     : { 'text-decoration': 'unset' }
                             "
                         >
-                            {{ formatMoneyRupiah(choosedPacket.grandTotal) }} /
-                            bulan
+                            {{ formatMoneyRupiah(choosedPacket.grandTotal) }} / {{ setPaymentType(choosedPacket) }}
                         </div>
                     </div>
                     <div
@@ -44,7 +42,7 @@
                                     choosedPacket.voucherGrandTotal
                                 )
                             }}
-                            / bulan
+                            / {{ setPaymentType(choosedPacket) }}
                         </div>
                     </div>
                     <div
@@ -117,6 +115,11 @@ export default {
         },
         wordingShowMore(showMore) {
             return showMore ? "Ciutkan" : "Selengkapnya";
+        },
+        setPaymentType(value) {
+            return value.paymentType === 'month'
+                ? 'bulan'
+                : 'tahun';
         },
     },
     props: {

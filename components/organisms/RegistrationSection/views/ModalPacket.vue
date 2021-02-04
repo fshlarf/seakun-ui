@@ -20,7 +20,7 @@
                             </span>
                         </div>
                         <div class="font-weight-bold" v-if="packet.grandTotal > 0">
-                            {{ formatMoneyRupiah(packet.grandTotal) }} / bulan
+                            {{ formatMoneyRupiah(packet.grandTotal) }} / {{ setPaymentType(packet) }}
                         </div>
                     </div>
                     <div class="dropdown__item item align-normal">
@@ -32,13 +32,13 @@
                     >
                         <div class="is-size-6">Harga Patungan</div>
                         <div class="is-size-6">
-                            {{ formatMoneyRupiah(packet.price) }} / bulan
+                            {{ formatMoneyRupiah(packet.price) }} / {{ setPaymentType(packet) }}
                         </div>
                     </div>
                     <div class="dropdown__item item align-normal">
                         <div class="is-size-6">Biaya Admin</div>
                         <div class="is-size-6">
-                            {{ setAdminFee(packet.adminFee) }}
+                            {{ setAdminFee(packet) }}
                         </div>
                     </div>
                     <div class="dropdown__item item align-normal mt-2">
@@ -141,12 +141,17 @@ export default {
             window.open(`/info/${page}`);
         },
         setAdminFee(value) {
-            return value > 0
-                ? `${this.formatMoneyRupiah(value)} / bulan`
+            return value.adminFee > 0
+                ? `${this.formatMoneyRupiah(value.adminFee)} / ${setPaymentType(value)}`
                 : "FREE";
         },
         setClassInActivePacket(packet) {
             return !packet.active && "inactive";
+        },
+        setPaymentType(value) {
+            return value.paymentType === 'month'
+                ? 'bulan'
+                : 'tahun';
         },
     },
     props: {
