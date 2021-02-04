@@ -142,7 +142,7 @@ export default {
         },
         setAdminFee(value) {
             return value.adminFee > 0
-                ? `${this.formatMoneyRupiah(value.adminFee)} / ${setPaymentType(value)}`
+                ? `${this.formatMoneyRupiah(value.adminFee)} / ${this.setPaymentType(value)}`
                 : "FREE";
         },
         setClassInActivePacket(packet) {
