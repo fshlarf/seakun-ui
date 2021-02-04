@@ -79,7 +79,7 @@
                                             </span>
                                         </div>
                                         <img
-                                            :src="`/images/icon/${provider.name}-mini.svg`"
+                                            :src="setPathImage(provider.name)"
                                             alt="Image not found"
                                         />
                                     </div>
@@ -193,6 +193,7 @@ export default {
                 { name: "Gramedia", active: true },
                 { name: "Spotify", active: true },
                 { name: "Microsoft365", active: true },
+                { name: "Canva", active: false },
                 { name: "Steam", active: false },
             ],
             packets: [],
@@ -219,6 +220,13 @@ export default {
         this.getPacketData("netflix");
     },
     methods: {
+        setPathImage(name) {
+            if (name.toLowerCase() === 'canva') {
+                return `/images/canva.png`
+            } else {
+                return `/images/icon/${name}-mini.svg`
+            }
+        },
         onCloseModalPacket() {
             this.showPacket = false
         },

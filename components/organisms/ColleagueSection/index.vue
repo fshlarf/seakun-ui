@@ -20,6 +20,9 @@
             <div class="col collega__content">
                 <img src="/images/microsoft365.png" alt="Image not found" />
             </div>
+            <div class="col collega__content">
+                <img src="/images/canva.png" style="max-width: 5rem" alt="Image not found" />
+            </div>
         </div>
     </div>
 </template>
