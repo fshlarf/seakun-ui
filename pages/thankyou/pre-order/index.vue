@@ -12,7 +12,7 @@
                         <p>
                             Terima kasih telah melakukan pendaftaran.
                             <br />Paket ini adalah paket Pre-Order dimana akun akan dibuat setelah
-                            member dalam satu grup telah terkumpul 5 orang.
+                            member dalam satu grup telah terkumpul {{ setNumberMember(provider) }} orang.
                         </p>
                         <div class="box">
                             <div class="row">
@@ -77,6 +77,9 @@ export default {
         this.getVouchersData()
     },
     methods: {
+        setNumberMember(provider) {
+            return provider.toLowerCase() === 'canva' ? '4' : '5'
+        },
         getDataPacket() {
             const { provider, packet_id, voucher } = this.$router.history.current.query
             this.provider = provider
