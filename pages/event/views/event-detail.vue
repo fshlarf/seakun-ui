@@ -12,7 +12,7 @@
             <div class="event-detail__info--key">Pembicara</div>:
             <div class="event-detail__info--value">
                 <ul style="padding-left: 10px; margin-bottom: 0;">
-                    <li v-for="(name, id) in dataEvent.narasumber.split('#')" :key="id">{{ name }}</li>
+                    <li v-for="(name, id) in  handleDataNarasumber(dataEvent.narasumber)" :key="id">{{ name }}</li>
                 </ul>
             </div>
         </div>
@@ -49,6 +49,11 @@ export default {
     data() {
         return {
             test: "Ingelora Loudia Anggita (HR Practitioner & Member HR Migas Community)#Faishal Arief (Founder & CEO Seakun.id)#Batara Indra (Risk Management Practitioner)"
+        }
+    },
+    methods: {
+        handleDataNarasumber(data) {
+            return data && data.split('#')
         }
     }
 }
