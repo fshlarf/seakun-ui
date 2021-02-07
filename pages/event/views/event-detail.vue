@@ -1,15 +1,20 @@
 <template>
     <div :class="`event-detail ${extendClass}`" v-if="dataEvent">
-        <h5 style="padding: 20px 16px 0px 16px">Detail Acara {{ dataEvent.type_event }}</h5>
+        <h5 class="bold" style="padding: 20px 16px 0px 16px">Detail Acara {{ dataEvent.type_event }}</h5>
         <img :src="dataEvent.url_banner" :alt="dataEvent.title_event"/>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Jenis Acara</div>:<div class="event-detail__info--value">{{ dataEvent.type_event }}</div>
+            <div class="event-detail__info--key">Jenis Acara</div>:<div class="event-detail__info--value bold">{{ dataEvent.type_event }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Topik</div>:<div class="event-detail__info--value">{{ dataEvent.title_event }}</div>
+            <div class="event-detail__info--key">Topik</div>:<div class="event-detail__info--value bold">{{ dataEvent.title_event }}</div>
         </div>
         <div class="event-detail__info">
-            <div class="event-detail__info--key">Pembicara</div>:<div class="event-detail__info--value">{{ dataEvent.narasumber }}</div>
+            <div class="event-detail__info--key">Pembicara</div>:
+            <div class="event-detail__info--value">
+                <ul style="padding-left: 10px; margin-bottom: 0;">
+                    <li v-for="(name, id) in dataEvent.narasumber.split('#')" :key="id">{{ name }}</li>
+                </ul>
+            </div>
         </div>
         <div class="event-detail__info" v-if="dataEvent.host">
             <div class="event-detail__info--key">Host</div>:<div class="event-detail__info--value">{{ dataEvent.host }}</div>
@@ -39,6 +44,11 @@ export default {
         dataEvent: {
             type: Object,
             default: {}
+        }
+    },
+    data() {
+        return {
+            test: "Ingelora Loudia Anggita (HR Practitioner & Member HR Migas Community)#Faishal Arief (Founder & CEO Seakun.id)#Batara Indra (Risk Management Practitioner)"
         }
     }
 }
@@ -107,5 +117,8 @@ export default {
     .mobile {
         display: block !important;
     }
+}
+.bold {
+    font-weight: 700 !important;
 }
 </style>
