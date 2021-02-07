@@ -1,7 +1,7 @@
 <template>
     <div>
         <Header/>
-        <div class="event">
+        <div class="event" v-if="dataEvent">
             <EventDetail
                 extendClass="mobile"
                 :dataEvent="dataEvent"
