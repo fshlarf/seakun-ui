@@ -69,6 +69,7 @@ export default {
         height: -webkit-fill-available;
         border-radius: 8px;
         padding-bottom: 20px;
+        height: fit-content;
         img {
             width: 100%;
             padding: 16px;
