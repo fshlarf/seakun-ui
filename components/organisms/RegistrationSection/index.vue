@@ -321,7 +321,7 @@ export default {
             let payload = {
                 fullname: capitalizeFirstLetter(this.fullname),
                 email: this.email,
-                whatsapp: `${this.codePhone}{this.whatsapp}`,
+                whatsapp: `${this.codePhone}${this.whatsapp}`,
                 provider: this.provider,
                 packet: this.packet,
                 price: this.price,
