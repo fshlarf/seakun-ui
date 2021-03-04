@@ -164,7 +164,7 @@ export default {
     border: 1px solid #ced4da;
     padding: 0px;
     margin-bottom: 20px;
-    max-width: 300px;
+    max-width: 100%;
     div {
         padding: 8px 16px;
         cursor: pointer;
