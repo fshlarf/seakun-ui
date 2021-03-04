@@ -45,32 +45,34 @@
                             />
                             <label>Nomor Handphone (Whatsapp)</label>
                             <!-- <div class="d-flex"> -->
-                                <div class="d-flex">
-                                    <div class="col-3  p-0 ">
-                                        <ButtonDrop
-                                            @onClick="showCodePhone = !showCodePhone"
-                                            :btnText="idPhone"
-                                        />
-                                        <div class="dropdown" v-if="showCodePhone">
-                                            <div
-                                                v-for="codeCountry in internationalPhoneNumbers"
-                                                :key="codeCountry.name"
-                                                @click="chooseCodePhone(codeCountry)"
-                                                >
-                                                {{ `${codeCountry.name} (${codeCountry.dialCode})` }} 
+                                <div class="form group">
+                                    <div class="d-flex">
+                                        <div class="col-3 p-0 ">
+                                            <ButtonDrop
+                                                @onClick="showCodePhone = !showCodePhone"
+                                                :btnText="idPhone"
+                                            />
+                                            <div class="dropdown codephone" v-if="showCodePhone">
+                                                <div
+                                                    v-for="codeCountry in internationalPhoneNumbers"
+                                                    :key="codeCountry.name"
+                                                    @click="chooseCodePhone(codeCountry)"
+                                                    >
+                                                    {{ `${codeCountry.name} (${codeCountry.dialCode})` }} 
+                                                </div>
                                             </div>
+                                        </div>  
+                                        <div class="col-9 pl-1 pr-1">
+                                            <FormInput
+                                                placeholder="8123435456"
+                                                class="input"
+                                                type="number"
+                                                :errorMessage="errorMsg.whatsapp"
+                                                @keydown="onChangeInput('whatsapp')"
+                                                @keyup="onCheckValidPhoneNumber()"
+                                                v-model="whatsapp"
+                                            />
                                         </div>
-                                    </div>  
-                                    <div class="col-9 pl-1 pr-1">
-                                        <FormInput
-                                            placeholder="8123435456"
-                                            class="input"
-                                            type="number"
-                                            :errorMessage="errorMsg.whatsapp"
-                                            @keydown="onChangeInput('whatsapp')"
-                                            @keyup="onCheckValidPhoneNumber()"
-                                            v-model="whatsapp"
-                                        />
                                     </div>
                                 </div>
                                
@@ -541,14 +543,7 @@ export default {
         border: 1px solid #ced4da;
         padding: 0px;
         margin-bottom: 20px;
-        min-width:300px;
-        max-width: 300px;
-        max-height: 350px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        position: absolute;
-        z-index: 98;
-        background: white;
+        max-width: 100%;
         div {
             padding: 8px 16px;
             cursor: pointer;
@@ -598,6 +593,16 @@ export default {
                 padding: 0px 10px;
             }
         }
+    }
+    .codephone {
+        min-width:326px !important;
+        max-width: 300px !important;
+        max-height: 350px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        position: absolute !important;
+        z-index: 98 !important;
+        background: white !important;
     }
     .slide-fade-enter-active {
         transition: all 0.4s ease;
@@ -718,6 +723,10 @@ export default {
             .packet-name {
                 max-width: 180px;
             }
+        }
+        .codephone {
+            max-width: 300px !important;
+            min-width: 280px !important;
         }
     }
     @-webkit-keyframes fadein {
