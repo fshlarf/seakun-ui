@@ -46,7 +46,7 @@
                             <label>Nomor Handphone (Whatsapp)</label>
                             <!-- <div class="d-flex"> -->
                                 <div class="d-flex">
-                                    <div class="col-4  p-0 ">
+                                    <div class="col-3  p-0 ">
                                         <ButtonDrop
                                             @onClick="showCodePhone = !showCodePhone"
                                             :btnText="idPhone"
@@ -61,7 +61,7 @@
                                             </div>
                                         </div>
                                     </div>  
-                                    <div class="col-8  pl-1 pr-1">
+                                    <div class="col-9 pl-1 pr-1">
                                         <FormInput
                                             placeholder="8123435456"
                                             class="input"
@@ -741,10 +741,18 @@ export default {
             opacity: 1;
         }
     }
+    .col-9 {
+        flex: 0 0 75% !important;
+        max-width: 75%;
+    }
 }
 @media only screen and (min-width: 880px) and (max-width: 1020px) {
     .container {
         display: contents !important;
     }
+}
+.col-9 {
+    flex: 0 0 76.3% !important;
+    max-width: 78%;
 }
 </style>
