@@ -204,7 +204,7 @@ export default {
             fullname: "",
             email: "",
             whatsapp: "",
-            idPhone: "ID",
+            idPhone: "+62",
             codePhone: 62,
             provider: "Contoh: Netflix",
             packet: "Contoh: Paket Grup",
@@ -373,7 +373,7 @@ export default {
             this.provider.toLowerCase() == 'netflix' && (this.userHost = packet.userHost)
         },
         chooseCodePhone(codeCountry) {
-            this.idPhone = codeCountry.isoCode;
+            this.idPhone = codeCountry.dialCode;
             this.codePhone = codeCountry.dialCode.slice(1);
             this.showCodePhone = false;
         },
