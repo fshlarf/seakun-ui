@@ -1,6 +1,6 @@
 <template>
     <div @click="$emit('onClick')">
-        <label for="exampleInputEmail1">{{ label }}</label>
+        <label v-if="label" for="exampleInputEmail1">{{ label }}</label>
         <div :class="`btn btn-drop ${extendClass}`">
             <span class="truncate">{{ btnText }}</span>
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +31,7 @@ export default {
     background-color: white;
     color: rgb(118, 118, 118);
     border: 1px solid #ced4da;
-    width: 300px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;

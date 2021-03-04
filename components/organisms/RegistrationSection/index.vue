@@ -43,15 +43,41 @@
                                 @keydown="onChangeInput('email')"
                                 v-model="email"
                             />
-                            <FormInput
-                                label="Nomor Handphone (Whatsapp)"
-                                placeholder="08123435456"
-                                class="input"
-                                type="number"
-                                :errorMessage="errorMsg.whatsapp"
-                                @keydown="onChangeInput('whatsapp')"
-                                v-model="whatsapp"
-                            />
+                            <label>Nomor Handphone (Whatsapp)</label>
+                            <!-- <div class="d-flex"> -->
+                                <div class="d-flex">
+                                    <div class="col-4  p-0 ">
+                                        <ButtonDrop
+                                            @onClick="showCodePhone = !showCodePhone"
+                                            :btnText="idPhone"
+                                        />
+                                        <div class="dropdown" v-if="showCodePhone">
+                                            <div
+                                                v-for="codeCountry in internationalPhoneNumbers"
+                                                :key="codeCountry.name"
+                                                @click="chooseCodePhone(codeCountry)"
+                                                >
+                                                {{ `${codeCountry.name} (${codeCountry.dialCode})` }} 
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="col-8  pl-1 pr-1">
+                                        <FormInput
+                                            placeholder="8123435456"
+                                            class="input"
+                                            type="number"
+                                            :errorMessage="errorMsg.whatsapp"
+                                            @keydown="onChangeInput('whatsapp')"
+                                            @keyup="onCheckValidPhoneNumber()"
+                                            v-model="whatsapp"
+                                        />
+                                    </div>
+                                </div>
+                               
+                            <!-- </div> -->
+                            <div class="form group">
+                              
+                            </div>
                             <div class="form-group">
                                 <ButtonDrop
                                     @onClick="showProvider = !showProvider"
@@ -158,9 +184,11 @@ import ButtonDrop from "~/components/atoms/ButtonDropDown";
 import Alert from "~/components/atoms/Alert";
 import FormInput from "~/components/atoms/FormInput";
 
-import ModalPacket from "./views/ModalPacket"
+import ModalPacket from "./views/ModalPacket" 
 import ChoosedPacket from "./views/ChoosedPacket"
 import Voucher from "./views/Voucher"
+
+import { internationalPhoneNumbers } from "../../../constants";
 
 export default {
     components: {
@@ -176,6 +204,8 @@ export default {
             fullname: "",
             email: "",
             whatsapp: "",
+            idPhone: "+62",
+            codePhone: 62,
             provider: "Contoh: Netflix",
             packet: "Contoh: Paket Grup",
             price: null,
@@ -186,6 +216,7 @@ export default {
             choosedPacket: {},
             showProvider: false,
             showPacket: false,
+            showCodePhone: false,
             userHost: false,
             providers: [
                 { name: "Netflix", active: true },
@@ -212,7 +243,8 @@ export default {
             isReferralValid: false,
             isVoucherValid: false,
             showInvalidVoucher: false,
-            blockMail: ['bughunterv4n@gmail.com']
+            blockMail: ['bughunterv4n@gmail.com'],
+            internationalPhoneNumbers
         };
     },
     mounted() {
@@ -280,11 +312,16 @@ export default {
         onChangeInput(name) {
             this.errorMsg[name] = "";
         },
+        onCheckValidPhoneNumber() {
+            if (this.whatsapp.startsWith(0)) {
+                this.whatsapp = ""
+            }
+        },
         postRegisteredUser() {
             let payload = {
                 fullname: capitalizeFirstLetter(this.fullname),
                 email: this.email,
-                whatsapp: this.whatsapp,
+                whatsapp: `${this.codePhone}${this.whatsapp}`,
                 provider: this.provider,
                 packet: this.packet,
                 price: this.price,
@@ -334,6 +371,11 @@ export default {
             this.price = packet.grandTotal;
             this.checkValidVoucher();
             this.provider.toLowerCase() == 'netflix' && (this.userHost = packet.userHost)
+        },
+        chooseCodePhone(codeCountry) {
+            this.idPhone = codeCountry.dialCode;
+            this.codePhone = codeCountry.dialCode.slice(1);
+            this.showCodePhone = false;
         },
         clickShowPacket() {
             if (this.provider == "Contoh: Netflix") {
@@ -455,7 +497,8 @@ export default {
     }
 
     .input {
-        max-width: 300px !important;
+        // max-width: 300px !important;
+        width:100%;
     }
 
     &__form {
@@ -498,7 +541,14 @@ export default {
         border: 1px solid #ced4da;
         padding: 0px;
         margin-bottom: 20px;
+        min-width:300px;
         max-width: 300px;
+        max-height: 350px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: absolute;
+        z-index: 98;
+        background: white;
         div {
             padding: 8px 16px;
             cursor: pointer;
