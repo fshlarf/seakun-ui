@@ -44,31 +44,39 @@
                                 v-model="email"
                             />
                             <label>Nomor Handphone (Whatsapp)</label>
-                            <div>
-                                <div class="form group">
-                                    <ButtonDrop
-                                        @onClick="showCodePhone = !showCodePhone"
-                                        :btnText="idPhone"
-                                    />
-                                    <div class="dropdown" v-if="showCodePhone">
-                                        <div
-                                            v-for="codeCountry in internationalPhoneNumbers"
-                                            :key="codeCountry"
-                                            @click="chooseCodePhone(codeCountry)"
-                                        >
-                                        {{ `${codeCountry.name} (${codeCountry.dialCode})` }} 
+                            <!-- <div class="d-flex"> -->
+                                <div class="d-flex">
+                                    <div class="col-4  p-0 ">
+                                        <ButtonDrop
+                                            @onClick="showCodePhone = !showCodePhone"
+                                            :btnText="idPhone"
+                                        />
+                                        <div class="dropdown" v-if="showCodePhone">
+                                            <div
+                                                v-for="codeCountry in internationalPhoneNumbers"
+                                                :key="codeCountry.name"
+                                                @click="chooseCodePhone(codeCountry)"
+                                                >
+                                                {{ `${codeCountry.name} (${codeCountry.dialCode})` }} 
+                                            </div>
                                         </div>
+                                    </div>  
+                                    <div class="col-8  pl-1 pr-1">
+                                        <FormInput
+                                            placeholder="8123435456"
+                                            class="input"
+                                            type="number"
+                                            :errorMessage="errorMsg.whatsapp"
+                                            @keydown="onChangeInput('whatsapp')"
+                                            @keyup="onCheckValidPhoneNumber()"
+                                            v-model="whatsapp"
+                                        />
                                     </div>
                                 </div>
-                                <FormInput
-                                    placeholder="8123435456"
-                                    class="input"
-                                    type="number"
-                                    :errorMessage="errorMsg.whatsapp"
-                                    @keydown="onChangeInput('whatsapp')"
-                                    @keyup="onCheckValidPhoneNumber()"
-                                    v-model="whatsapp"
-                                />
+                               
+                            <!-- </div> -->
+                            <div class="form group">
+                              
                             </div>
                             <div class="form-group">
                                 <ButtonDrop
@@ -176,7 +184,7 @@ import ButtonDrop from "~/components/atoms/ButtonDropDown";
 import Alert from "~/components/atoms/Alert";
 import FormInput from "~/components/atoms/FormInput";
 
-import ModalPacket from "./views/ModalPacket"
+import ModalPacket from "./views/ModalPacket" 
 import ChoosedPacket from "./views/ChoosedPacket"
 import Voucher from "./views/Voucher"
 
@@ -489,7 +497,8 @@ export default {
     }
 
     .input {
-        max-width: 300px !important;
+        // max-width: 300px !important;
+        width:100%;
     }
 
     &__form {
@@ -532,7 +541,14 @@ export default {
         border: 1px solid #ced4da;
         padding: 0px;
         margin-bottom: 20px;
+        min-width:300px;
         max-width: 300px;
+        max-height: 350px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: absolute;
+        z-index: 98;
+        background: white;
         div {
             padding: 8px 16px;
             cursor: pointer;
