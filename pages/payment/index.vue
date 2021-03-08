@@ -61,6 +61,9 @@
                             </div>
                         </div>
                         <p>
+                            <i><span class="bold">Note:</span> Untuk alternatif pembayaran <span class="bold">E-Wallet (Gopay, OVO, Dana, dan LinkAja)</span>, dapat langsung menghubungi <a href="https://api.whatsapp.com/send?phone=6285774642738">Whatsapp</a> admin Seakun.id</i>
+                        </p>
+                        <p>
                             Setelah melakukan pembayaran,
                             <br />kirimkan bukti pembayaran ke Whatsapp Seakun.id
                             <a href="https://api.whatsapp.com/send?phone=6285774642738">085774642738.</a>
@@ -71,9 +74,6 @@
                             Proses yang dilakukan sekitar 10 menit sampai paling lama 120 menit setelah bukti pembayaran dikirimkan ke whatsapp Seakun.id.
                             <br>
                             Mohon ditunggu karena proses payment ke provider butuh waktu beberapa menit dan butuh verifikasi data.
-                        </p>
-                        <p>
-                            <i>Note: Untuk alternatif pembayaran e-Wallet, bisa langsung hubungi Whatsapp admin Seakun.id</i>
                         </p>
                     </div>
                 </div>
@@ -292,6 +292,9 @@ export default {
             padding: 0px 12px;
         }
     }
+}
+.bold {
+    font-weight: 800;
 }
 @media (max-width: 800px) {
     #snackbar {
