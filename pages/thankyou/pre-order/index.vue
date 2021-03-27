@@ -83,7 +83,7 @@ export default {
         getDataPacket() {
             const { provider, packet_id, voucher } = this.$router.history.current.query
             this.provider = provider
-            axios.get(`https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`)
+            axios.get(`https://seakun-packet-api.herokuapp.com/${provider.toLowerCase()}/${packet_id}`)
             .then((res) => {
                 const { data, status } = res;
                 if (status === 200) {
@@ -101,7 +101,7 @@ export default {
             .catch(err => console.log(err))
         },
         getVouchersData() {
-            axios.get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
+            axios.get('https://seakun-packet-api.herokuapp.com/vouchers')
             .then(res => {
                 this.vouchersData = res.data
             })
