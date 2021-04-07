@@ -242,7 +242,7 @@ export const providerList = [
         informations: [
             {
                 title: 'Nama Paket',
-                value: 'Paket Premium',
+                value: 'Paket Premium Microsoft 365 (1 Bulan)',
                 is_total: true
             },
             {
@@ -264,6 +264,46 @@ export const providerList = [
             {
                 title: 'Harga Paket Bulanan',
                 value: 'Rp32.500',
+                is_total: true
+            },
+        ]
+    },
+    {
+        name: 'Paket Premium',
+        img: '/images/microsoft365.png',
+        screenshot: '/images/ss-microsoft365-year.png',
+        schemes: [
+            'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
+            'Seakun bertindak sebagai user Host dalam grup',
+            'Member membuat/menyediakan akun masing-masing',
+            'Seakun mengundang 5 member untuk join 1 grup Premium',
+            'Member yang telah join ke grup dapat menikmati fitur Premium'
+        ],
+        informations: [
+            {
+                title: 'Nama Paket',
+                value: 'Paket Premium Microsoft 365 (1 Tahun)',
+                is_total: true
+            },
+            {
+                title: 'Harga Paket Premium Microsoft 365',
+                value: 'Rp1.299.999'
+            },
+            {
+                title: 'Jumlah member dalam 1 grup',
+                value: '5'
+            },
+            {
+                title: 'Harga Patungan',
+                value: 'Rp1.299.999 ÷ 5 = Rp259.999,8'
+            },
+            {
+                title: 'Biaya Admin Seakun',
+                value: 'Rp78.000,2'
+            },
+            {
+                title: 'Harga Paket Bulanan',
+                value: 'Rp338.000',
                 is_total: true
             },
         ]
