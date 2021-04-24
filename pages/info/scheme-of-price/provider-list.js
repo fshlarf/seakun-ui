@@ -3,6 +3,45 @@ export const providerList = [
         img: '/images/netflix.png',
         screenshot: '/images/ss-netflix.png',
         schemes: [
+            'Seakun meminta membuat akun di Netflix dan melakukan pembayaran',
+            'Setelah berhasil membayar, Seakun akan proses profil User Host di Netflix',
+            'Profile disesuaikan dengan nama masing-masing member',
+            'Profile dilengkapi PIN yang berbeda-beda',
+            'Akun dishare HANYA ke 4 member dalam 1 grup'
+        ],
+        informations: [
+            {
+                title: 'Nama Paket',
+                value: 'Paket Premium User Host',
+                is_total: true
+            },
+            {
+                title: 'Harga Paket Premium Netflix',
+                value: 'Rp186.000'
+            },
+            {
+                title: 'Jumlah Member Dalam 1 Grup',
+                value: '4'
+            },
+            {
+                title: 'Harga Patungan',
+                value: 'Rp186.000 ÷ 4 = Rp46.500'
+            },
+            {
+                title: 'Biaya Admin Seakun',
+                value: 'Rp0 (FREE)'
+            },
+            {
+                title: 'Harga Paket Bulanan',
+                value: 'Rp46.500',
+                is_total: true
+            },
+        ]
+    },
+    {
+        img: '/images/netflix.png',
+        screenshot: '/images/ss-netflix.png',
+        schemes: [
             'Seakun membuat akun dan membeli Paket Premium di Netflix',
             'Dalam 1 akun tersebut, Seakun membuat profile sebanyak 4',
             'Profile disesuaikan dengan nama masing-masing member',
@@ -12,7 +51,7 @@ export const providerList = [
         informations: [
             {
                 title: 'Nama Paket',
-                value: 'Paket Premium Reguler',
+                value: 'Paket Premium User Reguler',
                 is_total: true
             },
             {
@@ -190,6 +229,49 @@ export const providerList = [
         screenshot: '/images/ss-youtube.png',
         schemes: [
             'Seakun membuat akun dan membeli Paket Premium di Youtube',
+            'Member bertindak sebagai user Host dalam grup',
+            'Seakun akan menggunakan No. hp User Host untuk OTP',
+            'Seakun mengundang User Host untuk join grup Premium',
+            'Member yang telah join ke grup dapat menikmati fitur Premium'
+        ],
+        informations: [
+            {
+                title: 'Nama Paket',
+                value: 'Paket Premium User Host',
+                is_total: true
+            },
+            {
+                title: 'Harga Paket Premium Youtube',
+                value: 'Rp89.000'
+            },
+            {
+                title: 'Harga setelah dikenakan pajak 10%',
+                value: 'Rp97.900'
+            },
+            {
+                title: 'Jumlah Member Dalam 1 Grup',
+                value: '5'
+            },
+            {
+                title: 'Harga Patungan',
+                value: 'Rp97.900 ÷ 5 = Rp19.580'
+            },
+            {
+                title: 'Biaya Admin Seakun',
+                value: 'Rp0 (FREE)'
+            },
+            {
+                title: 'Harga Paket Bulanan',
+                value: 'Rp19.580',
+                is_total: true
+            },
+        ]
+    },
+    {
+        img: '/images/youtube.png',
+        screenshot: '/images/ss-youtube.png',
+        schemes: [
+            'Seakun membuat akun dan membeli Paket Premium di Youtube',
             'Seakun bertindak sebagai user Host dalam grup ',
             'Member membuat/menyediakan akun masing-masing ',
             'Seakun mengundang 5 member untuk join 1 grup Premium',
@@ -198,7 +280,7 @@ export const providerList = [
         informations: [
             {
                 title: 'Nama Paket',
-                value: 'Paket Premium',
+                value: 'Paket Premium User Reguler',
                 is_total: true
             },
             {
@@ -302,7 +384,7 @@ export const providerList = [
                 value: 'Rp78.000,2'
             },
             {
-                title: 'Harga Paket Bulanan',
+                title: 'Harga Paket 1 Tahun',
                 value: 'Rp338.000',
                 is_total: true
             },
@@ -382,7 +464,7 @@ export const providerList = [
                 value: 'Rp60.000'
             },
             {
-                title: 'Harga Paket 1 tahun',
+                title: 'Harga Paket 1 Tahun',
                 value: 'Rp480.000',
                 is_total: true
             },
