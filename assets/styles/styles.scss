@@ -1,72 +1,75 @@
 body {
-    font-family: 'Nunito', serif !important;
-  }
-  
-  table {
-    font-family: 'Nunito', serif !important;
-  }
-  
-  h4 {
-    font-weight: 300!important;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-  
-  p {
-    font-weight: 300;
-  }
-  
-  button {
-    border-radius: 20px!important;
-  }
-  
-  .icon {
-    position: relative;
-    padding: 12px 0px;
-  }
-  
-  .item-center {
-    margin: 0 auto;
-  }
+  font-family: 'Nunito', serif !important;
+}
 
-   
-  .btn-primary {
-    background-color: #86d0c1;
-    border-color: #86d0c1!important;
-    color: #ffffff;
-    &:focus, &:active, &:hover {
-      background-color: #86d0c1!important;
-      opacity: 0.7!important;
-    }
+table {
+  font-family: 'Nunito', serif !important;
+}
+
+h4 {
+  font-weight: 300 !important;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+p {
+  font-weight: 300;
+}
+
+button {
+  border-radius: 20px !important;
+}
+
+.icon {
+  position: relative;
+  padding: 12px 0px;
+}
+
+.item-center {
+  margin: 0 auto;
+}
+
+.btn-primary {
+  background-color: #86d0c1;
+  border-color: #86d0c1 !important;
+  color: #ffffff;
+  &:focus,
+  &:active,
+  &:hover {
+    background-color: #86d0c1 !important;
+    opacity: 0.7 !important;
   }
-  
-  .btn-secondary {
-    background-color: #ebc615!important;
-    color: #ffffff !important;
-    border-color: #ebc615!important;
-    &:focus, &:active, &:hover {
-      opacity: 0.7;
-    }
+}
+
+.btn-secondary {
+  background-color: #ebc615 !important;
+  color: #ffffff !important;
+  border-color: #ebc615 !important;
+  &:focus,
+  &:active,
+  &:hover {
+    opacity: 0.7;
   }
+}
 
 .scroller {
   overflow-y: scroll;
   scrollbar-color: #408374 #eeeeee;
   scrollbar-width: thin;
-}  
+}
 .scroller::-webkit-scrollbar {
   width: 5px;
 }
 .scroller::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #eeeeee; 
+  box-shadow: inset 0 0 5px #eeeeee;
   border-radius: 10px;
 }
 .scroller::-webkit-scrollbar-thumb {
-  background: #408374; 
+  background: #408374;
   border-radius: 10px;
 }
 .scroller::-webkit-scrollbar-thumb:hover {
-  background: #408374; 
+  background: #408374;
 }
 
 .error-msg {

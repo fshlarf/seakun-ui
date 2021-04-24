@@ -1,1 +1,1 @@
-export { internationalPhoneNumbers } from "./code-phone";
+export { internationalPhoneNumbers } from './code-phone';

@@ -1,5 +1,5 @@
 export {
   capitalizeFirstLetter,
   currencyFormat,
-  fullDate
-} from "./word-transformation";
+  fullDate,
+} from './word-transformation';
