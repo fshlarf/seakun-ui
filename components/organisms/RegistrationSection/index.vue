@@ -342,9 +342,7 @@ export default {
           headers: headers,
         })
         .then((res) => {
-          if (res.data.message == 'success') {
-            this.executeApiMailSeakun(payload);
-          }
+          this.executeApiMailSeakun(payload);
         })
         .catch((err) => {
           console.log(err);
