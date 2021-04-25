@@ -121,8 +121,8 @@
                 </p>
               </div>
               <!-- <p>Punya <b>Code Referal</b>? 
-                                <a @click="showFormReferalCode = !showFormReferalCode" class="referal-code">Masukkan Code</a>
-                            </p>-->
+                <a @click="showFormReferalCode = !showFormReferalCode" class="referal-code">Masukkan Code</a>
+              </p>-->
               <div class="form-group" v-if="showFormReferalCode">
                 <label for="referalcode">Code Referral</label>
                 <input
@@ -468,6 +468,9 @@ export default {
         }
       }
     },
+    setTotalDuration(value) {
+      return value.toString() === '1' ? '' : value
+    }
   },
   watch: {
     showPacket() {

@@ -29,7 +29,7 @@
                   : { 'text-decoration': 'unset' }
               "
             >
-              {{ formatMoneyRupiah(choosedPacket.grandTotal) }} /
+              {{ formatMoneyRupiah(choosedPacket.grandTotal) }} / {{ choosedPacket.paymentType === 'month' ? setTotalDuration(choosedPacket.totalMonth) : setTotalDuration(choosedPacket.totalYear) }}
               {{ setPaymentType(choosedPacket) }}
             </div>
           </div>
@@ -112,6 +112,9 @@ export default {
     setPaymentType(value) {
       return value.paymentType === 'month' ? 'bulan' : 'tahun';
     },
+    setTotalDuration(value) {
+      return value.toString() === '1' ? '' : value
+    }
   },
   props: {
     choosedPacket: Object,

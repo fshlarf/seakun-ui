@@ -20,7 +20,7 @@
               </span>
             </div>
             <div class="font-weight-bold" v-if="packet.grandTotal > 0">
-              {{ formatMoneyRupiah(packet.grandTotal) }} /
+              {{ formatMoneyRupiah(packet.grandTotal) }} / {{ packet.paymentType === 'month' ? setTotalDuration(packet.totalMonth) : setTotalDuration(packet.totalYear) }}
               {{ setPaymentType(packet) }}
             </div>
           </div>
@@ -141,6 +141,9 @@ export default {
     setPaymentType(value) {
       return value.paymentType === 'month' ? 'bulan' : 'tahun';
     },
+    setTotalDuration(value) {
+      return value.toString() === '1' ? '' : value
+    }
   },
   props: {
     choosedPacket: Object,
