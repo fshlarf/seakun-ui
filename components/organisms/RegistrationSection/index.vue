@@ -333,6 +333,8 @@ export default {
         voucher: this.isVoucherValid ? this.voucher : '',
         createddate: fullDate(),
         ispreorder: this.choosedPacket.isPreOrder,
+        total_month: this.choosedPacket.totalMonth,
+        total_year: this.choosedPacket.totalYear
       };
       const headers = { 'Access-Control-Allow-Origin': '*' };
       axios
