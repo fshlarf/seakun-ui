@@ -328,7 +328,7 @@ export default {
         packet: this.packet,
         price: this.price,
         discountprice: this.discountPrice,
-        userhost: this.userHost,
+        userhost: this.choosedPacket.userHost,
         referalcode: this.referalcode,
         voucher: this.isVoucherValid ? this.voucher : '',
         createddate: fullDate(),
