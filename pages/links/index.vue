@@ -41,7 +41,7 @@ export default {
         {
           img: '/images/links/whatsapp.png',
           label: 'Whatsapp',
-          source: 'https://api.whatsapp.com/send?phone=6285774642738',
+          source: 'https://api.whatsapp.com/send?phone=6282124852227',
         },
         {
           img: '/images/links/scheme-price.png',

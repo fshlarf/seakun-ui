@@ -45,8 +45,8 @@
               Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi oleh Admin
               melalui Whatsapp untuk proses selanjutnya.
               <br />Hubungi Admin
-              <a href="https://api.whatsapp.com/send?phone=6285774642738"
-                >085774642738</a
+              <a href="https://api.whatsapp.com/send?phone=6282124852227"
+                >+6282124852227</a
               >
             </p>
           </div>

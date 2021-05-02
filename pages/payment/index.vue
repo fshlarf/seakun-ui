@@ -68,7 +68,7 @@
                 <span class="bold"
                   >E-Wallet (Gopay, OVO, Dana, dan LinkAja)</span
                 >, dapat langsung menghubungi
-                <a href="https://api.whatsapp.com/send?phone=6285774642738"
+                <a href="https://api.whatsapp.com/send?phone=6282124852227"
                   >Whatsapp</a
                 >
                 admin Seakun.id</i
@@ -77,8 +77,8 @@
             <p>
               Setelah melakukan pembayaran,
               <br />kirimkan bukti pembayaran ke Whatsapp Seakun.id
-              <a href="https://api.whatsapp.com/send?phone=6285774642738"
-                >085774642738.</a
+              <a href="https://api.whatsapp.com/send?phone=6282124852227"
+                >+6282124852227.</a
               >
               <br />
               Jika <b>kamu ingin membayar sekaligus</b> untuk

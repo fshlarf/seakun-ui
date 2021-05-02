@@ -18,8 +18,8 @@
             </p>
             <p style="color: #666666">
               Jika ada kendala segera hubungi ke Whatsapp Seakun.id
-              <a href="https://api.whatsapp.com/send?phone=6285774642738"
-                >085774642738</a
+              <a href="https://api.whatsapp.com/send?phone=6282124852227"
+                >+6282124852227</a
               >
             </p>
           </div>

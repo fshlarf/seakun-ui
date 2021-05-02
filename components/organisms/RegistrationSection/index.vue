@@ -18,7 +18,7 @@
     />
     <div class="container">
       <Alert
-        message="Ada layanan baru lho di Seakun.id! Kini layanan <b>Teman Berlangganan Microsoft 365</b> telah hadir di Seakun.id. Silahkan mendaftar :)"
+        :message="`<b>Info Penting!</b> Karena ada kendala di Nomor Whatsapp yg sebelumnya, <b>sekarang Seakun.id menggunakan Nomor Whatsapp baru ya</b>. Bisa hubungi kita di ${linkWa}.`"
         typeAlert="success"
       />
 
@@ -248,6 +248,7 @@ export default {
       showInvalidVoucher: false,
       blockMail: ['bughunterv4n@gmail.com'],
       internationalPhoneNumbers,
+      linkWa: '<a href="https://api.whatsapp.com/send?phone=6282124852227">+6282124852227</a>'
     };
   },
   mounted() {

@@ -2,7 +2,7 @@
   <div class="cp">
     <div class="container">
       <div class="cp__title">
-        <p>Perlu <b>BANTUAN?</b> Hubungi Kami : <b>085774642738</b></p>
+        <p>Perlu <b>BANTUAN?</b> Hubungi Kami : <b>+6282124852227</b></p>
       </div>
     </div>
   </div>

@@ -42,9 +42,9 @@
                   <a
                     target="_blank"
                     class="footer__widget-contact-wa"
-                    href="https://api.whatsapp.com/send?phone=6285774642738"
+                    href="https://api.whatsapp.com/send?phone=6282124852227"
                   >
-                    +62857-7464-2738
+                    +62821-2485-2227
                   </a>
                 </li>
                 <li>cs@seakun.id</li>
