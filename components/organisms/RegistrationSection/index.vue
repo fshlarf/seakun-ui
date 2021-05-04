@@ -335,7 +335,8 @@ export default {
         createddate: fullDate(),
         ispreorder: this.choosedPacket.isPreOrder,
         total_month: this.choosedPacket.totalMonth,
-        total_year: this.choosedPacket.totalYear
+        total_year: this.choosedPacket.totalYear,
+        linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codePhone}${this.whatsapp}`
       };
       const headers = { 'Access-Control-Allow-Origin': '*' };
       axios
