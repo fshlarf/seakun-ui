@@ -68,12 +68,18 @@
           >
             <LabelChecked title="Gratis Satu Bulan Pertama" />
           </div>
-          <div class="dropdown__item item" v-if="packet.userHost">
+          <div class="dropdown__item item" v-if="packet.userHost && provider.toLowerCase() === 'netflix'">
             <div>
               <b>Syarat menjadi User Host:</b>
-              Memiliki Kartu Debit/Kredit Internasional yang dapat digunakan
+              Memiliki GOPAY atau Kartu Debit/Kredit Internasional yang dapat digunakan
               untuk melakukan pembayaran ke Netflix, Seperti Jenius, BNI
               Internasional dan lainnya.
+            </div>
+          </div>
+          <div class="dropdown__item item" v-if="packet.userHost && provider.toLowerCase() === 'youtube'">
+            <div>
+              <b>Syarat menjadi User Host:</b>
+              Memiliki Nomor Handphone Aktif.
             </div>
           </div>
           <div class="dropdown__item item" v-if="packet.userHost">
