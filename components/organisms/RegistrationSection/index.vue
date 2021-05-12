@@ -18,7 +18,7 @@
     />
     <div class="container">
       <Alert
-        :message="`<b>Info Penting!</b> Karena ada kendala di Nomor Whatsapp yg sebelumnya, <b>sekarang Seakun.id menggunakan Nomor Whatsapp baru ya</b>. Bisa hubungi kita di ${linkWa}.`"
+        :message="`<b>Selamat libur lebaran. Info Penting!</b> Kamis, 13 Mei 2021 jam operasional Seakun.id akan dibuka mulai jam 18.00 - 22.00 WIB. Untuk hari berikutnya akan kembali ke jam operasional normal, terimakasih.`"
         typeAlert="success"
       />
 
