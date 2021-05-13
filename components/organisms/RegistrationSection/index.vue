@@ -17,10 +17,10 @@
       :voucher="voucher"
     />
     <div class="container">
-      <Alert
+      <!-- <Alert
         :message="`<b>Selamat libur lebaran. Info Penting!</b> Kamis, 13 Mei 2021 jam operasional Seakun.id akan dibuka mulai jam 18.00 - 22.00 WIB. Untuk hari berikutnya akan kembali ke jam operasional normal, terimakasih.`"
         typeAlert="success"
-      />
+      /> -->
 
       <div class="row">
         <div class="col">
