@@ -81,8 +81,17 @@
         </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <div>Copyright ©2020 seakun.id</div>
+    <div class="footer__bottom" data-v-a652d954=""><div style="text-align: left">
+      <a href="https:/seakun.id/terms-of-use" data-v-a652d954="">
+        Syarat dan Ketentuan Pengguna
+      </a>
+      <div data-v-a652d954="">
+          Copyright ©2021 seakun.id
+      </div>
+      </div>
+      <div>
+          PT. Seakun Global Teknologi
+      </div>
     </div>
   </footer>
 </template>
@@ -228,12 +237,14 @@ export default {};
   }
 
   &__bottom {
+    display: flex;
     position: relative;
     text-align: center;
     padding: 18px 0 !important;
     line-height: 24px;
     color: #cccccc;
     background: #131313;
+    justify-content: space-around;
   }
   .container {
     max-width: 1120px !important;
