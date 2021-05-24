@@ -81,11 +81,11 @@
         </div>
       </div>
     </div>
-    <div class="footer__bottom" data-v-a652d954=""><div style="text-align: left">
-      <a href="https:/seakun.id/terms-of-use" data-v-a652d954="">
+    <div class="footer__bottom"><div style="text-align: left">
+      <nuxt-link to="/terms-of-use" style="color: white">
         Syarat dan Ketentuan Pengguna
-      </a>
-      <div data-v-a652d954="">
+      </nuxt-link>
+      <div>
           Copyright ©2021 seakun.id
       </div>
       </div>
@@ -271,6 +271,9 @@ export default {};
       &-title {
         margin: 50px 0px;
       }
+    }
+    &__bottom {
+      font-size: 10px;
     }
   }
 }
