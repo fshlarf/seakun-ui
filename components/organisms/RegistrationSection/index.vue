@@ -148,6 +148,13 @@
                 :showInvalidVoucher="showInvalidVoucher"
                 :voucher="voucher"
               />
+              
+              <div style="margin-left: 20px">
+                <input class="form-check-input" type="checkbox" v-model="isAgree">
+                <label class="form-check-label" for="checkbox">
+                  Setuju dengan <nuxt-link to="/terms-of-use">Syarat dan Ketentuan Penggunaan</nuxt-link>
+                </label>
+              </div>
 
               <ChoosedPacket
                 :choosedPacket="choosedPacket"
@@ -158,7 +165,7 @@
               <button
                 class="btn btn-primary"
                 @click.prevent="clickSubmit"
-                :disabled="isDisableBtn"
+                :disabled="!isAgree"
               >
                 <span
                   v-if="isDisableBtn"
@@ -248,7 +255,8 @@ export default {
       showInvalidVoucher: false,
       blockMail: ['bughunterv4n@gmail.com'],
       internationalPhoneNumbers,
-      linkWa: '<a href="https://api.whatsapp.com/send?phone=6282124852227">+6282124852227</a>'
+      linkWa: '<a href="https://api.whatsapp.com/send?phone=6282124852227">+6282124852227</a>',
+      isAgree: false
     };
   },
   mounted() {
@@ -297,6 +305,7 @@ export default {
         this.packet != 'Contoh: Paket Grup'
       ) {
         this.isDisableBtn = true;
+        this.isAgree = false;
         this.postRegisteredUser();
       }
     },
@@ -349,6 +358,7 @@ export default {
         .catch((err) => {
           console.log(err);
           this.isDisableBtn = false;
+          this.isAgree = true;
         });
     },
     chooseProvider(provider) {
@@ -486,7 +496,7 @@ export default {
         this.packet = 'Contoh: Paket Grup';
         this.choosedPacket = {};
       }
-    },
+    }
   },
 };
 </script>
