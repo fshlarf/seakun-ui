@@ -349,7 +349,7 @@ export default {
       };
       const headers = { 'Access-Control-Allow-Origin': '*' };
       axios
-        .post('https://seakun-api.herokuapp.com/registered-user', payload, {
+        .post('https://seakun-api-v1.herokuapp.com/registered-user', payload, {
           headers: headers,
         })
         .then((res) => {
