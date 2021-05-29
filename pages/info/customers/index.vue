@@ -100,7 +100,7 @@ export default {
       this.isLoading = true;
       axios
         .get(
-          `https://seakun-api-v1.herokuapp.com/registered-user/group-${provider}`
+          `https://seakun-api-v2.herokuapp.com/registered-user/group-${provider}`
         )
         .then((res) => this.processDataCustomers(res.data))
         .catch((err) => console.log(err))

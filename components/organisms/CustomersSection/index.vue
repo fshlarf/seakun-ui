@@ -126,7 +126,7 @@ export default {
     getCustomersData(provider) {
       axios
         .get(
-          `https://seakun-api-v1.herokuapp.com/registered-user/group-${provider}`
+          `https://seakun-api-v2.herokuapp.com/registered-user/group-${provider}`
         )
         .then((res) => this.processDataCustomers(res.data, provider))
         .then(() => this.scrollToRegistrationSection())

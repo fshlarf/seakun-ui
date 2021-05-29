@@ -312,7 +312,7 @@ export default {
     getPacketData(provider) {
       axios
         .get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}`
+          `https://seakun-packet-api-v2.herokuapp.com/${provider.toLowerCase()}`
         )
         .then((res) => {
           this.packets = res.data;
@@ -349,7 +349,7 @@ export default {
       };
       const headers = { 'Access-Control-Allow-Origin': '*' };
       axios
-        .post('https://seakun-api-v1.herokuapp.com/registered-user', payload, {
+        .post('https://seakun-api-v2.herokuapp.com/registered-user', payload, {
           headers: headers,
         })
         .then((res) => {
@@ -404,7 +404,7 @@ export default {
         payment_type: this.choosedPacket.paymentType,
       };
       axios
-        .post('https://seakun-mail-api-v1.herokuapp.com/', newPayload)
+        .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)
         .then((res) => {
           this.isDisableBtn = false;
           // Redirect to thankyou page when successfully registration
@@ -432,7 +432,7 @@ export default {
     },
     getVouchersData() {
       axios
-        .get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
+        .get('https://seakun-packet-api-v2.herokuapp.com/vouchers')
         .then((res) => {
           this.vouchersData = res.data;
         })

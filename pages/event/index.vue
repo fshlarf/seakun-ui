@@ -263,7 +263,7 @@ export default {
   methods: {
     getDataEvent() {
       axios
-        .get(`https://seakun-api-v1.herokuapp.com/event/${this.$route.query.name}`)
+        .get(`https://seakun-api-v2.herokuapp.com/event/${this.$route.query.name}`)
         .then((res) => {
           this.dataEvent = res.data;
         })
@@ -329,7 +329,7 @@ export default {
         slug_event: this.dataEvent.slug_event,
       };
       axios
-        .post('https://seakun-api-v1.herokuapp.com/event/register-user', payload)
+        .post('https://seakun-api-v2.herokuapp.com/event/register-user', payload)
         .then((res) => {
           this.isDisableBtn = false;
           this.$router.push('/thankyou/event-registered');
