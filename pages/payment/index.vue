@@ -4,17 +4,18 @@
     <div class="payment">
       <transition name="slide-fade">
         <div v-if="showSnackBar" id="snackbar">
-          <span style="text-align: end" @click="showSnackBar = false"
+          <!-- <span style="text-align: end" @click="showSnackBar = false"
             >&times;</span
-          >
-          <p>Rekening disalin</p>
+          > -->
+          <i class="fa fa-check-circle-o"></i>
+          <p>Berhasil disalin</p>
         </div>
       </transition>
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="payment__img">
-              <img src="/images/thank-you.png" alt="Image not found" />
+              <img class="img-pay" src="/images/thank-you.png" alt="Image not found" />
             </div>
             <h3 class="payment__header-h3">Thank You!</h3>
             <p v-html="setWordingInformation(provider, packetId)"></p>
@@ -34,7 +35,7 @@
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">Bank Transfer</div>
               </div>
-              <div class="row mt-1">
+              <!-- <div class="row mt-1">
                 <div class="col box-title">Bank Tujuan</div>
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">Mandiri</div>
@@ -47,19 +48,40 @@
                   class="col box-item-noRek"
                   @click="handleCopyRekening"
                 >
-                  1150007389705 &nbsp;&nbsp;
+                  1150046427383 &nbsp;&nbsp;
                   <i class="fa fa-copy"></i>
                 </div>
               </div>
               <div class="row mt-1">
                 <div class="col box-title">Nama Rekening</div>
                 <div class="col col-lg-1">:</div>
-                <div class="col box-item">PT. Trivamas Tekno Solusindo</div>
+                <div class="col box-item">PT. Seakun Global</div>
               </div>
               <div class="row mt-1">
                 <div class="col box-title">Total Pembayaran</div>
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
+              </div> -->
+            </div>
+            <div style="margin:40px 0px;color:#787878;line-height:24px;text-align:center;">
+              <p style="font-weight: 600;margin-bottom: -6px">Transfer ke</p>
+              <img class="mandiri" src="http://1.bp.blogspot.com/-zkv5u5OGPEM/VKOWnIRRKBI/AAAAAAAAA7E/ovxa4ZW3I0o/w1200-h630-p-k-no-nu/Logo%2BBank%2BMandiri.png" alt="mandiri" >
+              <p style="font-weight: 400;margin-top: 0px; margin-bottom: 0px; font-weight: 600;">PT. Seakun Global </p>
+              <div class="flex" @click="handleCopyRekening(1150046427383)" style="color:#8DCABE; cursor: pointer; justify-content: center; margin-top: 12px">
+                <span style="font-weight: 800;font-size:18px;">1150046427383</span>
+                <i class="fa fa-copy" style="margin-left: 6px"></i>
+              </div>
+              <p style="margin-top: 18px; margin-bottom: 18px">atau</p>
+              <img class="bca" src="https://3.bp.blogspot.com/-aQnHc_0H_Ak/WurNoOMpyMI/AAAAAAAAALg/PZMlfA2tvsshjtf9z8ynOdLZjFxN3u7kQCLcBGAs/s1600/logo%2Bbca.png" alt="mandiri" >
+              <p style="font-weight: 400;margin-top: 6px; margin-bottom: 0px; font-weight: 600;">PT. Seakun Global </p>
+              <div class="flex" @click="handleCopyRekening(7660777738)" style="color:#8DCABE; cursor: pointer; justify-content: center; margin-top: 12px">
+                <span style="font-weight: 800;font-size:18px;">7660777738</span>
+                <i class="fa fa-copy" style="margin-left: 6px"></i>
+              </div>
+              <p style="margin-bottom: 0px; font-weight: 700;">Nominal Pembayaran</p>
+              <div class="flex" @click="handleCopyNominal(total)" style="color:#8DCABE; cursor: pointer; justify-content: center; margin-top: 12px">
+                <span style="font-weight: 800;font-size:18px;">{{ formatMoneyRupiah(total) }}</span>
+                <i class="fa fa-copy" style="margin-left: 6px"></i>
               </div>
             </div>
             <p>
@@ -152,8 +174,21 @@ export default {
         }
       }
     },
-    handleCopyRekening() {
-      const text = '1150007389705';
+    handleCopyRekening(norek) {
+      const text = norek;
+
+      navigator.clipboard.writeText(text).then(
+        () => {
+          this.showSnackBar = true;
+          setTimeout(() => {
+            this.showSnackBar = false;
+          }, 2000);
+        },
+        (err) => console.log(err)
+      );
+    },
+    handleCopyNominal(nominal) {
+      const text = nominal;
 
       navigator.clipboard.writeText(text).then(
         () => {
@@ -294,8 +329,8 @@ export default {
     background-color: #daeeef;
     color: #2f524b;
     text-align: center;
-    border-radius: 4px;
-    padding: 16px;
+    border-radius: 25px;
+    padding: 8px 16px;
     position: fixed;
     z-index: 1;
     top: 100px;
@@ -304,15 +339,13 @@ export default {
     max-width: 600px;
     left: 65%;
     margin-left: -300px;
-    font-weight: 400;
-    display: grid;
+    font-weight: 700 !important;
     button {
       margin-top: 0px !important;
-      margin-bottom: 10px !important;
+      // margin-bottom: 10px !important;
     }
     span {
       font-size: 28px;
-      font-weight: 700;
       cursor: pointer;
       padding: 0px 12px;
     }
@@ -342,7 +375,7 @@ export default {
         margin-top: 16px;
       }
     }
-    img {
+    .img-pay {
       width: 330px !important;
       margin: 16px auto;
     }
@@ -358,6 +391,18 @@ export default {
       max-width: 10px;
     }
   }
+  .mandiri {
+    width: 100px !important;
+  }
+  .bca {
+    width: 100px !important;
+  }
+}
+.mandiri {
+  width: 100px;
+}
+.bca {
+  width: 100px;
 }
 @media only screen and (min-width: 880px) and (max-width: 1020px) {
   .container {
