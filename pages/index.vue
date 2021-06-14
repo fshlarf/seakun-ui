@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Navbar />
     <HeaderSection />
     <Introduction />
     <ServicesSection />
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import Navbar from '~/components/mollecules/Navbar';
 import HeaderSection from '~/components/organisms/HeaderSection';
 import Introduction from '~/components/organisms/Introduction';
 import ServicesSection from '~/components/organisms/ServicesSection';
@@ -30,6 +32,7 @@ import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
+    Navbar,
     HeaderSection,
     Introduction,
     ServicesSection,
