@@ -34,7 +34,7 @@ export default {
     };
   },
   methods: {
-    handleonClick(e) {
+    handleOnClick(e) {
       this.$emit('click', e);
     },
   },

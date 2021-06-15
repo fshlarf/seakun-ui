@@ -36,23 +36,10 @@
 import MainLogo from '~/components/atoms/MainLogo.vue';
 import Button from '~/components/atoms/Button.vue';
 export default {
-  data() {
-    return {
-      // collegaElement: '',
-      // serviceElement: '',
-      // testimoniElement: '',
-      // aboutUsElement: '',
-      // contactElement: '',
-      // regElement: '',
-      // customersElement: '',
-    };
-  },
   components: {
     MainLogo,
     Button,
   },
-  mounted() {},
-  methods: {},
 };
 </script>
 

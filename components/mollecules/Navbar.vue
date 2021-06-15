@@ -45,32 +45,6 @@
           <li class="nav-item">
             <a class="nav-link text-primary" @click="toCollegaElement">QnA</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" @click="toCollegaElement">Provider</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="toServiceElement">Layanan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="toTestimoniElement">Testimoni</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="toCustomersElement">Pengguna</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="toRegistrationElement">Daftar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="toAboutUsElement">Tentang Kami</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="toContactUsElement">Hubungi</a>
-          </li>
-          <li class="nav-item">
-            <nuxt-link class="nav-link" to="/info/scheme-of-price"
-              >Skema Harga</nuxt-link
-            >
-          </li> -->
         </ul>
       </div>
     </div>
@@ -80,91 +54,14 @@
 <script>
 import MainLogo from '~/components/atoms/MainLogo.vue';
 export default {
-  data() {
-    return {
-      //   collegaElement: '',
-      //   serviceElement: '',
-      //   testimoniElement: '',
-      //   aboutUsElement: '',
-      //   contactElement: '',
-      //   regElement: '',
-      //   customersElement: '',
-    };
-  },
   components: {
     MainLogo,
-    // ButtonChevron,
-  },
-  mounted() {
-    // this.collegaElement = document.getElementById('collega');
-    // this.serviceElement = document.getElementById('facility');
-    // this.testimoniElement = document.getElementById('testimoni');
-    // this.aboutUsElement = document.getElementById('about-us');
-    // this.contactUsElement = document.getElementById('contact-us');
-    // this.regElement = document.getElementById('reg');
-    // this.customersElement = document.getElementById('customers');
   },
   methods: {
     hideMenu() {
       let menuContainer = document.getElementById('navbarSupportedContent');
       menuContainer.classList.remove('show');
     },
-    // toCollegaElement() {
-    //   this.collegaElement.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //     inline: 'nearest',
-    //   });
-    //   this.hideMenu();
-    // },
-    // toServiceElement() {
-    //   this.serviceElement.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //     inline: 'nearest',
-    //   });
-    //   this.hideMenu();
-    // },
-    // toTestimoniElement() {
-    //   this.testimoniElement.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //     inline: 'nearest',
-    //   });
-    //   this.hideMenu();
-    // },
-    // toAboutUsElement() {
-    //   this.aboutUsElement.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //     inline: 'nearest',
-    //   });
-    //   this.hideMenu();
-    // },
-    // toContactUsElement() {
-    //   this.contactUsElement.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //     inline: 'nearest',
-    //   });
-    //   this.hideMenu();
-    // },
-    // toCustomersElement() {
-    //   this.customersElement.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //     inline: 'nearest',
-    //   });
-    //   this.hideMenu();
-    // },
-    // toRegistrationElement() {
-    //   this.regElement.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'start',
-    //     inline: 'nearest',
-    //   });
-    //   this.hideMenu();
-    // },
   },
 };
 </script>
@@ -172,7 +69,6 @@ export default {
 <style lang="scss" scoped>
 .navbar {
   background-color: #f4f9f8 !important;
-  //   box-shadow: 0px 0px 16px #dddddd;
   position: fixed;
   width: 100%;
   z-index: 100;
