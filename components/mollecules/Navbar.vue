@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid nav-container">
+    <div class="container nav-container">
       <nuxt-link class="navbar-brand d-flex" to="/">
         <MainLogo label="Seakun.id" />
       </nuxt-link>
@@ -22,28 +22,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="mr-auto"></div>
         <ul class="nav navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-primary" @click="toCollegaElement"
-              >Provider</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" @click="toCollegaElement"
-              >Tipe user</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" @click="toCollegaElement"
-              >Cara pesan</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" @click="toCollegaElement"
-              >Testimoni</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" @click="toCollegaElement">QnA</a>
+          <li class="nav-item" v-for="(navbar, id) in navbarLink" :key="id">
+            <a class="nav-link text-primary">{{ navbar.label }}</a>
           </li>
         </ul>
       </div>
@@ -54,6 +34,37 @@
 <script>
 import MainLogo from '~/components/atoms/MainLogo.vue';
 export default {
+  data() {
+    return {
+      navbarLink: [
+        {
+          id: 1,
+          label: 'Provider',
+          link: '',
+        },
+        {
+          id: 2,
+          label: 'Tipe user',
+          link: '',
+        },
+        {
+          id: 3,
+          label: 'Cara pesan',
+          link: '',
+        },
+        {
+          id: 4,
+          label: 'Testimoni',
+          link: '',
+        },
+        {
+          id: 5,
+          label: 'QnA',
+          link: '',
+        },
+      ],
+    };
+  },
   components: {
     MainLogo,
   },
@@ -72,10 +83,6 @@ export default {
   position: fixed;
   width: 100%;
   z-index: 100;
-
-  .nav-container {
-    padding: 0 8rem 0 8rem;
-  }
 
   .nav-link {
     font-weight: 700;
@@ -96,11 +103,26 @@ export default {
     }
   }
 }
-@media (max-width: 800px) {
+
+@media only screen and (min-device-width: 1000px) and (max-device-width: 1034px) {
+  .nav-container {
+    padding: 0 1rem 0 1rem;
+  }
+
+  .nav-link {
+    margin-left: 1px;
+  }
+}
+
+@media (max-width: 840px) {
   .navbar {
     position: fixed;
     width: 100%;
     z-index: 100;
+
+    .nav-container {
+      padding: 0 1rem 0 1rem;
+    }
 
     .nav-link {
       margin-left: 0;
@@ -126,6 +148,22 @@ export default {
           margin: 2px 0px;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+
+    .nav-container {
+      padding: 0;
+    }
+
+    .nav-link {
+      margin-left: 0;
     }
   }
 }

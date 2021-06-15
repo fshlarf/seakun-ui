@@ -1,29 +1,20 @@
 <template>
   <div class="intro">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <Title title="Berlangganan Bersama, Lebih Praktis, Aman dan Murah" />
+    <div class="container-fluid">
+      <div class="row justify-content-around">
+        <div class="col-md-6 col-xl-5 intro-img">
+          <img src="/images/about-us.svg" alt="Image not found" />
+        </div>
+        <div class="col-md-6 col-xl-5 align-self-center">
+          <h2>Tentang Kami</h2>
           <p>
-            Platform pertama di Indonesia yang memberikan layanan
-            <b> Berlangganan Bersama </b> dengan pengguna lain
-            <b>(sharing subscription)</b> ke Penyedia Layanan Entertainment
-            (Provider Entertainment) seperti
-            <b>Netflix, Gramedia Digital, Spotify, Steam</b>
-            dan lainnya agar dapat menikmati fitur premium, dengan
-            <b> proses berlangganan yang praktis, legal, aman </b> dan
-            <b>murah</b>.
+            Platform pertama di Indonesia yang memberikan layanan berlangganan
+            bersama dengan pengguna lain (sharing subscription) ke penyedia
+            layanan entertainment seperti
+            <span class="text-secondary font-weight-bold"
+              >Netflix, Gramedia Digital, Spotify, Steam, dan lainnya</span
+            >
           </p>
-          <button
-            type="button"
-            class="intro__btn btn btn-primary"
-            @click="toRegistrationElement"
-          >
-            Daftar
-          </button>
-          <div class="intro__img">
-            <img src="/images/patungan-2.svg" alt="Image not found" />
-          </div>
         </div>
       </div>
     </div>
@@ -31,91 +22,58 @@
 </template>
 
 <script>
-import Title from '~/components/atoms/Title';
-export default {
-  component: {
-    Title,
-  },
-  data() {
-    return {
-      regElement: '',
-    };
-  },
-  mounted() {
-    this.regElement = document.getElementById('reg');
-  },
-  methods: {
-    toRegistrationElement() {
-      this.regElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
-    },
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
 .intro {
-  padding-top: 100px !important;
-  height: 800px;
+  padding-top: 6rem !important;
+  padding-bottom: 6rem !important;
 
-  .title {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  .col {
-    text-align: center;
+  .col-md-6 {
+    text-align: left;
     h2 {
-      margin-bottom: 20px !important;
+      font-weight: 700;
+      font-size: 44px;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
     p {
-      margin: 0 auto;
-      max-width: 880px;
-      margin-top: 30px;
-      margin-bottom: 40px;
-      font-size: 22px;
-    }
-    button {
-      margin: 10px;
-      padding: 6px 35px !important;
+      font-weight: 500;
+      font-size: 22px !important;
     }
   }
-  .container {
-    max-width: 1120px !important;
-    font-weight: 500 !important;
-    margin: 0 auto !important;
-  }
-  &__img {
+  .intro-img {
     img {
-      width: 50rem;
+      width: 100%;
     }
   }
-  .row {
-    padding: 0px 8px !important;
+}
+@media (max-width: 1024px) {
+  .intro {
+    .col-md-6 {
+      h2 {
+        font-size: 40px;
+      }
+      p {
+        font-size: 20px !important;
+      }
+    }
   }
 }
 @media (max-width: 800px) {
   .intro {
-    &__img {
-      text-align: center;
-      margin-top: 20px;
-    }
-    img {
-      width: 100%;
-    }
-    .row {
-      display: block;
-    }
-    h2 {
-      font-size: 20px;
+    padding-bottom: 3rem !important;
+    .intro-img {
+      align-self: center;
     }
   }
 }
-@media only screen and (min-width: 880px) and (max-width: 1020px) {
-  .container {
-    display: contents !important;
+@media (max-width: 400px) {
+  .intro {
+    .col-md-6 {
+      text-align: center;
+    }
   }
 }
 </style>
