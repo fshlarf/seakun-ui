@@ -17,7 +17,7 @@ p {
 }
 
 button {
-  border-radius: 20px !important;
+  border-radius: 5px !important;
 }
 
 .icon {
@@ -42,14 +42,31 @@ button {
 }
 
 .btn-secondary {
-  background-color: #ebc615 !important;
-  color: #ffffff !important;
-  border-color: #ebc615 !important;
+  background-color: #ffffff !important;
+  color: #86d0c1 !important;
+  border-color: #86d0c1 !important;
   &:focus,
   &:active,
   &:hover {
     opacity: 0.7;
   }
+}
+
+.btn-third {
+  background-color: #417465 !important;
+  color: #ffffff !important;
+  border-color: #417465 !important;
+  padding: 0.8rem 3rem;
+  font-size: 20px;
+  &:focus,
+  &:active,
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.text-primary {
+  color: #86d0c1 !important;
 }
 
 .scroller {
@@ -78,13 +95,13 @@ button {
   margin-top: 3px;
 }
 
-button[disabled]{
+button[disabled] {
   border-color: #cccccc !important;
   background-color: #cccccc !important;
   color: #666666 !important;
 }
 
-button[disabled]:hover{
+button[disabled]:hover {
   background-color: #cccccc !important;
   color: #666666 !important;
   cursor: no-drop;
