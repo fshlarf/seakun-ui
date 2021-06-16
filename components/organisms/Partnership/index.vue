@@ -69,6 +69,7 @@ export default {
 
 <style lang="scss" scoped>
 .partnership {
+  padding-bottom: 5rem;
   .partner-bg {
     width: 100%;
     height: 23rem;
