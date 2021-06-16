@@ -29,6 +29,10 @@ button {
   margin: 0 auto;
 }
 
+.bg-primary {
+  background-color: #86d0c1 !important;
+}
+
 .btn-primary {
   background-color: #86d0c1;
   border-color: #86d0c1 !important;
@@ -45,6 +49,8 @@ button {
   background-color: #ffffff !important;
   color: #86d0c1 !important;
   border-color: #86d0c1 !important;
+  padding: 0.8rem 2rem;
+  font-weight: bold;
   &:focus,
   &:active,
   &:hover {
@@ -67,6 +73,10 @@ button {
 
 .text-primary {
   color: #86d0c1 !important;
+}
+
+.text-secondary {
+  color: #417465 !important;
 }
 
 .scroller {
