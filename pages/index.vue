@@ -5,6 +5,7 @@
     <Introduction />
     <Partnership />
     <ProductSection />
+    <UserType />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import HeaderSection from '~/components/organisms/HeaderSection';
 import Introduction from '~/components/organisms/Introduction';
 import Partnership from '~/components/organisms/Partnership';
 import ProductSection from '~/components/organisms/ProductSection';
+import UserType from '~/components/organisms/UserType';
 
 export default {
   components: {
@@ -22,6 +24,7 @@ export default {
     Introduction,
     Partnership,
     ProductSection,
+    UserType,
   },
 };
 </script>

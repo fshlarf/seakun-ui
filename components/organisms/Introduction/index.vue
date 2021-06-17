@@ -1,6 +1,6 @@
 <template>
   <div class="intro">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row justify-content-around">
         <div class="col-md-6 col-xl-5 intro-img">
           <img src="/images/about-us.svg" alt="Image not found" />

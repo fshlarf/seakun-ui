@@ -1,9 +1,9 @@
 <template>
-  <div class="px-2">
-    <div class="md:px-8 lg:px-16 xl:px-28 lg:py-12">
+  <div class="container">
+    <div class="lg:py-12">
       <div class="flex justify-between items-center mb-2 px-2">
         <h1
-          class="hidden md:block md:text-3xl lg:text-4xl font-bold md:mb-4 lg:mb-5"
+          class="hidden md:block md:text-3xl lg:text-4xl font-bold md:mb-4 lg:mb-8"
         >
           Berlangganan produk digital
         </h1>
@@ -13,38 +13,36 @@
         >
       </div>
       <div
-        class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch"
+        class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch"
       >
         <div class="" v-for="(product, id) in dataProductDigital" :key="id">
           <ProductCard
             :product="product"
-            class="md:w-full md:h-full m-1"
+            class="md:w-full md:h-full"
             v-if="product.package"
           />
         </div>
       </div>
 
-      <div class="pt-5 px-2">
-        <h1
-          class="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-4 lg:my-5"
-        >
+      <div class="pt-5 px-2 lg:my-8">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-4">
           Layanan on demand
         </h1>
       </div>
       <div
-        class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch"
+        class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch"
       >
         <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
           <ProductCard
             :product="product"
-            class="md:w-full md:h-full m-1"
+            class="md:w-full md:h-full"
             v-if="product.preview"
           />
         </div>
         <div class="">
           <ProposeCard
             :propose="dataProposeProvider"
-            class="md:w-full md:h-full m-1"
+            class="md:w-full md:h-full"
           />
         </div>
       </div>
