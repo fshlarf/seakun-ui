@@ -1,7 +1,9 @@
 <template>
-  <div class="container py-16 lg:py-12">
+  <div class="container tn:pt-12 lg:pt-24 md:pb-12">
     <div class="text-center">
-      <h1 class="font-bold text-4xl mb-4 lg:mb-8">Tipe User</h1>
+      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-8">
+        Tipe User
+      </h1>
     </div>
     <div
       class="w-full h-full grid tn:grid-cols-1 lg:grid-cols-2 tn:gap-3 lg:gap-8 place-items-stretch items-stretch"
@@ -13,9 +15,9 @@
           class="w-full h-full"
         >
           <template v-slot:preview>
-            <p class="font-medium">
-              Seakun memberikan kewenangan ke Anda sebagai User Host dalam Satu
-              Group untuk melakukan pembayaran ke Provider (Netflix) dengan
+            <p class="font-medium text-xs md:text-base">
+              Seakun memberikan kewenangan kepada Anda sebagai User Host dalam
+              Satu Group untuk melakukan pembayaran ke Provider (Netflix) dengan
               menggunakan Kartu Debit/Kredit milik Anda.
             </p>
           </template>
@@ -28,7 +30,7 @@
           class="w-full h-full"
         >
           <template v-slot:preview>
-            <p class="font-medium">
+            <p class="font-medium text-xs md:text-base">
               Anda menjadi user reguler premium. Pembayaran provider menjadi
               tanggung jawab kami.
             </p>
