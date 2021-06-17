@@ -29,6 +29,10 @@ button {
   margin: 0 auto;
 }
 
+.primary {
+  color: #86d0c1 !important;
+}
+
 .bg-primary {
   background-color: #86d0c1 !important;
 }
@@ -49,7 +53,7 @@ button {
   background-color: #ffffff !important;
   color: #86d0c1 !important;
   border-color: #86d0c1 !important;
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 2rem;
   font-weight: bold;
   &:focus,
   &:active,
