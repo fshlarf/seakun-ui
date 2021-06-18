@@ -95,20 +95,13 @@ export default {
       return newDataTestimony;
     },
   },
-  mounted() {
-    console.log(this);
-    console.log(this.dataTestimony);
-    console.log(this.dataLengthTestimony);
-  },
   methods: {
     toggleModal() {
       this.showModalTestimony = !this.showModalTestimony;
     },
     onClickShowTestimony(data) {
-      //   console.log(this.dataTestimony);
       this.showModalTestimony = !this.showModalTestimony;
       const newData = this.dataTestimony[data.id - 1];
-      //   console.log(newData);
       this.dataDetailTestimony = newData;
     },
   },
