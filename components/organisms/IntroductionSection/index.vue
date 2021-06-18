@@ -1,17 +1,19 @@
 <template>
-  <div class="intro">
-    <div class="container">
-      <div class="row justify-content-around">
-        <div class="col-md-6 col-xl-5 intro-img">
-          <img src="/images/about-us.svg" alt="Image not found" />
+  <div class="container">
+    <div class="py-4 px-4">
+      <div
+        class="grid md:grid-cols-2 justify-around items-center md:space-x-4 lg:space-x-8 xl:space-x-20"
+      >
+        <div class="w-full my-4">
+          <img class="w-100" src="/images/about-us.svg" alt="Image not found" />
         </div>
-        <div class="col-md-6 col-xl-5 align-self-center">
-          <h2>Tentang Kami</h2>
-          <p>
+        <div class="my-2 space-y-2 xl:space-y-4 tn:text-center md:text-left">
+          <h2 class="text-2xl md:text-4xl font-bold">Tentang Kami</h2>
+          <p class="xl:text-lg xl:font-semibold">
             Platform pertama di Indonesia yang memberikan layanan berlangganan
             bersama dengan pengguna lain (sharing subscription) ke penyedia
             layanan entertainment seperti
-            <span class="text-secondary font-weight-bold"
+            <span class="text-secondary font-bold"
               >Netflix, Gramedia Digital, Spotify, Steam, dan lainnya</span
             >
           </p>
@@ -25,55 +27,4 @@
 export default {};
 </script>
 
-<style lang="scss" scoped>
-.intro {
-  padding-top: 6rem !important;
-  padding-bottom: 6rem !important;
-
-  .col-md-6 {
-    text-align: left;
-    h2 {
-      font-weight: 700;
-      font-size: 44px;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-weight: 500;
-      font-size: 22px !important;
-    }
-  }
-  .intro-img {
-    img {
-      width: 100%;
-    }
-  }
-}
-@media (max-width: 1024px) {
-  .intro {
-    .col-md-6 {
-      h2 {
-        font-size: 40px;
-      }
-      p {
-        font-size: 20px !important;
-      }
-    }
-  }
-}
-@media (max-width: 800px) {
-  .intro {
-    padding-bottom: 3rem !important;
-    .intro-img {
-      align-self: center;
-    }
-  }
-}
-@media (max-width: 400px) {
-  .intro {
-    .col-md-6 {
-      text-align: center;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>

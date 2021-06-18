@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Navbar />
-    <HeaderSection />
+    <!-- <Navbar /> -->
+    <!-- <HeaderSection /> -->
     <IntroductionSection />
     <PartnershipSection />
     <ProductSection />
     <UserTypeSection />
-    <OrderFlowSection />
+    <!-- <OrderFlowSection /> -->
   </div>
 </template>
 

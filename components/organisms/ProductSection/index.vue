@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="pt-5 px-2 lg:my-8">
+      <div class="pt-5 px-2 md:my-8">
         <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-4">
           Layanan on demand
         </h1>
