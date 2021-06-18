@@ -1,12 +1,12 @@
 <template>
   <div
-    class="border-none max-w-sm bg-white shadow-xl rounded-xl text-gray-900 md:pb-3 flex flex-col justify-between"
+    class="border-none max-w-sm bg-white shadow-xl rounded-xl overflow-hidden text-gray-900 md:pb-3 flex flex-col justify-between"
   >
     <div class="">
       <img
         :src="`${product.img}`"
         alt="image not found"
-        class="mb-3 object-cover rounded-t-xl rounded-br-3xl md:rounded-br-none md:w-full h-40 md:h-auto"
+        class="mb-3 object-cover rounded-br-3xl lg:rounded-br-none md:w-full h-40 md:h-auto"
       />
     </div>
     <div class="px-2 md:px-4">
