@@ -30,7 +30,7 @@
       class="gradient md:bg-white tn:h-52 tn:bg-primary md:h-32 lg:h-36 xl:h-44"
     ></div>
     <div
-      class="gradient text-center container z-10 px-7 tn:bg-primary tn:h-10 md:h-auto"
+      class="gradient text-center md:bg-white container z-10 px-7 tn:bg-primary tn:h-10 md:h-auto"
     >
       <Button
         class="mx-auto btn-partner"
