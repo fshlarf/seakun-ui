@@ -6,7 +6,7 @@
     <PartnershipSection />
     <ProductSection />
     <UserTypeSection />
-    <!-- <OrderFlowSection /> -->
+    <OrderFlowSection />
   </div>
 </template>
 

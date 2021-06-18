@@ -6,7 +6,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      tn: { min: '0px', max: '400px' },
+      tn: { min: '0px', max: '600px' },
       ...defaultTheme.screens,
     },
     extend: {},
@@ -49,6 +49,9 @@ module.exports = {
             paddingLeft: '4rem',
             paddingRight: '4rem',
           },
+        },
+        '.bg-primary': {
+          backgroundColor: '#86d0c1',
         },
       });
     },

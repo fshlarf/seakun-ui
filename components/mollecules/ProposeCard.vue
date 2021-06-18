@@ -13,7 +13,7 @@
         </p>
       </div>
     </div>
-    <div class="md:px-4">
+    <div class="tn:px-2 md:px-4">
       <Button
         variant="secondary"
         label="Ajukan permintaan"
