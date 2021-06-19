@@ -1,5 +1,8 @@
 <template>
-  <div id="navbar" class="w-full bg-third fixed z-40 py-2 tn:shadow px-2">
+  <div
+    id="navbar"
+    class="w-full bg-white fixed z-40 tn:py-1 lg:py-0 tn:shadow px-2"
+  >
     <div v-if="open" class="opacity-20 fixed inset-0 z-90 bg-black"></div>
     <div
       class="container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between lg:items-center"
@@ -8,7 +11,7 @@
         <Logo label="Seakun.id" />
       </nuxt-link>
       <div
-        class="absolute top-1 right-1 tn:py-3 tn:px-3 md:py-3 md:px-3 md:right-1 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col w-4/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row"
+        class="absolute tn:top-1 tn:right-1 tn:py-2 tn:px-3 md:px-3 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col w-4/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
         :class="{ shadow: open, 'bg-white': open }"
       >
         <div class="items-center">
@@ -39,7 +42,7 @@
 
         <nav
           :class="{ flex: open, hidden: !open }"
-          class="flex-col tn:pr-4 md:pr-4 tn:mt-2 md:p-0 hidden lg:flex lg:justify-end lg:flex-row"
+          class="flex-col tn:pr-4 md:pr-4 tn:mt-2 md:p-0 lg:mt-0 hidden lg:flex lg:justify-end lg:flex-row"
           v-for="(navbar, id) in navbarLink"
           :key="id"
         >

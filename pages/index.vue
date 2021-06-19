@@ -8,6 +8,7 @@
     <UserTypeSection />
     <OrderFlowSection />
     <TestimonySection />
+    <UserListSection />
     <BenefitSection />
     <QnaSection />
   </div>
@@ -22,6 +23,7 @@ import ProductSection from '~/components/organisms/ProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
 import TestimonySection from '~/components/organisms/TestimonySection';
+import UserListSection from '~/components/organisms/UserListSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
 
@@ -35,6 +37,7 @@ export default {
     UserTypeSection,
     OrderFlowSection,
     TestimonySection,
+    UserListSection,
     BenefitSection,
     QnaSection,
   },
