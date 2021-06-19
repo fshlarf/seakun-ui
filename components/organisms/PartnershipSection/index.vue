@@ -1,7 +1,7 @@
 <template>
   <div class="partnership pb-24 lg:py-16">
     <div
-      class="relative z-0 partner-bg bg-primary tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-96 md:h-52 lg:h-60 xl:h-80"
+      class="relative z-0 partner-bg gradient tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-96 md:h-52 lg:h-60 xl:h-80"
     >
       <div class="container text-white xl:mt-12 xl:mb-4">
         <h2 class="tn:text-2xl md:text-4xl font-bold tn:my-2 md:my-2 xl:mb-4">
@@ -26,11 +26,9 @@
         </div>
       </div>
     </div>
+    <div class="gradient-sm md:bg-white tn:h-52 md:h-32 lg:h-36 xl:h-44"></div>
     <div
-      class="gradient md:bg-white tn:h-52 tn:bg-primary md:h-32 lg:h-36 xl:h-44"
-    ></div>
-    <div
-      class="gradient text-center md:bg-white container z-10 px-7 tn:bg-primary tn:h-10 md:h-auto"
+      class="gradient-sm text-center md:bg-white container z-10 px-7 tn:h-10 md:h-auto"
     >
       <Button
         class="mx-auto btn-partner"
@@ -79,12 +77,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bg-primary {
+.gradient {
   background-image: linear-gradient(to left, #8dcabe, #4bac99);
 }
 
 @media (max-width: 600px) {
-  .gradient {
+  .gradient-sm {
     background-image: linear-gradient(to left, #8dcabe, #4bac99);
   }
 }

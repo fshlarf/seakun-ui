@@ -9,6 +9,7 @@
     <OrderFlowSection />
     <TestimonySection />
     <BenefitSection />
+    <QnaSection />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
 import TestimonySection from '~/components/organisms/TestimonySection';
 import BenefitSection from '~/components/organisms/BenefitSection';
+import QnaSection from '~/components/organisms/QnaSection';
 
 export default {
   components: {
@@ -34,6 +36,7 @@ export default {
     OrderFlowSection,
     TestimonySection,
     BenefitSection,
+    QnaSection,
   },
 };
 </script>
