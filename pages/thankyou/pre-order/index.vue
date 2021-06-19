@@ -80,7 +80,16 @@ export default {
   },
   methods: {
     setNumberMember(provider) {
-      return provider.toLowerCase() === 'canva' ? '4' : '5';
+      switch (provider.toLowerCase()) {
+        case 'canva':
+          return '9'
+          break;
+        case 'gramedia':
+          return '2'
+          break;
+        default:
+          return '5'
+      }
     },
     getDataPacket() {
       const {
