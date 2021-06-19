@@ -19,7 +19,7 @@
               <div class="row">
                 <div class="col box-title">Provider</div>
                 <div class="col col-lg-1">:</div>
-                <div class="col box-item">{{ provider }}</div>
+                <div class="col box-item">{{ setProviderName(provider) }}</div>
               </div>
               <div class="row mt-1">
                 <div class="col box-title">Paket</div>
@@ -79,6 +79,9 @@ export default {
     this.getVouchersData();
   },
   methods: {
+    setProviderName(provider) {
+      return provider === 'disney-hotstar' ? 'Disney+ Hotstar' : provider 
+    },
     setNumberMember(provider) {
       switch (provider.toLowerCase()) {
         case 'canva':
