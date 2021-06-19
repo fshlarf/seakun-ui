@@ -33,7 +33,7 @@
 <script>
 import Title from '~/components/atoms/Title';
 export default {
-  component: {
+  components: {
     Title,
   },
   data() {

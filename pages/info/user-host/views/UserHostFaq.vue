@@ -132,3 +132,15 @@
       </div>
     </div>
 </template>
+
+<script>
+import Accordion from '~/components/atoms/Accordion';
+import AccordionContainer from '~/components/atoms/AccordionContainer';
+
+export default {
+  components: {
+    Accordion,
+    AccordionContainer,
+  },
+};
+</script>

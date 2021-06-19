@@ -66,7 +66,7 @@ import Header from '~/components/mollecules/Header';
 import Footer from '~/components/mollecules/Footer';
 
 export default {
-  component: {
+  components: {
     Header: Header,
     Footer: Footer,
   },

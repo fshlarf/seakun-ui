@@ -59,13 +59,13 @@
 
 <script>
 import axios from 'axios';
-import Header from '~/components/mollecules/Header';
+import Header from '~/components/mollecules/Header.vue';
 import Footer from '~/components/mollecules/Footer';
 
 export default {
-  component: {
-    Header: Header,
-    Footer: Footer,
+  components: {
+    Header,
+    Footer,
   },
   data() {
     return {
@@ -90,6 +90,7 @@ export default {
         default:
           return '5'
       }
+      return provider.toLowerCase() === 'canva' ? '4' : '5';
     },
     getDataPacket() {
       const {
