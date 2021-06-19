@@ -1,5 +1,4 @@
 <template>
-  <!-- <div> -->
   <div class="p-4 my-8 rounded-2xl shadow w-72">
     <div class="flex justify-between items-center">
       <img class="w-28" :src="`${group.brand}`" alt="#" />
@@ -26,7 +25,6 @@
       />
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>

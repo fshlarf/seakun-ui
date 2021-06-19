@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="lg:py-12">
+  <div id="provider" class="container">
+    <div class="lg:py-16">
       <div class="flex justify-between items-center mb-2 px-2">
         <h1
           class="hidden md:block md:text-3xl lg:text-4xl font-bold md:mb-4 lg:mb-8"

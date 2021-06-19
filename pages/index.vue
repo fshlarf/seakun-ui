@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <!-- <HeaderSection /> -->
+    <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
     <ProductSection />
@@ -11,7 +11,7 @@
     <UserGroupSection />
     <BenefitSection />
     <QnaSection />
-    <Footer2 />
+    <Footer />
   </div>
 </template>
 
@@ -27,7 +27,7 @@ import TestimonySection from '~/components/organisms/TestimonySection';
 import UserGroupSection from '~/components/organisms/UserGroupSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
-import Footer2 from '~/components/mollecules/Footer2';
+import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
@@ -42,7 +42,7 @@ export default {
     UserGroupSection,
     BenefitSection,
     QnaSection,
-    Footer2,
+    Footer,
   },
 };
 </script>

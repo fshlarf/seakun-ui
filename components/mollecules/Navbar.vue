@@ -49,6 +49,7 @@
           <p
             class="cursor-pointer text-right my-3 text-sm md:text-base font-semibold md:font-bold text-primary hover:text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-12 xl:ml-16"
             href="#"
+            @click="scrollToSection(navbar.id)"
           >
             {{ navbar.label }}
           </p>
@@ -95,6 +96,50 @@ export default {
   },
   components: {
     Logo,
+  },
+  methods: {
+    scrollToSection(id) {
+      if (id === 1) {
+        const providerSection = document.getElementById('provider');
+        providerSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 2) {
+        const userTypeSection = document.getElementById('userType');
+        userTypeSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 3) {
+        const orderFlowSection = document.getElementById('orderFlow');
+        orderFlowSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 4) {
+        const testimonySection = document.getElementById('testimony');
+        testimonySection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 5) {
+        const qnaSection = document.getElementById('qna');
+        qnaSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+    },
   },
 };
 </script>
