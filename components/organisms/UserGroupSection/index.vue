@@ -1,6 +1,6 @@
 <template>
-  <div class="container tn:pt-12 md:pt-24 md:pb-8">
-    <div class="text-center md:text-left">
+  <div class="container tn:pt-8 md:pt-24 md:pb-8">
+    <div class="tn:text-center md:text-left">
       <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-4">
         Pengguna Seakun.id
       </h1>

@@ -19,7 +19,11 @@
       </li>
     </ol>
     <div>
-      <Button label="Daftar sekarang" variant="primary" class="w-full mt-4" />
+      <Button
+        label="Daftar sekarang"
+        variant="primary"
+        class="w-full mt-4 font-bold"
+      />
     </div>
   </div>
   <!-- </div> -->

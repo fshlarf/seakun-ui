@@ -8,9 +8,10 @@
     <UserTypeSection />
     <OrderFlowSection />
     <TestimonySection />
-    <UserListSection />
+    <UserGroupSection />
     <BenefitSection />
     <QnaSection />
+    <Footer2 />
   </div>
 </template>
 
@@ -23,9 +24,10 @@ import ProductSection from '~/components/organisms/ProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
 import TestimonySection from '~/components/organisms/TestimonySection';
-import UserListSection from '~/components/organisms/UserListSection';
+import UserGroupSection from '~/components/organisms/UserGroupSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
+import Footer2 from '~/components/mollecules/Footer2';
 
 export default {
   components: {
@@ -37,9 +39,10 @@ export default {
     UserTypeSection,
     OrderFlowSection,
     TestimonySection,
-    UserListSection,
+    UserGroupSection,
     BenefitSection,
     QnaSection,
+    Footer2,
   },
 };
 </script>
