@@ -1,10 +1,14 @@
 <template>
-  <div class="hexagon">
-    <div class="counter">
-      <h1>{{ value }}</h1>
-      <p>{{ label }}</p>
+  <div class="relative z-0 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-72 xl:h-72">
+    <div
+      class="text-center absolute z-100 mx-auto left-0 right-0 top-16 lg:top-24"
+    >
+      <h1 class="text-xl lg:text-3xl xl:text-4xl font-bold">
+        {{ value }}
+      </h1>
+      <p class="text-base md:text-md xl:text-2xl font-bold">{{ label }}</p>
     </div>
-    <img src="/images/polygon-bg.svg" alt="" />
+    <img class="static z-0 w-100 h-100" src="/images/polygon-bg.svg" alt="" />
   </div>
 </template>
 
@@ -24,38 +28,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.hexagon {
-  position: relative;
-  max-width: 255px;
-  max-height: 255px;
-  z-index: 0;
-
-  img {
-    position: relative;
-    z-index: -10;
-  }
-
-  .counter {
-    position: absolute;
-    padding-top: 90px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 10;
-
-    h1 {
-      font-size: 48px;
-      font-weight: 700;
-      color: #000000;
-    }
-    p {
-      font-size: 18px;
-      font-weight: bold;
-      color: #2d2d2d;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>

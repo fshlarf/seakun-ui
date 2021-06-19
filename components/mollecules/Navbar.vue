@@ -1,5 +1,5 @@
 <template>
-  <div id="navbar" class="w-full fixed z-40 py-2 tn:shadow px-2">
+  <div id="navbar" class="w-full bg-third fixed z-40 py-2 tn:shadow px-2">
     <div v-if="open" class="opacity-20 fixed inset-0 z-90 bg-black"></div>
     <div
       class="container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between lg:items-center"

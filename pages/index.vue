@@ -1,12 +1,15 @@
 <template>
   <div>
     <Navbar />
-    <HeaderSection />
+    <!-- <HeaderSection /> -->
     <IntroductionSection />
     <PartnershipSection />
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
+    <TestimonySection />
+    <BenefitSection />
+    <QnaSection />
   </div>
 </template>
 
@@ -18,6 +21,9 @@ import PartnershipSection from '~/components/organisms/PartnershipSection';
 import ProductSection from '~/components/organisms/ProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
+import TestimonySection from '~/components/organisms/TestimonySection';
+import BenefitSection from '~/components/organisms/BenefitSection';
+import QnaSection from '~/components/organisms/QnaSection';
 
 export default {
   components: {
@@ -28,6 +34,9 @@ export default {
     ProductSection,
     UserTypeSection,
     OrderFlowSection,
+    TestimonySection,
+    BenefitSection,
+    QnaSection,
   },
 };
 </script>

@@ -1,26 +1,35 @@
 <template>
-  <div class="partnership">
-    <div class="partner-bg bg-primary">
-      <div class="container">
-        <h2>Ingin Usaha kamu ada di Seakun.id?</h2>
-        <p>
+  <div class="partnership pb-24 lg:py-16">
+    <div
+      class="relative z-0 partner-bg gradient tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-96 md:h-52 lg:h-60 xl:h-80"
+    >
+      <div class="container text-white xl:mt-12 xl:mb-4">
+        <h2 class="tn:text-2xl md:text-4xl font-bold tn:my-2 md:my-2 xl:mb-4">
+          Ingin Usaha kamu ada di Seakun.id?
+        </h2>
+        <p class="xl:text-lg font-semibold">
           Jangan khawatir ya, Seakun bisa kok meningkatkan usaha kamu disini!
           <br />Ayo klik tombol di bawah ini untuk mewujudkannya!
         </p>
       </div>
-    </div>
-    <div class="container">
-      <div class="counter-card d-flex justify-content-center">
-        <HexCard
-          v-for="(counter, id) in dataCounter"
-          :key="id"
-          class="hexa-card"
-          :value="counter.value"
-          :label="counter.label"
-        />
+      <div class="md:container">
+        <div
+          class="counter-card tn:grid tn:grid-cols-2 tn:gap-0 md:flex justify-center mt-2 md:mt-0"
+        >
+          <HexCard
+            v-for="(counter, id) in dataCounter"
+            :key="id"
+            class="hexa-card"
+            :value="counter.value"
+            :label="counter.label"
+          />
+        </div>
       </div>
     </div>
-    <div class="text-center">
+    <div class="gradient-sm md:bg-white tn:h-52 md:h-32 lg:h-36 xl:h-44"></div>
+    <div
+      class="gradient-sm text-center md:bg-white container z-10 px-7 tn:h-10 md:h-auto"
+    >
       <Button
         class="mx-auto btn-partner"
         variant="secondary"
@@ -68,80 +77,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.partnership {
-  padding-bottom: 5rem;
-  .partner-bg {
-    width: 100%;
-    height: 23rem;
-    padding-top: 2rem;
-
-    h2 {
-      font-weight: 700;
-      font-size: 44px;
-      color: #ffffff;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-weight: 500;
-      font-size: 22px !important;
-      color: #ffffff;
-    }
-  }
-
-  .counter-card {
-    position: relative;
-    margin-top: -8rem;
-    margin-bottom: 3.5rem;
-    z-index: 10;
-  }
+.gradient {
+  background-image: linear-gradient(to left, #8dcabe, #4bac99);
 }
 
-@media (max-width: 840px) {
-  .partnership {
-    .partner-bg {
-      height: 55rem;
-    }
-    .counter-card {
-      margin-top: -38rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-
-      .hexa-card {
-        margin-bottom: 1rem;
-        width: 50%;
-      }
-    }
-  }
-}
-@media (max-width: 400px) {
-  .partnership {
-    .partner-bg {
-      height: 25rem;
-      text-align: center;
-      padding-top: 1rem;
-      h2 {
-        font-weight: 700;
-        font-size: 40px;
-        color: #ffffff;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-      }
-      p {
-        font-weight: 500;
-        font-size: 20px !important;
-        color: #ffffff;
-      }
-    }
-    .container {
-      .counter-card {
-        margin-top: -8rem;
-        display: none;
-        .hexa-card {
-          display: none;
-        }
-      }
-    }
+@media (max-width: 600px) {
+  .gradient-sm {
+    background-image: linear-gradient(to left, #8dcabe, #4bac99);
   }
 }
 </style>
