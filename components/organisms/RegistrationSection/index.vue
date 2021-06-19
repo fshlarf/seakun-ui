@@ -97,8 +97,13 @@
                     @click="chooseProvider(provider)"
                     :class="{ 'disable-content': !provider.active }"
                   >
-                    <div>
+                    <div style="display: flex">
                       {{ provider.name }}
+                      <Label
+                        v-if="provider.isNew"
+                        label="Baru"
+                        class="ml-2"
+                      />
                       <span v-if="!provider.active">
                         <i>segera hadir</i>
                       </span>
@@ -193,6 +198,7 @@ import { capitalizeFirstLetter, fullDate } from '~/helpers';
 import ButtonDrop from '~/components/atoms/ButtonDropDown';
 import Alert from '~/components/atoms/Alert';
 import FormInput from '~/components/atoms/FormInput';
+import Label from '~/components/atoms/Label';
 
 import ModalPacket from './views/ModalPacket';
 import ChoosedPacket from './views/ChoosedPacket';
@@ -208,6 +214,7 @@ export default {
     ChoosedPacket,
     ModalPacket,
     Voucher,
+    Label,
   },
   data() {
     return {
@@ -229,13 +236,14 @@ export default {
       showCodePhone: false,
       userHost: false,
       providers: [
-        { name: 'Netflix', active: true },
-        { name: 'Youtube', active: true },
-        { name: 'Gramedia', active: true },
-        { name: 'Spotify', active: true },
-        { name: 'Microsoft365', active: true },
-        { name: 'Canva', active: true },
-        { name: 'Steam', active: false },
+        { name: 'Netflix', isNew: false, active: true },
+        { name: 'Disney+ Hotstar', isNew: true, active: true },
+        { name: 'Youtube', isNew: false, active: true },
+        { name: 'Gramedia', isNew: false, active: true },
+        { name: 'Spotify', isNew: false, active: true },
+        { name: 'Microsoft365', isNew: false, active: true },
+        { name: 'Canva', isNew: false, active: true },
+        { name: 'Steam', isNew: false, active: false },
       ],
       packets: [],
       errorMsg: {
@@ -267,6 +275,8 @@ export default {
     setPathImage(name) {
       if (name.toLowerCase() === 'canva') {
         return `/images/canva.png`;
+      } else if (name.toLowerCase() === 'disney+ hotstar') {
+        return `/images/disney-hotstar.png`;
       } else {
         return `/images/icon/${name}-mini.svg`;
       }
@@ -310,9 +320,10 @@ export default {
       }
     },
     getPacketData(provider) {
+      const theProvider = provider.toLowerCase() === 'disney+ hotstar' ? 'disney-hotstar' : provider.toLowerCase()
       axios
         .get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}`
+          `https://seakun-packet-api-v1.herokuapp.com/${theProvider}`
         )
         .then((res) => {
           this.packets = res.data;
@@ -334,7 +345,7 @@ export default {
         fullname: capitalizeFirstLetter(this.fullname),
         email: this.email,
         whatsapp: `${this.codePhone}${this.whatsapp}`,
-        provider: this.provider,
+        provider: this.provider.toLowerCase() === 'disney+ hotstar' ? 'disney-hotstar' : this.provider,
         packet: this.packet,
         price: this.price,
         discountprice: this.discountPrice,

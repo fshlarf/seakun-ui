@@ -87,10 +87,12 @@ export default {
         case 'gramedia':
           return '2'
           break;
+        case 'disney-hotstar':
+          return '2'
+          break;
         default:
           return '5'
       }
-      return provider.toLowerCase() === 'canva' ? '4' : '5';
     },
     getDataPacket() {
       const {
@@ -98,10 +100,10 @@ export default {
         packet_id,
         voucher,
       } = this.$router.history.current.query;
-      this.provider = provider;
+      this.provider = provider.toLowerCase() === 'disney+ hotstar' ? 'disney-hotstar' : provider.toLowerCase();
       axios
         .get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
+          `https://seakun-packet-api-v1.herokuapp.com/${this.provider}/${packet_id}`
         )
         .then((res) => {
           const { data, status } = res;
