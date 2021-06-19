@@ -1,63 +1,75 @@
 <template>
   <div
-    class="border-none max-w-sm bg-white shadow-xl rounded-xl overflow-hidden text-gray-900 md:pb-3 flex flex-col justify-between"
+    class="w-full h-full border-none max-w-sm bg-white shadow-xl rounded-xl overflow-hidden text-gray-900 md:pb-3"
   >
-    <div class="">
+    <div class="md:h-64 lg:h-60">
       <img
         :src="`${product.img}`"
         alt="image not found"
-        class="mb-3 object-cover rounded-br-3xl lg:rounded-br-none md:w-full h-40 md:h-auto"
+        class="object-cover rounded-br-3xl lg:rounded-br-none md:w-full h-40 md:h-auto"
       />
     </div>
-    <div class="px-2 md:px-4">
-      <div class="flex items-center mb-1 md:mb-3 md:px-2">
-        <img :src="`${product.icon}`" alt="#" class="w-8 ml-1" />
-        <h1 class="md:text-xl font-bold mx-2">
-          {{ product.name }}
-        </h1>
-      </div>
-      <div class="h-28 md:h-20 md:px-2 md:mt-3" v-if="product.package">
-        <div
-          class="text-xs md:text-base md:flex md:justify-between px-2 mt-1"
-          v-for="(packageDetail, id) in product.package"
-          :key="id"
-        >
-          <p class="font-semibold md:font-normal">
-            {{ packageDetail.name }}
-          </p>
-          <p class="font-bold">Rp{{ packageDetail.price }}</p>
-        </div>
-      </div>
-      <div class="h-28 md:h-20 md:px-2" v-if="product.preview">
-        <div class="pl-2 md:pl-4 text-xs md:text-base">
-          <p class="font-semibold md:font-normal">{{ product.preview }}</p>
-        </div>
-      </div>
-      <div class="md:px-2">
-        <div class="h-px w-full bg-primary md:my-3"></div>
-      </div>
-      <div v-if="product.package" class="text-center md:px-2">
-        <Button
-          variant="primary"
-          label="Pesan"
-          class="w-full py-2 my-2 font-bold"
-        />
-        <p class="hidden md:block text-primary font-bold mb-2 md:my-2">
-          Lihat skema harga
+
+    <div
+      class="w-full h-full relative px-2 py-0 md:px-4 grid flex-rows content-between"
+    >
+      <div
+        v-if="product.isNew"
+        class="absolute tn:ml-2 tn:-top-6 md:ml-0 md:top-0 md:right-4 px-3 text-center shadow rounded-full bg-secondary"
+      >
+        <p class="tn:text-xs md:text-base lg:text-xl text-white font-bold">
+          Baru
         </p>
-        <Button
-          variant="secondary"
-          label="Skema harga"
-          class="w-full py-2 mb-2 text-sm font-bold md:hidden"
-        />
       </div>
-      <div v-else class="md:px-2">
-        <Button
-          variant="primary"
-          label="Segera hadir"
-          class="w-full py-2 my-2 mb-3 font-bold"
-          disabled
-        />
+      <div class="h-full">
+        <div class="flex items-center mb-1 md:mb-3 md:px-2">
+          <img :src="`${product.icon}`" alt="#" class="w-8 ml-1" />
+          <h1 class="md:text-xl font-bold mx-2">
+            {{ product.name }}
+          </h1>
+        </div>
+
+        <div v-if="product.package" class="tn:px-1 md:px-2 md:mt-3 lg:px-4">
+          <div
+            class="text-xs md:text-base md:flex md:justify-between mt-1"
+            v-for="(packageDetail, id) in product.package"
+            :key="id"
+          >
+            <p class="font-semibold md:font-normal">
+              {{ packageDetail.name }}
+            </p>
+            <p class="font-bold">Rp{{ packageDetail.price }}</p>
+          </div>
+          <p class="text-xs md:text-base font-bold text-primary my-2">
+            Lihat skema harga
+          </p>
+        </div>
+
+        <div
+          v-if="product.preview"
+          class="tn:px-1 tn:mb-1 md:px-2 md:mt-3 lg:px-4"
+        >
+          <div class="text-xs md:text-base mt-1">
+            <p class="font-semibold md:font-normal">
+              {{ product.preview }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-full sticky bottom-0">
+        <div class="md:px-2">
+          <div class="h-px w-full bg-primary md:my-3"></div>
+        </div>
+
+        <div class="text-center md:px-2">
+          <Button
+            variant="primary"
+            :label="product.isActive ? 'Pesan' : 'Segera hadir'"
+            class="w-full py-2 my-2 font-bold"
+            :disabled="!product.isActive"
+          />
+        </div>
       </div>
     </div>
   </div>
