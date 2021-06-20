@@ -21,7 +21,9 @@
           @selectProvider="selectProvider"
         />
       </div>
+
       <div
+        v-if="!isLoading"
         class="scroll-provider flex gap-6 overflow-x-auto overscroll-contain px-3 py-2"
       >
         <GroupCard
@@ -31,6 +33,19 @@
           class="my-2 w-full h-full flex-none"
         />
       </div>
+
+      <div
+        v-else
+        class="scroll-provider flex gap-6 overflow-x-auto overscroll-contain px-3 py-2"
+      >
+        <div
+          class="col"
+          v-for="(item, index) in shimmerInitialData"
+          :key="index"
+        >
+          <CardShimmer />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -39,266 +54,71 @@
 import ProviderPill from '~/components/mollecules/ProviderPill.vue';
 import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
+import CardShimmer from '~/components/mollecules/CardShimmer';
+import axios from 'axios'
+
 export default {
   data() {
     return {
-      dataDetailGroup: {},
+      shimmerInitialData: Array(4),
+      isLoading: true,
+      dataDetailGroup: [],
       dataProviderList: [
         {
           id: 1,
           name: 'Netflix',
+          slug: 'netflix',
           icon: '/images/icons/netflix.svg',
           totalGroup: 430,
         },
         {
           id: 2,
           name: 'Spotify',
+          slug: 'spotify',
           icon: '/images/icons/spotify.svg',
           totalGroup: 317,
         },
         {
           id: 3,
           name: 'Gramedia',
+          slug: 'gramedia',
           icon: '/images/icons/gramedia.svg',
           totalGroup: 51,
         },
         {
           id: 4,
           name: 'Youtube',
+          slug: 'youtube',
           icon: '/images/icons/youtube.svg',
           totalGroup: 208,
         },
         {
           id: 5,
           name: 'Microsoft 365',
+          slug: 'microsoft',
           icon: '/images/icons/microsoft.svg',
           totalGroup: 52,
         },
         {
           id: 6,
           name: 'Canva',
+          slug: 'canva',
           icon: '/images/icons/canva.svg',
           totalGroup: 18,
         },
         {
           id: 7,
           name: 'Nintendo Switch',
+          slug: 'nintendo-switch',
           icon: '/images/icons/nintendo.svg',
           totalGroup: 88,
         },
         {
           id: 8,
           name: 'Apple One',
+          slug: 'apple-one',
           icon: '/images/icons/apple-one.svg',
           totalGroup: 8,
-        },
-      ],
-      dataGroupProvider: [
-        {
-          id: 1,
-          name: 'Netflix',
-          brand: '/images/netflix.png',
-          group: [
-            {
-              id: 1,
-              number: 188,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 2,
-              number: 187,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 3,
-              number: 186,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 4,
-              number: 185,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 5,
-              number: 184,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 6,
-              number: 183,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 7,
-              number: 182,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 8,
-              number: 181,
-              brand: '/images/netflix.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-          ],
-        },
-        {
-          id: 2,
-          name: 'Spotify',
-          brand: '/images/spotify.png',
-          group: [
-            {
-              id: 1,
-              number: 188,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 2,
-              number: 187,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 3,
-              number: 186,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 4,
-              number: 185,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 5,
-              number: 184,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 6,
-              number: 183,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 7,
-              number: 182,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-            {
-              id: 8,
-              number: 181,
-              brand: '/images/spotify.png',
-              member: [
-                'Qana A**y',
-                'Putu H**i',
-                'Adhyaksa B*****a',
-                'Slot tersedia',
-                'Slot tersedia',
-              ],
-            },
-          ],
         },
       ],
     };
@@ -307,13 +127,46 @@ export default {
     ProviderPill,
     GroupCard,
     Button,
+    CardShimmer,
   },
   mounted() {
-    this.dataDetailGroup = this.dataGroupProvider[0].group;
+    this.getCustomersData('netflix');
   },
   methods: {
-    selectProvider(id) {
-      this.dataDetailGroup = this.dataGroupProvider[id - 1].group;
+    selectProvider(provider) {
+      this.getCustomersData(provider.slug);
+      this.isLoading = true
+    },
+    getCustomersData(provider) {
+      axios.get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
+        .then((res) => {
+          this.processDataCustomers(res.data, provider)
+          this.isLoading = false
+        })
+        .catch((err) => console.log(err));
+    },
+    processDataCustomers(customers, provider) {
+      let newArr = [];
+      let theArr = [];
+
+      customers.map((e, i) => {
+        newArr.push(e.group);
+        theArr[parseInt(e.group) - 1] = {
+          groupNumber: parseInt(e.group),
+          members: [],
+          name: e.provider,
+          brand: `/images/${e.provider}.png`
+        };
+      });
+
+      customers.map((e, i) => {
+        if (newArr.includes(e.group)) {
+          theArr[parseInt(e.group) - 1].members.push(e.customer_name);
+        }
+      });
+
+      const netArr = theArr.slice(theArr.length - 5, theArr.length - 0).sort().reverse();
+      this.dataDetailGroup = netArr;
     },
   },
 };
