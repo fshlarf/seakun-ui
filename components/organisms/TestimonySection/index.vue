@@ -1,5 +1,8 @@
 <template>
-  <div class="container tn:pt-12 pb-12 md:pt-14 xl:pt-24 md:pb-12">
+  <div
+    id="testimony"
+    class="container tn:pt-12 pb-12 md:pt-14 xl:pt-24 md:pb-12"
+  >
     <div class="text-center xl:hidden">
       <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-12">
         Apa kata mereka?

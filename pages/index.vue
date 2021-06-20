@@ -1,15 +1,17 @@
 <template>
   <div>
     <Navbar />
-    <!-- <HeaderSection /> -->
+    <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
     <TestimonySection />
+    <UserGroupSection />
     <BenefitSection />
     <QnaSection />
+    <Footer />
   </div>
 </template>
 
@@ -22,8 +24,10 @@ import ProductSection from '~/components/organisms/ProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
 import TestimonySection from '~/components/organisms/TestimonySection';
+import UserGroupSection from '~/components/organisms/UserGroupSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
+import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
@@ -35,8 +39,10 @@ export default {
     UserTypeSection,
     OrderFlowSection,
     TestimonySection,
+    UserGroupSection,
     BenefitSection,
     QnaSection,
+    Footer,
   },
 };
 </script>
