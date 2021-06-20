@@ -25,13 +25,13 @@
               ></path>
             </svg>
           </button>
-          <div class="px-6 py-3 text-xl border-b font-bold">
+          <div class="px-6 py-3 text-xl font-bold">
             <slot name="header"></slot>
           </div>
           <div class="p-6 flex-grow">
             <slot />
           </div>
-          <div class="px-6 py-3 border-t">
+          <div class="px-6 py-3">
             <slot name="footer"></slot>
           </div>
         </div>
