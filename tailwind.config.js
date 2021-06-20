@@ -2,14 +2,25 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
-  purge: [],
+  purge: [
+    './components/**/*.{vue,js}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
       tn: '0px',
       ...defaultTheme.screens,
     },
-    extend: {},
+    
+    extend: {
+      colors : {
+        'green-seakun' : '#8DCABE'
+      }
+    },
   },
   variants: {
     extend: {},
