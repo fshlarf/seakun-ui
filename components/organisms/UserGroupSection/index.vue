@@ -11,20 +11,25 @@
     </div>
     <div class="my-6">
       <div
-        class="scroll-provider flex gap-8 overflow-x-auto overscroll-contain px-3 py-2"
+        class="scroll-provider flex gap-8 overflow-x-auto overscroll-auto px-3 py-2"
       >
         <ProviderPill
           v-for="(provider, id) in dataProviderList"
           :key="id"
           :provider="provider"
+          :is-loading="isLoading"
+          :data-group="dataDetailGroup"
           class="my-2 w-full h-full flex-none cursor-pointer"
+          :class="{
+            'high-light ': provider.slug === highlight,
+          }"
           @selectProvider="selectProvider"
         />
       </div>
 
       <div
         v-if="!isLoading"
-        class="scroll-provider flex gap-6 overflow-x-auto overscroll-contain px-3 py-2"
+        class="scroll-provider flex gap-6 overflow-x-auto overscroll-auto px-3 py-2"
       >
         <GroupCard
           v-for="(group, id) in dataDetailGroup"
@@ -32,14 +37,15 @@
           :group="group"
           class="my-2 w-full h-full flex-none"
         />
+        <ButtonChevron class="self-center" />
       </div>
 
       <div
         v-else
-        class="scroll-provider flex gap-6 overflow-x-auto overscroll-contain px-3 py-2"
+        class="scroll-provider flex gap-6 overflow-x-auto overflow-y-auto overscroll-contain px-3 py-2"
       >
         <div
-          class="col"
+          class="flex-none w-72 h-72"
           v-for="(item, index) in shimmerInitialData"
           :key="index"
         >
@@ -54,8 +60,9 @@
 import ProviderPill from '~/components/mollecules/ProviderPill.vue';
 import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
+import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import CardShimmer from '~/components/mollecules/CardShimmer';
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   data() {
@@ -63,6 +70,7 @@ export default {
       shimmerInitialData: Array(4),
       isLoading: true,
       dataDetailGroup: [],
+      highlight: 'netflix',
       dataProviderList: [
         {
           id: 1,
@@ -127,6 +135,7 @@ export default {
     ProviderPill,
     GroupCard,
     Button,
+    ButtonChevron,
     CardShimmer,
   },
   mounted() {
@@ -135,13 +144,17 @@ export default {
   methods: {
     selectProvider(provider) {
       this.getCustomersData(provider.slug);
-      this.isLoading = true
+      this.isLoading = true;
+      this.highlight = provider.slug;
     },
     getCustomersData(provider) {
-      axios.get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
+      axios
+        .get(
+          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
+        )
         .then((res) => {
-          this.processDataCustomers(res.data, provider)
-          this.isLoading = false
+          this.processDataCustomers(res.data, provider);
+          this.isLoading = false;
         })
         .catch((err) => console.log(err));
     },
@@ -155,7 +168,7 @@ export default {
           groupNumber: parseInt(e.group),
           members: [],
           name: e.provider,
-          brand: `/images/${e.provider}.png`
+          brand: `/images/${e.provider}.png`,
         };
       });
 
@@ -165,8 +178,12 @@ export default {
         }
       });
 
-      const netArr = theArr.slice(theArr.length - 5, theArr.length - 0).sort().reverse();
+      const netArr = theArr
+        .slice(theArr.length - 5, theArr.length - 0)
+        .sort()
+        .reverse();
       this.dataDetailGroup = netArr;
+      console.log(this.dataDetailGroup);
     },
   },
 };
@@ -179,5 +196,9 @@ export default {
 .scroll-provider {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+.high-light {
+  border: 2px solid #a9e0d5;
+  background-image: linear-gradient(to right, #ffffff, #d4f1ec);
 }
 </style>

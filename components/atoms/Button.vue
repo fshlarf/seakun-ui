@@ -41,4 +41,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+button:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+button:hover:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+</style>
