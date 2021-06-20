@@ -398,7 +398,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Pro Canva',
       'Seakun bertindak sebagai user Host dalam grup',
       'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 4 member untuk join 1 grup Premium',
+      'Seakun mengundang 9 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
@@ -409,64 +409,32 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Premium Canva',
-        value: 'US$12,9 => Rp188.000',
+        value: 'US$75,9 => Rp1.138.500',
       },
       {
         title: 'Jumlah member dalam 1 grup',
-        value: '4',
+        value: '9',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp188.000 ÷ 4 = Rp47.000',
+        value: 'Rp1.138.500 ÷ 9 = Rp130.295',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.500',
+        value: 'Rp6.205',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp53.500',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Paket Premium',
-    img: '/images/canva.png',
-    screenshot: '/images/ss-canva-year.png',
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Pro Canva',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 4 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Canva (1 Tahun)',
+        value: 'Rp136.500',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Canva',
-        value: 'US$119,40 => Rp1.680.000',
+        title: '*Berdasarkan 1$ = Rp15.000',
+        value: '',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
-        value: '4',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp1.680.000 ÷ 4 = Rp420.000',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp60.000',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp480.000',
-        is_total: true,
+        title: '** Sisa dari pembayaran (jika kurs dibawah Rp15.000) merupakan profit Seakun',
+        value: '',
       },
     ],
   },
