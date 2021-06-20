@@ -20,6 +20,18 @@ button {
   border-radius: 5px !important;
 }
 
+button:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+
+button:hover:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+
 .icon {
   position: relative;
   padding: 12px 0px;
@@ -43,6 +55,10 @@ button {
 
 .bg-third {
   background-color: #f4f9f8 !important;
+}
+
+.bg-forth {
+  background-color: #c8ece5 !important;
 }
 
 .btn-primary {

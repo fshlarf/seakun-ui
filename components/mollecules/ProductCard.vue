@@ -15,9 +15,11 @@
     >
       <div
         v-if="product.isNew"
-        class="absolute tn:ml-2 tn:-top-6 md:ml-0 md:top-0 md:right-4 px-3 text-center shadow rounded-full bg-secondary"
+        class="absolute tn:ml-2 tn:-top-8 md:ml-0 md:top-0 md:right-4 px-3 py-1 text-center rounded-full bg-forth"
       >
-        <p class="tn:text-xs md:text-base lg:text-xl text-white font-bold">
+        <p
+          class="tn:text-xs md:text-base lg:text-base text-secondary font-bold"
+        >
           Baru
         </p>
       </div>

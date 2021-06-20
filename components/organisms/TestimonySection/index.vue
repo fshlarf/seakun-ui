@@ -14,14 +14,14 @@
       </h1>
     </div>
     <div
-      class="tn:p-2 tn:flex tn:gap-6 tn:overflow-x-scroll tn:overscroll-contain lg:block lg:grid lg:overflow-visible lg:overscroll-none lg:grid-cols-2 lg:justify-center lg:gap-6 lg:place-items-stretch lg:items-stretch"
+      class="scroll-testimony tn:p-4 tn:flex tn:gap-6 tn:overflow-x-scroll tn:overscroll-auto lg:block lg:grid lg:overflow-visible lg:overscroll-none lg:grid-cols-2 lg:justify-center lg:gap-6 lg:place-items-stretch lg:items-stretch"
     >
       <TestimonyCard
         v-for="(testimony, id) in dataLengthTestimony"
         :key="id"
         :customer="testimony"
         @onClickShowTestimony="onClickShowTestimony"
-        class="lg:w-full lg:h-full tn:flex-none"
+        class="md:w-1/2 md:h-full lg:w-full lg:h-full tn:flex-none"
       />
 
       <ModalTestimony
@@ -111,4 +111,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.scroll-testimony::-webkit-scrollbar {
+  display: none;
+}
+.scroll-testimony {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+</style>
