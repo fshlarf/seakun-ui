@@ -5,9 +5,9 @@
       tabindex="0"
       class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed"
     >
-      <div class="z-50 relative p-3 mx-auto my-0 max-w-xl">
+      <div class="z-50 relative p-3 mx-auto my-0 w-full">
         <div
-          class="bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden"
+          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full lg:w-4/5 xl:w-3/5"
         >
           <button
             class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold primary focus:outline-none"
@@ -25,10 +25,12 @@
               ></path>
             </svg>
           </button>
-          <div class="px-6 py-3 text-xl font-bold">
+          <div class="px-6 py-3 mt-3 text-xl font-bold">
             <slot name="header"></slot>
           </div>
-          <div class="p-6 flex-grow">
+          <div
+            class="scroll-bar-hidden p-6 flex-grow overflow-y-auto overscroll-auto"
+          >
             <slot />
           </div>
           <div class="px-6 py-3">
@@ -64,4 +66,22 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.modal-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 95%;
+  max-width: 95%;
+  min-width: 20rem;
+}
+
+.scroll-bar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scroll-bar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+</style>

@@ -48,7 +48,7 @@ export default {
           provider: 'Netflix',
           photo: '/images/testimony/tom.jpg',
           testimony:
-            'Karena saya harus isolasi di rumah dan bosan sekali, jadi saya coba langganan Netflix pakai Seakun. Ternyata terpercaya banget, lebih murah lagi. Konsepnya Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
+            'Karena saya harus isolasi di rumah dan bosan sekali, jadi saya coba langganan Netflix pakai Seakun. Ternyata terpercaya banget, lebih murah lagi. Konsepnya Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.Karena saya harus isolasi di rumah dan bosan sekali, jadi saya coba langganan Netflix pakai Seakun. Ternyata terpercaya banget, lebih murah lagi. Konsepnya Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
           sortTestimony: '',
         },
         {
