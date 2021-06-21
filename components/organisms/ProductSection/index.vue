@@ -20,6 +20,7 @@
             :product="product"
             class="md:w-full md:h-full"
             v-if="product.package"
+            @showPriceScheme="showPriceScheme"
           />
         </div>
       </div>
@@ -47,19 +48,33 @@
         </div>
       </div>
     </div>
+    <ModalPriceScheme
+      :show-modal="showModalScheme"
+      :data-scheme="dataDetailProvider"
+      @closeModal="closeModalScheme"
+    />
   </div>
 </template>
 
 <script>
 import ProductCard from '~/components/mollecules/ProductCard';
 import ProposeCard from '~/components/mollecules/ProposeCard';
+import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
+import { providerList } from './provider-list';
 export default {
   data() {
     return {
+      showModalScheme: false,
+      providerList,
+      dataDetailProvider: {
+        list: {},
+        label: '',
+      },
       dataProductDigital: [
         {
           id: 1,
           name: 'Netflix',
+          label: 'netflix',
           img: '/images/product/netflix.svg',
           icon: '/images/icons/netflix.svg',
           isActive: true,
@@ -77,6 +92,7 @@ export default {
         {
           id: 2,
           name: 'Spotify',
+          label: 'spotify',
           img: '/images/product/spotify.svg',
           icon: '/images/icons/spotify.svg',
           isActive: true,
@@ -94,6 +110,7 @@ export default {
         {
           id: 3,
           name: 'Youtube',
+          label: 'youtube',
           img: '/images/product/youtube.svg',
           icon: '/images/icons/youtube.svg',
           isActive: true,
@@ -107,6 +124,7 @@ export default {
         {
           id: 4,
           name: 'Gramedia',
+          label: 'gramedia',
           img: '/images/product/gramedia.svg',
           icon: '/images/icons/gramedia.svg',
           isActive: true,
@@ -128,6 +146,7 @@ export default {
         {
           id: 5,
           name: 'Microsoft 365',
+          label: 'microsoft',
           img: '/images/product/microsoft.svg',
           icon: '/images/icons/microsoft.svg',
           isActive: true,
@@ -141,6 +160,7 @@ export default {
         {
           id: 6,
           name: 'Canva',
+          label: 'canva',
           img: '/images/product/canva.svg',
           icon: '/images/icons/canva.svg',
           isActive: true,
@@ -154,6 +174,7 @@ export default {
         {
           id: 7,
           name: 'Nintendo Switch',
+          label: 'nintendo',
           img: '/images/product/nintendo.svg',
           icon: '/images/icons/nintendo.svg',
           isActive: true,
@@ -167,6 +188,7 @@ export default {
         {
           id: 8,
           name: 'Apple One',
+          label: 'apple',
           img: '/images/product/apple-one.svg',
           icon: '/images/icons/apple-one.svg',
           isActive: true,
@@ -182,6 +204,7 @@ export default {
         {
           id: 1,
           name: 'Sekurban',
+          label: 'sekurban',
           img: '/images/product/sekurban.svg',
           icon: '/images/icons/sekurban.svg',
           isActive: true,
@@ -192,6 +215,7 @@ export default {
         {
           id: 2,
           name: 'Pahamify',
+          label: 'pahamify',
           img: '/images/product/pahamify.svg',
           icon: '/images/icons/pahamify.svg',
           isActive: false,
@@ -201,6 +225,7 @@ export default {
         {
           id: 3,
           name: 'Kulina',
+          label: 'kulina',
           img: '/images/product/kulina.svg',
           icon: '/images/icons/kulina.svg',
           isActive: false,
@@ -218,6 +243,16 @@ export default {
   components: {
     ProductCard,
     ProposeCard,
+    ModalPriceScheme,
+  },
+  methods: {
+    showPriceScheme(param) {
+      this.showModalScheme = true;
+      this.dataDetailProvider = { list: this.providerList, label: param };
+    },
+    closeModalScheme() {
+      this.showModalScheme = false;
+    },
   },
 };
 </script>

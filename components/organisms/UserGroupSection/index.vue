@@ -183,7 +183,6 @@ export default {
         .sort()
         .reverse();
       this.dataDetailGroup = netArr;
-      console.log(this.dataDetailGroup);
     },
   },
 };

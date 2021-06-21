@@ -42,7 +42,10 @@
             </p>
             <p class="font-bold">Rp{{ packageDetail.price }}</p>
           </div>
-          <p class="text-xs md:text-base font-bold text-primary my-2">
+          <p
+            class="text-xs md:text-base font-bold text-primary my-2 cursor-pointer"
+            @click="showPriceScheme(product.label)"
+          >
             Lihat skema harga
           </p>
         </div>
@@ -87,6 +90,11 @@ export default {
     product: {
       type: Object,
       default: {},
+    },
+  },
+  methods: {
+    showPriceScheme(param) {
+      this.$emit('showPriceScheme', param);
     },
   },
 };
