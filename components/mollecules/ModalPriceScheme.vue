@@ -10,10 +10,18 @@
         class="tn:px-0 md:px-8 xl:px-14 mb-8"
       >
         <div class="w-1/4">
-          <img :src="`${scheme.img}`" alt="Image not found" />
+          <img
+            class="w-full h-full"
+            :src="`${scheme.img}`"
+            alt="Image not found"
+          />
         </div>
         <div class="w-full h-full mx-auto">
-          <img :src="`${scheme.screenshot}`" alt="Image not found" />
+          <img
+            class="w-full h-full"
+            :src="`${scheme.screenshot}`"
+            alt="Image not found"
+          />
         </div>
         <div class="">
           <h1 class="text-lg font-bold my-2">Detail Harga</h1>
