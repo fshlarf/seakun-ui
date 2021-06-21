@@ -44,7 +44,7 @@
           </div>
           <p
             class="text-xs md:text-base font-bold text-primary my-2 cursor-pointer"
-            @click="showPriceScheme(product.label)"
+            @click="showPriceScheme(product.label, product.name)"
           >
             Lihat skema harga
           </p>
@@ -93,8 +93,8 @@ export default {
     },
   },
   methods: {
-    showPriceScheme(param) {
-      this.$emit('showPriceScheme', param);
+    showPriceScheme(param1, param2) {
+      this.$emit('showPriceScheme', param1, param2);
     },
   },
 };

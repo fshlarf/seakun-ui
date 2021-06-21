@@ -69,6 +69,7 @@ export default {
       dataDetailProvider: {
         list: {},
         label: '',
+        name: '',
       },
       dataProductDigital: [
         {
@@ -246,9 +247,13 @@ export default {
     ModalPriceScheme,
   },
   methods: {
-    showPriceScheme(param) {
+    showPriceScheme(param1, param2) {
       this.showModalScheme = true;
-      this.dataDetailProvider = { list: this.providerList, label: param };
+      this.dataDetailProvider = {
+        list: this.providerList,
+        label: param1,
+        name: param2,
+      };
     },
     closeModalScheme() {
       this.showModalScheme = false;

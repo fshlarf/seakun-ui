@@ -7,7 +7,8 @@
     >
       <div class="z-50 relative p-3 mx-auto my-0 w-full">
         <div
-          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full lg:w-4/5 xl:w-1/2"
+          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5"
+          :class="classModal"
         >
           <button
             class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold primary focus:outline-none"
@@ -25,7 +26,7 @@
               ></path>
             </svg>
           </button>
-          <div class="px-6 py-3 mt-3 text-xl font-bold">
+          <div class="px-6 py-3">
             <slot name="header"></slot>
           </div>
           <div
@@ -50,12 +51,18 @@
 export default {
   name: 'Modal',
   data() {
-    return {};
+    return {
+      classModal: `${this.size ? 'xl:w-' + this.size : 'xl:w-1/2'}`,
+    };
   },
   props: {
     isShow: {
       type: Boolean,
       default: false,
+    },
+    size: {
+      type: String,
+      default: null,
     },
   },
   methods: {
