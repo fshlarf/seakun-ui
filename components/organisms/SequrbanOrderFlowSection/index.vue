@@ -4,10 +4,15 @@
     class="container order-flow pt-12 pb-8 lg:pt-16 xl:pt-24 md:pb-12"
   >
     <div
-      class="mb-8 flex gap-3 items-center tn:justify-center md:justify-start"
+      class="relative z-0 mb-8 flex gap-3 items-center tn:justify-center md:justify-start"
     >
       <h1 class="tn:text-2xl md:text-4xl font-bold">Cara pesan</h1>
-      <div class="cursor-pointer" @click="showModalInfo">
+      <div
+        class="cursor-pointer"
+        @click="showModalInfo"
+        @mouseenter="toggleTooltip()"
+        @mouseleave="toggleTooltip()"
+      >
         <svg
           width="24"
           height="24"
@@ -20,6 +25,30 @@
             fill="#8DCABE"
           />
         </svg>
+      </div>
+      <div
+        class="absolute z-10 -top-12 left-20"
+        :class="{ hidden: !tooltipShow, block: tooltipShow }"
+      >
+        <div class="relative mx-2">
+          <div
+            class="bg-third text-xs text-center rounded py-1 px-2 right-0 bottom-full w-60"
+          >
+            Klik untuk lihat proses pemesanan hingga pemrosesan qurban
+            <svg
+              class="absolute h-2 w-full left-0 top-full"
+              x="0px"
+              y="0px"
+              viewBox="0 0 255 255"
+              xml:space="preserve"
+            >
+              <polygon
+                class="fill-current text-third"
+                points="0,0 127.5,127.5 255,0"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -42,6 +71,7 @@ import ModalSequrbanInfo from '~/components/mollecules/ModalSequrbanInfo.vue';
 export default {
   data() {
     return {
+      tooltipShow: false,
       isShowModal: false,
       dataOrderFlow: [
         {
@@ -87,6 +117,9 @@ export default {
     },
     closeModalInfo() {
       this.isShowModal = false;
+    },
+    toggleTooltip() {
+      this.tooltipShow = !this.tooltipShow;
     },
   },
 };
