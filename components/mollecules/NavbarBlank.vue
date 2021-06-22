@@ -72,7 +72,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#navbar{
+  position: fixed;
+  top: 1px;
+}
 @media (min-width: 400px) {
   #navbar {
     background-color: #f4f9f8;

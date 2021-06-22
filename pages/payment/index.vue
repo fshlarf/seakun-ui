@@ -2,78 +2,9 @@
   <div>
     <NavbarBlank />
     <div class="payment bg-white">
-      <transition name="slide-fade">
-        <div v-if="showSnackBar" id="snackbar">
-          <!-- <span style="text-align: end" @click="showSnackBar = false"
-            >&times;</span
-          > -->
-          <i class="fa fa-check-circle-o"></i>
-          <p>Berhasil disalin</p>
-        </div>
-      </transition>
       <div class="container-payment max-w-xl w-full mx-auto mt-10">
-        <div class="payment-illustration flex justify-center w-full">
-            <img class="payment-illustration__img w-9/12" src="/images/thank-you.png" alt="Image not found" />
-        </div>
-        <h3 class="payment-thankyou font-bold mt-10 text-center "> Thank You ! </h3>
-        <div class="payment-order w-auto mt-8 box-border px-2 ">
-          <p class="title text-center px-2">Segera lakukan pembayaran agar Seakun.id blablabla</p>
-          <div class="order-detail bg-white shadow-md  mt-8 rounded-md items-center mx-2">
-            <div class="order-detail__product px-4 pt-4 pb-2 grid grid-cols-5 gap-2 ">
-              <div class="flex-1">
-                <img class="detail-product__imagage w-9/12" src="/images/icons/netflix.svg" alt="Image not found" />
-              </div>
-              <div class="detail-product__price col-span-4">
-                <p class="font-bold">Microsoft 365 - Paket Premium Grup  (User Reg) </p>
-                <p class="font-normal">Rp53.000 x (1 Bulan)</p>
-              </div>
-            </div>
-          <div class="order-detail__payment flex justify-between  px-4 py-3 border-t border-gray-50 ">
-            <div>Total Pembayaran</div>
-            <div>Rp 53.000</div>
-          </div>
-          </div>
-        </div>
-        <div class="payment-detail text-center mt-16">
-            <p class="payment-detail__label my-3">Total transfer</p>
-            <p class="payment-detail__price my-3"> Rp 50.<span>023 <CopyIcon/></span></p>
-            <p class="payment-detail__alert my-3">Pastikan nominal sesuai hingga 3 digit terakhir </p>
-        </div>
-        <div class="payment-method">
-          <h3 class="payment-method__title text-center text-bold mt-6">Transerfer Ke</h3>
-          <div class="payment-method__options grid grid-cols-2  gap-1 px-4 py-6">
-            <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
-            </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
-            </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
-            </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
-            </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
-            </div>
-              <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
-            </div>
-          </div>
-        </div>
+        <HeaderPayment/>
+        <DetailPayment/>
         <div class="tos-alert px-4 mt-4 text-md">
           <p>Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan kamu dapat diproses oleh Seakun.id. 
             Mohon menunggu 10 - 20 menit. jika melewati rentang waktu tersebut dan pesanan kamu belum diproses, 
@@ -83,7 +14,6 @@
         <div class="mt-8 mx-4">
           <Button class="w-full bg-green-seakun text-white" label="Konfirmasi Pembayaran"/>
         </div>
-        
         <!-- <div class="row">
           <div class="col">
             <div class="flex justify-center">
@@ -197,16 +127,18 @@
 import axios from 'axios';
 import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Button from '~/components/atoms/Button';
-
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
-
+import DetailPayment from "./views/DetailPayment.vue"
+import HeaderPayment from "./views/HeaderPayment.vue"
 // import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
     NavbarBlank,
     CopyIcon,
-    Button
+    Button,
+    HeaderPayment,
+    DetailPayment
     // Footer: Footer,
   },
   data() {
@@ -217,9 +149,10 @@ export default {
       total: '-',
       showSnackBar: false,
       vouchersData: [],
+      
     };
   },
-  mounted() {
+  created() {
     this.getPaymentDetail();
     this.getVouchersData();
   },
@@ -342,66 +275,66 @@ export default {
   min-width: 640px;
   max-width: 640px;
 }
-.payment-thankyou {
-  font-size: 32px;
-}
-.payment-order {
-  p.title {
-    font-size: 16px;
-    font-weight: 400;
-  }
-}
-.payment-detail{
-  &__label {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 21px;
-    color: rgba(54, 54, 54, 0.5);  
-}
-  &__price {
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 31px;
-    color: #2F2A32;
-    span {
-      color: #8DCABE
-    }
-    svg {
-      width: 16px;
-      height: auto;
-      display: inline-block;
-      fill: #8DCABE;
-      margin-top: -8px;
-      cursor: pointer;
-    }
-  }
+// .payment-thankyou {
+//   font-size: 32px;
+// }
+// .payment-order {
+//   p.title {
+//     font-size: 16px;
+//     font-weight: 400;
+//   }
+// }
+// .payment-detail{
+//   &__label {
+//     font-style: normal;
+//     font-weight: 700;
+//     font-size: 16px;
+//     line-height: 21px;
+//     color: rgba(54, 54, 54, 0.5);  
+// }
+//   &__price {
+//     font-style: normal;
+//     font-weight: 800;
+//     font-size: 24px;
+//     line-height: 31px;
+//     color: #2F2A32;
+//     span {
+//       color: #8DCABE
+//     }
+//     svg {
+//       width: 16px;
+//       height: auto;
+//       display: inline-block;
+//       fill: #8DCABE;
+//       margin-top: -8px;
+//       cursor: pointer;
+//     }
+//   }
 
-  &__alert {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
-    color: #363636;
-  }
-}
-.payment-options {
-  &__norek{
-    span {
-      display: inline-block;
-    }
-    svg {
-      width: 12px;
-      height: auto;
-      display: inline-block;
-      fill: #8DCABE;
-      margin-top: -8px;
-      cursor: pointer;
-    }
+//   &__alert {
+//     font-style: normal;
+//     font-weight: 600;
+//     font-size: 14px;
+//     line-height: 18px;
+//     color: #363636;
+//   }
+// }
+// .payment-options {
+//   &__norek{
+//     span {
+//       display: inline-block;
+//     }
+//     svg {
+//       width: 12px;
+//       height: auto;
+//       display: inline-block;
+//       fill: #8DCABE;
+//       margin-top: -8px;
+//       cursor: pointer;
+//     }
 
-  }
-}
+//   }
+// }
 .payment {
   padding: 60px 40px 50px !important;
   // background: #e5e5e5;

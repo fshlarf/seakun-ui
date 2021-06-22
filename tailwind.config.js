@@ -18,7 +18,10 @@ module.exports = {
     
     extend: {
       colors : {
-        'green-seakun' : '#8DCABE'
+        'green-seakun' : '#8DCABE',
+        'green-seakun-secondary' : '#F4F9F8',
+        'green-seakun-dark' : '#52AF9C'
+
       }
     },
   },
