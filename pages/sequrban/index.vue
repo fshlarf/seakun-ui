@@ -4,6 +4,7 @@
     <HeaderSection />
     <SequrbanIntroductionSection />
     <SequrbanOrderFlowSection />
+    <SequrbanQnaSection />
     <!-- <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
@@ -29,7 +30,7 @@ import SequrbanOrderFlowSection from '~/components/organisms/SequrbanOrderFlowSe
 import TestimonySection from '~/components/organisms/TestimonySection';
 import UserGroupSection from '~/components/organisms/UserGroupSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
-import QnaSection from '~/components/organisms/QnaSection';
+import SequrbanQnaSection from '~/components/organisms/SequrbanQnaSection';
 import Footer from '~/components/mollecules/Footer';
 
 export default {
@@ -44,7 +45,7 @@ export default {
     TestimonySection,
     UserGroupSection,
     BenefitSection,
-    QnaSection,
+    SequrbanQnaSection,
     Footer,
   },
 };
