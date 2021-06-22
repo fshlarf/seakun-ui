@@ -1,9 +1,12 @@
 <template>
-  <div id="orderFlow" class="container order-flow pt-12 pb-8 lg:pt-24 md:pb-12">
-    <div class="mb-8 flex gap-3 items-center">
-      <h1 class="tn:text-2xl md:text-4xl tn:text-center md:text-left font-bold">
-        Cara pesan
-      </h1>
+  <div
+    id="orderFlow"
+    class="container order-flow pt-12 pb-8 lg:pt-16 xl:pt-24 md:pb-12"
+  >
+    <div
+      class="mb-8 flex gap-3 items-center tn:justify-center md:justify-start"
+    >
+      <h1 class="tn:text-2xl md:text-4xl font-bold">Cara pesan</h1>
       <div class="cursor-pointer" @click="showModalInfo">
         <svg
           width="24"

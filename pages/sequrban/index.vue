@@ -3,6 +3,7 @@
     <Navbar />
     <HeaderSection />
     <SequrbanIntroductionSection />
+    <SequrbanProductSection />
     <SequrbanOrderFlowSection />
     <SequrbanUserGroupSection />
     <SequrbanQnaSection />
@@ -25,7 +26,7 @@ import Navbar from '~/components/mollecules/Navbar';
 import HeaderSection from '~/components/organisms/HeaderSection';
 import SequrbanIntroductionSection from '~/components/organisms/SequrbanIntroductionSection';
 import PartnershipSection from '~/components/organisms/PartnershipSection';
-import ProductSection from '~/components/organisms/ProductSection';
+import SequrbanProductSection from '~/components/organisms/SequrbanProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import SequrbanOrderFlowSection from '~/components/organisms/SequrbanOrderFlowSection';
 import TestimonySection from '~/components/organisms/TestimonySection';
@@ -40,7 +41,7 @@ export default {
     HeaderSection,
     SequrbanIntroductionSection,
     PartnershipSection,
-    ProductSection,
+    SequrbanProductSection,
     UserTypeSection,
     SequrbanOrderFlowSection,
     TestimonySection,

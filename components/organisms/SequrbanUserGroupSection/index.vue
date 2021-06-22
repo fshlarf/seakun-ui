@@ -1,12 +1,11 @@
 <template>
-  <div class="container tn:pt-8 md:pt-24 md:pb-8">
+  <div class="container tn:pt-8 lg:pt-16 xl:pt-24 md:pb-8">
     <div class="tn:text-center md:text-left">
       <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-4">
-        Pengguna Seakun.id
+        Lihat dari grup yang tersedia
       </h1>
       <p class="font-semibold">
-        Psst! Sudah ada ratusan grup loh, yang bergabung bersama kami! Klik
-        kategori untuk melihat.
+        Sudah banyak yang patungan qurban, nih. Yuk, lengkapi slot mereka!
       </p>
     </div>
     <div class="my-6">

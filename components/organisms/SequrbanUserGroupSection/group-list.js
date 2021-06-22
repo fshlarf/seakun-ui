@@ -15,7 +15,13 @@ export const groupList = [
     name: 'Tipe A',
     label: 'typeA',
     group: '10',
-    members: ['Qana A***y', 'Putu H***i', 'Adhyaksa g***a', '', ''],
+    members: [
+      'Qana A***y',
+      'Putu H***i',
+      'Adhyaksa g***a',
+      'Adhyaksa g***a',
+      'Adhyaksa g***a',
+    ],
   },
   {
     name: 'Tipe D',
@@ -27,7 +33,13 @@ export const groupList = [
     name: 'Tipe C',
     label: 'typeC',
     group: '10',
-    members: ['Qana A***y', 'Putu H***i', 'Adhyaksa g***a', '', ''],
+    members: [
+      'Qana A***y',
+      'Putu H***i',
+      'Adhyaksa g***a',
+      'Adhyaksa g***a',
+      'Adhyaksa g***a',
+    ],
   },
   {
     name: 'Tipe D',
