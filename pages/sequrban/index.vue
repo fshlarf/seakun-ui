@@ -2,6 +2,7 @@
   <div>
     <Navbar />
     <HeaderSection />
+    <SequrbanIntroductionSection />
     <SequrbanOrderFlowSection />
     <!-- <HeaderSection />
     <IntroductionSection />
@@ -20,7 +21,7 @@
 <script>
 import Navbar from '~/components/mollecules/Navbar';
 import HeaderSection from '~/components/organisms/HeaderSection';
-import IntroductionSection from '~/components/organisms/IntroductionSection';
+import SequrbanIntroductionSection from '~/components/organisms/SequrbanIntroductionSection';
 import PartnershipSection from '~/components/organisms/PartnershipSection';
 import ProductSection from '~/components/organisms/ProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
@@ -35,7 +36,7 @@ export default {
   components: {
     Navbar,
     HeaderSection,
-    IntroductionSection,
+    SequrbanIntroductionSection,
     PartnershipSection,
     ProductSection,
     UserTypeSection,

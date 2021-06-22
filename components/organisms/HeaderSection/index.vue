@@ -1,6 +1,8 @@
 <template>
   <div class="relative z-0">
-    <div class="w-full absolute -z-30 -top-40">
+    <div
+      class="w-full absolute -z-30 tn:top-0 md:-top-10 lg:-top-18 xl:-top-40"
+    >
       <img class="w-full" src="/images/header-bg.svg" alt="Image not found" />
     </div>
     <div
