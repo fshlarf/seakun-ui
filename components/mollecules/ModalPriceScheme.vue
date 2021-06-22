@@ -1,8 +1,6 @@
 <template>
-  <Modal :is-show="showModal" size="auto" @onClose="closeModal" class="">
+  <Modal :is-show="showModal" size="auto" @onClose="closeModal">
     <template v-slot:header>
-      <!-- <div v-for="(scheme, id) in dataScheme.list" :key="id">
-        <div v-if="scheme.name === dataScheme.label"> -->
       <div class="flex tn:gap-2 md:gap-3 xl:gap-4 items-center">
         <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">
           Skema Harga {{ dataScheme.name }}
@@ -11,11 +9,9 @@
           Lihat semua
         </p>
       </div>
-      <!-- </div>
-      </div> -->
     </template>
     <div class="tn:space-y-10 xl:space-y-0 xl:flex xl:justify-center xl:w-auto">
-      <div v-for="(scheme, id) in dataScheme.list" :key="id" class="">
+      <div v-for="(scheme, id) in dataScheme.list" :key="id">
         <div
           v-if="scheme.name === dataScheme.label"
           class="scheme-card tn:px-0 md:px-8 xl:px-4 xl:mx-2 xl:border xl:rounded-xl xl:py-3"
@@ -28,7 +24,7 @@
             />
           </div>
           <div class="text-center">
-            <h1 class="tn:text-lg xl:text-sm font-bold my-2 text-center">
+            <h1 class="tn:text-lg xl:text-sm font-bold my-2">
               {{ scheme.title }}
             </h1>
           </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-bind="$props">
     <div
       v-if="isShow"
       tabindex="0"
@@ -7,7 +7,7 @@
     >
       <div class="z-50 relative p-3 mx-auto my-0 w-full">
         <div
-          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5"
+          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5 lg:w-3/5"
           :class="classModal"
         >
           <button
@@ -29,9 +29,7 @@
           <div class="px-6 py-3">
             <slot name="header"></slot>
           </div>
-          <div
-            class="scroll-bar-hidden p-6 flex-grow overflow-y-auto overscroll-auto"
-          >
+          <div class="scroll-bar p-6 flex-grow overflow-y-auto overscroll-auto">
             <slot />
           </div>
           <div class="px-6 py-3">
@@ -62,7 +60,7 @@ export default {
     },
     size: {
       type: String,
-      default: null,
+      default: '',
     },
   },
   methods: {
@@ -90,5 +88,16 @@ export default {
 .scroll-bar-hidden {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+.scroll-bar::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+  background: #86d0c1;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+.scroll-bar {
+  scrollbar-width: 2px; /* Firefox */
 }
 </style>
