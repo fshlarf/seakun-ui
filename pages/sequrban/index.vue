@@ -1,10 +1,11 @@
 <template>
   <div>
-    <Navbar />
-    <HeaderSection />
+    <Navbar2 />
+    <SequrbanHeaderSection />
     <SequrbanIntroductionSection />
-    <SequrbanProductSection />
+    <SequrbanCashbackSection />
     <SequrbanOrderFlowSection />
+    <SequrbanProductSection />
     <SequrbanUserGroupSection />
     <SequrbanQnaSection />
     <!-- <HeaderSection />
@@ -22,9 +23,10 @@
 </template>
 
 <script>
-import Navbar from '~/components/mollecules/Navbar';
-import HeaderSection from '~/components/organisms/HeaderSection';
+import Navbar2 from '~/components/mollecules/Navbar2';
+import SequrbanHeaderSection from '~/components/organisms/SequrbanHeaderSection';
 import SequrbanIntroductionSection from '~/components/organisms/SequrbanIntroductionSection';
+import SequrbanCashbackSection from '~/components/organisms/SequrbanCashbackSection';
 import PartnershipSection from '~/components/organisms/PartnershipSection';
 import SequrbanProductSection from '~/components/organisms/SequrbanProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
@@ -37,9 +39,10 @@ import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
-    Navbar,
-    HeaderSection,
+    Navbar2,
+    SequrbanHeaderSection,
     SequrbanIntroductionSection,
+    SequrbanCashbackSection,
     PartnershipSection,
     SequrbanProductSection,
     UserTypeSection,

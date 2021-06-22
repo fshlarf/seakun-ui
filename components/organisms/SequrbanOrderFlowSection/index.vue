@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="orderFlow"
-    class="container order-flow pt-12 pb-8 lg:pt-16 xl:pt-24 md:pb-12"
-  >
+  <div id="orderFlow" class="container pt-12 pb-8 lg:pt-16 xl:pt-24 md:pb-12">
     <div
       class="relative z-0 mb-8 flex gap-3 items-center tn:justify-center md:justify-start"
     >
