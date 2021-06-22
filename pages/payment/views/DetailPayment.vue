@@ -2,8 +2,8 @@
   <section>
       <Snackbar ref="snackbar"/>
       <div class="payment-detail text-center mt-16">
-            <p class="payment-detail__label my-3">Total transfer</p>
-            <p class="payment-detail__price my-3" @click="clickCopyHandler('nominal',50023)"> Rp 50.<span>023 <CopyIcon/></span></p>
+            <p class="payment-detail__label my-3 text-xl">Total transfer</p>
+            <p class="payment-detail__price my-3 text-xl" @click="clickCopyHandler('nominal',50023)"> Rp 50.<span>023 <CopyIcon/></span></p>
             <p class="payment-detail__alert my-3">Pastikan nominal sesuai hingga 3 digit terakhir </p>
         </div>
         <div class="payment-method">

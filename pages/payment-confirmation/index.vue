@@ -1,5 +1,5 @@
 <template>
-<div class="container max-w-xl w-full mx-auto mt-10 bg-white py-8">
+<div class="container max-w-2xl w-full mx-auto mt-10  py-8">
     <div class="wrapper-form w-full bg-white rounded-xl shadow-xl  py-4 px-4">
         <div class="header-confirmation">
             <h3 class="font-bold text-2xl">Konfirmasi Pembayaran</h3>

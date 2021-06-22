@@ -19,10 +19,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
 html {
   font-family: Montserrat !important;
   font-size: 16px;
+  background: rgba(239, 239, 239, 0.1);
+}
+body{
+  background: rgba(239, 239, 239, 0.1) !important;
 }
 *,
 *:before,

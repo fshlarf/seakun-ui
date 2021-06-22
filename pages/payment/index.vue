@@ -2,16 +2,16 @@
   <div>
     <NavbarBlank />
     <div class="payment bg-white">
-      <div class="container-payment max-w-xl w-full mx-auto mt-10">
+      <div class="container-payment max-w-2xl w-full mx-auto mt-10">
         <HeaderPayment/>
         <DetailPayment/>
-        <div class="tos-alert px-4 mt-4 text-md">
+        <div class="tos-alert px-4 mt-4 text-lg">
           <p>Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan kamu dapat diproses oleh Seakun.id. 
             Mohon menunggu 10 - 20 menit. jika melewati rentang waktu tersebut dan pesanan kamu belum diproses, 
             harap hubungi admin via whatsapp <span class="text-green-seakun"> +6282124852227 </span>.
            </p>
         </div>
-        <div class="mt-8 mx-4">
+        <div class="mt-8 mx-4  mb-4">
           <Button class="w-full bg-green-seakun text-white" label="Konfirmasi Pembayaran"/>
         </div>
         <!-- <div class="row">
