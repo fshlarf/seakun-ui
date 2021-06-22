@@ -5,7 +5,7 @@
         Frequently Asked Questions (FAQ)
       </h1>
     </div>
-    <div class="px-2 grid tn:grid-cols-1 lg:grid-cols-2 lg:gap-8 items-start">
+    <div class="px-2 grid tn:grid-cols-1 lg:grid-cols-2 lg:gap-8 items-center">
       <Accordion
         v-for="(faq, id) in dataFaq"
         :key="id"
@@ -13,6 +13,7 @@
         :title="faq.question"
         :answer="faq"
         @toggleShow="toggleShow"
+        class="w-full h-full"
       />
     </div>
   </div>
@@ -26,44 +27,52 @@ export default {
       dataFaq: [
         {
           id: 1,
-          question: 'Apakah Netflix ini itu ini?',
+          question: 'Kapan masa berlangganan di Seakun aktif?',
           answer:
-            'User Netflix adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+            'Masa berlangganan terhitung ketika Admin Whatsapp memberikan akun sharing, link invitation atau mengundang kamu ke grup premium. Masa berlangganan akan tetap berjalan walaupun kamu tidak meng-accept undangan yang telah dikirimkan.',
           isShow: false,
         },
         {
           id: 2,
-          question: 'Apakah Spotify ini itu ini?',
+          question:
+            'Bagaimana mekanisme untuk melanjutkan langganan di Seakun?',
           answer:
-            'User Spotify adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+            'Seminggu dan maksimal sehari sebelum masa berlangganan habis, kamu akan menerima reminder perpanjangan melalui email & Whatsapp yang terdaftar. Jika kamu ingin melanjutkan masa berlangganan, silakan melakukan transfer ke rekening / e-wallet Seakun dengan nominal yang diinformasikan.',
           isShow: false,
         },
         {
           id: 3,
-          question: 'Apakah Youtube ini itu ini?',
+          question: 'Apa perbedaan seakun dengan platform langganan yang lain?',
           answer:
-            'User Youtube adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+            'Seakun adalah platform yang konsepnya mempertemukan kamu dengan kawan berlangganan yang mempunyai interest yang sama, sehingga akun hanya dishare ke member dalam satu grup tertentu aja. Berbeda dengan seller akun sharing yang biasanya akan menyebarkan akun ke banyak orang. Skema harga Seakun sangat transparan karena harga berlangganan adalah harga yang dibagi rata dengan jumlah member dalam satu grup.',
           isShow: false,
         },
         {
           id: 4,
-          question: 'Apakah Gramedia ini itu ini?',
+          question: 'Apa perbedaan User Host dan User Reguler?',
           answer:
-            'User Gramedia adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+            'User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Sedangkan User Reguler, kamu tinggal terima jadi saja, proses pendaftaran ke provider dan pencarian kawan berlangganan akan dihandle oleh Seakun.',
           isShow: false,
         },
         {
           id: 5,
-          question: 'Apakah Canva ini itu ini?',
+          question: 'Payment method apa saja yang available di Seakun?',
           answer:
-            'User Canva adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+            'Bank transfer Mandiri, BCA, Jenius, Gopay, OVO, DANA, LinkAja',
           isShow: false,
         },
         {
           id: 6,
-          question: 'Apakah Microsoft ini itu ini?',
-          answer:
-            'User Microsoft adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+          question: 'Bagaimana prosedur menjadi User Host?',
+          answer: [
+            '1. Daftar dengan memilih paket User Host. Misal User Host Netflix',
+            '2. Admin akan melakukan konfirmasi melalui Whatsapp',
+            '3. Lakukan pendaftaran menggunakan akun yang ditentukan oleh Admin',
+            '4. Lakukan pembayaran di provider menggunakan kartu kredit/debit/gopay (khusus Netflix)',
+            '5. Setelah berhasil melakukan pembayaran, informasikan ke Admin',
+            '6. Admin akan mengirimkan pengganti dana yang terdebet',
+          ],
+          list: true,
           isShow: false,
         },
       ],

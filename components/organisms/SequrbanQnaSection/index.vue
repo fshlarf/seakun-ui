@@ -26,44 +26,41 @@ export default {
       dataFaq: [
         {
           id: 1,
-          question: 'Apakah Netflix ini itu ini?',
-          answer:
-            'User Netflix adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+          question: 'Kapan saya membayar DP?',
+          answer: 'saat anda memesan qurban',
           isShow: false,
         },
         {
           id: 2,
-          question: 'Apakah Spotify ini itu ini?',
+          question: 'Kapan saya membayar sisa pembayaran?',
           answer:
-            'User Spotify adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+            'saat grup full, anda akan mendapatkan infromasi untuk melunasi sisa pembayaran dari Sequrban via whatsapp',
           isShow: false,
         },
         {
           id: 3,
-          question: 'Apakah Youtube ini itu ini?',
-          answer:
-            'User Youtube adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+          question: 'Bolehkah langsung membayar full?',
+          answer: 'boleh, klik button bayar full pada halaman pembayaran.',
           isShow: false,
         },
         {
           id: 4,
-          question: 'Apakah Gramedia ini itu ini?',
+          question: 'Bagaimana jika grup tidak full?',
           answer:
-            'User Gramedia adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+            'Kami akan kembalikan 100% uang DP atau total pembayaran (jika membayar penuh)',
           isShow: false,
         },
         {
           id: 5,
-          question: 'Apakah Canva ini itu ini?',
-          answer:
-            'User Canva adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+          question: 'Kapan kabar bahwa grup tidak full?',
+          answer: 'H-7 sebelum idul adha akan kami informasikan kembali',
           isShow: false,
         },
         {
           id: 6,
-          question: 'Apakah Microsoft ini itu ini?',
-          answer:
-            'User Microsoft adalah user yang berlangganan provider Entertainment via Seakun.id dan user yang bertanggung jawab melakukan payment ke provider Entertainment menggunakan kartu debit/kredit pribadi miliknya',
+          question:
+            'Apakah jatah daging kurban akan dikirim ke member yang berkurban? ',
+          answer: 'ya, jatah akan dikirimkan ke alamat yang sudah didaftarkan',
           isShow: false,
         },
       ],
