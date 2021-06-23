@@ -11,34 +11,35 @@
           <div class="payment-method__options grid grid-cols-2  gap-1 px-4 py-6">
             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
               <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening',11231231232)">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
+              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening','1150046427383')">1150046427383 <span class="ml-1"> <CopyIcon/></span></p>
+              <p  class="my-1 payment-options__account-name text-sm">PT.Seakun Global</p>
             </div>
              <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening',11231231232)">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
+              <img src="/images/payment/bca.png" class="w-8/12 my-2" />
+              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening','7660777738')">7660777738 <span class="ml-1"> <CopyIcon/></span></p>
+              <p  class="my-1 payment-options__account-name text-sm">PT.Seakun Global</p>
             </div>
              <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening',11231231232)">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
+              <img src="/images/payment/gopay.png" class="w-8/12 my-2" />
+              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening','11231231232')">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
+              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
             </div>
              <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening',11231231232)">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
+              <img src="/images/payment/ovo.png" class="w-8/12 my-2" />
+              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening','085774642738')">085774642738 <span class="ml-1"> <CopyIcon/></span></p>
+              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
+            </div>
+            <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
+              <img src="/images/payment/link-aja.png" class="w-8/12 my-2" />
+              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening','085774642738')">085774642738 <span class="ml-1"> <CopyIcon/></span></p>
+              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
             </div>
              <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening',11231231232)">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
+              <img src="/images/payment/dana.png" class="w-8/12 my-2" />
+              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening','085774642738')">085774642738 <span class="ml-1"> <CopyIcon/></span></p>
+              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
             </div>
-              <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('rekening',11231231232)">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seaukn Global</p>
-            </div>
+
           </div>
         </div>
   </section>
@@ -107,6 +108,11 @@ export default {
   }
 }
 .payment-options {
+  img {
+    height: 60px;
+    width: 120px;
+    object-fit: contain;
+  }
   &__norek{
     span {
       display: inline-block;

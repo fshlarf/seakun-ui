@@ -1,7 +1,6 @@
 <template>
   <div>
     <NavbarBlank></NavbarBlank>
-     <!-- <NavigationBlank/>  -->
     <div class="container-wrapper mt-10">
         <Nuxt />
     </div>

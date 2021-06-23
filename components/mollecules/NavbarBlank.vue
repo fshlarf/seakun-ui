@@ -1,31 +1,11 @@
 <template>
   <div id="navbar" class="w-full bg-third fixed z-40 py-2 tn:shadow px-2">
-    <div v-if="open" class="opacity-20 fixed inset-0 z-90 bg-black"></div>
     <div
       class="container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between"
     >
       <nuxt-link class="hover:no-underline" to="/">
         <Logo label="Seakun.id" />
       </nuxt-link>
-      <div
-        class="absolute top-1 right-1 tn:py-3 tn:px-3 md:py-3 md:px-3 md:right-1 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col w-4/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row"
-        :class="{ shadow: open, 'bg-white': open }"
-      >
-
-        <!-- <nav
-          :class="{ flex: open, hidden: !open }"
-          class="flex-col tn:pr-4 md:pr-4 tn:mt-2 md:p-0 hidden lg:flex lg:justify-end lg:flex-row"
-          v-for="(navbar, id) in navbarLink"
-          :key="id"
-        >
-          <p
-            class="cursor-pointer text-right my-3 text-sm md:text-base font-semibold md:font-bold text-primary hover:text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-12 xl:ml-16"
-            href="#"
-          >
-            {{ navbar.label }}
-          </p>
-        </nav> -->
-      </div>
     </div>
   </div>
 </template>
@@ -33,38 +13,9 @@
 <script>
 import Logo from '~/components/atoms/Logo.vue';
 export default {
-  name : "navbar-blankk",
-  data() {
-    return {
-      open: false,
-      navbarLink: [
-        {
-          id: 1,
-          label: 'Provider',
-          link: '',
-        },
-        {
-          id: 2,
-          label: 'Tipe user',
-          link: '',
-        },
-        {
-          id: 3,
-          label: 'Cara pesan',
-          link: '',
-        },
-        {
-          id: 4,
-          label: 'Testimoni',
-          link: '',
-        },
-        {
-          id: 5,
-          label: 'QnA',
-          link: '',
-        },
-      ],
-    };
+  name : "navbar-blank",
+  data(){
+    return ({})
   },
   components: {
     Logo,

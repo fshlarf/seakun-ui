@@ -1,8 +1,6 @@
 <template>
   <div>
-    <NavbarBlank />
-    <div class="payment bg-white">
-      <div class="container-payment max-w-2xl w-full mx-auto mt-10">
+      <div class="container-payment max-w-2xl w-full mx-auto mt-20">
         <HeaderPayment/>
         <DetailPayment/>
         <div class="tos-alert px-4 mt-4 text-lg">
@@ -120,7 +118,6 @@
       </div>
     </div>
     <!-- <Footer /> -->
-  </div>
 </template>
 
 <script>
@@ -130,7 +127,6 @@ import Button from '~/components/atoms/Button';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import DetailPayment from "./views/DetailPayment.vue"
 import HeaderPayment from "./views/HeaderPayment.vue"
-// import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
@@ -139,8 +135,8 @@ export default {
     Button,
     HeaderPayment,
     DetailPayment
-    // Footer: Footer,
   },
+  layout : 'navigationBlank',
   data() {
     return {
       provider: '',
@@ -275,75 +271,8 @@ export default {
   min-width: 640px;
   max-width: 640px;
 }
-// .payment-thankyou {
-//   font-size: 32px;
-// }
-// .payment-order {
-//   p.title {
-//     font-size: 16px;
-//     font-weight: 400;
-//   }
-// }
-// .payment-detail{
-//   &__label {
-//     font-style: normal;
-//     font-weight: 700;
-//     font-size: 16px;
-//     line-height: 21px;
-//     color: rgba(54, 54, 54, 0.5);  
-// }
-//   &__price {
-//     font-style: normal;
-//     font-weight: 800;
-//     font-size: 24px;
-//     line-height: 31px;
-//     color: #2F2A32;
-//     span {
-//       color: #8DCABE
-//     }
-//     svg {
-//       width: 16px;
-//       height: auto;
-//       display: inline-block;
-//       fill: #8DCABE;
-//       margin-top: -8px;
-//       cursor: pointer;
-//     }
-//   }
-
-//   &__alert {
-//     font-style: normal;
-//     font-weight: 600;
-//     font-size: 14px;
-//     line-height: 18px;
-//     color: #363636;
-//   }
-// }
-// .payment-options {
-//   &__norek{
-//     span {
-//       display: inline-block;
-//     }
-//     svg {
-//       width: 12px;
-//       height: auto;
-//       display: inline-block;
-//       fill: #8DCABE;
-//       margin-top: -8px;
-//       cursor: pointer;
-//     }
-
-//   }
-// }
 .payment {
   padding: 60px 40px 50px !important;
-  // background: #e5e5e5;
-
-  // .container {
-  //   background: white;
-  //   border-radius: 10px;
-  //   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-  // }
   .box {
     border: 1px solid #86d0c1;
     border-radius: 4px;
@@ -399,88 +328,6 @@ export default {
   .row {
     padding: 0px 8px !important;
   }
-  #snackbar {
-    background-color: #daeeef;
-    color: #2f524b;
-    text-align: center;
-    border-radius: 25px;
-    padding: 8px 16px;
-    position: fixed;
-    z-index: 1;
-    top: 100px;
-    font-size: 17px;
-    margin: 0 auto;
-    max-width: 600px;
-    left: 65%;
-    margin-left: -300px;
-    font-weight: 700 !important;
-    button {
-      margin-top: 0px !important;
-      // margin-bottom: 10px !important;
-    }
-    span {
-      font-size: 28px;
-      cursor: pointer;
-      padding: 0px 12px;
-    }
-  }
 }
-.bold {
-  font-weight: 800;
-}
-@media (max-width: 800px) {
-  #snackbar {
-    position: absolute !important;
-    max-width: 200px !important;
-    left: 30% !important;
-    top: 60% !important;
-    margin-left: 0px !important;
-  }
-  .payment {
-    padding: 50px 0px 0px !important;
-    // margin-top: 18px;
-    Ï &__img {
-      text-align: center;
-      margin-top: 20px;
-    }
-    &__header {
-      &-h3 {
-        font-size: 22px;
-        margin-top: 16px;
-      }
-    }
-    .img-pay {
-      width: 330px !important;
-      margin: 16px auto;
-    }
-    h2 {
-      font-size: 20px;
-    }
-    .box {
-      margin-left: 0px !important;
-      margin-right: 0px !important;
-      font-size: 13px;
-    }
-    .col-lg-1 {
-      max-width: 10px;
-    }
-  }
-  .mandiri {
-    width: 100px !important;
-  }
-  .bca {
-    width: 100px !important;
-  }
-}
-.mandiri {
-  width: 100px;
-}
-.bca {
-  width: 100px;
-}
-@media only screen and (min-width: 880px) and (max-width: 1020px) {
-  .container {
-    display: contents !important;
-  }
-}
+
 </style>

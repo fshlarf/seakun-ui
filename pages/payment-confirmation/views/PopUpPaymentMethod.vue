@@ -12,7 +12,6 @@
               > 
                 {{bank.name}}
             </li>
-          
         </ul>
         <li class="font-bold pb-2">Virutal Account</li>
         <ul>
