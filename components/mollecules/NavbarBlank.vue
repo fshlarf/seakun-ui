@@ -15,7 +15,7 @@ import Logo from '~/components/atoms/Logo.vue';
 export default {
   name: 'navbar-blank',
   data() {
-    return {};
+    return ({});
   },
   components: {
     Logo,
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-#navbar {
+#navbar{
   position: fixed;
   top: 1px;
 }
