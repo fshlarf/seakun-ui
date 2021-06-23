@@ -5,13 +5,13 @@
     </div>
     <div class="">
       <h1
-        class="font-bold text-secondary text-md md:text-lg lg:text-2xl my-1 md:my-2"
+        class="font-bold text-secondary text-md md:text-lg lg:text-lg my-1 md:my-2"
       >
         {{ benefit.title }}
       </h1>
     </div>
     <div class="my-2">
-      <p class="text-xs md:text-base">{{ benefit.preview }}</p>
+      <p class="text-xs md:text-sm">{{ benefit.preview }}</p>
     </div>
   </div>
 </template>

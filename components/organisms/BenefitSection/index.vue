@@ -6,7 +6,7 @@
       </h1>
     </div>
     <div
-      class="w-full h-full grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 justify-center place-items-stretch items-stretch"
+      class="w-full h-full grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6 justify-center place-items-stretch items-stretch"
     >
       <BenefitCard
         v-for="(benefit, id) in dataBenefit"

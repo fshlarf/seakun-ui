@@ -9,7 +9,7 @@
           id="headingOne"
         >
           <div>
-            <h1 class="tn:text-md md:text-base font-bold">
+            <h1 class="tn:text-md md:text-sm font-bold">
               {{ title }}
             </h1>
           </div>
@@ -67,7 +67,7 @@
             </ul>
           </div>
           <div v-else>
-            <p>{{ answer.answer }}</p>
+            <p class="text-sm">{{ answer.answer }}</p>
           </div>
         </div>
       </div>
