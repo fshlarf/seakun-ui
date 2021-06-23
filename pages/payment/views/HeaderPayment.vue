@@ -12,7 +12,12 @@
              <p class="shimmer w-8/12"></p>
           </div>
            <!-- Loadingg shimmer end -->
-          <div  v-if="provider.toLowerCase() === 'netflix'" >
+           <div v-if="typePayment.toLowerCase() === 'sequrban'">
+             <p class="title text-center text-lg px-2">
+               Segera lakukan pembayaran agar Sequrban dapat mengumpulkan kamu ke grup yang sama dan memberikan informasi tentang proses qurban hingga pada hari H penyembelihan.
+             </p>
+           </div>
+          <div  v-else-if="provider.toLowerCase() === 'netflix'" >
               <p class="title text-center text-lg px-2" v-if="packageId === 1" >
                 Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. 
                 <a href="https://seakun.id/info/user-host"> Baca ketentuan User Host</a>.
@@ -33,15 +38,17 @@
                 <b>Informasi Akun</b>, <b>Password</b> <b>dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.
               </p>
           </div>
-          <div  v-if-else="provider.toLowerCase() === 'spotify'" >
+          <div  v-else-if="provider.toLowerCase() === 'spotify'" >
               <p class="title text-center text-lg px-2" v-if="packageId === 1" >
                 Segera lakukan pembayaran agar Seakun.id dapat \
                 langsung mengirimkan <b>Link invitation</b> plan paket Grup Spotify.\
                 <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.
               </p>
           </div>
-
-          <div class="order-detail bg-white shadow-md  mt-8 rounded-md items-center mx-2">
+          <DetailOrderSuqurban
+            v-if="typePayment === 'sequrban'"
+          />
+          <div v-else class="order-detail bg-white shadow-md  mt-8 rounded-md items-center mx-2">
             <div class="order-detail__product px-4 pt-4 pb-2 grid grid-cols-5 gap-2 items-center">
               <div class="flex-1">
                 <img class="detail-product__image w-9/12" :src="`/images/${provider.toLowerCase()}.png`" alt="Image not found" />
@@ -53,16 +60,16 @@
                 <p class="font-normal">{{currencyFormat(detailPayment.data.grandTotal)}} x ({{detailPayment.data.totalMonth}} Bulan)</p>
               </div>
             </div>
-          <div class="order-detail__payment flex justify-between  px-4 py-3 border-t border-gray-50 ">
-            <div>Total Pembayaran</div>
-            <div>
-               <p v-if="detailPayment.loading" class="shimmer w-4/12">
-              </p>
-              <template v-else>
-                    {{currencyFormat(detailPayment.data.grandTotal)}}
-              </template>
+            <div class="order-detail__payment flex justify-between  px-4 py-3 border-t border-gray-50 ">
+              <div>Total Pembayaran</div>
+              <div>
+                 <p v-if="detailPayment.loading" class="shimmer w-4/12">
+                </p>
+                <template v-else>
+                      {{currencyFormat(detailPayment.data.grandTotal)}}
+                </template>
+              </div>
             </div>
-          </div>
           </div>
         </div>
   </div>
@@ -70,8 +77,12 @@
 
 <script>
 import { currencyFormat } from '~/helpers/word-transformation.js' 
+import DetailOrderSuqurban from './DetailOrderSekurban.vue'
 export default {
   name:'headerPayment',
+  components : {
+    DetailOrderSuqurban
+  },
   props : {
     provider : {
       type : String,
@@ -87,6 +98,10 @@ export default {
         loading : true,
         data : {}
       })
+    },
+    typePayment : {
+      type : String,
+      default : ''
     },
     packageName : {
       type : String,

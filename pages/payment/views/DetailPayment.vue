@@ -2,7 +2,8 @@
   <section>
       <Snackbar ref="snackbar"/>
       <div class="payment-detail text-center mt-16">
-            <p class="payment-detail__label my-3 text-xl">Total transfer</p>
+            <p v-if="typePayment==='sequrban'" class="payment-detail__label my-3 text-xl">Transfer DP (uang muka)</p>
+            <p v-else class="payment-detail__label my-3 text-xl">Total transfer</p>
             <div class="payment-detail__price flex align-items-center justify-center">
               <p v-if="detailPayment.loading" class="shimmer w-6/12"></p>
               <p v-else class=" my-3 text-xl mr-2 cursor-pointer" @click="clickCopyHandler('Nominal',detailPayment.data.grandTotal)" v-html="formatCodePayment(detailPayment.data.grandTotal)"> </p><CopyIcon/>
@@ -11,38 +12,19 @@
         </div>
         <div class="payment-method">
           <h3 class="payment-method__title text-center text-bold mt-6">Transerfer Ke</h3>
-          <div class="payment-method__options grid grid-cols-2  gap-1 px-4 py-6">
-            <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/mandiri.png" class="w-8/12 my-2" />
+          <div v-if="typePayment === 'sequrban'" class="payment-method__options grid grid-cols-2  gap-1 px-4 py-6">
+            <div v-for="(payment,index ) in paymentMethodSekurban" :key="index" class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
+              <img :src="`/images/payment/${payment.name}.png`" class="w-8/12 my-2" />
               <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','1150046427383')">1150046427383 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seakun Global</p>
+              <p  class="my-1 payment-options__account-name text-sm">{{ payment.accountName }}</p>
             </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/bca.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','7660777738')">7660777738 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">PT.Seakun Global</p>
+          </div>
+          <div v-else class="payment-method__options grid grid-cols-2  gap-1 px-4 py-6">
+            <div v-for="(payment,index ) in paymetnMethod" :key="index" class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
+              <img :src="`/images/payment/${payment.name}.png`" class="w-8/12 my-2" />
+              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','1150046427383')">1150046427383 <span class="ml-1"> <CopyIcon/></span></p>
+              <p  class="my-1 payment-options__account-name text-sm">{{ payment.accountName }}</p>
             </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/gopay.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','11231231232')">11231231232 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
-            </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/ovo.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','085774642738')">085774642738 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
-            </div>
-            <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/link-aja.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','085774642738')">085774642738 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
-            </div>
-             <div class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
-              <img src="/images/payment/dana.png" class="w-8/12 my-2" />
-              <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','085774642738')">085774642738 <span class="ml-1"> <CopyIcon/></span></p>
-              <p  class="my-1 payment-options__account-name text-sm">Seakun ID / Eka Pusna</p>
-            </div>
-
           </div>
         </div>
   </section>
@@ -61,6 +43,10 @@ export default {
     },
     props : {
       provider : {
+        type : String,
+        default : ''
+      },
+      typePayment : {
         type : String,
         default : ''
       },
@@ -85,7 +71,51 @@ export default {
     },
     },
     data: ()=> ({
-      currencyFormat
+      currencyFormat,
+      paymetnMethod : [
+        {
+          name : 'mandiri',
+          accountNumber : '1150046427383',
+          accountName : 'PT. Seakun Global'
+        },
+        {
+          name : 'bca',
+          accountNumber : '7660777738',
+          accountName : 'PT. Seakun Global'
+        },
+         {
+          name : 'gopay',
+          accountNumber : '085774642738',
+          accountName : 'Seakun ID / Eka Pusna'
+        },
+        {
+          name : 'ovo',
+          accountNumber : '085774642738',
+          accountName : 'Seakun ID / Eka Pusna'
+        },
+        {
+          name : 'link-aja',
+          accountNumber : '085774642738',
+          accountName : 'Seakun ID / Eka Pusna'
+        },
+         {
+          name : 'dana',
+          accountNumber : '085774642738',
+          accountName : 'Seakun ID / Eka Pusna'
+        }
+      ],
+      paymentMethodSekurban : [
+       {
+          name : 'mandiri',
+          accountNumber : '1150046427383',
+          accountName : 'PT. Seakun Global'
+        },
+        {
+          name : 'bca',
+          accountNumber : '7660777738',
+          accountName : 'PT. Seakun Global'
+        },
+      ]
     }),
     methods : {
         clickCopyHandler(name,value) {
