@@ -23,7 +23,7 @@
           Baru
         </p>
       </div>
-      <div class="h-full">
+      <div class="h-full mt-2">
         <div class="flex items-center mb-1 md:mb-3 md:px-2">
           <img :src="`${product.icon}`" alt="#" class="w-8 ml-1" />
           <h1 class="md:text-xl font-bold mx-2">
@@ -33,7 +33,7 @@
 
         <div v-if="product.package" class="tn:px-1 md:px-2 md:mt-3 lg:px-4">
           <div
-            class="text-xs md:text-base md:flex md:justify-between mt-1"
+            class="text-xs md:text-sm md:flex md:justify-between mt-1"
             v-for="(packageDetail, id) in product.package"
             :key="id"
           >
@@ -43,7 +43,7 @@
             <p class="font-bold">Rp{{ packageDetail.price }}</p>
           </div>
           <p
-            class="text-xs md:text-base font-bold text-primary my-2 cursor-pointer"
+            class="text-xs md:text-sm font-bold text-primary my-2 cursor-pointer"
             @click="showPriceScheme(product.label, product.name)"
           >
             Lihat skema harga
