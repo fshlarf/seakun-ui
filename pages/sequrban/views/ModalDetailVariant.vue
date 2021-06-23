@@ -119,7 +119,12 @@
     </div>
     <div class="h-px w-full bg-primary"></div>
     <div class="space-y-3 mt-4 mb-0">
-      <Button label="Pesan sekarang" variant="primary" class="w-full py-2" />
+      <Button
+        label="Pesan sekarang"
+        variant="primary"
+        class="w-full py-2"
+        @click="toOrderPage(variant.id)"
+      />
       <Button
         label="Kembali"
         variant="secondary"
@@ -198,6 +203,9 @@ export default {
       const last = this.variant.images.pop();
       this.variant.images = [last].concat(this.variant.images);
     },
+    toOrderPage(id) {
+      this.$router.push(`/sequrban/order?id=${id}`);
+    },
   },
 };
 </script>
@@ -221,6 +229,5 @@ export default {
   display: flex;
   justify-content: center;
   transition: all 0.3s;
-  // background: #ddd;
 }
 </style>

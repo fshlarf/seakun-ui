@@ -1,5 +1,5 @@
 <template>
-  <div v-bind="$props">
+  <div>
     <div
       v-if="isShow"
       tabindex="0"
@@ -68,7 +68,7 @@ export default {
     },
     size: {
       type: String,
-      default: '',
+      default: null,
     },
     isLoading: {
       type: Boolean,

@@ -18,6 +18,7 @@
         :key="id"
         :variant="cowVariant"
         @showModalDetail="showModalDetail"
+        @onClickOrder="toOrderPage"
       />
     </div>
     <div
@@ -88,6 +89,9 @@ export default {
     },
     closeModalDetail() {
       this.isShowModal = false;
+    },
+    toOrderPage(id) {
+      this.$router.push(`/sequrban/order?id=${id}`);
     },
   },
 };
