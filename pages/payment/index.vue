@@ -1,21 +1,20 @@
 <template>
   <div>
-    <Header />
-    <div class="payment">
-      <transition name="slide-fade">
-        <div v-if="showSnackBar" id="snackbar">
-          <!-- <span style="text-align: end" @click="showSnackBar = false"
-            >&times;</span
-          > -->
-          <i class="fa fa-check-circle-o"></i>
-          <p>Berhasil disalin</p>
+      <div class="container-payment max-w-2xl w-full mx-auto mt-20">
+        <HeaderPayment/>
+        <DetailPayment/>
+        <div class="tos-alert px-4 mt-4 text-lg">
+          <p>Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan kamu dapat diproses oleh Seakun.id. 
+            Mohon menunggu 10 - 20 menit. jika melewati rentang waktu tersebut dan pesanan kamu belum diproses, 
+            harap hubungi admin via whatsapp <span class="text-green-seakun"> +6282124852227 </span>.
+           </p>
         </div>
-      </transition>
-      <div class="container">
-        <div class="row">
+        <div class="mt-8 mx-4  mb-4">
+          <Button class="w-full bg-green-seakun text-white" label="Konfirmasi Pembayaran"/>
+        </div>
+        <!-- <div class="row">
           <div class="col">
-            <div class="payment__img">
-              <img class="img-pay" src="/images/thank-you.png" alt="Image not found" />
+            <div class="flex justify-center">
             </div>
             <h3 class="payment__header-h3">Thank You!</h3>
             <p v-html="setWordingInformation(provider, packetId)"></p>
@@ -34,7 +33,7 @@
                 <div class="col box-title">Metode Pembayaran</div>
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">Bank Transfer</div>
-              </div>
+              </div> -->
               <!-- <div class="row mt-1">
                 <div class="col box-title">Bank Tujuan</div>
                 <div class="col col-lg-1">:</div>
@@ -62,7 +61,7 @@
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
               </div> -->
-            </div>
+            <!-- </div>
             <div style="margin:40px 0px;color:#787878;line-height:24px;text-align:center;">
               <p style="font-weight: 600;margin-bottom: -6px">Transfer ke</p>
               <img class="mandiri" src="http://1.bp.blogspot.com/-zkv5u5OGPEM/VKOWnIRRKBI/AAAAAAAAA7E/ovxa4ZW3I0o/w1200-h630-p-k-no-nu/Logo%2BBank%2BMandiri.png" alt="mandiri" >
@@ -79,7 +78,7 @@
                 <i class="fa fa-copy" style="margin-left: 6px"></i>
               </div>
               <p style="margin-bottom: 0px; font-weight: 700;">Nominal Pembayaran</p>
-              <div class="flex" @click="handleCopyNominal(total)" style="color:#8DCABE; cursor: pointer; justify-content: center; margin-top: 12px">
+              <div class="flex" @click="handleCopyNominal(totafl)" style="color:#8DCABE; cursor: pointer; justify-content: center; margin-top: 12px">
                 <span style="font-weight: 800;font-size:18px;">{{ formatMoneyRupiah(total) }}</span>
                 <i class="fa fa-copy" style="margin-left: 6px"></i>
               </div>
@@ -115,23 +114,29 @@
               beberapa menit dan butuh verifikasi data.
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-    <Footer />
-  </div>
+    <!-- <Footer /> -->
 </template>
 
 <script>
 import axios from 'axios';
-import Header from '~/components/mollecules/Header';
-import Footer from '~/components/mollecules/Footer';
+import NavbarBlank from '~/components/mollecules/NavbarBlank';
+import Button from '~/components/atoms/Button';
+import CopyIcon from '~/assets/images/icon/copy.svg?inline';
+import DetailPayment from "./views/DetailPayment.vue"
+import HeaderPayment from "./views/HeaderPayment.vue"
 
 export default {
-  component: {
-    Header: Header,
-    Footer: Footer,
+  components: {
+    NavbarBlank,
+    CopyIcon,
+    Button,
+    HeaderPayment,
+    DetailPayment
   },
+  layout : 'navigationBlank',
   data() {
     return {
       provider: '',
@@ -140,9 +145,10 @@ export default {
       total: '-',
       showSnackBar: false,
       vouchersData: [],
+      
     };
   },
-  mounted() {
+  created() {
     this.getPaymentDetail();
     this.getVouchersData();
   },
@@ -153,7 +159,7 @@ export default {
           return 'Segera lakukan pembayaran agar Seakun.id bisa \
                         langsung mengalokasikan kamu pada grup Netflix yang available, \
                         mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
-                        <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
+                        <b>Informasi Akun</fb>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
         } else if (packetId == 1) {
           return 'Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. \
                         <a href="https://seakun.id/info/user-host"> Baca ketentuan User Host</a>.\
@@ -261,15 +267,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container-sm{
+  min-width: 640px;
+  max-width: 640px;
+}
 .payment {
-  padding: 100px 40px 50px !important;
-  background: #e5e5e5;
-
-  .container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-  }
+  padding: 60px 40px 50px !important;
   .box {
     border: 1px solid #86d0c1;
     border-radius: 4px;
@@ -325,88 +328,6 @@ export default {
   .row {
     padding: 0px 8px !important;
   }
-  #snackbar {
-    background-color: #daeeef;
-    color: #2f524b;
-    text-align: center;
-    border-radius: 25px;
-    padding: 8px 16px;
-    position: fixed;
-    z-index: 1;
-    top: 100px;
-    font-size: 17px;
-    margin: 0 auto;
-    max-width: 600px;
-    left: 65%;
-    margin-left: -300px;
-    font-weight: 700 !important;
-    button {
-      margin-top: 0px !important;
-      // margin-bottom: 10px !important;
-    }
-    span {
-      font-size: 28px;
-      cursor: pointer;
-      padding: 0px 12px;
-    }
-  }
 }
-.bold {
-  font-weight: 800;
-}
-@media (max-width: 800px) {
-  #snackbar {
-    position: absolute !important;
-    max-width: 200px !important;
-    left: 30% !important;
-    top: 60% !important;
-    margin-left: 0px !important;
-  }
-  .payment {
-    padding: 50px 0px 0px !important;
-    // margin-top: 18px;
-    Ï &__img {
-      text-align: center;
-      margin-top: 20px;
-    }
-    &__header {
-      &-h3 {
-        font-size: 22px;
-        margin-top: 16px;
-      }
-    }
-    .img-pay {
-      width: 330px !important;
-      margin: 16px auto;
-    }
-    h2 {
-      font-size: 20px;
-    }
-    .box {
-      margin-left: 0px !important;
-      margin-right: 0px !important;
-      font-size: 13px;
-    }
-    .col-lg-1 {
-      max-width: 10px;
-    }
-  }
-  .mandiri {
-    width: 100px !important;
-  }
-  .bca {
-    width: 100px !important;
-  }
-}
-.mandiri {
-  width: 100px;
-}
-.bca {
-  width: 100px;
-}
-@media only screen and (min-width: 880px) and (max-width: 1020px) {
-  .container {
-    display: contents !important;
-  }
-}
+
 </style>
