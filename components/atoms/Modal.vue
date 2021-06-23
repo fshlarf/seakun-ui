@@ -30,7 +30,14 @@
             <slot name="header"></slot>
           </div>
           <div class="scroll-bar p-6 flex-grow overflow-y-auto overscroll-auto">
-            <slot />
+            <div v-if="!isLoading">
+              <slot />
+            </div>
+            <div v-else class="space-y-2">
+              <CardShimmer />
+              <CardShimmer />
+              <CardShimmer />
+            </div>
           </div>
           <div class="px-6 py-3">
             <slot name="footer"></slot>
@@ -46,6 +53,7 @@
 </template>
 
 <script>
+import CardShimmer from '~/components/mollecules/CardShimmer.vue';
 export default {
   name: 'Modal',
   data() {
@@ -62,6 +70,13 @@ export default {
       type: String,
       default: '',
     },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: {
+    CardShimmer,
   },
   methods: {
     onClose() {
