@@ -109,6 +109,7 @@ export default {
         photoUrl : '',
         paymenDestination : false,
         paymentUsage : false,
+        typePayment: '',
         paymentDestinationList : {
             transferBank : [
                 {
@@ -137,6 +138,7 @@ export default {
         },
         time1: moment().format('YYYY-MM-DD').toString()
     }),
+  
     methods: {
         showPaymentList(type){
             if(type == 'bankDirection'){
