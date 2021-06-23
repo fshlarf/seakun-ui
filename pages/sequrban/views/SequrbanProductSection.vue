@@ -39,9 +39,9 @@
 
 <script>
 import axios from 'axios';
-import SequrbanVariantCard from '~/components/mollecules/SequrbanVariantCard.vue';
-import ModalDetailVariant from '~/components/mollecules/ModalDetailVariant.vue';
-import CardShimmer from '~/components/mollecules/CardShimmer.vue';
+import SequrbanVariantCard from './SequrbanVariantCard';
+import ModalDetailVariant from './ModalDetailVariant';
+import CardShimmer from '~/components/mollecules/CardShimmer';
 export default {
   data() {
     return {

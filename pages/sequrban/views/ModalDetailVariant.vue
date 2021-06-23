@@ -6,7 +6,7 @@
     @onClose="closeModal"
   >
     <div v-if="variant.images !== ''" class="relative z-0 w-full mx-auto">
-      <div class="absolute z-10 tn:top-20 md:top-36 xl:top-44 w-full">
+      <!-- <div class="absolute z-10 tn:top-20 md:top-36 xl:top-44 w-full">
         <div class="flex justify-between items-center md:px-8">
           <div class="rotate" @click="previous">
             <svg
@@ -39,8 +39,25 @@
             </svg>
           </div>
         </div>
-      </div>
-      <div class="w-3/5 mx-auto carousel-container">
+      </div> -->
+      <div
+        class="tn:w-full xl:w-4/5 mx-auto carousel-container flex justify-between items-center gap-2 md:mb-2"
+      >
+        <div class="rotate" @click="previous">
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="cursor-pointer text-white bg-primary w-9 h-9 p-2 rounded-full mx-auto"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
+        </div>
         <transition-group class="carousel" tag="div">
           <div
             v-for="(poster, index) in variant.images"
@@ -50,6 +67,21 @@
             <img :src="`${poster}`" alt="Image not found" />
           </div>
         </transition-group>
+        <div @click="next">
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="cursor-pointer text-white bg-primary w-9 h-9 p-2 rounded-full mx-auto"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
+        </div>
       </div>
     </div>
     <div class="">

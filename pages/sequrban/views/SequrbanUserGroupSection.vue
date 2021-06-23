@@ -57,10 +57,10 @@
 
 <script>
 import { groupList } from './group-list.js';
-import SequrbanPill from '~/components/mollecules/SequrbanPill.vue';
-import SequrbanGroupCard from '~/components/mollecules/SequrbanGroupCard.vue';
-import Button from '~/components/atoms/Button.vue';
-import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
+import SequrbanPill from './SequrbanPill';
+import SequrbanGroupCard from './SequrbanGroupCard';
+import Button from '~/components/atoms/Button';
+import ButtonChevron from '~/components/atoms/ButtonChevron';
 import CardShimmer from '~/components/mollecules/CardShimmer';
 
 export default {

@@ -63,8 +63,8 @@
 </template>
 
 <script>
-import FlowCard from '~/components/mollecules/FlowCard.vue';
-import ModalSequrbanInfo from '~/components/mollecules/ModalSequrbanInfo.vue';
+import FlowCard from '~/components/mollecules/FlowCard';
+import ModalSequrbanInfo from './ModalSequrbanInfo';
 export default {
   data() {
     return {

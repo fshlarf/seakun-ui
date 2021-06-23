@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar2 />
+    <NavbarBlank />
     <SequrbanHeaderSection />
     <SequrbanIntroductionSection />
     <SequrbanCashbackSection />
@@ -13,19 +13,19 @@
 </template>
 
 <script>
-import Navbar2 from '~/components/mollecules/Navbar2';
-import SequrbanHeaderSection from '~/components/organisms/SequrbanHeaderSection';
-import SequrbanIntroductionSection from '~/components/organisms/SequrbanIntroductionSection';
-import SequrbanCashbackSection from '~/components/organisms/SequrbanCashbackSection';
-import SequrbanProductSection from '~/components/organisms/SequrbanProductSection';
-import SequrbanOrderFlowSection from '~/components/organisms/SequrbanOrderFlowSection';
-import SequrbanUserGroupSection from '~/components/organisms/SequrbanUserGroupSection';
-import SequrbanQnaSection from '~/components/organisms/SequrbanQnaSection';
+import NavbarBlank from '~/components/mollecules/NavbarBlank';
+import SequrbanHeaderSection from './views/SequrbanHeaderSection';
+import SequrbanIntroductionSection from './views/SequrbanIntroductionSection';
+import SequrbanCashbackSection from './views/SequrbanCashbackSection';
+import SequrbanProductSection from './views/SequrbanProductSection';
+import SequrbanOrderFlowSection from './views/SequrbanOrderFlowSection';
+import SequrbanUserGroupSection from './views/SequrbanUserGroupSection';
+import SequrbanQnaSection from './views/SequrbanQnaSection';
 import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
-    Navbar2,
+    NavbarBlank,
     SequrbanHeaderSection,
     SequrbanIntroductionSection,
     SequrbanCashbackSection,
