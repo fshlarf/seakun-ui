@@ -1,8 +1,19 @@
 <template>
   <div>
       <div class="container-payment max-w-2xl w-full mx-auto mt-20">
-        <HeaderPayment/>
-        <DetailPayment/>
+        <HeaderPayment
+          :provider="provider"
+          :detailPayment="detailPayment"
+          :packageId="packetId" 
+          :packageName="packet"
+          :total="total"
+        />
+        <DetailPayment
+          :provider="provider"
+          :packageId="packetId" 
+          :detailPayment="detailPayment"
+
+        />
         <div class="tos-alert px-4 mt-4 text-lg">
           <p>Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan kamu dapat diproses oleh Seakun.id. 
             Mohon menunggu 10 - 20 menit. jika melewati rentang waktu tersebut dan pesanan kamu belum diproses, 
@@ -117,7 +128,6 @@
         </div> -->
       </div>
     </div>
-    <!-- <Footer /> -->
 </template>
 
 <script>
@@ -142,9 +152,13 @@ export default {
       provider: '',
       packet: '',
       packetId: null,
-      total: '-',
+      total: null,
       showSnackBar: false,
       vouchersData: [],
+      detailPayment : {
+        loading : false,
+        data : {},
+      }
       
     };
   },
@@ -153,72 +167,16 @@ export default {
     this.getVouchersData();
   },
   methods: {
-    setWordingInformation(provider, packetId) {
-      if (provider.toLowerCase() == 'netflix') {
-        if (packetId == 2) {
-          return 'Segera lakukan pembayaran agar Seakun.id bisa \
-                        langsung mengalokasikan kamu pada grup Netflix yang available, \
-                        mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
-                        <b>Informasi Akun</fb>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        } else if (packetId == 1) {
-          return 'Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. \
-                        <a href="https://seakun.id/info/user-host"> Baca ketentuan User Host</a>.\
-                        <br/><br/>Segera lakukan pembayaran agar Seakun.id bisa \
-                        langsung <b>mengalokasikan kamu pada grup Netflix yang available</b>, \
-                        <b>mencarikan teman berlangganan</b>, <b>memandu kamu untuk melakukan proses payment ke Netflix</b> dan <b>memproses akun Netflix</b>. \
-                        <br/><br/><b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        } else {
-          return 'Segera lakukan pembayaran agar Seakun.id dapat \
-                        langsung memproses akun Netflix untuk kamu. \
-                        <b>Informasi Akun</b>, <b>Password</b> dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        }
-      } else if (provider.toLowerCase() == 'spotify') {
-        if (packetId == 1) {
-          return 'Segera lakukan pembayaran agar Seakun.id dapat \
-                        langsung mengirimkan <b>Link invitation</b> plan paket Grup Spotify.\
-                        <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        }
-      }
-    },
-    handleCopyRekening(norek) {
-      const text = norek;
-
-      navigator.clipboard.writeText(text).then(
-        () => {
-          this.showSnackBar = true;
-          setTimeout(() => {
-            this.showSnackBar = false;
-          }, 2000);
-        },
-        (err) => console.log(err)
-      );
-    },
-    handleCopyNominal(nominal) {
-      const text = nominal;
-
-      navigator.clipboard.writeText(text).then(
-        () => {
-          this.showSnackBar = true;
-          setTimeout(() => {
-            this.showSnackBar = false;
-          }, 2000);
-        },
-        (err) => console.log(err)
-      );
-    },
-    formatMoneyRupiah(num) {
-      if (num) {
-        return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      } else if (num == 0) {
-        return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      }
-    },
     getPaymentDetail() {
       const {
         provider,
         packet_id,
         voucher,
       } = this.$router.history.current.query;
+       this.detailPayment = {
+          ...this.detailPayment,
+          loading:true
+       }
       this.provider = provider;
       axios
         .get(
@@ -227,6 +185,11 @@ export default {
         .then((res) => {
           const { data, status } = res;
           if (status === 200) {
+            this.detailPayment = {
+              ...this.DetailPayment,
+              data,
+              loading:false
+            }
             this.packet = data.name;
             this.packetId = data.id;
             if (voucher) {
