@@ -40,7 +40,7 @@
             <p class="font-semibold md:font-normal">
               {{ packageDetail.name }}
             </p>
-            <p class="font-bold">Rp{{ packageDetail.price }}/{{ packageDetail.type === 'monthly' ? 'bln' : 'thn' }}</p>
+            <p class="font-bold">{{ formatMoneyRupiah(packageDetail.price) }}/{{ packageDetail.type === 'monthly' ? 'bln' : 'thn' }}</p>
           </div>
           <p
             class="text-xs md:text-sm font-bold text-primary my-2 cursor-pointer"
@@ -83,6 +83,7 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
+import { currencyFormat } from '~/helpers';
 export default {
   components: {
     Button,
@@ -94,6 +95,9 @@ export default {
     },
   },
   methods: {
+    formatMoneyRupiah(num) {
+      return currencyFormat(num);
+    },
     showPriceScheme(param1, param2) {
       this.$emit('showPriceScheme', param1, param2);
     },
