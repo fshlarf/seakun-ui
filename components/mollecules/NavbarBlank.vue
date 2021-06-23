@@ -13,9 +13,9 @@
 <script>
 import Logo from '~/components/atoms/Logo.vue';
 export default {
-  name: 'navbar-blank',
-  data() {
-    return ({});
+  name : "navbar-blank",
+  data(){
+    return ({})
   },
   components: {
     Logo,
