@@ -19,7 +19,6 @@
           <ProductCard
             :product="product"
             class="md:w-full md:h-full"
-            v-if="product.package"
             @showPriceScheme="showPriceScheme"
           />
         </div>
@@ -61,6 +60,8 @@ import ProductCard from '~/components/mollecules/ProductCard';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -68,146 +69,17 @@ export default {
       providerList,
       dataDetailProvider: {
         list: {},
-        label: '',
+        slug: '',
         name: '',
       },
-      dataProductDigital: [
-        {
-          id: 1,
-          name: 'Netflix',
-          label: 'netflix',
-          img: '/images/product/netflix.svg',
-          icon: '/images/icons/netflix.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Premium user host',
-              price: '27.500',
-            },
-            {
-              name: 'Premium user reguler',
-              price: '27.500',
-            },
-          ],
-        },
-        {
-          id: 2,
-          name: 'Spotify',
-          label: 'spotify',
-          img: '/images/product/spotify.svg',
-          icon: '/images/icons/spotify.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Premium user host',
-              price: '27.500',
-            },
-            {
-              name: 'Premium user reguler',
-              price: '27.500',
-            },
-          ],
-        },
-        {
-          id: 3,
-          name: 'Youtube',
-          label: 'youtube',
-          img: '/images/product/youtube.svg',
-          icon: '/images/icons/youtube.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Premium',
-              price: '27.500',
-            },
-          ],
-        },
-        {
-          id: 4,
-          name: 'Gramedia',
-          label: 'gramedia',
-          img: '/images/product/gramedia.svg',
-          icon: '/images/icons/gramedia.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Non-fiksi premiun',
-              price: '27.500',
-            },
-            {
-              name: 'Fiksi premium',
-              price: '27.500',
-            },
-            {
-              name: 'Full premium',
-              price: '27.500',
-            },
-          ],
-        },
-        {
-          id: 5,
-          name: 'Microsoft 365',
-          label: 'microsoft',
-          img: '/images/product/microsoft.svg',
-          icon: '/images/icons/microsoft.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Premium',
-              price: '27.500',
-            },
-          ],
-        },
-        {
-          id: 6,
-          name: 'Canva',
-          label: 'canva',
-          img: '/images/product/canva.svg',
-          icon: '/images/icons/canva.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Premium',
-              price: '27.500',
-            },
-          ],
-        },
-        {
-          id: 7,
-          name: 'Nintendo Switch',
-          label: 'nintendo',
-          img: '/images/product/nintendo.svg',
-          icon: '/images/icons/nintendo.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Premium',
-              price: '27.500',
-            },
-          ],
-        },
-        {
-          id: 8,
-          name: 'Apple One',
-          label: 'apple',
-          img: '/images/product/apple-one.svg',
-          icon: '/images/icons/apple-one.svg',
-          isActive: true,
-          package: [
-            {
-              name: 'Premium',
-              price: '27.500',
-            },
-          ],
-        },
-      ],
+      dataProductDigital: [],
       dataProductOnDemand: [
         {
           id: 1,
           name: 'Sekurban',
-          label: 'sekurban',
+          slug: 'sekurban',
           img: '/images/product/sekurban.svg',
-          icon: '/images/icons/sekurban.svg',
+        icon: '/images/icons/sekurban.svg',
           isActive: true,
           isNew: true,
           preview:
@@ -216,7 +88,7 @@ export default {
         {
           id: 2,
           name: 'Pahamify',
-          label: 'pahamify',
+          slug: 'pahamify',
           img: '/images/product/pahamify.svg',
           icon: '/images/icons/pahamify.svg',
           isActive: false,
@@ -226,7 +98,7 @@ export default {
         {
           id: 3,
           name: 'Kulina',
-          label: 'kulina',
+          slug: 'kulina',
           img: '/images/product/kulina.svg',
           icon: '/images/icons/kulina.svg',
           isActive: false,
@@ -246,18 +118,33 @@ export default {
     ProposeCard,
     ModalPriceScheme,
   },
+  mounted() {
+    this.fechProviders('product-digital')
+  },
   methods: {
     showPriceScheme(param1, param2) {
       this.showModalScheme = true;
       this.dataDetailProvider = {
         list: this.providerList,
-        label: param1,
+        slug: param1,
         name: param2,
       };
     },
     closeModalScheme() {
       this.showModalScheme = false;
     },
+    async fechProviders(type) {
+      try {
+        const { data } = await axios.get(`https://seakun-packet-api-v1.herokuapp.com/${type}`)
+        for(let i = 1; i <= 8; i++) {
+          data.forEach(element => {
+            if (element.id === i) this.dataProductDigital.push(element)
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
   },
 };
 </script>
