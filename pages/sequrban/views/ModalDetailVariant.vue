@@ -6,40 +6,6 @@
     @onClose="closeModal"
   >
     <div v-if="variant.images !== ''" class="relative z-0 w-full mx-auto">
-      <!-- <div class="absolute z-10 tn:top-20 md:top-36 xl:top-44 w-full">
-        <div class="flex justify-between items-center md:px-8">
-          <div class="rotate" @click="previous">
-            <svg
-              width="1em"
-              height="1em"
-              viewBox="0 0 16 16"
-              class="cursor-pointer text-white bg-primary w-9 h-9 p-2 rounded-full mx-auto"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-              />
-            </svg>
-          </div>
-          <div @click="next">
-            <svg
-              width="1em"
-              height="1em"
-              viewBox="0 0 16 16"
-              class="cursor-pointer text-white bg-primary w-9 h-9 p-2 rounded-full mx-auto"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div> -->
       <div
         class="tn:w-full xl:w-4/5 mx-auto carousel-container flex justify-between items-center gap-2 md:mb-2"
       >
@@ -84,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="">
+    <div class="xl:px-2">
       <h1 class="text-xl font-bold">Tipe {{ variant.packageCode }}</h1>
       <p class="text-secondary font-semibold upper-case">
         {{ variant.type }}, BERAT HINGGA {{ variant.weight }} KG
@@ -152,8 +118,8 @@
       </div>
     </div>
     <div class="h-px w-full bg-primary"></div>
-    <div class="space-y-2 mt-2 mb-0">
-      <Button label="Pesan sekarang" variant="primary" class="w-full" />
+    <div class="space-y-3 mt-4 mb-0">
+      <Button label="Pesan sekarang" variant="primary" class="w-full py-2" />
       <Button
         label="Kembali"
         variant="secondary"

@@ -1,5 +1,5 @@
 <template>
-  <div class="container relative z-0 md:mb-12">
+  <div class="container relative z-0">
     <div class="tn:pt-16 md:pt-24">
       <img
         class="w-full"
@@ -20,11 +20,11 @@
         *SAAT INI, LAYANAN HANYA UNTUK WILAYAH JABODETABEK
       </p>
     </div>
-    <div class="absolute z-10 tn:top-24 md:top-32 lg:top-36 xl:top-44 mx-auto">
+    <div class="absolute z-10 tn:top-24 md:top-32 lg:top-36 xl:top-40 mx-auto">
       <div class="grid grid-cols-2 gap-0 justify-center items-center">
         <div></div>
         <div
-          class="tn:-ml-4 md:-ml-10 lg:-ml-10 xl:-ml-16 tn:pr-0 md:pr-12 lg:pr-20 xl:pr-24"
+          class="tn:-ml-4 md:-ml-10 lg:-ml-10 xl:-ml-28 tn:pr-0 md:pr-12 lg:pr-20 xl:pr-44"
         >
           <h1
             class="tn:font-bold lg:font-extrabold tn:text-lg md:text-3xl lg:text-4xl xl:text-5xl text-white md:mb-2 lg:mb-3 xl:mb-4"
@@ -42,7 +42,7 @@
             Rp2.740.000
           </h2>
           <p
-            class="tn:hidden md:block font-semibold md:text-xs lg:text-base xl:text-xl text-white my-2"
+            class="tn:hidden md:block font-semibold md:text-xs lg:text-base xl:text-lg text-white my-2"
           >
             Idul Adha sebentar lagi datang! Sudah menyiapkan hewan qurban untuk
             melengkapi ibadahmu? Seakun bisa membantumu berqurban sapi dengan

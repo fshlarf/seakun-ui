@@ -1,5 +1,5 @@
 <template>
-  <div class="container tn:pt-8 lg:pt-16 xl:pt-24 md:pb-8">
+  <div class="container tn:pt-10 lg:pt-20">
     <div class="tn:text-center md:text-left">
       <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-4">
         Varian sapi

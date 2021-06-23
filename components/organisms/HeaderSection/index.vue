@@ -1,7 +1,7 @@
 <template>
   <div class="relative z-0">
     <div
-      class="w-full absolute -z-30 tn:top-0 md:-top-10 lg:-top-18 xl:-top-40"
+      class="w-full absolute -z-30 tn:top-0 md:-top-10 lg:-top-18 xl:-top-48"
     >
       <img class="w-full" src="/images/header-bg.svg" alt="Image not found" />
     </div>
@@ -26,7 +26,7 @@
       class="container relative z-0 tn:pt-8 tn:px-8 md:pt-8 lg:pt-12 xl:pt-4"
     >
       <div
-        class="tn:text-center md:text-left md:grid md:grid-cols-2 md:justify-between md:items-center md:ml-12 lg::ml-24 xl:ml-28 md:-mr-8 xl:-mr-16"
+        class="tn:text-center md:text-left md:grid md:grid-cols-2 md:justify-between md:items-center md:ml-12 lg::ml-24 xl:ml-52 md:-mr-8 xl:-mr-16"
       >
         <div class="">
           <div

@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-12 pb-8 lg:pt-16 xl:pt-24 md:pb-12">
+  <div class="container tn:pt-10 lg:pt-20">
     <div>
       <h1
         class="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-4 tn:text-center lg:text-left"
@@ -7,10 +7,12 @@
         Cashback
       </h1>
     </div>
-    <div class="flex flex-wrap items-center justify-around">
-      <CashbackCoupon class="my-2" />
-      <CashbackCoupon class="my-2" />
-      <CashbackCoupon class="my-2" />
+    <div
+      class="flex tn:flex-wrap xl:flex-nowrap gap-5 items-center justify-around"
+    >
+      <CashbackCoupon class="lg:my-2" />
+      <CashbackCoupon class="lg:my-2" />
+      <CashbackCoupon class="lg:my-2" />
     </div>
   </div>
 </template>

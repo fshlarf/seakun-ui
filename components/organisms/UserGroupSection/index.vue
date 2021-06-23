@@ -1,5 +1,5 @@
 <template>
-  <div class="container tn:pt-8 md:pt-24 md:pb-8">
+  <div class="container pt-12">
     <div class="tn:text-center md:text-left">
       <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-4">
         Pengguna Seakun.id
@@ -29,7 +29,7 @@
 
       <div
         v-if="!isLoading"
-        class="scroll-provider flex gap-6 overflow-x-auto overscroll-auto px-3 py-2"
+        class="scroll-provider flex gap-6 overflow-x-auto overscroll-auto px-3 pt-2"
       >
         <GroupCard
           v-for="(group, id) in dataDetailGroup"
