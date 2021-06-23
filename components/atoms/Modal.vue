@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-bind="$props">
     <div
       v-if="isShow"
       tabindex="0"
@@ -7,7 +7,8 @@
     >
       <div class="z-50 relative p-3 mx-auto my-0 w-full">
         <div
-          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full lg:w-4/5 xl:w-1/2"
+          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5 lg:w-3/5"
+          :class="classModal"
         >
           <button
             class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold primary focus:outline-none"
@@ -25,13 +26,18 @@
               ></path>
             </svg>
           </button>
-          <div class="px-6 py-3 mt-3 text-xl font-bold">
+          <div class="px-6 py-3">
             <slot name="header"></slot>
           </div>
-          <div
-            class="scroll-bar-hidden p-6 flex-grow overflow-y-auto overscroll-auto"
-          >
-            <slot />
+          <div class="scroll-bar p-6 flex-grow overflow-y-auto overscroll-auto">
+            <div v-if="!isLoading">
+              <slot />
+            </div>
+            <div v-else class="space-y-2">
+              <CardShimmer />
+              <CardShimmer />
+              <CardShimmer />
+            </div>
           </div>
           <div class="px-6 py-3">
             <slot name="footer"></slot>
@@ -47,16 +53,30 @@
 </template>
 
 <script>
+import CardShimmer from '~/components/mollecules/CardShimmer.vue';
 export default {
   name: 'Modal',
   data() {
-    return {};
+    return {
+      classModal: `${this.size ? 'xl:w-' + this.size : 'xl:w-1/2'}`,
+    };
   },
   props: {
     isShow: {
       type: Boolean,
       default: false,
     },
+    size: {
+      type: String,
+      default: '',
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: {
+    CardShimmer,
   },
   methods: {
     onClose() {
@@ -83,5 +103,16 @@ export default {
 .scroll-bar-hidden {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+.scroll-bar::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+  background: #86d0c1;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+.scroll-bar {
+  scrollbar-width: 2px; /* Firefox */
 }
 </style>

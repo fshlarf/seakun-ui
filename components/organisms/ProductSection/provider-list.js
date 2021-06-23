@@ -1,6 +1,7 @@
 export const providerList = [
   {
     name: 'netflix',
+    title: 'Harga Paket Premium (User Host)',
     img: '/images/netflix.png',
     screenshot: '/images/ss-netflix.png',
     schemes: [
@@ -11,11 +12,6 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Host',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Netflix',
         value: 'Rp186.000',
@@ -41,6 +37,7 @@ export const providerList = [
   },
   {
     name: 'netflix',
+    title: 'Harga Paket Premium (Reguler)',
     img: '/images/netflix.png',
     screenshot: '/images/ss-netflix.png',
     schemes: [
@@ -51,11 +48,6 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Netflix',
         value: 'Rp186.000',
@@ -81,6 +73,7 @@ export const providerList = [
   },
   {
     name: 'spotify',
+    title: 'Harga Paket Premium Spotify',
     img: '/images/spotify.png',
     screenshot: '/images/ss-spotify.png',
     schemes: [
@@ -91,11 +84,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Reguler',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Spotify',
         value: 'Rp86.900',
@@ -121,6 +109,7 @@ export const providerList = [
   },
   {
     name: 'gramedia',
+    title: 'Harga Paket Premium (Full)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia.png',
     schemes: [
@@ -128,11 +117,6 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Full Premium',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Gramedia Digital',
         value: 'Rp89.000',
@@ -158,6 +142,7 @@ export const providerList = [
   },
   {
     name: 'gramedia',
+    title: 'Harga Paket Premium (Fiksi)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia-fiction.png',
     schemes: [
@@ -165,11 +150,6 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Fiksi',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Fiksi',
         value: 'Rp45.000',
@@ -195,6 +175,7 @@ export const providerList = [
   },
   {
     name: 'gramedia',
+    title: 'Harga Paket Premium (Non-Fiksi)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia-non-fiction.png',
     schemes: [
@@ -202,11 +183,6 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Non-Fiksi',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Non-Fiksi',
         value: 'Rp45.000',
@@ -232,6 +208,7 @@ export const providerList = [
   },
   {
     name: 'youtube',
+    title: 'Harga Paket Premium (User Host)',
     img: '/images/youtube.png',
     screenshot: '/images/ss-youtube.png',
     schemes: [
@@ -242,11 +219,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Host',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Youtube',
         value: 'Rp89.000',
@@ -276,6 +248,7 @@ export const providerList = [
   },
   {
     name: 'youtube',
+    title: 'Harga Paket Premium (Reguler)',
     img: '/images/youtube.png',
     screenshot: '/images/ss-youtube.png',
     schemes: [
@@ -286,11 +259,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Youtube',
         value: 'Rp89.000',
@@ -320,6 +288,7 @@ export const providerList = [
   },
   {
     name: 'microsoft',
+    title: 'Harga Paket Premium (1 Bulan)',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365.png',
     schemes: [
@@ -330,11 +299,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Microsoft 365 (1 Bulan)',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Microsoft 365',
         value: 'Rp129.999 ~Rp130.000',
@@ -360,6 +324,7 @@ export const providerList = [
   },
   {
     name: 'microsoft',
+    title: 'Harga Paket Premium (1 Tahun)',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365-year.png',
     schemes: [
@@ -370,11 +335,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Microsoft 365 (1 Tahun)',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Microsoft 365',
         value: 'Rp1.299.999',
@@ -400,6 +360,7 @@ export const providerList = [
   },
   {
     name: 'canva',
+    title: 'Harga Paket Premium (1 Bulan)',
     img: '/images/canva.png',
     screenshot: '/images/ss-canva-month.png',
     schemes: [
@@ -410,11 +371,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Canva (Bulanan)',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Canva',
         value: 'US$12,9 => Rp188.000',
@@ -440,6 +396,7 @@ export const providerList = [
   },
   {
     name: 'canva',
+    title: 'Harga Paket Premium (1 Tahun)',
     img: '/images/canva.png',
     screenshot: '/images/ss-canva-year.png',
     schemes: [
@@ -450,11 +407,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Canva (1 Tahun)',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Premium Canva',
         value: 'US$119,40 => Rp1.680.000',

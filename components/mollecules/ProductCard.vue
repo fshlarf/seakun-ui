@@ -2,7 +2,7 @@
   <div
     class="w-full h-full border-none max-w-sm bg-white shadow-xl rounded-xl overflow-hidden text-gray-900 md:pb-3"
   >
-    <div class="md:h-64 lg:h-60">
+    <div class="md:h-64 lg:h-56 xl:h-48">
       <img
         :src="`${product.img}`"
         alt="image not found"
@@ -44,7 +44,7 @@
           </div>
           <p
             class="text-xs md:text-base font-bold text-primary my-2 cursor-pointer"
-            @click="showPriceScheme(product.label)"
+            @click="showPriceScheme(product.label, product.name)"
           >
             Lihat skema harga
           </p>
@@ -93,8 +93,8 @@ export default {
     },
   },
   methods: {
-    showPriceScheme(param) {
-      this.$emit('showPriceScheme', param);
+    showPriceScheme(param1, param2) {
+      this.$emit('showPriceScheme', param1, param2);
     },
   },
 };

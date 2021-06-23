@@ -60,8 +60,8 @@ module.exports = {
           },
           '@screen xl': {
             maxWidth: '1440px',
-            paddingLeft: '4rem',
-            paddingRight: '4rem',
+            paddingLeft: '10rem',
+            paddingRight: '10rem',
           },
         },
         '.bg-primary': {

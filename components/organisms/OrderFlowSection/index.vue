@@ -1,5 +1,5 @@
 <template>
-  <div id="orderFlow" class="container order-flow pt-12 lg:pt-24 md:pb-12">
+  <div id="orderFlow" class="container pt-20">
     <div class="mb-8">
       <h1 class="tn:text-2xl md:text-4xl text-center md:text-left font-bold">
         Cara berlangganan
