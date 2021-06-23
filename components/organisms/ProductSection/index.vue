@@ -76,8 +76,8 @@ export default {
       dataProductOnDemand: [
         {
           id: 1,
-          name: 'Sekurban',
-          slug: 'sekurban',
+          name: 'Sequrban',
+          slug: 'sequrban',
           img: '/images/product/sekurban.svg',
         icon: '/images/icons/sekurban.svg',
           isActive: true,

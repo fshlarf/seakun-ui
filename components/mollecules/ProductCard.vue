@@ -50,10 +50,6 @@
           </p>
         </div>
 
-        <div v-else class="tn:px-1 md:px-2 md:mt-3 lg:px-4">
-          Segera Hadir
-        </div>
-
         <div
           v-if="product.preview"
           class="tn:px-1 tn:mb-1 md:px-2 md:mt-3 lg:px-4"
@@ -77,6 +73,7 @@
             :label="product.isActive ? 'Pesan' : 'Segera hadir'"
             class="w-full py-2 my-2 font-bold"
             :disabled="!product.isActive"
+            @click="onClickProduct(product.slug)"
           />
         </div>
       </div>
@@ -100,6 +97,9 @@ export default {
     showPriceScheme(param1, param2) {
       this.$emit('showPriceScheme', param1, param2);
     },
+    onClickProduct(slug) {
+      this.$router.push(`/${slug}`)
+    }
   },
 };
 </script>
