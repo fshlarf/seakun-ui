@@ -22,7 +22,7 @@
            </p>
         </div>
         <div class="mt-8 mx-4  mb-4">
-          <Button class="w-full bg-green-seakun text-white" label="Konfirmasi Pembayaran"/>
+          <Button class="w-full bg-green-seakun text-white" label="Konfirmasi Pembayaran" @click="onClickConfirm"/>
         </div>
         <!-- <div class="row">
           <div class="col">
@@ -128,6 +128,7 @@
           </div>
         </div> -->
       </div>
+      <Footer />
     </div>
 </template>
 
@@ -138,6 +139,7 @@ import Button from '~/components/atoms/Button';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import DetailPayment from "./views/DetailPayment.vue"
 import HeaderPayment from "./views/HeaderPayment.vue"
+import Footer from '~/components/mollecules/Footer';
 
 export default {
   components: {
@@ -145,7 +147,8 @@ export default {
     CopyIcon,
     Button,
     HeaderPayment,
-    DetailPayment
+    DetailPayment,
+    Footer,
   },
   layout : 'navigationBlank',
   data() {
@@ -159,13 +162,13 @@ export default {
       detailPayment : {
         loading : false,
         data : {},
-      }
+      },
+      selectedToPayment: '',
     };
   },
   created() {
     const { provider } =  this.$router.history.current.query
     if(provider){
-      console.log(provider)
       this.provider = provider
     }
     this.getPaymentDetail();
@@ -230,6 +233,14 @@ export default {
         ? (this.total = dataPacket.voucherGrandTotal)
         : (this.total = dataPacket.grandTotal);
     },
+    onClickConfirm() {
+      const {
+        provider,
+        packet_id,
+      } = this.$router.history.current.query;
+
+      this.$router.push(`/payment-confirmation?provider=${provider}&packet_id=${packet_id}`)
+    }
   },
 };
 </script>

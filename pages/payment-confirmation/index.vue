@@ -1,5 +1,5 @@
 <template>
-<div class="container max-w-2xl w-full mx-auto mt-10  py-8">
+<div class="container md:max-w-[1000px] w-full mx-auto mt-10  py-8">
     <div class="wrapper-form w-full bg-white rounded-xl shadow-xl  py-4 px-4">
         <div class="header-confirmation">
             <h3 class="font-bold text-2xl">Konfirmasi Pembayaran</h3>
@@ -149,7 +149,6 @@ export default {
             }
         },
         onClickItemBank(type,value){
-            console.log('ress',value)
             if(type == 'bankDirection'){
                 this.bankSeakun = value.name
                 this.paymenDestination = false

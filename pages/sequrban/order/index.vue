@@ -414,7 +414,7 @@ export default {
           this.dataParamOrder
         )
         .then((res) => {
-          // this.toPaymentPage()
+          this.toPaymentPage()
           // this.executeApiMailSeakun(payload);
         })
         .catch((err) => {
@@ -422,7 +422,7 @@ export default {
         });
     },
     toPaymentPage() {
-      this.$router.push('/payment');
+      this.$router.push(`/payment?provider=sequrban&packet_id=${this.typeId}`);
     },
     capitalizeFirstLetter(str) {
       let splitStr = str.toLowerCase().split(' ');
