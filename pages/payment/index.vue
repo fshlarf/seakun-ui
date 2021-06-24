@@ -7,14 +7,12 @@
           :packageId="packetId" 
           :packageName="packet"
           :total="total"
-          :typePayment="typePayment"
 
         />
         <DetailPayment
           :provider="provider"
           :packageId="packetId" 
           :detailPayment="detailPayment"
-          :typePayment="typePayment"
 
         />
         <div class="tos-alert px-4 mt-4 text-lg">
@@ -156,7 +154,6 @@ export default {
       packet: '',
       packetId: null,
       total: null,
-      typePayment : '',
       showSnackBar: false,
       vouchersData: [],
       detailPayment : {
@@ -166,13 +163,14 @@ export default {
     };
   },
   created() {
+    const { provider } =  this.$router.history.current.query
+    if(provider){
+      console.log(provider)
+      this.provider = provider
+    }
     this.getPaymentDetail();
     this.getVouchersData();
-    const { type } =  this.$router.history.current.query
-    if(type){
-      console.log(type)
-      this.typePayment = type
-    }
+    
   },
   methods: {
     getPaymentDetail() {
@@ -185,7 +183,6 @@ export default {
           ...this.detailPayment,
           loading:true
        }
-      this.provider = provider;
       axios
         .get(
           `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`

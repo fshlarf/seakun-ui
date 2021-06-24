@@ -6,15 +6,16 @@
           </div>
           <div class="detail-product__price col-span-4 ml-4">
             <p  class="font-bold"><span class="capitalize" >Sequrban (Seakun x Wadiqibas) </span> </p>
-            <p class="font-normal py-2">Tipe E - Sapi Bali (350 Kg)  </p>
-            <p class="font-normal">Rp3.890.000 </p>
+            <p class="font-normal py-2">Tipe {{packageCode}} - {{type}} ({{`${weight} ${unitWeight}`}})  </p>
+            <p class="font-normal">{{currencyFormat(bulkingPrice)}} </p>
           </div>
         </div>
         <div class="order-detail__payment flex justify-between  px-4 pt-3 pb-2 border-t border-gray-5-60 ">
           <div>Total down payment (uang muka)</div>
           <div>
             <template>
-                  Rp500.000
+              {{currencyFormat(downPayment)}}
+                  
             </template>
           </div>
         </div>
@@ -22,7 +23,7 @@
           <div>Sisa pembayaran (**dibayar setelah grup penuh)</div>
           <div>
             <template>
-                 Rp3.390.000
+                   {{currencyFormat(bulkingPrice - downPayment)}}
             </template>
           </div>
         </div>
@@ -30,8 +31,46 @@
 </template>
 
 <script>
+import { currencyFormat } from '~/helpers/word-transformation.js' 
 export default {
-
+  name:'DetailOrderSeakunQurban',
+  props :{
+     provider : {
+        type : String,
+        default : ''
+      },
+      isLoading : {
+        type : Boolean,
+        dafault : false
+      },
+      type : {
+        type : String,
+        default : '',
+      },
+      packageCode : {
+        type : String,
+        default : '',
+      },
+      unitWeight : {
+        type : String,
+        default : '',
+      },
+      weight : {
+        type : Number,
+        default : null,
+      },
+      downPayment : {
+        type : Number,
+        default : null,
+      },
+      bulkingPrice : {
+        type : Number,
+        default : null,
+      },
+  },
+  data : ()=>({
+    currencyFormat
+  })
 }
 </script>
 

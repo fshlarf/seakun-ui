@@ -109,7 +109,6 @@ export default {
         photoUrl : '',
         paymenDestination : false,
         paymentUsage : false,
-        typePayment: '',
         paymentDestinationList : {
             transferBank : [
                 {

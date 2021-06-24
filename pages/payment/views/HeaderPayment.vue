@@ -12,7 +12,7 @@
              <p class="shimmer w-8/12"></p>
           </div>
            <!-- Loadingg shimmer end -->
-           <div v-if="typePayment.toLowerCase() === 'sequrban'">
+           <div v-else-if="provider.toLowerCase() === 'sequrban'">
              <p class="title text-center text-lg px-2">
                Segera lakukan pembayaran agar Sequrban dapat mengumpulkan kamu ke grup yang sama dan memberikan informasi tentang proses qurban hingga pada hari H penyembelihan.
              </p>
@@ -45,43 +45,44 @@
                 <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.
               </p>
           </div>
-          <DetailOrderSuqurban
-            v-if="typePayment === 'sequrban'"
+          <DetailOrderLoading
+            v-if="detailPayment.loading"
           />
-          <div v-else class="order-detail bg-white shadow-md  mt-8 rounded-md items-center mx-2">
-            <div class="order-detail__product px-4 pt-4 pb-2 grid grid-cols-5 gap-2 items-center">
-              <div class="flex-1">
-                <img class="detail-product__image w-9/12" :src="`/images/${provider.toLowerCase()}.png`" alt="Image not found" />
-              </div>
-              <div class="detail-product__price col-span-4 ml-4">
-            
-                <p v-if="detailPayment.loading" class="font-bold shimmer w-9/12"> </p>
-                <p v-else class="font-bold"><span class="capitalize" >{{provider}} </span> - {{detailPayment.data.name}} </p>
-                <p class="font-normal">{{currencyFormat(detailPayment.data.grandTotal)}} x ({{detailPayment.data.totalMonth}} Bulan)</p>
-              </div>
-            </div>
-            <div class="order-detail__payment flex justify-between  px-4 py-3 border-t border-gray-50 ">
-              <div>Total Pembayaran</div>
-              <div>
-                 <p v-if="detailPayment.loading" class="shimmer w-4/12">
-                </p>
-                <template v-else>
-                      {{currencyFormat(detailPayment.data.grandTotal)}}
-                </template>
-              </div>
-            </div>
-          </div>
+          <DetailOrderSequrban
+            v-else-if="provider.toLowerCase() === 'sequrban'"
+            :isLoading="detailPayment.loading"
+            :type="detailPayment.data.type"
+            :packageCode="detailPayment.data.packageCode"
+            :unitWeight="detailPayment.data.unitWeight"
+            :weight="detailPayment.data.weight"
+            :downPayment="detailPayment.data.downPayment"
+            :bulkingPrice="detailPayment.data.bulkingPrice"
+          />
+          <DetailOrderProduct
+            v-else
+            :provider="provider"
+            :isLoading="detailPayment.loading"
+            :packageName="detailPayment.data.name"
+            :grandTotal="detailPayment.data.grandTotal"
+            :totalMonth="detailPayment.data.totalMonth"
+          />
+          
         </div>
   </div>
 </template>
 
 <script>
 import { currencyFormat } from '~/helpers/word-transformation.js' 
-import DetailOrderSuqurban from './DetailOrderSekurban.vue'
+import DetailOrderProduct from './DetailOrderProduct.vue'
+import DetailOrderSequrban from './DetailOrderSekurban.vue'
+import DetailOrderLoading from './DetailOrderLoading.vue'
+
 export default {
   name:'headerPayment',
   components : {
-    DetailOrderSuqurban
+    DetailOrderSequrban,
+    DetailOrderProduct,
+    DetailOrderLoading
   },
   props : {
     provider : {
@@ -98,10 +99,6 @@ export default {
         loading : true,
         data : {}
       })
-    },
-    typePayment : {
-      type : String,
-      default : ''
     },
     packageName : {
       type : String,
