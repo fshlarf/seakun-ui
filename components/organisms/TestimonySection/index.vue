@@ -1,5 +1,5 @@
 <template>
-  <div class="container tn:pt-12 pb-12 md:pt-14 xl:pt-24 md:pb-12">
+  <div id="testimony" class="container pt-20">
     <div class="text-center xl:hidden">
       <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-12">
         Apa kata mereka?
@@ -11,14 +11,14 @@
       </h1>
     </div>
     <div
-      class="tn:p-2 tn:flex tn:gap-6 tn:overflow-x-scroll tn:overscroll-contain lg:block lg:grid lg:overflow-visible lg:overscroll-none lg:grid-cols-2 lg:justify-center lg:gap-6 lg:place-items-stretch lg:items-stretch"
+      class="scroll-testimony tn:p-4 tn:flex tn:gap-6 tn:overflow-x-scroll tn:overscroll-auto lg:block lg:grid lg:overflow-visible lg:overscroll-none lg:grid-cols-2 lg:justify-center lg:gap-6 lg:place-items-stretch lg:items-stretch"
     >
       <TestimonyCard
         v-for="(testimony, id) in dataLengthTestimony"
         :key="id"
         :customer="testimony"
         @onClickShowTestimony="onClickShowTestimony"
-        class="lg:w-full lg:h-full tn:flex-none"
+        class="md:w-1/2 md:h-full lg:w-full lg:h-full tn:flex-none"
       />
 
       <ModalTestimony
@@ -41,38 +41,38 @@ export default {
       dataTestimony: [
         {
           id: 1,
-          name: 'Tom Riddle',
+          name: 'Firda',
           provider: 'Netflix',
           photo: '/images/testimony/tom.jpg',
           testimony:
-            'Karena saya harus isolasi di rumah dan bosan sekali, jadi saya coba langganan Netflix pakai Seakun. Ternyata terpercaya banget, lebih murah lagi. Konsepnya Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
+            'Biasanya kalau mau beli Netflix, Spotify dll secara legal tuh suka males soalnya kadang gak punya CC, harus nyari barengan, dll. Tapi kalau beli illegal suka error. Akhirnya nemu solusi karena ada Seakun.id! Menurutku ini benar-benar inovasi sih, kaya berangkat dari keresahan banget wkwkwk. Tadinya mungkin males langganan yang legal karena report, tapi sekarang jadi gampang kaan? Thank you Seakun.id',
           sortTestimony: '',
         },
         {
           id: 2,
-          name: 'Bellatrix Lestrange',
+          name: 'Antonia Inri',
           provider: 'Spotify',
           photo: '/images/testimony/bella.jpg',
           testimony:
-            'Karena sepupu saya menguasai TV, akhirnya saya cari alternatif lain untuk galau: Spotify. Tapi menangis agak gak enak kalo ada iklan di tengah lagu. Jadi langganan Spotify murah pake Seakun aja deh.',
+            'I can’t recommend them enough. Ini platform langganan fitur premium bareng, Spotify, Netflix, Youtube, all without CC. Praktis, legal, aman, dan murah. I actually use them for my Spotify and it has worked wonders. Biasanya aku telat bayar Spotify tapi karena ada mereka jadi selalu diingetin deh sebelum jatuh tempo. Terus murah banget! ',
           sortTestimony: '',
         },
         {
           id: 3,
-          name: 'Lucius Malfoy',
+          name: 'Arvin Aji',
           provider: 'Gramedia',
           photo: '/images/testimony/malfoy.jpg',
           testimony:
-            'Untung ada Gramedia premium di Seakun.id. Jadi bisa beli buku banyak.',
+            'To deal with my brain hunger for business, economics, and finance, I got myself a premium access to magazines & books in Gramedia Digital through Seakun.id. You all should really check them out! I should thank Seakun as a platform allowing people to have premium access to digital entertainments with a much lower price though account-sharing.',
           sortTestimony: '',
         },
         {
           id: 4,
-          name: 'Fenrir Greyback',
-          provider: 'Youtube',
+          name: 'Iyen',
+          provider: 'Netflix',
           photo: '/images/testimony/greyback.jpg',
           testimony:
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
+            'Awal tau atas rekomendasi temen, terus ngerasa worth it, trusted, registrasinya simple, Adminya selain fast respon juga informatif banget. Di masa pandemi kaya gini karena seakun.id ini lah gw bisa membunuh waktu dan jadi betah di rumah dengan banyak nonton film di Netflix. Pokoknya enjoy selalu with seakun.id',
           sortTestimony: '',
         },
       ],
@@ -108,4 +108,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.scroll-testimony::-webkit-scrollbar {
+  display: none;
+}
+.scroll-testimony {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+</style>

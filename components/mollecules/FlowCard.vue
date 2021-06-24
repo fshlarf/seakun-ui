@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div>
-      <img :src="`${dataFlow.img}`" alt="#" />
+      <img :src="`${dataFlow.img}`" alt="#" class="mx-auto" />
     </div>
     <div class="flex justify-center items-center space-x-1 md:space-x-2">
       <CircleIcon :label="dataFlow.id" variant="primary" />

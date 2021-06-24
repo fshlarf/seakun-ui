@@ -1,5 +1,8 @@
 <template>
-  <div id="navbar" class="w-full bg-third fixed z-40 py-2 tn:shadow px-2">
+  <div
+    id="navbar"
+    class="w-full bg-white fixed z-40 tn:py-1 lg:py-0 tn:shadow px-2"
+  >
     <div v-if="open" class="opacity-20 fixed inset-0 z-90 bg-black"></div>
     <div
       class="container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between lg:items-center"
@@ -8,7 +11,7 @@
         <Logo label="Seakun.id" />
       </nuxt-link>
       <div
-        class="absolute top-1 right-1 tn:py-3 tn:px-3 md:py-3 md:px-3 md:right-1 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col w-4/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row"
+        class="absolute tn:top-1 tn:right-1 tn:py-2 tn:px-3 md:px-3 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col w-4/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
         :class="{ shadow: open, 'bg-white': open }"
       >
         <div class="items-center">
@@ -39,13 +42,14 @@
 
         <nav
           :class="{ flex: open, hidden: !open }"
-          class="flex-col tn:pr-4 md:pr-4 tn:mt-2 md:p-0 hidden lg:flex lg:justify-end lg:flex-row"
+          class="flex-col tn:pr-4 md:pr-4 tn:mt-2 md:p-0 lg:mt-0 hidden lg:flex lg:justify-end lg:flex-row"
           v-for="(navbar, id) in navbarLink"
           :key="id"
         >
           <p
             class="cursor-pointer text-right my-3 text-sm md:text-base font-semibold md:font-bold text-primary hover:text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-12 xl:ml-16"
             href="#"
+            @click="scrollToSection(navbar.id)"
           >
             {{ navbar.label }}
           </p>
@@ -92,6 +96,50 @@ export default {
   },
   components: {
     Logo,
+  },
+  methods: {
+    scrollToSection(id) {
+      if (id === 1) {
+        const providerSection = document.getElementById('provider');
+        providerSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 2) {
+        const userTypeSection = document.getElementById('userType');
+        userTypeSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 3) {
+        const orderFlowSection = document.getElementById('orderFlow');
+        orderFlowSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 4) {
+        const testimonySection = document.getElementById('testimony');
+        testimonySection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      if (id === 5) {
+        const qnaSection = document.getElementById('qna');
+        qnaSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+    },
   },
 };
 </script>

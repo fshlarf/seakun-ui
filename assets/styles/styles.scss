@@ -22,6 +22,18 @@ button {
   border-radius: 5px !important;
 }
 
+button:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+
+button:hover:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+
 .icon {
   position: relative;
   padding: 12px 0px;
@@ -45,6 +57,10 @@ button {
 
 .bg-third {
   background-color: #f4f9f8 !important;
+}
+
+.bg-forth {
+  background-color: #c8ece5 !important;
 }
 
 .btn-primary {
@@ -77,7 +93,7 @@ button {
   color: #ffffff !important;
   border-color: #417465 !important;
   padding: 0.8rem 3rem;
-  font-size: 20px;
+  font-size: 16px;
   &:focus,
   &:active,
   &:hover {
@@ -91,6 +107,10 @@ button {
 
 .text-secondary {
   color: #417465 !important;
+}
+
+.text-third {
+  color: #f4f9f8 !important;
 }
 
 .scroller {

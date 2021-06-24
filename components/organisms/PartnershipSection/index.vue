@@ -1,5 +1,5 @@
 <template>
-  <div class="partnership pb-24 lg:py-16">
+  <div class="pt-20">
     <div
       class="relative z-0 partner-bg gradient tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-96 md:h-52 lg:h-60 xl:h-80"
     >

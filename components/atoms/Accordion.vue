@@ -4,12 +4,12 @@
       <div>
         <div
           @click="toggleShow(answer.id)"
-          class="rounded-2xl bg-white tn:px-4 md:px-10 py-6 cursor-pointer flex justify-between items-center content-center"
+          class="h-full rounded-2xl bg-white tn:px-4 md:px-10 py-6 cursor-pointer flex justify-between items-center content-center"
           :class="{ 'rounded-none': isShowAnswer, accordion: isShowAnswer }"
           id="headingOne"
         >
           <div>
-            <h1 class="tn:text-md md:text-xl font-bold">
+            <h1 class="tn:text-md md:text-sm font-bold">
               {{ title }}
             </h1>
           </div>
@@ -59,7 +59,16 @@
           class="px-10 py-6 bg-primary text-white"
           :class="{ accordion: isShowAnswer }"
         >
-          <p>{{ answer.answer }}</p>
+          <div v-if="answer.list">
+            <ul>
+              <li v-for="(list, id) in answer.answer" :key="id">
+                {{ list }}
+              </li>
+            </ul>
+          </div>
+          <div v-else>
+            <p class="text-sm">{{ answer.answer }}</p>
+          </div>
         </div>
       </div>
     </div>

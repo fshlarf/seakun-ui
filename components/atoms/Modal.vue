@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div v-bind="$props">
     <div
       v-if="isShow"
       tabindex="0"
       class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed"
     >
-      <div class="z-50 relative p-3 mx-auto my-0 max-w-xl">
+      <div class="z-50 relative p-3 mx-auto my-0 w-full">
         <div
-          class="bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden"
+          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5 lg:w-3/5"
+          :class="classModal"
         >
           <button
             class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold primary focus:outline-none"
@@ -25,13 +26,20 @@
               ></path>
             </svg>
           </button>
-          <div class="px-6 py-3 text-xl border-b font-bold">
+          <div class="px-6 py-3">
             <slot name="header"></slot>
           </div>
-          <div class="p-6 flex-grow">
-            <slot />
+          <div class="scroll-bar p-6 flex-grow overflow-y-auto overscroll-auto">
+            <div v-if="!isLoading">
+              <slot />
+            </div>
+            <div v-else class="space-y-2">
+              <CardShimmer />
+              <CardShimmer />
+              <CardShimmer />
+            </div>
           </div>
-          <div class="px-6 py-3 border-t">
+          <div class="px-6 py-3">
             <slot name="footer"></slot>
           </div>
         </div>
@@ -45,16 +53,30 @@
 </template>
 
 <script>
+import CardShimmer from '~/components/mollecules/CardShimmer.vue';
 export default {
   name: 'Modal',
   data() {
-    return {};
+    return {
+      classModal: `${this.size ? 'xl:w-' + this.size : 'xl:w-1/2'}`,
+    };
   },
   props: {
     isShow: {
       type: Boolean,
       default: false,
     },
+    size: {
+      type: String,
+      default: '',
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: {
+    CardShimmer,
   },
   methods: {
     onClose() {
@@ -64,4 +86,33 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.modal-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 95%;
+  max-width: 95%;
+  min-width: 20rem;
+}
+
+.scroll-bar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scroll-bar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scroll-bar::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+  background: #86d0c1;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+.scroll-bar {
+  scrollbar-width: 2px; /* Firefox */
+}
+</style>
