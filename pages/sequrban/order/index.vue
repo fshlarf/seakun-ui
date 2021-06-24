@@ -386,6 +386,9 @@ export default {
         email: this.dataParamOrder.email,
         whatsapp: this.codePhone + this.dataParamOrder.whatsapp,
         discount_price: this.dataDetailQurban.discountPrice,
+        address: this.dataParamOrder.address,
+        city: this.dataParamOrder.city,
+        postal_code: this.dataParamOrder.postal_code,
         fullname: this.capitalizeFirstLetter(this.dataParamOrder.fullname),
         qurban_fullname: this.capitalizeFirstLetter(
           this.dataParamOrder.qurban_fullname
