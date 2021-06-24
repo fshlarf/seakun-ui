@@ -34,33 +34,68 @@
           v-model="dataParamOrder.fullname"
           label="Nama pemesan"
           placeholder="Tulis namamu di sini"
-          class=""
+          :error="error_fullname"
+          class="mt-2"
         />
-        <label class="mt-4 text-sm" for="nomor-telepon"
+        <label class="mt-3 -mb-1 text-sm" for="nomor-telepon"
           >Nomor telepon untuk pemotongan</label
         >
-        <div id="nomor-telepon" class="grid grid-cols-4 gap-3 -mt-6">
-          <InputForm label="" placeholder="+62" class="" />
-          <InputForm
-            v-model="dataParamOrder.whatsapp"
-            label=""
-            placeholder="Masukkan nomor telepon WhatsApp mu"
-            class="col-span-3"
-          />
+
+        <div class="relative inline-block text-left w-full -mt-4 -mb-3">
+          <div class="grid grid-cols-4 gap-3 items-end w-full">
+            <ButtonDropDownNew
+              class="rounded-xl w-full mb-0.5"
+              @click="showCodePhone = !showCodePhone"
+              :btnText="idPhone"
+            />
+            <InputForm
+              v-model="dataParamOrder.whatsapp"
+              label=""
+              placeholder="Masukkan nomor telepon WhatsApp mu"
+              class="col-span-3 w-full"
+              :error="error_whatsapp"
+            />
+          </div>
+
+          <div
+            class="origin-top-right z-100 right-0 mt-2 w-72 rounded-md shadow bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabindex="-1"
+          >
+            <div
+              class="p-3 overflow-y-auto h-80"
+              role="none"
+              v-if="showCodePhone"
+            >
+              <div
+                v-for="codeCountry in internationalPhoneNumbers"
+                :key="codeCountry.name"
+                @click="chooseCodePhone(codeCountry)"
+                class="cursor-pointer"
+              >
+                {{ `${codeCountry.name} (${codeCountry.dialCode})` }}
+              </div>
+            </div>
+          </div>
         </div>
+
         <InputForm
           v-model="dataParamOrder.email"
           label="Email"
           placeholder="Tulis alamat email"
           class=""
+          :error="error_email"
         />
         <InputForm
           v-model="dataParamOrder.qurban_fullname"
           label="Nama lengkap yang diniatkan untuk berqurban"
           placeholder="Tulis nama di sini"
           class=""
+          :error="error_qurban_fullname"
         />
-        <div class="mt-1 ml-1">
+        <div class="mt-1 ml-1 -mb-3">
           <label
             class="space-x-1"
             style="display: inline-block"
@@ -70,6 +105,7 @@
               type="checkbox"
               name="nama-lengkap"
               id="nama-lengkap"
+              @click="dataParamOrder.qurban_fullname = dataParamOrder.fullname"
             /><span style="vertical-align: middle" class="text-sm"
               >Sama seperti pemesan</span
             >
@@ -80,12 +116,14 @@
           label="Nama ayah kandung yang diniatkan untuk berqurban"
           placeholder="Tulis nama di sini"
           class=""
+          :error="error_qurban_father_name"
         />
         <InputForm
           v-model="dataParamOrder.address"
           label="Alamat pengiriman daging qurban"
           placeholder="Tulis alamat agar vendor mengirimkan daging qurbanmu"
           class=""
+          :error="error_address"
         />
         <div class="grid grid-cols-3 gap-3">
           <InputForm
@@ -93,12 +131,14 @@
             label="Kota / Kecamatan"
             placeholder="Masukkan kota / kecamatan"
             class="mt-0 col-span-2"
+            :error="error_city"
           />
           <InputForm
             v-model="dataParamOrder.postal_code"
             label="Kode pos"
             placeholder="Kode pos"
             class="mt-0"
+            :error="error_postal_code"
           />
         </div>
         <div class="mt-4 ml-1">
@@ -107,6 +147,7 @@
             style="display: inline-block"
             for="nama-lengkap"
             ><input
+              v-model="isAgree"
               style="vertical-align: middle"
               type="checkbox"
               name="nama-lengkap"
@@ -117,7 +158,13 @@
           </label>
         </div>
         <div class="h-1 w-full bg-gray-300 my-2"></div>
-        <Button variant="primary" label="Lanjutkan" class="w-full mt-3 py-2" />
+        <Button
+          variant="primary"
+          label="Lanjutkan"
+          class="w-full mt-3 py-2"
+          :disabled="!isAgree"
+          @click="clickSubmit"
+        />
         <Button variant="secondary" label="Kembali" class="w-full mt-2" />
       </div>
     </div>
@@ -139,10 +186,15 @@ import SequrbanChoiceCard from '../views/SequrbanOrderChoiceCard.vue';
 import SequrbanWarningCard from '../views/SequrbanOrderWarningCard.vue';
 import ModalChangeOrderPackage from '../views/ModalChangeOrderPackage.vue';
 import InputForm from '~/components/atoms/Input.vue';
+import SelectOption from '~/components/atoms/SelectOption.vue';
 import Button from '~/components/atoms/Button.vue';
+import ButtonDrop from '~/components/atoms/ButtonDropDown';
+import ButtonDropDownNew from '~/components/atoms/ButtonDropDownNew';
 import DownArrowIcon from '~/assets/images/icon/down-arrow.svg?inline';
 import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Footer from '~/components/mollecules/Footer';
+
+import { internationalPhoneNumbers } from '../../../constants';
 
 export default {
   data() {
@@ -150,8 +202,13 @@ export default {
       typeId: '',
       isLoading: false,
       isShowModalPackage: false,
+      iSshowOption: false,
+      showCodePhone: false,
+      isAgree: false,
       dataQurban: [],
       dataDetailQurban: {},
+      idPhone: '+62',
+      codePhone: 62,
       dataParamOrder: {
         fullname: '',
         email: '',
@@ -162,7 +219,7 @@ export default {
         admin_fee: 0,
         delivery_cost: 0,
         service_cost: 0,
-        packing_cost: 0,
+        packaging_cost: 0,
         total_cost: 0,
         bulking_price: 0,
         discount_price: 0,
@@ -174,6 +231,39 @@ export default {
         city: '',
         postal_code: '',
       },
+      internationalPhoneNumbers,
+      error_fullname: {
+        isError: false,
+        message: 'Nama lengkap harus diisi',
+      },
+      error_whatsapp: {
+        isError: false,
+        message: 'Nomor whatsapp harus diisi',
+      },
+      error_email: {
+        isError: false,
+        message: 'Email harus diisi',
+      },
+      error_qurban_fullname: {
+        isError: false,
+        message: 'Nama lengkap harus diisi',
+      },
+      error_qurban_father_name: {
+        isError: false,
+        message: 'Nama ayah harus diisi',
+      },
+      error_address: {
+        isError: false,
+        message: 'Alamat harus diisi',
+      },
+      error_city: {
+        isError: false,
+        message: 'Kota / Kecamatan harus diisi',
+      },
+      error_postal_code: {
+        isError: false,
+        message: 'Kode pos harus diisi',
+      },
     };
   },
   components: {
@@ -182,7 +272,10 @@ export default {
     SequrbanWarningCard,
     ModalChangeOrderPackage,
     InputForm,
+    SelectOption,
     Button,
+    ButtonDrop,
+    ButtonDropDownNew,
     DownArrowIcon,
     Footer,
   },
@@ -230,6 +323,96 @@ export default {
     choosePackage(id) {
       this.isShowModalPackage = false;
       this.$router.push(`/sequrban/order?id=${id}`);
+    },
+    validateInput() {
+      this.error_fullname.isError = !this.dataParamOrder.fullname
+        ? true
+        : false;
+      this.error_whatsapp.isError = !this.dataParamOrder.whatsapp
+        ? true
+        : false;
+      this.error_email.isError = !this.dataParamOrder.email ? true : false;
+      this.error_qurban_fullname.isError = !this.dataParamOrder.qurban_fullname
+        ? true
+        : false;
+      this.error_qurban_father_name.isError = !this.dataParamOrder
+        .qurban_father_name
+        ? true
+        : false;
+      this.error_address.isError = !this.dataParamOrder.address ? true : false;
+      this.error_city.isError = !this.dataParamOrder.city ? true : false;
+      this.error_postal_code.isError = !this.dataParamOrder.postal_code
+        ? true
+        : false;
+    },
+    clickSubmit() {
+      this.validateInput();
+      if (
+        this.dataParamOrder.fullname &&
+        this.dataParamOrder.whatsapp &&
+        this.dataParamOrder.email &&
+        this.dataParamOrder.qurban_fullname &&
+        this.dataParamOrder.qurban_father_name &&
+        this.dataParamOrder.address &&
+        this.dataParamOrder.city &&
+        this.dataParamOrder.postal_code
+      ) {
+        this.submitDataOrder();
+      }
+    },
+    submitDataOrder() {
+      this.dataParamOrder = {
+        email: this.dataParamOrder.email,
+        whatsapp: this.codePhone + this.dataParamOrder.whatsapp,
+        discount_price: this.dataDetailQurban.discountPrice,
+        fullname: this.capitalizeFirstLetter(this.dataParamOrder.fullname),
+        qurban_fullname: this.capitalizeFirstLetter(
+          this.dataParamOrder.qurban_fullname
+        ),
+        qurban_father_name: this.capitalizeFirstLetter(
+          this.dataParamOrder.qurban_father_name
+        ),
+        vendor_code: this.dataDetailQurban.vendorCode,
+        type: this.dataDetailQurban.packageCode,
+        joint_price: parseInt(this.dataDetailQurban.jointPrice),
+        admin_fee: parseInt(this.dataDetailQurban.adminFee),
+        delivery_cost: parseInt(this.dataDetailQurban.deliveryCost),
+        service_cost: parseInt(this.dataDetailQurban.serviceCost),
+        packaging_cost: parseInt(this.dataDetailQurban.packagingCost),
+        total_cost: parseInt(this.dataDetailQurban.totalCost),
+        bulking_price: parseInt(this.dataDetailQurban.bulkingPrice),
+        down_payment: parseInt(this.dataDetailQurban.downPayment),
+        remaining_payment: parseInt(this.dataDetailQurban.remainingPayment),
+      };
+      axios
+        .post(
+          'https://seakun-api.herokuapp.com/sequrban/register',
+          this.dataParamOrder
+        )
+        .then((res) => {
+          // this.toPaymentPage()
+          // this.executeApiMailSeakun(payload);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    toPaymentPage() {
+      this.$router.push('/payment');
+    },
+    capitalizeFirstLetter(str) {
+      let splitStr = str.toLowerCase().split(' ');
+
+      for (let i = 0; i < splitStr.length; i++) {
+        splitStr[i] =
+          splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+      }
+      return splitStr.join(' ');
+    },
+    chooseCodePhone(codeCountry) {
+      this.idPhone = codeCountry.dialCode;
+      this.codePhone = codeCountry.dialCode.slice(1);
+      this.showCodePhone = false;
     },
   },
 };

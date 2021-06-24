@@ -59,11 +59,19 @@
               </p>
             </div>
             <Button
+              v-if="variant.isAvailable"
               :label="variant.id === currentVariant.id ? 'Dipilih' : 'Pilih'"
               variant="primary"
               class="tn:w-1/4 md:w-1/5"
               :disabled="variant.id === currentVariant.id"
               @click="choosePackage(variant.id)"
+            />
+            <Button
+              v-else
+              label="Stok habis"
+              variant="primary"
+              class="tn:w-1/4 md:w-1/5"
+              disabled
             />
           </div>
         </div>

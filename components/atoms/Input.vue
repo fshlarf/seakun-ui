@@ -3,10 +3,10 @@
     <label v-if="label" class="block text-gray-700 text-sm mb-2" :for="name">
       {{ label }}
     </label>
-    <div class="form-content relative">
+    <div class="form-content relative z-0">
       <input
-        class="appearance-none border rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        :class="{ 'border border-red-500': error.isError }"
+        class="relative z-0 appearance-none border rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        :class="{ 'border-danger': error.isError }"
         :type="type"
         :name="name"
         v-bind="$attrs"

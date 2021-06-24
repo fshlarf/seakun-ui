@@ -113,6 +113,8 @@ export default {
   margin-right: 5px;
 }
 .scroll-bar {
-  scrollbar-width: 2px; /* Firefox */
+  scrollbar-width: thin !important; /* Firefox */
+  scrollbar-color: #86d0c1 #fff !important; /* Firefox */
+  border-radius: 2px;
 }
 </style>
