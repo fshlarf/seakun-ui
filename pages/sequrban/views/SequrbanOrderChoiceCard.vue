@@ -77,7 +77,7 @@
         </div>
       </div>
     </div>
-    <div v-else>
+    <div v-else class="w-full">
       <CardShimmer />
     </div>
   </div>

@@ -36,6 +36,8 @@
           placeholder="Tulis namamu di sini"
           :error="error_fullname"
           class="mt-2"
+          id="fullname"
+          @change="setLocalStorage('fullname')"
         />
         <label class="mt-3 -mb-1 text-sm" for="nomor-telepon"
           >Nomor telepon untuk pemotongan</label
@@ -54,6 +56,8 @@
               placeholder="Masukkan nomor telepon WhatsApp mu"
               class="col-span-3 w-full"
               :error="error_whatsapp"
+              id="whatsapp"
+              @change="setLocalStorage('whatsapp')"
             />
           </div>
 
@@ -87,6 +91,8 @@
           placeholder="Tulis alamat email"
           class=""
           :error="error_email"
+          id="email"
+          @change="setLocalStorage('email')"
         />
         <InputForm
           v-model="dataParamOrder.qurban_fullname"
@@ -94,6 +100,8 @@
           placeholder="Tulis nama di sini"
           class=""
           :error="error_qurban_fullname"
+          id="qurban-fullname"
+          @change="setLocalStorage('qurban-fullname')"
         />
         <div class="mt-1 ml-1 -mb-3">
           <label
@@ -117,6 +125,8 @@
           placeholder="Tulis nama di sini"
           class=""
           :error="error_qurban_father_name"
+          id="qurban-father-name"
+          @change="setLocalStorage('qurban-father-name')"
         />
         <InputForm
           v-model="dataParamOrder.address"
@@ -124,6 +134,8 @@
           placeholder="Tulis alamat agar vendor mengirimkan daging qurbanmu"
           class=""
           :error="error_address"
+          id="address"
+          @change="setLocalStorage('address')"
         />
         <div class="grid grid-cols-3 gap-3">
           <InputForm
@@ -132,6 +144,8 @@
             placeholder="Masukkan kota / kecamatan"
             class="mt-0 col-span-2"
             :error="error_city"
+            id="city"
+            @change="setLocalStorage('city')"
           />
           <InputForm
             v-model="dataParamOrder.postal_code"
@@ -139,6 +153,8 @@
             placeholder="Kode pos"
             class="mt-0"
             :error="error_postal_code"
+            id="postal-code"
+            @change="setLocalStorage('postal-code')"
           />
         </div>
         <div class="mt-4 ml-1">
@@ -413,6 +429,38 @@ export default {
       this.idPhone = codeCountry.dialCode;
       this.codePhone = codeCountry.dialCode.slice(1);
       this.showCodePhone = false;
+    },
+    setLocalStorage(id) {
+      const input = document.getElementById(id);
+      input.addEventListener('change', (event) => {
+        if (id === 'fullname') {
+          localStorage.setItem('fullname', event.target.value);
+        }
+        if (id === 'phone-code') {
+          localStorage.setItem('phone-code', event.target.value);
+        }
+        if (id === 'whatsapp') {
+          localStorage.setItem('whatsapp', event.target.value);
+        }
+        if (id === 'email') {
+          localStorage.setItem('email', event.target.value);
+        }
+        if (id === 'qurban-fullname') {
+          localStorage.setItem('qurban-fullname', event.target.value);
+        }
+        if (id === 'qurban-father-name') {
+          localStorage.setItem('qurban-father-name', event.target.value);
+        }
+        if (id === 'address') {
+          localStorage.setItem('address', event.target.value);
+        }
+        if (id === 'city') {
+          localStorage.setItem('city', event.target.value);
+        }
+        if (id === 'postal-code') {
+          localStorage.setItem('postal-code', event.target.value);
+        }
+      });
     },
   },
 };
