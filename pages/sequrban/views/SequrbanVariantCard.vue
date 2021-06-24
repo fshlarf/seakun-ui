@@ -58,6 +58,7 @@
         variant="primary"
         :disabled="!variant.isAvailable"
         class="w-full tn:text-xs md:text-base"
+        @click="onClickOrder(variant.id)"
       />
     </div>
   </div>
@@ -93,6 +94,9 @@ export default {
     },
     showModalDetail(id) {
       this.$emit('showModalDetail', id);
+    },
+    onClickOrder(id) {
+      this.$emit('onClickOrder', id);
     },
   },
 };
