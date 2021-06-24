@@ -3,7 +3,7 @@
     <div
       class="text-center absolute z-100 mx-auto left-0 right-0 top-16 lg:top-24"
     >
-      <h1 class="text-xl lg:text-3xl xl:text-4xl font-bold">
+      <h1 class="text-xl lg:text-xl xl:text-2xl font-bold">
         {{ value }}
       </h1>
       <p class="text-base md:text-md xl:text-2xl font-bold">{{ label }}</p>

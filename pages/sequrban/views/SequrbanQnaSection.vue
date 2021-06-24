@@ -1,7 +1,7 @@
 <template>
   <div id="qna" class="container tn:pt-10 lg:pt-20">
     <div class="tn:text-center lg:text-left">
-      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-8">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
         Frequently Asked Questions (FAQ)
       </h1>
     </div>

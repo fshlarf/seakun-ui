@@ -13,7 +13,7 @@
     <div class="tn:space-y-10 xl:space-y-0 xl:flex xl:justify-center xl:w-auto">
       <div v-for="(scheme, id) in dataScheme.list" :key="id">
         <div
-          v-if="scheme.name === dataScheme.label"
+          v-if="scheme.name === dataScheme.slug"
           class="scheme-card tn:px-0 md:px-8 xl:px-4 xl:mx-2 xl:border xl:rounded-xl xl:py-3"
         >
           <div class="w-1/4 mx-auto">

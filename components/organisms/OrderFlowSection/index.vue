@@ -1,7 +1,7 @@
 <template>
   <div id="orderFlow" class="container pt-20">
     <div class="mb-8">
-      <h1 class="tn:text-2xl md:text-4xl text-center md:text-left font-bold">
+      <h1 class="tn:text-xl md:text-2xl text-center md:text-left font-bold">
         Cara berlangganan
       </h1>
     </div>

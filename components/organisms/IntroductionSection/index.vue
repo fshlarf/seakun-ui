@@ -8,7 +8,7 @@
           <img class="w-100" src="/images/about-us.svg" alt="Image not found" />
         </div>
         <div class="my-2 space-y-2 xl:space-y-4 tn:text-center md:text-left">
-          <h2 class="text-2xl md:text-4xl font-bold">Tentang Kami</h2>
+          <h2 class="text-xl md:text-2xl font-bold">Tentang Kami</h2>
           <p class="xl:text-lg xl:font-semibold">
             Platform pertama di Indonesia yang memberikan layanan berlangganan
             bersama dengan pengguna lain (sharing subscription) ke penyedia
