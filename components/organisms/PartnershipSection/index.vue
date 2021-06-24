@@ -4,7 +4,7 @@
       class="relative z-0 partner-bg gradient tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-96 md:h-52 lg:h-60 xl:h-80"
     >
       <div class="container text-white xl:mt-12 xl:mb-4">
-        <h2 class="tn:text-2xl md:text-4xl font-bold tn:my-2 md:my-2 xl:mb-4">
+        <h2 class="tn:text-xl md:text-2xl font-bold tn:my-2 md:my-2 xl:mb-4">
           Ingin Usaha kamu ada di Seakun.id?
         </h2>
         <p class="xl:text-lg font-semibold">

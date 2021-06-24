@@ -2,7 +2,7 @@
   <div class="container tn:pt-10 lg:pt-20">
     <div>
       <h1
-        class="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-4 tn:text-center lg:text-left"
+        class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4 tn:text-center lg:text-left"
       >
         Cashback
       </h1>

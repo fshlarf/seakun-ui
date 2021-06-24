@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-12">
     <div class="tn:text-center md:text-left">
-      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-4">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-4">
         Pengguna Seakun.id
       </h1>
       <p class="font-semibold">

@@ -1,12 +1,12 @@
 <template>
   <div id="testimony" class="container pt-20">
     <div class="text-center xl:hidden">
-      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-12">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-12">
         Apa kata mereka?
       </h1>
     </div>
     <div class="hidden text-left xl:block">
-      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-12">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-12">
         Apa kata mereka yang menggunakan Seakun.id?
       </h1>
     </div>

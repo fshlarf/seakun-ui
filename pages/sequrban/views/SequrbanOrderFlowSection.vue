@@ -3,7 +3,7 @@
     <div
       class="relative z-0 mb-8 flex gap-3 items-center tn:justify-center md:justify-start"
     >
-      <h1 class="tn:text-2xl md:text-4xl font-bold">Cara pesan</h1>
+      <h1 class="tn:text-xl md:text-2xl font-bold">Cara pesan</h1>
       <div
         class="cursor-pointer"
         @click="showModalInfo"
@@ -11,8 +11,8 @@
         @mouseleave="toggleTooltip()"
       >
         <svg
-          width="24"
-          height="24"
+          width="20"
+          height="20"
           viewBox="0 0 30 30"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

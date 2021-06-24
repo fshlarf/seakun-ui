@@ -3,7 +3,7 @@
     <div class="">
       <div class="flex justify-between items-center mb-2 px-2">
         <h1
-          class="hidden md:block md:text-3xl lg:text-4xl font-bold md:mb-4 lg:mb-8"
+          class="hidden md:block md:text-xl lg:text-2xl font-bold md:mb-4 lg:mb-8"
         >
           Berlangganan produk digital
         </h1>
@@ -25,7 +25,7 @@
       </div>
 
       <div class="pt-5 px-2 md:my-8">
-        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-4">
+        <h1 class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4">
           Layanan on demand
         </h1>
       </div>
