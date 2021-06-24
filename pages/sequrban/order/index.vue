@@ -181,7 +181,12 @@
           :disabled="!isAgree"
           @click="clickSubmit"
         />
-        <Button variant="secondary" label="Kembali" class="w-full mt-2" />
+        <Button
+          variant="secondary"
+          label="Kembali"
+          class="w-full mt-2"
+          @click="goBackToSequrbanPage"
+        />
       </div>
     </div>
     <ModalChangeOrderPackage
@@ -429,6 +434,9 @@ export default {
       this.idPhone = codeCountry.dialCode;
       this.codePhone = codeCountry.dialCode.slice(1);
       this.showCodePhone = false;
+    },
+    goBackToSequrbanPage() {
+      this.$router.push('/sequrban');
     },
     setLocalStorage(id) {
       const input = document.getElementById(id);
