@@ -2,17 +2,19 @@
   <section>
       <Snackbar ref="snackbar"/>
       <div class="payment-detail text-center mt-16">
-            <p v-if="typePayment==='sequrban'" class="payment-detail__label my-3 text-xl">Transfer DP (uang muka)</p>
+            <p v-if="provider.toLowerCase() ==='sequrban'" class="payment-detail__label my-3 text-xl">Transfer DP (uang muka)</p>
             <p v-else class="payment-detail__label my-3 text-xl">Total transfer</p>
             <div class="payment-detail__price flex align-items-center justify-center">
               <p v-if="detailPayment.loading" class="shimmer w-6/12"></p>
-              <p v-else class=" my-3 text-xl mr-2 cursor-pointer" @click="clickCopyHandler('Nominal',detailPayment.data.grandTotal)" v-html="formatCodePayment(detailPayment.data.grandTotal)"> </p><CopyIcon/>
+              <p v-else-if="provider.toLowerCase() ==='sequrban'" class=" my-3 text-xl mr-2 cursor-pointer" @click="clickCopyHandler('Nominal',detailPayment.data.downPayment)" v-html="formatCodePayment(detailPayment.data.downPayment)"> </p>
+              <p v-else class=" my-3 text-xl mr-2 cursor-pointer" @click="clickCopyHandler('Nominal',detailPayment.data.grandTotal)" v-html="formatCodePayment(detailPayment.data.grandTotal)"> </p>
+              <CopyIcon/>
             </div>
             <p class="payment-detail__alert my-3">Pastikan nominal sesuai hingga 3 digit terakhir </p>
         </div>
         <div class="payment-method">
           <h3 class="payment-method__title text-center text-bold mt-6">Transerfer Ke</h3>
-          <div v-if="typePayment === 'sequrban'" class="payment-method__options grid grid-cols-2  gap-1 px-4 py-6">
+          <div v-if="provider.toLowerCase() === 'sequrban'" class="payment-method__options grid grid-cols-2  gap-1 px-4 py-6">
             <div v-for="(payment,index ) in paymentMethodSekurban" :key="index" class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center">
               <img :src="`/images/payment/${payment.name}.png`" class="w-8/12 my-2" />
               <p class="mt-4 payment-options__norek text-sm font-bold" @click="clickCopyHandler('Rekening','1150046427383')">1150046427383 <span class="ml-1"> <CopyIcon/></span></p>

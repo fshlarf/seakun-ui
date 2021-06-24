@@ -166,13 +166,14 @@ export default {
     };
   },
   created() {
+    const { provider } =  this.$router.history.current.query
+    if(provider){
+      console.log(provider)
+      this.provider = provider
+    }
     this.getPaymentDetail();
     this.getVouchersData();
-    const { type } =  this.$router.history.current.query
-    if(type){
-      console.log(type)
-      this.typePayment = type
-    }
+    
   },
   methods: {
     getPaymentDetail() {
@@ -185,7 +186,6 @@ export default {
           ...this.detailPayment,
           loading:true
        }
-      this.provider = provider;
       axios
         .get(
           `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
