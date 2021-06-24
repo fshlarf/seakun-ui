@@ -12,7 +12,7 @@
           />
         </div>
         <div class="my-2 space-y-2 xl:space-y-4 text-left">
-          <h2 class="text-2xl md:text-4xl font-bold">Wadiqibas</h2>
+          <h2 class="text-xl md:text-2xl font-bold">Wadiqibas</h2>
           <p class="xl:text-lg xl:font-semibold">
             Merupakan penyedia jasa hewan qurban dan aqiqah. Kamu akan
             mendapatkan empat keunggulan Wadiqibas kalau berqurban bersama

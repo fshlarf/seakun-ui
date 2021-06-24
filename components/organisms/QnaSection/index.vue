@@ -1,11 +1,11 @@
 <template>
   <div id="qna" class="container pt-20">
     <div class="tn:text-center lg:text-left">
-      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-8">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
         Frequently Asked Questions (FAQ)
       </h1>
     </div>
-    <div class="px-2 grid tn:grid-cols-1 lg:grid-cols-2 lg:gap-8 items-center">
+    <div class="grid tn:grid-cols-1 lg:grid-cols-2 lg:gap-8 items-center">
       <Accordion
         v-for="(faq, id) in dataFaq"
         :key="id"

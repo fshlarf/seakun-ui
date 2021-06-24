@@ -4,9 +4,9 @@
   >
     <div class="md:h-64 lg:h-56 xl:h-48">
       <img
-        :src="`${product.img}`"
+        :src="`/images/product/${product.slug}${product.slug === 'disney-hotstar' ? '.jpeg' : '.svg'}`"
         alt="image not found"
-        class="object-cover rounded-br-3xl lg:rounded-br-none md:w-full h-40 md:h-auto"
+        class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none md:w-full md:h-auto"
       />
     </div>
 
@@ -25,26 +25,26 @@
       </div>
       <div class="h-full">
         <div class="flex items-center mb-1 md:mb-3 md:px-2">
-          <img :src="`${product.icon}`" alt="#" class="w-8 ml-1" />
-          <h1 class="md:text-xl font-bold mx-2">
+          <img :src="`/images/icons/${product.slug}${product.slug === 'disney-hotstar' ? '.png' : '.svg'}`" alt="#" class="w-8 ml-1" />
+          <h1 class="md:text-base font-bold mx-2 max-w-[120px]">
             {{ product.name }}
           </h1>
         </div>
 
-        <div v-if="product.package" class="tn:px-1 md:px-2 md:mt-3 lg:px-4">
+        <div v-if="product.packages" class="tn:px-1 md:px-2 md:mt-3 lg:px-4">
           <div
-            class="text-xs md:text-base md:flex md:justify-between mt-1"
-            v-for="(packageDetail, id) in product.package"
+            class="text-xs md:text-sm md:flex md:justify-between mt-1"
+            v-for="(packageDetail, id) in product.packages"
             :key="id"
           >
             <p class="font-semibold md:font-normal">
               {{ packageDetail.name }}
             </p>
-            <p class="font-bold">Rp{{ packageDetail.price }}</p>
+            <p class="font-bold">{{ formatMoneyRupiah(packageDetail.price) }}/{{ packageDetail.type === 'monthly' ? 'bln' : 'thn' }}</p>
           </div>
           <p
-            class="text-xs md:text-base font-bold text-primary my-2 cursor-pointer"
-            @click="showPriceScheme(product.label, product.name)"
+            class="text-xs md:text-sm font-bold text-primary my-2 cursor-pointer"
+            @click="showPriceScheme(product.slug, product.name)"
           >
             Lihat skema harga
           </p>
@@ -73,6 +73,7 @@
             :label="product.isActive ? 'Pesan' : 'Segera hadir'"
             class="w-full py-2 my-2 font-bold"
             :disabled="!product.isActive"
+            @click="onClickProduct(product.slug)"
           />
         </div>
       </div>
@@ -82,6 +83,7 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
+import { currencyFormat } from '~/helpers';
 export default {
   components: {
     Button,
@@ -93,9 +95,15 @@ export default {
     },
   },
   methods: {
+    formatMoneyRupiah(num) {
+      return currencyFormat(num);
+    },
     showPriceScheme(param1, param2) {
       this.$emit('showPriceScheme', param1, param2);
     },
+    onClickProduct(slug) {
+      this.$router.push(`/${slug}`)
+    }
   },
 };
 </script>

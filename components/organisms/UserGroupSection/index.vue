@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-12">
     <div class="tn:text-center md:text-left">
-      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-4">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-4">
         Pengguna Seakun.id
       </h1>
       <p class="font-semibold">
@@ -11,7 +11,7 @@
     </div>
     <div class="my-6">
       <div
-        class="scroll-provider flex gap-8 overflow-x-auto overscroll-auto px-3 py-2"
+        class="scroll-provider flex gap-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
       >
         <ProviderPill
           v-for="(provider, id) in dataProviderList"
@@ -29,7 +29,7 @@
 
       <div
         v-if="!isLoading"
-        class="scroll-provider flex gap-6 overflow-x-auto overscroll-auto px-3 pt-2"
+        class="scroll-provider flex gap-6 overflow-x-auto overscroll-auto px-3 pt-2 -ml-4"
       >
         <GroupCard
           v-for="(group, id) in dataDetailGroup"

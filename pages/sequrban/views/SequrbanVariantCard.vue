@@ -26,7 +26,7 @@
           >~{{ variant.weight }} KG</span
         >
       </h2>
-      <h1 class="font-bold tn:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+      <h1 class="font-bold tn:text-xl md:text-1xl lg:text-2xl xl:text-3xl">
         {{ toRupiah(variant.totalCost) }}
       </h1>
       <p class="text-xs">10 grup telah bergabung</p>

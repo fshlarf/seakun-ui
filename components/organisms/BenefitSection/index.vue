@@ -1,12 +1,12 @@
 <template>
   <div class="container pt-12">
     <div class="tn:text-center lg:text-left">
-      <h1 class="font-bold tn:text-2xl md:text-4xl md:mb-4 lg:mb-8">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
         Kemudahan yang kami berikan
       </h1>
     </div>
     <div
-      class="w-full h-full grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 justify-center place-items-stretch items-stretch"
+      class="w-full h-full grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6 justify-center place-items-stretch items-stretch"
     >
       <BenefitCard
         v-for="(benefit, id) in dataBenefit"

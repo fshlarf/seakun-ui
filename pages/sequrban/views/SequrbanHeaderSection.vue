@@ -27,7 +27,7 @@
           class="tn:-ml-4 md:-ml-10 lg:-ml-10 xl:-ml-28 tn:pr-0 md:pr-12 lg:pr-20 xl:pr-44"
         >
           <h1
-            class="tn:font-bold lg:font-extrabold tn:text-lg md:text-3xl lg:text-4xl xl:text-5xl text-white md:mb-2 lg:mb-3 xl:mb-4"
+            class="tn:font-bold lg:font-extrabold tn:text-lg md:text-xl lg:text-2xl xl:text-5xl text-white md:mb-2 lg:mb-3 xl:mb-4"
           >
             Sequrban x <span class="text-secondary">Wadiqibas</span>
           </h1>
@@ -37,7 +37,7 @@
             mulai dari
           </p>
           <h2
-            class="text-secondary tn:pl-11 md:pl-0 md:text-xl lg:text-3xl xl:text-4xl font-extrabold"
+            class="text-secondary tn:pl-11 md:pl-0 md:text-xl lg:text-xl xl:text-2xl font-extrabold"
           >
             Rp2.740.000
           </h2>
