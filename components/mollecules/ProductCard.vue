@@ -102,7 +102,11 @@ export default {
       this.$emit('showPriceScheme', param1, param2);
     },
     onClickProduct(slug) {
-      this.$router.push(`/${slug}`)
+      if (slug === 'sequrban') {
+        this.$router.push(`/${slug}`) 
+      } else {
+        this.$router.push(`/order`) 
+      }
     }
   },
 };

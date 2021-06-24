@@ -1,6 +1,6 @@
 <template>
   <div class="container pt-12">
-    <div class="tn:text-center md:text-left">
+    <div class="tn:text-center md:text-left container-title">
       <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-4">
         Pengguna Seakun.id
       </h1>
@@ -9,7 +9,7 @@
         kategori untuk melihat.
       </p>
     </div>
-    <div class="my-6">
+    <div class="my-6 container-group">
       <div
         class="scroll-provider flex gap-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
       >
@@ -199,5 +199,12 @@ export default {
 .high-light {
   border: 2px solid #a9e0d5;
   background-image: linear-gradient(to right, #ffffff, #d4f1ec);
+}
+.container-title {
+  width: 1090px !important;
+  margin: 0 auto;
+}
+.container {
+  max-width: 1450px !important;
 }
 </style>
