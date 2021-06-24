@@ -10,15 +10,6 @@
           {{ placeholder }}
         </option>
         <slot name="optionList"> </slot>
-        <!-- <option
-          v-for="(data, index) in dataList"
-          :key="index"
-          :value="`data.` + value"
-          :disabled="disabled"
-          :selected="selected"
-        >
-          {{ `data.` + content }}
-        </option> -->
       </select>
       <div class="icon-right">
         <slot name="iconRight"> </slot>
