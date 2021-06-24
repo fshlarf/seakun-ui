@@ -100,10 +100,6 @@ export default {
         data : {}
       })
     },
-    typePayment : {
-      type : String,
-      default : ''
-    },
     packageName : {
       type : String,
       default : '',

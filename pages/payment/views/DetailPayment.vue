@@ -48,10 +48,6 @@ export default {
         type : String,
         default : ''
       },
-      typePayment : {
-        type : String,
-        default : ''
-      },
       packageId : {
         type : Number,
         default : null

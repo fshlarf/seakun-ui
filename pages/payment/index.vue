@@ -7,14 +7,12 @@
           :packageId="packetId" 
           :packageName="packet"
           :total="total"
-          :typePayment="typePayment"
 
         />
         <DetailPayment
           :provider="provider"
           :packageId="packetId" 
           :detailPayment="detailPayment"
-          :typePayment="typePayment"
 
         />
         <div class="tos-alert px-4 mt-4 text-lg">
@@ -156,7 +154,6 @@ export default {
       packet: '',
       packetId: null,
       total: null,
-      typePayment : '',
       showSnackBar: false,
       vouchersData: [],
       detailPayment : {
