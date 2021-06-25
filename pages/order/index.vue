@@ -31,11 +31,14 @@
           placeholder="Masukan Nama"
           class="mt-4"
           v-model="userName"
+          :error="errorForm.name"
+
         />
         <InputForm
           label ="Email"
           class="mt-4"
           placeholder="Masukan Email"
+          :error="errorForm.email"
           v-model="email"
        />
        <div class="mt-4">
@@ -51,6 +54,7 @@
                <InputForm
                  placeholder="Masukan telepon"
                  v-model="phoneNumber"
+                 :error="errorForm.phoneNumber"
                />
             </div>
           </div>
@@ -87,9 +91,9 @@
           class="mt-4"
         />
         
-        <Button :disabled="!isAgreeTos" class="w-full bg-green-seakun text-white py-2 mt-8" label="Konfirmasi pesanan"/>
+        <Button :disabled="!isAgreeTos" @click="submitOrder" class="w-full bg-green-seakun text-white py-2 mt-8" label="Konfirmasi pesanan"/>
 
-        
+        <Loading v-if="isShowLoading"/>
       </div>
   </div>
 </template>
@@ -105,8 +109,8 @@ import Voucher from './views/Voucher.vue'
 import Button from '~/components/atoms/Button';
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue'
 import { internationalPhoneNumbers } from '~/constants/code-phone.js'
-import { currencyFormat } from '~/helpers/word-transformation.js' 
-
+import { currencyFormat ,capitalizeFirstLetter ,fullDate} from '~/helpers/word-transformation.js' 
+import Loading from '~/components/mollecules/Loading.vue'
 export default {
   name: "OrderPage",
   layout : 'navigationBlank',
@@ -118,7 +122,8 @@ export default {
     Button,
     DropdownCodeNumber,
     DropDownPricesListSubcribe,
-    Voucher
+    Voucher,
+    Loading
   },
   data:()=>({
     provider : '',
@@ -135,13 +140,28 @@ export default {
       month : '',
       price : 0,
     },
+    isShowLoading : false,
     codeNumber : '+62',
     isShowCodeNumber : false,
     isShowPriceList : false,
     pricesList : [],
     isAgreeTos : false,
     internationalPhoneNumbers,
-    currencyFormat  
+    currencyFormat ,
+    errorForm : {
+      email : {
+        isError : false,
+        message : '',
+      },
+      name : {
+        isError : false,
+        message : ''
+      },
+      phoneNumber : {
+        isError : false,
+        message : ''
+      }
+    }
   }),
   created(){
     const { provider,packageId } =  this.$router.history.current.query
@@ -173,6 +193,7 @@ export default {
               ...value,
               name :`${value.month} bulan ( ${currencyFormat(value.price)} )`
             }))
+            this.longSubcribe = this.pricesList[0]
           }
 
         }
@@ -201,7 +222,127 @@ export default {
         }
       }
       this.isShowPriceList = false
-    } 
+    },
+    validationForm() {
+      const { email, userName,phoneNumber ,errorForm} = this
+      let isValid = true
+      let errorTemp =  {
+          email : {
+            isError : false,
+            message : '',
+          },
+          name : {
+            isError : false,
+            message : ''
+          },
+          notelp : {
+            isError : false,
+            message : ''
+          }
+      }
+      if(email === '') {
+        errorTemp.email ={
+            isError : true,
+            message : 'Email Harus Di isi'
+        }
+        isValid = false
+      }else if(!this.validateEmail(email)){
+          errorTemp.email ={
+            isError : true,
+            message : 'Format Email Salah'
+          }
+          isValid = false
+      }
+
+
+      if(userName === ''){
+        errorTemp.name = {
+          isError : true,
+          message :"Name Harus Di Isi"
+        }
+        isValid = false
+      }
+
+      if(phoneNumber === '' && !/\D/.test(phoneNumber)){
+          errorTemp.phoneNumber = {
+            isError : true,
+            message : "Nomer Telepon harus disi dengan format yang benar"
+        }
+      }
+     
+     this.errorForm = {...errorTemp}
+     return isValid
+
+    },
+    submitOrder() {
+      if(this.validationForm()){
+       this.postRegisteredUser()
+      }
+    },
+    validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    },
+    postRegisteredUser() {
+      this.isShowLoading = true
+
+      let payload = {
+        fullname: capitalizeFirstLetter(this.userName),
+        email: this.email,
+        whatsapp: `${this.codeNumber}${this.phoneNumber}`,
+        provider: this.provider.toLowerCase() === 'disney+ hotstar' ? 'disney-hotstar' : this.provider,
+        packet: this.packageId,
+        price: this.price,
+        discountprice:'',
+        userhost: this.detailOrder.data.userHost,
+        referalcode: '',
+        voucher: '',
+        createddate: fullDate(),
+        ispreorder: this.detailOrder.data.isPreOrder,
+        total_month: this.detailOrder.data.totalMonth,
+        total_year: this.detailOrder.data.totalYear,
+        linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codeNumber}${this.codeNumber}`
+      };
+      const headers = { 'Access-Control-Allow-Origin': '*' };
+      axios
+        .post('https://seakun-api.herokuapp.com/registered-user', payload, {
+          headers: headers,
+        })
+        .then((res) => {
+          this.executeApiMailSeakun(payload);
+          this.isShowLoading = false
+
+        })
+        .catch((err) => {
+          console.log(err);
+          this.isShowLoading = false
+
+        });
+    },
+    async executeApiMailSeakun(payload) {
+      let newPayload = {
+        ...payload,
+        payment_type: this.detailOrder.data.paymentType,
+      };
+      axios
+        .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)
+        .then((res) => {
+          this.isDisableBtn = false;
+          // Redirect to thankyou page when successfully registration
+          this.$router.push({
+            path: '/payment',
+            query: {
+              provider: this.provider,
+              packet_id: this.packageId,
+              // voucher: this.isVoucherValid ? this.voucher : '',
+            },
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    
 
     
   }
