@@ -283,7 +283,7 @@ export default {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     },
-    postRegisteredUser() {
+    async postRegisteredUser() {
       this.isShowLoading = true
 
       let payload = {
@@ -304,22 +304,25 @@ export default {
         linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codeNumber}${this.codeNumber}`
       };
       const headers = { 'Access-Control-Allow-Origin': '*' };
-      axios
-        .post('https://seakun-api.herokuapp.com/registered-user', payload, {
+      try {
+        const fetchPostUser = await axios.post('https://seakun-api.herokuapp.com/registered-user', payload, {
           headers: headers,
         })
-        .then((res) => {
-          this.executeApiMailSeakun(payload);
-          this.isShowLoading = false
+        if(fetchPostUser.status == 200){
+            this.executeApiMailSeakun(payload);
+            this.isShowLoading = false
+        }else {
+          throw fetchPostUser
+        }
+ 
+      } catch (error) {
+          console.log(error);
+      }
 
-        })
-        .catch((err) => {
-          console.log(err);
-          this.isShowLoading = false
+      this.isShowLoading = false
 
-        });
     },
-    async executeApiMailSeakun(payload) {
+    executeApiMailSeakun(payload) {
       let newPayload = {
         ...payload,
         payment_type: this.detailOrder.data.paymentType,
