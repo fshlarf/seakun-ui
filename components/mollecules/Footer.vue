@@ -65,7 +65,7 @@
           </div>
           <div class="flex gap-2">
             <img src="/images/footer/phone-icon.svg" alt="#" />
-            <p>+62 857 7464 2738</p>
+            <p>+62821 2485 2227</p>
           </div>
           <div class="flex gap-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />

@@ -53,7 +53,7 @@ export default {
         },
         {
           id: 2,
-          value: '6.000+',
+          value: '7.000+',
           label: 'Total Pengguna',
         },
         {
@@ -63,7 +63,7 @@ export default {
         },
         {
           id: 4,
-          value: '9,9/10',
+          value: '8,5/10',
           label: 'Tingkat Kepuasan',
         },
       ],
