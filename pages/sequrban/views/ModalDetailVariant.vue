@@ -50,29 +50,31 @@
         </div>
       </div>
     </div>
+
     <div class="xl:px-2">
-      <h1 class="text-xl font-bold">Tipe {{ variant.packageCode }}</h1>
-      <p class="text-secondary font-semibold upper-case">
+      <h1 class="text-xl font-bold mt-8">Tipe {{ variant.packageCode }}</h1>
+      <p class="text-secondary font-semibold upper-case mt-2">
         {{ variant.type }}, BERAT HINGGA {{ variant.weight }} KG
       </p>
-      <p class="text-3xl font-bold">{{ toRupiah(variant.totalCost) }}</p>
+      <p class="tn:text-xl md:text-3xl font-bold mt-1">{{ toRupiah(variant.totalCost) }}<span class="text-base"> / orang</span> </p>
     </div>
-    <div class="tn:space-y-2 md:space-y-0 md:px-3 lg:px-6 py-2">
-      <h2 class="text-lg text-secondary my-1 font-bold">Detail Harga</h2>
+
+    <div class="tn:space-y-2 md:space-y-0 md:px-3 lg:px-6 py-2 mt-3">
+      <h2 class="tn:text-base md:text-lg text-secondary my-1 font-bold">Detail Harga</h2>
       <div
-        class="tn:text-sm md:text-base md:flex md:justify-between md:items-center"
+        class="tn:text-xs md:text-base flex justify-between md:items-center mt-2"
       >
         <p>Harga sapi satuan</p>
         <p class="font-bold">{{ toRupiah(variant.bulkingPrice) }}</p>
       </div>
       <div
-        class="tn:text-sm md:text-base md:flex md:justify-between md:items-center"
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
       >
         <p>Jumlah member dalam satu grup</p>
         <p class="font-bold">{{ variant.totalUser }}</p>
       </div>
       <div
-        class="tn:text-sm md:text-base md:flex md:justify-between md:items-center"
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
       >
         <p>Harga patungan</p>
         <p class="font-bold">
@@ -81,32 +83,58 @@
         </p>
       </div>
       <div
-        class="tn:text-sm md:text-base md:flex md:justify-between md:items-center"
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
       >
         <p>
           Biaya servis
-          <span class="text-gray-500 text-xs font-semibold">
-            (PEMOTONGAN, PENCACAHAN, PENGEPAKAN, DISTRIBUSI)</span
+          <span class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold">
+            (PEMOTONGAN, PENCACAHAN, DISTRIBUSI)</span
           >
         </p>
         <p class="font-bold">{{ toRupiah(variant.serviceCost) }}</p>
       </div>
+
       <div
-        class="tn:text-sm md:text-base md:flex md:justify-between md:items-center"
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
+      >
+        <p>Biaya pengemasan</p>
+        <p class="font-bold">{{ toRupiah(variant.packagingCost) }}</p>
+      </div>
+
+      <div
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
+      >
+        <p>Biaya kirim 
+            <span class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold">
+            (jatah daging qurban)</span
+          >
+        </p>
+        <p class="font-bold">{{ toRupiah(variant.deliveryCost) }}</p>
+      </div>
+
+      <div
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
       >
         <p>Biaya admin</p>
         <p class="font-bold">{{ toRupiah(variant.adminFee) }}</p>
       </div>
+
+       <div
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
+      >
+        <p class="font-bold">Total harga</p>
+        <p class="font-bold">{{ toRupiah(variant.totalCost) }}</p>
+      </div>
+
       <div class="my-3">
-        <p class="tn:text-sm md:text-base font-bold text-red-600">
-          {{ variant.info }}
-        </p>
+        <WarningInfo :text="variant.info" />
       </div>
     </div>
     <div class="h-px w-full bg-primary"></div>
+
     <div class="md:px-6 py-2">
       <div class="my-3">
-        <p>Syarat dan Ketentuan:</p>
+        <p class="font-bold">Syarat dan Ketentuan</p>
         <ol class="tn:text-sm md:text-base space-y-1 my-2">
           <li v-for="(note, id) in variant.notes" :key="id" class="">
             <div class="flex gap-2">
@@ -117,6 +145,7 @@
         </ol>
       </div>
     </div>
+
     <div class="h-px w-full bg-primary"></div>
     <div class="space-y-3 mt-4 mb-0">
       <Button
@@ -138,6 +167,7 @@
 <script>
 import Modal from '~/components/atoms/Modal.vue';
 import Button from '~/components/atoms/Button.vue';
+import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 export default {
   data() {
     return {
@@ -183,6 +213,7 @@ export default {
   components: {
     Modal,
     Button,
+    WarningInfo,
   },
   methods: {
     closeModal() {
