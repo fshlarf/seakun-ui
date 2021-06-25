@@ -323,7 +323,7 @@ export default {
       const theProvider = provider.toLowerCase() === 'disney+ hotstar' ? 'disney-hotstar' : provider.toLowerCase()
       axios
         .get(
-          `https://seakun-packet-api-v1.herokuapp.com/${theProvider}`
+          `https://seakun-packet-api-v2.herokuapp.com/${theProvider}`
         )
         .then((res) => {
           this.packets = res.data;
@@ -415,7 +415,7 @@ export default {
         payment_type: this.choosedPacket.paymentType,
       };
       axios
-        .post('https://seakun-mail-api-v1.herokuapp.com/', newPayload)
+        .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)
         .then((res) => {
           this.isDisableBtn = false;
           // Redirect to thankyou page when successfully registration
@@ -443,7 +443,7 @@ export default {
     },
     getVouchersData() {
       axios
-        .get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
+        .get('https://seakun-packet-api-v2.herokuapp.com/vouchers')
         .then((res) => {
           this.vouchersData = res.data;
         })
