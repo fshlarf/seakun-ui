@@ -237,9 +237,12 @@ export default {
       const {
         provider,
         packet_id,
+        email,
+        whatsapp,
+        holder
       } = this.$router.history.current.query;
 
-      this.$router.push(`/payment-confirmation?provider=${provider}&packet_id=${packet_id}`)
+      this.$router.push(`/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder}`)
     }
   },
 };
