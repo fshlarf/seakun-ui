@@ -1,8 +1,8 @@
 <template>
-  <div class="order-detail bg-white shadow-md  mt-8 rounded-md items-center mx-2">
+  <div class="order-detail bg-white shadow-md  mt-2 rounded-md items-center mx-2">
       <div class="order-detail__product px-4 pt-4 pb-2 grid grid-cols-5 gap-2 items-center">
         <div class="flex-1">
-          <img class="detail-product__image w-9/12" :src="`/images/${provider.toLowerCase()}.png`" alt="Image not found" />
+          <img class="detail-product__image w-full" :src="`/images/${provider.toLowerCase()}.png`" alt="Image not found" />
         </div>
         <div class="detail-product__price col-span-4 ml-4">
           <p v-if="isLoading" class="font-bold shimmer w-9/12"> </p>
@@ -27,7 +27,7 @@
 import { currencyFormat } from '~/helpers/word-transformation.js' 
 
 export default {
-    name : 'detailOrder',
+    name : 'ProductHighlight',
     props : {
         provider : {
             type : String,

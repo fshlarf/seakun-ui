@@ -45,7 +45,7 @@
                 <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.
               </p>
           </div>
-          <DetailOrderLoading
+          <ProductHighLightLoading
             v-if="detailPayment.loading"
           />
           <DetailOrderSequrban
@@ -58,7 +58,7 @@
             :downPayment="detailPayment.data.downPayment"
             :bulkingPrice="detailPayment.data.bulkingPrice"
           />
-          <DetailOrderProduct
+          <ProductHighLight
             v-else
             :provider="provider"
             :isLoading="detailPayment.loading"
@@ -73,16 +73,16 @@
 
 <script>
 import { currencyFormat } from '~/helpers/word-transformation.js' 
-import DetailOrderProduct from './DetailOrderProduct.vue'
 import DetailOrderSequrban from './DetailOrderSekurban.vue'
-import DetailOrderLoading from './DetailOrderLoading.vue'
+import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue'
+import ProductHighLight from '~/components/mollecules/ProductHighLight.vue'
 
 export default {
   name:'headerPayment',
   components : {
     DetailOrderSequrban,
-    DetailOrderProduct,
-    DetailOrderLoading
+    ProductHighLight,
+    ProductHighLightLoading
   },
   props : {
     provider : {

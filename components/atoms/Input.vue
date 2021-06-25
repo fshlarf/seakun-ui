@@ -1,5 +1,6 @@
 <template>
-  <div class="mt-4">
+  <div :class="className"
+>
     <label v-if="label" class="block text-gray-700 text-sm mb-2" :for="name">
       {{ label }}
     </label>
@@ -55,6 +56,10 @@ export default {
     type: {
       type: String,
       default: 'text',
+    },
+     className: {
+      type: String,
+      default: '',
     },
   },
   model: {
