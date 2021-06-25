@@ -179,6 +179,7 @@
           label="Lanjutkan"
           class="w-full mt-3 py-2"
           :disabled="!isAgree"
+          :is-loading="isLoadingSubmit"
           @click="clickSubmit"
         />
         <Button
@@ -191,7 +192,7 @@
     </div>
     <ModalChangeOrderPackage
       :is-show-modal="isShowModalPackage"
-      :is-loading="isLoading"
+      :is-loading="isLoadingSubmit"
       :dataQurban="dataQurban"
       :qurban-current-variant="dataDetailQurban"
       @closeModal="closeModalPackage"
@@ -222,6 +223,7 @@ export default {
     return {
       typeId: '',
       isLoading: false,
+      isLoadingSubmit: false,
       isShowModalPackage: false,
       iSshowOption: false,
       showCodePhone: false,
@@ -346,25 +348,15 @@ export default {
       this.$router.push(`/sequrban/order?id=${id}`);
     },
     validateInput() {
-      this.error_fullname.isError = !this.dataParamOrder.fullname
-        ? true
-        : false;
-      this.error_whatsapp.isError = !this.dataParamOrder.whatsapp
-        ? true
-        : false;
-      this.error_email.isError = !this.dataParamOrder.email ? true : false;
-      this.error_qurban_fullname.isError = !this.dataParamOrder.qurban_fullname
-        ? true
-        : false;
+      this.error_fullname.isError = !this.dataParamOrder.fullname;
+      this.error_whatsapp.isError = !this.dataParamOrder.whatsapp;
+      this.error_email.isError = !this.dataParamOrder.email;
+      this.error_qurban_fullname.isError = !this.dataParamOrder.qurban_fullname;
       this.error_qurban_father_name.isError = !this.dataParamOrder
-        .qurban_father_name
-        ? true
-        : false;
-      this.error_address.isError = !this.dataParamOrder.address ? true : false;
-      this.error_city.isError = !this.dataParamOrder.city ? true : false;
-      this.error_postal_code.isError = !this.dataParamOrder.postal_code
-        ? true
-        : false;
+        .qurban_father_name;
+      this.error_address.isError = !this.dataParamOrder.address;
+      this.error_city.isError = !this.dataParamOrder.city;
+      this.error_postal_code.isError = !this.dataParamOrder.postal_code;
     },
     clickSubmit() {
       this.validateInput();
@@ -382,6 +374,7 @@ export default {
       }
     },
     submitDataOrder() {
+      this.isLoadingSubmit = true;
       this.dataParamOrder = {
         email: this.dataParamOrder.email,
         whatsapp: this.codePhone + this.dataParamOrder.whatsapp,
@@ -414,7 +407,8 @@ export default {
           this.dataParamOrder
         )
         .then((res) => {
-          this.toPaymentPage()
+          this.toPaymentPage();
+          this.isLoadingSubmit = false;
           // this.executeApiMailSeakun(payload);
         })
         .catch((err) => {
@@ -422,7 +416,9 @@ export default {
         });
     },
     toPaymentPage() {
-      this.$router.push(`/payment?provider=sequrban&packet_id=${this.typeId}&email=${this.dataParamOrder.email}&whatsapp=${this.dataParamOrder.whatsapp}&holder=${this.dataParamOrder.fullname}`);
+      this.$router.push(
+        `/payment?provider=sequrban&packet_id=${this.typeId}&email=${this.dataParamOrder.email}&whatsapp=${this.dataParamOrder.whatsapp}&holder=${this.dataParamOrder.fullname}&nominal=${this.dataParamOrder.down_payment}&packet=${this.dataParamOrder.type}`
+      );
     },
     capitalizeFirstLetter(str) {
       let splitStr = str.toLowerCase().split(' ');

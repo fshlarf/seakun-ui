@@ -5,6 +5,13 @@
     v-bind="$props"
     @click="handleOnClick"
   >
+    <svg
+      v-if="isLoading"
+      class="animate-spin h-5 w-5 mr-3 ..."
+      viewBox="0 0 24 24"
+    >
+      <!-- ... -->
+    </svg>
     {{ label }}
   </button>
 </template>
@@ -24,6 +31,10 @@ export default {
     label: {
       type: String,
       default: '',
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

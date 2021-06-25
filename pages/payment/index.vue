@@ -1,30 +1,35 @@
 <template>
   <div>
-      <div class="container-payment max-w-2xl w-full mx-auto mt-20">
-        <HeaderPayment
-          :provider="provider"
-          :detailPayment="detailPayment"
-          :packageId="packetId" 
-          :packageName="packet"
-          :total="total"
-
+    <div class="container-payment max-w-2xl w-full mx-auto mt-20">
+      <HeaderPayment
+        :provider="provider"
+        :detailPayment="detailPayment"
+        :packageId="packetId"
+        :packageName="packet"
+        :total="total"
+      />
+      <DetailPayment
+        :provider="provider"
+        :packageId="packetId"
+        :detailPayment="detailPayment"
+      />
+      <div class="tos-alert px-4 mt-4 text-lg">
+        <p>
+          Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
+          kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 20 menit. jika
+          melewati rentang waktu tersebut dan pesanan kamu belum diproses, harap
+          hubungi admin via whatsapp
+          <span class="text-green-seakun"> +6282124852227 </span>.
+        </p>
+      </div>
+      <div class="mt-8 mx-4 mb-4">
+        <Button
+          class="w-full bg-green-seakun text-white"
+          label="Konfirmasi Pembayaran"
+          @click="onClickConfirm"
         />
-        <DetailPayment
-          :provider="provider"
-          :packageId="packetId" 
-          :detailPayment="detailPayment"
-
-        />
-        <div class="tos-alert px-4 mt-4 text-lg">
-          <p>Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan kamu dapat diproses oleh Seakun.id. 
-            Mohon menunggu 10 - 20 menit. jika melewati rentang waktu tersebut dan pesanan kamu belum diproses, 
-            harap hubungi admin via whatsapp <span class="text-green-seakun"> +6282124852227 </span>.
-           </p>
-        </div>
-        <div class="mt-8 mx-4  mb-4">
-          <Button class="w-full bg-green-seakun text-white" label="Konfirmasi Pembayaran" @click="onClickConfirm"/>
-        </div>
-        <!-- <div class="row">
+      </div>
+      <!-- <div class="row">
           <div class="col">
             <div class="flex justify-center">
             </div>
@@ -46,7 +51,7 @@
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">Bank Transfer</div>
               </div> -->
-              <!-- <div class="row mt-1">
+      <!-- <div class="row mt-1">
                 <div class="col box-title">Bank Tujuan</div>
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">Mandiri</div>
@@ -73,7 +78,7 @@
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
               </div> -->
-            <!-- </div>
+      <!-- </div>
             <div style="margin:40px 0px;color:#787878;line-height:24px;text-align:center;">
               <p style="font-weight: 600;margin-bottom: -6px">Transfer ke</p>
               <img class="mandiri" src="http://1.bp.blogspot.com/-zkv5u5OGPEM/VKOWnIRRKBI/AAAAAAAAA7E/ovxa4ZW3I0o/w1200-h630-p-k-no-nu/Logo%2BBank%2BMandiri.png" alt="mandiri" >
@@ -127,9 +132,9 @@
             </p>
           </div>
         </div> -->
-      </div>
-      <Footer />
     </div>
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -137,8 +142,8 @@ import axios from 'axios';
 import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Button from '~/components/atoms/Button';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
-import DetailPayment from "./views/DetailPayment.vue"
-import HeaderPayment from "./views/HeaderPayment.vue"
+import DetailPayment from './views/DetailPayment.vue';
+import HeaderPayment from './views/HeaderPayment.vue';
 import Footer from '~/components/mollecules/Footer';
 
 export default {
@@ -150,7 +155,7 @@ export default {
     DetailPayment,
     Footer,
   },
-  layout : 'navigationBlank',
+  layout: 'navigationBlank',
   data() {
     return {
       provider: '',
@@ -159,21 +164,20 @@ export default {
       total: null,
       showSnackBar: false,
       vouchersData: [],
-      detailPayment : {
-        loading : false,
-        data : {},
+      detailPayment: {
+        loading: false,
+        data: {},
       },
       selectedToPayment: '',
     };
   },
   created() {
-    const { provider } =  this.$router.history.current.query
-    if(provider){
-      this.provider = provider
+    const { provider } = this.$router.history.current.query;
+    if (provider) {
+      this.provider = provider;
     }
     this.getPaymentDetail();
     this.getVouchersData();
-    
   },
   methods: {
     getPaymentDetail() {
@@ -182,10 +186,10 @@ export default {
         packet_id,
         voucher,
       } = this.$router.history.current.query;
-       this.detailPayment = {
-          ...this.detailPayment,
-          loading:true
-       }
+      this.detailPayment = {
+        ...this.detailPayment,
+        loading: true,
+      };
       axios
         .get(
           `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
@@ -196,8 +200,8 @@ export default {
             this.detailPayment = {
               ...this.DetailPayment,
               data,
-              loading:false
-            }
+              loading: false,
+            };
             this.packet = data.name;
             this.packetId = data.id;
             if (voucher) {
@@ -239,17 +243,21 @@ export default {
         packet_id,
         email,
         whatsapp,
-        holder
+        holder,
+        nominal,
+        packet,
       } = this.$router.history.current.query;
 
-      this.$router.push(`/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder}`)
-    }
+      this.$router.push(
+        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder}&nominal=${nominal}&packet=${packet}`
+      );
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.container-sm{
+.container-sm {
   min-width: 640px;
   max-width: 640px;
 }
@@ -311,5 +319,4 @@ export default {
     padding: 0px 8px !important;
   }
 }
-
 </style>
