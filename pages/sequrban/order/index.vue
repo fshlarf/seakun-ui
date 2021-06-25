@@ -422,7 +422,7 @@ export default {
         });
     },
     toPaymentPage() {
-      this.$router.push(`/payment?provider=sequrban&packet_id=${this.typeId}`);
+      this.$router.push(`/payment?provider=sequrban&packet_id=${this.typeId}&email=${this.dataParamOrder.email}&whatsapp=${this.dataParamOrder.whatsapp}&holder=${this.dataParamOrder.fullname}`);
     },
     capitalizeFirstLetter(str) {
       let splitStr = str.toLowerCase().split(' ');
