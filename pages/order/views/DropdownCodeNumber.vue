@@ -6,7 +6,7 @@
             v-for="codeCountry in dataList"
             :key="codeCountry.name"
             @click="$emit('onClikcItem',codeCountry)"
-             class="pb-2">
+             class="pb-2 cursor-pointer">
              {{ `${codeCountry.name} (${codeCountry.dialCode})` }}
         </li>
       </div>

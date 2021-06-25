@@ -1,5 +1,5 @@
 <template>
-  <div class="container-payment max-w-2xl w-full mx-auto mt-20 px-4" >
+  <div class="container-payment max-w-2xl w-full mx-auto mt-20 px-4 pb-20" >
     <div class="mt-10 pt-10 px-2">
         <h2 class="text-2xl font-bold">Pesanan</h2>
         <p class="text-lg mt-3">Silahkan isi terlebih dahulu sebelum melakukan pemesanan Copy</p>
@@ -74,6 +74,31 @@
             />
           </div>  
         </div>
+         <div class="ml-4 mt-6">
+            <input class="form-check-input" type="checkbox" v-model="isAgreeTos">
+            <label class="form-check-label ml-2" for="checkbox">
+              Menyetujui <nuxt-link class="text-green-seakun" to="/terms-of-use">aturan</nuxt-link> yang dibuat oleh seakun
+            </label>
+        </div>
+        <div class="voucher w-full flex justify-between py-3 px-3 mt-4">
+             <p class="voucher__label font-extrabold">
+               <span class="">
+                  <PriceTagIcon/>
+
+               </span>
+               Voucher Seakun
+               </p>
+          <p class="voucher__action text-gray-500">
+          
+            Masukan Voucher
+            <span>
+              <RightArrowIcon/>
+            </span>
+          </p>
+        </div>
+        
+        <Button class="w-full bg-green-seakun text-white py-2 mt-8" label="Konfirmasi pesanan"/>
+
         
       </div>
   </div>
@@ -86,6 +111,11 @@ import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoa
 import ProductHighLight from '~/components/mollecules/ProductHighLight.vue'
 import InputForm from '~/components/atoms/Input.vue'
 import DropdownCodeNumber from './views/DropdownCodeNumber.vue'
+
+import PriceTagIcon from '~/assets/images/icon/price-tag.svg?inline'
+import RightArrowIcon from '~/assets/images/icon/right-arrow.svg?inline'
+import Button from '~/components/atoms/Button';
+
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue'
 import { internationalPhoneNumbers } from '~/constants/code-phone.js'
 import { currencyFormat } from '~/helpers/word-transformation.js' 
@@ -98,8 +128,11 @@ export default {
     ProductHighLight,
     InputForm,
     ButtonDrop,
+    Button,
     DropdownCodeNumber,
-    DropDownPricesListSubcribe
+    DropDownPricesListSubcribe,
+    PriceTagIcon,
+    RightArrowIcon
   },
   data:()=>({
     provider : '',
@@ -115,6 +148,7 @@ export default {
     isShowCodeNumber : false,
     isShowPriceList : false,
     pricesList : [],
+    isAgreeTos : false,
     internationalPhoneNumbers,
     currencyFormat  
   }),
@@ -167,6 +201,29 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.form-check-input{
+    width: 18px;
+    height: 16px;
+}
+.voucher{
+  background: #EFEFEF;
+  font-size: 16px;
+  &__label {
+    svg {
+      width: 16px;
+      display: inline-block;
+      height: auto;
+    }
+  }
+  &__action {
+     svg {
+      width: 16px;
+      display: inline-block;
+      height: auto;
+      fill:rgba(107, 114, 128, var(--tw-text-opacity));
+    }
+  }
+}
 
 </style>
