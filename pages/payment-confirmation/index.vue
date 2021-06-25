@@ -24,6 +24,7 @@
             @click="showPaymentList('bankDirection')"
             :value="bankSeakun"
             v-model="bankSeakun"
+            :error="error_bank_seakun"
           >
             <template #iconLeft>
               <DownArrowIcon />
@@ -47,6 +48,7 @@
             v-model="bankCustomer"
             :value="bankCustomer"
             @click="showPaymentList('paymentUsage')"
+            :error="error_bank_customer"
           >
             <template #iconLeft>
               <DownArrowIcon />
@@ -65,9 +67,10 @@
 
         <InputForm
           label="Nominal Pembayaran"
-          v-model="nominalPayment"
-          disabled
+          v-model="nominal"
+          :value="nominal"
           class="text-grey-400"
+          :error="error_nominal"
         >
         </InputForm>
 
@@ -75,6 +78,8 @@
           label="Nama Pemilik Rekening"
           placeholder="Masukan Nama Pemilik Rekening"
           v-model="holder"
+          :value="holder"
+          :error="error_holder"
         >
         </InputForm>
         <div class="my-4">
@@ -92,20 +97,22 @@
           name="paymetNote"
           id="payment-img"
           @get-image="getPaymentImage"
+          :error="error_upload_image"
         />
+
+        <div class="mb-4 mx-auto" :class="{ hidden: !isUpload }">
+          <img class="mx-auto" id="previewImage" alt="your image" />
+        </div>
 
         <Button
           class="w-full bg-green-seakun text-white"
           label="Simpan"
           :is-loading="isLoadingSubmit"
-          @click="submitConfirmation"
+          @click="clickSubmit"
         />
       </div>
     </div>
   </div>
-  <!-- <div class="container container-payment max-w-xl w-full mx-auto mt-10 bg-white">
-
-  </div> -->
 </template>
 
 <script>
@@ -119,7 +126,7 @@ import 'vue2-datepicker/index.css';
 import moment from 'moment';
 import Input from '../../components/atoms/Input.vue';
 import { currencyFormat } from '../../helpers/word-transformation.js';
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'paymentConfirmation',
@@ -135,14 +142,14 @@ export default {
   data: () => ({
     moment,
     isLoadingSubmit: false,
-    accountName: '',
     bankSeakun: '',
     bankCustomer: '',
     dateTime: null,
     photoUrl: '',
+    isUpload: false,
     paymenDestination: false,
     paymentUsage: false,
-    nominalPayment: '',
+    packet_id: '',
     order_id: '',
     provider: '',
     email: '',
@@ -150,6 +157,7 @@ export default {
     holder: '',
     nominal: '',
     packet: '',
+    dataDetailQurban: {},
     paymentDestinationList: {
       transferBank: [
         {
@@ -161,8 +169,8 @@ export default {
           value: 'mandiri',
         },
         {
-          name: 'Bri',
-          value: 'bca',
+          name: 'BRI',
+          value: 'bri',
         },
       ],
       virtiualPayment: [
@@ -178,27 +186,47 @@ export default {
     },
     time1: moment().format('YYYY-MM-DD').toString(),
     imageFile: null,
+    error_bank_seakun: {
+      isError: false,
+      message: 'Bank tujuan harus dipilih',
+    },
+    error_bank_customer: {
+      isError: false,
+      message: 'Bank yang digunakan harus dipilih',
+    },
+    error_nominal: {
+      isError: false,
+      message: 'Nominal pembayaran harus diisi',
+    },
+    error_holder: {
+      isError: false,
+      message: 'Nama harus diisi',
+    },
+    error_upload_image: {
+      isError: false,
+      message: 'Mohon upload bukti pembayaran',
+    },
   }),
   created() {
     const {
+      packet_id,
       provider,
       order_id,
       email,
       whatsapp,
       holder,
-      nominal,
-      packet,
     } = this.$router.history.current.query;
     if (order_id) {
       this.order_id = order_id;
     }
+    this.packet_id = packet_id;
     this.provider = provider;
     this.email = email;
     this.whatsapp = whatsapp;
     this.holder = holder;
-    this.nominalPayment = currencyFormat(nominal);
-    this.nominal = nominal;
-    this.packet = packet;
+  },
+  mounted() {
+    this.getDataDetailQurban();
   },
 
   methods: {
@@ -222,28 +250,64 @@ export default {
         this.paymentUsage = false;
       }
     },
+    getDataDetailQurban() {
+      axios
+        .get(
+          `https://seakun-packet-api-v2.herokuapp.com/sequrban/${this.packet_id}`
+        )
+        .then((res) => {
+          this.dataDetailQurban = res.data;
+          this.nominal = this.dataDetailQurban.downPayment;
+          this.packet = this.dataDetailQurban.packageCode;
+        })
+        .catch((err) => console.log(err));
+    },
+    validateInput() {
+      this.error_bank_seakun.isError = !this.bankSeakun;
+      this.error_bank_customer.isError = !this.bankCustomer;
+      this.error_nominal.isError = !this.nominal;
+      this.error_holder.isError = !this.holder;
+      this.error_upload_image.isError = !this.imageFile;
+    },
+    clickSubmit() {
+      this.validateInput();
+      if (
+        this.bankSeakun &&
+        this.bankCustomer &&
+        this.nominal &&
+        this.holder &&
+        this.imageFile
+      ) {
+        this.submitConfirmation();
+      }
+    },
     submitConfirmation() {
       this.isLoadingSubmit = true;
-      const formData = new FormData()
 
-      formData.append('from', this.bankCustomer)
-      formData.append('to', this.bankSeakun)
-      formData.append('user_holder', this.holder)
-      formData.append('email', this.email)
-      formData.append('whatsapp', this.whatsapp)
-      formData.append('provider', this.provider)
-      formData.append('packet', this.packet)
-      formData.append('payment_date', this.time1)
-      formData.append('nominal_payment', this.nominal)
-      formData.append('file', this.imageFile)
+      const formData = new FormData();
+
+      formData.append('from', this.bankCustomer);
+      formData.append('to', this.bankSeakun);
+      formData.append('user_holder', this.holder);
+      formData.append('email', this.email);
+      formData.append('whatsapp', this.whatsapp);
+      formData.append('provider', this.provider);
+      formData.append('packet', this.packet);
+      formData.append('payment_date', this.time1);
+      formData.append('nominal_payment', this.nominal);
+      formData.append('file', this.imageFile);
 
       axios
-        .post('https://seakun-api.herokuapp.com/confirm-payment/on-demand', formData, {
-          headers: {'Content-Type': 'multipart/form-data'
-        }})
+        .post(
+          'https://seakun-api.herokuapp.com/confirm-payment/on-demand',
+          formData,
+          {
+            headers: { 'Content-Type': 'multipart/form-data' },
+          }
+        )
 
         .then((res) => {
-          // this.toThankyouPage();
+          this.toThankyouPage();
           this.isLoadingSubmit = false;
           // this.executeApiMailSeakun(payload);
         })
@@ -251,8 +315,18 @@ export default {
           console.log(err);
         });
     },
+    toThankyouPage() {
+      this.$router.push(
+        `/thankyou?holder=${this.holder}&from=${this.bankCustomer}&to=${this.bankSeakun}`
+      );
+    },
     getPaymentImage(file) {
-      this.imageFile = file
+      if (file) {
+        this.isUpload = true;
+        this.imageFile = file;
+        const imageUpload = document.getElementById('previewImage');
+        imageUpload.src = URL.createObjectURL(this.imageFile);
+      }
     },
   },
   layout: 'navigationBlank',

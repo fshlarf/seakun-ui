@@ -417,7 +417,7 @@ export default {
     },
     toPaymentPage() {
       this.$router.push(
-        `/payment?provider=sequrban&packet_id=${this.typeId}&email=${this.dataParamOrder.email}&whatsapp=${this.dataParamOrder.whatsapp}&holder=${this.dataParamOrder.fullname}&nominal=${this.dataParamOrder.down_payment}&packet=${this.dataParamOrder.type}`
+        `/payment?provider=sequrban&packet_id=${this.typeId}&email=${this.dataParamOrder.email}&whatsapp=${this.dataParamOrder.whatsapp}&holder=${this.dataParamOrder.fullname}`
       );
     },
     capitalizeFirstLetter(str) {

@@ -244,12 +244,10 @@ export default {
         email,
         whatsapp,
         holder,
-        nominal,
-        packet,
       } = this.$router.history.current.query;
 
       this.$router.push(
-        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder}&nominal=${nominal}&packet=${packet}`
+        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder}`
       );
     },
   },
