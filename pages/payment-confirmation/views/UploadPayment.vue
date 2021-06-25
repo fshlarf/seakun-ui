@@ -11,7 +11,7 @@
       class=""
       :class="{ 'border border-red-500': error.isError }"
       type="file"
-      id="name"
+      :id="name"
       accept="image/*"
       @change="getImage"
       hidden
@@ -67,13 +67,8 @@ export default {
   },
   methods: {
     getImage(event) {
-      console.log(event);
-      this.$emit('getImage');
-      const name = document.getElementById('name');
-      const image = name.files;
-      const params = {};
-      params.append('file', image.files[0]);
-      console.log(params);
+      const imageFiles = event.target.files
+      this.$emit('get-image', imageFiles[0]);
     },
   },
   model: {

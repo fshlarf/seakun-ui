@@ -119,6 +119,7 @@ import 'vue2-datepicker/index.css';
 import moment from 'moment';
 import Input from '../../components/atoms/Input.vue';
 import { currencyFormat } from '../../helpers/word-transformation.js';
+import axios from 'axios'
 
 export default {
   name: 'paymentConfirmation',
@@ -176,6 +177,7 @@ export default {
       ],
     },
     time1: moment().format('YYYY-MM-DD').toString(),
+    imageFile: null,
   }),
   created() {
     const {
@@ -221,42 +223,36 @@ export default {
       }
     },
     submitConfirmation() {
-      //   this.isLoadingSubmit = true;
-      //   const dataParamConfirmation = {
-      //     order_id: this.order_id,
-      //     from: this.bankCustomer,
-      //     to: this.bankSeakun,
-      //     user_holder: this.holder,
-      //     email: this.email,
-      //     whatsapp: this.whatsapp,
-      //     payment_date: this.time1,
-      //     nominal_payment: this.nominal,
-      //     provider: this.provider,
-      //     packet: this.packet,
-      //   };
-      //   const imageFile = document.querySelector('#payment-img');
-      //   imagefile.addEventListener('change', updateImageDisplay);
-      //   const image = imageFile.files;
-      //   const params = {};
-      //   params.append('file', image.files[0]);
-      //   console.log(params);
-      //   dataParamConfirmation.append('image', imagefile.files[0]);
-      //   axios
-      //     .post(
-      //       'https://seakun-api.herokuapp.com/confirm-payment/on-demand',
-      //       dataParamConfirmation
-      //     )
-      //     .then((res) => {
-      //       this.toThankyouPage();
-      //       this.isLoadingSubmit = false;
-      //       // this.executeApiMailSeakun(payload);
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+      this.isLoadingSubmit = true;
+      const formData = new FormData()
+
+      formData.append('from', this.bankCustomer)
+      formData.append('to', this.bankSeakun)
+      formData.append('user_holder', this.holder)
+      formData.append('email', this.email)
+      formData.append('whatsapp', this.whatsapp)
+      formData.append('provider', this.provider)
+      formData.append('packet', this.packet)
+      formData.append('payment_date', this.time1)
+      formData.append('nominal_payment', this.nominal)
+      formData.append('file', this.imageFile)
+
+      axios
+        .post('https://seakun-api.herokuapp.com/confirm-payment/on-demand', formData, {
+          headers: {'Content-Type': 'multipart/form-data'
+        }})
+
+        .then((res) => {
+          // this.toThankyouPage();
+          this.isLoadingSubmit = false;
+          // this.executeApiMailSeakun(payload);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    getPaymentImage() {
-      console.log('tes');
+    getPaymentImage(file) {
+      this.imageFile = file
     },
   },
   layout: 'navigationBlank',
