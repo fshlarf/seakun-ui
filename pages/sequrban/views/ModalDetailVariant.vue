@@ -87,7 +87,7 @@
       >
         <p>
           Biaya servis
-          <span class="tn:text-[8px] text-gray-500 text-xs font-semibold">
+          <span class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold">
             (PEMOTONGAN, PENCACAHAN, DISTRIBUSI)</span
           >
         </p>
@@ -99,6 +99,17 @@
       >
         <p>Biaya pengemasan</p>
         <p class="font-bold">{{ toRupiah(variant.packagingCost) }}</p>
+      </div>
+
+      <div
+        class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
+      >
+        <p>Biaya kirim 
+            <span class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold">
+            (jatah daging qurban)</span
+          >
+        </p>
+        <p class="font-bold">{{ toRupiah(variant.deliveryCost) }}</p>
       </div>
 
       <div
