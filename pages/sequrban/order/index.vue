@@ -35,15 +35,15 @@
           label="Nama pemesan"
           placeholder="Tulis namamu di sini"
           :error="error_fullname"
-          class="mt-2"
+          class="mt-4"
           id="fullname"
           @change="setLocalStorage('fullname')"
         />
-        <label class="mt-3 -mb-1 text-sm" for="nomor-telepon"
+        <label class="mt-4 text-sm" for="nomor-telepon"
           >Nomor telepon untuk pemotongan</label
         >
 
-        <div class="relative inline-block text-left w-full -mt-4 -mb-3">
+        <div class="relative inline-block text-left w-full -mb-3">
           <div class="grid grid-cols-4 gap-3 items-end w-full">
             <ButtonDropDownNew
               class="rounded-xl w-full mb-0.5"
@@ -89,7 +89,7 @@
           v-model="dataParamOrder.email"
           label="Email"
           placeholder="Tulis alamat email"
-          class=""
+          class="mt-4"
           :error="error_email"
           id="email"
           @change="setLocalStorage('email')"
@@ -98,7 +98,7 @@
           v-model="dataParamOrder.qurban_fullname"
           label="Nama lengkap yang diniatkan untuk berqurban"
           placeholder="Tulis nama di sini"
-          class=""
+          class="mt-4"
           :error="error_qurban_fullname"
           id="qurban-fullname"
           @change="setLocalStorage('qurban-fullname')"
@@ -123,7 +123,7 @@
           v-model="dataParamOrder.qurban_father_name"
           label="Nama ayah kandung yang diniatkan untuk berqurban"
           placeholder="Tulis nama di sini"
-          class=""
+          class="mt-4"
           :error="error_qurban_father_name"
           id="qurban-father-name"
           @change="setLocalStorage('qurban-father-name')"
@@ -132,12 +132,12 @@
           v-model="dataParamOrder.address"
           label="Alamat pengiriman daging qurban"
           placeholder="Tulis alamat agar vendor mengirimkan daging qurbanmu"
-          class=""
+          class="mt-4"
           :error="error_address"
           id="address"
           @change="setLocalStorage('address')"
         />
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid grid-cols-3 gap-3 mt-4">
           <InputForm
             v-model="dataParamOrder.city"
             label="Kota / Kecamatan"
@@ -442,6 +442,7 @@ export default {
       input.addEventListener('change', (event) => {
         if (id === 'fullname') {
           localStorage.setItem('fullname', event.target.value);
+          this.error_fullname.isError === false;
         }
         if (id === 'phone-code') {
           localStorage.setItem('phone-code', event.target.value);
