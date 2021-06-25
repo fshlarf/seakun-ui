@@ -43,13 +43,13 @@
           <div class="grid grid-cols-8 gap-2 items-center">
             <div class="col-span-2">
                <ButtonDrop
-                   btnText="+62"
+                   :btnText="codeNumber"
                    @click="isShowCodeNumber = !isShowCodeNumber"
                />
             </div>
             <div class="col-span-6">
                <InputForm
-                 placeholder="Masukan Email"
+                 placeholder="Masukan telepon"
                  v-model="phoneNumber"
                />
             </div>
@@ -58,19 +58,22 @@
             <DropdownCodeNumber
               :dataList="internationalPhoneNumbers"
               :show="isShowCodeNumber"
+              @onClikcItem="onClickItemCodeNumber"
             />
           </div>
         </div>
         <div class="mt-4">
           <p class="pb-1">Pilih Masa Berlangganan</p>
            <ButtonDrop
-            btnText="Pilih Masa Berlangganan"
+            :btnText="longSubcribe.name"
+            :disabled="pricesList.length <= 0"
             @click="isShowPriceList = !isShowPriceList"
           />
           <div class="w-full">
             <DropDownPricesListSubcribe
               :show="isShowPriceList"
               :dataList="pricesList"
+              @onClikcItem="onClickItemPrice"
             />
           </div>  
         </div>
@@ -80,24 +83,11 @@
               Menyetujui <nuxt-link class="text-green-seakun" to="/terms-of-use">aturan</nuxt-link> yang dibuat oleh seakun
             </label>
         </div>
-        <div class="voucher w-full flex justify-between py-3 px-3 mt-4">
-             <p class="voucher__label font-extrabold">
-               <span class="">
-                  <PriceTagIcon/>
-
-               </span>
-               Voucher Seakun
-               </p>
-          <p class="voucher__action text-gray-500">
-          
-            Masukan Voucher
-            <span>
-              <RightArrowIcon/>
-            </span>
-          </p>
-        </div>
+        <Voucher
+          class="mt-4"
+        />
         
-        <Button class="w-full bg-green-seakun text-white py-2 mt-8" label="Konfirmasi pesanan"/>
+        <Button :disabled="!isAgreeTos" class="w-full bg-green-seakun text-white py-2 mt-8" label="Konfirmasi pesanan"/>
 
         
       </div>
@@ -111,11 +101,8 @@ import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoa
 import ProductHighLight from '~/components/mollecules/ProductHighLight.vue'
 import InputForm from '~/components/atoms/Input.vue'
 import DropdownCodeNumber from './views/DropdownCodeNumber.vue'
-
-import PriceTagIcon from '~/assets/images/icon/price-tag.svg?inline'
-import RightArrowIcon from '~/assets/images/icon/right-arrow.svg?inline'
+import Voucher from './views/Voucher.vue'
 import Button from '~/components/atoms/Button';
-
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue'
 import { internationalPhoneNumbers } from '~/constants/code-phone.js'
 import { currencyFormat } from '~/helpers/word-transformation.js' 
@@ -131,8 +118,7 @@ export default {
     Button,
     DropdownCodeNumber,
     DropDownPricesListSubcribe,
-    PriceTagIcon,
-    RightArrowIcon
+    Voucher
   },
   data:()=>({
     provider : '',
@@ -144,7 +130,12 @@ export default {
     email :'',
     userName: '',
     phoneNumber:'',
-    longSubcribe:'',
+    longSubcribe:{
+      name : 'Pilih Masa Berlangganan',
+      month : '',
+      price : 0,
+    },
+    codeNumber : '+62',
     isShowCodeNumber : false,
     isShowPriceList : false,
     pricesList : [],
@@ -159,7 +150,6 @@ export default {
       this.packageId = packageId
       this.getOrderDetail()
     }
-
   },
   methods : {
     async getOrderDetail(){
@@ -195,7 +185,25 @@ export default {
         ...this.detailOrder,
         loading : false
       }
-    }
+    },
+    onClickItemCodeNumber(item){
+      this.codeNumber = item.dialCode
+      this.isShowCodeNumber = false
+    },  
+    onClickItemPrice(item){
+      this.longSubcribe = item
+      this.detailOrder ={
+        ...this.detailOrder ,
+        data :{
+          ...this.detailOrder.data,
+          grandTotal : item.price,
+          totalMonth : item.month
+        }
+      }
+      this.isShowPriceList = false
+    } 
+
+    
   }
 
 }

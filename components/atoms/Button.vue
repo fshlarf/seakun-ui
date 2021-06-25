@@ -41,7 +41,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 button:disabled {
   border: 1px solid #a9e0d5 !important;
   background-color: #a9e0d5 !important;

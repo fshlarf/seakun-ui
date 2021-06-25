@@ -2,8 +2,9 @@
   <div class="rounded-xl">
     <button
       type="button"
-      class="inline-flex justify-between items-center w-full h-full rounded-2xl border text-gray-400 border-gray-300 shadow-sm tn:px-2 md:px-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+      class="button-dropdown inline-flex justify-between items-center w-full h-full rounded-2xl border text-gray-400 border-gray-300 shadow-sm tn:px-2 md:px-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
       id="menu-button"
+      :disabled="disabled"
       aria-expanded="true"
       aria-haspopup="true"
       @click="click"
@@ -40,6 +41,10 @@ export default {
       type: String,
       default: '',
     },
+    disabled: {
+      type : Boolean,
+      default : false
+    }
   },
   methods: {
     click() {
@@ -49,4 +54,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+  .button-dropdown {
+    :disabled {
+      cursor: no-drop;
+      background: #EFEFEF !important;
+    }
+  }
+</style>
