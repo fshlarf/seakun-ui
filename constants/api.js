@@ -1,1 +1,1 @@
-export const PACKAGE_API = 'https://seakun-packet-api-v1.herokuapp.com'
+export const PACKAGE_API = 'https://seakun-packet-api-v2.herokuapp.com'
