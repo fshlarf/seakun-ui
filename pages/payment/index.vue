@@ -163,8 +163,8 @@ export default {
       packetId: null,
       total: null,
       showSnackBar: false,
-      type:'',
-      duration:'',
+      type: '',
+      duration: '',
       vouchersData: [],
       detailPayment: {
         loading: false,
@@ -207,18 +207,20 @@ export default {
               loading: false,
             };
 
-            if(type == 'digital'){
-              if(data.prices?.length > 0) {
-                const indexDuration = data.prices?.findIndex(price => price.month == duration)
-                if(indexDuration >= 0 ){
+            if (type == 'digital') {
+              if (data.prices?.length > 0) {
+                const indexDuration = data.prices?.findIndex(
+                  (price) => price.month == duration
+                );
+                if (indexDuration >= 0) {
                   this.detailPayment = {
                     ...this.detailPayment,
-                    data : {
+                    data: {
                       ...this.detailPayment.data,
-                      grandTotal : data.prices[indexDuration]?.price,
-                      totalMonth : data.prices[indexDuration]?.month
-                    }
-                  }
+                      grandTotal: data.prices[indexDuration]?.price,
+                      totalMonth: data.prices[indexDuration]?.month,
+                    },
+                  };
                 }
               }
             }
@@ -266,7 +268,13 @@ export default {
         holder,
       } = this.$router.history.current.query;
       this.$router.push(
-        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder ? holder : ''}&nominal=${this.detailPayment?.data?.grandTotal}`
+        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${
+          holder ? holder : ''
+        }&nominal=${
+          provider !== 'sequrban'
+            ? this.detailPayment?.data?.grandTotal
+            : this.detailPayment?.data?.downPayment
+        }`
       );
     },
   },
