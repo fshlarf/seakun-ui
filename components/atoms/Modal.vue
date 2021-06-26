@@ -93,7 +93,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 95%;
-  max-width: 95%;
+  max-width: 95%; 
   min-width: 20rem;
 }
 
@@ -105,7 +105,7 @@ export default {
   scrollbar-width: none; /* Firefox */
 }
 .scroll-bar::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 .scroll-bar::-webkit-scrollbar-thumb {
   background: #86d0c1;
