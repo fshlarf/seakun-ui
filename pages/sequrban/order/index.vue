@@ -43,10 +43,10 @@
           >Nomor telepon untuk pemotongan</label
         >
 
-        <div class="relative inline-block text-left w-full -mb-3">
+        <div class="relative inline-block text-left w-full">
           <div class="grid grid-cols-4 gap-3 items-end w-full">
             <ButtonDropDownNew
-              class="rounded-xl w-full mb-0.5"
+              class="rounded-xl w-full"
               @click="showCodePhone = !showCodePhone"
               :btnText="idPhone"
             />
@@ -61,27 +61,23 @@
             />
           </div>
 
-          <div
-            class="origin-top-right z-100 right-0 mt-2 w-72 rounded-md shadow bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="menu-button"
-            tabindex="-1"
-          >
-            <div
-              class="p-3 overflow-y-auto h-80"
-              role="none"
-              v-if="showCodePhone"
-            >
+          <div class="relative">
+            <transition name="slide-up">
               <div
-                v-for="codeCountry in internationalPhoneNumbers"
-                :key="codeCountry.name"
-                @click="chooseCodePhone(codeCountry)"
-                class="cursor-pointer"
+                class="payment-list w-full bg-white shadow rounded"
+                role="none"
+                v-if="showCodePhone"
               >
-                {{ `${codeCountry.name} (${codeCountry.dialCode})` }}
+                <div
+                  v-for="codeCountry in internationalPhoneNumbers"
+                  :key="codeCountry.name"
+                  @click="chooseCodePhone(codeCountry)"
+                  class="cursor-pointer"
+                >
+                  {{ `${codeCountry.name} (${codeCountry.dialCode})` }}
+                </div>
               </div>
-            </div>
+            </transition>
           </div>
         </div>
 
@@ -192,8 +188,8 @@
     </div>
     <ModalChangeOrderPackage
       :is-show-modal="isShowModalPackage"
-      :is-loading="isLoadingSubmit"
-      :dataQurban="dataQurban"
+      :is-loading="isLoading"
+      :data-qurban="dataQurban"
       :qurban-current-variant="dataDetailQurban"
       @closeModal="closeModalPackage"
       @choosePackage="choosePackage"
@@ -474,4 +470,26 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.payment-list {
+  position: absolute;
+  top: 0;
+  z-index: 20;
+  padding: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.slide-up-enter-active {
+  transition: all 0.5s ease;
+}
+.slide-up-leave-active {
+  transition: all 0.5s ease;
+  transform: translateY(-20vh);
+  opacity: 0;
+}
+.slide-up-enter,
+.slide-fade-leave-to {
+  transform: translateY(-20vh);
+  opacity: 0;
+}
+</style>

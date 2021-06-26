@@ -2,13 +2,17 @@
   <div class="rounded-xl">
     <button
       type="button"
-      class="button-dropdown inline-flex justify-between items-center w-full h-full rounded-2xl border text-gray-400 border-gray-300 shadow-sm tn:px-2 md:px-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+      class="button-dropdown inline-flex justify-between items-center w-full h-full rounded-2xl border text-gray-400 border-gray-300 tn:px-2 md:px-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
       id="menu-button"
       :disabled="disabled"
       aria-expanded="true"
       aria-haspopup="true"
       @click="click"
-      style="padding-top: 0.9rem; padding-bottom: 0.9rem; border-radius: 5rem"
+      style="
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-radius: 0.7rem !important;
+      "
     >
       {{ btnText }}
       <svg
@@ -28,7 +32,6 @@
 			c-3.838,3.838-3.838,10.055,0,13.893l246.18,246.175c1.842,1.842,4.337,2.878,6.947,2.878c2.61,0,5.104-1.036,6.946-2.878
 			l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"
         />
-        <!-- </g> -->
       </svg>
     </button>
   </div>
@@ -42,9 +45,9 @@ export default {
       default: '',
     },
     disabled: {
-      type : Boolean,
-      default : false
-    }
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     click() {
@@ -55,10 +58,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .button-dropdown {
-    :disabled {
-      cursor: no-drop;
-      background: #EFEFEF !important;
-    }
+.button-dropdown {
+  :disabled {
+    cursor: no-drop;
+    background: #efefef !important;
   }
+}
 </style>
