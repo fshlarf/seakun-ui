@@ -73,7 +73,7 @@
             :label="product.isActive ? 'Pesan' : 'Segera hadir'"
             class="w-full py-2 my-2 font-bold"
             :disabled="!product.isActive"
-            @click="onClickProduct(product.slug)"
+            @click="$emit('on-click-product', product)"
           />
         </div>
       </div>
@@ -100,13 +100,6 @@ export default {
     },
     showPriceScheme(param1, param2) {
       this.$emit('showPriceScheme', param1, param2);
-    },
-    onClickProduct(slug) {
-      if (slug === 'sequrban') {
-        this.$router.push(`/${slug}`) 
-      } else {
-        this.$router.push(`/order`) 
-      }
     }
   },
 };

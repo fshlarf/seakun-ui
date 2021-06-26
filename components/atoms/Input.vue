@@ -1,12 +1,11 @@
 <template>
-  <div :class="className"
->
+  <div :class="className">
     <label v-if="label" class="block text-gray-700 text-sm mb-2" :for="name">
       {{ label }}
     </label>
     <div class="form-content relative z-0">
       <input
-        class="relative z-0 appearance-none border rounded-xl w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="relative z-0 appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         :class="{ 'border-danger': error.isError }"
         :type="type"
         :name="name"
@@ -57,7 +56,7 @@ export default {
       type: String,
       default: 'text',
     },
-     className: {
+    className: {
       type: String,
       default: '',
     },

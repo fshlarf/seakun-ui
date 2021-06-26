@@ -2,17 +2,13 @@
   <div class="rounded-xl">
     <button
       type="button"
-      class="button-dropdown inline-flex justify-between items-center w-full h-full rounded-2xl border text-gray-400 border-gray-300 tn:px-2 md:px-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
+      class="button-dropdown inline-flex justify-between items-center w-full h-full border text-gray-400 border-gray-300 tn:px-4 md:px-4 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
       id="menu-button"
       :disabled="disabled"
       aria-expanded="true"
       aria-haspopup="true"
       @click="click"
-      style="
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        border-radius: 0.7rem !important;
-      "
+      style="padding-top: 1rem; padding-bottom: 1rem"
     >
       {{ btnText }}
       <svg
@@ -25,7 +21,7 @@
         viewBox="0 0 512 512"
         style="enable-background: new 0 0 512 512"
         xml:space="preserve"
-        class="w-3 h-3 md:-mr-2"
+        class="w-3 h-3"
       >
         <path
           d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0

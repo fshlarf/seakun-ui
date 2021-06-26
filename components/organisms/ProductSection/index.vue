@@ -1,5 +1,5 @@
 <template>
-  <div id="provider" class="container pt-20">
+  <div id="provider" class="container iner tn:pt-10 lg:pt-20 pt-20">
     <div class="">
       <div class="flex justify-between items-center mb-2 px-2">
         <h1
@@ -22,6 +22,7 @@
             :product="product"
             class="md:w-full md:h-full"
             @showPriceScheme="showPriceScheme"
+            @on-click-product="onClickProductDigital"
           />
         </div>
       </div>
@@ -31,6 +32,7 @@
           Layanan on demand
         </h1>
       </div>
+
       <div
         class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch items-center"
       >
@@ -39,6 +41,7 @@
             :product="product"
             class="md:w-full md:h-full"
             v-if="product.preview"
+            @on-click-product="onClickProductOnDemand"
           />
         </div>
         <div class="">
@@ -49,6 +52,17 @@
         </div>
       </div>
     </div>
+
+    <ModalPackages
+      :is-show="isShowModalPackages"
+      :provider="choosedProvider"
+      @on-close="onCloseModalPackages"
+      :packages="dataPackages"
+      :slug="choosedSlugProvider"
+      @choose-packet="choosePacket"
+      :is-loading="isFetchingPacket"
+    />
+
     <ModalPriceScheme
       :show-modal="showModalScheme"
       :data-scheme="dataDetailProvider"
@@ -63,8 +77,15 @@ import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
 import axios from 'axios';
+import ModalPackages from './views/ModalPackages.vue';
 
 export default {
+  components: {
+    ProductCard,
+    ProposeCard,
+    ModalPriceScheme,
+    ModalPackages,
+  },
   data() {
     return {
       showModalScheme: false,
@@ -113,12 +134,12 @@ export default {
         preview: 'Layanan kamu belum ada di Seakun?',
         img: '/images/product/propose.svg',
       },
+      isShowModalPackages: false,
+      choosedProvider: '',
+      choosedSlugProvider: '',
+      dataPackages: [],
+      isFetchingPacket: false,
     };
-  },
-  components: {
-    ProductCard,
-    ProposeCard,
-    ModalPriceScheme,
   },
   mounted() {
     this.fechProviders('product-digital');
@@ -135,6 +156,9 @@ export default {
     closeModalScheme() {
       this.showModalScheme = false;
     },
+    onCloseModalPackages() {
+      this.isShowModalPackages = false;
+    },
     async fechProviders(type) {
       try {
         const { data } = await axios.get(
@@ -148,6 +172,37 @@ export default {
       } catch (err) {
         console.log(err);
       }
+    },
+    onClickProductDigital(product) {
+      this.isFetchingPacket = true;
+      this.dataPackages = [];
+      this.isShowModalPackages = true;
+      this.choosedProvider = product.name;
+      this.choosedSlugProvider = product.slug;
+      this.fetchPackages(product.slug);
+    },
+    onClickProductOnDemand(product) {
+      this.$router.push(`/${product.slug}`);
+    },
+    async fetchPackages(provider) {
+      const theProvider = provider === 'microsoft' ? 'microsoft365' : provider;
+
+      try {
+        const { data } = await axios.get(
+          `https://seakun-packet-api-v2.herokuapp.com/${theProvider}`
+        );
+        if (data) {
+          this.dataPackages = data;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+      this.isFetchingPacket = false;
+    },
+    choosePacket(packet) {
+      this.$router.push(
+        `/order?provider=${this.choosedProvider}&packet_id=${packet.id}`
+      );
     },
   },
 };

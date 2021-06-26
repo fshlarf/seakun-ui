@@ -6,8 +6,8 @@
         </div>
         <div class="detail-product__price col-span-4 ml-4">
           <p v-if="isLoading" class="font-bold shimmer w-9/12"> </p>
-          <p v-else class="font-bold"><span class="capitalize" >{{provider}} </span> - {{packageName}} </p>
-          <p class="font-normal">{{currencyFormat(grandTotal)}} x ({{totalMonth}} Bulan)</p>
+          <p v-else class="md:text-lg tn:text-sm font-bold"><span class="capitalize" >{{provider}} </span> - {{packageName}} </p>
+          <p class="md:text-lg tn:text-sm font-normal">{{currencyFormat(grandTotal)}} x ({{totalMonth}} Bulan)</p>
         </div>
       </div>
       <div class="order-detail__payment flex justify-between  px-4 py-3 border-t border-gray-50 ">
@@ -16,7 +16,7 @@
            <p v-if="isLoading" class="shimmer w-4/12">
           </p>
           <template v-else>
-                {{currencyFormat(grandTotal)}}
+            {{currencyFormat(grandTotal)}}
           </template>
         </div>
       </div>

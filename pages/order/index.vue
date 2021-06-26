@@ -1,12 +1,12 @@
 <template>
   <div class="container-payment max-w-2xl w-full mx-auto mt-20 px-4 pb-20" >
     <div class="mt-10 pt-10 px-2">
-        <h2 class="text-2xl font-bold">Pesanan</h2>
-        <p class="text-lg mt-3">Silahkan isi terlebih dahulu sebelum melakukan pemesanan Copy</p>
+        <h2 class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
+        <p class="md:text-lg tn:text-base mt-3">Silahkan isi terlebih dahulu sebelum melakukan pemesanan.</p>
     </div>
     <div class="flex justify-between items-center px-2 mt-10 mb-4">
-      <p class="text-xl font-bold"> Produk Yang dipesan</p>
-      <p class="text-lg text-green-seakun">Ubah Paket </p>
+      <p class="md:text-xl tn:text-lg font-bold"> Produk Yang dipesan</p>
+      <p class="md:text-lg tn:text-base text-green-seakun">Ubah Paket </p>
     </div>
     <div >
       <ProductHighLightLoading
@@ -22,8 +22,8 @@
           :totalMonth="detailOrder.data.totalMonth"
         />
     </div>
-    <div class="mt-6 pt-10 px-2">
-        <h2 class="text-xl font-bold">Informasi Pengguna</h2>
+    <div class="mt-6 pt-10">
+      <h2 class="md:text-xl tn:text-lg font-bold">Informasi Pengguna</h2>
     </div>
     <div class="order-form">
       <InputForm
@@ -42,7 +42,7 @@
           v-model="email"
        />
        <div class="mt-4">
-          <p class="pb-1">Nomer Hp</p>
+          <p class="pb-1 tn:text-sm">Nomer Hp</p>
           <div class="grid grid-cols-8 gap-2 items-center">
             <div class="col-span-2">
                <ButtonDrop
@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="mt-4">
-          <p class="pb-1">Pilih Masa Berlangganan</p>
+          <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
            <ButtonDrop
             :btnText="longSubcribe.name"
             :disabled="pricesList.length <= 0"
@@ -128,6 +128,7 @@ export default {
   data:()=>({
     provider : '',
     packageId :'',
+    packet: '',
     detailOrder : {
       loading : true,
       data : {}
@@ -161,13 +162,15 @@ export default {
         isError : false,
         message : ''
       }
-    }
+    },
+    price: 0,
+    subcriptionDuration: 1,
   }),
   created(){
-    const { provider,packageId } =  this.$router.history.current.query
+    const { provider, packet_id } =  this.$router.history.current.query
     if(provider){
       this.provider = provider
-      this.packageId = packageId
+      this.packageId = packet_id
       this.getOrderDetail()
     }
   },
@@ -184,6 +187,7 @@ export default {
         )
         if(fetchGetDetailOrder.status == 200){
           const {data} = fetchGetDetailOrder
+          this.packet = data.name
           this.detailOrder ={
             ...detailOrder,
            data
@@ -213,6 +217,8 @@ export default {
     },  
     onClickItemPrice(item){
       this.longSubcribe = item
+      this.price = item.price
+      this.subcriptionDuration = parseInt(item.month)
       this.detailOrder ={
         ...this.detailOrder ,
         data :{
@@ -291,17 +297,18 @@ export default {
         email: this.email,
         whatsapp: `${this.codeNumber}${this.phoneNumber}`,
         provider: this.provider.toLowerCase() === 'disney+ hotstar' ? 'disney-hotstar' : this.provider,
-        packet: this.packageId,
+        packet: this.packet,
+        subcription_duration: this.subcriptionDuration,
         price: this.price,
         discountprice:'',
         userhost: this.detailOrder.data.userHost,
         referalcode: '',
         voucher: '',
         createddate: fullDate(),
-        ispreorder: this.detailOrder.data.isPreOrder,
+        ispreorder: this.detailOrder.data.isPreOrder || false ,
         total_month: this.detailOrder.data.totalMonth,
         total_year: this.detailOrder.data.totalYear,
-        linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codeNumber}${this.codeNumber}`
+        linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codeNumber}${this.phoneNumber}`
       };
       const headers = { 'Access-Control-Allow-Origin': '*' };
       try {
@@ -335,8 +342,11 @@ export default {
           this.$router.push({
             path: '/payment',
             query: {
+              type: 'digital',
               provider: this.provider,
               packet_id: this.packageId,
+              duration: this.subcriptionDuration,
+              price: this.price,
               // voucher: this.isVoucherValid ? this.voucher : '',
             },
           });

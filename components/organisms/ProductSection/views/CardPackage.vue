@@ -1,0 +1,51 @@
+<template>
+  <div class="card-package md:w-[416px] tn:mt-4 tn:px-1 md:px-3 md:mx-3 py-4 shadow-md !rounded-lg cursor-pointer">
+    <div class="w-1/4 mx-auto">
+      <img
+        class="w-full h-auto"
+        :src="`/images/${slug}.png`"
+        alt="Image not found"
+      />
+    </div>
+
+    <div class="text-center mt-6">
+      <h1 class="tn:text-lg md:text-sm font-bold my-2">
+        {{ packet.name }}
+      </h1>
+      <p class="tn:text-2xl md:text-xl font-bold mt-6">{{ formatMoneyRupiah(packet.grandTotal) }}</p>
+      <h1 class="text-sm mt-6">Keuntungan</h1>
+
+      <div class="mt-3">
+        <div class="text-left mt-1 tn:px-3" v-for="(item, id) in packet.facilities" :key="id">
+          <div class="flex">
+            <img class="self-start pt-[2px]" src="/images/icons/checked.svg" alt="checked">
+            <p class="ml-2 text-sm">{{ item }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { currencyFormat } from '~/helpers';
+
+export default {
+  name: 'CardPackage',
+  props: {
+    packet: { type: Object, default: {} },
+    slug: { type: String, default: '' },
+  },
+  methods: {
+    formatMoneyRupiah(num) {
+      return currencyFormat(num)
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.card-package:hover {
+  border: 1px solid #8DCABE;
+}
+</style>
