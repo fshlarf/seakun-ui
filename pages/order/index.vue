@@ -425,7 +425,7 @@ export default {
               packet_id: this.packageId,
               duration: this.subcriptionDuration,
               price: this.price,
-              holder: this.fullname,
+              holder: this.userName,
               email: this.email,
               whatsapp: this.codeNumber + this.phoneNumber,
               // voucher: this.isVoucherValid ? this.voucher : '',

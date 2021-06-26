@@ -69,7 +69,6 @@
           />
         </div>
         <div class="my-4">
-
           <InputForm
             label="Nominal Pembayaran"
             v-model="nominal"
@@ -77,7 +76,7 @@
             class="text-grey-400 mt-4"
             :error="error_nominal"
           >
-        </InputForm>
+          </InputForm>
         </div>
 
         <InputForm
@@ -163,7 +162,7 @@ export default {
     holder: '',
     nominal: '',
     packet: '',
-    dataDetailQurban: {},
+    dataDetailPacket: {},
     paymentDestinationList: {
       transferBank: [
         {
@@ -221,18 +220,23 @@ export default {
       email,
       whatsapp,
       holder,
+      nominal,
     } = this.$router.history.current.query;
+
     if (order_id) {
       this.order_id = order_id;
     }
+
     this.packet_id = packet_id;
     this.provider = provider;
     this.email = email;
     this.whatsapp = whatsapp;
     this.holder = holder;
+    this.nominal = nominal;
   },
   mounted() {
-    this.getDataDetailQurban();
+    const { provider } = this.$router.history.current.query;
+    this.getDataDetailPacket(provider);
   },
 
   methods: {
@@ -256,15 +260,16 @@ export default {
         this.paymentUsage = false;
       }
     },
-    getDataDetailQurban() {
+    getDataDetailPacket(provider) {
       axios
         .get(
-          `https://seakun-packet-api-v2.herokuapp.com/sequrban/${this.packet_id}`
+          `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packet_id}`
         )
         .then((res) => {
-          this.dataDetailQurban = res.data;
-          this.nominal = this.dataDetailQurban.downPayment;
-          this.packet = this.dataDetailQurban.packageCode;
+          this.dataDetailPacket = res.data;
+          provider === 'sequrban'
+            ? (this.packet = this.dataDetailPacket.packageCode)
+            : (this.packet = this.dataDetailPacket.name);
         })
         .catch((err) => console.log(err));
     },
