@@ -61,11 +61,15 @@
         <div class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <div class="flex gap-2">
             <img src="/images/footer/email-icon.svg" alt="#" />
-            <p>cs@seakun.id</p>
+            <a href="mailto:cs@seakun.id">
+              <p>cs@seakun.id</p>
+            </a>
           </div>
           <div class="flex gap-2">
             <img src="/images/footer/phone-icon.svg" alt="#" />
-            <p>+62821 2485 2227</p>
+            <a href="https://api.whatsapp.com/send?phone=6282124852227"
+              >+62821 2485 2227</a
+            >
           </div>
           <div class="flex gap-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />

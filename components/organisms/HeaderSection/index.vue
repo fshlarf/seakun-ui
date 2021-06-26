@@ -43,8 +43,9 @@
           <div class="mt-2">
             <Button
               variant="third"
-              label="Daftar sekarang"
+              label="Pesan Sekarang"
               class="font-bold my-2"
+              @click="onClickOrder"
             />
           </div>
         </div>
@@ -65,6 +66,16 @@ import Button from '~/components/atoms/Button.vue';
 export default {
   components: {
     Button,
+  },
+  methods: {
+    onClickOrder() {
+      const penggunaSection = document.getElementById('provider');
+      penggunaSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    },
   },
 };
 </script>

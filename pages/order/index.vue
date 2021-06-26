@@ -1,6 +1,6 @@
 <template>
-  <div class="container-payment max-w-2xl w-full mx-auto mt-20 px-4">
-    <div class="mt-10 pt-10 px-2">
+  <div class="container-payment max-w-2xl w-full mx-auto md:mt-10 px-4">
+    <div class="tn:pt-8 md:pt-10 px-2">
       <h2 class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
       <p class="md:text-lg tn:text-base mt-3">
         Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
@@ -274,6 +274,8 @@ export default {
                 price: data.grandTotal,
               },
             ];
+            this.price = data.grandTotal;
+            this.subcriptionDuration = data.totalMonth;
             this.longSubcribe = this.pricesList[0];
           }
         }
