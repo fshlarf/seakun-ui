@@ -7,12 +7,12 @@
         Cashback
       </h1>
     </div>
-    <div
-      class="flex tn:flex-wrap xl:flex-nowrap gap-5 items-center justify-around"
-    >
-      <CashbackCoupon class="lg:my-2" />
-      <CashbackCoupon class="lg:my-2" />
-      <CashbackCoupon class="lg:my-2" />
+    <div class="scroll-coupon overflow-x-auto">
+      <div class="flex gap-5 items-center">
+        <CashbackCoupon class="lg:my-2" />
+        <CashbackCoupon class="lg:my-2" />
+        <CashbackCoupon class="lg:my-2" />
+      </div>
     </div>
   </div>
 </template>
@@ -28,4 +28,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.scroll-coupon::-webkit-scrollbar {
+  display: none;
+}
+.scroll-coupon {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+</style>

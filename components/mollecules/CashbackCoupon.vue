@@ -2,7 +2,7 @@
   <div class="">
     <div class="flex gap-0 place-items-stretch items-stretch items-center">
       <div
-        class="coupon flex gap-4 justify-around items-center bg-primary w-80 py-4 px-4 rounded-l-xl"
+        class="coupon flex gap-4 justify-around items-center bg-primary w-80 xl:py-4 px-4 rounded-l-xl"
       >
         <div>
           <p class="font-bold text-secondary">CASHBACK</p>
@@ -14,7 +14,11 @@
         </div>
       </div>
       <div>
-        <img src="/images/sequrban/coupon-tail.svg" alt="" />
+        <img
+          class="h-full tn:w-full md:w-full object-fill"
+          src="/images/sequrban/coupon-tail.svg"
+          alt=""
+        />
       </div>
     </div>
   </div>
