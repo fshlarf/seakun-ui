@@ -318,9 +318,9 @@ export default {
         .get('https://seakun-packet-api-v2.herokuapp.com/sequrban')
         .then((res) => {
           this.dataQurban = res.data;
-          this.isLoading = false;
         })
         .catch((err) => console.log(err));
+      this.isLoading = false;
     },
     getDataDetailQurban(id) {
       this.isLoading = true;
@@ -355,6 +355,7 @@ export default {
       this.error_postal_code.isError = !this.dataParamOrder.postal_code;
     },
     clickSubmit() {
+      this.isLoadingSubmit = true;
       this.validateInput();
       if (
         this.dataParamOrder.fullname &&
@@ -370,7 +371,7 @@ export default {
       }
     },
     submitDataOrder() {
-      this.isLoadingSubmit = true;
+      console.log(this.isLoadingSubmit);
       this.dataParamOrder = {
         email: this.dataParamOrder.email,
         whatsapp: this.codePhone + this.dataParamOrder.whatsapp,
@@ -404,12 +405,13 @@ export default {
         )
         .then((res) => {
           this.toPaymentPage();
-          this.isLoadingSubmit = false;
           // this.executeApiMailSeakun(payload);
+          this.isLoadingSubmit = false;
         })
         .catch((err) => {
           console.log(err);
         });
+      console.log(this.isLoadingSubmit);
     },
     toPaymentPage() {
       this.$router.push(
