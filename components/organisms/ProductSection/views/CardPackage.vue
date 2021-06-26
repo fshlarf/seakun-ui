@@ -1,5 +1,14 @@
 <template>
-  <div class="card-package md:w-[416px] tn:mt-4 tn:px-1 md:px-3 md:mx-3 py-4 shadow-md !rounded-lg cursor-pointer">
+  <div
+    class="card-package md:w-[416px] tn:mt-4 tn:px-1 md:px-3 md:mx-3 py-4 shadow-md !rounded-lg cursor-pointer"
+  >
+    <div v-if="slug === 'gramedia'">
+      <div
+        class="preorder ribbon bg-secondary text-white text-xs p-2 w-16 rounded-r-xl rounded-tl-2xl"
+      >
+        Preorder
+      </div>
+    </div>
     <div class="w-1/4 mx-auto">
       <img
         class="w-full h-auto"
@@ -12,13 +21,23 @@
       <h1 class="tn:text-lg md:text-sm font-bold my-2">
         {{ packet.name }}
       </h1>
-      <p class="tn:text-2xl md:text-xl font-bold mt-6">{{ formatMoneyRupiah(packet.grandTotal) }}</p>
+      <p class="tn:text-2xl md:text-xl font-bold mt-6">
+        {{ formatMoneyRupiah(packet.grandTotal) }}
+      </p>
       <h1 class="text-sm mt-6">Keuntungan</h1>
 
       <div class="mt-3">
-        <div class="text-left mt-1 tn:px-3" v-for="(item, id) in packet.facilities" :key="id">
+        <div
+          class="text-left mt-1 tn:px-3"
+          v-for="(item, id) in packet.facilities"
+          :key="id"
+        >
           <div class="flex">
-            <img class="self-start pt-[2px]" src="/images/icons/checked.svg" alt="checked">
+            <img
+              class="self-start pt-[2px]"
+              src="/images/icons/checked.svg"
+              alt="checked"
+            />
             <p class="ml-2 text-sm">{{ item }}</p>
           </div>
         </div>
@@ -38,14 +57,32 @@ export default {
   },
   methods: {
     formatMoneyRupiah(num) {
-      return currencyFormat(num)
-    }
-  }
-}
+      return currencyFormat(num);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .card-package:hover {
-  border: 1px solid #8DCABE;
+  border: 1px solid #8dcabe;
+}
+
+.ribbon {
+  position: absolute;
+}
+.preorder {
+  margin-left: -22px;
+  margin-top: -20px;
+}
+.preorder::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid #295245;
+  border-top: 5px solid #295245;
+  border-bottom: 5px solid transparent;
 }
 </style>

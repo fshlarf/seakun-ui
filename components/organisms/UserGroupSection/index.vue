@@ -49,7 +49,7 @@
           v-for="(item, index) in shimmerInitialData"
           :key="index"
         >
-          <CardShimmer />
+          <CardShimmerVertical />
         </div>
       </div>
     </div>
@@ -62,6 +62,7 @@ import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import CardShimmer from '~/components/mollecules/CardShimmer';
+import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import axios from 'axios';
 
 export default {
@@ -137,6 +138,7 @@ export default {
     Button,
     ButtonChevron,
     CardShimmer,
+    CardShimmerVertical,
   },
   mounted() {
     this.getCustomersData('netflix');

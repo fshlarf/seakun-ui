@@ -14,16 +14,26 @@
           >See more</NuxtLink
         >
       </div>
-      <div
-        class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
-      >
-        <div class="" v-for="(product, id) in dataProductDigital" :key="id">
-          <ProductCard
-            :product="product"
-            class="md:w-full md:h-full"
-            @showPriceScheme="showPriceScheme"
-            @on-click-product="onClickProductDigital"
-          />
+      <div>
+        <div
+          v-if="!isLoadingProduct"
+          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
+        >
+          <div class="" v-for="(product, id) in dataProductDigital" :key="id">
+            <ProductCard
+              :product="product"
+              class="md:w-full md:h-full"
+              @showPriceScheme="showPriceScheme"
+              @on-click-product="onClickProductDigital"
+            />
+          </div>
+        </div>
+
+        <div v-else class="grid grid-cols-4 gap-4">
+          <CardShimmerVertical />
+          <CardShimmerVertical />
+          <CardShimmerVertical />
+          <CardShimmerVertical />
         </div>
       </div>
 
@@ -33,22 +43,31 @@
         </h1>
       </div>
 
-      <div
-        class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch items-center"
-      >
-        <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
-          <ProductCard
-            :product="product"
-            class="md:w-full md:h-full"
-            v-if="product.preview"
-            @on-click-product="onClickProductOnDemand"
-          />
+      <div>
+        <div
+          v-if="!isLoadingProduct"
+          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch items-center"
+        >
+          <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
+            <ProductCard
+              :product="product"
+              class="md:w-full md:h-full"
+              v-if="product.preview"
+              @on-click-product="onClickProductOnDemand"
+            />
+          </div>
+          <div class="">
+            <ProposeCard
+              :propose="dataProposeProvider"
+              class="md:w-full h-full"
+            />
+          </div>
         </div>
-        <div class="">
-          <ProposeCard
-            :propose="dataProposeProvider"
-            class="md:w-full h-full"
-          />
+        <div v-else class="grid grid-cols-4 gap-4">
+          <CardShimmerVertical />
+          <CardShimmerVertical />
+          <CardShimmerVertical />
+          <CardShimmerVertical />
         </div>
       </div>
     </div>
@@ -74,6 +93,7 @@
 
 <script>
 import ProductCard from '~/components/mollecules/ProductCard';
+import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
@@ -83,6 +103,7 @@ import ModalPackages from './views/ModalPackages.vue';
 export default {
   components: {
     ProductCard,
+    CardShimmerVertical,
     ProposeCard,
     ModalPriceScheme,
     ModalPackages,
@@ -91,6 +112,7 @@ export default {
     return {
       showModalScheme: false,
       providerList,
+      isLoadingProduct: false,
       dataDetailProvider: {
         list: {},
         slug: '',
@@ -161,6 +183,7 @@ export default {
       this.isShowModalPackages = false;
     },
     async fechProviders(type) {
+      this.isLoadingProduct = true;
       try {
         const { data } = await axios.get(
           `https://seakun-packet-api-v2.herokuapp.com/${type}`
@@ -173,6 +196,7 @@ export default {
       } catch (err) {
         console.log(err);
       }
+      this.isLoadingProduct = false;
     },
     onClickProductDigital(product) {
       this.isFetchingPacket = true;
