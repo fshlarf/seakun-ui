@@ -21,6 +21,7 @@
           <InputForm
             label="Tujuan Pembayaran"
             placeholder="Pilih Bank Tujuan"
+            class="mt-4"
             @click="showPaymentList('bankDirection')"
             :value="bankSeakun"
             v-model="bankSeakun"
@@ -42,18 +43,21 @@
         </div>
 
         <div>
-          <InputForm
-            label="Metode Pembayaran"
-            placeholder="Pilih Bank Yang Digunakan"
-            v-model="bankCustomer"
-            :value="bankCustomer"
-            @click="showPaymentList('paymentUsage')"
-            :error="error_bank_customer"
-          >
-            <template #iconLeft>
-              <DownArrowIcon />
-            </template>
-          </InputForm>
+          <div class="my-4">
+            <InputForm
+              label="Metode Pembayaran"
+              class="mt-4"
+              placeholder="Pilih Bank Yang Digunakan"
+              v-model="bankCustomer"
+              :value="bankCustomer"
+              @click="showPaymentList('paymentUsage')"
+              :error="error_bank_customer"
+            >
+              <template #iconLeft>
+                <DownArrowIcon />
+              </template>
+            </InputForm>
+          </div>
           <PopUpPayment
             :dataList="paymentDestinationList"
             :show="paymentUsage"
@@ -64,15 +68,17 @@
             "
           />
         </div>
+        <div class="my-4">
 
-        <InputForm
-          label="Nominal Pembayaran"
-          v-model="nominal"
-          :value="nominal"
-          class="text-grey-400"
-          :error="error_nominal"
-        >
+          <InputForm
+            label="Nominal Pembayaran"
+            v-model="nominal"
+            :value="nominal"
+            class="text-grey-400 mt-4"
+            :error="error_nominal"
+          >
         </InputForm>
+        </div>
 
         <InputForm
           label="Nama Pemilik Rekening"

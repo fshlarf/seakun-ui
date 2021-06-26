@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-12">
+  <div id="pengguna" class="container pt-12">
     <div class="tn:text-center md:text-left container-title">
       <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-4">
         Pengguna Seakun.id
