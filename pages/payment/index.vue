@@ -265,7 +265,6 @@ export default {
         whatsapp,
         holder,
       } = this.$router.history.current.query;
-      console.log()
       this.$router.push(
         `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder ? holder : ''}&nominal=${this.detailPayment?.data?.grandTotal}`
       );
