@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <div class="info">
       <div class="container">
         <div class="row">
@@ -21,41 +20,38 @@
               Jika kamu menjadi <b>User Host</b> di Seakun.id, kamu akan
               mendapatkan benefit dari Seakun.id yaitu sebagai berikut.
             </div>
-            <UserHostBenefits/>
+            <UserHostBenefits />
           </div>
         </div>
       </div>
     </div>
-    <UserHostFaq/>
-    <Footer />
+    <UserHostFaq />
   </div>
 </template>
 
 <script>
-import Header from '~/components/mollecules/Header';
-import Accordion from '~/components/atoms/Accordion';
+import Accordion from '~/components/atoms/AccordionNew';
 import AccordionContainer from '~/components/atoms/AccordionContainer';
 import Title from '~/components/atoms/Title';
-import Footer from '~/components/mollecules/Footer';
-import UserHostBenefits from './views/UserHostBenefits'
-import UserHostFaq from './views/UserHostFaq'
+import UserHostBenefits from './views/UserHostBenefits';
+import UserHostFaq from './views/UserHostFaq';
 
 export default {
+  name: 'UserHostInfoPage',
+  layout: 'new',
   components: {
     Accordion,
     AccordionContainer,
-    Footer,
-    Header,
     Title,
     UserHostBenefits,
-    UserHostFaq
+    UserHostFaq,
   },
 };
 </script>
 
 <style lang="scss">
 .info {
-  padding: 100px 0px 40px !important;
+  padding: 30px 40px 10px !important;
 
   .faq-title-container {
     display: flex;

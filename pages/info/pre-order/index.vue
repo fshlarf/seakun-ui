@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <div class="preorder">
       <div class="container">
         <div class="row">
@@ -106,23 +105,20 @@
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import AccordionContainer from '~/components/atoms/AccordionContainer';
-import Accordion from '~/components/atoms/Accordion';
-import Header from '~/components/mollecules/Header';
-import Footer from '~/components/mollecules/Footer';
+import Accordion from '~/components/atoms/AccordionNew';
 import Title from '~/components/atoms/Title';
 
 export default {
+  name: 'UserHostPOPage',
+  layout: 'new',
   components: {
     AccordionContainer,
     Accordion,
-    Header,
-    Footer,
     Title,
   },
 };
@@ -130,7 +126,7 @@ export default {
 
 <style lang="scss" scoped>
 .preorder {
-  padding: 100px 0px 40px !important;
+  padding: 30px 40px 10px !important;
 
   &__flow {
     display: flex;

@@ -373,6 +373,7 @@ export default {
           }
         );
         if (fetchPostUser.status == 200) {
+          console.log(payload);
           this.executeApiMailSeakun(payload);
           this.isShowLoading = false;
         } else {
@@ -394,9 +395,8 @@ export default {
         .then((res) => {
           this.isDisableBtn = false;
           // Redirect to thankyou page when successfully registration
-          // http://localhost:3000/payment-confirmation?provider=sequrban&packet_id=3&email=faishal%40gmail.com&whatsapp=6282277068293&holder=faishalarif&nominal=500000
           this.$router.push({
-            path: '/payment',
+            path: this.setPathToRedirect(newPayload),
             query: {
               type: 'digital',
               provider: this.provider,
@@ -413,6 +413,15 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    setPathToRedirect(payload) {
+      if (payload.userhost) {
+        return '/thankyou/user-host';
+      } else if (payload.ispreorder) {
+        return '/thankyou/pre-order';
+      } else {
+        return '/payment';
+      }
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
