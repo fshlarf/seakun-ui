@@ -24,7 +24,7 @@
         <div class="mt-4">
           <p class="text-lg text-gray-400">Bank Tujuan</p>
           <p class="font-bold text-lg mt-2">
-            {{ destinationBank }} a.n PT Seakun Indonesia
+            {{ destinationBank }} a.n PT. Seakun Global
           </p>
         </div>
         <div class="mt-4">

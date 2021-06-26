@@ -274,6 +274,8 @@ export default {
                 price: data.grandTotal,
               },
             ];
+            this.price = data.grandTotal;
+            this.subcriptionDuration = data.totalMonth;
             this.longSubcribe = this.pricesList[0];
           }
         }

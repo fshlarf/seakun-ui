@@ -20,7 +20,7 @@
             <div class="row">
               <div class="col box-title">Provider</div>
               <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ provider }}</div>
+              <div class="col box-item">{{ setNameProvider(provider) }}</div>
             </div>
             <div class="row mt-1">
               <div class="col box-title">Paket</div>
@@ -74,6 +74,37 @@ export default {
     this.getVouchersData();
   },
   methods: {
+    setNameProvider(provider) {
+      switch (provider) {
+        case 'netflix':
+          return 'Netflix';
+          break;
+        case 'spotify':
+          return 'Spotify';
+          break;
+        case 'youtube':
+          return 'Youtube';
+          break;
+        case 'gramedia':
+          return 'Gramedia';
+          break;
+        case 'microsoft':
+          return 'Microsoft 365';
+          break;
+        case 'microsoft365':
+          return 'Microsoft 365';
+          break;
+        case 'canva':
+          return 'Canva';
+          break;
+        case 'disney-hotstar':
+          return 'Disney+ Hotstar';
+          break;
+        case 'nintendo':
+          return 'Nintendo Switch';
+          break;
+      }
+    },
     setNumberMember(provider) {
       return provider.toLowerCase() === 'canva' ? '4' : '5';
     },
@@ -83,10 +114,10 @@ export default {
         packet_id,
         voucher,
       } = this.$router.history.current.query;
-      this.provider = provider;
+      this.provider = provider === 'microsoft' ? 'microsoft365' : provider;
       axios
         .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
+          `https://seakun-packet-api-v2.herokuapp.com/${this.provider.toLowerCase()}/${packet_id}`
         )
         .then((res) => {
           const { data, status } = res;
