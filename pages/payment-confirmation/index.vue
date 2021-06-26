@@ -28,6 +28,7 @@
               @click="showPaymentList('paymentUsage')"
               @keyup="paymentUsage = false"
               :error="error_bank_customer"
+              disbaled
             >
               <template #iconLeft>
                 <DownArrowIcon />

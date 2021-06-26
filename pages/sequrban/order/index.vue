@@ -166,7 +166,12 @@
               id="nama-lengkap"
             /><span style="vertical-align: middle" class="text-sm"
               >Menyetujui aturan yang dibuat Seakun</span
-            ><span class="text-primary text-sm font-bold"> Lihat detail</span>
+            ><span
+              class="text-primary text-sm font-bold cursor-pointer"
+              @click="toTermOfUsePage"
+            >
+              Lihat detail</span
+            >
           </label>
         </div>
         <div class="h-1 w-full bg-gray-300 my-2"></div>
@@ -434,6 +439,9 @@ export default {
     },
     goBackToSequrbanPage() {
       this.$router.push('/sequrban');
+    },
+    toTermOfUsePage() {
+      this.$router.push('/terms-of-use');
     },
     setLocalStorage(id) {
       const input = document.getElementById(id);

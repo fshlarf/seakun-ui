@@ -4,9 +4,14 @@
   >
     <div class="md:h-64 lg:h-56 xl:h-48">
       <img
-        :src="`/images/product/${product.slug}${
-          product.slug === 'disney-hotstar' ? '.jpeg' : '.svg'
-        }`"
+        v-if="product.slug === 'disney-hotstar'"
+        :src="`/images/product/${product.slug}.svg`"
+        alt="image not found"
+        class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none tn:w-auto md:w-full tn:h-32 md:h-full"
+      />
+      <img
+        v-else
+        :src="`/images/product/${product.slug}.svg`"
         alt="image not found"
         class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none md:w-full md:h-auto"
       />

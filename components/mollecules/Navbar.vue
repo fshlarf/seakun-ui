@@ -139,6 +139,7 @@ export default {
           inline: 'nearest',
         });
       }
+      this.open = false;
     },
   },
 };

@@ -73,7 +73,7 @@
         :unitWeight="detailPayment.data.unitWeight"
         :weight="detailPayment.data.weight"
         :downPayment="detailPayment.data.downPayment"
-        :bulkingPrice="detailPayment.data.bulkingPrice"
+        :totalCost="detailPayment.data.totalCost"
       />
 
       <ProductHighLight
