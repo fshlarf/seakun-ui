@@ -4,7 +4,7 @@
       class="container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
     >
       <div class="max-w-md md:row-span-3 lg:col-span-2 md:pr-10 xl:pr-16">
-        <h1 class="font-bold tn:text-lg md:text-2xl md:mb-2 lg:mb-4 xl:mb-8">
+        <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">
           Tentang kami
         </h1>
         <p class="tn:text-sm md:text-base my-2 space-y-1">
@@ -19,10 +19,10 @@
         </div>
       </div>
       <div class="tn:my-4 md:mt-0">
-        <h1 class="font-bold tn:text-lg md:text-2xl md:mb-2 lg:mb-4 xl:mb-8">
+        <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">
           Seakun.id
         </h1>
-        <ul class="tn:text-sm md:text-base my-2 space-y-2 xl:space-y-4">
+        <ul class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <li><a class="hover:no-underline" href="#">Tentang Kami</a></li>
           <li><a class="hover:no-underline" href="#">Cara Pesan</a></li>
           <li>
@@ -41,10 +41,10 @@
         </ul>
       </div>
       <div class="tn:my-4 lg:mt-0">
-        <h1 class="font-bold tn:text-lg md:text-2xl md:mb-2 lg:mb-4 xl:mb-8">
+        <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">
           Produk
         </h1>
-        <ul class="tn:text-sm md:text-base my-2 space-y-2 xl:space-y-4">
+        <ul class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <li><a class="hover:no-underline" href="#">Produk Digital</a></li>
           <li><a class="hover:no-underline" href="#">Produk on Demand</a></li>
           <li><a class="hover:no-underline" href="#">Program Patungan</a></li>
@@ -55,10 +55,10 @@
         </ul>
       </div>
       <div class="tn:my-4 lg:mt-0">
-        <h1 class="font-bold tn:text-lg md:text-2xl md:mb-2 lg:mb-4 xl:mb-8">
+        <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">
           Reach Us
         </h1>
-        <div class="tn:text-sm md:text-base my-2 space-y-2 xl:space-y-4">
+        <div class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <div class="flex gap-2">
             <img src="/images/footer/email-icon.svg" alt="#" />
             <p>cs@seakun.id</p>

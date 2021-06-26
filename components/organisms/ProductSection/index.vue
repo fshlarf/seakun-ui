@@ -8,7 +8,9 @@
           Berlangganan produk digital
         </h1>
         <h1 class="text-2xl md:hidden font-bold">Layanan digital</h1>
-        <NuxtLink to="/" class="text-sm md:text-base text-primary font-bold"
+        <NuxtLink
+          to="/"
+          class="hidden text-sm md:text-base text-primary font-bold"
           >See more</NuxtLink
         >
       </div>
@@ -60,7 +62,7 @@ import ProductCard from '~/components/mollecules/ProductCard';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   data() {
@@ -79,7 +81,7 @@ export default {
           name: 'Sequrban',
           slug: 'sequrban',
           img: '/images/product/sekurban.svg',
-        icon: '/images/icons/sekurban.svg',
+          icon: '/images/icons/sekurban.svg',
           isActive: true,
           isNew: true,
           preview:
@@ -119,7 +121,7 @@ export default {
     ModalPriceScheme,
   },
   mounted() {
-    this.fechProviders('product-digital')
+    this.fechProviders('product-digital');
   },
   methods: {
     showPriceScheme(param1, param2) {
@@ -135,16 +137,18 @@ export default {
     },
     async fechProviders(type) {
       try {
-        const { data } = await axios.get(`https://seakun-packet-api-v2.herokuapp.com/${type}`)
-        for(let i = 1; i <= 8; i++) {
-          data.forEach(element => {
-            if (element.id === i) this.dataProductDigital.push(element)
+        const { data } = await axios.get(
+          `https://seakun-packet-api-v2.herokuapp.com/${type}`
+        );
+        for (let i = 1; i <= 8; i++) {
+          data.forEach((element) => {
+            if (element.id === i) this.dataProductDigital.push(element);
           });
         }
       } catch (err) {
         console.log(err);
       }
-    }
+    },
   },
 };
 </script>
