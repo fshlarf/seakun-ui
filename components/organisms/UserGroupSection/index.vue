@@ -201,7 +201,7 @@ export default {
   background-image: linear-gradient(to right, #ffffff, #d4f1ec);
 }
 .container-title {
-  width: 1090px !important;
+  max-width: 1090px !important;
   margin: 0 auto;
 }
 .container {
