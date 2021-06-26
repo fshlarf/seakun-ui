@@ -185,8 +185,6 @@ export default {
       this.dataDetailGroup = netArr;
     },
     toCustomerPage() {
-      console.log(this);
-      console.log(this.isLoading);
       this.$router.push(`/info/customers?provider=${this.highlight}`);
     },
   },
