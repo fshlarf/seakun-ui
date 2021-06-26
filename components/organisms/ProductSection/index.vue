@@ -8,7 +8,9 @@
           Berlangganan produk digital
         </h1>
         <h1 class="text-2xl md:hidden font-bold">Layanan digital</h1>
-        <NuxtLink to="/" class="text-sm md:text-base text-primary font-bold"
+        <NuxtLink
+          to="/"
+          class="hidden text-sm md:text-base text-primary font-bold"
           >See more</NuxtLink
         >
       </div>
