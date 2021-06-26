@@ -13,6 +13,14 @@
       </div>
     </template>
 
+    <div v-if="slug === 'gramedia'" class="ml-3 mb-2">
+      <p class="tn:text-xs md:text-sm">
+        <span class="font-bold">Pre-order:</span> Akun akan dibuatkan ketika
+        anggota member dalam satu grup sudah full (berisi 2 orang). Member
+        melakukan pembayaran setelah akun dibuat.
+      </p>
+    </div>
+
     <div
       v-if="packages.length > 0"
       class="flex tn:flex-col md:flex-row md:justify-between"

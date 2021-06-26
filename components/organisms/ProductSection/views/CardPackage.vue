@@ -2,6 +2,13 @@
   <div
     class="card-package md:w-[416px] tn:mt-4 tn:px-1 md:px-3 md:mx-3 py-4 shadow-md !rounded-lg cursor-pointer"
   >
+    <div v-if="slug === 'gramedia'" class="relative">
+      <div
+        class="preorder ribbon bg-secondary text-white text-xs p-2 w-16 rounded-r-xl rounded-tl-2xl"
+      >
+        Preorder
+      </div>
+    </div>
     <div class="w-1/4 mx-auto">
       <img
         class="w-full h-auto"
@@ -71,5 +78,30 @@ export default {
 <style lang="scss" scoped>
 .card-package:hover {
   border: 1px solid #8dcabe;
+}
+
+.ribbon {
+  position: absolute;
+}
+.preorder {
+  margin-left: -22px;
+  margin-top: -20px;
+}
+.preorder::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid #295245;
+  border-top: 5px solid #295245;
+  border-bottom: 5px solid transparent;
+}
+
+@media (max-width: 400px) {
+  .preorder {
+    margin-left: -15px;
+    margin-top: -20px;
+  }
 }
 </style>
