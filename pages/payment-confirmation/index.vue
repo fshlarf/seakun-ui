@@ -297,6 +297,7 @@ export default {
 
       const formData = new FormData();
 
+      formData.append('order_id', 'xxxx');
       formData.append('from', this.bankCustomer);
       formData.append('to', this.bankSeakun);
       formData.append('user_holder', this.holder);
