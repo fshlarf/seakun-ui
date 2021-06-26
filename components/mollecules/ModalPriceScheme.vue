@@ -5,7 +5,10 @@
         <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">
           Skema Harga {{ dataScheme.name }}
         </h1>
-        <p class="tn:text-xs md:text-sm text-primary font-semibold">
+        <p
+          class="tn:text-xs md:text-sm text-primary font-semibold cursor-pointer"
+          @click="toSchemePage"
+        >
           Lihat semua
         </p>
       </div>
@@ -83,6 +86,9 @@ export default {
   methods: {
     closeModal() {
       this.$emit('closeModal');
+    },
+    toSchemePage() {
+      this.$emit('toSchemePage');
     },
   },
 };

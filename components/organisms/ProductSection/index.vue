@@ -67,6 +67,7 @@
       :show-modal="showModalScheme"
       :data-scheme="dataDetailProvider"
       @closeModal="closeModalScheme"
+      @toSchemePage="toSchemePage"
     />
   </div>
 </template>
@@ -203,6 +204,9 @@ export default {
       this.$router.push(
         `/order?provider=${this.choosedSlugProvider}&packet_id=${packet.id}`
       );
+    },
+    toSchemePage() {
+      this.$router.push('/info/scheme-of-price');
     },
   },
 };
