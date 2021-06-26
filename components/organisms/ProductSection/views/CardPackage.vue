@@ -24,7 +24,8 @@
       <p class="tn:text-2xl md:text-xl font-bold mt-6">
         {{ formatMoneyRupiah(packet.grandTotal) }}
         <span class="text-sm text-primary"
-          >/ {{ packet.paymentType === 'month' ? 'bulan' : 'tahun' }}</span
+          >/ {{ setMonthPacket(packet) }}
+          {{ packet.paymentType === 'month' ? 'bulan' : 'tahun' }}</span
         >
       </p>
       <h1 class="text-sm mt-6">Keuntungan</h1>
@@ -70,6 +71,11 @@ export default {
   methods: {
     formatMoneyRupiah(num) {
       return currencyFormat(num);
+    },
+    setMonthPacket(packet) {
+      return packet.paymentType === 'month' && parseInt(packet.totalMonth) > 1
+        ? packet.totalMonth
+        : '';
     },
   },
 };
