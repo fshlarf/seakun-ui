@@ -199,7 +199,7 @@ export default {
     },
     choosePacket(packet) {
       this.$router.push(
-        `/order?provider=${this.choosedProvider}&packet_id=${packet.id}`
+        `/order?provider=${this.choosedSlugProvider}&packet_id=${packet.id}`
       );
     },
   },

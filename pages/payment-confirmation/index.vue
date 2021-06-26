@@ -299,7 +299,9 @@ export default {
 
       axios
         .post(
-          'https://seakun-api.herokuapp.com/confirm-payment/on-demand',
+          `https://seakun-api.herokuapp.com/confirm-payment/${
+            this.provider.toLowerCase() === 'sequrban' ? 'on-demand' : 'digital'
+          }`,
           formData,
           {
             headers: { 'Content-Type': 'multipart/form-data' },
