@@ -2,7 +2,7 @@
   <div>
     <div class="payment-illustration flex justify-center w-full">
       <img
-        class="payment-illustration__img w-9/12"
+        class="w-9/12 mx-auto"
         src="/images/thank-you.png"
         alt="Image not found"
       />
