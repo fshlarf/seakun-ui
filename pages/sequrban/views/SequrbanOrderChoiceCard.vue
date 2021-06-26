@@ -5,11 +5,20 @@
         <div v-if="type === 'chosen'">
           <div class="flex gap-5 items-center">
             <div class="w-1/5 p-2">
-              <img
-                src="/images/sequrban/cow variant/type-c.svg"
-                alt="Image not found"
-                class="w-full"
-              />
+              <div v-if="variant.images && variant.images.length > 0">
+                <img
+                  :src="`${variant.images[0]}`"
+                  alt="Image not found"
+                  class="w-full"
+                />
+              </div>
+              <div v-else>
+                <img
+                  src="/images/sequrban/cow variant/type-c.svg"
+                  alt="Images not found"
+                  class="w-full"
+                />
+              </div>
             </div>
             <div class="space-y-1">
               <p class="tn:text-sm md:text-base font-bold">
