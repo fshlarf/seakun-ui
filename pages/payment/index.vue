@@ -163,6 +163,8 @@ export default {
       packetId: null,
       total: null,
       showSnackBar: false,
+      type:'',
+      duration:'',
       vouchersData: [],
       detailPayment: {
         loading: false,
@@ -185,6 +187,8 @@ export default {
         provider,
         packet_id,
         voucher,
+        type,
+        duration,
       } = this.$router.history.current.query;
       this.detailPayment = {
         ...this.detailPayment,
@@ -202,6 +206,22 @@ export default {
               data,
               loading: false,
             };
+
+            if(type == 'digital'){
+              if(data.prices?.length > 0) {
+                const indexDuration = data.prices?.findIndex(price => price.month == duration)
+                if(indexDuration >= 0 ){
+                  this.detailPayment = {
+                    ...this.detailPayment,
+                    data : {
+                      ...this.detailPayment.data,
+                      grandTotal : data.prices[indexDuration]?.price,
+                      totalMonth : data.prices[indexDuration]?.month
+                    }
+                  }
+                }
+              }
+            }
             this.packet = data.name;
             this.packetId = data.id;
             if (voucher) {
@@ -245,9 +265,9 @@ export default {
         whatsapp,
         holder,
       } = this.$router.history.current.query;
-
+      console.log()
       this.$router.push(
-        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder}`
+        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${holder ? holder : ''}&nominal=${this.detailPayment?.data?.grandTotal}`
       );
     },
   },

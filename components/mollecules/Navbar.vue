@@ -73,7 +73,7 @@ export default {
         },
         {
           id: 2,
-          label: 'Tipe user',
+          label: 'Pengguna',
           link: '',
         },
         {
@@ -108,8 +108,8 @@ export default {
         });
       }
       if (id === 2) {
-        const userTypeSection = document.getElementById('userType');
-        userTypeSection.scrollIntoView({
+        const penggunaSection = document.getElementById('pengguna');
+        penggunaSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'nearest',
