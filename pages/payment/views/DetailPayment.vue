@@ -173,7 +173,7 @@ export default {
       navigator.clipboard.writeText(value).then(
         () => {
           this.$refs.snackbar.showSnackbar({
-            message: `${name} Berhasil Dicopy`,
+            message: `${name} berhasil dicopy`,
             className: '',
           });
         },
