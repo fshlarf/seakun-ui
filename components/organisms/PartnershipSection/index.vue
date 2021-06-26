@@ -26,7 +26,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="gradient-sm md:bg-white tn:h-52 md:h-32 lg:h-36 xl:h-44"></div> -->
     <div
       class="tn:hidden md:block text-center z-10 px-7 md:mt-28 lg:mt-36 xl:mt-40"
     >
