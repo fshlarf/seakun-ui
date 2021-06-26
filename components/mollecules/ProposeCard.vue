@@ -14,11 +14,13 @@
       </div>
     </div>
     <div class="tn:px-2 md:px-4">
-      <Button
-        variant="secondary"
-        label="Ajukan permintaan"
-        class="w-full h-full my-2 font-bold text-sm md:text-base"
-      />
+      <a type="button" href="mailto:partnership@seakun.id">
+        <Button
+          variant="secondary"
+          label="Ajukan permintaan"
+          class="w-full h-full my-2 font-bold text-sm md:text-base"
+        />
+      </a>
     </div>
   </div>
 </template>
