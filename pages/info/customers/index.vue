@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <NavbarBlank />
     <div class="customer container">
       <Title title="Group Berlangganan" />
       <div v-if="isLoading">
@@ -70,7 +70,7 @@
 
 <script>
 import axios from 'axios';
-import Header from '~/components/mollecules/Header';
+import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import CardShimmer from '~/components/mollecules/CardShimmer';
 import Footer from '~/components/mollecules/Footer';
 import CustomersGroupCard from '~/components/mollecules/CustomersGroupCard';
@@ -78,7 +78,7 @@ import Title from '~/components/atoms/Title';
 
 export default {
   components: {
-    Header,
+    NavbarBlank,
     Footer,
     CardShimmer,
     CustomersGroupCard,

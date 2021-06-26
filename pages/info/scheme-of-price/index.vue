@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <NavbarBlank />
     <div class="scheme-price">
       <div class="container">
         <Title title="Bagaimana Seakun.id mengatur harga?" />
@@ -66,14 +66,14 @@
 </template>
 
 <script>
-import Header from '~/components/mollecules/Header';
+import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Footer from '~/components/mollecules/Footer';
 import Title from '~/components/atoms/Title';
 import { providerList } from './provider-list';
 
 export default {
   components: {
-    Header,
+    NavbarBlank,
     Footer,
     Title,
   },

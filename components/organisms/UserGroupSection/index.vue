@@ -37,7 +37,7 @@
           :group="group"
           class="my-2 w-full h-full flex-none"
         />
-        <ButtonChevron class="self-center" />
+        <ButtonChevron class="self-center" @click-chevron="toCustomerPage" />
       </div>
 
       <div
@@ -183,6 +183,9 @@ export default {
         .sort()
         .reverse();
       this.dataDetailGroup = netArr;
+    },
+    toCustomerPage() {
+      this.$router.push(`/info/customers?provider=${this.highlight}`);
     },
   },
 };
