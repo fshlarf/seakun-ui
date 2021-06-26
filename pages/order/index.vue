@@ -102,9 +102,8 @@
         @click="submitOrder"
         class="w-full bg-green-seakun text-white py-2 mt-8"
         label="Konfirmasi pesanan"
+        :is-loading="isShowLoading"
       />
-
-      <Loading v-if="isShowLoading" />
 
       <ModalPackages
         :is-show="isShowModalPackages"
@@ -135,7 +134,6 @@ import {
   capitalizeFirstLetter,
   fullDate,
 } from '~/helpers/word-transformation.js';
-import Loading from '~/components/mollecules/Loading.vue';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
 
 export default {
@@ -150,7 +148,6 @@ export default {
     DropdownCodeNumber,
     DropDownPricesListSubcribe,
     Voucher,
-    Loading,
     ModalPackages,
   },
   data: () => ({
