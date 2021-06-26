@@ -264,7 +264,7 @@ export default {
           } else {
             this.pricesList = [
               {
-                month: data.month,
+                month: data.totalMonth,
                 name: `${data.totalMonth} bulan ( ${currencyFormat(
                   data.grandTotal
                 )} )`,
