@@ -23,12 +23,15 @@
       </h1>
       <p class="tn:text-2xl md:text-xl font-bold mt-6">
         {{ formatMoneyRupiah(packet.grandTotal) }}
+        <span class="text-sm text-primary"
+          >/ {{ packet.paymentType === 'month' ? 'bulan' : 'tahun' }}</span
+        >
       </p>
       <h1 class="text-sm mt-6">Keuntungan</h1>
 
-      <div class="mt-3">
+      <div class="mt-3 text-left">
         <div
-          class="text-left mt-1 tn:px-3"
+          class="mt-1 tn:px-3"
           v-for="(item, id) in packet.facilities"
           :key="id"
         >
@@ -40,6 +43,15 @@
             />
             <p class="ml-2 text-sm">{{ item }}</p>
           </div>
+        </div>
+
+        <div class="mt-3">
+          <nuxt-link
+            v-if="packet.isPreOrder"
+            to="/info/pre-order"
+            class="text-xs text-primary px-2"
+            >Lihat Ketentuan Pre order Selengkapnya</nuxt-link
+          >
         </div>
       </div>
     </div>
