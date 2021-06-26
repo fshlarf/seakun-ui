@@ -108,10 +108,10 @@
 
       <ModalPackages
         :is-show="isShowModalPackages"
-        :provider="choosedProvider"
+        :provider="setNameProvider"
         @on-close="onCloseModalPackages"
         :packages="dataPackages"
-        :slug="choosedSlugProvider"
+        :slug="provider"
         @choose-packet="choosePacket"
         :is-loading="isFetchingPacket"
       />
@@ -206,12 +206,33 @@ export default {
     }
   },
   computed: {
-    choosedProvider() {
-      return this.provider;
-    },
-    choosedSlugProvider() {
-      const { slug } = this.$router.history.current.query;
-      return slug;
+    setNameProvider() {
+      switch (this.provider) {
+        case 'netflix':
+          return 'Netflix';
+          break;
+        case 'spotify':
+          return 'Spotify';
+          break;
+        case 'youtube':
+          return 'Youtube';
+          break;
+        case 'gramedia':
+          return 'Gramedia';
+          break;
+        case 'microsoft':
+          return 'Microsoft 365';
+          break;
+        case 'canva':
+          return 'Canva';
+          break;
+        case 'disney-hotstar':
+          return 'Disney+ Hotstar';
+          break;
+        case 'nintendo':
+          return 'Nintendo Switch';
+          break;
+      }
     },
   },
   methods: {
@@ -222,10 +243,13 @@ export default {
         loading: true,
       };
       try {
+        const provider =
+          this.provider === 'microsoft'
+            ? 'microsoft365'
+            : this.provider.toLowerCase();
+
         const fetchGetDetailOrder = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${this.provider.toLowerCase()}/${
-            this.packageId
-          }`
+          `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packageId}`
         );
         if (fetchGetDetailOrder.status == 200) {
           const { data } = fetchGetDetailOrder;
@@ -241,7 +265,6 @@ export default {
             }));
             this.longSubcribe = this.pricesList[0];
           } else {
-            console.log(data.totalMonth);
             this.pricesList = [
               {
                 month: data.month,
@@ -373,7 +396,6 @@ export default {
           }
         );
         if (fetchPostUser.status == 200) {
-          console.log(payload);
           this.executeApiMailSeakun(payload);
           this.isShowLoading = false;
         } else {
@@ -430,16 +452,19 @@ export default {
       this.isFetchingPacket = true;
       this.dataPackages = [];
       this.isShowModalPackages = true;
-      this.choosedSlugProvider = product.slug;
       this.fetchPackages(product.slug);
     },
     async fetchPackages() {
+      const provider =
+        this.provider === 'microsoft'
+          ? 'microsoft365'
+          : this.provider.toLowerCase();
+
       try {
         const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${this.provider.toLowerCase()}`
+          `https://seakun-packet-api-v2.herokuapp.com/${provider}`
         );
         if (data) {
-          console.log(data);
           this.dataPackages = data;
         }
       } catch (err) {
@@ -448,7 +473,9 @@ export default {
       this.isFetchingPacket = false;
     },
     choosePacket(packet) {
-      console.log(packet);
+      this.packageId = packet.id;
+      this.getOrderDetail();
+      this.isShowModalPackages = false;
     },
   },
 };
