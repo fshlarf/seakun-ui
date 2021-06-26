@@ -23,7 +23,9 @@
           @click="clickCopyHandler('Nominal', detailPayment.data.grandTotal)"
           v-html="formatCodePayment(detailPayment.data.grandTotal)"
         ></p>
-        <CopyIcon />
+        <CopyIcon
+          @click="clickCopyHandler('Nominal', detailPayment.data.downPayment)"
+        />
       </div>
       <p class="payment-detail__alert my-3">
         Pastikan nominal sesuai hingga 3 digit terakhir
@@ -50,7 +52,10 @@
             class="mt-4 payment-options__norek text-sm font-bold"
             @click="clickCopyHandler('Rekening', '1150046427383')"
           >
-            {{ payment.accountNumber }} <span class="ml-1"> <CopyIcon /></span>
+            {{ payment.accountNumber }}
+            <span class="ml-1">
+              <CopyIcon @click="clickCopyHandler('Rekening', '1150046427383')"
+            /></span>
           </p>
           <p class="my-1 payment-options__account-name text-sm">
             {{ payment.accountName }}
@@ -74,7 +79,10 @@
             class="mt-4 payment-options__norek text-sm font-bold"
             @click="clickCopyHandler('Rekening', '1150046427383')"
           >
-            {{ payment.accountNumber }} <span class="ml-1"> <CopyIcon /></span>
+            {{ payment.accountNumber }}
+            <span class="ml-1">
+              <CopyIcon @click="clickCopyHandler('Rekening', '1150046427383')"
+            /></span>
           </p>
           <p class="my-1 payment-options__account-name text-sm">
             {{ payment.accountName }}

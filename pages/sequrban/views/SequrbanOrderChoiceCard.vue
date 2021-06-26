@@ -28,7 +28,7 @@
                 Tipe <span> {{ variant.packageCode }} </span>
               </p>
               <p class="tn:text-sm md:text-base">
-                {{ toRupiah(variant.jointPrice) }} x (1 paket)
+                {{ toRupiah(variant.totalCost) }} x (1 paket)
               </p>
             </div>
           </div>
@@ -58,7 +58,7 @@
                 <span class="text-secondary">~{{ variant.weight }} KG</span>
               </p>
               <p class="md:text-xl font-extrabold">
-                {{ toRupiah(variant.jointPrice) }}
+                {{ toRupiah(variant.totalCost) }}
               </p>
               <p class="text-xs">
                 Harga patungan dari harga
