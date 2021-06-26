@@ -2,7 +2,7 @@
   <div
     class="card-package md:w-[416px] tn:mt-4 tn:px-1 md:px-3 md:mx-3 py-4 shadow-md !rounded-lg cursor-pointer"
   >
-    <div v-if="slug === 'gramedia'" class="relative">
+    <div v-if="packet.isPreOrder" class="relative">
       <div
         class="preorder ribbon bg-secondary text-white text-xs p-2 w-16 rounded-r-xl rounded-tl-2xl"
       >
