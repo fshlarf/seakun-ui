@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    bo-ui:
+        container_name: seakun-ui
+        build:
+            context: ${BO_UI_CONTEXT}
+            dockerfile: ${BO_UI_DOCKERFILE}
+        volumes:
+            - ${BO_UI_VHOST}:/etc/nginx/sites-available:ro
+        ports:
+            - '${BO_UI_PORT}:80'

@@ -1,7 +1,7 @@
 <template>
   <div class="pt-20">
     <div
-      class="relative z-0 partner-bg gradient tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-96 md:h-52 lg:h-60 xl:h-80"
+      class="relative z-0 partner-bg gradient tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-[620px] md:h-52 lg:h-60 xl:h-80"
     >
       <div class="container text-white xl:mt-12 xl:mb-4">
         <h2 class="tn:text-xl md:text-2xl font-bold tn:my-2 md:my-2 xl:mb-4">
@@ -26,15 +26,29 @@
         </div>
       </div>
     </div>
-    <div class="gradient-sm md:bg-white tn:h-52 md:h-32 lg:h-36 xl:h-44"></div>
     <div
-      class="gradient-sm text-center md:bg-white container z-10 px-7 tn:h-10 md:h-auto"
+      class="tn:hidden md:block text-center z-10 px-7 md:mt-28 lg:mt-36 xl:mt-40"
     >
-      <Button
-        class="mx-auto btn-partner"
-        variant="secondary"
-        label="Ajukan Kerja Usaha saya dengan Seakun"
-      />
+      <a type="button" href="mailto:partnership@seakun.id">
+        <Button
+          class="mx-auto btn-partner"
+          variant="secondary"
+          label="Ajukan Kerja Usaha saya dengan Seakun"
+        />
+      </a>
+    </div>
+    <div
+      class="relative flex justify-center z-0 tn:-mt-6 tn:block md:hidden text-center px-7 mb-16"
+    >
+      <div class="tn:block md:hidden absolute mx-auto z-10 top-0">
+        <a type="button" href="mailto:partnership@seakun.id">
+          <Button
+            class="mx-auto btn-partner"
+            variant="secondary"
+            label="Ajukan permintaan"
+          />
+        </a>
+      </div>
     </div>
   </div>
 </template>
