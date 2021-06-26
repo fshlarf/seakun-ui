@@ -18,11 +18,40 @@
       </div>
       <div class="form-confirmation mt-7">
         <div>
+          <div class="my-4">
+            <InputForm
+              label="Sumber Transfer (Bank / Ewallet)"
+              class="mt-4"
+              placeholder="Pilih Bank yang digunakan, atau ketik bila tidak ada pilihan"
+              v-model="bankCustomer"
+              :value="bankCustomer"
+              @click="showPaymentList('paymentUsage')"
+              @keyup="paymentUsage = false"
+              :error="error_bank_customer"
+            >
+              <template #iconLeft>
+                <DownArrowIcon />
+              </template>
+            </InputForm>
+          </div>
+          <PopUpPayment
+            :dataList="paymentDestinationList"
+            :show="paymentUsage"
+            @onClickItem="
+              (value) => {
+                onClickItemBank('paymentUsage', value);
+              }
+            "
+          />
+        </div>
+
+        <div>
           <InputForm
             label="Tujuan Pembayaran"
-            placeholder="Pilih Bank Tujuan"
+            placeholder="Pilih Bank tujuan milik Seakun.id"
             class="mt-4"
             @click="showPaymentList('bankDirection')"
+            @keyup="bankDirection = false"
             :value="bankSeakun"
             v-model="bankSeakun"
             :error="error_bank_seakun"
@@ -42,32 +71,6 @@
           />
         </div>
 
-        <div>
-          <div class="my-4">
-            <InputForm
-              label="Metode Pembayaran"
-              class="mt-4"
-              placeholder="Pilih Bank Yang Digunakan"
-              v-model="bankCustomer"
-              :value="bankCustomer"
-              @click="showPaymentList('paymentUsage')"
-              :error="error_bank_customer"
-            >
-              <template #iconLeft>
-                <DownArrowIcon />
-              </template>
-            </InputForm>
-          </div>
-          <PopUpPayment
-            :dataList="paymentDestinationList"
-            :show="paymentUsage"
-            @onClickItem="
-              (value) => {
-                onClickItemBank('paymentUsage', value);
-              }
-            "
-          />
-        </div>
         <div class="my-4">
           <InputForm
             label="Nominal Pembayaran"
@@ -75,8 +78,7 @@
             :value="nominal"
             class="text-grey-400 mt-4"
             :error="error_nominal"
-          >
-          </InputForm>
+          />
         </div>
 
         <InputForm
@@ -85,8 +87,7 @@
           v-model="holder"
           :value="holder"
           :error="error_holder"
-        >
-        </InputForm>
+        />
         <div class="my-4">
           <p>Tanggal Pembayaran</p>
           <DatePicker
@@ -173,19 +174,23 @@ export default {
           name: 'Mandiri',
           value: 'mandiri',
         },
-        {
-          name: 'BRI',
-          value: 'bri',
-        },
       ],
-      virtiualPayment: [
+      ewallet: [
+        {
+          name: 'GoPay',
+          value: 'gopay',
+        },
         {
           name: 'OVO',
           value: 'ovo',
         },
         {
-          name: 'GoPay',
-          value: 'gopay',
+          name: 'DANA',
+          value: 'dana',
+        },
+        {
+          name: 'LinkAja',
+          value: 'linkaja',
         },
       ],
     },
