@@ -1,72 +1,67 @@
 <template>
-  <div>
-    <Header />
-    <div class="payment">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="payment__img">
-              <img src="/images/thank-you.png" alt="Image not found" />
-            </div>
-            <h3 class="payment__header-h3">Thank You!</h3>
-            <p>
-              Terima kasih telah melakukan pendaftaran.
-              <br />Paket ini adalah paket Pre-Order dimana akun akan dibuat
-              setelah member dalam satu grup telah terkumpul
-              {{ setNumberMember(provider) }} orang.
-            </p>
-            <div class="box">
-              <div class="row">
-                <div class="col box-title">Provider</div>
-                <div class="col col-lg-1">:</div>
-                <div class="col box-item">{{ setProviderName(provider) }}</div>
-              </div>
-              <div class="row mt-1">
-                <div class="col box-title">Paket</div>
-                <div class="col col-lg-1">:</div>
-                <div class="col box-item">{{ packet }}</div>
-              </div>
-              <div class="row mt-1">
-                <div class="col box-title">Harga</div>
-                <div class="col col-lg-1">:</div>
-                <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
-              </div>
-            </div>
-            <p>
-              <a href="/info/pre-order" target="_blank">
-                <i>Baca ketentuan Pre-Order selengkapnya</i>
-              </a>
-            </p>
-            <p>
-              Pembayaran akan dilakukan setelah satu grup full dan akun berhasil
-              dibuat.
-              <br />
-              <br />
-              Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi oleh Admin
-              melalui Whatsapp untuk proses selanjutnya.
-              <br />Hubungi Admin
-              <a href="https://api.whatsapp.com/send?phone=6282124852227"
-                >+6282124852227</a
-              >
-            </p>
+  <div class="payment">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="payment__img">
+            <img src="/images/thank-you.png" alt="Image not found" />
           </div>
+          <h3 class="payment-thankyou text-2xl font-bold mt-10 text-center">
+            Thank You!
+          </h3>
+
+          <p>
+            Terima kasih telah melakukan pendaftaran.
+            <br />Paket ini adalah paket Pre-Order dimana akun akan dibuat
+            setelah member dalam satu grup telah terkumpul
+            {{ setNumberMember(provider) }} orang.
+          </p>
+          <div class="box">
+            <div class="row">
+              <div class="col box-title">Provider</div>
+              <div class="col col-lg-1">:</div>
+              <div class="col box-item">{{ setNameProvider(provider) }}</div>
+            </div>
+            <div class="row mt-1">
+              <div class="col box-title">Paket</div>
+              <div class="col col-lg-1">:</div>
+              <div class="col box-item">{{ packet }}</div>
+            </div>
+            <div class="row mt-1">
+              <div class="col box-title">Harga</div>
+              <div class="col col-lg-1">:</div>
+              <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
+            </div>
+          </div>
+          <p>
+            <a href="/info/pre-order" target="_blank">
+              <i>Baca ketentuan Pre-Order selengkapnya</i>
+            </a>
+          </p>
+          <p>
+            Pembayaran akan dilakukan setelah satu grup full dan akun berhasil
+            dibuat.
+            <br />
+            <br />
+            Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi oleh Admin
+            melalui Whatsapp untuk proses selanjutnya.
+            <br />Hubungi Admin
+            <a href="https://api.whatsapp.com/send?phone=6282124852227"
+              >+6282124852227</a
+            >
+          </p>
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import Header from '~/components/mollecules/Header.vue';
-import Footer from '~/components/mollecules/Footer';
 
 export default {
-  components: {
-    Header,
-    Footer,
-  },
+  name: 'PreOrderPage',
+  layout: 'new',
   data() {
     return {
       provider: '',
@@ -79,22 +74,50 @@ export default {
     this.getVouchersData();
   },
   methods: {
-    setProviderName(provider) {
-      return provider === 'disney-hotstar' ? 'Disney+ Hotstar' : provider 
+    setNameProvider(provider) {
+      switch (provider) {
+        case 'netflix':
+          return 'Netflix';
+          break;
+        case 'spotify':
+          return 'Spotify';
+          break;
+        case 'youtube':
+          return 'Youtube';
+          break;
+        case 'gramedia':
+          return 'Gramedia';
+          break;
+        case 'microsoft':
+          return 'Microsoft 365';
+          break;
+        case 'microsoft365':
+          return 'Microsoft 365';
+          break;
+        case 'canva':
+          return 'Canva';
+          break;
+        case 'disney-hotstar':
+          return 'Disney+ Hotstar';
+          break;
+        case 'nintendo':
+          return 'Nintendo Switch';
+          break;
+      }
     },
     setNumberMember(provider) {
       switch (provider.toLowerCase()) {
         case 'canva':
-          return '9'
+          return '9';
           break;
         case 'gramedia':
-          return '2'
+          return '2';
           break;
         case 'disney-hotstar':
-          return '2'
+          return '2';
           break;
         default:
-          return '5'
+          return '5';
       }
     },
     getDataPacket() {
@@ -103,10 +126,10 @@ export default {
         packet_id,
         voucher,
       } = this.$router.history.current.query;
-      this.provider = provider.toLowerCase() === 'disney+ hotstar' ? 'disney-hotstar' : provider.toLowerCase();
+      this.provider = provider === 'microsoft' ? 'microsoft365' : provider;
       axios
         .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${this.provider}/${packet_id}`
+          `https://seakun-packet-api-v2.herokuapp.com/${this.provider.toLowerCase()}/${packet_id}`
         )
         .then((res) => {
           const { data, status } = res;
@@ -157,8 +180,7 @@ export default {
 
 <style lang="scss" scoped>
 .payment {
-  padding: 100px 40px 50px !important;
-  background: #e5e5e5;
+  padding: 30px 40px 10px !important;
 
   .container {
     background: white;

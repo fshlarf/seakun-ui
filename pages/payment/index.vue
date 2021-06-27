@@ -1,21 +1,66 @@
 <template>
   <div>
-    <Header />
-    <div class="payment">
-      <transition name="slide-fade">
-        <div v-if="showSnackBar" id="snackbar">
-          <!-- <span style="text-align: end" @click="showSnackBar = false"
-            >&times;</span
-          > -->
-          <i class="fa fa-check-circle-o"></i>
-          <p>Berhasil disalin</p>
-        </div>
-      </transition>
-      <div class="container">
-        <div class="row">
+    <div class="container-payment max-w-2xl w-full mx-auto mt-20">
+      <div class="payment-illustration flex justify-center w-full">
+        <img
+          class="w-9/12 mx-auto"
+          src="/images/thank-you.png"
+          alt="Image not found"
+        />
+      </div>
+      <h3
+        class="payment-thankyou md:text-3xl tn:text-3xl font-bold mt-10 text-center"
+      >
+        Thank You!
+      </h3>
+      <HeaderPayment
+        :provider="provider"
+        :detailPayment="detailPayment"
+        :packageId="packetId"
+        :packageName="packet"
+        :total="total"
+      />
+      <div v-if="type === 'digital'" class="px-4 text-lg mt-4 -mb-4">
+        <WarningInfo :text="contentWarning" />
+      </div>
+      <DetailPayment
+        :provider="provider"
+        :packageId="packetId"
+        :detailPayment="detailPayment"
+      />
+      <div class="tos-alert px-4 mt-4 text-lg" v-if="type !== 'digital'">
+        <p>
+          Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
+          kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 60 menit. jika
+          melewati rentang waktu tersebut dan pesanan kamu belum diproses, harap
+          hubungi admin via whatsapp
+          <a
+            class="text-primary"
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=6282124852227"
+            >+6282124852227</a
+          >
+        </p>
+      </div>
+      <div class="mt-8 mx-4 mb-4 text-center">
+        <Button
+          v-if="type !== 'digital'"
+          class="w-full bg-green-seakun text-white"
+          label="Konfirmasi Pembayaran"
+          @click="onClickConfirm"
+        />
+        <a
+          v-else
+          type="button"
+          class="btn btn-primary"
+          target="_blank"
+          :href="confirmationWhatsapp"
+          >Konfirmasi ke Whatsapp</a
+        >
+      </div>
+      <!-- <div class="row">
           <div class="col">
-            <div class="payment__img">
-              <img class="img-pay" src="/images/thank-you.png" alt="Image not found" />
+            <div class="flex justify-center">
             </div>
             <h3 class="payment__header-h3">Thank You!</h3>
             <p v-html="setWordingInformation(provider, packetId)"></p>
@@ -34,8 +79,8 @@
                 <div class="col box-title">Metode Pembayaran</div>
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">Bank Transfer</div>
-              </div>
-              <!-- <div class="row mt-1">
+              </div> -->
+      <!-- <div class="row mt-1">
                 <div class="col box-title">Bank Tujuan</div>
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">Mandiri</div>
@@ -62,7 +107,7 @@
                 <div class="col col-lg-1">:</div>
                 <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
               </div> -->
-            </div>
+      <!-- </div>
             <div style="margin:40px 0px;color:#787878;line-height:24px;text-align:center;">
               <p style="font-weight: 600;margin-bottom: -6px">Transfer ke</p>
               <img class="mandiri" src="http://1.bp.blogspot.com/-zkv5u5OGPEM/VKOWnIRRKBI/AAAAAAAAA7E/ovxa4ZW3I0o/w1200-h630-p-k-no-nu/Logo%2BBank%2BMandiri.png" alt="mandiri" >
@@ -79,7 +124,7 @@
                 <i class="fa fa-copy" style="margin-left: 6px"></i>
               </div>
               <p style="margin-bottom: 0px; font-weight: 700;">Nominal Pembayaran</p>
-              <div class="flex" @click="handleCopyNominal(total)" style="color:#8DCABE; cursor: pointer; justify-content: center; margin-top: 12px">
+              <div class="flex" @click="handleCopyNominal(totafl)" style="color:#8DCABE; cursor: pointer; justify-content: center; margin-top: 12px">
                 <span style="font-weight: 800;font-size:18px;">{{ formatMoneyRupiah(total) }}</span>
                 <i class="fa fa-copy" style="margin-left: 6px"></i>
               </div>
@@ -115,8 +160,7 @@
               beberapa menit dan butuh verifikasi data.
             </p>
           </div>
-        </div>
-      </div>
+        </div> -->
     </div>
     <Footer />
   </div>
@@ -124,96 +168,77 @@
 
 <script>
 import axios from 'axios';
-import Header from '~/components/mollecules/Header';
+import NavbarBlank from '~/components/mollecules/NavbarBlank';
+import Button from '~/components/atoms/Button';
+import CopyIcon from '~/assets/images/icon/copy.svg?inline';
+import DetailPayment from './views/DetailPayment.vue';
+import HeaderPayment from './views/HeaderPayment.vue';
 import Footer from '~/components/mollecules/Footer';
+import WarningInfo from '~/components/mollecules/WarningInfo';
 
 export default {
   components: {
-    Header: Header,
-    Footer: Footer,
+    NavbarBlank,
+    CopyIcon,
+    Button,
+    HeaderPayment,
+    DetailPayment,
+    Footer,
+    WarningInfo,
   },
+  layout: 'navigationBlank',
   data() {
     return {
       provider: '',
       packet: '',
       packetId: null,
-      total: '-',
+      total: null,
       showSnackBar: false,
+      type: '',
+      duration: '',
       vouchersData: [],
+      detailPayment: {
+        loading: false,
+        data: {},
+      },
+      selectedToPayment: '',
+      whatsapp: '',
     };
   },
-  mounted() {
+  created() {
+    const { provider, type } = this.$router.history.current.query;
+    this.type = type;
+    if (provider) {
+      this.provider = provider;
+    }
     this.getPaymentDetail();
     this.getVouchersData();
   },
+  computed: {
+    contentWarning() {
+      const { provider, holder, duration } = this.$router.history.current.query;
+      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
+      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852227?text=${text}">+6282124852227</a>`;
+    },
+    confirmationWhatsapp() {
+      const { provider, holder, duration } = this.$router.history.current.query;
+      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
+      return `https://wa.me/6282124852227?text=${text}`;
+    },
+  },
   methods: {
-    setWordingInformation(provider, packetId) {
-      if (provider.toLowerCase() == 'netflix') {
-        if (packetId == 2) {
-          return 'Segera lakukan pembayaran agar Seakun.id bisa \
-                        langsung mengalokasikan kamu pada grup Netflix yang available, \
-                        mencarikan teman berlangganan dan memproses akun Netflix untuk kamu. \
-                        <b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        } else if (packetId == 1) {
-          return 'Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu kamu untuk melakukan proses payment ke Netflix. \
-                        <a href="https://seakun.id/info/user-host"> Baca ketentuan User Host</a>.\
-                        <br/><br/>Segera lakukan pembayaran agar Seakun.id bisa \
-                        langsung <b>mengalokasikan kamu pada grup Netflix yang available</b>, \
-                        <b>mencarikan teman berlangganan</b>, <b>memandu kamu untuk melakukan proses payment ke Netflix</b> dan <b>memproses akun Netflix</b>. \
-                        <br/><br/><b>Informasi Akun</b>, <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        } else {
-          return 'Segera lakukan pembayaran agar Seakun.id dapat \
-                        langsung memproses akun Netflix untuk kamu. \
-                        <b>Informasi Akun</b>, <b>Password</b> dan Pin Profile</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        }
-      } else if (provider.toLowerCase() == 'spotify') {
-        if (packetId == 1) {
-          return 'Segera lakukan pembayaran agar Seakun.id dapat \
-                        langsung mengirimkan <b>Link invitation</b> plan paket Grup Spotify.\
-                        <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu daftarkan.';
-        }
-      }
-    },
-    handleCopyRekening(norek) {
-      const text = norek;
-
-      navigator.clipboard.writeText(text).then(
-        () => {
-          this.showSnackBar = true;
-          setTimeout(() => {
-            this.showSnackBar = false;
-          }, 2000);
-        },
-        (err) => console.log(err)
-      );
-    },
-    handleCopyNominal(nominal) {
-      const text = nominal;
-
-      navigator.clipboard.writeText(text).then(
-        () => {
-          this.showSnackBar = true;
-          setTimeout(() => {
-            this.showSnackBar = false;
-          }, 2000);
-        },
-        (err) => console.log(err)
-      );
-    },
-    formatMoneyRupiah(num) {
-      if (num) {
-        return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      } else if (num == 0) {
-        return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      }
-    },
     getPaymentDetail() {
       const {
         provider,
         packet_id,
         voucher,
+        type,
+        duration,
       } = this.$router.history.current.query;
-      this.provider = provider;
+      this.detailPayment = {
+        ...this.detailPayment,
+        loading: true,
+      };
       axios
         .get(
           `https://seakun-packet-api-v2.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
@@ -221,6 +246,29 @@ export default {
         .then((res) => {
           const { data, status } = res;
           if (status === 200) {
+            this.detailPayment = {
+              ...this.DetailPayment,
+              data,
+              loading: false,
+            };
+
+            if (type == 'digital') {
+              if (data.prices?.length > 0) {
+                const indexDuration = data.prices?.findIndex(
+                  (price) => price.month == duration
+                );
+                if (indexDuration >= 0) {
+                  this.detailPayment = {
+                    ...this.detailPayment,
+                    data: {
+                      ...this.detailPayment.data,
+                      grandTotal: data.prices[indexDuration]?.price,
+                      totalMonth: data.prices[indexDuration]?.month,
+                    },
+                  };
+                }
+              }
+            }
             this.packet = data.name;
             this.packetId = data.id;
             if (voucher) {
@@ -256,20 +304,35 @@ export default {
         ? (this.total = dataPacket.voucherGrandTotal)
         : (this.total = dataPacket.grandTotal);
     },
+    onClickConfirm() {
+      const {
+        provider,
+        packet_id,
+        email,
+        whatsapp,
+        holder,
+      } = this.$router.history.current.query;
+      this.$router.push(
+        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${
+          holder ? holder : ''
+        }&nominal=${
+          provider !== 'sequrban'
+            ? this.detailPayment?.data?.grandTotal
+            : this.detailPayment?.data?.downPayment
+        }`
+      );
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.container-sm {
+  min-width: 640px;
+  max-width: 640px;
+}
 .payment {
-  padding: 100px 40px 50px !important;
-  background: #e5e5e5;
-
-  .container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-  }
+  padding: 60px 40px 50px !important;
   .box {
     border: 1px solid #86d0c1;
     border-radius: 4px;
@@ -296,11 +359,6 @@ export default {
         }
       }
     }
-    h3 {
-      margin-top: 20px !important;
-      margin-bottom: 20px !important;
-      font-weight: 700;
-    }
     p {
       margin: 0 auto;
       max-width: 600px;
@@ -324,89 +382,6 @@ export default {
   }
   .row {
     padding: 0px 8px !important;
-  }
-  #snackbar {
-    background-color: #daeeef;
-    color: #2f524b;
-    text-align: center;
-    border-radius: 25px;
-    padding: 8px 16px;
-    position: fixed;
-    z-index: 1;
-    top: 100px;
-    font-size: 17px;
-    margin: 0 auto;
-    max-width: 600px;
-    left: 65%;
-    margin-left: -300px;
-    font-weight: 700 !important;
-    button {
-      margin-top: 0px !important;
-      // margin-bottom: 10px !important;
-    }
-    span {
-      font-size: 28px;
-      cursor: pointer;
-      padding: 0px 12px;
-    }
-  }
-}
-.bold {
-  font-weight: 800;
-}
-@media (max-width: 800px) {
-  #snackbar {
-    position: absolute !important;
-    max-width: 200px !important;
-    left: 30% !important;
-    top: 60% !important;
-    margin-left: 0px !important;
-  }
-  .payment {
-    padding: 50px 0px 0px !important;
-    // margin-top: 18px;
-    Ï &__img {
-      text-align: center;
-      margin-top: 20px;
-    }
-    &__header {
-      &-h3 {
-        font-size: 22px;
-        margin-top: 16px;
-      }
-    }
-    .img-pay {
-      width: 330px !important;
-      margin: 16px auto;
-    }
-    h2 {
-      font-size: 20px;
-    }
-    .box {
-      margin-left: 0px !important;
-      margin-right: 0px !important;
-      font-size: 13px;
-    }
-    .col-lg-1 {
-      max-width: 10px;
-    }
-  }
-  .mandiri {
-    width: 100px !important;
-  }
-  .bca {
-    width: 100px !important;
-  }
-}
-.mandiri {
-  width: 100px;
-}
-.bca {
-  width: 100px;
-}
-@media only screen and (min-width: 880px) and (max-width: 1020px) {
-  .container {
-    display: contents !important;
   }
 }
 </style>

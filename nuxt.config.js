@@ -98,7 +98,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: ['@nuxtjs/tailwindcss'],
   // router: { base: '/seakun/' },
   /*
    ** Nuxt.js modules
@@ -106,6 +106,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    "@nuxtjs/svg"
   ],
   /*
    ** Axios module configuration

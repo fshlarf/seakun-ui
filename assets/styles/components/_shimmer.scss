@@ -1,0 +1,53 @@
+.shimmer {
+    background: #f2f1ef
+        linear-gradient(
+            to right,
+            #f2f1ef 0%,
+            #d2d7d3 20%,
+            #f2f1ef 40%,
+            #f2f1ef 100%
+        )
+        no-repeat;
+    background-size: 800px 104px;
+    display: inline-block;
+    position: relative;
+    min-height: 12px;
+    // min-width: 200px;
+    border-radius: 4px;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: placeholderShimmer;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes placeholderShimmer {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+// shimmer width
+.custom-shimmer-w-60 {
+    width: 60px;
+}
+
+.custom-shimmer-w-90 {
+    width: 90px;
+}
+
+.custom-shimmer-w-120 {
+    width: 120px;
+}
+
+.custom-shimmer-w-150 {
+    width: 150px;
+}
+
+.custom-shimmer-w-300 {
+    width: 300px;
+}
