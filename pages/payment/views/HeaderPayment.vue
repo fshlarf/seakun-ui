@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="payment-illustration flex justify-center w-full">
-      <img
-        class="w-9/12 mx-auto"
-        src="/images/thank-you.png"
-        alt="Image not found"
-      />
-    </div>
-    <h3 class="payment-thankyou text-2xl font-bold mt-10 text-center">
-      Thank You !
-    </h3>
     <div class="payment-order w-auto mt-8 box-border px-2">
       <!-- Loadingg shimmer -->
       <div v-if="detailPayment.loading" class="text-center">

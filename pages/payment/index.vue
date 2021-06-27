@@ -1,6 +1,18 @@
 <template>
   <div>
     <div class="container-payment max-w-2xl w-full mx-auto mt-20">
+      <div class="payment-illustration flex justify-center w-full">
+        <img
+          class="w-9/12 mx-auto"
+          src="/images/thank-you.png"
+          alt="Image not found"
+        />
+      </div>
+      <h3
+        class="payment-thankyou md:text-3xl tn:text-3xl font-bold mt-10 text-center"
+      >
+        Thank You!
+      </h3>
       <HeaderPayment
         :provider="provider"
         :detailPayment="detailPayment"
@@ -346,11 +358,6 @@ export default {
           }
         }
       }
-    }
-    h3 {
-      margin-top: 20px !important;
-      margin-bottom: 20px !important;
-      font-weight: 700;
     }
     p {
       margin: 0 auto;
