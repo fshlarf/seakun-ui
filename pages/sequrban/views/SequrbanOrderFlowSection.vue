@@ -24,7 +24,7 @@
         </svg>
       </div>
       <div
-        class="absolute z-10 -top-12 left-20"
+        class="absolute z-10 -top-12 left-5"
         :class="{ hidden: !tooltipShow, block: tooltipShow }"
       >
         <div class="relative mx-2">
