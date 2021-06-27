@@ -332,9 +332,9 @@ export default {
         .get('https://seakun-packet-api-v2.herokuapp.com/sequrban')
         .then((res) => {
           this.dataQurban = res.data;
+          this.isLoading = false;
         })
         .catch((err) => console.log(err));
-      this.isLoading = false;
     },
     getDataDetailQurban(id) {
       this.isLoading = true;
