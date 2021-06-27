@@ -29,7 +29,10 @@
           </div>
         </div>
 
-        <div v-else class="grid grid-cols-4 gap-4">
+        <div
+          v-else
+          class="grid tn:gap-3 md:gap-4 xl:gap-5 tn:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
           <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
@@ -63,7 +66,10 @@
             />
           </div>
         </div>
-        <div v-else class="grid grid-cols-4 gap-4">
+        <div
+          v-else
+          class="grid tn:gap-3 md:gap-4 xl:gap-5 tn:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
           <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
