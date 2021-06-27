@@ -28,7 +28,7 @@
       <div
         v-for="(item, id) in packages"
         :key="id"
-        class="w-full h-full mx-auto"
+        :class="`w-full h-full mx-auto ${!item.active ? 'inactive' : ''}`"
         @click="$emit('choose-packet', item)"
       >
         <CardPackage :slug="slug" :packet="item" />
@@ -57,4 +57,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.inactive {
+  pointer-events: none;
+  opacity: 0.7;
+}
+</style>
