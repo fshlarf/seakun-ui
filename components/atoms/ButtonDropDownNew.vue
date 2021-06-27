@@ -30,6 +30,9 @@
         />
       </svg>
     </button>
+    <p v-if="error.isError" class="text-red-500 text-xs italic">
+      {{ error.message }}
+    </p>
   </div>
 </template>
 
@@ -43,6 +46,13 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    error: {
+      type: Object,
+      default: () => ({
+        isError: false,
+        message: '',
+      }),
     },
   },
   methods: {

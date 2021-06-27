@@ -25,11 +25,27 @@
               @click="showPaymentList('paymentUsage')"
               @keyup="paymentUsage = false"
               :error="error_bank_customer"
-              disbaled
             >
-              <template #iconLeft>
-                <DownArrowIcon />
-              </template>
+              <!-- <template #iconLeft> -->
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 512 512"
+                style="enable-background: new 0 0 512 512"
+                xml:space="preserve"
+                class="w-2 h-2"
+              >
+                <path
+                  d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0
+			c-3.838,3.838-3.838,10.055,0,13.893l246.18,246.175c1.842,1.842,4.337,2.878,6.947,2.878c2.61,0,5.104-1.036,6.946-2.878
+			l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"
+                />
+              </svg>
+              <!-- </template> -->
             </InputForm>
           </div>
           <PopUpPayment
@@ -43,7 +59,7 @@
           />
         </div>
 
-        <div>
+        <!-- <div>
           <InputForm
             label="Tujuan Pembayaran"
             placeholder="Pilih Bank tujuan milik Seakun.id"
@@ -67,6 +83,27 @@
               }
             "
           />
+        </div> -->
+
+        <div class="mt-4">
+          <p class="pb-1 tn:text-sm">Tujuan Pembayaran</p>
+          <ButtonDrop
+            :btnText="bankSeakun"
+            @click="showPaymentList('bankDirection')"
+            @keyup="bankDirection = false"
+            :error="error_bank_seakun"
+          />
+          <div class="w-full">
+            <PopUpPayment
+              :dataList="paymentDestinationList"
+              :show="paymenDestination"
+              @onClickItem="
+                (value) => {
+                  onClickItemBank('bankDirection', value);
+                }
+              "
+            />
+          </div>
         </div>
 
         <div class="my-4">
@@ -120,6 +157,7 @@
 </template>
 
 <script>
+import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import InputForm from '~/components/atoms/Input.vue';
 import DownArrowIcon from '~/assets/images/icon/down-arrow.svg?inline';
 import Button from '~/components/atoms/Button';
@@ -139,6 +177,7 @@ export default {
     DownArrowIcon,
     PopUpPayment,
     Button,
+    ButtonDrop,
     UploadPayment,
     DatePicker,
     Input,
@@ -146,7 +185,7 @@ export default {
   data: () => ({
     moment,
     isLoadingSubmit: false,
-    bankSeakun: '',
+    bankSeakun: 'Pilih Bank tujuan milik Seakun.id',
     bankCustomer: '',
     dateTime: null,
     photoUrl: '',
@@ -277,7 +316,8 @@ export default {
         .catch((err) => console.log(err));
     },
     validateInput() {
-      this.error_bank_seakun.isError = !this.bankSeakun;
+      this.error_bank_seakun.isError =
+        this.bankSeakun === 'Pilih Bank tujuan milik Seakun.id';
       this.error_bank_customer.isError = !this.bankCustomer;
       this.error_nominal.isError = !this.nominal;
       this.error_holder.isError = !this.holder;
@@ -286,11 +326,11 @@ export default {
     clickSubmit() {
       this.validateInput();
       if (
-        this.bankSeakun &&
-        this.bankCustomer &&
-        this.nominal &&
-        this.holder &&
-        this.imageFile
+        !this.error_bank_seakun.isError &&
+        !this.error_bank_customer.isError &&
+        !this.error_nominal.isError &&
+        !this.error_holder.isError &&
+        !this.error_upload_image.isError
       ) {
         this.submitConfirmation();
       }
