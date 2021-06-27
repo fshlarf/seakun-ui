@@ -14,7 +14,7 @@
           >See more</NuxtLink
         >
       </div>
-      <div>
+      <div class="tn:mt-4">
         <div
           v-if="!isLoadingProduct"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
@@ -43,7 +43,7 @@
         </h1>
       </div>
 
-      <div>
+      <div class="tn:mt-4">
         <div
           v-if="!isLoadingProduct"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch items-center"
