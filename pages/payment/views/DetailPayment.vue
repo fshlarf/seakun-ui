@@ -27,9 +27,9 @@
           @click="clickCopyHandler('Nominal', detailPayment.data.downPayment)"
         />
       </div>
-      <p class="payment-detail__alert my-3">
+      <!-- <p class="payment-detail__alert my-3">
         Pastikan nominal sesuai hingga 3 digit terakhir
-      </p>
+      </p> -->
     </div>
     <div class="payment-method">
       <h3 class="payment-method__title text-center text-bold mt-6">
