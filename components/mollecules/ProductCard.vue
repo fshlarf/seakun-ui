@@ -2,7 +2,7 @@
   <div
     class="w-full h-full border-none max-w-sm bg-white shadow-xl rounded-xl overflow-hidden text-gray-900 md:pb-3"
   >
-    <div class="md:h-64 lg:h-56 xl:h-48">
+    <div class="md:h-48">
       <img
         v-if="product.slug === 'disney-hotstar'"
         :src="`/images/product/${product.slug}.svg`"
