@@ -31,7 +31,7 @@
             <div class="row">
               <div class="col box-title">Provider</div>
               <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ provider }}</div>
+              <div class="col box-item">{{ setNameProvider(provider) }}</div>
             </div>
             <div class="row mt-1">
               <div class="col box-title">Paket</div>
@@ -134,6 +134,34 @@ export default {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
       } else if (num == 0) {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
+      }
+    },
+    setNameProvider(provider) {
+      switch (provider) {
+        case 'netflix':
+          return 'Netflix';
+          break;
+        case 'spotify':
+          return 'Spotify';
+          break;
+        case 'youtube':
+          return 'Youtube';
+          break;
+        case 'gramedia':
+          return 'Gramedia';
+          break;
+        case 'microsoft':
+          return 'Microsoft 365';
+          break;
+        case 'canva':
+          return 'Canva';
+          break;
+        case 'disney-hotstar':
+          return 'Disney+ Hotstar';
+          break;
+        case 'nintendo':
+          return 'Nintendo Switch';
+          break;
       }
     },
   },
