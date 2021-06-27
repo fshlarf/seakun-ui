@@ -18,9 +18,7 @@
         </svg>
       </div>
       <div>
-        <p class="tn:text-xs md:text-base alert-text">
-          {{ text }}
-        </p>
+        <p class="tn:text-xs md:text-base alert-text" v-html="text"></p>
       </div>
     </div>
   </div>
@@ -31,9 +29,10 @@ export default {
   props: {
     text: {
       type: String,
-      default: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis praesentium nostrum ad nobis tempora quae nam velit. Maxime mollitia accusamus, rerum, enim placeat, voluptatem aperiam itaque unde fugit suscipit dicta.'
-    }
-  }
+      default:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis praesentium nostrum ad nobis tempora quae nam velit. Maxime mollitia accusamus, rerum, enim placeat, voluptatem aperiam itaque unde fugit suscipit dicta.',
+    },
+  },
 };
 </script>
 

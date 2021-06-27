@@ -36,6 +36,7 @@
           :key="id"
           :group="group"
           class="my-2 w-full h-full flex-none"
+          @click-order="onClickOrder"
         />
         <ButtonChevron class="self-center" @click-chevron="toCustomerPage" />
       </div>
@@ -53,6 +54,16 @@
         </div>
       </div>
     </div>
+
+    <ModalPackages
+      :is-show="isShowModalPackages"
+      :provider="setNameProvider"
+      @on-close="onCloseModalPackages"
+      :packages="dataPackages"
+      :slug="provider"
+      @choose-packet="choosePacket"
+      :is-loading="isFetchingPacket"
+    />
   </div>
 </template>
 
@@ -63,6 +74,7 @@ import Button from '~/components/atoms/Button.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import CardShimmer from '~/components/mollecules/CardShimmer';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
+import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
 import axios from 'axios';
 
 export default {
@@ -71,6 +83,10 @@ export default {
       shimmerInitialData: Array(4),
       isLoading: true,
       dataDetailGroup: [],
+      provider: '',
+      isFetchingPacket: false,
+      isShowModalPackages: false,
+      dataPackages: [],
       highlight: 'netflix',
       dataProviderList: [
         {
@@ -139,9 +155,40 @@ export default {
     ButtonChevron,
     CardShimmer,
     CardShimmerVertical,
+    ModalPackages,
   },
   mounted() {
     this.getCustomersData('netflix');
+  },
+  computed: {
+    setNameProvider() {
+      switch (this.provider) {
+        case 'netflix':
+          return 'Netflix';
+          break;
+        case 'spotify':
+          return 'Spotify';
+          break;
+        case 'youtube':
+          return 'Youtube';
+          break;
+        case 'gramedia':
+          return 'Gramedia';
+          break;
+        case 'microsoft':
+          return 'Microsoft 365';
+          break;
+        case 'canva':
+          return 'Canva';
+          break;
+        case 'disney-hotstar':
+          return 'Disney+ Hotstar';
+          break;
+        case 'nintendo':
+          return 'Nintendo Switch';
+          break;
+      }
+    },
   },
   methods: {
     selectProvider(provider) {
@@ -188,6 +235,42 @@ export default {
     },
     toCustomerPage() {
       this.$router.push(`/info/customers?provider=${this.highlight}`);
+    },
+    onClickOrder(provider) {
+      this.provider = provider;
+      this.isShowModalPackages = true;
+    },
+    onCloseModalPackages() {
+      this.isShowModalPackages = false;
+    },
+    async fetchPackages() {
+      const provider =
+        this.provider === 'microsoft'
+          ? 'microsoft365'
+          : this.provider.toLowerCase();
+
+      try {
+        const { data } = await axios.get(
+          `https://seakun-packet-api-v2.herokuapp.com/${provider}`
+        );
+        if (data) {
+          this.dataPackages = data;
+          this.isFetchingPacket = false;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    choosePacket(packet) {
+      this.$router.push(
+        `/order?provider=${this.choosedSlugProvider}&packet_id=${packet.id}`
+      );
+    },
+  },
+  watch: {
+    provider() {
+      this.isFetchingPacket = true;
+      this.fetchPackages();
     },
   },
 };

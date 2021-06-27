@@ -1,6 +1,18 @@
 <template>
   <div>
     <div class="container-payment max-w-2xl w-full mx-auto mt-20">
+      <div class="payment-illustration flex justify-center w-full">
+        <img
+          class="w-9/12 mx-auto"
+          src="/images/thank-you.png"
+          alt="Image not found"
+        />
+      </div>
+      <h3
+        class="payment-thankyou md:text-3xl tn:text-3xl font-bold mt-10 text-center"
+      >
+        Thank You!
+      </h3>
       <HeaderPayment
         :provider="provider"
         :detailPayment="detailPayment"
@@ -8,26 +20,43 @@
         :packageName="packet"
         :total="total"
       />
+      <div v-if="type === 'digital'" class="px-4 text-lg mt-4 -mb-4">
+        <WarningInfo :text="contentWarning" />
+      </div>
       <DetailPayment
         :provider="provider"
         :packageId="packetId"
         :detailPayment="detailPayment"
       />
-      <div class="tos-alert px-4 mt-4 text-lg">
+      <div class="tos-alert px-4 mt-4 text-lg" v-if="type !== 'digital'">
         <p>
           Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
-          kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 20 menit. jika
+          kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 60 menit. jika
           melewati rentang waktu tersebut dan pesanan kamu belum diproses, harap
           hubungi admin via whatsapp
-          <span class="text-green-seakun"> +6282124852227 </span>.
+          <a
+            class="text-primary"
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=6282124852227"
+            >+6282124852227</a
+          >
         </p>
       </div>
-      <div class="mt-8 mx-4 mb-4">
+      <div class="mt-8 mx-4 mb-4 text-center">
         <Button
+          v-if="type !== 'digital'"
           class="w-full bg-green-seakun text-white"
           label="Konfirmasi Pembayaran"
           @click="onClickConfirm"
         />
+        <a
+          v-else
+          type="button"
+          class="btn btn-primary"
+          target="_blank"
+          :href="confirmationWhatsapp"
+          >Konfirmasi ke Whatsapp</a
+        >
       </div>
       <!-- <div class="row">
           <div class="col">
@@ -145,6 +174,7 @@ import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import DetailPayment from './views/DetailPayment.vue';
 import HeaderPayment from './views/HeaderPayment.vue';
 import Footer from '~/components/mollecules/Footer';
+import WarningInfo from '~/components/mollecules/WarningInfo';
 
 export default {
   components: {
@@ -154,6 +184,7 @@ export default {
     HeaderPayment,
     DetailPayment,
     Footer,
+    WarningInfo,
   },
   layout: 'navigationBlank',
   data() {
@@ -171,15 +202,29 @@ export default {
         data: {},
       },
       selectedToPayment: '',
+      whatsapp: '',
     };
   },
   created() {
-    const { provider } = this.$router.history.current.query;
+    const { provider, type } = this.$router.history.current.query;
+    this.type = type;
     if (provider) {
       this.provider = provider;
     }
     this.getPaymentDetail();
     this.getVouchersData();
+  },
+  computed: {
+    contentWarning() {
+      const { provider, holder, duration } = this.$router.history.current.query;
+      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
+      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852227?text=${text}">+6282124852227</a>`;
+    },
+    confirmationWhatsapp() {
+      const { provider, holder, duration } = this.$router.history.current.query;
+      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
+      return `https://wa.me/6282124852227?text=${text}`;
+    },
   },
   methods: {
     getPaymentDetail() {
@@ -313,11 +358,6 @@ export default {
           }
         }
       }
-    }
-    h3 {
-      margin-top: 20px !important;
-      margin-bottom: 20px !important;
-      font-weight: 700;
     }
     p {
       margin: 0 auto;

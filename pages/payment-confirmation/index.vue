@@ -1,11 +1,8 @@
 <template>
-  <div class="container md:max-w-[1000px] w-full mx-auto mt-10 py-8">
+  <div class="container md:max-w-[1000px] w-full mx-auto py-4">
     <div class="wrapper-form w-full bg-white rounded-xl shadow-xl py-4 px-4">
       <div class="header-confirmation">
         <h3 class="font-bold text-2xl">Konfirmasi Pembayaran</h3>
-        <p class="my-3">
-          Silahkan Isi Terlebih Dahulu sebelum memasukan pemesanan
-        </p>
         <div
           v-if="order_id"
           class="order-code bg-green-seakun-secondary w-full flex justify-between px-3 py-2"
@@ -113,7 +110,7 @@
 
         <Button
           class="w-full bg-green-seakun text-white"
-          label="Simpan"
+          label="Konfirmasi"
           :is-loading="isLoadingSubmit"
           @click="clickSubmit"
         />
