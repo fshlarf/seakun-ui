@@ -255,6 +255,8 @@ export default {
             ...detailOrder,
             data,
           };
+          this.price = data.grandTotal;
+          this.subcriptionDuration = data.totalMonth;
           if (data.prices.length > 0) {
             this.pricesList = data.prices?.map((value) => ({
               ...value,
@@ -271,8 +273,6 @@ export default {
                 price: data.grandTotal,
               },
             ];
-            this.price = data.grandTotal;
-            this.subcriptionDuration = data.totalMonth;
             this.longSubcribe = this.pricesList[0];
           }
         }
@@ -374,7 +374,7 @@ export default {
             : this.provider,
         packet: this.packet,
         subcription_duration: this.subcriptionDuration,
-        price: this.price,
+        price: parseInt(this.price),
         discountprice: '',
         userhost: this.detailOrder.data.userHost,
         referalcode: '',
@@ -396,15 +396,12 @@ export default {
         );
         if (fetchPostUser.status == 200) {
           this.executeApiMailSeakun(payload);
-          this.isShowLoading = false;
         } else {
           throw fetchPostUser;
         }
       } catch (error) {
         console.log(error);
       }
-
-      this.isShowLoading = false;
     },
     executeApiMailSeakun(payload) {
       let newPayload = {
@@ -430,9 +427,11 @@ export default {
               // voucher: this.isVoucherValid ? this.voucher : '',
             },
           });
+          this.isShowLoading = false;
         })
         .catch((err) => {
           console.log(err);
+          this.isShowLoading = false;
         });
     },
     setPathToRedirect(payload) {
