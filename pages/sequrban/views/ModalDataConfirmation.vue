@@ -1,5 +1,5 @@
 <template>
-  <Modal :is-show="showModal">
+  <Modal :is-show="showModal" @onClose="onClose">
     <template v-slot:header>
       <div class="font-bold text-lg">Cek Data Pesanan</div>
     </template>
@@ -52,7 +52,7 @@
       variant="secondary"
       label="Kembali"
       class="w-full mt-2"
-      @click="showModal === false"
+      @click="onClose"
     />
   </Modal>
 </template>
@@ -79,6 +79,11 @@ export default {
     dataOrder: {
       type: Object,
       default: {},
+    },
+  },
+  methods: {
+    onClose() {
+      this.$emit('onClose');
     },
   },
 };

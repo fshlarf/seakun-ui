@@ -204,6 +204,7 @@
       :data-order="dataParamOrder"
       :is-loading="isLoadingSubmit"
       @clickSubmit="submitDataOrder"
+      @onClose="closeModalConfirmation"
     />
     <Footer />
   </div>
@@ -456,6 +457,9 @@ export default {
       ) {
         this.isShowModalConfirmation = true;
       }
+    },
+    closeModalConfirmation() {
+      this.isShowModalConfirmation = false;
     },
     submitDataOrder() {
       this.isLoadingSubmit = true;
