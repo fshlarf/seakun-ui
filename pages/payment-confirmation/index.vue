@@ -110,7 +110,7 @@
 
         <Button
           class="w-full bg-green-seakun text-white"
-          label="Simpan"
+          label="Konfirmasi"
           :is-loading="isLoadingSubmit"
           @click="clickSubmit"
         />
