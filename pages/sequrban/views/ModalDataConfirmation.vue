@@ -8,35 +8,35 @@
         text="Periksa kembali data kamu sebelum melanjutkan ke pembayaran"
       />
     </div>
-    <div class="mt-3 px-3">
+    <div class="mt-3 md:px-3">
       <h1 class="text-sm">Nama pemesan</h1>
       <p class="font-bold">{{ dataOrder.fullname }}</p>
     </div>
-    <div class="mt-2 px-3">
+    <div class="mt-2 md:px-3">
       <h1 class="text-sm">Nomor telepon whatsapp</h1>
       <p class="font-bold">0{{ dataOrder.whatsapp }}</p>
     </div>
-    <div class="mt-2 px-3">
+    <div class="mt-2 md:px-3">
       <h1 class="text-sm">Email</h1>
       <p class="font-bold">{{ dataOrder.email }}</p>
     </div>
-    <div class="mt-2 px-3">
+    <div class="mt-2 md:px-3">
       <h1 class="text-sm">Nama lengkap yang berqurban</h1>
       <p class="font-bold">{{ dataOrder.qurban_fullname }}</p>
     </div>
-    <div class="mt-2 px-3">
+    <div class="mt-2 md:px-3">
       <h1 class="text-sm">Nama ayah kandung yang berqurban</h1>
       <p class="font-bold">{{ dataOrder.qurban_father_name }}</p>
     </div>
-    <div class="mt-2 px-3">
+    <div class="mt-2 md:px-3">
       <h1 class="text-sm">Alamat pengiriman daging qurban</h1>
       <p class="font-bold">{{ dataOrder.address }}</p>
     </div>
-    <div class="mt-2 px-3">
+    <div class="mt-2 md:px-3">
       <h1 class="text-sm">Kota / Kecamatan</h1>
       <p class="font-bold">{{ dataOrder.city }}</p>
     </div>
-    <div class="mt-2 px-3">
+    <div class="mt-2 md:px-3">
       <h1 class="text-sm">Kode pos</h1>
       <p class="font-bold">{{ dataOrder.postal_code }}</p>
     </div>
