@@ -1,9 +1,13 @@
 <template>
   <div class="relative z-0">
     <div
-      class="w-full absolute -z-30 tn:top-0 md:-top-10 lg:-top-18 xl:-top-48"
+      class="w-full absolute -z-30 tn:-top-10 md:-top-10 lg:-top-18 xl:-top-48"
     >
-      <img class="w-full" src="/images/header-bg.svg" alt="Image not found" />
+      <img
+        class="tn:w-auto md:w-full tn:h-80 md:h-full"
+        src="/images/header-bg.svg"
+        alt="Image not found"
+      />
     </div>
     <div
       class="tn:hidden md:block w-full h-full container absolute -z-20 tn:top-16 lg:top-24 right-0 left-0 mx-auto justify-center"
@@ -15,7 +19,7 @@
       />
     </div>
     <div class=""></div>
-    <div class="container pt-16 px-12 w-full md:hidden relative z-0">
+    <div class="container pt-24 px-12 w-full md:hidden relative z-0">
       <img
         class="w-full"
         src="/images/header-mobile.svg"
