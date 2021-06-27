@@ -68,7 +68,7 @@ export default {
       navbarLink: [
         {
           id: 1,
-          label: 'Provider',
+          label: 'Layanan',
           link: '',
         },
         {
