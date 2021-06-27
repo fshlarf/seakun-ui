@@ -199,6 +199,12 @@
       @closeModal="closeModalPackage"
       @choosePackage="choosePackage"
     />
+    <ModalDataConfirmation
+      :show-modal="isShowModalConfirmation"
+      :data-order="dataParamOrder"
+      :is-loading="isLoadingSubmit"
+      @clickSubmit="submitDataOrder"
+    />
     <Footer />
   </div>
 </template>
@@ -208,6 +214,7 @@ import axios from 'axios';
 import SequrbanChoiceCard from '../views/SequrbanOrderChoiceCard.vue';
 import SequrbanWarningCard from '../views/SequrbanOrderWarningCard.vue';
 import ModalChangeOrderPackage from '../views/ModalChangeOrderPackage.vue';
+import ModalDataConfirmation from '../views/ModalDataConfirmation.vue';
 import InputForm from '~/components/atoms/Input.vue';
 import SelectOption from '~/components/atoms/SelectOption.vue';
 import Button from '~/components/atoms/Button.vue';
@@ -226,6 +233,7 @@ export default {
       isLoading: false,
       isLoadingSubmit: false,
       isShowModalPackage: false,
+      isShowModalConfirmation: false,
       iSshowOption: false,
       showCodePhone: false,
       isAgree: false,
@@ -295,6 +303,7 @@ export default {
     SequrbanChoiceCard,
     SequrbanWarningCard,
     ModalChangeOrderPackage,
+    ModalDataConfirmation,
     InputForm,
     SelectOption,
     Button,
@@ -349,34 +358,107 @@ export default {
       this.$router.push(`/sequrban/order?id=${id}`);
     },
     validateInput() {
-      this.error_fullname.isError = !this.dataParamOrder.fullname;
-      this.error_whatsapp.isError = !this.dataParamOrder.whatsapp;
-      this.error_email.isError = !this.dataParamOrder.email;
-      this.error_qurban_fullname.isError = !this.dataParamOrder.qurban_fullname;
-      this.error_qurban_father_name.isError = !this.dataParamOrder
-        .qurban_father_name;
+      const number = /^[0-9]+$/;
+      const char = /^[A-Za-z][A-Za-z\s]*$/;
+      const mail = /^[^\s@]+@[^\s@]+$/;
+
+      if (this.dataParamOrder.fullname) {
+        if (!this.dataParamOrder.fullname.match(char)) {
+          this.error_fullname.isError = true;
+          this.error_fullname.message = 'Format nama salah';
+        } else {
+          this.error_fullname.isError = false;
+        }
+      } else {
+        this.error_fullname.isError = true;
+        this.error_fullname.message = 'Nama lengkap harus diisi';
+      }
+
+      if (this.dataParamOrder.qurban_fullname) {
+        if (!this.dataParamOrder.qurban_fullname.match(char)) {
+          this.error_qurban_fullname.isError = true;
+          this.error_qurban_fullname.message = 'Format nama salah';
+        } else {
+          this.error_qurban_fullname.isError = false;
+        }
+      } else {
+        this.error_qurban_fullname.isError = true;
+        this.error_qurban_fullname.message = 'Nama lengkap harus diisi';
+      }
+
+      if (this.dataParamOrder.qurban_father_name) {
+        if (!this.dataParamOrder.qurban_father_name.match(char)) {
+          this.error_qurban_father_name.isError = true;
+          this.error_qurban_father_name.message = 'Format nama salah';
+        } else {
+          this.error_qurban_father_name.isError = false;
+        }
+      } else {
+        this.error_qurban_father_name.isError = true;
+        this.error_qurban_father_name.message = 'Nama lengkap harus diisi';
+      }
+
+      if (this.dataParamOrder.email) {
+        if (!this.dataParamOrder.email.match(mail)) {
+          this.error_email.isError = true;
+          this.error_email.message = 'Format email salah';
+        } else {
+          this.error_email.isError = false;
+        }
+      } else {
+        this.error_email.isError = true;
+        this.error_email.message = 'Email harus diisi';
+      }
+
+      if (this.dataParamOrder.whatsapp) {
+        if (!this.dataParamOrder.whatsapp.match(number)) {
+          this.error_whatsapp.isError = true;
+          this.error_whatsapp.message = 'Format nomor telepon salah';
+        } else {
+          this.error_whatsapp.isError = false;
+        }
+      } else {
+        this.error_whatsapp.isError = true;
+        this.error_whatsapp.message = 'Nomor telepon harus diisi';
+      }
+
+      if (this.dataParamOrder.postal_code) {
+        if (this.dataParamOrder.postal_code.length <= 5) {
+          if (!this.dataParamOrder.postal_code.match(number)) {
+            this.error_postal_code.isError = true;
+            this.error_postal_code.message = 'Format kode pos salah';
+          } else {
+            this.error_postal_code.isError = false;
+          }
+        } else {
+          this.error_postal_code.isError = true;
+          this.error_postal_code.message = 'Maksimal kode pos 5 angka';
+        }
+      } else {
+        this.error_postal_code.isError = true;
+        this.error_postal_code.message = 'Kode pos harus diisi';
+      }
+
       this.error_address.isError = !this.dataParamOrder.address;
       this.error_city.isError = !this.dataParamOrder.city;
-      this.error_postal_code.isError = !this.dataParamOrder.postal_code;
     },
     clickSubmit() {
-      this.isLoadingSubmit = true;
       this.validateInput();
       if (
-        this.dataParamOrder.fullname &&
-        this.dataParamOrder.whatsapp &&
-        this.dataParamOrder.email &&
-        this.dataParamOrder.qurban_fullname &&
-        this.dataParamOrder.qurban_father_name &&
-        this.dataParamOrder.address &&
-        this.dataParamOrder.city &&
-        this.dataParamOrder.postal_code
+        !this.error_fullname.isError &&
+        !this.error_whatsapp.isError &&
+        !this.error_email.isError &&
+        !this.error_qurban_fullname.isError &&
+        !this.error_qurban_father_name.isError &&
+        !this.error_address.isError &&
+        !this.error_city.isError &&
+        !this.error_postal_code.isError
       ) {
-        this.submitDataOrder();
+        this.isShowModalConfirmation = true;
       }
     },
     submitDataOrder() {
-      console.log(this.isLoadingSubmit);
+      this.isLoadingSubmit = true;
       this.dataParamOrder = {
         email: this.dataParamOrder.email,
         whatsapp: this.codePhone + this.dataParamOrder.whatsapp,
@@ -416,7 +498,6 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-      console.log(this.isLoadingSubmit);
     },
     toPaymentPage() {
       this.$router.push(
@@ -448,7 +529,6 @@ export default {
       input.addEventListener('change', (event) => {
         if (id === 'fullname') {
           localStorage.setItem('fullname', event.target.value);
-          this.error_fullname.isError === false;
         }
         if (id === 'phone-code') {
           localStorage.setItem('phone-code', event.target.value);
