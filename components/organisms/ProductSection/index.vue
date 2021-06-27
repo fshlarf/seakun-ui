@@ -3,7 +3,7 @@
     <div class="">
       <div class="flex justify-between items-center mb-2 px-2">
         <h1
-          class="hidden md:block md:text-xl lg:text-2xl font-bold md:mb-4 lg:mb-8"
+          class="hidden md:block md:text-xl lg:text-2xl font-bold md:mb-4 lg:mb-4"
         >
           Berlangganan produk digital
         </h1>
