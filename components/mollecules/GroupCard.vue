@@ -24,10 +24,11 @@
     </ol>
     <div>
       <Button
-        label="Daftar sekarang"
+        label="Pesan Sekarang"
         variant="primary"
         class="w-full mt-4 font-bold"
         :disabled="setDisabledBtn(group.members)"
+        @click="$emit('click-order', group.name)"
       />
     </div>
   </div>
