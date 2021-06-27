@@ -3,10 +3,10 @@
     <NavbarBlank />
     <SequrbanHeaderSection />
     <SequrbanIntroductionSection />
-    <SequrbanCashbackSection />
+    <!-- <SequrbanCashbackSection /> -->
     <SequrbanOrderFlowSection />
     <SequrbanProductSection />
-    <SequrbanUserGroupSection />
+    <!-- <SequrbanUserGroupSection /> -->
     <SequrbanQnaSection />
     <Footer />
   </div>
