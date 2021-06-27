@@ -4,6 +4,7 @@
     :class="classBtn"
     v-bind="$props"
     @click="handleOnClick"
+    :disabled="isLoading"
   >
     <div v-if="isLoading">
       <div>
