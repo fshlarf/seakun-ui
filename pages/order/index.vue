@@ -47,8 +47,8 @@
     </div>
     <div class="order-form">
       <InputForm
-        label="Nama Lengkap"
-        placeholder="Masukan Nama"
+        label="Nama lengkap"
+        placeholder="Masukkan nama"
         class="mt-4"
         v-model="userName"
         :error="errorForm.name"
@@ -56,12 +56,12 @@
       <InputForm
         label="Email"
         class="mt-4"
-        placeholder="Masukan Email"
+        placeholder="Masukkan email"
         :error="errorForm.email"
         v-model="email"
       />
       <div class="mt-4">
-        <p class="pb-1 tn:text-sm">Nomer Hp</p>
+        <p class="pb-1 tn:text-sm">Nomor telepon</p>
         <div class="grid grid-cols-8 gap-2 items-center">
           <div class="col-span-2">
             <ButtonDrop
@@ -71,7 +71,7 @@
           </div>
           <div class="col-span-6">
             <InputForm
-              placeholder="Masukan telepon"
+              placeholder="Masukkan nomor whatsapp"
               v-model="phoneNumber"
               :error="errorForm.phoneNumber"
             />
@@ -323,13 +323,13 @@ export default {
       if (email === '') {
         errorTemp.email = {
           isError: true,
-          message: 'Email Harus Di isi',
+          message: 'Email harus diisi',
         };
         isValid = false;
       } else if (!this.validateEmail(email)) {
         errorTemp.email = {
           isError: true,
-          message: 'Format Email Salah',
+          message: 'Format email salah',
         };
         isValid = false;
       }
@@ -337,7 +337,7 @@ export default {
       if (userName === '') {
         errorTemp.name = {
           isError: true,
-          message: 'Name Harus Di Isi',
+          message: 'Nama lengkap harus diisi',
         };
         isValid = false;
       }
@@ -345,7 +345,7 @@ export default {
       if (phoneNumber === '' && !/\D/.test(phoneNumber)) {
         errorTemp.phoneNumber = {
           isError: true,
-          message: 'Nomer Telepon harus disi dengan format yang benar',
+          message: 'Nomor whatsapp harus diisi dengan format yang benar',
         };
       }
 

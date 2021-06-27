@@ -33,7 +33,7 @@
     </div>
     <div class="payment-method">
       <h3 class="payment-method__title text-center text-bold mt-6">
-        Transerfer Ke
+        Transfer Ke
       </h3>
       <div
         v-if="provider.toLowerCase() === 'sequrban'"
