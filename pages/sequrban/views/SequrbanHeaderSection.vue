@@ -14,10 +14,12 @@
       <p class="my-2">
         Idul Adha sebentar lagi datang! Sudah menyiapkan hewan qurban untuk
         melengkapi ibadahmu? Seakun bisa membantumu berqurban sapi dengan
-        program patungan. Dijamin amanah, aman, lebih terjangkau, dan praktis.
+        program patungan yang disebut dengan Sequrban. InsyaAllah amanah, aman,
+        lebih terjangkau, dan praktis.
       </p>
       <p class="text-xs font-semibold text-secondary">
-        *SAAT INI, LAYANAN HANYA UNTUK WILAYAH JABODETABEK
+        *Layanan untuk seluruh Indonesia, pengiriman daging bagian qurban untuk
+        wilayah Jabodetabek.
       </p>
     </div>
     <div class="absolute z-10 tn:top-24 md:top-32 lg:top-36 xl:top-40 mx-auto">
@@ -32,27 +34,31 @@
             Sequrban x <span class="text-secondary">Wadiqibas</span>
           </h1>
           <p
-            class="text-secondary tn:pl-16 md:pl-0 tn:text-xs lg:text-base font-bold"
+            class="text-secondary tn:pl-11 md:pl-0 tn:text-xs lg:text-base font-bold tn:mt-2"
           >
-            mulai dari
+            Mulai dari
           </p>
           <h2
-            class="text-secondary tn:pl-11 md:pl-0 md:text-xl lg:text-xl xl:text-2xl font-extrabold"
+            class="text-secondary tn:pl-6 md:pl-0 tn:text-xl md:text-xl lg:text-xl xl:text-2xl font-extrabold"
           >
             Rp2.740.000
+            <span class="text-secondary md:text-sm tn:text-xs font-normal">
+              / orang</span
+            >
           </h2>
           <p
-            class="tn:hidden md:block font-semibold md:text-xs lg:text-base xl:text-lg text-white my-2"
+            class="tn:hidden md:block md:text-xs lg:text-base xl:text-base text-white my-2"
           >
             Idul Adha sebentar lagi datang! Sudah menyiapkan hewan qurban untuk
             melengkapi ibadahmu? Seakun bisa membantumu berqurban sapi dengan
-            program patungan. Dijamin amanah, aman, lebih terjangkau, dan
-            praktis.
+            program patungan yang disebut dengan Sequrban. InsyaAllah amanah,
+            aman, lebih terjangkau, dan praktis.
           </p>
           <p
-            class="tn:hidden md:block text-secondary md:mt-4 lg:mt-6 xl:mt-8 tn:text-xs lg:text-sm xl:text-base font-bold"
+            class="tn:hidden md:block text-secondary md:mt-4 lg:mt-6 xl:mt-4 tn:text-xs lg:text-sm xl:text-base"
           >
-            *SAAT INI, LAYANAN HANYA UNTUK WILAYAH JABODETABEK
+            *Layanan untuk seluruh Indonesia, pengiriman daging bagian qurban
+            untuk wilayah Jabodetabek.
           </p>
         </div>
       </div>

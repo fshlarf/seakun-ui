@@ -23,15 +23,16 @@
       <h2 class="font-semibold text-xl">
         Tipe {{ variant.packageCode }}
         <span class="text-secondary text-base font-semibold"
-          >~{{ variant.weight }} KG</span
+          >~{{ variant.weight }} kg</span
         >
       </h2>
-      <h1 class="font-bold tn:text-xl md:text-1xl lg:text-2xl xl:text-3xl">
+      <h1 class="font-bold tn:text-xl md:text-2xl lg:text-2xl xl:text-2xl">
         {{ toRupiah(variant.totalCost) }}
+        <span class="text-secondary text-sm font-normal"> / orang</span>
       </h1>
-      <p class="text-xs">10 grup telah bergabung</p>
+      <!-- <p class="text-xs">10 grup telah bergabung</p> -->
       <div
-        class="flex gap-1 items-center my-2"
+        class="flex gap-1 items-center my-2 pt-2"
         @click="showModalDetail(variant.id)"
       >
         <div class="">
@@ -49,7 +50,7 @@
             />
           </svg>
         </div>
-        <p class="text-sm font-bold text-secondary cursor-pointer">
+        <p class="text-sm font-bold text-secondary cursor-pointer ml-1">
           Lihat detail
         </p>
       </div>
