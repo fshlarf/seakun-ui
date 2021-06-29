@@ -205,7 +205,7 @@ export default {
       whatsapp: '',
     };
   },
-  created() {
+  mounted() {
     const { provider, type } = this.$router.history.current.query;
     this.type = type;
     if (provider) {
