@@ -255,7 +255,7 @@ export default {
       message: 'Mohon upload bukti pembayaran',
     },
   }),
-  created() {
+  mounted() {
     const {
       packet_id,
       provider,

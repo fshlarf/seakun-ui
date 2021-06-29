@@ -94,7 +94,7 @@ export default {
       this.newContent = `data.` + val;
     },
   },
-  created() {
+  mounted() {
     this.currentValue = this.initValue;
     this.newValue = this.value ? `data.` + this.value : '';
     this.newContent = this.content ? `data.` + this.content : '';

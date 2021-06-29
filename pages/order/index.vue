@@ -194,7 +194,7 @@ export default {
     dataPackages: [],
     isFetchingPacket: false,
   }),
-  created() {
+  mounted() {
     const { provider, packet_id } = this.$router.history.current.query;
     if (provider) {
       this.provider = provider;
