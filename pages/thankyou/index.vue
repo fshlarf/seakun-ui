@@ -47,7 +47,7 @@ export default {
       destinationBank: '',
     };
   },
-  created() {
+  mounted() {
     const { holder, to, from } = this.$router.history.current.query;
     this.paymentHolder = holder;
     this.destinationBank = to;

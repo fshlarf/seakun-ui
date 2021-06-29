@@ -440,7 +440,7 @@ export default {
       } else if (payload.ispreorder) {
         return '/thankyou/pre-order';
       } else {
-        return '/order-payment';
+        return '/payment';
       }
     },
     onCloseModalPackages() {
