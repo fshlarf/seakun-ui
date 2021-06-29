@@ -167,11 +167,12 @@ import DatePicker from 'vue2-datepicker';
 import 'vue2-datepicker/index.css';
 import moment from 'moment';
 import Input from '../../components/atoms/Input.vue';
-import { currencyFormat } from '../../helpers/word-transformation.js';
+import { currencyFormat } from '~/helpers';
 import axios from 'axios';
 
 export default {
   name: 'paymentConfirmation',
+  layout: 'navigationBlank',
   components: {
     InputForm,
     DownArrowIcon,
@@ -280,7 +281,6 @@ export default {
     const { provider } = this.$router.history.current.query;
     this.getDataDetailPacket(provider);
   },
-
   methods: {
     showPaymentList(type) {
       if (type == 'bankDirection') {
@@ -364,9 +364,12 @@ export default {
         )
 
         .then((res) => {
-          this.toThankyouPage();
-          this.isLoadingSubmit = false;
-          // this.executeApiMailSeakun(payload);
+          if (this.provider.toLowerCase() === 'sequrban') {
+            this.executeApiMailConfirmPayment();
+          } else {
+            this.toThankyouPage();
+            this.isLoadingSubmit = false;
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -385,8 +388,34 @@ export default {
         imageUpload.src = URL.createObjectURL(this.imageFile);
       }
     },
+    executeApiMailConfirmPayment() {
+      let payload = {
+        type: 'downpayment',
+        provider: this.provider,
+        from: this.bankCustomer,
+        holder: this.holder,
+        nominal: this.formatMoneyRupiah(this.nominal),
+        email: this.email,
+        date: this.time1,
+      };
+      axios
+        .post(
+          'https://seakun-mail-api-v2.herokuapp.com/payment-confirm',
+          payload
+        )
+        .then((res) => {
+          this.toThankyouPage();
+          this.isLoadingSubmit = false;
+        })
+        .catch((err) => {
+          console.log(err);
+          this.isLoadingSubmit = false;
+        });
+    },
+    formatMoneyRupiah(num) {
+      return currencyFormat(num);
+    },
   },
-  layout: 'navigationBlank',
 };
 </script>
 
