@@ -7,7 +7,7 @@
         v-if="product.slug === 'disney-hotstar'"
         :src="`/images/product/${product.slug}.png`"
         alt="image not found"
-        class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none tn:w-auto md:w-full tn:h-[8.5rem] md:h-full"
+        class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none tn:w-auto md:w-full tn:h-[8rem] md:h-full"
       />
       <img
         v-else
