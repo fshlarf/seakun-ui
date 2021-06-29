@@ -505,7 +505,7 @@ export default {
     },
     toPaymentPage() {
       this.$router.push(
-        `/payment?type=ondemand&provider=sequrban&packet_id=${this.typeId}&email=${this.dataParamOrder.email}&whatsapp=${this.dataParamOrder.whatsapp}&holder=${this.dataParamOrder.fullname}`
+        `/order-payment?type=ondemand&provider=sequrban&packet_id=${this.typeId}&email=${this.dataParamOrder.email}&whatsapp=${this.dataParamOrder.whatsapp}&holder=${this.dataParamOrder.fullname}`
       );
     },
     capitalizeFirstLetter(str) {
