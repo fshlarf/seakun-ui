@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="payment__img">
+          <div class="payment__img flex justify-center">
             <img src="/images/thank-you.png" alt="Image not found" />
           </div>
           <h3 class="payment-thankyou text-2xl font-bold mt-10 text-center">
