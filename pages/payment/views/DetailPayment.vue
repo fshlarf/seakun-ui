@@ -60,11 +60,11 @@
           />
           <p
             class="mt-4 payment-options__norek text-sm font-bold"
-            @click="clickCopyHandler('Rekening', '1150046427383')"
+            @click="clickCopyHandler('Rekening', payment.accountNumber)"
           >
             {{ payment.accountNumber }}
             <span class="ml-1">
-              <CopyIcon @click="clickCopyHandler('Rekening', '1150046427383')"
+              <CopyIcon @click="clickCopyHandler('Rekening', payment.accountNumber)"
             /></span>
           </p>
           <p class="my-1 payment-options__account-name text-sm">
@@ -87,11 +87,11 @@
           />
           <p
             class="mt-4 payment-options__norek text-sm font-bold"
-            @click="clickCopyHandler('Rekening', '1150046427383')"
+            @click="clickCopyHandler('Rekening', payment.accountNumber)"
           >
             {{ payment.accountNumber }}
             <span class="ml-1">
-              <CopyIcon @click="clickCopyHandler('Rekening', '1150046427383')"
+              <CopyIcon @click="clickCopyHandler('Rekening', payment.accountNumber)"
             /></span>
           </p>
           <p class="my-1 payment-options__account-name text-sm">
