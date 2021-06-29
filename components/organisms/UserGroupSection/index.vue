@@ -43,7 +43,7 @@
 
       <div
         v-else
-        class="scroll-provider flex gap-6 overflow-x-auto overflow-y-auto overscroll-contain px-3 py-2"
+        class="scroll-provider flex gap-6 overflow-x-auto overflow-y-auto px-3 py-2"
       >
         <div
           class="flex-none w-72 h-72"
