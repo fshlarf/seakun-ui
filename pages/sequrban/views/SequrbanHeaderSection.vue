@@ -1,9 +1,9 @@
 <template>
   <div class="container relative z-0">
-    <div class="tn:pt-16 md:pt-24">
+    <div class="tn:pt-20 md:pt-24">
       <img
         class="w-full"
-        src="/images/sequrban/banner.svg"
+        src="/images/sequrban/banner.png"
         alt="Image not found"
       />
     </div>
@@ -22,7 +22,7 @@
         wilayah Jabodetabek.
       </p>
     </div>
-    <div class="absolute z-10 tn:top-24 md:top-32 lg:top-36 xl:top-40 mx-auto">
+    <div class="absolute z-10 tn:top-28 md:top-32 lg:top-36 xl:top-40 mx-auto">
       <div class="grid grid-cols-2 gap-0 justify-center items-center">
         <div></div>
         <div

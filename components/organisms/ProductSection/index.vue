@@ -130,7 +130,7 @@ export default {
           id: 1,
           name: 'Sequrban',
           slug: 'sequrban',
-          img: '/images/product/sekurban.svg',
+          img: '/images/product/sekurban.png',
           icon: '/images/icons/sekurban.svg',
           isActive: true,
           isNew: true,
@@ -141,7 +141,7 @@ export default {
           id: 2,
           name: 'Pahamify',
           slug: 'pahamify',
-          img: '/images/product/pahamify.svg',
+          img: '/images/product/pahamify.png',
           icon: '/images/icons/pahamify.svg',
           isActive: false,
           preview:
@@ -151,7 +151,7 @@ export default {
           id: 3,
           name: 'Kulina',
           slug: 'kulina',
-          img: '/images/product/kulina.svg',
+          img: '/images/product/kulina.png',
           icon: '/images/icons/kulina.svg',
           isActive: false,
           preview:
