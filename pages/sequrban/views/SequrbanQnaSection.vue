@@ -40,7 +40,8 @@ export default {
         {
           id: 3,
           question: 'Bolehkah langsung membayar full?',
-          answer: 'Boleh, klik button bayar full pada halaman pembayaran.',
+          answer:
+            'Untuk saat ini belum bisa. Saat ini kita masih menggunakan metode DP untuk pembayaran tahap awal',
           isShow: false,
         },
         {
