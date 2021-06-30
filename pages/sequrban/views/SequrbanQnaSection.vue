@@ -27,20 +27,20 @@ export default {
         {
           id: 1,
           question: 'Kapan saya membayar DP?',
-          answer: 'saat anda memesan qurban',
+          answer: 'Saat anda memesan qurban',
           isShow: false,
         },
         {
           id: 2,
           question: 'Kapan saya membayar sisa pembayaran?',
           answer:
-            'saat grup full, anda akan mendapatkan infromasi untuk melunasi sisa pembayaran dari Sequrban via whatsapp',
+            'Saat grup full, anda akan mendapatkan infromasi untuk melunasi sisa pembayaran dari Sequrban via whatsapp',
           isShow: false,
         },
         {
           id: 3,
           question: 'Bolehkah langsung membayar full?',
-          answer: 'boleh, klik button bayar full pada halaman pembayaran.',
+          answer: 'Boleh, klik button bayar full pada halaman pembayaran.',
           isShow: false,
         },
         {
@@ -60,7 +60,8 @@ export default {
           id: 6,
           question:
             'Apakah jatah daging kurban akan dikirim ke member yang berkurban? ',
-          answer: 'ya, jatah akan dikirimkan ke alamat yang sudah didaftarkan',
+          answer:
+            'Ya, jatah akan dikirimkan ke alamat yang sudah didaftarkan selama alamat masih berada di area jabodetabek',
           isShow: false,
         },
       ],
