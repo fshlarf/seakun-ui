@@ -11,16 +11,22 @@
           </h3>
 
           <p>
+            User Host adalah program Seakun.id untuk memberikan kewenangan ke
+            user untuk melakukan administrasi ke provider tertentu. Administrasi
+            tersebut bisa berupa pendaftaran atau melakukan payment ke provider
+            tersebut.
+          </p>
+
+          <p>
             Terima kasih telah melakukan pendaftaran.
             <br />Karena kamu terdaftar sebagai User Host, Admin Seakun.id akan
-            memandu kamu untuk melakukan proses payment ke Netflix.
-          </p>
-          <p>
-            User Host adalah user yang berlangganan provider Entertainment via
-            Seakun.id dan user yang bertanggung-jawab melakukan payment ke
-            provider Entertainment menggunakan kartu debit/kredit pribadi
-            miliknya. Penggantian dana akan dilakukan setelah proses pembayaran
-            selesai.
+            memandu kamu untuk melakukan proses
+            {{
+              provider === 'youtube'
+                ? 'pendaftaran menggunakan nomor ponsel yang kamu miliki'
+                : 'payment'
+            }}
+            ke {{ setNameProvider(provider) }}.
           </p>
           <p>
             <a href="/info/user-host" target="_blank">
