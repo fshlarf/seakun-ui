@@ -109,7 +109,7 @@
               type="checkbox"
               name="nama-lengkap"
               id="nama-lengkap"
-              @click="dataParamOrder.qurban_fullname = dataParamOrder.fullname"
+              @change="dataParamOrder.qurban_fullname = dataParamOrder.fullname"
             /><span style="vertical-align: middle" class="text-sm"
               >Sama seperti pemesan</span
             >
@@ -157,13 +157,10 @@
           <label
             class="space-x-1"
             style="display: inline-block"
-            for="nama-lengkap"
             ><input
               v-model="isAgree"
               style="vertical-align: middle"
               type="checkbox"
-              name="nama-lengkap"
-              id="nama-lengkap"
             /><span style="vertical-align: middle" class="text-sm"
               >Menyetujui aturan yang dibuat Seakun</span
             ><a
