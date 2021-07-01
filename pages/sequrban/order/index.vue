@@ -96,8 +96,8 @@
           placeholder="Tulis nama di sini"
           class="mt-4"
           :error="error_qurban_fullname"
-          id="qurban-fullname"
-          @change="setLocalStorage('qurban-fullname')"
+          id="qurban_fullname"
+          @change="setLocalStorage('qurban_fullname')"
         />
         <div class="mt-1 ml-1 -mb-3">
           <label
@@ -121,8 +121,8 @@
           placeholder="Tulis nama di sini"
           class="mt-4"
           :error="error_qurban_father_name"
-          id="qurban-father-name"
-          @change="setLocalStorage('qurban-father-name')"
+          id="qurban_father_name"
+          @change="setLocalStorage('qurban_father_name')"
         />
         <InputForm
           v-model="dataParamOrder.address"
@@ -149,8 +149,8 @@
             placeholder="Kode pos"
             class="mt-0"
             :error="error_postal_code"
-            id="postal-code"
-            @change="setLocalStorage('postal-code')"
+            id="postal_code"
+            @change="setLocalStorage('postal_code')"
           />
         </div>
         <div class="mt-4 ml-1">
@@ -166,11 +166,12 @@
               id="nama-lengkap"
             /><span style="vertical-align: middle" class="text-sm"
               >Menyetujui aturan yang dibuat Seakun</span
-            ><span
+            ><a
               class="text-primary text-sm font-bold cursor-pointer"
-              @click="toTermOfUsePage"
+              href="/terms-of-use"
+              target="_blank"
             >
-              Lihat detail</span
+              Lihat detail</a
             >
           </label>
         </div>
@@ -264,6 +265,16 @@ export default {
         city: '',
         postal_code: '',
       },
+      registeredUser: {
+      fullname: '',
+      whatsapp: '',
+      email: '',
+      qurban_fullname: '',
+      qurban_father_name: '',
+      address: '',
+      city: '',
+      postal_code: '',
+    },
       internationalPhoneNumbers,
       error_fullname: {
         isError: false,
@@ -325,6 +336,7 @@ export default {
   mounted() {
     this.typeId = this.$route.query.id;
     this.getDataDetailQurban(this.typeId);
+    this.setFieldValueFromLocalStorage();
   },
   methods: {
     getDataQurban() {
@@ -525,39 +537,29 @@ export default {
     goBackToSequrbanPage() {
       this.$router.push('/sequrban');
     },
-    toTermOfUsePage() {
-      this.$router.push('/terms-of-use');
+    setFieldValueFromLocalStorage() {
+      const registeredUser = JSON.parse(
+        localStorage.getItem('registered_user')
+      );
+      if (registeredUser) {
+        this.dataParamOrder.fullname = registeredUser.fullname;
+        this.dataParamOrder.email = registeredUser.email;
+        this.dataParamOrder.whatsapp = registeredUser.whatsapp;
+        this.dataParamOrder.qurban_fullname = registeredUser.qurban_fullname;
+        this.dataParamOrder.qurban_father_name = registeredUser.qurban_father_name;
+        this.dataParamOrder.address = registeredUser.address;
+        this.dataParamOrder.city = registeredUser.city;
+        this.dataParamOrder.postal_code = registeredUser.postal_code;
+      }
     },
     setLocalStorage(id) {
       const input = document.getElementById(id);
       input.addEventListener('change', (event) => {
-        if (id === 'fullname') {
-          localStorage.setItem('fullname', event.target.value);
-        }
-        if (id === 'phone-code') {
-          localStorage.setItem('phone-code', event.target.value);
-        }
-        if (id === 'whatsapp') {
-          localStorage.setItem('whatsapp', event.target.value);
-        }
-        if (id === 'email') {
-          localStorage.setItem('email', event.target.value);
-        }
-        if (id === 'qurban-fullname') {
-          localStorage.setItem('qurban-fullname', event.target.value);
-        }
-        if (id === 'qurban-father-name') {
-          localStorage.setItem('qurban-father-name', event.target.value);
-        }
-        if (id === 'address') {
-          localStorage.setItem('address', event.target.value);
-        }
-        if (id === 'city') {
-          localStorage.setItem('city', event.target.value);
-        }
-        if (id === 'postal-code') {
-          localStorage.setItem('postal-code', event.target.value);
-        }
+        this.registeredUser[id] = event.target.value;
+        localStorage.setItem(
+          'registered_user',
+          JSON.stringify(this.registeredUser)
+        );
       });
     },
   },
