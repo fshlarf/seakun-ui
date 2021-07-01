@@ -57,7 +57,6 @@ export default {
     },
     previousSlide() {
       let activeSlide = document.querySelector('.slider');
-      console.log('tes');
       activeSlide.scrollLeft = 0;
     },
   },
