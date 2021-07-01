@@ -51,6 +51,8 @@
         placeholder="Masukkan nama"
         class="mt-4"
         v-model="userName"
+            id="name"
+            @change="setLocalStorage('name')"
         :error="errorForm.name"
       />
       <InputForm
@@ -59,6 +61,8 @@
         placeholder="Masukkan email"
         :error="errorForm.email"
         v-model="email"
+            id="email"
+            @change="setLocalStorage('email')"
       />
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Nomor telepon</p>
@@ -74,6 +78,8 @@
               placeholder="Masukkan nomor whatsapp"
               v-model="phoneNumber"
               :error="errorForm.phoneNumber"
+            id="phone"
+            @change="setLocalStorage('phone')"
             />
           </div>
         </div>
@@ -95,7 +101,7 @@
           yang dibuat oleh seakun
         </label>
       </div>
-      <Voucher class="mt-4" />
+      <!-- <Voucher class="mt-4" /> -->
 
       <Button
         :disabled="!isAgreeTos"
@@ -125,7 +131,7 @@ import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoa
 import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
 import InputForm from '~/components/atoms/Input.vue';
 import DropdownCodeNumber from './views/DropdownCodeNumber.vue';
-import Voucher from './views/Voucher.vue';
+// import Voucher from './views/Voucher.vue';
 import Button from '~/components/atoms/Button';
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
@@ -147,7 +153,7 @@ export default {
     Button,
     DropdownCodeNumber,
     DropDownPricesListSubcribe,
-    Voucher,
+    // Voucher,
     ModalPackages,
   },
   data: () => ({
@@ -474,6 +480,20 @@ export default {
       this.packageId = packet.id;
       this.getOrderDetail();
       this.isShowModalPackages = false;
+    },
+    setLocalStorage(id) {
+      const input = document.getElementById(id);
+      input.addEventListener('change', (event) => {
+        if (id === 'name') {
+          localStorage.setItem('name', event.target.value);
+        }
+        if (id === 'email') {
+          localStorage.setItem('email', event.target.value);
+        }
+        if (id === 'phone') {
+          localStorage.setItem('phone', event.target.value);
+        }
+      });
     },
   },
 };
