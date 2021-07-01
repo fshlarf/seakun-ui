@@ -51,8 +51,8 @@
         placeholder="Masukkan nama"
         class="mt-4"
         v-model="userName"
-            id="name"
-            @change="setLocalStorage('name')"
+        id="name"
+        @change="setLocalStorage('name')"
         :error="errorForm.name"
       />
       <InputForm
@@ -61,8 +61,8 @@
         placeholder="Masukkan email"
         :error="errorForm.email"
         v-model="email"
-            id="email"
-            @change="setLocalStorage('email')"
+        id="email"
+        @change="setLocalStorage('email')"
       />
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Nomor telepon</p>
@@ -78,8 +78,8 @@
               placeholder="Masukkan nomor whatsapp"
               v-model="phoneNumber"
               :error="errorForm.phoneNumber"
-            id="phone"
-            @change="setLocalStorage('phone')"
+              id="phone"
+              @change="setLocalStorage('phone')"
             />
           </div>
         </div>
@@ -95,8 +95,8 @@
         <input class="form-check-input" type="checkbox" v-model="isAgreeTos" />
         <label class="form-check-label ml-2" for="checkbox">
           Menyetujui
-          <nuxt-link class="text-green-seakun" to="/terms-of-use"
-            >aturan</nuxt-link
+          <a class="text-green-seakun" href="/terms-of-use" target="_blank"
+            >aturan</a
           >
           yang dibuat oleh seakun
         </label>
@@ -199,14 +199,20 @@ export default {
     isShowModalPackages: false,
     dataPackages: [],
     isFetchingPacket: false,
+    registeredUser: {
+      name: '',
+      email: '',
+      phone: '',
+    },
   }),
-  created() {
+  mounted() {
     const { provider, packet_id } = this.$router.history.current.query;
     if (provider) {
       this.provider = provider;
       this.packageId = packet_id;
       this.getOrderDetail();
     }
+    this.setFieldValueFromLocalStorage();
   },
   computed: {
     setNameProvider() {
@@ -481,18 +487,24 @@ export default {
       this.getOrderDetail();
       this.isShowModalPackages = false;
     },
+    setFieldValueFromLocalStorage() {
+      const registeredUser = JSON.parse(
+        localStorage.getItem('registered_user')
+      );
+      if (registeredUser) {
+        this.userName = registeredUser.name;
+        this.email = registeredUser.email;
+        this.phoneNumber = registeredUser.phone;
+      }
+    },
     setLocalStorage(id) {
       const input = document.getElementById(id);
       input.addEventListener('change', (event) => {
-        if (id === 'name') {
-          localStorage.setItem('name', event.target.value);
-        }
-        if (id === 'email') {
-          localStorage.setItem('email', event.target.value);
-        }
-        if (id === 'phone') {
-          localStorage.setItem('phone', event.target.value);
-        }
+        this.registeredUser[id] = event.target.value;
+        localStorage.setItem(
+          'registered_user',
+          JSON.stringify(this.registeredUser)
+        );
       });
     },
   },
