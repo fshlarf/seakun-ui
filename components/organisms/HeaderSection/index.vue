@@ -67,10 +67,12 @@ export default {
     nextSlide() {
       let activeSlide = document.querySelector('.slider');
       activeSlide.scrollLeft = activeSlide.scrollWidth;
+      setTimeout(this.previousSlide, 5000);
     },
     previousSlide() {
       let activeSlide = document.querySelector('.slider');
       activeSlide.scrollLeft = 0;
+      setTimeout(this.nextSlide, 5000);
     },
   },
 };
