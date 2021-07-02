@@ -92,8 +92,12 @@
         </div>
       </div>
       <div class="ml-4 mt-6">
-        <input class="form-check-input" type="checkbox" v-model="isAgreeTos" />
-        <label class="form-check-label ml-2" for="checkbox">
+        <label class="space-x-1" style="display: inline-block"
+          ><input
+            v-model="isAgreeTos"
+            style="vertical-align: middle"
+            type="checkbox"
+          />
           Menyetujui
           <a class="text-green-seakun" href="/terms-of-use" target="_blank"
             >aturan</a
@@ -101,7 +105,6 @@
           yang dibuat oleh seakun
         </label>
       </div>
-      <!-- <Voucher class="mt-4" /> -->
 
       <Button
         :disabled="!isAgreeTos"
