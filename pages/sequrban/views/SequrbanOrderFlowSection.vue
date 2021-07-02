@@ -24,7 +24,7 @@
         </svg>
       </div>
       <div
-        class="absolute z-10 -top-12 left-5"
+        class="absolute z-10 tn:-top-10 md:-top-12 tn:left-15 md:left-5"
         :class="{ hidden: !tooltipShow, block: tooltipShow }"
       >
         <div class="relative mx-2">
@@ -40,7 +40,7 @@
               xml:space="preserve"
             >
               <polygon
-                class="fill-current text-third"
+                class="fill-current text-third tn:hidden md:block"
                 points="0,0 127.5,127.5 255,0"
               />
             </svg>

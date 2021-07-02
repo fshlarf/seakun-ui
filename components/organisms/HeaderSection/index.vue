@@ -9,7 +9,9 @@
         alt="Image not found"
       />
     </div>
-    <div class="flex overflow-x-hidden overflow-y-hidden slider">
+    <div
+      class="tn:hidden md:block flex overflow-x-hidden overflow-y-hidden slider"
+    >
       <div class="tn:hidden md:block w-full h-full flex-none slide-first">
         <BannerMain @onClickOrder="onClickOrder" @nextSlide="nextSlide" />
       </div>
@@ -20,8 +22,21 @@
         />
       </div>
     </div>
-    <div class="md:hidden">
-      <HeaderMobile @onClickOrder="onClickOrder" />
+    <div
+      class="relative z-0 pt-20 px-3 md:hidden flex overflow-x-auto gap-3 overflow-y-hidden slider"
+    >
+      <img
+        class="w-11/12 h-full flex-none md:hidden"
+        src="/images/banner/seakun-mobile2.png"
+        alt="image not found"
+        @click="onClickOrder"
+      />
+      <img
+        class="w-11/12 h-full flex-none md:hidden"
+        src="/images/banner/sequrban-mobile.png"
+        alt="image not found"
+        @click="onClickOrderSequrban"
+      />
     </div>
   </div>
 </template>
@@ -29,12 +44,10 @@
 <script>
 import BannerMain from '~/components/mollecules/BannerMain.vue';
 import BannerSequrban from '~/components/mollecules/BannerSequrban.vue';
-import HeaderMobile from '~/components/mollecules/HeaderMobile.vue';
 export default {
   components: {
     BannerMain,
     BannerSequrban,
-    HeaderMobile,
   },
   mounted() {
     setTimeout(this.nextSlide, 2000);
