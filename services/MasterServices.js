@@ -8,47 +8,47 @@ class MasterService {
   }
 
   getProvider (params) {
-    return this.serviceApi.get('/provider/user', {
+    return this.serviceApi.get('/provider/customer', {
       params
     })
   }
 
   getProviderById (uid) {
-    return this.serviceApi.get(`/provider/user/${uid}`)
+    return this.serviceApi.get(`/provider/customer/${uid}`)
   }
 
   createProvider (params) {
-    return this.serviceApi.post('/provider/user', { ...params, fileIcon: 'sadasdas' })
+    return this.serviceApi.post('/provider/customer', { ...params, fileIcon: 'sadasdas' })
   }
 
   updateProvider (uid, params) {
-    return this.serviceApi.patch(`/provider/user/${uid}/all`, { ...params, fileIcon: 'sadasdas' })
+    return this.serviceApi.patch(`/provider/customer/${uid}/all`, { ...params, fileIcon: 'sadasdas' })
   }
 
   deleteProvider (uid) {
-    return this.serviceApi.patch(`/provider/user/${uid}/status`, {
+    return this.serviceApi.patch(`/provider/customer/${uid}/status`, {
       isActive: 0
     })
   }
 
   getPackage (params) {
-    return this.serviceApi.get('/package/user', {
+    return this.serviceApi.get('/package/customer', {
       params
     })
   }
 
   getPackageById (uid) {
-    return this.serviceApi.get(`/package/user/${uid}`)
+    return this.serviceApi.get(`/package/customer/${uid}`)
   }
 
   createPackage (params) {
-    return this.serviceApi.post('/package/user', {
+    return this.serviceApi.post('/package/customer', {
       ...params
     })
   }
 
   updatePackage (uid, params) {
-    return this.serviceApi.patch(`/package/user/${uid}/all`, { ...params })
+    return this.serviceApi.patch(`/package/customer/${uid}/all`, { ...params })
   }
 }
 
