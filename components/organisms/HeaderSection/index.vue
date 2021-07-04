@@ -22,7 +22,7 @@
         />
       </div>
     </div>
-    <div class="relative z-0 mt-20">
+    <div class="relative z-0 pt-20">
       <div
         class="px-3 md:hidden flex overflow-x-hidden gap-3 overflow-y-hidden slider2"
       >
