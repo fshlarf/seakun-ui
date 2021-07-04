@@ -23,7 +23,9 @@
               @click="$emit('nextSlide')"
             ></div>
           </div>
-          <span class="md:text-2xl font-bold my-4">Seakun.id</span>
+          <span class="md:text-2xl text-secondary font-bold my-4"
+            >Seakun.id</span
+          >
           <p
             class="md:text-xl lg:text-3xl xl:text-5xl font-bold md:text-white xl:my-6"
           >

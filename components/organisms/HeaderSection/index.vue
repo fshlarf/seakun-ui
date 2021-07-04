@@ -29,7 +29,7 @@
         <div class="w-11/12 h-full flex-none md:hidden" @click="onClickOrder">
           <img
             class="w-full h-full md:hidden"
-            src="/images/banner/seakun-mobile2.png"
+            src="/images/banner/seakun-mobile.png"
             alt="image not found"
           />
         </div>
