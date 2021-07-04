@@ -1,3 +1,5 @@
+import definePlugin from './config/definePlugin'
+
 export default {
   /*
    ** Nuxt rendering mode
@@ -99,6 +101,9 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: ['@nuxtjs/tailwindcss'],
+  build: {
+    plugins: definePlugin(),
+  },
   // router: { base: '/seakun/' },
   /*
    ** Nuxt.js modules
