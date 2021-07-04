@@ -11,7 +11,7 @@
     </div>
     <div class="container relative z-0 md:pt-24 lg:pt-36 xl:pt-32">
       <div
-        class="md:text-left w-3/5 md:ml-12 lg::ml-24 xl:ml-20 md:-mr-8 xl:-mr-12"
+        class="md:text-left md:w-7/12 lg:w-3/5 md:ml-12 lg::ml-24 xl:ml-20 md:-mr-8 xl:-mr-12"
       >
         <div class="">
           <div class="flex gap-2">
@@ -23,11 +23,11 @@
               class="h-1 rounded-full bg-white w-8 my-2 cursor-pointer"
             ></div>
           </div>
-          <span class="md:text-2xl text-secondary font-bold my-4"
-            >Seakun.id</span
-          >
+          <div class="md:text-2xl text-secondary font-bold">
+            Sequrban,<span class="text-white"> Seakun x Wadiqibas</span>
+          </div>
           <p
-            class="md:text-xl lg:text-3xl xl:text-5xl font-bold md:text-white xl:my-6"
+            class="md:text-xl lg:text-4xl xl:text-5xl font-bold md:text-white lg:my-2 xl:my-6"
           >
             Berqurban sapi bersama <span class="text-secondary">Sequrban</span>.
             Patungan <span class="text-secondary">lebih murah</span>, dan

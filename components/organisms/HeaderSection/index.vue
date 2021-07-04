@@ -1,10 +1,10 @@
 <template>
   <div class="relative z-0">
     <div
-      class="w-full absolute -z-30 tn:-top-10 md:-top-10 lg:-top-18 xl:-top-60"
+      class="tn:hidden md:block w-full absolute -z-30 tn:-top-10 md:-top-10 lg:-top-18 xl:-top-60"
     >
       <img
-        class="md:w-full tn:h-80 md:h-full"
+        class="tn:hidden md:block md:w-full tn:h-80 md:h-full"
         src="/images/header-bg.svg"
         alt="Image not found"
       />
@@ -24,24 +24,13 @@
     </div>
     <div class="relative z-0 pt-20">
       <div
-        class="px-3 md:hidden flex overflow-x-hidden gap-3 overflow-y-hidden slider2"
+        class="px-3 md:hidden flex overflow-x-auto gap-3 overflow-y-hidden slider2 place-items-stretch items-stretch"
       >
-        <div class="w-11/12 h-full flex-none md:hidden" @click="onClickOrder">
-          <img
-            class="w-full h-full md:hidden"
-            src="/images/banner/seakun-mobile.png"
-            alt="image not found"
-          />
+        <div class="w-11/12 h-full flex-none md:hidden">
+          <BannerMainMobile @clickOrder="onClickOrder" />
         </div>
-        <div
-          class="w-11/12 h-full flex-none md:hidden"
-          @click="onClickOrderSequrban"
-        >
-          <img
-            class="w-full h-full md:hidden"
-            src="/images/banner/sequrban-mobile.png"
-            alt="image not found"
-          />
+        <div class="w-11/12 h-full flex-none md:hidden">
+          <BannerSequrbanMobile @onClickSequrban="onClickOrderSequrban" />
         </div>
       </div>
     </div>
@@ -51,6 +40,8 @@
 <script>
 import BannerMain from '~/components/mollecules/BannerMain.vue';
 import BannerSequrban from '~/components/mollecules/BannerSequrban.vue';
+import BannerMainMobile from '~/components/mollecules/BannerMainMobile.vue';
+import BannerSequrbanMobile from '~/components/mollecules/BannerSequrbanMobile.vue';
 export default {
   data() {
     return {
@@ -60,6 +51,8 @@ export default {
   components: {
     BannerMain,
     BannerSequrban,
+    BannerMainMobile,
+    BannerSequrbanMobile,
   },
   mounted() {
     setTimeout(this.slide, 2000);
@@ -109,6 +102,13 @@ export default {
   display: none;
 }
 .slider {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.slider2::-webkit-scrollbar {
+  display: none;
+}
+.slider2 {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }

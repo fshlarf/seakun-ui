@@ -43,7 +43,7 @@
           >
             Rp2.740.000
             <span
-              class="text-secondary md:text-sm tn:text-xs xl:text-lg font-normal"
+              class="text-white md:text-sm tn:text-xs xl:text-lg font-normal"
             >
               / orang</span
             >
