@@ -39,10 +39,12 @@
             Mulai dari
           </p>
           <h2
-            class="text-secondary tn:pl-6 md:pl-0 tn:text-xl md:text-xl lg:text-xl xl:text-2xl font-extrabold"
+            class="text-secondary tn:pl-6 md:pl-0 tn:text-xl md:text-xl lg:text-xl xl:text-[36px] font-extrabold"
           >
             Rp2.740.000
-            <span class="text-secondary md:text-sm tn:text-xs font-normal">
+            <span
+              class="text-secondary md:text-sm tn:text-xs xl:text-lg font-normal"
+            >
               / orang</span
             >
           </h2>
