@@ -10,33 +10,37 @@
       </p>
       <p v-else class="payment-detail__label my-3 text-xl">Total transfer</p>
       <div class="total-payment flex align-items-center justify-center">
-          <div v-if="detailPayment.loading" 
-              class="payment-detail__price flex align-items-center justify-center">
-            <p  class="shimmer w-6/12"></p>
-          </div>
-          <div v-else-if="provider.toLowerCase() === 'sequrban'" 
-               class="payment-detail__price flex align-items-center justify-center"
-               @click="clickCopyHandler('Nominal', detailPayment.data.downPayment)">
-            <p
-              class="my-3 text-xl mr-2 cursor-pointer"
-              v-html="formatCodePayment(detailPayment.data.downPayment)"
-            ></p>
-            <CopyIcon/>
-          </div>
-          <div v-else 
-              class="payment-detail__price flex align-items-center justify-center cursor-pointer"
-              @click="clickCopyHandler('Nominal', detailPayment.data.grandTotal)"
-              >  
-            <p
+        <div
+          v-if="detailPayment.loading"
+          class="payment-detail__price flex align-items-center justify-center"
+        >
+          <p class="shimmer w-6/12"></p>
+        </div>
+        <div
+          v-else-if="provider.toLowerCase() === 'sequrban'"
+          class="payment-detail__price flex align-items-center justify-center"
+          @click="clickCopyHandler('Nominal', detailPayment.data.downPayment)"
+        >
+          <p
+            class="my-3 text-xl mr-2 cursor-pointer"
+            v-html="formatCodePayment(detailPayment.data.downPayment)"
+          ></p>
+          <CopyIcon />
+        </div>
+        <div
+          v-else
+          class="payment-detail__price flex align-items-center justify-center cursor-pointer"
+          @click="clickCopyHandler('Nominal', detailPayment.data.grandTotal)"
+        >
+          <p
             class="my-3 text-xl mr-2 cursor-pointer"
             v-html="formatCodePayment(detailPayment.data.grandTotal)"
-            ></p>
-            <CopyIcon/>
-          </div>
+          ></p>
+          <CopyIcon />
+        </div>
       </div>
-      
-      
-      </div>
+
+      <!-- </div> -->
       <!-- <p class="payment-detail__alert my-3">
         Pastikan nominal sesuai hingga 3 digit terakhir
       </p> -->
@@ -64,7 +68,8 @@
           >
             {{ payment.accountNumber }}
             <span class="ml-1">
-              <CopyIcon @click="clickCopyHandler('Rekening', payment.accountNumber)"
+              <CopyIcon
+                @click="clickCopyHandler('Rekening', payment.accountNumber)"
             /></span>
           </p>
           <p class="my-1 payment-options__account-name text-sm">
@@ -91,7 +96,8 @@
           >
             {{ payment.accountNumber }}
             <span class="ml-1">
-              <CopyIcon @click="clickCopyHandler('Rekening', payment.accountNumber)"
+              <CopyIcon
+                @click="clickCopyHandler('Rekening', payment.accountNumber)"
             /></span>
           </p>
           <p class="my-1 payment-options__account-name text-sm">

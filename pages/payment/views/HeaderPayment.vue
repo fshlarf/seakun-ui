@@ -58,6 +58,7 @@
       <DetailOrderSequrban
         v-else-if="provider.toLowerCase() === 'sequrban'"
         :isLoading="detailPayment.loading"
+        :image="detailPayment.data.images[0]"
         :type="detailPayment.data.type"
         :packageCode="detailPayment.data.packageCode"
         :unitWeight="detailPayment.data.unitWeight"

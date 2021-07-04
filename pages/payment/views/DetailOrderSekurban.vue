@@ -8,7 +8,7 @@
       <div class="flex-1">
         <img
           class="detail-product__image w-9/12"
-          :src="`/images/sequrban/sapi.png`"
+          :src="`${image}`"
           alt="Image not found"
         />
       </div>
@@ -55,6 +55,10 @@ export default {
     isLoading: {
       type: Boolean,
       dafault: false,
+    },
+    image: {
+      type: String,
+      default: '',
     },
     type: {
       type: String,
