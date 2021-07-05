@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="tn:px-2 md:px-4 w-full mx-auto">
-      <a class="w-full" type="button" href="mailto:partnership@seakun.id">
+      <a class="w-full" href="mailto:partnership@seakun.id">
         <Button
           variant="secondary"
           label="Ajukan permintaan"

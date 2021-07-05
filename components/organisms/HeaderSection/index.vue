@@ -24,12 +24,12 @@
     </div>
     <div class="relative z-0 pt-20">
       <div
-        class="px-3 md:hidden flex overflow-x-auto gap-3 overflow-y-hidden slider2 place-items-stretch items-stretch"
+        class="px-3  md:hidden flex overflow-x-auto gap-3 overflow-y-hidden slider2 place-items-stretch items-stretch"
       >
-        <div class="w-11/12 h-full flex-none md:hidden">
+        <div class="w-11/12 h-auto flex-none md:hidden">
           <BannerMainMobile @clickOrder="onClickOrder" />
         </div>
-        <div class="w-11/12 h-full flex-none md:hidden">
+        <div class="w-11/12 pr-4 h-auto flex-none md:hidden">
           <BannerSequrbanMobile @onClickSequrban="onClickOrderSequrban" />
         </div>
       </div>
