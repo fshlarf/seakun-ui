@@ -9,7 +9,7 @@
         alt="Image not found"
       />
     </div>
-    <div class="container relative z-0 md:pt-8 lg:pt-8 xl:pt-15">
+    <div class="container relative z-0 md:pt-8 lg:pt-14 xl:pt-15">
       <div
         class="md:text-left md:grid md:grid-cols-2 md:justify-between md:items-center md:ml-12 lg::ml-24 xl:ml-20 md:-mr-8 xl:-mr-16"
       >
@@ -27,7 +27,7 @@
             >Seakun.id</span
           >
           <p
-            class="md:text-xl lg:text-3xl xl:text-5xl font-bold md:text-white xl:my-6"
+            class="md:text-xl lg:text-4xl xl:text-5xl font-bold md:text-white lg:my-2 xl:my-6"
           >
             Berlangganan bersama lebih
             <span class="text-secondary">praktis, legal, aman</span> dan
