@@ -11,10 +11,11 @@
           <h2 class="text-xl md:text-2xl font-bold">Tentang Kami</h2>
           <p class="xl:text-lg xl:font-semibold">
             Platform pertama di Indonesia yang memberikan layanan berlangganan
-            bersama dengan pengguna lain (sharing subscription) ke penyedia
-            layanan entertainment seperti
+            bersama (sharing subscription) dan patungan dengan pengguna lain
+            untuk mendapatkan layanan premium seperti
             <span class="text-secondary font-bold"
-              >Netflix, Gramedia Digital, Spotify, Steam, dan lainnya</span
+              >Netflix, Spotify, Youtube atau kateringan, kelas online dan
+              layanan non-digital lainnya.</span
             >
           </p>
         </div>
