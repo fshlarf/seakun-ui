@@ -11,10 +11,9 @@
       Sequrban, <span class="text-white">Seakun x Wadiqibas</span>
     </h2>
     <p class="text-white font-bold my-2">
-      Berqurban sapi bersama
-      <span class="text-secondary">Sequrban</span>. Patungan
-      <span class="text-secondary">lebih murah</span>, dan
-      <span class="text-secondary">pasti amanah</span>
+      Berqurban sapi bersama.
+      <span class="text-secondary">Patungan lebih mudah</span>, dan
+      <span class="text-secondary">Insya Allah amanah</span>
     </p>
     <Button
       variant="third"

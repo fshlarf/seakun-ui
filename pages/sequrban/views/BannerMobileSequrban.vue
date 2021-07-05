@@ -21,7 +21,7 @@
       patungan yang disebut dengan Sequrban. InsyaAllah amanah, aman, lebih
       terjangkau, dan praktis.
     </p>
-    <p class="text-xs text-left font-semibold text-secondary uppercase">
+    <p class="text-xs text-left font-semibold text-secondary">
       *Layanan untuk seluruh Indonesia, pengiriman daging bagian qurban untuk
       wilayah Jabodetabek.
     </p>
