@@ -41,7 +41,7 @@
       class="relative flex justify-center z-0 tn:-mt-6 tn:block md:hidden text-center px-7 mb-16"
     >
       <div class="tn:block md:hidden absolute mx-auto z-10 top-0">
-        <a type="button" href="mailto:partnership@seakun.id">
+        <a  href="mailto:partnership@seakun.id">
           <Button
             class="mx-auto btn-partner"
             variant="secondary"
