@@ -239,7 +239,7 @@ import Header from '~/components/mollecules/Header';
 import Footer from '~/components/mollecules/Footer';
 export default {
   name: 'ToSPage',
-  layout: 'navigationBlank',
+  layout: 'new',
   components: {
     Header,
     Footer,
