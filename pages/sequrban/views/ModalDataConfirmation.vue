@@ -14,7 +14,7 @@
     </div>
     <div class="mt-2 md:px-3">
       <h1 class="text-sm">Nomor telepon whatsapp</h1>
-      <p class="font-bold">0{{ dataOrder.whatsapp }}</p>
+      <p class="font-bold">{{ dataOrder.whatsapp }}</p>
     </div>
     <div class="mt-2 md:px-3">
       <h1 class="text-sm">Email</h1>

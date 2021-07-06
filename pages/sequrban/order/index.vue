@@ -383,11 +383,11 @@ export default {
     },
     validationForm(input) {
       const { dataParamOrder } = this;
-      const numberFormat = /^[0-9]+$/;
+      const numberFormat = /^[0-9]*$/;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
       const mailFormat = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      const idnPhoneFormat = /^[8][0-9]+$/;
-      const globalPhoneFormat = /^[0-9]+$/;
+      const idnPhoneFormat = /^[8][0-9]*$/;
+      const globalPhoneFormat = /^[0-9]*$/;
       let isValid = true;
       let errorTemp = {
         fullname: {

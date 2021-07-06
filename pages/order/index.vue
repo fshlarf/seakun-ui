@@ -332,8 +332,8 @@ export default {
     validationForm(input) {
       const { email, userName, phoneNumber, errorForm } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
-      const idnPhoneFormat = /^[8][0-9]+$/;
-      const globalPhoneFormat = /^[0-9]+$/;
+      const idnPhoneFormat = /^[8][0-9]*$/;
+      const globalPhoneFormat = /^[0-9]*$/;
       let isValid = true;
       let errorTemp = {
         email: {
