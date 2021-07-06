@@ -94,7 +94,7 @@
           />
         </div>
       </div>
-      <div class="ml-4 mt-6">
+      <div class="ml-2 mt-6">
         <label class="space-x-1" style="display: inline-block"
           ><input
             v-model="isAgreeTos"
@@ -360,7 +360,7 @@ export default {
         } else if (!this.validateEmail(email)) {
           errorTemp.email = {
             isError: true,
-            message: 'Format email salah',
+            message: 'Format email salah. cth: john@mail.com',
           };
           isValid = false;
         }

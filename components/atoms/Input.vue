@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <p v-if="error.isError" class="text-red-500 text-xs italic">
+    <p v-if="error.isError" class="text-red-500 text-xs pt-1">
       {{ error.message }}
     </p>
   </div>
