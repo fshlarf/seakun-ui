@@ -154,9 +154,7 @@
           />
         </div>
         <div class="mt-4 ml-1">
-          <label
-            class="space-x-1"
-            style="display: inline-block"
+          <label class="space-x-1" style="display: inline-block"
             ><input
               v-model="isAgree"
               style="vertical-align: middle"
@@ -263,15 +261,15 @@ export default {
         postal_code: '',
       },
       registeredUser: {
-      fullname: '',
-      whatsapp: '',
-      email: '',
-      qurban_fullname: '',
-      qurban_father_name: '',
-      address: '',
-      city: '',
-      postal_code: '',
-    },
+        fullname: '',
+        whatsapp: '',
+        email: '',
+        qurban_fullname: '',
+        qurban_father_name: '',
+        address: '',
+        city: '',
+        postal_code: '',
+      },
       internationalPhoneNumbers,
       error_fullname: {
         isError: false,
@@ -371,6 +369,7 @@ export default {
       const number = /^[0-9]+$/;
       const char = /^[A-Za-z][A-Za-z\s]*$/;
       const mail = /^[^\s@]+@[^\s@]+$/;
+      const phone = /^[8][0-9]+$/;
 
       if (this.dataParamOrder.fullname) {
         if (!this.dataParamOrder.fullname.match(char)) {
@@ -421,9 +420,10 @@ export default {
       }
 
       if (this.dataParamOrder.whatsapp) {
-        if (!this.dataParamOrder.whatsapp.match(number)) {
+        if (!this.dataParamOrder.whatsapp.match(phone)) {
           this.error_whatsapp.isError = true;
-          this.error_whatsapp.message = 'Format nomor telepon salah';
+          this.error_whatsapp.message =
+            'Format nomor telepon salah. cth: 81234567890';
         } else {
           this.error_whatsapp.isError = false;
         }
@@ -543,7 +543,8 @@ export default {
         this.dataParamOrder.email = registeredUser.email;
         this.dataParamOrder.whatsapp = registeredUser.whatsapp;
         this.dataParamOrder.qurban_fullname = registeredUser.qurban_fullname;
-        this.dataParamOrder.qurban_father_name = registeredUser.qurban_father_name;
+        this.dataParamOrder.qurban_father_name =
+          registeredUser.qurban_father_name;
         this.dataParamOrder.address = registeredUser.address;
         this.dataParamOrder.city = registeredUser.city;
         this.dataParamOrder.postal_code = registeredUser.postal_code;

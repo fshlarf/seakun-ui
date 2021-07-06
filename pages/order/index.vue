@@ -320,6 +320,7 @@ export default {
     },
     validationForm() {
       const { email, userName, phoneNumber, errorForm } = this;
+      const phoneFormat = /^[8][0-9]+$/;
       let isValid = true;
       let errorTemp = {
         email: {
@@ -330,7 +331,7 @@ export default {
           isError: false,
           message: '',
         },
-        notelp: {
+        phoneNumber: {
           isError: false,
           message: '',
         },
@@ -357,11 +358,18 @@ export default {
         isValid = false;
       }
 
-      if (phoneNumber === '' && !/\D/.test(phoneNumber)) {
+      if (phoneNumber === '') {
         errorTemp.phoneNumber = {
           isError: true,
-          message: 'Nomor whatsapp harus diisi dengan format yang benar',
+          message: 'Nomor whatsapp harus diisi',
         };
+        isValid = false;
+      } else if (!phoneNumber.match(phoneFormat)) {
+        errorTemp.phoneNumber = {
+          isError: true,
+          message: 'Format nomor whatsapp salah. cth: 81234567890',
+        };
+        isValid = false;
       }
 
       this.errorForm = { ...errorTemp };
