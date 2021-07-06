@@ -53,6 +53,7 @@
         v-model="userName"
         id="name"
         @change="setLocalStorage('name')"
+        @keyup="validationForm('fullname')"
         :error="errorForm.name"
       />
       <InputForm
@@ -63,6 +64,7 @@
         v-model="email"
         id="email"
         @change="setLocalStorage('email')"
+        @keyup="validationForm('userEmail')"
       />
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Nomor telepon</p>
@@ -80,6 +82,7 @@
               :error="errorForm.phoneNumber"
               id="phone"
               @change="setLocalStorage('phone')"
+              @keyup="validationForm('userPhone')"
             />
           </div>
         </div>
@@ -208,6 +211,11 @@ export default {
       phone: '',
     },
   }),
+  watch: {
+    codeNumber() {
+      this.validationForm('userPhone');
+    },
+  },
   mounted() {
     const { provider, packet_id } = this.$router.history.current.query;
     if (provider) {
@@ -318,9 +326,14 @@ export default {
       };
       this.isShowPriceList = false;
     },
-    validationForm() {
+    onTyping() {
+      console.log('typing...');
+    },
+    validationForm(input) {
       const { email, userName, phoneNumber, errorForm } = this;
-      const phoneFormat = /^[8][0-9]+$/;
+      const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
+      const idnPhoneFormat = /^[8][0-9]+$/;
+      const globalPhoneFormat = /^[0-9]+$/;
       let isValid = true;
       let errorTemp = {
         email: {
@@ -336,40 +349,65 @@ export default {
           message: '',
         },
       };
-      if (email === '') {
-        errorTemp.email = {
-          isError: true,
-          message: 'Email harus diisi',
-        };
-        isValid = false;
-      } else if (!this.validateEmail(email)) {
-        errorTemp.email = {
-          isError: true,
-          message: 'Format email salah',
-        };
-        isValid = false;
+
+      if (input === 'userEmail' || !input) {
+        if (email === '') {
+          errorTemp.email = {
+            isError: true,
+            message: 'Email harus diisi',
+          };
+          isValid = false;
+        } else if (!this.validateEmail(email)) {
+          errorTemp.email = {
+            isError: true,
+            message: 'Format email salah',
+          };
+          isValid = false;
+        }
       }
 
-      if (userName === '') {
-        errorTemp.name = {
-          isError: true,
-          message: 'Nama lengkap harus diisi',
-        };
-        isValid = false;
+      if (input === 'fullname' || !input) {
+        if (userName === '') {
+          errorTemp.name = {
+            isError: true,
+            message: 'Nama lengkap harus diisi',
+          };
+          isValid = false;
+        } else if (!userName.match(nameFormat)) {
+          errorTemp.name = {
+            isError: true,
+            message: 'Format nama salah',
+          };
+          isValid = false;
+        }
       }
 
-      if (phoneNumber === '') {
-        errorTemp.phoneNumber = {
-          isError: true,
-          message: 'Nomor whatsapp harus diisi',
-        };
-        isValid = false;
-      } else if (!phoneNumber.match(phoneFormat)) {
-        errorTemp.phoneNumber = {
-          isError: true,
-          message: 'Format nomor whatsapp salah. cth: 81234567890',
-        };
-        isValid = false;
+      if (input === 'userPhone' || !input) {
+        if (phoneNumber === '') {
+          errorTemp.phoneNumber = {
+            isError: true,
+            message: 'Nomor whatsapp harus diisi',
+          };
+          isValid = false;
+        } else if (
+          this.codeNumber === '+62' &&
+          !phoneNumber.match(idnPhoneFormat)
+        ) {
+          errorTemp.phoneNumber = {
+            isError: true,
+            message: 'Format nomor whatsapp salah. cth: 81234567890',
+          };
+          isValid = false;
+        } else if (
+          this.codeNumber !== '+62' &&
+          !phoneNumber.match(globalPhoneFormat)
+        ) {
+          errorTemp.phoneNumber = {
+            isError: true,
+            message: 'Format nomor whatsapp salah. cth: 81234567890',
+          };
+          isValid = false;
+        }
       }
 
       this.errorForm = { ...errorTemp };
