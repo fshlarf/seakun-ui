@@ -11,7 +11,7 @@
     </div>
     <div class="my-6 container-group">
       <div
-        class="scroll-provider flex gap-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
+        class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
       >
         <ProviderPill
           v-for="(provider, id) in dataProviderList"
@@ -29,7 +29,7 @@
 
       <div
         v-if="!isLoading"
-        class="scroll-provider flex gap-6 overflow-x-auto overscroll-auto px-3 pt-2 -ml-4"
+        class="scroll-provider flex space-x-6 overflow-x-auto overscroll-auto px-3 pt-2 -ml-4"
       >
         <GroupCard
           v-for="(group, id) in dataDetailGroup"
@@ -43,7 +43,7 @@
 
       <div
         v-else
-        class="scroll-provider flex gap-6 overflow-x-auto overflow-y-auto px-3 py-2"
+        class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto px-3 py-2"
       >
         <div
           class="flex-none w-72 h-72"
