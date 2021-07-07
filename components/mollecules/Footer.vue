@@ -1,5 +1,5 @@
 <template>
-  <div class="footer tn:mt-12 lg:pt-6 xl:pt-12 xl:mt-20">
+  <div class="footer lg:pt-6 xl:pt-12">
     <div
       class="container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
     >
@@ -12,10 +12,16 @@
           Bersama agar dapat menikmati fitur premium dengan proses berlangganan
           yang praktis, legal, aman dan murah
         </p>
-        <div class="flex gap-2 xl:gap-3 my-3">
-          <img src="/images/footer/instagram.svg" alt="#" />
-          <img src="/images/footer/twitter.svg" alt="#" />
-          <img src="/images/footer/youtube.svg" alt="#" />
+        <div class="flex space-x-2 xl:space-x-3 my-3">
+          <a href="https://instagram.com/seakun.id" target="_blank"
+            ><img src="/images/footer/instagram.svg" alt="#"
+          /></a>
+          <a href="https://twitter.com/seakun_id" target="_blank"
+            ><img src="/images/footer/twitter.svg" alt="#"
+          /></a>
+          <a href="https://www.linkedin.com/company/seakun-id/" target="_blank"
+            ><img src="/images/footer/linkedin.svg" alt="#"
+          /></a>
         </div>
       </div>
       <div class="tn:my-4 md:mt-0">
@@ -59,19 +65,19 @@
           Reach Us
         </h1>
         <div class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
-          <div class="flex gap-2">
+          <div class="flex space-x-2">
             <img src="/images/footer/email-icon.svg" alt="#" />
             <a href="mailto:cs@seakun.id">
               <p>cs@seakun.id</p>
             </a>
           </div>
-          <div class="flex gap-2">
+          <div class="flex space-x-2">
             <img src="/images/footer/phone-icon.svg" alt="#" />
             <a href="https://api.whatsapp.com/send?phone=6282124852227"
               >+62821 2485 2227</a
             >
           </div>
-          <div class="flex gap-2 items-start">
+          <div class="flex space-x-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />
             <div class="space-y-1">
               <p class="font-bold">Jam Operasional</p>

@@ -1,5 +1,5 @@
 <template>
-  <div id="qna" class="container pt-20">
+  <div id="qna" class="container pt-20 tn:mb-12 xl:mb-20">
     <div class="tn:text-center lg:text-left">
       <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
         Frequently Asked Questions (FAQ)
