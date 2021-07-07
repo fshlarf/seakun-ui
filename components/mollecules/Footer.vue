@@ -1,5 +1,5 @@
 <template>
-  <div class="footer tn:mt-12 lg:pt-6 xl:pt-12 xl:mt-20">
+  <div class="footer lg:pt-6 xl:pt-12">
     <div
       class="container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
     >
@@ -20,7 +20,7 @@
             ><img src="/images/footer/twitter.svg" alt="#"
           /></a>
           <a href="https://www.linkedin.com/company/seakun-id/"
-            ><img src="/images/footer/linkedin.svg" alt="#"
+            ><img src="/images/footer/youtube.svg" alt="#"
           /></a>
         </div>
       </div>

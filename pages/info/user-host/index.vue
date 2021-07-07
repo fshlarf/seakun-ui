@@ -102,6 +102,7 @@ export default {
 }
 @media (max-width: 800px) {
   .info {
+    padding: 30px 20px 10px !important;
     &__benefits {
       margin-top: 2rem;
       display: block;

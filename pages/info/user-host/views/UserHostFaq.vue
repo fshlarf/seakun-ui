@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-lg-6 faq-title-container">FAQ</div>
-        <div class="col-md-8 col-lg-6">
+        <div class="col-md-8 col-lg-6 tn:mb-6 xl:mb-10">
           <AccordionContainer>
             <Accordion name="faq1" title="Apa itu User Host?">
               User Host adalah user yang berlangganan provider Entertainment via
