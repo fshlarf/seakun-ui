@@ -1,5 +1,5 @@
 <template>
-  <div class="footer lg:pt-6 xl:pt-12">
+  <div class="footer lg:pt-6 xl:pt-12 mt-12">
     <div
       class="container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
     >

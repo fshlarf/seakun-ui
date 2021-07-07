@@ -1,5 +1,5 @@
 <template>
-  <div class="info faq">
+  <div class="info faq -mb-12">
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-lg-6 faq-title-container">FAQ</div>
