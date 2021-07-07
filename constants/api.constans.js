@@ -1,1 +1,0 @@
-export const API_MASTER_URL = ENV.API_MASTER_URL

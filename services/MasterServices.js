@@ -1,55 +1,65 @@
-import { API_MASTER_URL } from '~/constant/api.constants'
-import httpRequest from '~/helper/http/httpRequest'
+import { API_MASTER_URL } from '~/constants/api.constants.js';
+import httpRequest from '~/helpers/httpRequest.js';
 
 class MasterService {
-  constructor (ctx) {
-    this.ctx = ctx
-    this.serviceApi = httpRequest(ctx, API_MASTER_URL).serviceApi
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.serviceApi = httpRequest(ctx, API_MASTER_URL).serviceApi;
   }
 
-  getProvider (params) {
+  getProvider(params) {
     return this.serviceApi.get('/provider/customer', {
-      params
-    })
+      params,
+    });
   }
 
-  getProviderById (uid) {
-    return this.serviceApi.get(`/provider/customer/${uid}`)
+  getProviderById(uid) {
+    return this.serviceApi.get(`/provider/customer/${uid}`);
   }
 
-  createProvider (params) {
-    return this.serviceApi.post('/provider/customer', { ...params, fileIcon: 'sadasdas' })
+  createProvider(params) {
+    return this.serviceApi.post('/provider/customer', {
+      ...params,
+      fileIcon: 'sadasdas',
+    });
   }
 
-  updateProvider (uid, params) {
-    return this.serviceApi.patch(`/provider/customer/${uid}/all`, { ...params, fileIcon: 'sadasdas' })
+  updateProvider(uid, params) {
+    return this.serviceApi.patch(`/provider/customer/${uid}/all`, {
+      ...params,
+      fileIcon: 'sadasdas',
+    });
   }
 
-  deleteProvider (uid) {
+  deleteProvider(uid) {
     return this.serviceApi.patch(`/provider/customer/${uid}/status`, {
-      isActive: 0
-    })
+      isActive: 0,
+    });
   }
 
-  getPackage (params) {
+  getPackage(params) {
     return this.serviceApi.get('/package/customer', {
-      params
-    })
+      params,
+    });
   }
 
-  getPackageById (uid) {
-    return this.serviceApi.get(`/package/customer/${uid}`)
+  getPackageById(uid) {
+    return this.serviceApi.get(`/package/customer/${uid}`);
   }
 
-  createPackage (params) {
+  createPackage(params) {
     return this.serviceApi.post('/package/customer', {
-      ...params
-    })
+      ...params,
+    });
   }
 
-  updatePackage (uid, params) {
-    return this.serviceApi.patch(`/package/customer/${uid}/all`, { ...params })
+  updatePackage(uid, params) {
+    return this.serviceApi.patch(`/package/customer/${uid}/all`, { ...params });
+  }
+
+  createOrder(params) {
+    return this.serviceApi.post('/order/customer', { ...params });
   }
 }
 
-export default MasterService
+export default MasterService;

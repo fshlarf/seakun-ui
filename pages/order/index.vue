@@ -132,6 +132,7 @@
 
 <script>
 import axios from 'axios';
+import MasterService from '~/services/MasterServices.js';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
@@ -163,6 +164,7 @@ export default {
     ModalPackages,
   },
   data: () => ({
+    MasterService,
     provider: '',
     packageId: '',
     packet: '',
@@ -209,6 +211,7 @@ export default {
       name: '',
       email: '',
       phone: '',
+      password: 'sodagembira',
     },
   }),
   watch: {
@@ -217,6 +220,7 @@ export default {
     },
   },
   mounted() {
+    this.MasterService = new MasterService(this);
     const { provider, packet_id } = this.$router.history.current.query;
     if (provider) {
       this.provider = provider;
@@ -326,9 +330,6 @@ export default {
       };
       this.isShowPriceList = false;
     },
-    onTyping() {
-      console.log('typing...');
-    },
     validationForm(input) {
       const { email, userName, phoneNumber, errorForm } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
@@ -415,7 +416,8 @@ export default {
     },
     submitOrder() {
       if (this.validationForm()) {
-        this.postRegisteredUser();
+        // this.postRegisteredUser();
+        this.onSubmitOrder();
       }
     },
     validateEmail(email) {
@@ -463,6 +465,46 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    async onSubmitOrder() {
+      const { MasterService } = this;
+      this.isShowLoading = true;
+      let payload = {
+        name: capitalizeFirstLetter(this.userName),
+        email: this.email,
+        phoneNumber: `${this.codeNumber}${this.phoneNumber}`,
+        // provider:
+        //   this.provider.toLowerCase() === 'disney+ hotstar'
+        //     ? 'disney-hotstar'
+        //     : this.provider,
+        packet: this.packet,
+        packageUid: 'blablabla',
+        subcriptionDuration: this.subcriptionDuration,
+        // price: parseInt(this.price),
+        // discountprice: '',
+        userhost: this.detailOrder.data.userHost,
+        // referalcode: '',
+        voucherUid: 'blablabla',
+        password: 'sodagembira',
+        // createddate: fullDate(),
+        ispreorder: this.detailOrder.data.isPreOrder || false,
+        // total_month: this.detailOrder.data.totalMonth,
+        // total_year: this.detailOrder.data.totalYear,
+        // linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codeNumber}${this.phoneNumber}`,
+      };
+
+      try {
+        const fetchCreateOrder = await MasterService.createOrder(payload);
+        if (fetchCreateOrder.data) {
+          this.executeApiMailSeakun(payload);
+        } else {
+          throw new Error(fetchCreateOrder);
+        }
+      } catch (error) {
+        // this.$notifier.showMessage({ content: 'Error occured, Please try again later', color: 'bg-danger', title: 'Error' })
+        console.log(error);
+      }
+      this.isShowLoading = false;
     },
     executeApiMailSeakun(payload) {
       let newPayload = {
