@@ -14,7 +14,6 @@ class OrderService {
   }
 
   createOrder(params) {
-    // console.log(API_ORDER_URL);
     return this.serviceApi.post('/customer', { ...params });
   }
 }

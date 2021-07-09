@@ -51,10 +51,6 @@
             </p>
             <p class="font-bold">
               {{ formatMoneyRupiah(packageDetail.grandTotal) }}
-              <!-- <span class="text-xs font-light"> /bln</span> -->
-              <!-- <span class="text-xs font-light">
-                / {{ packageDetail.type === 'monthly' ? 'bln' : 'thn' }}</span
-              > -->
               <span class="text-xs font-light">
                 / {{ packageDetail.duration === 12 ? 'thn' : 'bln' }}</span
               >

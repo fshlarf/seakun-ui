@@ -19,14 +19,6 @@
           v-if="!isLoadingProduct"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
         >
-          <!-- <div class="" v-for="(product, id) in dataProductDigital" :key="id">
-            <ProductCard
-              :product="product"
-              class="md:w-full md:h-full"
-              @showPriceScheme="showPriceScheme"
-              @on-click-product="onClickProductDigital"
-            />
-          </div> -->
           <div class="" v-for="(product, id) in dataProviders" :key="id">
             <ProductCard
               :product="product"
@@ -236,17 +228,13 @@ export default {
         }
       } catch (error) {
         console.log(error);
-        // this.$notifier.showMessage({ content: 'Error occured, Please try again later', color: 'bg-danger', title: 'Error' })
       }
       this.isLoadingProduct = false;
     },
     onClickProductDigital(product) {
-      // this.isFetchingPacket = true;
-      // this.dataPackages = [];
       this.isShowModalPackages = true;
       this.choosedProvider = product;
       this.choosedSlugProvider = product.slug;
-      // this.fetchPackages(product.slug);
     },
     onClickProductOnDemand(product) {
       this.$router.push(`/${product.slug}`);
