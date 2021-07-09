@@ -19,7 +19,15 @@
           v-if="!isLoadingProduct"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
         >
-          <div class="" v-for="(product, id) in dataProductDigital" :key="id">
+          <!-- <div class="" v-for="(product, id) in dataProductDigital" :key="id">
+            <ProductCard
+              :product="product"
+              class="md:w-full md:h-full"
+              @showPriceScheme="showPriceScheme"
+              @on-click-product="onClickProductDigital"
+            />
+          </div> -->
+          <div class="" v-for="(product, id) in dataProviders" :key="id">
             <ProductCard
               :product="product"
               class="md:w-full md:h-full"
@@ -99,6 +107,7 @@
 
 <script>
 import ProductCard from '~/components/mollecules/ProductCard';
+import MasterService from '~/services/MasterServices.js';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
@@ -116,8 +125,14 @@ export default {
   },
   data() {
     return {
+      MasterService,
       showModalScheme: false,
       providerList,
+      dataProviders: [],
+      paramGetProviderList: {
+        page: 1,
+        limit: 20,
+      },
       isLoadingProduct: false,
       dataDetailProvider: {
         list: {},
@@ -164,14 +179,16 @@ export default {
         img: '/images/product/propose.svg',
       },
       isShowModalPackages: false,
-      choosedProvider: '',
+      choosedProvider: {},
       choosedSlugProvider: '',
       dataPackages: [],
       isFetchingPacket: false,
     };
   },
   mounted() {
+    this.MasterService = new MasterService(this);
     this.fechProviders('product-digital');
+    this.getProviders();
   },
   methods: {
     showPriceScheme(param1, param2) {
@@ -204,13 +221,32 @@ export default {
       }
       this.isLoadingProduct = false;
     },
+    async getProviders() {
+      this.isLoadingProduct = true;
+      const { MasterService, paramGetProviderList } = this;
+      try {
+        const fetchProviderList = await MasterService.getProvider(
+          paramGetProviderList
+        );
+        if (fetchProviderList.data) {
+          const { data } = fetchProviderList.data;
+          this.dataProviders = data;
+        } else {
+          throw new Error(fetchProviderList);
+        }
+      } catch (error) {
+        console.log(error);
+        // this.$notifier.showMessage({ content: 'Error occured, Please try again later', color: 'bg-danger', title: 'Error' })
+      }
+      this.isLoadingProduct = false;
+    },
     onClickProductDigital(product) {
-      this.isFetchingPacket = true;
-      this.dataPackages = [];
+      // this.isFetchingPacket = true;
+      // this.dataPackages = [];
       this.isShowModalPackages = true;
-      this.choosedProvider = product.name;
+      this.choosedProvider = product;
       this.choosedSlugProvider = product.slug;
-      this.fetchPackages(product.slug);
+      // this.fetchPackages(product.slug);
     },
     onClickProductOnDemand(product) {
       this.$router.push(`/${product.slug}`);
@@ -232,7 +268,7 @@ export default {
     },
     choosePacket(packet) {
       this.$router.push(
-        `/order?provider=${this.choosedSlugProvider}&packet_id=${packet.id}`
+        `/order?provider=${this.choosedSlugProvider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );
     },
     toSchemePage() {

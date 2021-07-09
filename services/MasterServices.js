@@ -8,57 +8,61 @@ class MasterService {
   }
 
   getProvider(params) {
-    return this.serviceApi.get('/provider/customer', {
+    return this.serviceApi.get('/customer/provider', {
       params,
     });
   }
 
+  getVariantByPackageUid(uid) {
+    return this.serviceApi.get(`/customer/package/variant?packageUid=${uid}`);
+  }
+
   getProviderById(uid) {
-    return this.serviceApi.get(`/provider/customer/${uid}`);
+    return this.serviceApi.get(`/customer/provider/${uid}`);
   }
 
   createProvider(params) {
-    return this.serviceApi.post('/provider/customer', {
+    return this.serviceApi.post('/customer/provider', {
       ...params,
       fileIcon: 'sadasdas',
     });
   }
 
   updateProvider(uid, params) {
-    return this.serviceApi.patch(`/provider/customer/${uid}/all`, {
+    return this.serviceApi.patch(`/customer/provider/${uid}/all`, {
       ...params,
       fileIcon: 'sadasdas',
     });
   }
 
   deleteProvider(uid) {
-    return this.serviceApi.patch(`/provider/customer/${uid}/status`, {
+    return this.serviceApi.patch(`/customer/provider/${uid}/status`, {
       isActive: 0,
     });
   }
 
   getPackage(params) {
-    return this.serviceApi.get('/package/customer', {
+    return this.serviceApi.get('/customer/package', {
       params,
     });
   }
 
   getPackageById(uid) {
-    return this.serviceApi.get(`/package/customer/${uid}`);
+    return this.serviceApi.get(`/customer/package/${uid}`);
   }
 
   createPackage(params) {
-    return this.serviceApi.post('/package/customer', {
+    return this.serviceApi.post('/customer/package', {
       ...params,
     });
   }
 
   updatePackage(uid, params) {
-    return this.serviceApi.patch(`/package/customer/${uid}/all`, { ...params });
+    return this.serviceApi.patch(`/customer/package/${uid}/all`, { ...params });
   }
 
   createOrder(params) {
-    return this.serviceApi.post('/order/customer', { ...params });
+    return this.serviceApi.post('/customer', { ...params });
   }
 }
 

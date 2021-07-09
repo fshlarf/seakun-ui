@@ -8,17 +8,17 @@
       <div class="flex-1">
         <img
           class="detail-product__image w-full"
-          :src="`/images/${provider.toLowerCase()}.png`"
+          :src="`/images/${provider.slug}.png`"
           alt="Image not found"
         />
       </div>
       <div class="detail-product__price col-span-4 ml-4">
         <p v-if="isLoading" class="font-bold shimmer w-9/12"></p>
         <p v-else class="md:text-lg tn:text-sm font-bold">
-          <span class="capitalize">{{ provider }} </span> - {{ packageName }}
+          {{ packageName }}
         </p>
         <p class="md:text-lg tn:text-sm font-normal">
-          {{ currencyFormat(grandTotal) }} x ({{ totalMonth }} Bulan)
+          {{ currencyFormat(grandTotal) }} / {{ totalMonth }} Bulan
         </p>
       </div>
     </div>
@@ -43,8 +43,8 @@ export default {
   name: 'ProductHighlight',
   props: {
     provider: {
-      type: String,
-      default: '',
+      type: Object,
+      default: {},
     },
     isLoading: {
       type: Boolean,
