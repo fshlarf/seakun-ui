@@ -100,17 +100,20 @@
         </div>
       </div>
       <div class="ml-2 mt-6">
-        <label class="space-x-1" style="display: inline-block"
+        <label
+          class="space-x-1 md:text-base tn:text-sm"
+          style="display: inline-block"
           ><input
             v-model="isAgreeTos"
             style="vertical-align: middle"
             type="checkbox"
+            class="tn:mr-1 tn:-mt-1"
           />
           Menyetujui
-          <a class="text-green-seakun" href="/terms-of-use" target="_blank"
+          <a class="text-green-seakun ml-0" href="/terms-of-use" target="_blank"
             >aturan</a
           >
-          yang dibuat oleh seakun
+          yang dibuat oleh Seakun.id
         </label>
       </div>
 

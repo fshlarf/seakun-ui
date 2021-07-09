@@ -22,7 +22,7 @@ export default {
     content: '';
     display: block;
     width: 150px;
-    height: 2px;
+    height: 3px;
     margin: 24px auto;
     background: #86d0c1;
   }
