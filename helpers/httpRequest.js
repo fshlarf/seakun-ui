@@ -1,51 +1,51 @@
-import axios from 'axios'
+import axios from 'axios';
 
 // import Router from 'next/router'
 
 const httpRequest = function (context, url) {
-  const CancelToken = axios.CancelToken
-  let serviceAbort
+  const CancelToken = axios.CancelToken;
+  let serviceAbort;
   const API_BASE_CONFIG = {
     baseURL: url,
     timeout: 60000,
     cancelToken: new CancelToken((c) => {
-      serviceAbort = c
-    })
-  }
-  const serviceApi = axios.create(API_BASE_CONFIG)
+      serviceAbort = c;
+    }),
+  };
+  const serviceApi = axios.create(API_BASE_CONFIG);
 
   const axiosInterceptorsRequest = (config) => {
-    config.headers['Content-Type'] = 'application/json'
-    return config
-  }
+    config.headers['Content-Type'] = 'application/json';
+    return config;
+  };
 
   const axiosInterceptorsRequestError = (error) => {
-    return Promise.reject(error)
-  }
+    return Promise.reject(error);
+  };
 
   const axiosInterceptorsResponseSuccess = (response) => {
-    return response
-  }
+    return response;
+  };
 
   const axiosInterceptorsResponseError = async (error) => {
-    return Promise.reject(error)
-  }
+    return Promise.reject(error);
+  };
 
   serviceApi.interceptors.response.use(
     axiosInterceptorsResponseSuccess,
     axiosInterceptorsResponseError
-  )
+  );
 
   serviceApi.interceptors.request.use(
     axiosInterceptorsRequest,
     axiosInterceptorsRequestError
-  )
+  );
 
   return {
     serviceApi,
-    serviceAbort
-  }
-}
+    serviceAbort,
+  };
+};
 
 // const fetchRefreshToken = async (refreshToken) => {
 //   try {
@@ -62,4 +62,4 @@ const httpRequest = function (context, url) {
 //   }
 // }
 
-export default httpRequest
+export default httpRequest;

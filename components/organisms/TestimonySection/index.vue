@@ -11,7 +11,7 @@
       </h1>
     </div>
     <div
-      class="scroll-testimony tn:p-4 tn:flex tn:gap-6 tn:overflow-x-scroll tn:overscroll-auto lg:block lg:grid lg:overflow-visible lg:overscroll-none lg:grid-cols-2 lg:justify-center lg:gap-6 lg:place-items-stretch lg:items-stretch"
+      class="scroll-testimony tn:p-4 tn:flex tn:space-x-6 lg:space-x-0 tn:overflow-x-scroll tn:overscroll-auto lg:block lg:grid lg:overflow-visible lg:overscroll-none lg:grid-cols-2 lg:justify-center lg:gap-6 lg:place-items-stretch lg:items-stretch"
     >
       <TestimonyCard
         v-for="(testimony, id) in dataLengthTestimony"

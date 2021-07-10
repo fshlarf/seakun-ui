@@ -38,21 +38,21 @@
         </div>
 
         <div
-          v-if="product.packages"
+          v-if="product.variants"
           class="tn:px-1 tn:py-1 md:px-2 md:mt-3 lg:px-4"
         >
           <div
             class="text-xs md:text-sm md:flex md:justify-between mt-1"
-            v-for="(packageDetail, id) in product.packages"
+            v-for="(packageDetail, id) in product.variants"
             :key="id"
           >
             <p class="font-semibold md:font-normal">
-              {{ packageDetail.name }}
+              {{ packageDetail.packageName }}
             </p>
             <p class="font-bold">
-              {{ formatMoneyRupiah(packageDetail.price) }}
+              {{ formatMoneyRupiah(packageDetail.grandTotal) }}
               <span class="text-xs font-light">
-                / {{ packageDetail.type === 'monthly' ? 'bln' : 'thn' }}</span
+                / {{ packageDetail.duration === 12 ? 'thn' : 'bln' }}</span
               >
             </p>
           </div>
@@ -81,7 +81,16 @@
           <div class="h-px w-full bg-primary md:my-3"></div>
         </div>
 
-        <div class="text-center md:px-2">
+        <div v-if="product.variants" class="text-center md:px-2">
+          <Button
+            variant="primary"
+            :label="product.active ? 'Pesan' : 'Segera hadir'"
+            class="w-full py-2 my-2 font-bold"
+            :disabled="!product.active"
+            @click="$emit('on-click-product', product)"
+          />
+        </div>
+        <div v-if="product.preview" class="text-center md:px-2">
           <Button
             variant="primary"
             :label="product.isActive ? 'Pesan' : 'Segera hadir'"

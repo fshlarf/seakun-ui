@@ -16,27 +16,32 @@
       </p>
     </div>
     <div>
-      <ProductHighLightLoading v-if="detailOrder.loading" class="mt-4" />
-      <ProductHighLight
-        v-else
-        :provider="provider"
-        :isLoading="detailOrder.loading"
-        :packageName="detailOrder.data.name"
-        :grandTotal="detailOrder.data.grandTotal"
-        :totalMonth="detailOrder.data.totalMonth"
-      />
+      <ProductHighLightLoading v-if="isLoadingProduct" class="mt-4" />
+      <div v-else v-for="(provider, id) in dataProviders" :key="id">
+        <div v-for="(detail, variantId) in provider.variants" :key="variantId">
+          <div v-if="detail && detail.uid === variantUid">
+            <ProductHighLight
+              :provider="provider"
+              :isLoading="isLoadingProduct"
+              :packageName="detail.name"
+              :grandTotal="longSubcribe.grandTotal"
+              :total-month="longSubcribe.month"
+            />
+          </div>
+        </div>
+      </div>
 
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
         <ButtonDrop
           :btnText="longSubcribe.name"
-          :disabled="pricesList.length <= 0"
+          :disabled="dataVariants.length <= 0"
           @click="isShowPriceList = !isShowPriceList"
         />
         <div class="w-full">
           <DropDownPricesListSubcribe
             :show="isShowPriceList"
-            :dataList="pricesList"
+            :dataList="dataVariants"
             @onClikcItem="onClickItemPrice"
           />
         </div>
@@ -95,17 +100,20 @@
         </div>
       </div>
       <div class="ml-2 mt-6">
-        <label class="space-x-1" style="display: inline-block"
+        <label
+          class="space-x-1 md:text-base tn:text-sm"
+          style="display: inline-block"
           ><input
             v-model="isAgreeTos"
             style="vertical-align: middle"
             type="checkbox"
+            class="tn:mr-1 tn:-mt-1"
           />
           Menyetujui
-          <a class="text-green-seakun" href="/terms-of-use" target="_blank"
+          <a class="text-green-seakun ml-0" href="/terms-of-use" target="_blank"
             >aturan</a
           >
-          yang dibuat oleh seakun
+          yang dibuat oleh Seakun.id
         </label>
       </div>
 
@@ -117,21 +125,24 @@
         :is-loading="isShowLoading"
       />
 
-      <ModalPackages
-        :is-show="isShowModalPackages"
-        :provider="setNameProvider"
-        @on-close="onCloseModalPackages"
-        :packages="dataPackages"
-        :slug="provider"
-        @choose-packet="choosePacket"
-        :is-loading="isFetchingPacket"
-      />
+      <div v-for="(providers, id) in dataProviders" :key="id">
+        <ModalPackages
+          v-if="provider === providers.slug"
+          :is-show="isShowModalPackages"
+          :provider="providers"
+          @on-close="onCloseModalPackages"
+          :slug="provider"
+          @choose-packet="choosePacket"
+          :is-loading="isLoadingVariant"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import OrderService from '~/services/OrderServices.js';
 import MasterService from '~/services/MasterServices.js';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
@@ -164,27 +175,27 @@ export default {
     ModalPackages,
   },
   data: () => ({
+    OrderService,
     MasterService,
     provider: '',
-    packageId: '',
-    packet: '',
     detailOrder: {
-      loading: true,
-      data: {},
+      isHost: 0,
+      isPo: 0,
     },
     email: '',
     userName: '',
     phoneNumber: '',
     longSubcribe: {
       name: 'Pilih Masa Berlangganan',
-      month: '',
+      month: 0,
       price: 0,
+      grandTotal: 0,
     },
     isShowLoading: false,
     codeNumber: '+62',
+    codePhone: 62,
     isShowCodeNumber: false,
     isShowPriceList: false,
-    pricesList: [],
     isAgreeTos: false,
     internationalPhoneNumbers,
     currencyFormat,
@@ -205,13 +216,20 @@ export default {
     price: 0,
     subcriptionDuration: 1,
     isShowModalPackages: false,
-    dataPackages: [],
-    isFetchingPacket: false,
+    dataVariants: [],
+    dataProviders: [],
+    paramGetProviderList: {
+      page: 1,
+      limit: 20,
+    },
+    variantUid: '',
+    packageUid: '',
+    isLoadingProduct: false,
+    isLoadingVariant: false,
     registeredUser: {
       name: '',
       email: '',
       phone: '',
-      password: 'sodagembira',
     },
   }),
   watch: {
@@ -220,114 +238,93 @@ export default {
     },
   },
   mounted() {
+    this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
-    const { provider, packet_id } = this.$router.history.current.query;
+    this.getProviders();
+    const {
+      provider,
+      variant_id,
+      package_id,
+    } = this.$router.history.current.query;
     if (provider) {
       this.provider = provider;
-      this.packageId = packet_id;
-      this.getOrderDetail();
+      this.variantUid = variant_id;
+      this.packageUid = package_id;
+      this.getDetailVariant(this.packageUid);
     }
     this.setFieldValueFromLocalStorage();
   },
-  computed: {
-    setNameProvider() {
-      switch (this.provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
-      }
-    },
-  },
   methods: {
-    async getOrderDetail() {
-      const { detailOrder } = this;
-      this.detailOrder = {
-        ...detailOrder,
-        loading: true,
-      };
+    async getProviders() {
+      this.isLoadingProduct = true;
+      const { MasterService, paramGetProviderList } = this;
       try {
-        const provider =
-          this.provider === 'microsoft'
-            ? 'microsoft365'
-            : this.provider.toLowerCase();
-
-        const fetchGetDetailOrder = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packageId}`
+        const fetchProviderList = await MasterService.getProvider(
+          paramGetProviderList
         );
-        if (fetchGetDetailOrder.status == 200) {
-          const { data } = fetchGetDetailOrder;
-          this.packet = data.name;
-          this.detailOrder = {
-            ...detailOrder,
-            data,
-          };
-          this.price = data.grandTotal;
-          this.subcriptionDuration = data.totalMonth;
-          if (data.prices.length > 0) {
-            this.pricesList = data.prices?.map((value) => ({
-              ...value,
-              name: `${value.month} bulan ( ${currencyFormat(value.price)} )`,
-            }));
-            this.longSubcribe = this.pricesList[0];
-          } else {
-            this.pricesList = [
-              {
-                month: data.totalMonth,
-                name: `${data.totalMonth} bulan ( ${currencyFormat(
-                  data.grandTotal
-                )} )`,
-                price: data.grandTotal,
-              },
-            ];
-            this.longSubcribe = this.pricesList[0];
-          }
+        if (fetchProviderList.data) {
+          const { data } = fetchProviderList.data;
+          this.dataProviders = data;
+          this.dataProviders.forEach((element) => {
+            if (element.slug === this.provider) {
+              element.variants.forEach((variant) => {
+                if (variant.uid === this.variantUid) {
+                  this.detailOrder = {
+                    isHost: variant.iHost,
+                    isPo: variant.isPo,
+                  };
+                }
+              });
+            }
+          });
+        } else {
+          throw new Error(fetchProviderList);
         }
       } catch (error) {
         console.log(error);
       }
-
-      this.detailOrder = {
-        ...this.detailOrder,
-        loading: false,
-      };
+      this.isLoadingProduct = false;
+    },
+    async getDetailVariant(uid) {
+      this.isLoadingVariant = true;
+      const { MasterService } = this;
+      try {
+        const fetchDetailVariant = await MasterService.getVariantByPackageUid(
+          uid
+        );
+        if (fetchDetailVariant.data) {
+          const { data } = fetchDetailVariant.data;
+          this.dataVariants = data;
+          const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
+          this.longSubcribe = {
+            name: `${this.dataVariants[0].duration} bulan ( ${rupiah} )`,
+            month: this.dataVariants[0].duration,
+            price: this.dataVariants[0].price,
+            grandTotal: this.dataVariants[0].grandTotal,
+          };
+        } else {
+          throw new Error(fetchDetailVariant);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingVariant = false;
     },
     onClickItemCodeNumber(item) {
       this.codeNumber = item.dialCode;
+      this.codePhone = item.dialCode.slice(1);
       this.isShowCodeNumber = false;
     },
     onClickItemPrice(item) {
-      this.longSubcribe = item;
-      this.price = item.price;
-      this.subcriptionDuration = parseInt(item.month);
-      this.detailOrder = {
-        ...this.detailOrder,
-        data: {
-          ...this.detailOrder.data,
-          grandTotal: item.price,
-          totalMonth: item.month,
-        },
+      const rupiah = currencyFormat(item.grandTotal);
+      this.longSubcribe = {
+        name: `${item.duration} bulan ( ${rupiah} )`,
+        month: item.duration,
+        price: item.price,
+        grandTotal: item.grandTotal,
       };
+      this.price = item.grandTotal;
+      this.subcriptionDuration = parseInt(item.duration);
       this.isShowPriceList = false;
     },
     validationForm(input) {
@@ -416,7 +413,6 @@ export default {
     },
     submitOrder() {
       if (this.validationForm()) {
-        // this.postRegisteredUser();
         this.onSubmitOrder();
       }
     },
@@ -424,119 +420,80 @@ export default {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     },
-    async postRegisteredUser() {
-      this.isShowLoading = true;
-
-      let payload = {
-        fullname: capitalizeFirstLetter(this.userName),
-        email: this.email,
-        whatsapp: `${this.codeNumber}${this.phoneNumber}`,
-        provider:
-          this.provider.toLowerCase() === 'disney+ hotstar'
-            ? 'disney-hotstar'
-            : this.provider,
-        packet: this.packet,
-        subcription_duration: this.subcriptionDuration,
-        price: parseInt(this.price),
-        discountprice: '',
-        userhost: this.detailOrder.data.userHost,
-        referalcode: '',
-        voucher: '',
-        createddate: fullDate(),
-        ispreorder: this.detailOrder.data.isPreOrder || false,
-        total_month: this.detailOrder.data.totalMonth,
-        total_year: this.detailOrder.data.totalYear,
-        linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codeNumber}${this.phoneNumber}`,
-      };
-      const headers = { 'Access-Control-Allow-Origin': '*' };
-      try {
-        const fetchPostUser = await axios.post(
-          'https://seakun-api.herokuapp.com/registered-user',
-          payload,
-          {
-            headers: headers,
-          }
-        );
-        if (fetchPostUser.status == 200) {
-          this.executeApiMailSeakun(payload);
-        } else {
-          throw fetchPostUser;
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    },
     async onSubmitOrder() {
-      const { MasterService } = this;
+      const { OrderService } = this;
       this.isShowLoading = true;
       let payload = {
         name: capitalizeFirstLetter(this.userName),
         email: this.email,
-        phoneNumber: `${this.codeNumber}${this.phoneNumber}`,
-        // provider:
-        //   this.provider.toLowerCase() === 'disney+ hotstar'
-        //     ? 'disney-hotstar'
-        //     : this.provider,
-        packet: this.packet,
-        packageUid: 'blablabla',
+        phoneNumber: `${this.codePhone}${this.phoneNumber}`,
+        packageUid: this.packageUid,
         subcriptionDuration: this.subcriptionDuration,
-        // price: parseInt(this.price),
-        // discountprice: '',
-        userhost: this.detailOrder.data.userHost,
-        // referalcode: '',
-        voucherUid: 'blablabla',
+        userhost: this.detailOrder.isHost,
+        voucherUid: '',
         password: 'sodagembira',
-        // createddate: fullDate(),
-        ispreorder: this.detailOrder.data.isPreOrder || false,
-        // total_month: this.detailOrder.data.totalMonth,
-        // total_year: this.detailOrder.data.totalYear,
-        // linkwhatsapp: `https://api.whatsapp.com/send?phone=${this.codeNumber}${this.phoneNumber}`,
+        ispreorder: this.detailOrder.isPo || false,
       };
-
       try {
-        const fetchCreateOrder = await MasterService.createOrder(payload);
+        const fetchCreateOrder = await OrderService.createOrder(payload);
         if (fetchCreateOrder.data) {
-          this.executeApiMailSeakun(payload);
+          console.log('add order success');
+          this.redirectPage(payload);
         } else {
           throw new Error(fetchCreateOrder);
         }
       } catch (error) {
-        // this.$notifier.showMessage({ content: 'Error occured, Please try again later', color: 'bg-danger', title: 'Error' })
         console.log(error);
       }
       this.isShowLoading = false;
     },
-    executeApiMailSeakun(payload) {
-      let newPayload = {
-        ...payload,
-        payment_type: this.detailOrder.data.paymentType,
-      };
-      axios
-        .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)
-        .then((res) => {
-          this.isDisableBtn = false;
-          // Redirect to thankyou page when successfully registration
-          this.$router.push({
-            path: this.setPathToRedirect(newPayload),
-            query: {
-              type: 'digital',
-              provider: this.provider,
-              packet_id: this.packageId,
-              duration: this.subcriptionDuration,
-              price: this.price,
-              holder: this.userName,
-              email: this.email,
-              whatsapp: this.codeNumber + this.phoneNumber,
-              // voucher: this.isVoucherValid ? this.voucher : '',
-            },
-          });
-          this.isShowLoading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-          this.isShowLoading = false;
-        });
+    redirectPage(payload) {
+      this.$router.push({
+        path: this.setPathToRedirect(payload),
+        query: {
+          type: 'digital',
+          provider: this.provider,
+          variant_id: this.variantUid,
+          duration: this.subcriptionDuration,
+          price: this.price,
+          holder: this.userName,
+          email: this.email,
+          whatsapp: this.codePhone + this.phoneNumber,
+          // voucher: this.isVoucherValid ? this.voucher : '',
+        },
+      });
     },
+    // executeApiMailSeakun(payload) {
+    //   let newPayload = {
+    //     ...payload,
+    //     payment_type: this.detailOrder.data.paymentType,
+    //   };
+    //   axios
+    //     .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)
+    //     .then((res) => {
+    //       this.isDisableBtn = false;
+    //       // Redirect to thankyou page when successfully registration
+    //       this.$router.push({
+    //         path: this.setPathToRedirect(newPayload),
+    //         query: {
+    //           type: 'digital',
+    //           provider: this.provider,
+    //           packet_id: this.packageId,
+    //           duration: this.subcriptionDuration,
+    //           price: this.price,
+    //           holder: this.userName,
+    //           email: this.email,
+    //           whatsapp: this.codeNumber + this.phoneNumber,
+    //           // voucher: this.isVoucherValid ? this.voucher : '',
+    //         },
+    //       });
+    //       this.isShowLoading = false;
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //       this.isShowLoading = false;
+    //     });
+    // },
     setPathToRedirect(payload) {
       if (payload.userhost) {
         return '/thankyou/user-host';
@@ -549,33 +506,16 @@ export default {
     onCloseModalPackages() {
       this.isShowModalPackages = false;
     },
-    onClickChangePacket(product) {
-      this.isFetchingPacket = true;
-      this.dataPackages = [];
+    onClickChangePacket() {
       this.isShowModalPackages = true;
-      this.fetchPackages(product.slug);
-    },
-    async fetchPackages() {
-      const provider =
-        this.provider === 'microsoft'
-          ? 'microsoft365'
-          : this.provider.toLowerCase();
-
-      try {
-        const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}`
-        );
-        if (data) {
-          this.dataPackages = data;
-        }
-      } catch (err) {
-        console.log(err);
-      }
-      this.isFetchingPacket = false;
     },
     choosePacket(packet) {
-      this.packageId = packet.id;
-      this.getOrderDetail();
+      this.$router.push(
+        `/order?provider=${this.provider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
+      );
+      this.variantUid = packet.uid;
+      this.packageUid = packet.packageUid;
+      this.getDetailVariant(this.packageUid);
       this.isShowModalPackages = false;
     },
     setFieldValueFromLocalStorage() {

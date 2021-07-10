@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="flex tn:gap-2 md:gap-3 xl:gap-4 items-center">
         <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">
-          Pilih Paket {{ provider }}
+          Pilih Paket {{ provider.name }}
         </h1>
       </div>
     </template>
@@ -18,13 +18,13 @@
       </div>
 
       <div
-        v-if="packages.length > 0"
+        v-if="provider && provider.variants !== ''"
         class="flex tn:flex-col md:flex-row md:justify-between"
       >
         <div
-          v-for="(item, id) in packages"
+          v-for="(item, id) in provider.variants"
           :key="id"
-          :class="`w-full h-full mx-auto ${!item.active ? 'inactive' : ''}`"
+          :class="`w-full h-full mx-auto ${!item.isActive ? 'inactive' : ''}`"
           @click="$emit('choose-packet', item)"
         >
           <CardPackage :slug="slug" :packet="item" />
@@ -48,8 +48,7 @@ export default {
   props: {
     isShow: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
-    provider: { type: String, default: 'Netflix' },
-    packages: { type: Array, default: [] },
+    provider: { type: Object, default: () => {} },
     slug: { type: String, default: '' },
   },
   components: {

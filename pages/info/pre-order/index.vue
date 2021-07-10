@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="preorder faq">
+    <div class="preorder faq mt-12 -mb-12">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-lg-6 faq-title-container">FAQ</div>
@@ -169,6 +169,7 @@ export default {
 }
 @media (max-width: 800px) {
   .preorder {
+    padding: 16px !important;
     &__flow {
       padding: 0px 20px;
       justify-content: space-between;

@@ -1,1 +1,2 @@
 export const API_MASTER_URL = ENV.API_MASTER_URL;
+export const API_ORDER_URL = ENV.API_ORDER_URL;

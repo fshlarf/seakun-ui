@@ -23,7 +23,7 @@
       </h1>
       <p
         class="text-center text-red-700 tn:text-sm md:text-md"
-        v-if="!packet.active"
+        v-if="!packet.isActive"
       >
         Paket tidak aktif
       </p>
@@ -32,7 +32,7 @@
         {{ formatMoneyRupiah(packet.grandTotal) }}
         <span class="text-sm text-primary"
           >/ {{ setMonthPacket(packet) }}
-          {{ packet.paymentType === 'month' ? 'bulan' : 'tahun' }}</span
+          {{ packet.duration === 12 ? 'tahun' : 'bulan' }}</span
         >
       </p>
 
@@ -41,7 +41,7 @@
       <div class="mt-3 text-left">
         <div
           class="mt-1 tn:px-3"
-          v-for="(item, id) in packet.facilities"
+          v-for="(item, id) in packet.benefits"
           :key="id"
         >
           <div class="flex">
@@ -52,10 +52,10 @@
             />
             <p
               :class="`ml-2 text-sm ${
-                packet.active ? 'font-bold' : 'font-normal'
+                packet.isActive ? 'font-bold' : 'font-normal'
               }`"
             >
-              {{ item }}
+              {{ item.description }}
             </p>
           </div>
         </div>

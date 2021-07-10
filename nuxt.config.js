@@ -1,5 +1,4 @@
-import definePlugin from './config/definePlugin'
-
+import definePlugin from './config/definePlugin';
 export default {
   /*
    ** Nuxt rendering mode
@@ -101,9 +100,6 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: ['@nuxtjs/tailwindcss'],
-  build: {
-    plugins: definePlugin(),
-  },
   // router: { base: '/seakun/' },
   /*
    ** Nuxt.js modules
@@ -111,7 +107,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    "@nuxtjs/svg"
+    '@nuxtjs/svg',
   ],
   /*
    ** Axios module configuration
@@ -122,5 +118,7 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    plugins: definePlugin(),
+  },
 };
