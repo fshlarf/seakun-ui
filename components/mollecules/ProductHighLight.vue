@@ -8,7 +8,7 @@
       <div class="flex-1">
         <img
           class="detail-product__image w-full"
-          :src="`/images/${provider.slug}.png`"
+          :src="`/images/${provider}.png`"
           alt="Image not found"
         />
       </div>
@@ -43,8 +43,8 @@ export default {
   name: 'ProductHighlight',
   props: {
     provider: {
-      type: Object,
-      default: {},
+      type: String,
+      default: '',
     },
     isLoading: {
       type: Boolean,

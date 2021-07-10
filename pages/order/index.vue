@@ -21,7 +21,7 @@
         <div v-for="(detail, variantId) in provider.variants" :key="variantId">
           <div v-if="detail && detail.uid === variantUid">
             <ProductHighLight
-              :provider="provider"
+              :provider="provider.slug"
               :isLoading="isLoadingProduct"
               :packageName="detail.name"
               :grandTotal="longSubcribe.grandTotal"
@@ -428,8 +428,11 @@ export default {
         email: this.email,
         phoneNumber: `${this.codePhone}${this.phoneNumber}`,
         packageUid: this.packageUid,
+        packageVariantUid: this.variantUid,
         subcriptionDuration: this.subcriptionDuration,
-        userhost: this.detailOrder.isHost,
+        ispreorder: this.detailOrder.isPo === 1,
+        isHost: this.detailOrder.isHost,
+        userhost: this.detailOrder.isHost === 1,
         voucherUid: '',
         password: 'sodagembira',
         ispreorder: this.detailOrder.isPo || false,
@@ -437,8 +440,15 @@ export default {
       try {
         const fetchCreateOrder = await OrderService.createOrder(payload);
         if (fetchCreateOrder.data) {
-          console.log('add order success');
+          const dataResult = fetchCreateOrder.data.data;
+          payload = {
+            ...payload,
+            variantName: dataResult.packageVariantName,
+            customerUid: dataResult.customerUid,
+            orderUid: dataResult.orderUid,
+          };
           this.redirectPage(payload);
+          // this.executeApiMailSeakun(payload)
         } else {
           throw new Error(fetchCreateOrder);
         }
@@ -454,11 +464,15 @@ export default {
           type: 'digital',
           provider: this.provider,
           variant_id: this.variantUid,
+          variant_name: payload.variantName,
+          isHost: payload.isHost,
           duration: this.subcriptionDuration,
-          price: this.price,
+          price: this.longSubcribe.grandTotal,
           holder: this.userName,
           email: this.email,
           whatsapp: this.codePhone + this.phoneNumber,
+          customerUid: payload.customerUid,
+          orderUid: payload.orderUid,
           // voucher: this.isVoucherValid ? this.voucher : '',
         },
       });
@@ -466,7 +480,7 @@ export default {
     // executeApiMailSeakun(payload) {
     //   let newPayload = {
     //     ...payload,
-    //     payment_type: this.detailOrder.data.paymentType,
+    //     payment_type: 'month',
     //   };
     //   axios
     //     .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)

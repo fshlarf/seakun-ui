@@ -14,21 +14,25 @@
         Thank You!
       </h3>
       <HeaderPayment
+        :is-loading="isLoadingPayment"
         :provider="provider"
-        :detailPayment="detailPayment"
-        :packageId="packetId"
-        :packageName="packet"
+        :detail-payment-digital="detailPaymentDigital"
+        :detail-payment-sequrban="detailPaymentSequrban"
+        :package-id="packetId"
+        :package-name="packet"
         :total="total"
       />
       <div v-if="type === 'digital'" class="px-4 text-lg mt-4 -mb-4">
         <WarningInfo :text="contentWarning" />
       </div>
       <DetailPayment
+        :is-loading="isLoadingPayment"
         :provider="provider"
-        :packageId="packetId"
-        :detailPayment="detailPayment"
+        :package-id="packetId"
+        :detail-payment-digital="detailPaymentDigital"
+        :detail-payment-sequrban="detailPaymentSequrban"
       />
-      <div class="tos-alert px-4 mt-4 text-lg" v-if="type !== 'digital'">
+      <div class="tos-alert px-4 mt-4 text-lg">
         <p>
           Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
           kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 60 menit. jika
@@ -47,15 +51,14 @@
           v-if="type !== 'digital'"
           class="w-full bg-green-seakun text-white"
           label="Konfirmasi Pembayaran"
-          @click="onClickConfirm"
+          @click="onClickConfirm('sequrban')"
         />
-        <a
+        <Button
           v-else
-          class="btn btn-primary py-2 px-4"
-          target="_blank"
-          :href="confirmationWhatsapp"
-          >Konfirmasi ke Whatsapp</a
-        >
+          class="w-full bg-green-seakun text-white"
+          label="Konfirmasi Pembayaran"
+          @click="onClickConfirm('digital')"
+        />
       </div>
     </div>
     <Footer />
@@ -64,6 +67,7 @@
 
 <script>
 import axios from 'axios';
+import MasterService from '~/services/MasterServices.js';
 import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Button from '~/components/atoms/Button';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
@@ -85,29 +89,34 @@ export default {
   layout: 'navigationBlank',
   data() {
     return {
+      MasterService,
       provider: '',
       packet: '',
       packetId: null,
       total: null,
       showSnackBar: false,
       type: '',
-      duration: '',
       vouchersData: [],
-      detailPayment: {
-        loading: false,
-        data: {},
+      isLoadingPayment: false,
+      detailPaymentDigital: {
+        provider: '',
+        name: '',
+        price: '',
+        duration: 0,
+        isHost: 0,
       },
-      selectedToPayment: '',
-      whatsapp: '',
+      detailPaymentSequrban: {},
     };
   },
   mounted() {
+    this.MasterService = new MasterService(this);
     const { provider, type } = this.$router.history.current.query;
     this.type = type;
     if (provider) {
       this.provider = provider;
     }
-    this.getPaymentDetail();
+    this.getPaymentDigital();
+    this.getPaymentSequrban();
     this.getVouchersData();
   },
   computed: {
@@ -123,18 +132,29 @@ export default {
     },
   },
   methods: {
-    getPaymentDetail() {
+    getPaymentDigital() {
+      const {
+        provider,
+        variant_name,
+        isHost,
+        duration,
+        price,
+      } = this.$router.history.current.query;
+      this.detailPaymentDigital = {
+        provider: provider,
+        name: variant_name,
+        price: price,
+        duration: parseInt(duration),
+        isHost: isHost,
+      };
+    },
+    getPaymentSequrban() {
       const {
         provider,
         packet_id,
         voucher,
-        type,
-        duration,
       } = this.$router.history.current.query;
-      this.detailPayment = {
-        ...this.detailPayment,
-        loading: true,
-      };
+      this.isLoadingPayment = true;
       axios
         .get(
           `https://seakun-packet-api-v2.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
@@ -142,29 +162,8 @@ export default {
         .then((res) => {
           const { data, status } = res;
           if (status === 200) {
-            this.detailPayment = {
-              ...this.DetailPayment,
-              data,
-              loading: false,
-            };
-
-            if (type == 'digital') {
-              if (data.prices?.length > 0) {
-                const indexDuration = data.prices?.findIndex(
-                  (price) => price.month == duration
-                );
-                if (indexDuration >= 0) {
-                  this.detailPayment = {
-                    ...this.detailPayment,
-                    data: {
-                      ...this.detailPayment.data,
-                      grandTotal: data.prices[indexDuration]?.price,
-                      totalMonth: data.prices[indexDuration]?.month,
-                    },
-                  };
-                }
-              }
-            }
+            this.detailPaymentSequrban = data;
+            this.isLoadingPayment = false;
             this.packet = data.name;
             this.packetId = data.id;
             if (voucher) {
@@ -200,23 +199,26 @@ export default {
         ? (this.total = dataPacket.voucherGrandTotal)
         : (this.total = dataPacket.grandTotal);
     },
-    onClickConfirm() {
-      const {
-        provider,
-        packet_id,
-        email,
-        whatsapp,
-        holder,
-      } = this.$router.history.current.query;
-      this.$router.push(
-        `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${
-          holder ? holder : ''
-        }&nominal=${
-          provider !== 'sequrban'
-            ? this.detailPayment?.data?.grandTotal
-            : this.detailPayment?.data?.downPayment
-        }`
-      );
+    onClickConfirm(productType) {
+      if (productType === 'sequrban') {
+        const {
+          provider,
+          packet_id,
+          email,
+          whatsapp,
+          holder,
+        } = this.$router.history.current.query;
+        this.$router.push(
+          `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${
+            holder ? holder : ''
+          }&nominal=${this.detailPaymentSequrban.downPayment}`
+        );
+      } else if (productType === 'digital') {
+        const { customerUid, orderUid } = this.$router.history.current.query;
+        this.$router.push(
+          `/payment-confirmation?orderUid=${orderUid}&customerUid=${customerUid}`
+        );
+      }
     },
   },
 };
