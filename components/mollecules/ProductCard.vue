@@ -14,7 +14,7 @@
       class="w-full h-full relative px-2 py-0 md:px-4 grid flex-rows content-between"
     >
       <div
-        v-if="product.isNew"
+        v-if="checkIsNewProduct(product.createdAt)"
         class="absolute tn:ml-2 tn:-top-8 md:ml-0 md:top-0 md:right-4 px-3 py-1 text-center rounded-full bg-forth"
       >
         <p
@@ -106,11 +106,17 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
+import Label from '~/components/atoms/Label.vue';
+import moment from 'moment'
 import { currencyFormat } from '~/helpers';
 export default {
   components: {
     Button,
+    Label,
   },
+  data:()=>({
+    moment
+  }),
   props: {
     product: {
       type: Object,
@@ -124,6 +130,11 @@ export default {
     showPriceScheme(param1, param2) {
       this.$emit('showPriceScheme', param1, param2);
     },
+    checkIsNewProduct(createdDate) {
+      const crateDateFormat = moment.unix(createdDate)
+      const differentMonth = moment(moment()).diff(moment(crateDateFormat), 'months', true)
+      return differentMonth < 3
+    } 
   },
 };
 </script>
