@@ -26,8 +26,8 @@ class OrderService {
   updatePaymentConfirmation(params, header) {
     return this.serviceApi.post(
       '/customer/payment/confirm',
-      { ...params },
-      { headers: { header } }
+      params,
+      { headers: { "Content-Type": "multipart/form-data" } }
     );
   }
 }
