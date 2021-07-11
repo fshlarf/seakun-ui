@@ -448,7 +448,10 @@ export default {
             customerUid: dataResult.customerUid,
             orderUid: dataResult.orderUid,
           };
-          localStorage.setItem('swo',JSON.stringify({...dataResult,createdAt:moment().unix()}))
+          localStorage.setItem(
+            'swo',
+            JSON.stringify({ ...dataResult, createdAt: moment().unix() })
+          );
           this.redirectPage(payload);
           // this.executeApiMailSeakun(payload)
         } else {

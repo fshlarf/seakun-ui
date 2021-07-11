@@ -22,9 +22,9 @@
         :package-name="packet"
         :total="total"
       />
-      <div v-if="type === 'digital'" class="px-4 text-lg mt-4 -mb-4">
+      <!-- <div v-if="type === 'digital'" class="px-4 text-lg mt-4 -mb-4">
         <WarningInfo :text="contentWarning" />
-      </div>
+      </div> -->
       <DetailPayment
         :is-loading="isLoadingPayment"
         :provider="provider"
@@ -214,9 +214,13 @@ export default {
           }&nominal=${this.detailPaymentSequrban.downPayment}`
         );
       } else if (productType === 'digital') {
-        const { customerUid, orderUid } = this.$router.history.current.query;
+        const {
+          customerUid,
+          orderUid,
+          price,
+        } = this.$router.history.current.query;
         this.$router.push(
-          `/payment-confirmation?orderUid=${orderUid}&customerUid=${customerUid}`
+          `/payment-confirmation?orderUid=${orderUid}&customerUid=${customerUid}&nominal=${price}`
         );
       }
     },
