@@ -2,7 +2,7 @@
   <div>
     <div class="payment-order w-auto mt-8 box-border px-2">
       <!-- Loadingg shimmer -->
-      <div v-if="detailPayment.loading" class="text-center">
+      <div v-if="isLoading" class="text-center">
         <p class="shimmer w-full"></p>
         <p class="shimmer w-9/12"></p>
         <p class="shimmer w-8/12"></p>
@@ -17,7 +17,10 @@
       </div>
 
       <div v-else-if="provider.toLowerCase() === 'netflix'">
-        <p class="title text-center text-lg px-2" v-if="packageId === 1">
+        <p
+          class="title text-center text-lg px-2"
+          v-if="detailPaymentDigital.isHost === 1"
+        >
           Karena kamu terdaftar sebagai User Host, admin Seakun.id akan memandu
           kamu untuk melakukan proses payment ke Netflix.
           <a href="https://seakun.id/info/user-host">
@@ -30,7 +33,10 @@
           <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan
           Whatsapp yang kamu daftarkan.
         </p>
-        <p class="title text-center text-lg px-2" v-else-if="packageId === 2">
+        <p
+          class="title text-center text-lg px-2"
+          v-else-if="detailPaymentDigital.isHost === 0"
+        >
           Segera lakukan pembayaran agar Seakun.id bisa langsung mengalokasikan
           kamu pada grup Netflix yang available, mencarikan teman berlangganan
           dan memproses akun Netflix untuk kamu.
@@ -46,34 +52,34 @@
       </div>
 
       <div v-else-if="provider.toLowerCase() === 'spotify'">
-        <p class="title text-center text-lg px-2" v-if="packageId === 1">
+        <p class="title text-center text-lg px-2">
           Segera lakukan pembayaran agar Seakun.id dapat langsung mengirimkan
           <b>Link invitation</b> plan paket Grup Spotify.
           <b>Link invitation</b> akan dikirim ke Email dan Whatsapp yang kamu
           daftarkan.
         </p>
       </div>
-      <ProductHighLightLoading v-if="detailPayment.loading" />
+      <ProductHighLightLoading v-if="isLoading" />
 
       <DetailOrderSequrban
-        v-else-if="provider.toLowerCase() === 'sequrban'"
-        :isLoading="detailPayment.loading"
-        :image="detailPayment.data.images[0]"
-        :type="detailPayment.data.type"
-        :packageCode="detailPayment.data.packageCode"
-        :unitWeight="detailPayment.data.unitWeight"
-        :weight="detailPayment.data.weight"
-        :downPayment="detailPayment.data.downPayment"
-        :totalCost="detailPayment.data.totalCost"
+        v-else-if="provider && provider.toLowerCase() === 'sequrban'"
+        :isLoading="isLoading"
+        :image="detailPaymentSequrban.images[0]"
+        :type="detailPaymentSequrban.type"
+        :packageCode="detailPaymentSequrban.packageCode"
+        :unitWeight="detailPaymentSequrban.unitWeight"
+        :weight="detailPaymentSequrban.weight"
+        :downPayment="detailPaymentSequrban.downPayment"
+        :totalCost="detailPaymentSequrban.totalCost"
       />
 
       <ProductHighLight
         v-else
         :provider="provider"
-        :isLoading="detailPayment.loading"
-        :packageName="detailPayment.data.name"
-        :grandTotal="detailPayment.data.grandTotal"
-        :totalMonth="detailPayment.data.totalMonth"
+        :isLoading="isLoading"
+        :packageName="detailPaymentDigital.name"
+        :grandTotal="detailPaymentDigital.price"
+        :totalMonth="detailPaymentDigital.duration"
       />
     </div>
   </div>
@@ -93,6 +99,10 @@ export default {
     ProductHighLightLoading,
   },
   props: {
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
     provider: {
       type: String,
       default: '',
@@ -101,12 +111,13 @@ export default {
       type: Number,
       default: null,
     },
-    detailPayment: {
+    detailPaymentSequrban: {
       type: Object,
-      default: () => ({
-        loading: true,
-        data: {},
-      }),
+      default: () => ({}),
+    },
+    detailPaymentDigital: {
+      type: Object,
+      default: () => ({}),
     },
     packageName: {
       type: String,

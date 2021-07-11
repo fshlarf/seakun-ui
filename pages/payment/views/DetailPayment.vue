@@ -11,7 +11,7 @@
       <p v-else class="payment-detail__label my-3 text-xl">Total transfer</p>
       <div class="total-payment flex align-items-center justify-center">
         <div
-          v-if="detailPayment.loading"
+          v-if="isLoading"
           class="payment-detail__price flex align-items-center justify-center"
         >
           <p class="shimmer w-6/12"></p>
@@ -19,22 +19,24 @@
         <div
           v-else-if="provider.toLowerCase() === 'sequrban'"
           class="payment-detail__price flex align-items-center justify-center"
-          @click="clickCopyHandler('Nominal', detailPayment.data.downPayment)"
+          @click="
+            clickCopyHandler('Nominal', detailPaymentSequrban.downPayment)
+          "
         >
           <p
             class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPayment.data.downPayment)"
+            v-html="formatCodePayment(detailPaymentSequrban.downPayment)"
           ></p>
           <CopyIcon />
         </div>
         <div
           v-else
           class="payment-detail__price flex align-items-center justify-center cursor-pointer"
-          @click="clickCopyHandler('Nominal', detailPayment.data.grandTotal)"
+          @click="clickCopyHandler('Nominal', detailPaymentDigital.price)"
         >
           <p
             class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPayment.data.grandTotal)"
+            v-html="formatCodePayment(detailPaymentDigital.price)"
           ></p>
           <CopyIcon />
         </div>
@@ -121,6 +123,10 @@ export default {
     CopyIcon,
   },
   props: {
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
     provider: {
       type: String,
       default: '',
@@ -137,12 +143,13 @@ export default {
       type: String | Number,
       default: null,
     },
-    detailPayment: {
+    detailPaymentDigital: {
       type: Object,
-      default: () => ({
-        loading: false,
-        data: {},
-      }),
+      default: () => ({}),
+    },
+    detailPaymentSequrban: {
+      type: Object,
+      default: () => ({}),
     },
   },
   data: () => ({
