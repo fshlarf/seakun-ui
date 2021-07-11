@@ -26,7 +26,6 @@
               @keyup="paymentUsage = false"
               :error="error_bank_customer"
             >
-              <!-- <template #iconLeft> -->
               <svg
                 version="1.1"
                 id="Layer_1"
@@ -45,7 +44,6 @@
 			l246.17-246.175C512.959,136.021,512.959,129.804,509.121,125.966z"
                 />
               </svg>
-              <!-- </template> -->
             </InputForm>
           </div>
           <PopUpPayment
@@ -58,32 +56,6 @@
             "
           />
         </div>
-
-        <!-- <div>
-          <InputForm
-            label="Tujuan Pembayaran"
-            placeholder="Pilih Bank tujuan milik Seakun.id"
-            class="mt-4"
-            @click="showPaymentList('bankDirection')"
-            @keyup="bankDirection = false"
-            :value="bankSeakun"
-            v-model="bankSeakun"
-            :error="error_bank_seakun"
-          >
-            <template #iconLeft>
-              <DownArrowIcon />
-            </template>
-          </InputForm>
-          <PopUpPayment
-            :dataList="paymentDestinationList"
-            :show="paymenDestination"
-            @onClickItem="
-              (value) => {
-                onClickItemBank('bankDirection', value);
-              }
-            "
-          />
-        </div> -->
 
         <div class="mt-4">
           <p class="pb-1 tn:text-sm">Tujuan Pembayaran</p>
@@ -268,10 +240,14 @@ export default {
       provider,
       orderUid,
       customerUid,
+      nominal,
     } = this.$router.history.current.query;
-    this.getDataPayment(orderUid, customerUid);
+    this.nominal = nominal;
     this.getSeakunPayment();
     this.getDataDetailPacket(provider);
+    if (orderUid && customerUid) {
+      this.getDataPayment(orderUid, customerUid);
+    }
   },
   methods: {
     showPaymentList(type) {
@@ -310,7 +286,6 @@ export default {
             } else if (element.paymentTypeId === 2) {
               this.paymentDestinationList.ewallet.push(element);
             }
-            // console.log(this.paymentDestinationList);
           });
         } else {
           throw new Error(fetchSeakunPayment);
@@ -332,7 +307,6 @@ export default {
         if (fetchPayment.data) {
           const dataResult = fetchPayment.data.data;
           this.dataDetailPayment = dataResult;
-          this.nominal = dataResult.totalPrice;
         } else {
           throw new Error(fetchPayment);
         }
@@ -395,8 +369,6 @@ export default {
       formData.append('nominal_payment', this.nominal);
       formData.append('file', this.imageFile);
 
-      console.log(formData);
-
       axios
         .post(
           'https://seakun-api.herokuapp.com/confirm-payment/on-demand',
@@ -421,7 +393,7 @@ export default {
     async submitConfirmationDigital() {
       const { OrderService } = this;
       this.isLoadingSubmit = true;
-      console.log(OrderService);
+
       const formDataDigital = new FormData();
 
       formDataDigital.append('orderUid', this.dataDetailPayment.orderUid);
@@ -432,12 +404,7 @@ export default {
       formDataDigital.append('file', this.imageFile);
       formDataDigital.append('customerUid', this.dataDetailPayment.customerUid);
 
-      // console.log(formDataDigital);
-      for (const value of formDataDigital.values()) {
-        console.log(value);
-      }
-
-      // const headers = { 'Content-Type': 'multipart/form-data' };
+      console.log(this.dataDetailPayment.customerUid);
 
       try {
         const fetchConfirmPayment = await OrderService.updatePaymentConfirmation(
@@ -445,16 +412,7 @@ export default {
         );
 
         if (fetchConfirmPayment.data) {
-          console.log('confirm');
-          // const dataResult = fetchConfirmPayment.data.data;
-          // payload = {
-          //   ...payload,
-          //   variantName: dataResult.packageVariantName,
-          //   customerUid: dataResult.customerUid,
-          //   orderUid: dataResult.orderUid,
-          // };
-          // this.redirectPage(payload);
-          // this.executeApiMailSeakun(payload)
+          this.toThankyouPage();
         } else {
           throw new Error(fetchConfirmPayment);
         }
