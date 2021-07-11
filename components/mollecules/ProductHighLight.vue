@@ -18,7 +18,7 @@
           <span class="capitalize">{{ provider }} </span> - {{ packageName }}
         </p>
         <p class="md:text-lg tn:text-sm font-normal">
-          {{ currencyFormat(grandTotal) }} x ({{ totalMonth }} Bulan)
+          {{ currencyFormat(grandTotal) }} ({{ totalMonth }} Bulan)
         </p>
       </div>
     </div>
