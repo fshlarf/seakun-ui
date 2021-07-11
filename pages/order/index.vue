@@ -159,6 +159,7 @@ import {
   fullDate,
 } from '~/helpers/word-transformation.js';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
+import moment from 'moment';
 
 export default {
   name: 'OrderPage',
@@ -447,6 +448,7 @@ export default {
             customerUid: dataResult.customerUid,
             orderUid: dataResult.orderUid,
           };
+          localStorage.setItem('swo',JSON.stringify({...dataResult,createdAt:moment().unix()}))
           this.redirectPage(payload);
           // this.executeApiMailSeakun(payload)
         } else {
