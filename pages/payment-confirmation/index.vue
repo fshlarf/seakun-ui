@@ -446,6 +446,7 @@ export default {
 
         if (fetchConfirmPayment.data) {
           console.log('confirm');
+          localStorage.removeItem('swo')
           // const dataResult = fetchConfirmPayment.data.data;
           // payload = {
           //   ...payload,
