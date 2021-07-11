@@ -437,12 +437,11 @@ export default {
         console.log(value);
       }
 
-      const headers = { 'Content-Type': 'multipart/form-data' };
+      // const headers = { 'Content-Type': 'multipart/form-data' };
 
       try {
         const fetchConfirmPayment = await OrderService.updatePaymentConfirmation(
-          formDataDigital,
-          headers
+          formDataDigital
         );
 
         if (fetchConfirmPayment.data) {
