@@ -369,6 +369,8 @@ export default {
       formData.append('nominal_payment', this.nominal);
       formData.append('file', this.imageFile);
 
+      console.log(formData);
+
       axios
         .post(
           'https://seakun-api.herokuapp.com/confirm-payment/on-demand',
@@ -393,7 +395,7 @@ export default {
     async submitConfirmationDigital() {
       const { OrderService } = this;
       this.isLoadingSubmit = true;
-
+      console.log(OrderService);
       const formDataDigital = new FormData();
 
       formDataDigital.append('orderUid', this.dataDetailPayment.orderUid);
@@ -404,7 +406,10 @@ export default {
       formDataDigital.append('file', this.imageFile);
       formDataDigital.append('customerUid', this.dataDetailPayment.customerUid);
 
-      console.log(this.dataDetailPayment.customerUid);
+      // console.log(formDataDigital);
+      for (const value of formDataDigital.values()) {
+        console.log(value);
+      }
 
       try {
         const fetchConfirmPayment = await OrderService.updatePaymentConfirmation(
@@ -412,6 +417,8 @@ export default {
         );
 
         if (fetchConfirmPayment.data) {
+          console.log('confirm');
+          localStorage.removeItem('swo');
           this.toThankyouPage();
         } else {
           throw new Error(fetchConfirmPayment);

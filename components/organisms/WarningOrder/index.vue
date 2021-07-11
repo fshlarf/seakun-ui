@@ -1,10 +1,10 @@
 <template>
-    <div :class="[{'warning-order--show': isShowWarning}]" class="warning-order h-auto lg:w-6/12 md:w-6/12 sm:9/12 w-full px-4 mx-auto flex flex-col space-y-4 items-center justify-center rounded">
+    <div :class="[{'warning-order--show': isShowWarning}]" class="cursor-pointer warning-order h-auto lg:w-6/12 md:w-6/12 sm:9/12 w-full px-4 mx-auto flex flex-col space-y-4 items-center justify-center rounded">
 		<div class="flex flex-row w-full justify-between items-center  py-3 px-4 rounded">
-			<span class="warning-order-icon">
+			<span class="warning-order-icon"  @click="onClickDetailOrder">
 				<AlertIcon/>
 			</span>
-			<div class="warning-order-content mx-4 flex-1 text-black">
+			<div class="warning-order-content mx-4 flex-1 text-black" @click="onClickDetailOrder">
 				<div class="alert-title font-semibold text-sm lg:text-lg md:text-lg sm:text-lg ">
 					Proses berlangganan {{provider}} belum selesai
 				</div>
@@ -42,9 +42,8 @@ export default {
 	methods : {
 		showWarning(){
 			const checkIsStillOrderAndData = this.checkIsStillHaveOrder()
-			console.log(checkIsStillOrderAndData)
 			if(checkIsStillOrderAndData){
-				this.provider = checkIsStillOrderAndData.provider.name
+				this.provider = checkIsStillOrderAndData.providerName
 				setTimeout(function(){
 					console.log('resasd')
 					this.isShowWarning = true
@@ -56,7 +55,7 @@ export default {
 			this.isShowWarning = false
 			const checkIsStillOrderAndData = this.checkIsStillHaveOrder()
 			if(checkIsStillOrderAndData){
-				this.provider = checkIsStillOrderAndData.provider.name
+				this.provider = checkIsStillOrderAndData.providerName
 				setTimeout(function(){
 					this.isShowWarning = true
 				}.bind(this),60000)
@@ -67,19 +66,24 @@ export default {
 			if(getDataOrder){
 				const dateOrder =  getDataOrder.createdAt ? moment.unix(getDataOrder.createdAt) : null
 				if(dateOrder){
-					const diff = moment(moment(dateOrder)).diff(moment(), 'minutes', true)
+					const diff = moment(moment()).diff(moment(dateOrder), 'minutes', true)
 					if(diff <= 5 ){
 						return getDataOrder
 					}else {
-						 localStorage['swo'] = null
+						 localStorage.removeItem('swo')
 						 return false
 					}
 				}
 
 			}
 			return false
-		}
+		},
+		onClickDetailOrder(evt) {
+			const getDataOrder = localStorage.getItem('swo') ? JSON.parse(localStorage['swo']) : {}
+			this.$router.push({ path: 'payment-confirmation', query: { orderUid: getDataOrder.orderUid ,customerUid:getDataOrder.customerUid } })
+		}	
 	},
+	
 }
 </script>
 
