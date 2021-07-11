@@ -16,6 +16,20 @@ class OrderService {
   createOrder(params) {
     return this.serviceApi.post('/customer', { ...params });
   }
+
+  getPaymentConfirmation(orderUid, customerUid) {
+    return this.serviceApi.get(
+      `/customer/payment/confirm?orderUid=${orderUid}&customerUid=${customerUid}`
+    );
+  }
+
+  updatePaymentConfirmation(params, header) {
+    return this.serviceApi.post(
+      '/customer/payment/confirm',
+      { ...params },
+      { headers: { header } }
+    );
+  }
 }
 
 export default OrderService;

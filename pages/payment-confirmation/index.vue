@@ -169,6 +169,8 @@ import moment from 'moment';
 import Input from '../../components/atoms/Input.vue';
 import { currencyFormat } from '~/helpers';
 import axios from 'axios';
+import OrderService from '~/services/OrderServices.js';
+import MasterService from '~/services/MasterServices.js';
 
 export default {
   name: 'paymentConfirmation',
@@ -184,6 +186,8 @@ export default {
     Input,
   },
   data: () => ({
+    OrderService,
+    MasterService,
     moment,
     isLoadingSubmit: false,
     bankSeakun: 'Pilih Bank tujuan milik Seakun.id',
@@ -202,36 +206,16 @@ export default {
     nominal: '',
     packet: '',
     dataDetailPacket: {},
-    paymentDestinationList: {
-      transferBank: [
-        {
-          name: 'BCA',
-          value: 'bca',
-        },
-        {
-          name: 'Mandiri',
-          value: 'mandiri',
-        },
-      ],
-      ewallet: [
-        {
-          name: 'GoPay',
-          value: 'gopay',
-        },
-        {
-          name: 'OVO',
-          value: 'ovo',
-        },
-        {
-          name: 'DANA',
-          value: 'dana',
-        },
-        {
-          name: 'LinkAja',
-          value: 'linkaja',
-        },
-      ],
+    dataDetailPayment: {},
+    paramSeakunPayment: {
+      page: 1,
+      limit: 10,
     },
+    paymentDestinationList: {
+      transferBank: [],
+      ewallet: [],
+    },
+    paymentToUid: '',
     time1: moment().format('YYYY-MM-DD').toString(),
     imageFile: null,
     error_bank_seakun: {
@@ -278,7 +262,15 @@ export default {
     this.nominal = nominal;
   },
   mounted() {
-    const { provider } = this.$router.history.current.query;
+    this.OrderService = new OrderService(this);
+    this.MasterService = new MasterService(this);
+    const {
+      provider,
+      orderUid,
+      customerUid,
+    } = this.$router.history.current.query;
+    this.getDataPayment(orderUid, customerUid);
+    this.getSeakunPayment();
     this.getDataDetailPacket(provider);
   },
   methods: {
@@ -293,14 +285,61 @@ export default {
     },
     onClickItemBank(type, value) {
       if (type == 'bankDirection') {
-        this.bankSeakun = value.name;
+        this.bankSeakun = value.bankName;
+        this.paymentToUid = value.uid;
         this.paymenDestination = false;
       }
 
       if (type == 'paymentUsage') {
-        this.bankCustomer = value.name;
+        this.bankCustomer = value.bankName;
         this.paymentUsage = false;
       }
+    },
+    async getSeakunPayment() {
+      const { MasterService } = this;
+      this.isShowLoading = true;
+      try {
+        const fetchSeakunPayment = await MasterService.getSeakunPayment(
+          this.paramSeakunPayment
+        );
+        if (fetchSeakunPayment.data) {
+          const dataResult = fetchSeakunPayment.data.data;
+          dataResult.forEach((element) => {
+            if (element.paymentTypeId === 1) {
+              this.paymentDestinationList.transferBank.push(element);
+            } else if (element.paymentTypeId === 2) {
+              this.paymentDestinationList.ewallet.push(element);
+            }
+            // console.log(this.paymentDestinationList);
+          });
+        } else {
+          throw new Error(fetchSeakunPayment);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isShowLoading = false;
+    },
+    async getDataPayment(orderUid, customerUid) {
+      const { OrderService } = this;
+
+      this.isShowLoading = true;
+      try {
+        const fetchPayment = await OrderService.getPaymentConfirmation(
+          orderUid,
+          customerUid
+        );
+        if (fetchPayment.data) {
+          const dataResult = fetchPayment.data.data;
+          this.dataDetailPayment = dataResult;
+          this.nominal = dataResult.totalPrice;
+        } else {
+          throw new Error(fetchPayment);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isShowLoading = false;
     },
     getDataDetailPacket(provider) {
       axios
@@ -332,10 +371,14 @@ export default {
         !this.error_holder.isError &&
         !this.error_upload_image.isError
       ) {
-        this.submitConfirmation();
+        if (this.provider) {
+          this.submitConfirmationSequrban();
+        } else {
+          this.submitConfirmationDigital();
+        }
       }
     },
-    submitConfirmation() {
+    submitConfirmationSequrban() {
       this.isLoadingSubmit = true;
 
       const formData = new FormData();
@@ -352,11 +395,11 @@ export default {
       formData.append('nominal_payment', this.nominal);
       formData.append('file', this.imageFile);
 
+      console.log(formData);
+
       axios
         .post(
-          `https://seakun-api.herokuapp.com/confirm-payment/${
-            this.provider.toLowerCase() === 'sequrban' ? 'on-demand' : 'digital'
-          }`,
+          'https://seakun-api.herokuapp.com/confirm-payment/on-demand',
           formData,
           {
             headers: { 'Content-Type': 'multipart/form-data' },
@@ -374,6 +417,52 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    async submitConfirmationDigital() {
+      const { OrderService } = this;
+      this.isLoadingSubmit = true;
+      console.log(OrderService);
+      const formDataDigital = new FormData();
+
+      formDataDigital.append('orderUid', this.dataDetailPayment.orderUid);
+      formDataDigital.append('paymentTo', this.paymentToUid);
+      formDataDigital.append('paymentFromBank', this.bankCustomer);
+      formDataDigital.append('paymentFromName', this.holder);
+      formDataDigital.append('paymentAt', this.time1);
+      formDataDigital.append('file', this.imageFile);
+      formDataDigital.append('customerUid', this.dataDetailPayment.customerUid);
+
+      // console.log(formDataDigital);
+      for (const value of formDataDigital.values()) {
+        console.log(value);
+      }
+
+      const headers = { 'Content-Type': 'multipart/form-data' };
+
+      try {
+        const fetchConfirmPayment = await OrderService.updatePaymentConfirmation(
+          formDataDigital,
+          headers
+        );
+
+        if (fetchConfirmPayment.data) {
+          console.log('confirm');
+          // const dataResult = fetchConfirmPayment.data.data;
+          // payload = {
+          //   ...payload,
+          //   variantName: dataResult.packageVariantName,
+          //   customerUid: dataResult.customerUid,
+          //   orderUid: dataResult.orderUid,
+          // };
+          // this.redirectPage(payload);
+          // this.executeApiMailSeakun(payload)
+        } else {
+          throw new Error(fetchConfirmPayment);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingSubmit = false;
     },
     toThankyouPage() {
       this.$router.push(

@@ -64,6 +64,10 @@ class MasterService {
   createOrder(params) {
     return this.serviceApi.post('/customer', { ...params });
   }
+
+  getSeakunPayment(params) {
+    return this.serviceApi.get('/customer/seakun-payment', { params });
+  }
 }
 
 export default MasterService;

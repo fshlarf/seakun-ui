@@ -10,7 +10,7 @@
             :key="index"
             @click="$emit('onClickItem', bank)"
           >
-            {{ bank.name }}
+            {{ bank.bankName }}
           </li>
         </ul>
         <li class="font-bold pb-2">Ewallet</li>
@@ -21,7 +21,7 @@
             :key="index"
             @click="$emit('onClickItem', bank)"
           >
-            {{ bank.name }}
+            {{ bank.bankName }}
           </li>
         </ul>
       </div>
