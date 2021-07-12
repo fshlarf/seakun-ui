@@ -118,11 +118,13 @@ export default {
       customer_uid,
     } = this.$router.history.current.query;
     this.type = type;
-    if (provider) {
-      this.provider = provider;
+    this.provider = provider;
+    if (type === 'digital') {
+      this.getPaymentDigital(order_uid, customer_uid);
     }
-    this.getPaymentDigital(order_uid, customer_uid);
-    this.getPaymentSequrban();
+    if (provider === 'sequrban') {
+      this.getPaymentSequrban();
+    }
     this.getVouchersData();
   },
   computed: {
@@ -164,16 +166,10 @@ export default {
       this.isLoadingPayment = false;
     },
     getPaymentSequrban() {
-      const {
-        provider,
-        packet_id,
-        voucher,
-      } = this.$router.history.current.query;
+      const { packet_id, voucher } = this.$router.history.current.query;
       this.isLoadingPayment = true;
       axios
-        .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
-        )
+        .get(`https://seakun-packet-api-v2.herokuapp.com/sequrban/${packet_id}`)
         .then((res) => {
           const { data, status } = res;
           if (status === 200) {
