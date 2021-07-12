@@ -29,6 +29,8 @@
         :is-loading="isLoadingPayment"
         :provider="provider"
         :package-id="packetId"
+        :paymentSeakunList="paymentSeakunList.data"
+        :paymentSeakunListLoading="paymentSeakunList.loading"
         :detail-payment-digital="detailPaymentDigital"
         :detail-payment-sequrban="detailPaymentSequrban"
       />
@@ -106,6 +108,10 @@ export default {
         duration: 0,
       },
       detailPaymentSequrban: {},
+      paymentSeakunList : {
+        data : [],
+        loading : true
+      }
     };
   },
   mounted() {
@@ -120,6 +126,7 @@ export default {
     this.type = type;
     this.provider = provider;
     if (type === 'digital') {
+      this.getSeakunPayment()
       this.getPaymentDigital(order_uid, customer_uid);
     }
     if (provider === 'sequrban') {
@@ -140,6 +147,33 @@ export default {
     },
   },
   methods: {
+    async getSeakunPayment() {
+      const { MasterService } = this;
+      this.paymentSeakunList = {
+        ...this.paymentSeakunList,
+        loading : true
+      }
+      try {
+        const fetchSeakunPayment = await MasterService.getSeakunPayment(
+          this.paramSeakunPayment
+        );
+        if (fetchSeakunPayment.data) {
+          const dataResult = fetchSeakunPayment.data.data;
+          this.paymentSeakunList = {
+            loading : false,
+            data : dataResult
+          }
+        } else {
+          throw new Error(fetchSeakunPayment);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+       this.paymentSeakunList = {
+        ...this.paymentSeakunList,
+        loading : false
+      }
+    },
     async getPaymentDigital(orderUid, customerUid) {
       const { OrderService } = this;
       this.isLoadingPayment = true;
