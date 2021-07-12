@@ -190,6 +190,7 @@ export default {
       name: 'Pilih Masa Berlangganan',
       month: 0,
       price: 0,
+      payment: 0,
       grandTotal: 0,
     },
     isShowLoading: false,
@@ -428,15 +429,10 @@ export default {
         name: capitalizeFirstLetter(this.userName),
         email: this.email,
         phoneNumber: `${this.codePhone}${this.phoneNumber}`,
-        packageUid: this.packageUid,
         packageVariantUid: this.variantUid,
-        subcriptionDuration: this.subcriptionDuration,
         ispreorder: this.detailOrder.isPo === 1,
-        isHost: this.detailOrder.isHost,
         userhost: this.detailOrder.isHost === 1,
         voucherUid: '',
-        password: 'sodagembira',
-        ispreorder: this.detailOrder.isPo || false,
       };
       try {
         const fetchCreateOrder = await OrderService.createOrder(payload);
@@ -444,7 +440,6 @@ export default {
           const dataResult = fetchCreateOrder.data.data;
           payload = {
             ...payload,
-            variantName: dataResult.packageVariantName,
             customerUid: dataResult.customerUid,
             orderUid: dataResult.orderUid,
           };
@@ -468,17 +463,8 @@ export default {
         query: {
           type: 'digital',
           provider: this.provider,
-          variant_id: this.variantUid,
-          variant_name: payload.variantName,
-          isHost: payload.isHost,
-          duration: this.subcriptionDuration,
-          price: this.longSubcribe.grandTotal,
-          holder: this.userName,
-          email: this.email,
-          whatsapp: this.codePhone + this.phoneNumber,
-          customerUid: payload.customerUid,
-          orderUid: payload.orderUid,
-          // voucher: this.isVoucherValid ? this.voucher : '',
+          customer_uid: payload.customerUid,
+          order_uid: payload.orderUid,
         },
       });
     },

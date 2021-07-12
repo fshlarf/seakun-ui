@@ -5,7 +5,7 @@
     <div
       class="order-detail__product px-4 pt-4 pb-2 grid grid-cols-5 gap-2 items-center"
     >
-      <div class="flex-1">
+      <div v-if="provider" class="flex-1">
         <img
           class="detail-product__image w-full"
           :src="`/images/${provider}.png`"

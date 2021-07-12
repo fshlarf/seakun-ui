@@ -3,7 +3,7 @@
     <Snackbar ref="snackbar" />
     <div class="payment-detail text-center mt-16">
       <p
-        v-if="provider.toLowerCase() === 'sequrban'"
+        v-if="provider.toLowerCase() === 'sequrban' && detailPaymentSequrban"
         class="payment-detail__label my-3 text-xl"
       >
         Transfer DP (uang muka)
@@ -17,7 +17,9 @@
           <p class="shimmer w-6/12"></p>
         </div>
         <div
-          v-else-if="provider.toLowerCase() === 'sequrban'"
+          v-else-if="
+            provider.toLowerCase() === 'sequrban' && detailPaymentSequrban
+          "
           class="payment-detail__price flex align-items-center justify-center"
           @click="
             clickCopyHandler('Nominal', detailPaymentSequrban.downPayment)
@@ -32,20 +34,20 @@
         <div
           v-else
           class="payment-detail__price flex align-items-center justify-center cursor-pointer"
-          @click="clickCopyHandler('Nominal', detailPaymentDigital.price)"
+          @click="clickCopyHandler('Nominal', detailPaymentDigital.payment)"
         >
           <p
             class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPaymentDigital.price)"
+            v-html="formatCodePayment(detailPaymentDigital.payment)"
           ></p>
           <CopyIcon />
         </div>
       </div>
 
       <!-- </div> -->
-      <!-- <p class="payment-detail__alert my-3">
+      <p class="payment-detail__alert my-3">
         Pastikan nominal sesuai hingga 3 digit terakhir
-      </p> -->
+      </p>
     </div>
     <div class="payment-method">
       <h3 class="payment-method__title text-center text-bold mt-6">
@@ -258,7 +260,7 @@ export default {
 
   &__alert {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
     line-height: 18px;
     color: #363636;
