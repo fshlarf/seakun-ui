@@ -26,14 +26,14 @@ export default {
       dataBenefit: [
         {
           id: 1,
-          title: 'Murah dan legal',
+          title: 'Murah dan Legal',
           img: '/images/benefit/benefit1.svg',
           preview:
             'Dengan patungan, berlangganan platform digital premium jadi lebih murah dan pastinya legal.',
         },
         {
           id: 2,
-          title: 'Privasi terjamin',
+          title: 'Privasi Terjamin',
           img: '/images/benefit/benefit2.svg',
           preview:
             'Dengan tambahan pin profil pada akun yang kami buatkan, privasi pengguna lebih terjaga dan terjamin.',
