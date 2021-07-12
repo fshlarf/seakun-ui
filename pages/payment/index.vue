@@ -68,6 +68,7 @@
 <script>
 import axios from 'axios';
 import MasterService from '~/services/MasterServices.js';
+import OrderService from '~/services/OrderServices.js';
 import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Button from '~/components/atoms/Button';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
@@ -99,23 +100,28 @@ export default {
       vouchersData: [],
       isLoadingPayment: false,
       detailPaymentDigital: {
-        provider: '',
         name: '',
-        price: '',
+        price: 0,
+        payment: 0,
         duration: 0,
-        isHost: 0,
       },
       detailPaymentSequrban: {},
     };
   },
   mounted() {
     this.MasterService = new MasterService(this);
-    const { provider, type } = this.$router.history.current.query;
+    this.OrderService = new OrderService(this);
+    const {
+      provider,
+      type,
+      order_uid,
+      customer_uid,
+    } = this.$router.history.current.query;
     this.type = type;
     if (provider) {
       this.provider = provider;
     }
-    this.getPaymentDigital();
+    this.getPaymentDigital(order_uid, customer_uid);
     this.getPaymentSequrban();
     this.getVouchersData();
   },
@@ -132,21 +138,30 @@ export default {
     },
   },
   methods: {
-    getPaymentDigital() {
-      const {
-        provider,
-        variant_name,
-        isHost,
-        duration,
-        price,
-      } = this.$router.history.current.query;
-      this.detailPaymentDigital = {
-        provider: provider,
-        name: variant_name,
-        price: price,
-        duration: parseInt(duration),
-        isHost: isHost,
-      };
+    async getPaymentDigital(orderUid, customerUid) {
+      const { OrderService } = this;
+      this.isLoadingPayment = true;
+
+      try {
+        const fetchPayment = await OrderService.getPaymentConfirmation(
+          orderUid,
+          customerUid
+        );
+        if (fetchPayment.data) {
+          const dataResult = fetchPayment.data.data;
+          this.detailPaymentDigital = {
+            name: dataResult.provider.package.variant.name,
+            price: dataResult.payment.totalPrice,
+            payment: dataResult.payment.payment,
+            duration: dataResult.provider.package.variant.duration,
+          };
+        } else {
+          throw new Error(fetchPayment);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingPayment = false;
     },
     getPaymentSequrban() {
       const {
@@ -214,13 +229,9 @@ export default {
           }&nominal=${this.detailPaymentSequrban.downPayment}`
         );
       } else if (productType === 'digital') {
-        const {
-          customerUid,
-          orderUid,
-          price,
-        } = this.$router.history.current.query;
+        const { customer_uid, order_uid } = this.$router.history.current.query;
         this.$router.push(
-          `/payment-confirmation?orderUid=${orderUid}&customerUid=${customerUid}&nominal=${price}`
+          `/payment-confirmation?order_uid=${order_uid}&customer_uid=${customer_uid}`
         );
       }
     },

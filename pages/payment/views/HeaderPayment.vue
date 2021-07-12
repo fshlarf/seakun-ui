@@ -17,7 +17,7 @@
       </div>
 
       <div v-else-if="provider.toLowerCase() === 'netflix'">
-        <p
+        <!-- <p
           class="title text-center text-lg px-2"
           v-if="detailPaymentDigital.isHost === 1"
         >
@@ -32,11 +32,8 @@
           <b>memproses akun Netflix</b>. <br /><br /><b>Informasi Akun</b>,
           <b>Password</b> dan <b>Pin Profile</b> akan dikirim ke Email dan
           Whatsapp yang kamu daftarkan.
-        </p>
-        <p
-          class="title text-center text-lg px-2"
-          v-else-if="detailPaymentDigital.isHost === 0"
-        >
+        </p> -->
+        <p class="title text-center text-lg px-2" v-if="detailPaymentDigital">
           Segera lakukan pembayaran agar Seakun.id bisa langsung mengalokasikan
           kamu pada grup Netflix yang available, mencarikan teman berlangganan
           dan memproses akun Netflix untuk kamu.

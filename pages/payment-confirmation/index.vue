@@ -238,15 +238,14 @@ export default {
     this.MasterService = new MasterService(this);
     const {
       provider,
-      orderUid,
-      customerUid,
-      nominal,
+      order_uid,
+      customer_uid,
     } = this.$router.history.current.query;
-    this.nominal = nominal;
+
     this.getSeakunPayment();
     this.getDataDetailPacket(provider);
-    if (orderUid && customerUid) {
-      this.getDataPayment(orderUid, customerUid);
+    if (order_uid && customer_uid) {
+      this.getDataPayment(order_uid, customer_uid);
     }
   },
   methods: {
@@ -306,6 +305,7 @@ export default {
         );
         if (fetchPayment.data) {
           const dataResult = fetchPayment.data.data;
+          this.nominal = dataResult.payment.payment;
           this.dataDetailPayment = dataResult;
         } else {
           throw new Error(fetchPayment);
@@ -369,8 +369,6 @@ export default {
       formData.append('nominal_payment', this.nominal);
       formData.append('file', this.imageFile);
 
-      console.log(formData);
-
       axios
         .post(
           'https://seakun-api.herokuapp.com/confirm-payment/on-demand',
@@ -395,7 +393,6 @@ export default {
     async submitConfirmationDigital() {
       const { OrderService } = this;
       this.isLoadingSubmit = true;
-      console.log(OrderService);
       const formDataDigital = new FormData();
 
       formDataDigital.append('orderUid', this.dataDetailPayment.orderUid);
@@ -406,18 +403,12 @@ export default {
       formDataDigital.append('file', this.imageFile);
       formDataDigital.append('customerUid', this.dataDetailPayment.customerUid);
 
-      // console.log(formDataDigital);
-      for (const value of formDataDigital.values()) {
-        console.log(value);
-      }
-
       try {
         const fetchConfirmPayment = await OrderService.updatePaymentConfirmation(
           formDataDigital
         );
 
         if (fetchConfirmPayment.data) {
-          console.log('confirm');
           localStorage.removeItem('swo');
           this.toThankyouPage();
         } else {

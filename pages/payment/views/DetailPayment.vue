@@ -3,7 +3,7 @@
     <Snackbar ref="snackbar" />
     <div class="payment-detail text-center mt-16">
       <p
-        v-if="provider.toLowerCase() === 'sequrban'"
+        v-if="provider.toLowerCase() === 'sequrban' && detailPaymentSequrban"
         class="payment-detail__label my-3 text-xl"
       >
         Transfer DP (uang muka)
@@ -17,7 +17,9 @@
           <p class="shimmer w-6/12"></p>
         </div>
         <div
-          v-else-if="provider.toLowerCase() === 'sequrban'"
+          v-else-if="
+            provider.toLowerCase() === 'sequrban' && detailPaymentSequrban
+          "
           class="payment-detail__price flex align-items-center justify-center"
           @click="
             clickCopyHandler('Nominal', detailPaymentSequrban.downPayment)
@@ -32,11 +34,11 @@
         <div
           v-else
           class="payment-detail__price flex align-items-center justify-center cursor-pointer"
-          @click="clickCopyHandler('Nominal', detailPaymentDigital.price)"
+          @click="clickCopyHandler('Nominal', detailPaymentDigital.payment)"
         >
           <p
             class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPaymentDigital.price)"
+            v-html="formatCodePayment(detailPaymentDigital.payment)"
           ></p>
           <CopyIcon />
         </div>
