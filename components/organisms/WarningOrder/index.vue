@@ -80,7 +80,7 @@ export default {
 		},
 		onClickDetailOrder(evt) {
 			const getDataOrder = localStorage.getItem('swo') ? JSON.parse(localStorage['swo']) : {}
-			this.$router.push({ path: 'payment-confirmation', query: { orderUid: getDataOrder.orderUid ,customerUid:getDataOrder.customerUid } })
+			this.$router.push({ path: 'payment', query: { type:'digital',orderUid: getDataOrder.orderUid ,customerUid:getDataOrder.customerUid } })
 		}	
 	},
 	
