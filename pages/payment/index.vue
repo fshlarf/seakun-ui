@@ -124,7 +124,6 @@ export default {
       customer_uid,
     } = this.$router.history.current.query;
     this.type = type;
-    this.provider = provider;
     if (type === 'digital') {
       this.getSeakunPayment();
       this.getPaymentDigital(order_uid, customer_uid);
@@ -191,6 +190,7 @@ export default {
             payment: dataResult.payment.payment,
             duration: dataResult.provider.package.variant.duration,
           };
+          this.provider = dataResult.provider.slug;
         } else {
           throw new Error(fetchPayment);
         }

@@ -462,7 +462,6 @@ export default {
         path: this.setPathToRedirect(payload),
         query: {
           type: 'digital',
-          provider: this.provider,
           customer_uid: payload.customerUid,
           order_uid: payload.orderUid,
         },
