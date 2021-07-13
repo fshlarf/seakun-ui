@@ -448,7 +448,6 @@ export default {
             JSON.stringify({ ...dataResult, createdAt: moment().unix() })
           );
           this.redirectPage(payload);
-          // this.executeApiMailSeakun(payload)
         } else {
           throw new Error(fetchCreateOrder);
         }
@@ -467,37 +466,6 @@ export default {
         },
       });
     },
-    // executeApiMailSeakun(payload) {
-    //   let newPayload = {
-    //     ...payload,
-    //     payment_type: 'month',
-    //   };
-    //   axios
-    //     .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)
-    //     .then((res) => {
-    //       this.isDisableBtn = false;
-    //       // Redirect to thankyou page when successfully registration
-    //       this.$router.push({
-    //         path: this.setPathToRedirect(newPayload),
-    //         query: {
-    //           type: 'digital',
-    //           provider: this.provider,
-    //           packet_id: this.packageId,
-    //           duration: this.subcriptionDuration,
-    //           price: this.price,
-    //           holder: this.userName,
-    //           email: this.email,
-    //           whatsapp: this.codeNumber + this.phoneNumber,
-    //           // voucher: this.isVoucherValid ? this.voucher : '',
-    //         },
-    //       });
-    //       this.isShowLoading = false;
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //       this.isShowLoading = false;
-    //     });
-    // },
     setPathToRedirect(payload) {
       if (payload.userhost) {
         return '/thankyou/user-host';

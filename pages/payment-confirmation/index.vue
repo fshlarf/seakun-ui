@@ -3,13 +3,16 @@
     <div class="wrapper-form w-full bg-white rounded-xl shadow-xl py-4 px-4">
       <div class="header-confirmation">
         <h3 class="font-bold text-2xl">Konfirmasi Pembayaran</h3>
+        <p class="my-2 text-sm">
+          Silakan isi terlebih dahulu sebelum melakukan pemesanan
+        </p>
         <div
-          v-if="order_id"
-          class="order-code bg-green-seakun-secondary w-full flex justify-between px-3 py-2"
+          v-if="orderNumber"
+          class="order-code bg-green-seakun-secondary w-full rounded-lg mt-2 flex justify-between px-4 py-3"
         >
           <p class="order-code__label">Kode pemesanan</p>
           <p class="order-code__code text-green-seakun-dark font-bold">
-            NET100002020
+            {{ orderNumber }}
           </p>
         </div>
       </div>
@@ -177,6 +180,7 @@ export default {
     holder: '',
     nominal: '',
     packet: '',
+    orderNumber: '',
     dataDetailPacket: {},
     dataDetailPayment: {},
     paramSeakunPayment: {
@@ -307,6 +311,7 @@ export default {
           const dataResult = fetchPayment.data.data;
           this.nominal = dataResult.payment.payment;
           this.dataDetailPayment = dataResult;
+          this.orderNumber = dataResult.orderNumber;
         } else {
           throw new Error(fetchPayment);
         }
