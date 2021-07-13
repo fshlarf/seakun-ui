@@ -534,14 +534,16 @@ export default {
       }
     },
     setLocalStorage(id) {
-      const input = document.getElementById(id);
-      input.addEventListener('change', (event) => {
-        this.registeredUser[id] = event.target.value;
-        localStorage.setItem(
+      const {userName,email,phoneNumber} = this
+      const dataRegister = {
+        name : userName,
+        email,
+        phone : phoneNumber
+      }
+      localStorage.setItem(
           'registered_user',
-          JSON.stringify(this.registeredUser)
-        );
-      });
+          JSON.stringify(dataRegister)
+      );
     },
   },
 };
