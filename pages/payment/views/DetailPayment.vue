@@ -55,59 +55,24 @@
       </h3>
       <div
         v-if="provider.toLowerCase() === 'sequrban'"
-        class="payment-method__options grid grid-cols-2 gap-1 px-4 py-6"
       >
-        <div
-          v-for="(payment, index) in paymentMethodSekurban"
-          :key="index"
-          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
-        >
-          <img
-            :src="`/images/payment/${payment.name}.png`"
-            class="w-8/12 my-2"
-          />
-          <p
-            class="mt-4 payment-options__norek text-sm font-bold"
-            @click="clickCopyHandler('Rekening', payment.accountNumber)"
-          >
-            {{ payment.accountNumber }}
-            <span class="ml-1">
-              <CopyIcon
-                @click="clickCopyHandler('Rekening', payment.accountNumber)"
-            /></span>
-          </p>
-          <p class="my-1 payment-options__account-name text-sm">
-            {{ payment.accountName }}
-          </p>
-        </div>
+         <PaymentMethodList
+          :PaymentMethodList="paymentMethodSekurban"
+          @clickCopyHandler="clickCopyHandler"
+        />
+  
       </div>
       <div
         v-else
-        class="payment-method__options grid grid-cols-2 gap-1 px-4 py-6"
       >
-        <div
-          v-for="(payment, index) in paymetnMethod"
-          :key="index"
-          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
-        >
-          <img
-            :src="`/images/payment/${payment.name}.png`"
-            class="w-8/12 my-2"
-          />
-          <p
-            class="mt-4 payment-options__norek text-sm font-bold"
-            @click="clickCopyHandler('Rekening', payment.accountNumber)"
-          >
-            {{ payment.accountNumber }}
-            <span class="ml-1">
-              <CopyIcon
-                @click="clickCopyHandler('Rekening', payment.accountNumber)"
-            /></span>
-          </p>
-          <p class="my-1 payment-options__account-name text-sm">
-            {{ payment.accountName }}
-          </p>
-        </div>
+
+        <PaymentMethodList
+          v-if="!paymentSeakunListLoading"
+          :PaymentMethodList="paymentSeakunList.length > 0 ? paymentSeakunList : paymetnMethod"
+          @clickCopyHandler="clickCopyHandler"
+        />
+        <PaymentMethodListLoading v-else/>
+
       </div>
     </div>
   </section>
@@ -116,6 +81,8 @@
 <script>
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
+import PaymentMethodList from './PaymentMethodList.vue'
+import PaymentMethodListLoading from './PaymentMethodListLoading.vue'
 import { currencyFormat } from '~/helpers/word-transformation.js';
 
 export default {
@@ -123,6 +90,8 @@ export default {
   components: {
     Snackbar,
     CopyIcon,
+    PaymentMethodList,
+    PaymentMethodListLoading
   },
   props: {
     isLoading: {
@@ -141,6 +110,14 @@ export default {
       type: String,
       default: '',
     },
+    paymentSeakunList : {
+      type : Array,
+      default :() => ([])
+    },
+    paymentSeakunListLoading : {
+      type : Boolean,
+      default : false
+    },
     total: {
       type: String | Number,
       default: null,
@@ -158,46 +135,46 @@ export default {
     currencyFormat,
     paymetnMethod: [
       {
-        name: 'mandiri',
-        accountNumber: '1150046427383',
-        accountName: 'PT. Seakun Global',
+        bankName: 'mandiri',
+        bankAccountNumber: '1150046427383',
+        bankAccountName: 'PT. Seakun Global',
       },
       {
-        name: 'bca',
-        accountNumber: '7660777738',
-        accountName: 'PT. Seakun Global',
+        bankName: 'bca',
+        bankAccountNumber: '7660777738',
+        bankAccountName: 'PT. Seakun Global',
       },
       {
-        name: 'gopay',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
+        bankName: 'gopay',
+        bankAccountNumber: '085774642738',
+        bankAccountName: 'Seakun ID / Eka Pusna',
       },
       {
-        name: 'ovo',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
+        bankName: 'ovo',
+        bankAccountNumber: '085774642738',
+        bankAccountName: 'Seakun ID / Eka Pusna',
       },
       {
-        name: 'link-aja',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
+        bankName: 'link-aja',
+        bankAccountNumber: '085774642738',
+        bankAccountName: 'Seakun ID / Eka Pusna',
       },
       {
-        name: 'dana',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
+        bankName: 'dana',
+        bankAccountNumber: '085774642738',
+        bankAccountName: 'Seakun ID / Eka Pusna',
       },
     ],
     paymentMethodSekurban: [
       {
-        name: 'mandiri',
-        accountNumber: '1150046427383',
-        accountName: 'PT. Seakun Global',
+        bankName: 'mandiri',
+        bankAccountNumber: '1150046427383',
+        bankAccountName: 'PT. Seakun Global',
       },
       {
-        name: 'bca',
-        accountNumber: '7660777738',
-        accountName: 'PT. Seakun Global',
+        bankName: 'bca',
+        bankAccountNumber: '7660777738',
+        bankAccountName: 'PT. Seakun Global',
       },
     ],
   }),
