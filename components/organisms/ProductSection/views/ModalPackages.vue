@@ -19,7 +19,7 @@
 
       <div
         v-if="packages.length > 0"
-        class="flex tn:flex-col md:flex-row md:justify-between"
+        class="flex tn:flex-col md:flex-row md:justify-between space-y-3"
       >
         <div
           v-for="(item, id) in packages"

@@ -22,7 +22,13 @@
         <div class="row justify-content-around content-mobile">
           <div v-for="(item, index) in providerList" :key="index">
             <div class="card">
-              <img :src="item.img" alt="image not found" class="logo" />
+              <div class="w-1/4">
+                <img
+                  :src="item.img"
+                  alt="image not found"
+                  class="h-10 object-contain"
+                />
+              </div>
               <img :src="item.screenshot" alt="image not found" class="ss" />
               <p class="font-weight-bold info-mobile">Detail Harga</p>
               <div
@@ -47,7 +53,7 @@
               </div>
               <div class="divider"></div>
               <p class="font-weight-bold">Skema Berlangganan</p>
-              <ol style="padding-left: 1rem">
+              <ol style="padding-left: 1rem" class="list-decimal">
                 <li
                   class="pt-1"
                   v-for="(scheme, indx) in item.schemes"
@@ -115,7 +121,7 @@ export default {
       width: 100%;
       height: 224px;
       object-fit: contain;
-      margin: 2rem 0;
+      margin: 0.5rem 0;
     }
 
     .logo {
