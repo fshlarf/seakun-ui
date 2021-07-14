@@ -15,7 +15,8 @@
       <div class="detail-product__price col-span-4 ml-4">
         <p v-if="isLoading" class="font-bold shimmer w-9/12"></p>
         <p v-else class="md:text-lg tn:text-sm font-bold">
-          <span class="capitalize">{{ provider }} </span> - {{ packageName }}
+          <span class="capitalize">{{ setNameProvider(provider) }} </span> -
+          {{ packageName }}
         </p>
         <p class="md:text-lg tn:text-sm font-normal">
           {{ currencyFormat(grandTotal) }} ({{ totalMonth }} Bulan)
@@ -66,6 +67,47 @@ export default {
   data: () => ({
     currencyFormat,
   }),
+  methods: {
+    setNameProvider(provider) {
+      switch (provider) {
+        case 'netflix':
+          return 'Netflix';
+          break;
+        case 'spotify':
+          return 'Spotify';
+          break;
+        case 'youtube':
+          return 'Youtube';
+          break;
+        case 'gramedia':
+          return 'Gramedia';
+          break;
+        case 'microsoft':
+          return 'Microsoft 365';
+          break;
+        case 'microsoft365':
+          return 'Microsoft 365';
+          break;
+        case 'canva':
+          return 'Canva';
+          break;
+        case 'disney-hotstar':
+          return 'Disney+ Hotstar';
+          break;
+        case 'nintendo':
+          return 'Nintendo Switch';
+          break;
+        case 'apple-one':
+          return 'Apple One';
+          break;
+        case 'wattpad':
+          return 'Wattpad';
+          break;
+        default:
+          return provider;
+      }
+    },
+  },
 };
 </script>
 
