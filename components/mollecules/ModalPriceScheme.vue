@@ -31,9 +31,9 @@
               {{ scheme.title }}
             </h1>
           </div>
-          <div v-if="dataScheme.slug === 'wattpad'" class="w-auto h-48 mx-auto">
+          <div v-if="dataScheme.slug === 'wattpad'" class="w-auto h-48 border">
             <img
-              class="h-full my-2 mx-auto border"
+              class="h-full mx-auto"
               :src="`${scheme.screenshot}`"
               alt="Image not found"
             />
