@@ -50,7 +50,7 @@
       </div>
       <div class="mt-8 mx-4 mb-4 text-center">
         <Button
-          v-if="type !== 'digital'"
+          v-if="type !== 1"
           class="w-full bg-green-seakun text-white"
           label="Konfirmasi Pembayaran"
           @click="onClickConfirm('sequrban')"
@@ -98,7 +98,7 @@ export default {
       packetId: null,
       total: null,
       showSnackBar: false,
-      type: '',
+      type: 0,
       vouchersData: [],
       isLoadingPayment: false,
       detailPaymentDigital: {
@@ -123,8 +123,9 @@ export default {
       order_uid,
       customer_uid,
     } = this.$router.history.current.query;
-    this.type = type;
-    if (type === 'digital') {
+    this.type = parseInt(type);
+    this.provider = provider;
+    if (this.type === 1) {
       this.getSeakunPayment();
       this.getPaymentDigital(order_uid, customer_uid);
     }

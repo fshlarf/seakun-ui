@@ -442,6 +442,7 @@ export default {
             ...payload,
             customerUid: dataResult.customerUid,
             orderUid: dataResult.orderUid,
+            type: dataResult.provider.type,
           };
           localStorage.setItem(
             'swo',
@@ -460,7 +461,7 @@ export default {
       this.$router.push({
         path: this.setPathToRedirect(payload),
         query: {
-          type: 'digital',
+          type: payload.type,
           customer_uid: payload.customerUid,
           order_uid: payload.orderUid,
         },
@@ -501,16 +502,13 @@ export default {
       }
     },
     setLocalStorage(id) {
-      const {userName,email,phoneNumber} = this
+      const { userName, email, phoneNumber } = this;
       const dataRegister = {
-        name : userName,
+        name: userName,
         email,
-        phone : phoneNumber
-      }
-      localStorage.setItem(
-          'registered_user',
-          JSON.stringify(dataRegister)
-      );
+        phone: phoneNumber,
+      };
+      localStorage.setItem('registered_user', JSON.stringify(dataRegister));
     },
   },
 };
