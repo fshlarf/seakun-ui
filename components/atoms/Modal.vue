@@ -29,7 +29,9 @@
           <div class="px-6 py-3">
             <slot name="header"></slot>
           </div>
-          <div class="scroll-bar p-6 flex-grow overflow-y-auto overscroll-auto">
+          <div
+            class="scroll-bar tn:px-3 tn:py-0 md:px-6 overflow-y-auto overscroll-auto"
+          >
             <div v-if="!isLoading">
               <slot />
             </div>
@@ -93,7 +95,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 95%;
-  max-width: 95%; 
+  max-width: 95%;
   min-width: 20rem;
 }
 
