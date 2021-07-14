@@ -108,10 +108,10 @@ export default {
         duration: 0,
       },
       detailPaymentSequrban: {},
-      paymentSeakunList : {
-        data : [],
-        loading : true
-      }
+      paymentSeakunList: {
+        data: [],
+        loading: true,
+      },
     };
   },
   mounted() {
@@ -124,9 +124,8 @@ export default {
       customer_uid,
     } = this.$router.history.current.query;
     this.type = type;
-    this.provider = provider;
     if (type === 'digital') {
-      this.getSeakunPayment()
+      this.getSeakunPayment();
       this.getPaymentDigital(order_uid, customer_uid);
     }
     if (provider === 'sequrban') {
@@ -151,8 +150,8 @@ export default {
       const { MasterService } = this;
       this.paymentSeakunList = {
         ...this.paymentSeakunList,
-        loading : true
-      }
+        loading: true,
+      };
       try {
         const fetchSeakunPayment = await MasterService.getSeakunPayment(
           this.paramSeakunPayment
@@ -160,19 +159,19 @@ export default {
         if (fetchSeakunPayment.data) {
           const dataResult = fetchSeakunPayment.data.data;
           this.paymentSeakunList = {
-            loading : false,
-            data : dataResult
-          }
+            loading: false,
+            data: dataResult,
+          };
         } else {
           throw new Error(fetchSeakunPayment);
         }
       } catch (error) {
         console.log(error);
       }
-       this.paymentSeakunList = {
+      this.paymentSeakunList = {
         ...this.paymentSeakunList,
-        loading : false
-      }
+        loading: false,
+      };
     },
     async getPaymentDigital(orderUid, customerUid) {
       const { OrderService } = this;
@@ -191,6 +190,7 @@ export default {
             payment: dataResult.payment.payment,
             duration: dataResult.provider.package.variant.duration,
           };
+          this.provider = dataResult.provider.slug;
         } else {
           throw new Error(fetchPayment);
         }
