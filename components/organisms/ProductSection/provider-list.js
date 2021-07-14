@@ -442,4 +442,82 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'apple-one',
+    img: '/images/apple-one.png',
+    screenshot: '/images/ss-apple-one.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Apple One Family',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Apple One (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Apple One Family',
+        value: 'Rp155.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp155.000 ÷ 5 = Rp31.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp36.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'wattpad',
+    img: '/images/wattpad.png',
+    screenshot: '/images/ss-wattpad.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Wattpad PREMIUM',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Wattpad (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Wattpad',
+        value: 'Rp65.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp65.000 ÷ 3 = Rp21.666,7',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp4.833,3',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp26.500',
+        is_total: true,
+      },
+    ],
+  },
 ];

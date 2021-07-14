@@ -17,9 +17,7 @@
         v-if="checkIsNewProduct(product.createdAt)"
         class="absolute tn:ml-2 tn:-top-8 md:ml-0 md:top-0 md:right-4 px-3 py-1 text-center rounded-full bg-forth"
       >
-        <p
-          class="tn:text-xs md:text-base lg:text-base text-secondary font-bold"
-        >
+        <p class="tn:text-xs md:text-base lg:text-base text-black font-bold">
           Baru
         </p>
       </div>
@@ -32,7 +30,7 @@
             alt="#"
             class="w-8 ml-1"
           />
-          <h1 class="md:text-base font-bold mx-2 max-w-[120px]">
+          <h1 class="md:text-base font-bold mx-2">
             {{ product.name }}
           </h1>
         </div>
