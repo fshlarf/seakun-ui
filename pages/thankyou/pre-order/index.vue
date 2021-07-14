@@ -103,6 +103,14 @@ export default {
         case 'nintendo':
           return 'Nintendo Switch';
           break;
+        case 'apple-one':
+          return 'Apple One';
+          break;
+        case 'wattpad':
+          return 'Wattpad';
+          break;
+        default:
+          return provider;
       }
     },
     setNumberMember(provider) {
