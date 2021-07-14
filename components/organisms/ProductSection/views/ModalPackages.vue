@@ -19,15 +19,16 @@
 
       <div
         v-if="provider && provider.variants !== ''"
-        class="flex tn:flex-col md:flex-row md:justify-between"
+        class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-3 xl:space-y-0"
       >
         <div
           v-for="(item, id) in provider.variants"
           :key="id"
-          :class="`w-full h-full mx-auto ${!item.isActive ? 'inactive' : ''}`"
+          :class="`mx-auto ${!item.active ? 'inactive' : ''}`"
+          class="w-full h-full"
           @click="$emit('choose-packet', item)"
         >
-          <CardPackage :slug="slug" :packet="item" />
+          <CardPackage :slug="slug" :packet="item" class="xl:w-[416px]" />
         </div>
       </div>
     </div>

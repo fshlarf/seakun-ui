@@ -1,10 +1,10 @@
 <template>
   <div
-    class="card-package md:w-[416px] tn:px-1 md:px-3 md:mx-3 py-4 shadow-md border !rounded-lg cursor-pointer"
+    class="relative card-package tn:px-1 md:px-3 md:mx-3 py-4 shadow-md border !rounded-lg cursor-pointer"
   >
-    <div v-if="slug === 'gramedia'" class="relative">
+    <div v-if="packet.isPreOrder" class="">
       <div
-        class="preorder ribbon bg-secondary text-white text-xs p-2 w-16 rounded-r-xl rounded-tl-2xl"
+        class="preorder bg-secondary text-white text-xs p-2 w-16 rounded-r-xl rounded-tl-2xl"
       >
         Preorder
       </div>
@@ -100,12 +100,10 @@ export default {
   border: 1px solid #8dcabe !important;
 }
 
-.ribbon {
-  position: absolute;
-}
 .preorder {
-  margin-left: -22px;
-  margin-top: -20px;
+  position: absolute;
+  top: 0.5rem;
+  left: -10px;
 }
 .preorder::before {
   content: '';
@@ -118,10 +116,10 @@ export default {
   border-bottom: 5px solid transparent;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .preorder {
-    margin-left: -15px;
-    margin-top: -20px;
+    top: 0.5rem;
+    left: -10px;
   }
 }
 </style>
