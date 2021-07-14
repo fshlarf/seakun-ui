@@ -1,48 +1,50 @@
 <template>
-    <div class="payment-method__options grid grid-cols-2 gap-1 px-4 py-6"
->
+  <div class="payment-method__options grid grid-cols-2 gap-3 px-4 py-6">
     <div
-          v-for="(payment, index) in PaymentMethodList"
-          :key="index"
-          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
-        >
-          <img
-            :src="`/images/payment/${payment.bankName.toLowerCase()}.png`"
-            class="w-8/12 my-2"
-          />
-          <p
-            class="mt-4 payment-options__norek text-sm font-bold"
-                @click="$emit('clickCopyHandler','Rekening', payment.bankAccountNumber)"
-          >
-            {{ payment.bankAccountNumber }}
-            <span class="ml-1">
-              <CopyIcon
-                @click="$emit('clickCopyHandler','Rekening', payment.bankAccountNumber)"
-            /></span>
-          </p>
-          <p class="my-1 payment-options__account-name text-sm">
-            {{ payment.bankAccountName }}
-          </p>
+      v-for="(payment, index) in PaymentMethodList"
+      :key="index"
+      class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
+    >
+      <img
+        :src="`/images/payment/${payment.bankName.toLowerCase()}.png`"
+        class="w-8/12 my-2"
+      />
+      <p
+        class="mt-4 payment-options__norek text-sm font-bold"
+        @click="
+          $emit('clickCopyHandler', 'Rekening', payment.bankAccountNumber)
+        "
+      >
+        {{ payment.bankAccountNumber }}
+        <span class="ml-1">
+          <CopyIcon
+            @click="
+              $emit('clickCopyHandler', 'Rekening', payment.bankAccountNumber)
+            "
+        /></span>
+      </p>
+      <p class="my-1 payment-options__account-name text-sm">
+        {{ payment.bankAccountName }}
+      </p>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 
 export default {
-    name : "PaymentMethod",
-    components: {
-        CopyIcon
+  name: 'PaymentMethod',
+  components: {
+    CopyIcon,
+  },
+  props: {
+    PaymentMethodList: {
+      type: Array,
+      default: () => [],
     },
-    props : {
-        PaymentMethodList : {
-            type : Array,
-            default : () => ([])
-        }
-    },
-    
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -103,5 +105,4 @@ export default {
     }
   }
 }
-
 </style>
