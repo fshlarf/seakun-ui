@@ -8,7 +8,9 @@
       class="container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between lg:items-center"
     >
       <nuxt-link class="hover:no-underline" to="/">
-        <Logo label="Seakun.id" />
+        <div @click="scrollToSection(0)">
+          <Logo label="Seakun.id" />
+        </div>
       </nuxt-link>
       <div
         class="absolute tn:top-1 tn:right-1 tn:py-3 tn:px-3 md:px-3 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col tn:w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
@@ -69,27 +71,22 @@ export default {
         {
           id: 1,
           label: 'Layanan',
-          link: '',
         },
         {
           id: 2,
           label: 'Pengguna',
-          link: '',
         },
         {
           id: 3,
           label: 'Cara pesan',
-          link: '',
         },
         {
           id: 4,
           label: 'Testimoni',
-          link: '',
         },
         {
           id: 5,
           label: 'QnA',
-          link: '',
         },
       ],
     };
@@ -99,6 +96,12 @@ export default {
   },
   methods: {
     scrollToSection(id) {
+      if (id === 0) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      }
       if (id === 1) {
         const providerSection = document.getElementById('provider');
         providerSection.scrollIntoView({
