@@ -14,11 +14,7 @@
         class="ml-3 mb-2"
         :class="{ 'xl:w-[416px]': packages.length === 1 }"
       >
-        <p class="tn:text-xs md:text-sm">
-          <span class="font-bold">Pre-order:</span> Akun akan dibuatkan ketika
-          anggota member dalam satu grup sudah lengkap. Member melakukan
-          pembayaran setelah akun dibuat.
-        </p>
+        <p class="tn:text-xs md:text-sm" v-html="setPreOrderNotes(slug)"></p>
       </div>
 
       <div
@@ -74,6 +70,18 @@ export default {
     Modal,
     CardShimmerVertical,
     CardPackage,
+  },
+  methods: {
+    setPreOrderNotes(slug) {
+      const providerTypeAccount = ['gramedia', 'disney-hotstar', 'wattpad'];
+      if (providerTypeAccount.includes(slug)) {
+        return `<span class="font-bold">Pre-order:</span> Akun akan dibuatkan ketika
+          anggota member dalam satu grup sudah lengkap. Member melakukan
+          pembayaran setelah akun dibuat.`;
+      } else {
+        return `<span class="font-bold">Pre-order:</span> Member akan diinfokan untuk melakukan pembayaran setelah satu grup full. Link invitation ke Paket Premium akan dikirim setelah member melakukan pembayaran ke Seakun.`;
+      }
+    },
   },
 };
 </script>
