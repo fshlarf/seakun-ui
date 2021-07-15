@@ -45,12 +45,12 @@
               alt="Image not found"
             />
           </div>
-          <div class="">
+          <div class="space-y-1">
             <h1 class="tn:text-lg xl:text-sm font-bold my-2">Detail Harga</h1>
             <div
               v-for="(info, id) in scheme.informations"
               :key="id"
-              class="flex justify-between items-center space-y-1 tn:text-xs md:text-sm xl:text-xs"
+              class="flex justify-between items-center tn:text-xs md:text-sm xl:text-xs"
               :class="{ 'font-bold': info.is_total }"
             >
               <div>{{ info.title }}</div>

@@ -9,11 +9,15 @@
     </template>
 
     <div v-if="!isLoading">
-      <div v-if="slug === 'gramedia'" class="ml-3 mb-2">
+      <div
+        v-if="preOrderPackage.includes(slug)"
+        class="ml-3 mb-2"
+        :class="{ 'xl:w-[416px]': packages.length === 1 }"
+      >
         <p class="tn:text-xs md:text-sm">
           <span class="font-bold">Pre-order:</span> Akun akan dibuatkan ketika
-          anggota member dalam satu grup sudah full (berisi 2 orang). Member
-          melakukan pembayaran setelah akun dibuat.
+          anggota member dalam satu grup sudah lengkap. Member melakukan
+          pembayaran setelah akun dibuat.
         </p>
       </div>
 
@@ -52,6 +56,19 @@ export default {
     provider: { type: String, default: 'Netflix' },
     packages: { type: Array, default: [] },
     slug: { type: String, default: '' },
+  },
+  data() {
+    return {
+      preOrderPackage: [
+        'apple-one',
+        'canva',
+        'disney-hotstar',
+        'gramedia',
+        'microsoft',
+        'nintendo',
+        'wattpad',
+      ],
+    };
   },
   components: {
     Modal,
