@@ -9,10 +9,10 @@
         Preorder
       </div>
     </div>
-    <div class="w-1/4 mx-auto">
+    <div class="w-1/3 mx-auto">
       <img
-        class="w-full h-auto"
-        :src="`/images/${slug}.png`"
+        class="w-auto h-14 object-contain mx-auto"
+        :src="`/images/icons/modal package digital/${slug}.png`"
         alt="Image not found"
       />
     </div>
