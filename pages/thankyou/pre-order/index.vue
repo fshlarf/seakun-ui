@@ -128,6 +128,9 @@ export default {
         case 'disney-hotstar':
           return '2';
           break;
+        case 'wattpad':
+          return '3';
+          break;
         default:
           return '5';
       }
