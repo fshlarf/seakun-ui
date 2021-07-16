@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Button from '~/components/atoms/button.vue';
+import Button from '~/components/atoms/Button.vue';
 export default {
   components: {
     Button,
