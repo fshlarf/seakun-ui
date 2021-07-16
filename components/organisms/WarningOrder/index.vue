@@ -111,7 +111,7 @@ export default {
       this.$router.push({
         path: 'payment',
         query: {
-          type: 'digital',
+          type: 1,
           order_uid: getDataOrder.orderUid,
           customer_uid: getDataOrder.customerUid,
         },
