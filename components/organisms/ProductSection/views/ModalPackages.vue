@@ -49,6 +49,7 @@ export default {
     isShow: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
     provider: { type: Object, default: () => {} },
+    packages: { type: Array, default: () => [] },
     slug: { type: String, default: '' },
   },
   components: {
