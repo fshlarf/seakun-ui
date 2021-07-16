@@ -203,7 +203,7 @@ export default {
         const { data } = await axios.get(
           `https://seakun-packet-api-v2.herokuapp.com/${type}`
         );
-        for (let i = 1; i <= 8; i++) {
+        for (let i = 1; i <= 20; i++) {
           data.forEach((element) => {
             if (element.id === i) this.dataProductDigital.push(element);
           });

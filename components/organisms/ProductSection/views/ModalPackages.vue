@@ -9,25 +9,26 @@
     </template>
 
     <div v-if="!isLoading">
-      <div v-if="slug === 'gramedia'" class="ml-3 mb-2">
-        <p class="tn:text-xs md:text-sm">
-          <span class="font-bold">Pre-order:</span> Akun akan dibuatkan ketika
-          anggota member dalam satu grup sudah full (berisi 2 orang). Member
-          melakukan pembayaran setelah akun dibuat.
-        </p>
+      <div
+        v-if="preOrderPackage.includes(slug)"
+        class="ml-3 mb-2"
+        :class="{ 'xl:w-[416px]': packages.length === 1 }"
+      >
+        <p class="tn:text-xs md:text-sm" v-html="setPreOrderNotes(slug)"></p>
       </div>
 
       <div
-        v-if="provider && provider.variants !== ''"
-        class="flex tn:flex-col md:flex-row md:justify-between"
+        v-if="packages.length > 0"
+        class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-3 xl:space-y-0"
       >
         <div
           v-for="(item, id) in provider.variants"
           :key="id"
-          :class="`w-full h-full mx-auto ${!item.isActive ? 'inactive' : ''}`"
+          :class="`mx-auto ${!item.active ? 'inactive' : ''}`"
+          class="w-full h-full"
           @click="$emit('choose-packet', item)"
         >
-          <CardPackage :slug="slug" :packet="item" />
+          <CardPackage :slug="slug" :packet="item" class="xl:w-[416px]" />
         </div>
       </div>
     </div>
@@ -51,10 +52,35 @@ export default {
     provider: { type: Object, default: () => {} },
     slug: { type: String, default: '' },
   },
+  data() {
+    return {
+      preOrderPackage: [
+        'apple-one',
+        'canva',
+        'disney-hotstar',
+        'gramedia',
+        'microsoft',
+        'nintendo',
+        'wattpad',
+      ],
+    };
+  },
   components: {
     Modal,
     CardShimmerVertical,
     CardPackage,
+  },
+  methods: {
+    setPreOrderNotes(slug) {
+      const providerTypeAccount = ['gramedia', 'disney-hotstar', 'wattpad'];
+      if (providerTypeAccount.includes(slug)) {
+        return `<span class="font-bold">Pre-order:</span> Akun akan dibuatkan ketika
+          anggota member dalam satu grup sudah lengkap. Member melakukan
+          pembayaran setelah akun dibuat.`;
+      } else {
+        return `<span class="font-bold">Pre-order:</span> Member akan diinfokan untuk melakukan pembayaran setelah satu grup full. Link invitation ke Paket Premium akan dikirim setelah member melakukan pembayaran ke Seakun.`;
+      }
+    },
   },
 };
 </script>

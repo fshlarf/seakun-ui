@@ -70,7 +70,7 @@ export default {
           id: 4,
           name: 'Iyen',
           provider: 'Netflix',
-          photo: '/images/testimony/testimony-man.svg',
+          photo: '/images/testimony/testimony-woman.svg',
           testimony:
             'Awal tau atas rekomendasi temen, terus ngerasa worth it, trusted, registrasinya simple, Adminya selain fast respon juga informatif banget. Di masa pandemi kaya gini karena seakun.id ini lah gw bisa membunuh waktu dan jadi betah di rumah dengan banyak nonton film di Netflix. Pokoknya enjoy selalu with seakun.id',
           sortTestimony: '',

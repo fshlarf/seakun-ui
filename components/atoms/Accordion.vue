@@ -4,11 +4,11 @@
       <div>
         <div
           @click="toggleShow(answer.id)"
-          class="h-full rounded-2xl bg-white tn:px-4 md:px-10 py-6 cursor-pointer flex justify-between items-center content-center"
+          class="h-full rounded-2xl bg-white tn:px-4 md:px-10 py-6 cursor-pointer flex justify-between items-center"
           :class="{ 'rounded-none': isShowAnswer, accordion: isShowAnswer }"
           id="headingOne"
         >
-          <div>
+          <div class="w-11/12">
             <h1 class="tn:text-md md:text-sm font-bold">
               {{ title }}
             </h1>

@@ -3,8 +3,12 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="payment__img">
-            <img src="/images/thank-you.png" alt="Image not found" />
+          <div class="payment__img pt-6 pb-4">
+            <img
+              src="/images/thank-you.png"
+              alt="Image not found"
+              style="margin: 0 auto"
+            />
           </div>
           <h3 class="payment-thankyou text-2xl font-bold mt-10 text-center">
             Thank You!
@@ -103,6 +107,14 @@ export default {
         case 'nintendo':
           return 'Nintendo Switch';
           break;
+        case 'apple-one':
+          return 'Apple One';
+          break;
+        case 'wattpad':
+          return 'Wattpad';
+          break;
+        default:
+          return provider;
       }
     },
     setNumberMember(provider) {
@@ -115,6 +127,9 @@ export default {
           break;
         case 'disney-hotstar':
           return '2';
+          break;
+        case 'wattpad':
+          return '3';
           break;
         default:
           return '5';

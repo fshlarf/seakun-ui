@@ -1,5 +1,5 @@
 <template>
-  <div id="pengguna" class="container pt-12">
+  <div id="pengguna" class="container pt-16">
     <div class="tn:text-center md:text-left container-title">
       <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-4">
         Pengguna Seakun.id
@@ -119,23 +119,35 @@ export default {
           slug: 'microsoft',
           icon: '/images/icons/microsoft.svg',
         },
-        // {
-        //   id: 6,
-        //   name: 'Canva',
-        //   slug: 'canva',
-        //   icon: '/images/icons/canva.svg',
-        // },
-        // {
-        //   id: 7,
-        //   name: 'Nintendo Switch',
-        //   slug: 'nintendo-switch',
-        //   icon: '/images/icons/nintendo.svg',
-        // },
+        {
+          id: 6,
+          name: 'Canva',
+          slug: 'canva',
+          icon: '/images/icons/canva.svg',
+        },
+        {
+          id: 7,
+          name: 'Disney+ Hotstar',
+          slug: 'disney-hotstar',
+          icon: '/images/icons/disney-hotstar.png',
+        },
         // {
         //   id: 8,
         //   name: 'Apple One',
         //   slug: 'apple-one',
         //   icon: '/images/icons/apple-one.svg',
+        // },
+        // {
+        //   id: 9,
+        //   name: 'Wattpad',
+        //   slug: 'wattpad',
+        //   icon: '/images/icons/wattpad.svg',
+        // },
+        // {
+        //   id: 10,
+        //   name: 'Nintendo Switch',
+        //   slug: 'nintendo-switch',
+        //   icon: '/images/icons/nintendo.svg',
         // },
       ],
     };
@@ -176,9 +188,17 @@ export default {
         case 'disney-hotstar':
           return 'Disney+ Hotstar';
           break;
+        case 'apple-one':
+          return 'Apple One';
+          break;
+        case 'wattpad':
+          return 'Wattpad';
+          break;
         case 'nintendo':
           return 'Nintendo Switch';
           break;
+        default:
+          return this.provider;
       }
     },
   },

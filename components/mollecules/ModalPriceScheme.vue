@@ -13,15 +13,15 @@
         </p>
       </div>
     </template>
-    <div class="tn:space-y-10 xl:space-y-0 xl:flex xl:justify-center xl:w-auto">
+    <div class="tn:space-y-3 xl:space-y-0 xl:flex xl:justify-center xl:w-auto">
       <div v-for="(scheme, id) in dataScheme.list" :key="id">
         <div
           v-if="scheme.name === dataScheme.slug"
-          class="scheme-card tn:px-0 md:px-8 xl:px-4 xl:mx-2 xl:border xl:rounded-xl xl:py-3"
+          class="scheme-card tn:px-2 tn:py-2 md:px-8 xl:px-4 xl:mx-2 tn:border-top md:border rounded-xl xl:py-3"
         >
-          <div class="w-1/4 mx-auto">
+          <div class="h-10 mx-auto">
             <img
-              class="w-full h-full"
+              class="h-full mx-auto"
               :src="`${scheme.img}`"
               alt="Image not found"
             />
@@ -31,19 +31,26 @@
               {{ scheme.title }}
             </h1>
           </div>
-          <div class="w-full h-full mx-auto">
+          <div v-if="dataScheme.slug === 'wattpad'" class="w-auto h-48 border">
             <img
-              class="w-full h-full my-2"
+              class="h-full mx-auto"
               :src="`${scheme.screenshot}`"
               alt="Image not found"
             />
           </div>
-          <div class="">
+          <div v-else class="w-full h-full mx-auto">
+            <img
+              class="w-full h-fullmy-2 border"
+              :src="`${scheme.screenshot}`"
+              alt="Image not found"
+            />
+          </div>
+          <div class="space-y-1">
             <h1 class="tn:text-lg xl:text-sm font-bold my-2">Detail Harga</h1>
             <div
               v-for="(info, id) in scheme.informations"
               :key="id"
-              class="flex justify-between items-center space-y-1 tn:text-xs md:text-sm xl:text-xs"
+              class="flex justify-between items-center tn:text-xs md:text-sm xl:text-xs"
               :class="{ 'font-bold': info.is_total }"
             >
               <div>{{ info.title }}</div>
@@ -55,12 +62,15 @@
             <h1 class="tn:text-lg xl:text-sm font-bold my-2">
               Skema Berlangganan
             </h1>
-            <ol class="space-y-1 tn:text-xs md:text-sm xl:text-xs">
+            <ol
+              class="space-y-1 tn:ml-3 md:ml-4 tn:text-xs md:text-sm xl:text-xs list-decimal list-outside"
+            >
               <li v-for="(item, id) in scheme.schemes" :key="id">
-                {{ id + 1 }}. {{ item }}
+                {{ item }}
               </li>
             </ol>
           </div>
+          <div class="h-[2px] w-1/3 mx-auto mt-4 bg-primary md:hidden"></div>
         </div>
       </div>
     </div>

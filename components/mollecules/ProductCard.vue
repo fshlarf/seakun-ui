@@ -14,12 +14,10 @@
       class="w-full h-full relative px-2 py-0 md:px-4 grid flex-rows content-between"
     >
       <div
-        v-if="checkIsNewProduct(product.createdAt)"
-        class="absolute tn:ml-2 tn:-top-8 md:ml-0 md:top-0 md:right-4 px-3 py-1 text-center rounded-full bg-forth"
+        v-if="product.isNew"
+        class="absolute tn:ml-2 tn:-top-8 md:-top-12 px-3 py-1 text-center rounded-full bg-yellow-400"
       >
-        <p
-          class="tn:text-xs md:text-base lg:text-base text-secondary font-bold"
-        >
+        <p class="tn:text-xs md:text-base lg:text-base text-black font-bold">
           Baru
         </p>
       </div>
@@ -32,7 +30,7 @@
             alt="#"
             class="w-8 ml-1"
           />
-          <h1 class="md:text-base font-bold mx-2 max-w-[120px]">
+          <h1 class="md:text-base font-bold mx-2">
             {{ product.name }}
           </h1>
         </div>
@@ -107,15 +105,15 @@
 <script>
 import Button from '~/components/atoms/Button.vue';
 import Label from '~/components/atoms/Label.vue';
-import moment from 'moment'
+import moment from 'moment';
 import { currencyFormat } from '~/helpers';
 export default {
   components: {
     Button,
     Label,
   },
-  data:()=>({
-    moment
+  data: () => ({
+    moment,
   }),
   props: {
     product: {
@@ -131,10 +129,14 @@ export default {
       this.$emit('showPriceScheme', param1, param2);
     },
     checkIsNewProduct(createdDate) {
-      const crateDateFormat = moment.unix(createdDate)
-      const differentMonth = moment(moment()).diff(moment(crateDateFormat), 'months', true)
-      return differentMonth < 3
-    } 
+      const crateDateFormat = moment.unix(createdDate);
+      const differentMonth = moment(moment()).diff(
+        moment(crateDateFormat),
+        'months',
+        true
+      );
+      return differentMonth < 3;
+    },
   },
 };
 </script>

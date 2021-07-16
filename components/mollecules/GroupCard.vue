@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 my-8 rounded-2xl shadow w-72">
     <div class="flex justify-between items-center">
-      <img class="w-28" :src="`${group.brand}`" alt="#" />
+      <img :class="setWidthImage(group.name)" :src="`${group.brand}`" alt="#" />
       <div
         :class="`px-2  ${
           group.members.some((el) => el === '') ? 'bg-green-600' : 'full'
@@ -63,6 +63,12 @@ export default {
       });
       newArr = newArr.join(' ');
       return newArr;
+    },
+    setWidthImage(provider) {
+      const theProvider = provider.toLowerCase();
+      return theProvider === 'canva' || theProvider === 'disney-hotstar'
+        ? 'w-11'
+        : 'w-28';
     },
   },
 };
