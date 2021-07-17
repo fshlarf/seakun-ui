@@ -49,8 +49,14 @@
             </p>
             <p class="font-bold">
               {{ formatMoneyRupiah(packageDetail.grandTotal) }}
-              <span class="text-xs font-light">
-                / {{ packageDetail.duration === 12 ? 'thn' : 'bln' }}</span
+              <span
+                v-if="packageDetail.duration === 12"
+                class="text-xs font-light"
+              >
+                / 1 thn</span
+              >
+              <span v-else class="text-xs font-light">
+                / {{ packageDetail.duration }} bln</span
               >
             </p>
           </div>
@@ -105,15 +111,15 @@
 <script>
 import Button from '~/components/atoms/Button.vue';
 import Label from '~/components/atoms/Label.vue';
-import moment from 'moment'
+import moment from 'moment';
 import { currencyFormat } from '~/helpers';
 export default {
   components: {
     Button,
     Label,
   },
-  data:()=>({
-    moment
+  data: () => ({
+    moment,
   }),
   props: {
     product: {
@@ -129,10 +135,14 @@ export default {
       this.$emit('showPriceScheme', param1, param2);
     },
     checkIsNewProduct(createdDate) {
-      const crateDateFormat = moment.unix(createdDate)
-      const differentMonth = moment(moment()).diff(moment(crateDateFormat), 'months', true)
-      return differentMonth < 3
-    } 
+      const crateDateFormat = moment.unix(createdDate);
+      const differentMonth = moment(moment()).diff(
+        moment(crateDateFormat),
+        'months',
+        true
+      );
+      return differentMonth < 3;
+    },
   },
 };
 </script>
