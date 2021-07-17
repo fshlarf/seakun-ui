@@ -24,8 +24,9 @@
         <div
           v-for="(item, id) in provider.variants"
           :key="id"
-          :class="`mx-auto ${!item.active ? 'inactive' : ''}`"
-          class="w-full h-full"
+          :class="`w-full h-full mx-auto ${
+            item.isActive !== 1 ? 'inactive' : ''
+          }`"
           @click="$emit('choose-packet', item)"
         >
           <CardPackage :slug="slug" :packet="item" class="xl:w-[416px]" />
