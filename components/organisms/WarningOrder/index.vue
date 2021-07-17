@@ -124,7 +124,7 @@ export default {
 <style lang="scss" scoped>
 .warning-order {
   position: fixed;
-  bottom: -6em;
+  bottom: -10em;
   left: 50%;
   transform: translateX(-50%);
   transition: all 0.5s linear;

@@ -180,15 +180,47 @@ export default {
   }),
   methods: {
     clickCopyHandler(name, value) {
-      navigator.clipboard.writeText(value).then(
-        () => {
-          this.$refs.snackbar.showSnackbar({
+      if (!navigator.clipboard){
+         navigator.clipboard.writeText(value).then(
+          () => {
+            this.$refs.snackbar.showSnackbar({
+              message: `${name} berhasil dicopy`,
+              className: '',
+            });
+          },
+          (err) => console.log(err)
+        );
+      }else {
+        this.fallbackCopyText(name,value)
+      }
+
+     
+    },
+    fallbackCopyText(name,value) {
+      let textArea = document.createElement("textarea");
+      textArea.value = value;
+  
+      // Avoid scrolling to bottom
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        let successful = document.execCommand('copy');
+        if(successful){
+           this.$refs.snackbar.showSnackbar({
             message: `${name} berhasil dicopy`,
             className: '',
           });
-        },
-        (err) => console.log(err)
-      );
+        }
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+      document.body.removeChild(textArea);
     },
     formatCodePayment(value) {
       if (value) {
