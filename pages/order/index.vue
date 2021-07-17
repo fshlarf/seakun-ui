@@ -462,8 +462,8 @@ export default {
         path: this.setPathToRedirect(payload),
         query: {
           type: payload.type,
-          customer_uid: payload.customerUid,
           order_uid: payload.orderUid,
+          customer_uid: payload.customerUid,
         },
       });
     },
