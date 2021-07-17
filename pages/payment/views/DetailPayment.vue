@@ -180,7 +180,7 @@ export default {
   }),
   methods: {
     clickCopyHandler(name, value) {
-      if (!navigator.clipboard){
+      if (navigator.clipboard){
          navigator.clipboard.writeText(value).then(
           () => {
             this.$refs.snackbar.showSnackbar({
