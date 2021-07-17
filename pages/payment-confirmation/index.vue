@@ -256,10 +256,12 @@ export default {
     showPaymentList(type) {
       if (type == 'bankDirection') {
         this.paymenDestination = !this.paymenDestination;
+        this.paymentUsage = false;
       }
 
       if (type == 'paymentUsage') {
         this.paymentUsage = !this.paymentUsage;
+        this.paymenDestination = false;
       }
     },
     onClickItemBank(type, value) {
