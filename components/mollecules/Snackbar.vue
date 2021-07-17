@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="['snackbar', { snackbar__show: show }, `bg-${color}`]"
-    class="snackbar flex items-center p-2 space-x-4 rounded-md bg-green-seakun text-white"
+    class="snackbar flex items-center p-2 space-x-4 rounded-md text-white  "
+    :class="['snackbar', { snackbar__show: show },  {'bg-red-400' : color=='bg-red-400'},`bg-${color}`]"
   >
     <div class="flex items-center justify-center w-1/12">
       <svg
@@ -29,13 +29,15 @@ export default {
     tempTimeOut: null,
     color: 'green-seakun',
     message: '',
+    duration : 3500
   }),
   methods: {
-    showSnackbar({ color, className, message }) {
+    showSnackbar({ color, className, message, duration}) {
       this.color = color ? color : 'green-seakun';
       this.className = className;
       this.message = message;
       this.show = true;
+      this.duration = duration ? duration : 3500
       this.hideSnackbar();
     },
     hideSnackbar() {
@@ -44,7 +46,7 @@ export default {
           function () {
             this.show = false;
           }.bind(this),
-          3500
+          this.duration
         );
       }
     },

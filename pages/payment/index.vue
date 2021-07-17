@@ -63,7 +63,9 @@
         />
       </div>
     </div>
+    
     <Footer />
+     <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -78,6 +80,7 @@ import DetailPayment from './views/DetailPayment.vue';
 import HeaderPayment from './views/HeaderPayment.vue';
 import Footer from '~/components/mollecules/Footer';
 import WarningInfo from '~/components/mollecules/WarningInfo';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
   components: {
@@ -88,6 +91,8 @@ export default {
     DetailPayment,
     Footer,
     WarningInfo,
+    Snackbar
+    
   },
   layout: 'navigationBlank',
   data() {
@@ -196,6 +201,17 @@ export default {
           throw new Error(fetchPayment);
         }
       } catch (error) {
+         if (error.response?.status == 404){
+           this.$refs.snackbar.showSnackbar({
+              message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
+              className: '',
+              color : 'red-400',
+              duration : 4000
+            });
+            setTimeout(function(){
+              this.$router.push('/')
+            }.bind(this),3000)
+        }
         console.log(error);
       }
       this.isLoadingPayment = false;

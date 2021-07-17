@@ -128,11 +128,14 @@
         />
       </div>
     </div>
+     <Snackbar ref="snackbar" />
+
   </div>
 </template>
 
 <script>
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 import InputForm from '~/components/atoms/Input.vue';
 import DownArrowIcon from '~/assets/images/icon/down-arrow.svg?inline';
 import Button from '~/components/atoms/Button';
@@ -159,6 +162,7 @@ export default {
     UploadPayment,
     DatePicker,
     Input,
+    Snackbar
   },
   data: () => ({
     OrderService,
@@ -247,7 +251,8 @@ export default {
     } = this.$router.history.current.query;
 
     this.getSeakunPayment();
-    this.getDataDetailPacket(provider);
+    // if(provider == `sequrban`)
+    // this.getDataDetailPacket(provider);
     if (order_uid && customer_uid) {
       this.getDataPayment(order_uid, customer_uid);
     }
@@ -318,23 +323,33 @@ export default {
           throw new Error(fetchPayment);
         }
       } catch (error) {
-        console.log(error);
+        if (error.response?.status == 404){
+           this.$refs.snackbar.showSnackbar({
+              message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
+              className: '',
+              color : 'red-400',
+              duration : 4000
+            });
+            setTimeout(function(){
+              this.$router.push('/')
+            }.bind(this),3500)
+        }
       }
       this.isShowLoading = false;
     },
-    getDataDetailPacket(provider) {
-      axios
-        .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packet_id}`
-        )
-        .then((res) => {
-          this.dataDetailPacket = res.data;
-          provider === 'sequrban'
-            ? (this.packet = this.dataDetailPacket.packageCode)
-            : (this.packet = this.dataDetailPacket.name);
-        })
-        .catch((err) => console.log(err));
-    },
+    // getDataDetailPacket(provider) {
+    //   axios
+    //     .get(
+    //       `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packet_id}`
+    //     )
+    //     .then((res) => {
+    //       this.dataDetailPacket = res.data;
+    //       provider === 'sequrban'
+    //         ? (this.packet = this.dataDetailPacket.packageCode)
+    //         : (this.packet = this.dataDetailPacket.name);
+    //     })
+    //     .catch((err) => console.log(err));
+    // },
     validateInput() {
       this.error_bank_seakun.isError =
         this.bankSeakun === 'Pilih Bank tujuan milik Seakun.id';
