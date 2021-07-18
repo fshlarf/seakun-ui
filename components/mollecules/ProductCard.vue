@@ -15,7 +15,7 @@
     >
       <div
         v-if="checkIsNewProduct(product.createdAt)"
-        class="absolute tn:ml-2 tn:-top-8 md:ml-0 md:top-0 md:right-4 px-3 py-1 text-center rounded-full bg-forth"
+        class="absolute tn:ml-2 tn:-top-8 md:-top-12 px-3 py-1 text-center rounded-full bg-yellow-400"
       >
         <p class="tn:text-xs md:text-base lg:text-base text-black font-bold">
           Baru
