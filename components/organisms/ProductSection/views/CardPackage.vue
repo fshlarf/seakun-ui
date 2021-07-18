@@ -2,7 +2,7 @@
   <div
     class="relative card-package tn:px-1 md:px-3 md:mx-3 py-4 shadow-md border !rounded-lg cursor-pointer"
   >
-    <div v-if="packet.isPreOrder" class="">
+    <div v-if="packet.isPo === 1" class="">
       <div
         class="preorder bg-secondary text-white text-xs p-2 w-16 rounded-r-xl rounded-tl-2xl"
       >
@@ -30,9 +30,11 @@
 
       <p class="tn:text-2xl md:text-xl font-bold mt-6">
         {{ formatMoneyRupiah(packet.grandTotal) }}
-        <span class="text-sm text-primary"
-          >/ {{ setMonthPacket(packet) }}
-          {{ packet.duration === 12 ? 'tahun' : 'bulan' }}</span
+        <span v-if="packet.duration === 12" class="text-sm text-primary"
+          >/ 1 thn</span
+        >
+        <span v-else class="text-sm text-primary"
+          >/ {{ packet.duration }} bln</span
         >
       </p>
 
@@ -62,7 +64,7 @@
 
         <div class="mt-3">
           <nuxt-link
-            v-if="packet.isPreOrder"
+            v-if="packet.isPo === 1"
             to="/info/pre-order"
             class="text-xs text-primary px-2"
             >Lihat Ketentuan Pre order Selengkapnya</nuxt-link

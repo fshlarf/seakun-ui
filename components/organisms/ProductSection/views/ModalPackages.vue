@@ -12,7 +12,7 @@
       <div
         v-if="preOrderPackage.includes(slug)"
         class="ml-3 mb-2"
-        :class="{ 'xl:w-[416px]': packages.length === 1 }"
+        :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
         <p class="tn:text-xs md:text-sm" v-html="setPreOrderNotes(slug)"></p>
       </div>
