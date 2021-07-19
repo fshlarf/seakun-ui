@@ -163,11 +163,11 @@ export default {
         accountNumber: '085774642738',
         accountName: 'Seakun ID / Eka Pusna',
       },
-      {
-        name: 'ovo',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
-      },
+      // {
+      //   name: 'ovo',
+      //   accountNumber: '085774642738',
+      //   accountName: 'Seakun ID / Eka Pusna',
+      // },
       {
         name: 'link-aja',
         accountNumber: '085774642738',

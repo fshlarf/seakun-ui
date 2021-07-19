@@ -218,10 +218,10 @@ export default {
           name: 'GoPay',
           value: 'gopay',
         },
-        {
-          name: 'OVO',
-          value: 'ovo',
-        },
+        // {
+        //   name: '',
+        //   value: 'ovo',
+        // },
         {
           name: 'DANA',
           value: 'dana',
