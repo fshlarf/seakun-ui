@@ -132,7 +132,7 @@ export default {
           slug: 'sequrban',
           img: '/images/product/sekurban.png',
           icon: '/images/icons/sekurban.svg',
-          isActive: true,
+          isActive: false,
           isNew: true,
           preview:
             'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
