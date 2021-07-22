@@ -18,10 +18,6 @@
             <div
               class="h-1 rounded-full bg-white w-8 my-2 cursor-pointer"
             ></div>
-            <div
-              class="h-1 rounded-full bg-gray-300 w-8 my-2 cursor-pointer"
-              @click="$emit('nextSlide')"
-            ></div>
           </div>
           <span class="md:text-2xl text-secondary font-bold my-4"
             >Seakun.id</span
