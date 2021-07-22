@@ -26,8 +26,11 @@
               v-model="bankCustomer"
               :value="bankCustomer"
               @click="showPaymentList('paymentUsage')"
-              @keyup="paymentUsage = false"
-              :error="error_bank_customer"
+              @keyup="
+                paymentUsage = false;
+                validateInput('bankCustomer');
+              "
+              :error="errorForm.bankCustomer"
             >
               <svg
                 version="1.1"
@@ -65,8 +68,11 @@
           <ButtonDrop
             :btnText="bankSeakun"
             @click="showPaymentList('bankDirection')"
-            @keyup="bankDirection = false"
-            :error="error_bank_seakun"
+            @keyup="
+              bankDirection = false;
+              validateInput('bankSeakun');
+            "
+            :error="errorForm.bankSeakun"
           />
           <div class="w-full">
             <PopUpPayment
@@ -87,16 +93,17 @@
             v-model="nominal"
             :value="nominal"
             class="text-grey-400 mt-4"
-            :error="error_nominal"
+            @keyup="validateInput('nominal')"
+            :error="errorForm.nominal"
           />
         </div>
 
         <InputForm
           label="Nama Pemilik Rekening"
           placeholder="Masukan Nama Pemilik Rekening"
-          v-model="holder"
-          :value="holder"
-          :error="error_holder"
+          v-model="userName"
+          @keyup="validateInput('userName')"
+          :error="errorForm.userName"
         />
         <div class="my-4">
           <p>Tanggal Pembayaran</p>
@@ -113,7 +120,8 @@
           name="paymetNote"
           id="payment-img"
           @get-image="getPaymentImage"
-          :error="error_upload_image"
+          @keyup="validateInput('uploadPayment')"
+          :error="errorForm.uploadImage"
         />
 
         <div class="mb-4 mx-auto" :class="{ hidden: !isUpload }">
@@ -128,8 +136,7 @@
         />
       </div>
     </div>
-     <Snackbar ref="snackbar" />
-
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -162,63 +169,67 @@ export default {
     UploadPayment,
     DatePicker,
     Input,
-    Snackbar
+    Snackbar,
   },
-  data: () => ({
-    OrderService,
-    MasterService,
-    moment,
-    isLoadingSubmit: false,
-    bankSeakun: 'Pilih Bank tujuan milik Seakun.id',
-    bankCustomer: '',
-    dateTime: null,
-    photoUrl: '',
-    isUpload: false,
-    paymenDestination: false,
-    paymentUsage: false,
-    packet_id: '',
-    order_id: '',
-    provider: '',
-    email: '',
-    whatsapp: '',
-    holder: '',
-    nominal: '',
-    packet: '',
-    orderNumber: '',
-    dataDetailPacket: {},
-    dataDetailPayment: {},
-    paramSeakunPayment: {
-      page: 1,
-      limit: 10,
-    },
-    paymentDestinationList: {
-      transferBank: [],
-      ewallet: [],
-    },
-    paymentToUid: '',
-    time1: moment().format('YYYY-MM-DD').toString(),
-    imageFile: null,
-    error_bank_seakun: {
-      isError: false,
-      message: 'Bank tujuan harus dipilih',
-    },
-    error_bank_customer: {
-      isError: false,
-      message: 'Bank yang digunakan harus dipilih',
-    },
-    error_nominal: {
-      isError: false,
-      message: 'Nominal pembayaran harus diisi',
-    },
-    error_holder: {
-      isError: false,
-      message: 'Nama harus diisi',
-    },
-    error_upload_image: {
-      isError: false,
-      message: 'Mohon upload bukti pembayaran',
-    },
-  }),
+  data() {
+    return {
+      OrderService,
+      MasterService,
+      moment,
+      isLoadingSubmit: false,
+      bankSeakun: 'Pilih Bank tujuan milik Seakun.id',
+      bankCustomer: '',
+      dateTime: null,
+      photoUrl: '',
+      isUpload: false,
+      paymenDestination: false,
+      paymentUsage: false,
+      packet_id: '',
+      order_id: '',
+      provider: '',
+      email: '',
+      whatsapp: '',
+      userName: '',
+      nominal: '',
+      packet: '',
+      orderNumber: '',
+      dataDetailPacket: {},
+      dataDetailPayment: {},
+      paramSeakunPayment: {
+        page: 1,
+        limit: 10,
+      },
+      paymentDestinationList: {
+        transferBank: [],
+        ewallet: [],
+      },
+      paymentToUid: '',
+      time1: moment().format('YYYY-MM-DD').toString(),
+      imageFile: null,
+      errorForm: {
+        bankSeakun: {
+          isError: false,
+          message: '',
+        },
+        bankCustomer: {
+          isError: false,
+          message: '',
+        },
+        nominal: {
+          isError: false,
+          message: '',
+        },
+        userName: {
+          isError: false,
+          message: '',
+        },
+        uploadImage: {
+          isError: false,
+          message: '',
+        },
+      },
+    };
+  },
   created() {
     const {
       packet_id,
@@ -323,16 +334,19 @@ export default {
           throw new Error(fetchPayment);
         }
       } catch (error) {
-        if (error.response?.status == 404){
-           this.$refs.snackbar.showSnackbar({
-              message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
-              className: '',
-              color : 'red-400',
-              duration : 4000
-            });
-            setTimeout(function(){
-              this.$router.push('/')
-            }.bind(this),3500)
+        if (error.response?.status == 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
+            className: '',
+            color: 'red-400',
+            duration: 5000,
+          });
+          setTimeout(
+            function () {
+              this.$router.push('/');
+            }.bind(this),
+            3500
+          );
         }
       }
       this.isShowLoading = false;
@@ -350,23 +364,101 @@ export default {
     //     })
     //     .catch((err) => console.log(err));
     // },
-    validateInput() {
-      this.error_bank_seakun.isError =
-        this.bankSeakun === 'Pilih Bank tujuan milik Seakun.id';
-      this.error_bank_customer.isError = !this.bankCustomer;
-      this.error_nominal.isError = !this.nominal;
-      this.error_holder.isError = !this.holder;
-      this.error_upload_image.isError = !this.imageFile;
+    validateInput(input) {
+      const { nominal, bankCustomer, bankSeakun, imageFile, userName } = this;
+      const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
+      const nominalFormat = /^[0-9]*$/;
+      let isValid = true;
+      let errorTemp = {
+        bankSeakun: {
+          isError: false,
+          message: '',
+        },
+        bankCustomer: {
+          isError: false,
+          message: '',
+        },
+        nominal: {
+          isError: false,
+          message: '',
+        },
+        userName: {
+          isError: false,
+          message: '',
+        },
+        uploadImage: {
+          isError: false,
+          message: '',
+        },
+      };
+
+      if (input === 'bankCustomer' || !input) {
+        if (bankCustomer === '') {
+          errorTemp.bankCustomer = {
+            isError: true,
+            message: 'Bank yang digunakan harus diisi',
+          };
+          isValid = false;
+        }
+      }
+
+      if (input === 'bankSeakun' || !input) {
+        if (bankSeakun === 'Pilih Bank tujuan milik Seakun.id') {
+          errorTemp.bankSeakun = {
+            isError: true,
+            message: 'Bank yang tujuan harus dipilih',
+          };
+          isValid = false;
+        }
+      }
+
+      if (input === 'userName' || !input) {
+        if (userName === '') {
+          errorTemp.userName = {
+            isError: true,
+            message: 'Nama lengkap harus diisi',
+          };
+          isValid = false;
+        } else if (!userName.match(nameFormat)) {
+          errorTemp.userName = {
+            isError: true,
+            message: 'Format nama salah',
+          };
+          isValid = false;
+        }
+      }
+
+      if (input === 'nominal' || !input) {
+        if (nominal === 0) {
+          errorTemp.nominal = {
+            isError: true,
+            message: 'Nominal pembayaran harus diisi',
+          };
+          isValid = false;
+        } else if (!nominal.toString().match(nominalFormat)) {
+          errorTemp.nominal = {
+            isError: true,
+            message: 'Format nominal salah',
+          };
+          isValid = false;
+        }
+      }
+
+      if (input === 'uploadPayment' || !input) {
+        if (imageFile === null) {
+          errorTemp.uploadImage = {
+            isError: true,
+            message: 'Bukti pembayaran harus diisi',
+          };
+          isValid = false;
+        }
+      }
+
+      this.errorForm = { ...errorTemp };
+      return isValid;
     },
     clickSubmit() {
-      this.validateInput();
-      if (
-        !this.error_bank_seakun.isError &&
-        !this.error_bank_customer.isError &&
-        !this.error_nominal.isError &&
-        !this.error_holder.isError &&
-        !this.error_upload_image.isError
-      ) {
+      if (this.validateInput()) {
         if (this.provider) {
           this.submitConfirmationSequrban();
         } else {
@@ -382,7 +474,7 @@ export default {
       formData.append('order_id', 'xxxx');
       formData.append('from', this.bankCustomer);
       formData.append('to', this.bankSeakun);
-      formData.append('user_holder', this.holder);
+      formData.append('user_holder', this.userName);
       formData.append('email', this.email);
       formData.append('whatsapp', this.whatsapp);
       formData.append('provider', this.provider);
@@ -420,7 +512,7 @@ export default {
       formDataDigital.append('orderUid', this.dataDetailPayment.orderUid);
       formDataDigital.append('paymentTo', this.paymentToUid);
       formDataDigital.append('paymentFromBank', this.bankCustomer);
-      formDataDigital.append('paymentFromName', this.holder);
+      formDataDigital.append('paymentFromName', this.userName);
       formDataDigital.append('paymentAt', moment(this.time1).unix());
       formDataDigital.append('file', this.imageFile);
       formDataDigital.append('customerUid', this.dataDetailPayment.customerUid);
@@ -443,7 +535,7 @@ export default {
     },
     toThankyouPage() {
       this.$router.push(
-        `/thankyou?holder=${this.holder}&from=${this.bankCustomer}&to=${this.bankSeakun}`
+        `/thankyou?holder=${this.userName}&from=${this.bankCustomer}&to=${this.bankSeakun}`
       );
     },
     getPaymentImage(file) {
@@ -459,7 +551,7 @@ export default {
         type: 'downpayment',
         provider: this.provider,
         from: this.bankCustomer,
-        holder: this.holder,
+        holder: this.userName,
         nominal: this.formatMoneyRupiah(this.nominal),
         email: this.email,
         date: this.time1,
