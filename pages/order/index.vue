@@ -17,7 +17,6 @@
     </div>
     <div>
       <ProductHighLightLoading v-if="isLoadingProduct" class="mt-4" />
-      
       <ProductHighLight
         v-else
         :provider="providerSlug"
@@ -26,8 +25,6 @@
         :grandTotal="longSubcribe.grandTotal"
         :total-month="longSubcribe.month"
       />
-        
-
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
         <ButtonDrop
@@ -184,6 +181,7 @@ export default {
     userName: '',
     phoneNumber: '',
     longSubcribe: {
+      variantUid: '',
       name: 'Pilih Masa Berlangganan',
       month: 0,
       price: 0,
@@ -230,9 +228,9 @@ export default {
       email: '',
       phone: '',
     },
-    providerSlug : '',
-    packageName : '',
-    variantName : '',
+    providerSlug: '',
+    packageName: '',
+    variantName: '',
   }),
   watch: {
     codeNumber() {
@@ -269,11 +267,11 @@ export default {
           this.dataProviders = data;
           this.dataProviders.forEach((element) => {
             if (element.slug === this.provider) {
-              this.providerSlug = element.slug
+              this.providerSlug = element.slug;
               element.variants.forEach((variant) => {
                 if (variant.uid === this.variantUid) {
-                  this.packageName = variant.packageName
-                  this.variantName = variant.name
+                  this.packageName = variant.packageName;
+                  this.variantName = variant.name;
                   this.detailOrder = {
                     isHost: variant.iHost,
                     isPo: variant.isPo,
@@ -301,26 +299,29 @@ export default {
           const { data } = fetchDetailVariant.data;
           this.dataVariants = data;
 
-          const variantSelected = this.dataVariants.find((variant) => this.variantUid == variant.uid)
+          const variantSelected = this.dataVariants.find(
+            (variant) => this.variantUid == variant.uid
+          );
 
-          if(variantSelected){
+          if (variantSelected) {
             const rupiah = currencyFormat(variantSelected.grandTotal);
             this.longSubcribe = {
+              variantUid: variantSelected.uid,
               name: `${variantSelected.duration} bulan ( ${rupiah} )`,
               month: variantSelected.duration,
               price: variantSelected.price,
               grandTotal: variantSelected.grandTotal,
             };
-          }else {
+          } else {
             const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
             this.longSubcribe = {
+              variantUid: this.dataVariants[0].uid,
               name: `${this.dataVariants[0].duration} bulan ( ${rupiah} )`,
               month: this.dataVariants[0].duration,
               price: this.dataVariants[0].price,
               grandTotal: this.dataVariants[0].grandTotal,
             };
           }
-       
         } else {
           throw new Error(fetchDetailVariant);
         }
@@ -337,16 +338,16 @@ export default {
     onClickItemPrice(item) {
       const rupiah = currencyFormat(item.grandTotal);
       this.longSubcribe = {
+        variantUid: item.uid,
         name: `${item.duration} bulan ( ${rupiah} )`,
         month: item.duration,
         price: item.price,
         grandTotal: item.grandTotal,
       };
-      console.log(item)
       this.price = item.grandTotal;
       this.subcriptionDuration = parseInt(item.duration);
       this.isShowPriceList = false;
-      this.variantName = item.packageName
+      this.variantName = item.packageName;
     },
     validationForm(input) {
       const { email, userName, phoneNumber, errorForm } = this;
@@ -448,7 +449,7 @@ export default {
         name: capitalizeFirstLetter(this.userName),
         email: this.email,
         phoneNumber: `${this.codePhone}${this.phoneNumber}`,
-        packageVariantUid: this.variantUid,
+        packageVariantUid: this.longSubcribe.variantUid,
         ispreorder: this.detailOrder.isPo === 1,
         userhost: this.detailOrder.isHost === 1,
         voucherUid: '',
@@ -502,14 +503,13 @@ export default {
       this.isShowModalPackages = true;
     },
     choosePacket(packet) {
-      console.log(packet)
       this.$router.push(
         `/order?provider=${this.provider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );
       this.variantUid = packet.uid;
       this.packageUid = packet.packageUid;
-      this.packageName = packet.packageName
-      this.variantName = packet.name
+      this.packageName = packet.packageName;
+      this.variantName = packet.name;
       this.getDetailVariant(this.packageUid);
       this.isShowModalPackages = false;
     },
