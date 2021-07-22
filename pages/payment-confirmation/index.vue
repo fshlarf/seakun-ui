@@ -111,6 +111,7 @@
             class="datepicker"
             v-model="time1"
             valueType="format"
+            :disabled-date="(time1) => time1 >= new Date()"
           ></DatePicker>
         </div>
 
