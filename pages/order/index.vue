@@ -17,19 +17,16 @@
     </div>
     <div>
       <ProductHighLightLoading v-if="isLoadingProduct" class="mt-4" />
-      <div v-else v-for="(provider, id) in dataProviders" :key="id">
-        <div v-for="(detail, variantId) in provider.variants" :key="variantId">
-          <div v-if="detail && detail.uid === variantUid">
-            <ProductHighLight
-              :provider="provider.slug"
-              :isLoading="isLoadingProduct"
-              :packageName="detail.name"
-              :grandTotal="longSubcribe.grandTotal"
-              :total-month="longSubcribe.month"
-            />
-          </div>
-        </div>
-      </div>
+      
+      <ProductHighLight
+        v-else
+        :provider="providerSlug"
+        :isLoading="isLoadingProduct"
+        :packageName="`${packageName} - ${variantName}`"
+        :grandTotal="longSubcribe.grandTotal"
+        :total-month="longSubcribe.month"
+      />
+        
 
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
@@ -233,6 +230,9 @@ export default {
       email: '',
       phone: '',
     },
+    providerSlug : '',
+    packageName : '',
+    variantName : '',
   }),
   watch: {
     codeNumber() {
@@ -269,8 +269,11 @@ export default {
           this.dataProviders = data;
           this.dataProviders.forEach((element) => {
             if (element.slug === this.provider) {
+              this.providerSlug = element.slug
               element.variants.forEach((variant) => {
                 if (variant.uid === this.variantUid) {
+                  this.packageName = variant.packageName
+                  this.variantName = variant.name
                   this.detailOrder = {
                     isHost: variant.iHost,
                     isPo: variant.isPo,
@@ -297,13 +300,27 @@ export default {
         if (fetchDetailVariant.data) {
           const { data } = fetchDetailVariant.data;
           this.dataVariants = data;
-          const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
-          this.longSubcribe = {
-            name: `${this.dataVariants[0].duration} bulan ( ${rupiah} )`,
-            month: this.dataVariants[0].duration,
-            price: this.dataVariants[0].price,
-            grandTotal: this.dataVariants[0].grandTotal,
-          };
+
+          const variantSelected = this.dataVariants.find((variant) => this.variantUid == variant.uid)
+
+          if(variantSelected){
+            const rupiah = currencyFormat(variantSelected.grandTotal);
+            this.longSubcribe = {
+              name: `${variantSelected.duration} bulan ( ${rupiah} )`,
+              month: variantSelected.duration,
+              price: variantSelected.price,
+              grandTotal: variantSelected.grandTotal,
+            };
+          }else {
+            const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
+            this.longSubcribe = {
+              name: `${this.dataVariants[0].duration} bulan ( ${rupiah} )`,
+              month: this.dataVariants[0].duration,
+              price: this.dataVariants[0].price,
+              grandTotal: this.dataVariants[0].grandTotal,
+            };
+          }
+       
         } else {
           throw new Error(fetchDetailVariant);
         }
@@ -325,9 +342,11 @@ export default {
         price: item.price,
         grandTotal: item.grandTotal,
       };
+      console.log(item)
       this.price = item.grandTotal;
       this.subcriptionDuration = parseInt(item.duration);
       this.isShowPriceList = false;
+      this.variantName = item.packageName
     },
     validationForm(input) {
       const { email, userName, phoneNumber, errorForm } = this;
@@ -483,11 +502,14 @@ export default {
       this.isShowModalPackages = true;
     },
     choosePacket(packet) {
+      console.log(packet)
       this.$router.push(
         `/order?provider=${this.provider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );
       this.variantUid = packet.uid;
       this.packageUid = packet.packageUid;
+      this.packageName = packet.packageName
+      this.variantName = packet.name
       this.getDetailVariant(this.packageUid);
       this.isShowModalPackages = false;
     },
