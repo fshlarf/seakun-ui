@@ -514,6 +514,7 @@ export default {
       formDataDigital.append('paymentTo', this.paymentToUid);
       formDataDigital.append('paymentFromBank', this.bankCustomer);
       formDataDigital.append('paymentFromName', this.userName);
+      formDataDigital.append('transferAmount', parseInt(this.nominal));
       formDataDigital.append('paymentAt', moment(this.time1).unix());
       formDataDigital.append('file', this.imageFile);
       formDataDigital.append('customerUid', this.dataDetailPayment.customerUid);
