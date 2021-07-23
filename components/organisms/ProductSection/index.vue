@@ -255,6 +255,7 @@ export default {
       this.isFetchingPacket = false;
     },
     choosePacket(packet) {
+      console.log(packet)
       this.$router.push(
         `/order?provider=${this.choosedSlugProvider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );

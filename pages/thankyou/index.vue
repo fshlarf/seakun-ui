@@ -2,8 +2,8 @@
   <div class="thankyou max-w-2xl w-full mx-auto mt-10 py-4">
     <div class="thankyou-container shadow-md px-4 pb-10 w-full mt-10 pt-4">
       <img
-        class="w-9/12 mx-auto"
-        src="/images/thank-you.png"
+        class="w-6/12 mx-auto"
+        src="/images/thank-you-new.png"
         alt="Image not found"
       />
       <div class="thankyou-wording text-center px-12">
@@ -16,9 +16,12 @@
       <div class="detail-order bg-white px-12 mt-12 py-4">
         <div class="border-b-2 border-gray-200 pb-3">
           <p class="text-lg text-gray-400">Metode Pembayaran</p>
-          <div class="flex justify-between items-center mt-2">
+          <div class="flex justify-between items-center mt-2" v-if="bankImage">
             <p class="font-bold text-lg">Bank Transfer Manual</p>
-            <img class="w-3/12" :src="`images/payment/${paymentBank}.png`" />
+            <img class="w-3/12" @onerror="onErrorImageBank()" :src="`images/payment/${bankImage}.png`" />
+          </div>
+            <div class="flex justify-between items-center mt-2" v-else>
+            <p class="font-bold text-lg">Bank Transfer Manual - <span class="capitalize">{{paymentBank}}</span></p>
           </div>
         </div>
         <div class="mt-4">
@@ -45,6 +48,16 @@ export default {
       paymentHolder: '',
       paymentBank: '',
       destinationBank: '',
+      paymentImage: '',
+      availableImagePayment : [
+        'dana',
+        'bca',
+        'bri',
+        'gopay',
+        'link-aja',
+        'mandiri',
+        'ovo'
+      ]
     };
   },
   mounted() {
@@ -52,6 +65,7 @@ export default {
     this.paymentHolder = holder;
     this.destinationBank = to;
     this.paymentBank = from.toLowerCase();
+    this.bankImage = this.availableImagePayment.find((bank)=> bank == this.paymentBank )
   },
 };
 </script>
@@ -61,6 +75,7 @@ export default {
   background: rgba(254, 254, 254, 0.55);
   backdrop-filter: blur(90px);
   /* Note: backdrop-filter has minimal browser support */
+/* Note: backdrop-filter has minimal browser support */
 
   border-radius: 30px;
 }
