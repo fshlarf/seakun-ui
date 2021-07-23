@@ -17,7 +17,10 @@
         <p v-else class="md:text-lg tn:text-sm font-bold">
           {{ packageName }}
         </p>
-        <p class="md:text-lg tn:text-sm font-normal">
+        <p v-if="totalMonth === 12" class="md:text-lg tn:text-sm font-normal">
+          {{ currencyFormat(grandTotal) }} / 1 Tahun
+        </p>
+        <p v-else class="md:text-lg tn:text-sm font-normal">
           {{ currencyFormat(grandTotal) }} / {{ totalMonth }} Bulan
         </p>
       </div>

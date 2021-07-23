@@ -307,7 +307,11 @@ export default {
             const rupiah = currencyFormat(variantSelected.grandTotal);
             this.longSubcribe = {
               variantUid: variantSelected.uid,
-              name: `${variantSelected.duration} bulan ( ${rupiah} )`,
+              name: `${
+                variantSelected.duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${variantSelected.duration} bulan ( ${rupiah} )`
+              } `,
               month: variantSelected.duration,
               price: variantSelected.price,
               grandTotal: variantSelected.grandTotal,
@@ -316,7 +320,11 @@ export default {
             const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
             this.longSubcribe = {
               variantUid: this.dataVariants[0].uid,
-              name: `${this.dataVariants[0].duration} bulan ( ${rupiah} )`,
+              name: `${
+                this.dataVariants[0].duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${this.dataVariants[0].duration} bulan ( ${rupiah} )`
+              } `,
               month: this.dataVariants[0].duration,
               price: this.dataVariants[0].price,
               grandTotal: this.dataVariants[0].grandTotal,
@@ -339,7 +347,11 @@ export default {
       const rupiah = currencyFormat(item.grandTotal);
       this.longSubcribe = {
         variantUid: item.uid,
-        name: `${item.duration} bulan ( ${rupiah} )`,
+        name: `${
+          item.duration === 12
+            ? `1 tahun ( ${rupiah} )`
+            : `${item.duration} bulan ( ${rupiah} )`
+        }`,
         month: item.duration,
         price: item.price,
         grandTotal: item.grandTotal,

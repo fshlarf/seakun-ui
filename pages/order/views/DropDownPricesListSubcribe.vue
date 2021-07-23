@@ -8,8 +8,13 @@
           @click="$emit('onClikcItem', dataItem)"
           class="pb-2 cursor-pointer"
         >
-          {{ dataItem.duration }} bulan (
-          {{ currencyFormat(dataItem.grandTotal) }} )
+          <span v-if="dataItem.duration === 12"
+            >1 Tahun ( {{ currencyFormat(dataItem.grandTotal) }} )</span
+          >
+          <span v-else
+            >{{ dataItem.duration }} bulan (
+            {{ currencyFormat(dataItem.grandTotal) }} )</span
+          >
         </li>
       </div>
     </transition>

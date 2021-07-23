@@ -105,7 +105,7 @@ export default {
           id: 3,
           name: 'Gramedia',
           slug: 'gramedia',
-          icon: '/images/icons/gramedia.svg',
+          icon: '/images/icons/gramedia-digital.svg',
         },
         {
           id: 4,
@@ -117,7 +117,7 @@ export default {
           id: 5,
           name: 'Microsoft 365',
           slug: 'microsoft',
-          icon: '/images/icons/microsoft.svg',
+          icon: '/images/icons/microsoft-365.svg',
         },
         {
           id: 6,
