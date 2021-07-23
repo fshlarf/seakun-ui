@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="flex tn:gap-2 md:gap-3 xl:gap-4 items-center">
         <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">
-          Skema Harga {{ dataScheme.name }}
+          Skema Harga {{ dataScheme.slug }}
         </h1>
         <p
           class="tn:text-xs md:text-sm text-primary font-semibold cursor-pointer"

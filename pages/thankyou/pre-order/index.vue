@@ -62,18 +62,22 @@
 
 <script>
 import axios from 'axios';
+import MasterService from '~/services/MasterServices.js';
 
 export default {
   name: 'PreOrderPage',
   layout: 'new',
   data() {
     return {
+      MasterService,
       provider: '',
       packet: '',
       total: '',
     };
   },
   mounted() {
+    this.MasterService = new MasterService(this);
+    this.getDetailVariant();
     this.getDataPacket();
     this.getVouchersData();
   },
@@ -134,6 +138,61 @@ export default {
         default:
           return '5';
       }
+    },
+    async getDetailVariant() {
+      const {
+        type,
+        order_uid,
+        customer_uid,
+      } = this.$router.history.current.query;
+      this.isLoadingVariant = true;
+      const { MasterService } = this;
+      try {
+        const fetchDetailVariant = await MasterService.getVariantByPackageUid(
+          uid
+        );
+        if (fetchDetailVariant.data) {
+          const { data } = fetchDetailVariant.data;
+          this.dataVariants = data;
+
+          const variantSelected = this.dataVariants.find(
+            (variant) => this.variantUid == variant.uid
+          );
+
+          if (variantSelected) {
+            const rupiah = currencyFormat(variantSelected.grandTotal);
+            this.longSubcribe = {
+              variantUid: variantSelected.uid,
+              name: `${
+                variantSelected.duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${variantSelected.duration} bulan ( ${rupiah} )`
+              } `,
+              month: variantSelected.duration,
+              price: variantSelected.price,
+              grandTotal: variantSelected.grandTotal,
+            };
+          } else {
+            const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
+            this.longSubcribe = {
+              variantUid: this.dataVariants[0].uid,
+              name: `${
+                this.dataVariants[0].duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${this.dataVariants[0].duration} bulan ( ${rupiah} )`
+              } `,
+              month: this.dataVariants[0].duration,
+              price: this.dataVariants[0].price,
+              grandTotal: this.dataVariants[0].grandTotal,
+            };
+          }
+        } else {
+          throw new Error(fetchDetailVariant);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingVariant = false;
     },
     getDataPacket() {
       const {

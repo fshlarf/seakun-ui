@@ -61,7 +61,7 @@ export default {
         'canva',
         'disney-hotstar',
         'gramedia',
-        'microsoft',
+        'microsoft365',
         'nintendo',
         'wattpad',
       ],

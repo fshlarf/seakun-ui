@@ -4,7 +4,9 @@
   >
     <div class="md:h-48">
       <img
-        :src="`/images/product/${product.slug}.png`"
+        :src="`/images/product/${
+          product.fileIcon ? `${product.fileIcon}` : `${product.slug}.png`
+        }`"
         alt="image not found"
         class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none md:w-full md:h-auto"
       />
