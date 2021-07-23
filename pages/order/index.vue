@@ -503,6 +503,7 @@ export default {
       if (payload.userhost) {
         return '/thankyou/user-host';
       } else if (payload.ispreorder) {
+        localStorage.removeItem('swo');
         return '/thankyou/pre-order';
       } else {
         return '/payment';

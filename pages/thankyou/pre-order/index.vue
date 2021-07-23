@@ -62,23 +62,29 @@
 
 <script>
 import axios from 'axios';
-import MasterService from '~/services/MasterServices.js';
+import OrderService from '~/services/OrderServices.js';
 
 export default {
   name: 'PreOrderPage',
   layout: 'new',
   data() {
     return {
-      MasterService,
+      OrderService,
       provider: '',
       packet: '',
       total: '',
     };
   },
   mounted() {
-    this.MasterService = new MasterService(this);
-    this.getDetailVariant();
-    this.getDataPacket();
+    this.OrderService = new OrderService(this);
+    const {
+      type,
+      order_uid,
+      customer_uid,
+    } = this.$router.history.current.query;
+    if (order_uid && customer_uid) {
+      this.getPaymentDigital(order_uid, customer_uid);
+    }
     this.getVouchersData();
   },
   methods: {
@@ -139,87 +145,39 @@ export default {
           return '5';
       }
     },
-    async getDetailVariant() {
-      const {
-        type,
-        order_uid,
-        customer_uid,
-      } = this.$router.history.current.query;
-      this.isLoadingVariant = true;
-      const { MasterService } = this;
+    async getPaymentDigital(orderUid, customerUid) {
+      const { OrderService } = this;
+
       try {
-        const fetchDetailVariant = await MasterService.getVariantByPackageUid(
-          uid
+        const fetchPayment = await OrderService.getPaymentConfirmation(
+          orderUid,
+          customerUid
         );
-        if (fetchDetailVariant.data) {
-          const { data } = fetchDetailVariant.data;
-          this.dataVariants = data;
-
-          const variantSelected = this.dataVariants.find(
-            (variant) => this.variantUid == variant.uid
-          );
-
-          if (variantSelected) {
-            const rupiah = currencyFormat(variantSelected.grandTotal);
-            this.longSubcribe = {
-              variantUid: variantSelected.uid,
-              name: `${
-                variantSelected.duration === 12
-                  ? `1 tahun ( ${rupiah} )`
-                  : `${variantSelected.duration} bulan ( ${rupiah} )`
-              } `,
-              month: variantSelected.duration,
-              price: variantSelected.price,
-              grandTotal: variantSelected.grandTotal,
-            };
-          } else {
-            const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
-            this.longSubcribe = {
-              variantUid: this.dataVariants[0].uid,
-              name: `${
-                this.dataVariants[0].duration === 12
-                  ? `1 tahun ( ${rupiah} )`
-                  : `${this.dataVariants[0].duration} bulan ( ${rupiah} )`
-              } `,
-              month: this.dataVariants[0].duration,
-              price: this.dataVariants[0].price,
-              grandTotal: this.dataVariants[0].grandTotal,
-            };
-          }
+        if (fetchPayment.data) {
+          const dataResult = fetchPayment.data.data;
+          this.packet = dataResult.provider.package.variant.name;
+          this.total = dataResult.payment.totalPrice;
+          this.provider = dataResult.provider.slug;
         } else {
-          throw new Error(fetchDetailVariant);
+          throw new Error(fetchPayment);
         }
       } catch (error) {
+        if (error.response?.status == 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
+            className: '',
+            color: 'red-400',
+            duration: 4000,
+          });
+          setTimeout(
+            function () {
+              this.$router.push('/');
+            }.bind(this),
+            3000
+          );
+        }
         console.log(error);
       }
-      this.isLoadingVariant = false;
-    },
-    getDataPacket() {
-      const {
-        provider,
-        packet_id,
-        voucher,
-      } = this.$router.history.current.query;
-      this.provider = provider === 'microsoft' ? 'microsoft365' : provider;
-      axios
-        .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${this.provider.toLowerCase()}/${packet_id}`
-        )
-        .then((res) => {
-          const { data, status } = res;
-          if (status === 200) {
-            this.packet = data.name;
-            this.packetId = data.id;
-            if (voucher) {
-              setTimeout(() => {
-                this.checkValidVoucher(this.vouchersData, data, voucher);
-              }, 500);
-            } else {
-              this.total = data.grandTotal;
-            }
-          }
-        })
-        .catch((err) => console.log(err));
     },
     getVouchersData() {
       axios
