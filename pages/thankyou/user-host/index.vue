@@ -33,21 +33,21 @@
               <i>Baca ketentuan User Host selengkapnya</i>
             </a>
           </p>
-          <div class="box">
-            <div class="row">
-              <div class="col box-title">Provider</div>
-              <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ setNameProvider(provider) }}</div>
+          <div class="box text-left">
+            <div class="grid grid-cols-12">
+              <div class="ml-1 col-span-4 font-bold">Provider</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ setNameProvider(provider) }}</div>
             </div>
-            <div class="row mt-1">
-              <div class="col box-title">Paket</div>
-              <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ packet }}</div>
+            <div class="grid grid-cols-12 mt-1">
+              <div class="ml-1 col-span-4 font-bold">Paket</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ packet }}</div>
             </div>
-            <div class="row mt-1">
-              <div class="col box-title">Harga</div>
-              <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
+            <div class="grid grid-cols-12 mt-1">
+              <div class="ml-1 col-span-4 font-bold">Harga</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ formatMoneyRupiah(total) }}</div>
             </div>
           </div>
           <p>
@@ -67,12 +67,14 @@
 
 <script>
 import axios from 'axios';
+import OrderService from '~/services/OrderServices.js';
 
 export default {
   name: 'UserHostPage',
   layout: 'new',
   data() {
     return {
+      OrderService,
       provider: '',
       packet: '',
       packetId: null,
@@ -81,37 +83,51 @@ export default {
     };
   },
   mounted() {
-    this.getPaymentDetail();
+    this.OrderService = new OrderService(this);
+    const {
+      type,
+      order_uid,
+      customer_uid,
+    } = this.$router.history.current.query;
+    if (order_uid && customer_uid) {
+      this.getPaymentDigital(order_uid, customer_uid);
+    }
     this.getVouchersData();
   },
   methods: {
-    getPaymentDetail() {
-      const {
-        provider,
-        packet_id,
-        voucher,
-      } = this.$router.history.current.query;
-      this.provider = provider;
+    async getPaymentDigital(orderUid, customerUid) {
+      const { OrderService } = this;
 
-      axios
-        .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
-        )
-        .then((res) => {
-          const { data, status } = res;
-          if (status === 200) {
-            this.packet = data.name;
-            this.packetId = data.id;
-            if (voucher) {
-              setTimeout(() => {
-                this.checkValidVoucher(this.vouchersData, data, voucher);
-              }, 500);
-            } else {
-              this.total = data.grandTotal;
-            }
-          }
-        })
-        .catch((err) => console.log(err));
+      try {
+        const fetchPayment = await OrderService.getPaymentConfirmation(
+          orderUid,
+          customerUid
+        );
+        if (fetchPayment.data) {
+          const dataResult = fetchPayment.data.data;
+          this.packet = dataResult.provider.package.variant.name;
+          this.total = dataResult.payment.totalPrice;
+          this.provider = dataResult.provider.slug;
+        } else {
+          throw new Error(fetchPayment);
+        }
+      } catch (error) {
+        if (error.response?.status == 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
+            className: '',
+            color: 'red-400',
+            duration: 4000,
+          });
+          setTimeout(
+            function () {
+              this.$router.push('/');
+            }.bind(this),
+            3000
+          );
+        }
+        console.log(error);
+      }
     },
     getVouchersData() {
       axios
@@ -159,6 +175,9 @@ export default {
         case 'microsoft':
           return 'Microsoft 365';
           break;
+        case 'microsoft365':
+          return 'Microsoft 365';
+          break;
         case 'canva':
           return 'Canva';
           break;
@@ -192,23 +211,6 @@ export default {
   }
   .col {
     text-align: center;
-    &.box {
-      &-title {
-        text-align: left;
-        font-weight: 700;
-        max-width: 7rem;
-      }
-      &-item {
-        text-align: left;
-        &-noRek {
-          cursor: pointer;
-          text-align: left;
-          &:hover {
-            color: #86d0c1;
-          }
-        }
-      }
-    }
     h3 {
       margin-top: 20px !important;
       margin-bottom: 20px !important;
@@ -298,9 +300,6 @@ export default {
       margin-left: 0px !important;
       margin-right: 0px !important;
       font-size: 13px;
-    }
-    .col-lg-1 {
-      max-width: 10px;
     }
   }
 }
