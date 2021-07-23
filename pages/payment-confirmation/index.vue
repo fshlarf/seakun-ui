@@ -346,7 +346,7 @@ export default {
             function () {
               this.$router.push('/');
             }.bind(this),
-            3500
+            5000
           );
         }
       }
@@ -543,7 +543,7 @@ export default {
             function () {
               this.$router.push('/');
             }.bind(this),
-            3500
+            5000
           );
         }
       }
