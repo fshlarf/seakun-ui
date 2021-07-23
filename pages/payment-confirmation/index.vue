@@ -532,6 +532,20 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        if (error.response?.status == 400) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
+            className: '',
+            color: 'red-400',
+            duration: 5000,
+          });
+          setTimeout(
+            function () {
+              this.$router.push('/');
+            }.bind(this),
+            3500
+          );
+        }
       }
       this.isLoadingSubmit = false;
     },
