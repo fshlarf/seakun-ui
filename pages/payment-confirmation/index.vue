@@ -296,11 +296,13 @@ export default {
         this.bankSeakun = value.bankName;
         this.paymentToUid = value.uid;
         this.paymenDestination = false;
+        this.errorForm.bankSeakun.isError = false;
       }
 
       if (type == 'paymentUsage') {
         this.bankCustomer = value.bankName;
         this.paymentUsage = false;
+        this.errorForm.bankCustomer.isError = false;
       }
     },
     async getSeakunPayment() {
@@ -395,6 +397,13 @@ export default {
       const { nominal, bankCustomer, bankSeakun, imageFile, userName } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
       const nominalFormat = /^[0-9]*$/;
+      let bankList = [];
+      this.paymentFromList.forEach((item) => {
+        bankList.push(item.bankName);
+      });
+      let validateBank = bankList.filter((item) =>
+        item.toLowerCase().includes(bankCustomer.toLowerCase())
+      );
       let isValid = true;
       let errorTemp = {
         bankSeakun: {
@@ -426,6 +435,13 @@ export default {
             message: 'Bank yang digunakan harus diisi',
           };
           isValid = false;
+        } else if (validateBank.length === 0) {
+          errorTemp.bankCustomer = {
+            isError: true,
+            message:
+              'Bank yang kamu cari tidak tersedia. Silakan pilih lainnya',
+          };
+          isValid = false;
         }
       }
 
@@ -433,7 +449,7 @@ export default {
         if (bankSeakun === 'Pilih Bank tujuan milik Seakun.id') {
           errorTemp.bankSeakun = {
             isError: true,
-            message: 'Bank yang tujuan harus dipilih',
+            message: 'Bank tujuan harus dipilih',
           };
           isValid = false;
         }
@@ -586,6 +602,7 @@ export default {
         this.imageFile = file;
         const imageUpload = document.getElementById('previewImage');
         imageUpload.src = URL.createObjectURL(this.imageFile);
+        this.errorForm.uploadImage.isError = false;
       }
     },
     executeApiMailConfirmPayment() {
