@@ -305,7 +305,7 @@ export default {
     getDataDetailPacket(provider) {
       axios
         .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packet_id}`
+          `https://seakun-packet-api-v1.herokuapp.com/${provider}/${this.packet_id}`
         )
         .then((res) => {
           this.dataDetailPacket = res.data;
@@ -400,7 +400,7 @@ export default {
       };
       axios
         .post(
-          'https://seakun-mail-api-v2.herokuapp.com/payment-confirm',
+          'https://seakun-mail-api-v1.herokuapp.com/payment-confirm',
           payload
         )
         .then((res) => {

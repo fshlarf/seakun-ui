@@ -192,7 +192,7 @@ export default {
       this.isLoadingProduct = true;
       try {
         const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${type}`
+          `https://seakun-packet-api-v1.herokuapp.com/${type}`
         );
         for (let i = 1; i <= 20; i++) {
           data.forEach((element) => {
@@ -220,7 +220,7 @@ export default {
 
       try {
         const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${theProvider}`
+          `https://seakun-packet-api-v1.herokuapp.com/${theProvider}`
         );
         if (data) {
           this.dataPackages = data;

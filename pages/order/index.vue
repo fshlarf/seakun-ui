@@ -272,7 +272,7 @@ export default {
             : this.provider.toLowerCase();
 
         const fetchGetDetailOrder = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packageId}`
+          `https://seakun-packet-api-v1.herokuapp.com/${provider}/${this.packageId}`
         );
         if (fetchGetDetailOrder.status == 200) {
           const { data } = fetchGetDetailOrder;
@@ -473,7 +473,7 @@ export default {
         payment_type: this.detailOrder.data.paymentType,
       };
       axios
-        .post('https://seakun-mail-api-v2.herokuapp.com/', newPayload)
+        .post('https://seakun-mail-api-v1.herokuapp.com/', newPayload)
         .then((res) => {
           this.isDisableBtn = false;
           // Redirect to thankyou page when successfully registration
@@ -524,7 +524,7 @@ export default {
 
       try {
         const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}`
+          `https://seakun-packet-api-v1.herokuapp.com/${provider}`
         );
         if (data) {
           this.dataPackages = data;

@@ -137,7 +137,7 @@ export default {
       };
       axios
         .get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
+          `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
         )
         .then((res) => {
           const { data, status } = res;
@@ -180,7 +180,7 @@ export default {
     },
     getVouchersData() {
       axios
-        .get('https://seakun-packet-api-v2.herokuapp.com/vouchers')
+        .get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
         .then((res) => {
           this.vouchersData = res.data;
         })

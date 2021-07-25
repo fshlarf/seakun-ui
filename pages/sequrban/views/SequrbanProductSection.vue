@@ -70,7 +70,7 @@ export default {
     getDataCows() {
       this.isLoading = true;
       axios
-        .get('https://seakun-packet-api-v2.herokuapp.com/sequrban')
+        .get('https://seakun-packet-api-v1.herokuapp.com/sequrban')
         .then((res) => {
           this.dataCows = res.data;
           this.isLoading = false;
@@ -80,7 +80,7 @@ export default {
     getDataCowsById(id) {
       this.isLoadingDetail = true;
       axios
-        .get(`https://seakun-packet-api-v2.herokuapp.com/sequrban/${id}`)
+        .get(`https://seakun-packet-api-v1.herokuapp.com/sequrban/${id}`)
         .then((res) => {
           this.dataDetailCows = res.data;
           this.isLoadingDetail = false;

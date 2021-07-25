@@ -353,7 +353,7 @@ export default {
     getDataQurban() {
       this.isLoading = true;
       axios
-        .get('https://seakun-packet-api-v2.herokuapp.com/sequrban')
+        .get('https://seakun-packet-api-v1.herokuapp.com/sequrban')
         .then((res) => {
           this.dataQurban = res.data;
           this.isLoading = false;
@@ -363,7 +363,7 @@ export default {
     getDataDetailQurban(id) {
       this.isLoading = true;
       axios
-        .get(`https://seakun-packet-api-v2.herokuapp.com/sequrban/${id}`)
+        .get(`https://seakun-packet-api-v1.herokuapp.com/sequrban/${id}`)
         .then((res) => {
           this.dataDetailQurban = res.data;
           this.isLoading = false;

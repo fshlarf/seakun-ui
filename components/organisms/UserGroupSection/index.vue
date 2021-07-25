@@ -263,7 +263,7 @@ export default {
 
       try {
         const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}`
+          `https://seakun-packet-api-v1.herokuapp.com/${provider}`
         );
         if (data) {
           this.dataPackages = data;
