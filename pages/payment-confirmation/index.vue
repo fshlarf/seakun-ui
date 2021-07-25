@@ -229,11 +229,14 @@ export default {
       let newArr = paymentFromList?.filter((item) =>
         item.bankName?.toLowerCase().includes(bankCustomer.toLowerCase())
       );
+      const othersIndex = paymentFromList
+        .map((element) => element.bankName)
+        .indexOf('Lainnya');
+      const othersOption = [paymentFromList[othersIndex]];
       if (newArr.length > 0) {
         return newArr;
       } else {
-        newArr = [paymentFromList[28]];
-        return newArr;
+        return othersOption;
       }
     },
   },
