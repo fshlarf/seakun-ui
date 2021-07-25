@@ -18,18 +18,15 @@
       </div>
       <div class="form-confirmation mt-7">
         <div>
-          <div class="my-4">
+          <div class="mt-4">
             <InputForm
               label="Sumber Transfer (Bank / Ewallet)"
               class="mt-4"
-              placeholder="Pilih Bank yang digunakan, atau ketik bila tidak ada pilihan"
+              placeholder="Pilih lainnya jika tidak ada di dalam list"
               v-model="bankCustomer"
               :value="bankCustomer"
               @click="showPaymentList('paymentUsage')"
-              @keyup="
-                paymentUsage = false;
-                validateInput('bankCustomer');
-              "
+              @keyup="validateInput('bankCustomer')"
               :error="errorForm.bankCustomer"
             >
               <svg
@@ -53,7 +50,7 @@
             </InputForm>
           </div>
           <PopUpPayment
-            :dataList="paymentDestinationList"
+            :bankListCustomer="dataFilter"
             :show="paymentUsage"
             @onClickItem="
               (value) => {
@@ -68,15 +65,12 @@
           <ButtonDrop
             :btnText="bankSeakun"
             @click="showPaymentList('bankDirection')"
-            @keyup="
-              bankDirection = false;
-              validateInput('bankSeakun');
-            "
+            @keyup="validateInput('bankSeakun')"
             :error="errorForm.bankSeakun"
           />
           <div class="w-full">
             <PopUpPayment
-              :dataList="paymentDestinationList"
+              :bankListSeakun="paymentDestinationList"
               :show="paymenDestination"
               @onClickItem="
                 (value) => {
@@ -200,10 +194,8 @@ export default {
         page: 1,
         limit: 10,
       },
-      paymentDestinationList: {
-        transferBank: [],
-        ewallet: [],
-      },
+      paymentFromList: [],
+      paymentDestinationList: [],
       paymentToUid: '',
       time1: moment().format('YYYY-MM-DD').toString(),
       imageFile: null,
@@ -230,6 +222,20 @@ export default {
         },
       },
     };
+  },
+  computed: {
+    dataFilter() {
+      const { bankCustomer, paymentFromList } = this;
+      let newArr = paymentFromList?.filter((item) =>
+        item.bankName?.toLowerCase().includes(bankCustomer.toLowerCase())
+      );
+      if (newArr.length > 0) {
+        return newArr;
+      } else {
+        newArr = [paymentFromList[28]];
+        return newArr;
+      }
+    },
   },
   created() {
     const {
@@ -262,12 +268,13 @@ export default {
       customer_uid,
     } = this.$router.history.current.query;
 
-    this.getSeakunPayment();
-    // if(provider == `sequrban`)
-    // this.getDataDetailPacket(provider);
     if (order_uid && customer_uid) {
       this.getDataPayment(order_uid, customer_uid);
     }
+    this.getSeakunPayment();
+    this.getSeakunPaymentFrom();
+    // if(provider == `sequrban`)
+    // this.getDataDetailPacket(provider);
   },
   methods: {
     showPaymentList(type) {
@@ -277,7 +284,7 @@ export default {
       }
 
       if (type == 'paymentUsage') {
-        this.paymentUsage = !this.paymentUsage;
+        this.paymentUsage = true;
         this.paymenDestination = false;
       }
     },
@@ -303,14 +310,30 @@ export default {
         if (fetchSeakunPayment.data) {
           const dataResult = fetchSeakunPayment.data.data;
           dataResult.forEach((element) => {
-            if (element.paymentTypeId === 1) {
-              this.paymentDestinationList.transferBank.push(element);
-            } else if (element.paymentTypeId === 2) {
-              this.paymentDestinationList.ewallet.push(element);
-            }
+            this.paymentDestinationList.push(element);
           });
         } else {
           throw new Error(fetchSeakunPayment);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isShowLoading = false;
+    },
+    async getSeakunPaymentFrom() {
+      const { MasterService } = this;
+      this.isShowLoading = true;
+      try {
+        const fetchSeakunPaymentFrom = await MasterService.getSeakunPaymentFrom(
+          this.paramSeakunPayment
+        );
+        if (fetchSeakunPaymentFrom.data) {
+          const dataResult = fetchSeakunPaymentFrom.data.data;
+          dataResult.forEach((element) => {
+            this.paymentFromList.push(element);
+          });
+        } else {
+          throw new Error(fetchSeakunPaymentFrom);
         }
       } catch (error) {
         console.log(error);
