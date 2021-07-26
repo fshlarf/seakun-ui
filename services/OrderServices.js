@@ -7,10 +7,10 @@ class OrderService {
     this.serviceApi = httpRequest(ctx, API_ORDER_URL).serviceApi;
   }
 
-  getOrder(params) {
-    return this.serviceApi.get('/customer', {
-      params,
-    });
+  getDetailOrder(orderUid, customerUid) {
+    return this.serviceApi.get(
+      `/customer?orderUid=${orderUid}&customerUid=${customerUid}`
+    );
   }
 
   createOrder(params) {
@@ -24,11 +24,9 @@ class OrderService {
   }
 
   updatePaymentConfirmation(params, header) {
-    return this.serviceApi.post(
-      '/customer/payment/confirm',
-      params,
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
+    return this.serviceApi.post('/customer/payment/confirm', params, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
   }
 }
 

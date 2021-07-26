@@ -227,10 +227,10 @@ export default {
     dataFilter() {
       const { bankCustomer, paymentFromList } = this;
       let newArr = paymentFromList?.filter((item) =>
-        item.bankName?.toLowerCase().includes(bankCustomer.toLowerCase())
+        item.bank?.toLowerCase().includes(bankCustomer.toLowerCase())
       );
       const othersIndex = paymentFromList
-        .map((element) => element.bankName)
+        .map((element) => element.bank)
         .indexOf('Lainnya');
       const othersOption = [paymentFromList[othersIndex]];
       if (newArr.length > 0) {
@@ -293,14 +293,14 @@ export default {
     },
     onClickItemBank(type, value) {
       if (type == 'bankDirection') {
-        this.bankSeakun = value.bankName;
+        this.bankSeakun = value.bank;
         this.paymentToUid = value.uid;
         this.paymenDestination = false;
         this.errorForm.bankSeakun.isError = false;
       }
 
       if (type == 'paymentUsage') {
-        this.bankCustomer = value.bankName;
+        this.bankCustomer = value.bank;
         this.paymentUsage = false;
         this.errorForm.bankCustomer.isError = false;
       }
@@ -399,7 +399,7 @@ export default {
       const nominalFormat = /^[0-9]*$/;
       let bankList = [];
       this.paymentFromList.forEach((item) => {
-        bankList.push(item.bankName);
+        bankList.push(item.bank);
       });
       let validateBank = bankList.filter((item) =>
         item.toLowerCase().includes(bankCustomer.toLowerCase())
@@ -592,8 +592,9 @@ export default {
       this.isLoadingSubmit = false;
     },
     toThankyouPage() {
+      const { order_uid, customer_uid } = this.$router.history.current.query;
       this.$router.push(
-        `/thankyou?holder=${this.userName}&from=${this.bankCustomer}&to=${this.bankSeakun}`
+        `/thankyou?nominal=${this.nominal}&order_uid=${order_uid}&customer_uid=${customer_uid}`
       );
     },
     getPaymentImage(file) {

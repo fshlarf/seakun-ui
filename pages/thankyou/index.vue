@@ -8,12 +8,32 @@
         src="/images/thank-you-new.png"
         alt="Image not found"
       />
-      <div class="thankyou-wording text-center px-12">
+      <div class="text-center tn:px-4 md:px-12">
         <h3 class="font-bold text-3xl mt-4 text-center">Thankyou!</h3>
-        <p class="text-center text-lg mt-4 text-gray-500">
+        <p class="text-center md:text-lg mt-4 text-gray-500">
           Konfirmasi pembayaranmu telah berhasil. Admin akan segera menghubungi
           untuk memberikan detail pesananmu.
         </p>
+      </div>
+
+      <div class="mt-8">
+        <ProductHighLight
+          :provider="dataProduct.provider"
+          :isLoading="isLoading"
+          :packageName="dataProduct.packageName"
+          :grandTotal="dataProduct.grandTotal"
+          :totalMonth="dataProduct.totalMonth"
+        />
+      </div>
+
+      <p class="tn:my-1 md:my-2 text-center tn:mt-8 md:mt-10 text-gray-500">
+        Total transfer
+      </p>
+      <div class="text-center">
+        <p
+          class="tn:text-2xl md:text-3xl font-semibold"
+          v-html="formatCodePayment(dataProduct.payment)"
+        ></p>
       </div>
 
       <div
@@ -22,6 +42,12 @@
         <div class="">
           <p class="text-lg text-gray-400">Nama Rekening</p>
           <p class="font-bold text-lg md:mt-2">{{ paymentHolder }}</p>
+        </div>
+        <div class="tn:mt-3 md:mt-4">
+          <p class="text-lg text-gray-400">Nominal Transfer</p>
+          <p class="font-bold text-lg md:mt-2">
+            {{ currencyFormat(transferAmount) }}
+          </p>
         </div>
         <div class="border-b-2 border-gray-200 tn:pb-1 md:pb-3 tn:mt-3 md:mt-4">
           <p class="text-lg text-gray-400">Metode Pembayaran</p>
@@ -60,7 +86,7 @@
         </div>
       </div>
       <div class="">
-        <p class="tn:text-center md:text-left text-lg mt-8 text-gray-500">
+        <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
           Mohon menunggu 10-20 menit. Jika melewati rentang waktu tersebut dan
           pesanan kamu belum di proses, harap hubungi admin via whatsapp
           <a
@@ -82,26 +108,45 @@
 
 <script>
 import Button from '~/components/atoms/Button';
+import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
+import OrderService from '~/services/OrderServices.js';
+import { currencyFormat } from '~/helpers/word-transformation.js';
 export default {
   name: 'thankyou-page',
   layout: 'navigationBlank',
   data() {
     return {
+      OrderService,
+      currencyFormat,
+      transferAmount: '',
       paymentHolder: '',
       paymentBankFrom: '',
       paymentBankTo: '',
       destinationBank: '',
+      isLoading: false,
+      dataDetailOrder: {},
+      dataProduct: {
+        provider: '',
+        packageName: '',
+        grandTotal: 0,
+        totalMonth: 0,
+        payment: 0,
+      },
     };
   },
   components: {
     Button,
+    ProductHighLight,
   },
   mounted() {
-    const { holder, to, from } = this.$router.history.current.query;
-    this.paymentHolder = holder;
-    this.destinationBank = to;
-    this.paymentBankFrom = from.toLowerCase();
-    this.paymentBankTo = to.toLowerCase();
+    this.OrderService = new OrderService(this);
+    const {
+      nominal,
+      order_uid,
+      customer_uid,
+    } = this.$router.history.current.query;
+    this.transferAmount = nominal;
+    this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
     setNameBank(bank) {
@@ -119,8 +164,51 @@ export default {
           return bank;
       }
     },
+    async getDetailOrder(orderUid, customerUid) {
+      const { OrderService } = this;
+      this.isLoading = true;
+      try {
+        const fetchDataOrder = await OrderService.getDetailOrder(
+          orderUid,
+          customerUid
+        );
+        if (fetchDataOrder.data) {
+          const dataResult = fetchDataOrder.data.data;
+          this.dataDetailOrder = dataResult;
+          this.paymentHolder = this.dataDetailOrder.payment.paymentFromName;
+          this.destinationBank = this.dataDetailOrder.payment.paymentToBank;
+          this.paymentBankFrom = this.dataDetailOrder.payment.paymentFromBank.toLowerCase();
+          this.paymentBankTo = this.dataDetailOrder.payment.paymentToBank.toLowerCase();
+
+          this.dataProduct = {
+            provider: this.dataDetailOrder.provider.slug,
+            packageName: this.dataDetailOrder.provider.package.variant.name,
+            grandTotal: this.dataDetailOrder.payment.totalPrice,
+            totalMonth: this.dataDetailOrder.provider.package.variant.duration,
+            payment: this.dataDetailOrder.payment.payment,
+          };
+        } else {
+          throw new Error(fetchDataOrder);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoading = false;
+    },
     toHomePage() {
       this.$router.push('/');
+    },
+    formatCodePayment(value) {
+      if (value) {
+        const currency = this.currencyFormat(value);
+        const startTotal = currency.substring(0, currency.length - 3);
+        const lastCode = currency.substring(
+          currency.length - 3,
+          currency.length
+        );
+        return `${startTotal}<span class="text-green-seakun">${lastCode}</span>`;
+      }
+      return '-';
     },
   },
 };
