@@ -50,7 +50,6 @@
       </div>
     </div>
 
-    <Footer />
     <Snackbar ref="snackbar" />
   </div>
 </template>
@@ -64,7 +63,6 @@ import Button from '~/components/atoms/Button';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import DetailPayment from './views/DetailPayment.vue';
 import HeaderPayment from './views/HeaderPayment.vue';
-import Footer from '~/components/mollecules/Footer';
 import WarningInfo from '~/components/mollecules/WarningInfo';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 
@@ -75,7 +73,6 @@ export default {
     Button,
     HeaderPayment,
     DetailPayment,
-    Footer,
     WarningInfo,
     Snackbar,
   },
