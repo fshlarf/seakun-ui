@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="payment-order w-auto mt-8 box-border px-2">
+    <div class="payment-order w-auto tn:mt-4 md:mt-8 box-border px-2">
       <!-- Loadingg shimmer -->
       <div v-if="isLoading" class="text-center">
         <p class="shimmer w-full"></p>

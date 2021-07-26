@@ -34,7 +34,7 @@
         :detail-payment-digital="detailPaymentDigital"
         :detail-payment-sequrban="detailPaymentSequrban"
       />
-      <div class="tn:mt-4 md:mt-8 mx-4 mb-4 text-center">
+      <div class="tn:mt-4 md:mt-8 tn:mx-3 md:mx-4 mb-4 text-center">
         <Button
           v-if="type !== 1"
           class="w-full bg-green-seakun text-white py-2"

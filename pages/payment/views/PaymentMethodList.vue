@@ -1,11 +1,11 @@
 <template>
   <div
-    class="payment-method__options grid grid-cols-2 tn:gap-3 md:gap-4 px-4 py-6"
+    class="payment-method__options flex flex-wrap justify-center md:px-4 py-6"
   >
     <div
       v-for="(payment, index) in PaymentMethodList"
       :key="index"
-      class="payment-options bg-white shadow-md w-full rounded-lg tn:p-3 md:p-6 flex flex-column justify-center items-center text-center"
+      class="payment-options bg-white shadow-md w-[45%] tn:rounded-xl md:rounded-lg tn:p-3 md:p-6 tn:m-1 md:m-2 flex flex-column justify-center items-center text-center"
     >
       <img
         :src="`/images/payment/${payment.bank.toLowerCase()}.png`"
