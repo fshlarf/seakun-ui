@@ -1,16 +1,18 @@
 <template>
-  <div class="payment-method__options grid grid-cols-2 gap-3 px-4 py-6">
+  <div
+    class="payment-method__options grid grid-cols-2 tn:gap-3 md:gap-4 px-4 py-6"
+  >
     <div
       v-for="(payment, index) in PaymentMethodList"
       :key="index"
-      class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
+      class="payment-options bg-white shadow-md w-full rounded-lg tn:p-3 md:p-6 flex flex-column justify-center items-center text-center"
     >
       <img
-        :src="`/images/payment/${payment.bankName.toLowerCase()}.png`"
+        :src="`/images/payment/${payment.bank.toLowerCase()}.png`"
         class="w-8/12 my-2"
       />
       <p
-        class="mt-4 payment-options__norek text-sm font-bold"
+        class="tn:mt-2 md:mt-4 payment-options__norek tn:text-xs md:text-base font-bold"
         @click="
           $emit('clickCopyHandler', 'Rekening', payment.bankAccountNumber)
         "
@@ -23,7 +25,7 @@
             "
         /></span>
       </p>
-      <p class="my-1 payment-options__account-name text-sm">
+      <p class="my-1 payment-options__account-name tn:text-xs md:text-base">
         {{ payment.bankAccountName }}
       </p>
     </div>

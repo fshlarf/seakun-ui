@@ -34,38 +34,24 @@
         :detail-payment-digital="detailPaymentDigital"
         :detail-payment-sequrban="detailPaymentSequrban"
       />
-      <div class="tos-alert px-4 mt-4 text-lg">
-        <p>
-          Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
-          kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 60 menit. jika
-          melewati rentang waktu tersebut dan pesanan kamu belum diproses, harap
-          hubungi admin via whatsapp
-          <a
-            class="text-primary"
-            target="_blank"
-            href="https://api.whatsapp.com/send?phone=6282124852227"
-            >+6282124852227</a
-          >
-        </p>
-      </div>
-      <div class="mt-8 mx-4 mb-4 text-center">
+      <div class="tn:mt-4 md:mt-8 mx-4 mb-4 text-center">
         <Button
           v-if="type !== 1"
-          class="w-full bg-green-seakun text-white"
+          class="w-full bg-green-seakun text-white py-2"
           label="Konfirmasi Pembayaran"
           @click="onClickConfirm('sequrban')"
         />
         <Button
           v-else
-          class="w-full bg-green-seakun text-white"
+          class="w-full bg-green-seakun text-white py-2"
           label="Konfirmasi Pembayaran"
           @click="onClickConfirm('digital')"
         />
       </div>
     </div>
-    
+
     <Footer />
-     <Snackbar ref="snackbar" />
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -91,8 +77,7 @@ export default {
     DetailPayment,
     Footer,
     WarningInfo,
-    Snackbar
-    
+    Snackbar,
   },
   layout: 'navigationBlank',
   data() {
@@ -201,16 +186,19 @@ export default {
           throw new Error(fetchPayment);
         }
       } catch (error) {
-         if (error.response?.status == 404){
-           this.$refs.snackbar.showSnackbar({
-              message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
-              className: '',
-              color : 'red-400',
-              duration : 4000
-            });
-            setTimeout(function(){
-              this.$router.push('/')
-            }.bind(this),3000)
+        if (error.response?.status == 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
+            className: '',
+            color: 'red-400',
+            duration: 4000,
+          });
+          setTimeout(
+            function () {
+              this.$router.push('/');
+            }.bind(this),
+            3000
+          );
         }
         console.log(error);
       }
