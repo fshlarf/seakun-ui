@@ -1,14 +1,16 @@
 <template>
   <section>
     <Snackbar ref="snackbar" />
-    <div class="payment-detail text-center mt-16">
+    <div class="payment-detail text-center tn:mt-10 md:mt-16">
       <p
         v-if="provider.toLowerCase() === 'sequrban' && detailPaymentSequrban"
         class="payment-detail__label my-3 text-xl"
       >
         Transfer DP (uang muka)
       </p>
-      <p v-else class="payment-detail__label my-3 text-xl">Total transfer</p>
+      <p v-else class="payment-detail__label tn:my-1 md:my-3 text-xl">
+        Total transfer
+      </p>
       <div class="total-payment flex align-items-center justify-center">
         <div
           v-if="isLoading"
@@ -45,34 +47,29 @@
       </div>
 
       <!-- </div> -->
-      <p class="payment-detail__alert my-3">
+      <p class="payment-detail__alert tn:my-1 md:my-2">
         Pastikan nominal sesuai hingga 3 digit terakhir
       </p>
     </div>
     <div class="payment-method">
-      <h3 class="payment-method__title text-center text-bold mt-6">
+      <h3 class="payment-method__title text-center text-bold mt-10">
         Transfer Ke
       </h3>
-      <div
-        v-if="provider.toLowerCase() === 'sequrban'"
-      >
-         <PaymentMethodList
+      <div v-if="provider.toLowerCase() === 'sequrban'">
+        <PaymentMethodList
           :PaymentMethodList="paymentMethodSekurban"
           @clickCopyHandler="clickCopyHandler"
         />
-  
       </div>
-      <div
-        v-else
-      >
-
+      <div v-else>
         <PaymentMethodList
           v-if="!paymentSeakunListLoading"
-          :PaymentMethodList="paymentSeakunList.length > 0 ? paymentSeakunList : paymetnMethod"
+          :PaymentMethodList="
+            paymentSeakunList.length > 0 ? paymentSeakunList : paymetnMethod
+          "
           @clickCopyHandler="clickCopyHandler"
         />
-        <PaymentMethodListLoading v-else/>
-
+        <PaymentMethodListLoading v-else />
       </div>
     </div>
   </section>
@@ -81,8 +78,8 @@
 <script>
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
-import PaymentMethodList from './PaymentMethodList.vue'
-import PaymentMethodListLoading from './PaymentMethodListLoading.vue'
+import PaymentMethodList from './PaymentMethodList.vue';
+import PaymentMethodListLoading from './PaymentMethodListLoading.vue';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 
 export default {
@@ -91,7 +88,7 @@ export default {
     Snackbar,
     CopyIcon,
     PaymentMethodList,
-    PaymentMethodListLoading
+    PaymentMethodListLoading,
   },
   props: {
     isLoading: {
@@ -110,13 +107,13 @@ export default {
       type: String,
       default: '',
     },
-    paymentSeakunList : {
-      type : Array,
-      default :() => ([])
+    paymentSeakunList: {
+      type: Array,
+      default: () => [],
     },
-    paymentSeakunListLoading : {
-      type : Boolean,
-      default : false
+    paymentSeakunListLoading: {
+      type: Boolean,
+      default: false,
     },
     total: {
       type: String | Number,
@@ -180,8 +177,8 @@ export default {
   }),
   methods: {
     clickCopyHandler(name, value) {
-      if (navigator.clipboard){
-         navigator.clipboard.writeText(value).then(
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(value).then(
           () => {
             this.$refs.snackbar.showSnackbar({
               message: `${name} berhasil dicopy`,
@@ -190,20 +187,18 @@ export default {
           },
           (err) => console.log(err)
         );
-      }else {
-        this.fallbackCopyText(name,value)
+      } else {
+        this.fallbackCopyText(name, value);
       }
-
-     
     },
-    fallbackCopyText(name,value) {
-      let textArea = document.createElement("textarea");
+    fallbackCopyText(name, value) {
+      let textArea = document.createElement('textarea');
       textArea.value = value;
-  
+
       // Avoid scrolling to bottom
-      textArea.style.top = "0";
-      textArea.style.left = "0";
-      textArea.style.position = "fixed";
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.position = 'fixed';
 
       document.body.appendChild(textArea);
       textArea.focus();
@@ -211,8 +206,8 @@ export default {
 
       try {
         let successful = document.execCommand('copy');
-        if(successful){
-           this.$refs.snackbar.showSnackbar({
+        if (successful) {
+          this.$refs.snackbar.showSnackbar({
             message: `${name} berhasil dicopy`,
             className: '',
           });

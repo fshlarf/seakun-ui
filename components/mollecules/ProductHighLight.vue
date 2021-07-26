@@ -3,9 +3,9 @@
     class="order-detail bg-white shadow-md mt-2 rounded-md items-center mx-2"
   >
     <div
-      class="order-detail__product px-4 pt-4 pb-2 grid grid-cols-5 gap-2 items-center"
+      class="order-detail__product px-4 pt-4 pb-2 grid tn:grid-cols-6 md:grid-cols-5 gap-2 items-center"
     >
-      <div v-if="provider" class="flex-1">
+      <div v-if="provider" class="tn:col-span-2 md:col-span-1">
         <img
           class="detail-product__image w-full"
           :src="`/images/${provider}.png`"
