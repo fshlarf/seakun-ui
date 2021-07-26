@@ -108,14 +108,7 @@ export default {
       const getDataOrder = localStorage.getItem('swo')
         ? JSON.parse(localStorage['swo'])
         : {};
-      this.$router.push({
-        path: 'payment',
-        query: {
-          type: 1,
-          order_uid: getDataOrder.orderUid,
-          customer_uid: getDataOrder.customerUid,
-        },
-      });
+      this.$router.push(getDataOrder.redirectUrl);
     },
   },
 };

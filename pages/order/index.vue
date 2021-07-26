@@ -475,6 +475,7 @@ export default {
             customerUid: dataResult.customerUid,
             orderUid: dataResult.orderUid,
             type: dataResult.provider.type,
+            redirectUrl: dataResult.redirectUrl,
           };
           localStorage.setItem(
             'swo',
@@ -490,23 +491,26 @@ export default {
       this.isShowLoading = false;
     },
     redirectPage(payload) {
-      this.$router.push({
-        path: this.setPathToRedirect(payload),
-        query: {
-          type: payload.type,
-          order_uid: payload.orderUid,
-          customer_uid: payload.customerUid,
-        },
-      });
+      if (!payload.userhost && !payload.ispreorder) {
+        this.$router.push(payload.redirectUrl);
+      } else {
+        this.$router.push({
+          path: this.setPathToRedirect(payload),
+          query: {
+            type: payload.type,
+            order_uid: payload.orderUid,
+            customer_uid: payload.customerUid,
+          },
+        });
+        localStorage.removeItem('swo');
+      }
     },
     setPathToRedirect(payload) {
       if (payload.userhost) {
         return '/thankyou/user-host';
-      } else if (payload.ispreorder) {
-        localStorage.removeItem('swo');
+      }
+      if (payload.ispreorder) {
         return '/thankyou/pre-order';
-      } else {
-        return '/payment';
       }
     },
     onCloseModalPackages() {
