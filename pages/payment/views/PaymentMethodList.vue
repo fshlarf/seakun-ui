@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="payment-method__options flex flex-wrap justify-center md:px-4 py-6"
-  >
+  <div class="payment-method__options flex flex-wrap justify-center my-3">
     <div
       v-for="(payment, index) in PaymentMethodList"
       :key="index"

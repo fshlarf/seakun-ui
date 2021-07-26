@@ -273,7 +273,7 @@ export default {
                   this.packageName = variant.packageName;
                   this.variantName = variant.name;
                   this.detailOrder = {
-                    isHost: variant.iHost,
+                    isHost: variant.isHost,
                     isPo: variant.isPo,
                   };
                 }
@@ -477,6 +477,8 @@ export default {
             type: dataResult.provider.type,
             redirectUrl: dataResult.redirectUrl,
           };
+          console.log(this.detailOrder.isHost);
+          console.log(payload);
           localStorage.setItem(
             'swo',
             JSON.stringify({ ...dataResult, createdAt: moment().unix() })

@@ -277,7 +277,8 @@ export default {
     margin-left: 0px !important;
   }
   .payment {
-    padding: 50px 0px 0px !important;
+    padding: 0 !important;
+    margin-bottom: -3rem;
     // margin-top: 18px;
     Ï &__img {
       text-align: center;
@@ -297,8 +298,6 @@ export default {
       font-size: 20px;
     }
     .box {
-      margin-left: 0px !important;
-      margin-right: 0px !important;
       font-size: 13px;
     }
   }
