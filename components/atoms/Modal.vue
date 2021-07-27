@@ -11,7 +11,7 @@
           :class="classModal"
         >
           <button
-            class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold primary focus:outline-none"
+            class="fill-current h-6 w-6 absolute right-0 top-0 tn:m-3 xl:m-4 font-3xl font-bold primary focus:outline-none"
             @click="onClose"
           >
             <svg

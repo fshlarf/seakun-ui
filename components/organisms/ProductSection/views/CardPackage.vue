@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative card-package tn:px-1 md:px-3 md:mx-3 py-4 shadow-md border !rounded-lg cursor-pointer"
+    class="relative card-package tn:px-1 md:px-3 md:mx-3 py-4 mb-2 shadow-md border tn:rounded-3xl md:rounded-xl cursor-pointer"
   >
     <div v-if="packet.isPo === 1" class="">
       <div
@@ -17,8 +17,8 @@
       />
     </div>
 
-    <div class="text-center mt-6">
-      <h1 class="tn:text-lg md:text-sm font-bold my-2">
+    <div class="text-center tn:mt-2 md:mt-6">
+      <h1 class="tn:text-lg md:text-sm font-bold my-2 tn:mx-2 md:mx-0">
         {{ packet.name }}
       </h1>
       <p
@@ -28,7 +28,7 @@
         Paket tidak aktif
       </p>
 
-      <p class="tn:text-2xl md:text-xl font-bold mt-6">
+      <p class="tn:text-2xl md:text-xl font-bold tn:mt-2 md:mt-6">
         {{ formatMoneyRupiah(packet.grandTotal) }}
         <span v-if="packet.duration === 12" class="text-sm text-primary"
           >/ 1 thn</span
@@ -38,9 +38,9 @@
         >
       </p>
 
-      <h1 class="text-sm mt-6">Keuntungan</h1>
+      <h1 class="text-sm tn:mt-3 md:mt-6">Keuntungan</h1>
 
-      <div class="mt-3 text-left">
+      <div class="md:mt-3 text-left">
         <div
           class="mt-1 tn:px-3"
           v-for="(item, id) in packet.benefits"
@@ -53,7 +53,7 @@
               alt="checked"
             />
             <p
-              :class="`ml-2 text-sm ${
+              :class="`ml-2 tn:text-xs md:text-sm ${
                 packet.isActive ? 'font-bold' : 'font-normal'
               }`"
             >

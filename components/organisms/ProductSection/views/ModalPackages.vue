@@ -1,8 +1,8 @@
 <template>
   <Modal :is-show="isShow" size="auto" @onClose="$emit('on-close')">
     <template v-slot:header>
-      <div class="flex tn:gap-2 md:gap-3 xl:gap-4 items-center">
-        <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">
+      <div class="">
+        <h1 class="tn:text-base md:text-lg xl:text-xl font-bold">
           Pilih Paket {{ provider.name }}
         </h1>
       </div>
@@ -11,7 +11,7 @@
     <div v-if="!isLoading">
       <div
         v-if="preOrderPackage.includes(slug)"
-        class="ml-3 mb-2"
+        class="tn:mx-1 md:mx-3 mb-3"
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
         <p class="tn:text-xs md:text-sm" v-html="setPreOrderNotes(slug)"></p>
@@ -19,7 +19,7 @@
 
       <div
         v-if="provider && provider.variants !== ''"
-        class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-3 xl:space-y-0"
+        class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-1 xl:space-y-0"
       >
         <div
           v-for="(item, id) in provider.variants"
