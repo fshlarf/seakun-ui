@@ -1,6 +1,8 @@
 <template>
-  <div class="container md:max-w-[1000px] w-full mx-auto py-4">
-    <div class="wrapper-form w-full bg-white rounded-xl shadow-xl py-4 px-4">
+  <div class="container tn:bg-white md:bg-transparent w-full mx-auto md:py-4">
+    <div
+      class="wrapper-form w-full bg-white mx-auto xl:max-w-2xl md:rounded-3xl md:shadow-xl py-4 tn:px-3 md:px-5"
+    >
       <div class="header-confirmation">
         <h3 class="font-bold text-2xl">Konfirmasi Pembayaran</h3>
         <p class="my-2 text-sm">
@@ -22,7 +24,7 @@
             <InputForm
               label="Sumber Transfer (Bank / Ewallet)"
               class="mt-4"
-              placeholder="Pilih lainnya jika tidak ada di dalam list"
+              placeholder="Pilih bank yang kamu gunakan"
               v-model="bankCustomer"
               :value="bankCustomer"
               @click="showPaymentList('paymentUsage')"
@@ -124,7 +126,7 @@
         </div>
 
         <Button
-          class="w-full bg-green-seakun text-white"
+          class="w-full bg-green-seakun text-white py-2 mb-2"
           label="Konfirmasi"
           :is-loading="isLoadingSubmit"
           @click="clickSubmit"
@@ -594,7 +596,7 @@ export default {
     toThankyouPage() {
       const { order_uid, customer_uid } = this.$router.history.current.query;
       this.$router.push(
-        `/thankyou?nominal=${this.nominal}&order_uid=${order_uid}&customer_uid=${customer_uid}`
+        `/thankyou?nominal=${this.nominal}&date=${this.time1}&order_uid=${order_uid}&customer_uid=${customer_uid}`
       );
     },
     getPaymentImage(file) {

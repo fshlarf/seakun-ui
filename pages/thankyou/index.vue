@@ -30,25 +30,14 @@
         Total transfer
       </p>
       <div class="text-center">
-        <p
-          class="tn:text-2xl md:text-3xl font-semibold"
-          v-html="formatCodePayment(dataProduct.payment)"
-        ></p>
+        <p class="tn:text-2xl md:text-3xl font-semibold">
+          {{ currencyFormat(transferAmount) }}
+        </p>
       </div>
 
       <div
         class="detail-order rounded-2xl shadow-md bg-white tn:px-4 md:px-8 md:mx-8 mt-8 py-4"
       >
-        <div class="">
-          <p class="text-lg text-gray-400">Nama Rekening</p>
-          <p class="font-bold text-lg md:mt-2">{{ paymentHolder }}</p>
-        </div>
-        <div class="tn:mt-3 md:mt-4">
-          <p class="text-lg text-gray-400">Nominal Transfer</p>
-          <p class="font-bold text-lg md:mt-2">
-            {{ currencyFormat(transferAmount) }}
-          </p>
-        </div>
         <div class="border-b-2 border-gray-200 tn:pb-1 md:pb-3 tn:mt-3 md:mt-4">
           <p class="text-lg text-gray-400">Metode Pembayaran</p>
           <div v-if="paymentBankFrom === 'lainnya'" class="md:mt-2">
@@ -68,6 +57,11 @@
           </div>
         </div>
 
+        <div class="tn:mt-4 md:mt-5">
+          <p class="text-lg text-gray-400">Nama Rekening</p>
+          <p class="font-bold text-lg md:mt-2">{{ paymentHolder }}</p>
+        </div>
+
         <div class="tn:mt-3 md:mt-4">
           <p class="text-lg text-gray-400">Bank Tujuan</p>
           <div
@@ -84,10 +78,17 @@
             />
           </div>
         </div>
+
+        <div class="tn:mt-3 md:mt-4">
+          <p class="text-lg text-gray-400">Tanggal Pembayaran</p>
+          <p class="font-bold text-lg md:mt-2">
+            {{ paymentDate }}
+          </p>
+        </div>
       </div>
       <div class="">
         <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
-          Mohon menunggu 10-20 menit. Jika melewati rentang waktu tersebut dan
+          Mohon menunggu 1x30 menit. Jika melewati rentang waktu tersebut dan
           pesanan kamu belum di proses, harap hubungi admin via whatsapp
           <a
             class="text-primary"
@@ -111,6 +112,7 @@ import Button from '~/components/atoms/Button';
 import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
 import OrderService from '~/services/OrderServices.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';
+import moment from 'moment';
 export default {
   name: 'thankyou-page',
   layout: 'navigationBlank',
@@ -118,11 +120,13 @@ export default {
     return {
       OrderService,
       currencyFormat,
+      moment,
       transferAmount: '',
       paymentHolder: '',
       paymentBankFrom: '',
       paymentBankTo: '',
       destinationBank: '',
+      paymentDate: '',
       isLoading: false,
       dataDetailOrder: {},
       dataProduct: {
@@ -142,10 +146,12 @@ export default {
     this.OrderService = new OrderService(this);
     const {
       nominal,
+      date,
       order_uid,
       customer_uid,
     } = this.$router.history.current.query;
     this.transferAmount = nominal;
+    this.paymentDate = moment(date).locale('id').format('D MMMM YYYY');
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {

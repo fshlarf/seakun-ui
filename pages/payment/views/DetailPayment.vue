@@ -52,7 +52,7 @@
       </p>
     </div>
     <div class="payment-method">
-      <h3 class="payment-method__title text-center text-bold mt-10">
+      <h3 class="payment-method__title text-center font-bold mt-10">
         Transfer Ke
       </h3>
       <div v-if="provider.toLowerCase() === 'sequrban'">
@@ -181,7 +181,7 @@ export default {
         navigator.clipboard.writeText(value).then(
           () => {
             this.$refs.snackbar.showSnackbar({
-              message: `${name} berhasil dicopy`,
+              message: `${name} berhasil disalin`,
               className: '',
             });
           },
@@ -208,7 +208,7 @@ export default {
         let successful = document.execCommand('copy');
         if (successful) {
           this.$refs.snackbar.showSnackbar({
-            message: `${name} berhasil dicopy`,
+            message: `${name} berhasil disalin`,
             className: '',
           });
         }
@@ -264,7 +264,7 @@ export default {
 
   &__alert {
     font-style: normal;
-    font-weight: 700;
+    // font-weight: 700;
     font-size: 14px;
     line-height: 18px;
     color: #363636;

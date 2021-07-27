@@ -157,7 +157,7 @@ import moment from 'moment';
 
 export default {
   name: 'OrderPage',
-  layout: 'new',
+  layout: 'navigationBlank',
   components: {
     ProductHighLightLoading,
     ProductHighLight,
