@@ -16,7 +16,7 @@
         </p>
       </div>
 
-      <div class="mt-8">
+      <div v-if="!isLoading" class="mt-8">
         <ProductHighLight
           :provider="dataProduct.provider"
           :isLoading="isLoading"
@@ -24,6 +24,9 @@
           :grandTotal="dataProduct.grandTotal"
           :totalMonth="dataProduct.totalMonth"
         />
+      </div>
+      <div v-else class="mt-8">
+        <CardShimmer />
       </div>
 
       <p class="tn:my-1 md:my-2 text-center tn:mt-8 md:mt-10 text-gray-500">
@@ -36,6 +39,7 @@
       </div>
 
       <div
+        v-if="!isLoading"
         class="detail-order rounded-2xl shadow-md bg-white tn:px-4 md:px-8 md:mx-8 mt-8 py-4"
       >
         <div class="border-b-2 border-gray-200 tn:pb-1 md:pb-3 tn:mt-3 md:mt-4">
@@ -86,6 +90,11 @@
           </p>
         </div>
       </div>
+
+      <div v-else class="tn:px-4 md:px-8 md:mx-8 mt-8 py-4">
+        <CardShimmerVertical />
+      </div>
+
       <div class="">
         <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
           Mohon menunggu 1x30 menit. Jika melewati rentang waktu tersebut dan
@@ -109,6 +118,8 @@
 
 <script>
 import Button from '~/components/atoms/Button';
+import CardShimmer from '~/components/mollecules/CardShimmer';
+import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
 import OrderService from '~/services/OrderServices.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';
@@ -141,12 +152,13 @@ export default {
   },
   components: {
     Button,
+    CardShimmer,
+    CardShimmerVertical,
     ProductHighLight,
   },
   mounted() {
     this.OrderService = new OrderService(this);
     const { order_uid, customer_uid } = this.$router.history.current.query;
-
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
@@ -166,8 +178,8 @@ export default {
       }
     },
     async getDetailOrder(orderUid, customerUid) {
-      const { OrderService } = this;
       this.isLoading = true;
+      const { OrderService } = this;
       try {
         const fetchDataOrder = await OrderService.getDetailOrder(
           orderUid,
@@ -182,7 +194,8 @@ export default {
           this.paymentBankTo = this.dataDetailOrder.payment.paymentToBank.toLowerCase();
           this.destinationHolderName = this.dataDetailOrder.payment.paymentToName;
           this.transferAmount = this.dataDetailOrder.payment.transferAmount;
-          this.paymentDate = moment(this.dataDetailOrder.payment.paymentDate)
+          this.paymentDate = moment
+            .unix(this.dataDetailOrder.payment.paymentDate)
             .locale('id')
             .format('D MMMM YYYY');
 
