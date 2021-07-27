@@ -82,10 +82,9 @@
       :is-show="isShowModalPackages"
       :provider="choosedProvider"
       @on-close="onCloseModalPackages"
-      :packages="dataPackages"
       :slug="choosedSlugProvider"
       @choose-packet="choosePacket"
-      :is-loading="isFetchingPacket"
+      :is-loading="isLoadingProduct"
     />
 
     <ModalPriceScheme
@@ -104,7 +103,6 @@ import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
-import axios from 'axios';
 import ModalPackages from './views/ModalPackages.vue';
 
 export default {
@@ -131,7 +129,6 @@ export default {
         slug: '',
         name: '',
       },
-      dataProductDigital: [],
       dataProductOnDemand: [
         {
           id: 1,
@@ -173,13 +170,10 @@ export default {
       isShowModalPackages: false,
       choosedProvider: {},
       choosedSlugProvider: '',
-      dataPackages: [],
-      isFetchingPacket: false,
     };
   },
   mounted() {
     this.MasterService = new MasterService(this);
-    this.fechProviders('product-digital');
     this.getProviders();
   },
   methods: {
@@ -196,22 +190,6 @@ export default {
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
-    },
-    async fechProviders(type) {
-      this.isLoadingProduct = true;
-      try {
-        const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${type}`
-        );
-        for (let i = 1; i <= 20; i++) {
-          data.forEach((element) => {
-            if (element.id === i) this.dataProductDigital.push(element);
-          });
-        }
-      } catch (err) {
-        console.log(err);
-      }
-      this.isLoadingProduct = false;
     },
     async getProviders() {
       this.isLoadingProduct = true;
@@ -239,23 +217,7 @@ export default {
     onClickProductOnDemand(product) {
       this.$router.push(`/${product.slug}`);
     },
-    async fetchPackages(provider) {
-      const theProvider = provider === 'microsoft' ? 'microsoft365' : provider;
-
-      try {
-        const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${theProvider}`
-        );
-        if (data) {
-          this.dataPackages = data;
-        }
-      } catch (err) {
-        console.log(err);
-      }
-      this.isFetchingPacket = false;
-    },
     choosePacket(packet) {
-      console.log(packet)
       this.$router.push(
         `/order?provider=${this.choosedSlugProvider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );

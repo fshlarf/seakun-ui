@@ -57,17 +57,17 @@
 
     <ModalPackages
       :is-show="isShowModalPackages"
-      :provider="setNameProvider"
+      :provider="dataPackages"
       @on-close="onCloseModalPackages"
-      :packages="dataPackages"
       :slug="provider"
       @choose-packet="choosePacket"
-      :is-loading="isFetchingPacket"
+      :is-loading="isLoadingProduct"
     />
   </div>
 </template>
 
 <script>
+import MasterService from '~/services/MasterServices.js';
 import ProviderPill from '~/components/mollecules/ProviderPill.vue';
 import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
@@ -80,13 +80,20 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      MasterService,
       shimmerInitialData: Array(4),
       isLoading: true,
       dataDetailGroup: [],
       provider: '',
       isFetchingPacket: false,
+      isLoadingProduct: false,
       isShowModalPackages: false,
-      dataPackages: [],
+      dataPackages: {},
+      dataProviders: [],
+      paramGetProviderList: {
+        page: 1,
+        limit: 20,
+      },
       highlight: 'netflix',
       dataProviderList: [
         {
@@ -162,51 +169,33 @@ export default {
     ModalPackages,
   },
   mounted() {
+    this.MasterService = new MasterService(this);
     this.getCustomersData('netflix');
-  },
-  computed: {
-    setNameProvider() {
-      switch (this.provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'apple-one':
-          return 'Apple One';
-          break;
-        case 'wattpad':
-          return 'Wattpad';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
-        default:
-          return this.provider;
-      }
-    },
+    this.getProviders();
   },
   methods: {
     selectProvider(provider) {
       this.getCustomersData(provider.slug);
       this.isLoading = true;
       this.highlight = provider.slug;
+    },
+    async getProviders() {
+      this.isLoadingProduct = true;
+      const { MasterService, paramGetProviderList } = this;
+      try {
+        const fetchProviderList = await MasterService.getProvider(
+          paramGetProviderList
+        );
+        if (fetchProviderList.data) {
+          const { data } = fetchProviderList.data;
+          this.dataProviders = data;
+        } else {
+          throw new Error(fetchProviderList);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingProduct = false;
     },
     getCustomersData(provider) {
       axios
@@ -249,40 +238,25 @@ export default {
       this.$router.push(`/info/customers?provider=${this.highlight}`);
     },
     onClickOrder(provider) {
-      this.provider = provider;
+      if (provider.toLowerCase() === 'microsoft') {
+        this.provider = 'microsoft365';
+      } else {
+        this.provider = provider;
+      }
+      this.dataProviders.forEach((providers) => {
+        if (providers.slug.toLowerCase() === this.provider.toLowerCase()) {
+          this.dataPackages = providers;
+        }
+      });
       this.isShowModalPackages = true;
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
     },
-    async fetchPackages() {
-      const provider =
-        this.provider === 'microsoft'
-          ? 'microsoft365'
-          : this.provider.toLowerCase();
-
-      try {
-        const { data } = await axios.get(
-          `https://seakun-packet-api-v2.herokuapp.com/${provider}`
-        );
-        if (data) {
-          this.dataPackages = data;
-          this.isFetchingPacket = false;
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    },
     choosePacket(packet) {
       this.$router.push(
-        `/order?provider=${this.provider}&packet_id=${packet.id}`
+        `/order?provider=${this.provider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );
-    },
-  },
-  watch: {
-    provider() {
-      this.isFetchingPacket = true;
-      this.fetchPackages();
     },
   },
 };
