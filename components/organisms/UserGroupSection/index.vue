@@ -131,12 +131,12 @@ export default {
           slug: 'disney-hotstar',
           icon: '/images/icons/disney-hotstar.png',
         },
-        // {
-        //   id: 8,
-        //   name: 'Apple One',
-        //   slug: 'apple-one',
-        //   icon: '/images/icons/apple-one.svg',
-        // },
+        {
+          id: 8,
+          name: 'Apple One',
+          slug: 'apple-one',
+          icon: '/images/icons/apple-one.svg',
+        },
         // {
         //   id: 9,
         //   name: 'Wattpad',
