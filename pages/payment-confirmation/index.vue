@@ -199,6 +199,7 @@ export default {
       paymentFromList: [],
       paymentDestinationList: [],
       paymentToUid: '',
+      paymentFromUid: '',
       time1: moment().format('YYYY-MM-DD').toString(),
       imageFile: null,
       errorForm: {
@@ -303,6 +304,7 @@ export default {
 
       if (type == 'paymentUsage') {
         this.bankCustomer = value.bank;
+        this.paymentFromUid = value.uid;
         this.paymentUsage = false;
         this.errorForm.bankCustomer.isError = false;
       }
@@ -556,7 +558,7 @@ export default {
 
       formDataDigital.append('orderUid', this.dataDetailPayment.orderUid);
       formDataDigital.append('paymentTo', this.paymentToUid);
-      formDataDigital.append('paymentFromBank', this.bankCustomer);
+      formDataDigital.append('paymentFromBank', this.paymentFromUid);
       formDataDigital.append('paymentFromName', this.userName);
       formDataDigital.append('transferAmount', parseInt(this.nominal));
       formDataDigital.append('paymentAt', moment(this.time1).unix());
@@ -596,7 +598,7 @@ export default {
     toThankyouPage() {
       const { order_uid, customer_uid } = this.$router.history.current.query;
       this.$router.push(
-        `/thankyou?nominal=${this.nominal}&date=${this.time1}&order_uid=${order_uid}&customer_uid=${customer_uid}`
+        `/thankyou?&order_uid=${order_uid}&customer_uid=${customer_uid}`
       );
     },
     getPaymentImage(file) {

@@ -68,7 +68,7 @@
             class="tn:grid tn:grid-cols-5 tn:justify-between tn:items-center md:mt-2 relative"
           >
             <p class="font-bold text-lg tn:col-span-3">
-              {{ destinationBank }} a.n PT. Seakun Global
+              {{ destinationBank }} a.n {{ destinationHolderName }}
             </p>
             <img
               v-if="paymentBankTo"
@@ -126,6 +126,7 @@ export default {
       paymentBankFrom: '',
       paymentBankTo: '',
       destinationBank: '',
+      destinationHolderName: '',
       paymentDate: '',
       isLoading: false,
       dataDetailOrder: {},
@@ -144,14 +145,8 @@ export default {
   },
   mounted() {
     this.OrderService = new OrderService(this);
-    const {
-      nominal,
-      date,
-      order_uid,
-      customer_uid,
-    } = this.$router.history.current.query;
-    this.transferAmount = nominal;
-    this.paymentDate = moment(date).locale('id').format('D MMMM YYYY');
+    const { order_uid, customer_uid } = this.$router.history.current.query;
+
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
@@ -185,6 +180,11 @@ export default {
           this.destinationBank = this.dataDetailOrder.payment.paymentToBank;
           this.paymentBankFrom = this.dataDetailOrder.payment.paymentFromBank.toLowerCase();
           this.paymentBankTo = this.dataDetailOrder.payment.paymentToBank.toLowerCase();
+          this.destinationHolderName = this.dataDetailOrder.payment.paymentToName;
+          this.transferAmount = this.dataDetailOrder.payment.transferAmount;
+          this.paymentDate = moment(this.dataDetailOrder.payment.paymentDate)
+            .locale('id')
+            .format('D MMMM YYYY');
 
           this.dataProduct = {
             provider: this.dataDetailOrder.provider.slug,
