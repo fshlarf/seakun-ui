@@ -173,7 +173,7 @@ export default {
         if (fetchPayment.data) {
           const dataResult = fetchPayment.data.data;
           this.detailPaymentDigital = {
-            name: dataResult.provider.package.variant.name,
+            name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
             price: dataResult.payment.totalPrice,
             payment: dataResult.payment.payment,
             duration: dataResult.provider.package.variant.duration,

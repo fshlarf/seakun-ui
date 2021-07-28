@@ -34,7 +34,7 @@
       </p>
       <div class="text-center">
         <p class="tn:text-2xl md:text-3xl font-semibold">
-          {{ currencyFormat(transferAmount) }}
+          {{ currencyFormat(dataDetailOrder.transferAmount) }}
         </p>
       </div>
 
@@ -44,7 +44,10 @@
       >
         <div class="border-b-2 border-gray-200 tn:pb-1 md:pb-3 tn:mt-3 md:mt-4">
           <p class="text-lg text-gray-400">Metode Pembayaran</p>
-          <div v-if="paymentBankFrom === 'lainnya'" class="md:mt-2">
+          <div
+            v-if="dataDetailOrder.paymentBankFrom === 'lainnya'"
+            class="md:mt-2"
+          >
             <p class="font-bold text-lg">Bank Transfer Manual</p>
           </div>
           <div
@@ -53,17 +56,21 @@
           >
             <p class="font-bold text-lg tn:col-span-3">Bank Transfer Manual</p>
             <img
-              v-if="paymentBankFrom"
+              v-if="dataDetailOrder.paymentBankFrom"
               class="tn:col-span-2 absolute bottom-0 right-0 tn:w-1/3 tn:h-auto md:w-auto md:h-16"
               @onerror="onErrorImageBank()"
-              :src="`images/payment/${setNameBank(paymentBankFrom)}.png`"
+              :src="`images/payment/${setNameBank(
+                dataDetailOrder.paymentBankFrom
+              )}.png`"
             />
           </div>
         </div>
 
         <div class="tn:mt-4 md:mt-5">
           <p class="text-lg text-gray-400">Nama Rekening</p>
-          <p class="font-bold text-lg md:mt-2">{{ paymentHolder }}</p>
+          <p class="font-bold text-lg md:mt-2">
+            {{ dataDetailOrder.paymentHolder }}
+          </p>
         </div>
 
         <div class="tn:mt-3 md:mt-4">
@@ -72,13 +79,16 @@
             class="tn:grid tn:grid-cols-5 tn:justify-between tn:items-center md:mt-2 relative"
           >
             <p class="font-bold text-lg tn:col-span-3">
-              {{ destinationBank }} a.n {{ destinationHolderName }}
+              {{ dataDetailOrder.destinationBank }} a.n
+              {{ dataDetailOrder.destinationHolderName }}
             </p>
             <img
-              v-if="paymentBankTo"
+              v-if="dataDetailOrder.paymentBankTo"
               class="tn:col-span-2 absolute bottom-0 right-0 tn:w-1/3 tn:h-auto md:w-auto md:h-16"
               @onerror="onErrorImageBank()"
-              :src="`images/payment/${setNameBank(paymentBankTo)}.png`"
+              :src="`images/payment/${setNameBank(
+                dataDetailOrder.paymentBankTo
+              )}.png`"
             />
           </div>
         </div>
@@ -86,7 +96,7 @@
         <div class="tn:mt-3 md:mt-4">
           <p class="text-lg text-gray-400">Tanggal Pembayaran</p>
           <p class="font-bold text-lg md:mt-2">
-            {{ paymentDate }}
+            {{ dataDetailOrder.paymentDate }}
           </p>
         </div>
       </div>
@@ -132,15 +142,16 @@ export default {
       OrderService,
       currencyFormat,
       moment,
-      transferAmount: '',
-      paymentHolder: '',
-      paymentBankFrom: '',
-      paymentBankTo: '',
-      destinationBank: '',
-      destinationHolderName: '',
-      paymentDate: '',
       isLoading: false,
-      dataDetailOrder: {},
+      dataDetailOrder: {
+        transferAmount: '',
+        paymentHolder: '',
+        paymentBankFrom: '',
+        paymentBankTo: '',
+        destinationBank: '',
+        destinationHolderName: '',
+        paymentDate: '',
+      },
       dataProduct: {
         provider: '',
         packageName: '',
@@ -187,24 +198,25 @@ export default {
         );
         if (fetchDataOrder.data) {
           const dataResult = fetchDataOrder.data.data;
-          this.dataDetailOrder = dataResult;
-          this.paymentHolder = this.dataDetailOrder.payment.paymentFromName;
-          this.destinationBank = this.dataDetailOrder.payment.paymentToBank;
-          this.paymentBankFrom = this.dataDetailOrder.payment.paymentFromBank.toLowerCase();
-          this.paymentBankTo = this.dataDetailOrder.payment.paymentToBank.toLowerCase();
-          this.destinationHolderName = this.dataDetailOrder.payment.paymentToName;
-          this.transferAmount = this.dataDetailOrder.payment.transferAmount;
-          this.paymentDate = moment
-            .unix(this.dataDetailOrder.payment.paymentDate)
-            .locale('id')
-            .format('D MMMM YYYY');
+          this.dataDetailOrder = {
+            paymentHolder: dataResult.payment.paymentFromName,
+            destinationBank: dataResult.payment.paymentToBank,
+            paymentBankFrom: dataResult.payment.paymentFromBank.toLowerCase(),
+            paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
+            destinationHolderName: dataResult.payment.paymentToName,
+            transferAmount: dataResult.payment.transferAmount,
+            paymentDate: moment
+              .unix(dataResult.payment.paymentDate)
+              .locale('id')
+              .format('D MMMM YYYY'),
+          };
 
           this.dataProduct = {
-            provider: this.dataDetailOrder.provider.slug,
-            packageName: this.dataDetailOrder.provider.package.variant.name,
-            grandTotal: this.dataDetailOrder.payment.totalPrice,
-            totalMonth: this.dataDetailOrder.provider.package.variant.duration,
-            payment: this.dataDetailOrder.payment.payment,
+            provider: dataResult.provider.slug,
+            packageName: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
+            grandTotal: dataResult.payment.totalPrice,
+            totalMonth: dataResult.provider.package.variant.duration,
+            payment: dataResult.payment.payment,
           };
         } else {
           throw new Error(fetchDataOrder);
