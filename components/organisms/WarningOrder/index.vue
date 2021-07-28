@@ -108,7 +108,7 @@ export default {
       const getDataOrder = localStorage.getItem('swo')
         ? JSON.parse(localStorage['swo'])
         : {};
-      this.$router.push(getDataOrder.redirectUrl);
+      window.location.href = getDataOrder.redirectUrl;
     },
   },
 };

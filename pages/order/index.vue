@@ -496,7 +496,7 @@ export default {
     },
     redirectPage(payload) {
       if (!payload.userhost && !payload.ispreorder) {
-        this.$router.push(payload.redirectUrl);
+        window.location.href = payload.redirectUrl;
       } else {
         this.$router.push({
           path: this.setPathToRedirect(payload),
