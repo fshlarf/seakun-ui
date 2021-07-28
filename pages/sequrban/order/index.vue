@@ -216,6 +216,7 @@
 
 <script>
 import axios from 'axios';
+import { SEAKUN_API, SEAKUN_PACKAGE_API } from '~/constants/api.js';
 import SequrbanChoiceCard from '../views/SequrbanOrderChoiceCard.vue';
 import SequrbanWarningCard from '../views/SequrbanOrderWarningCard.vue';
 import ModalChangeOrderPackage from '../views/ModalChangeOrderPackage.vue';
@@ -234,6 +235,8 @@ import { internationalPhoneNumbers } from '../../../constants';
 export default {
   data() {
     return {
+      SEAKUN_API,
+      SEAKUN_PACKAGE_API,
       typeId: '',
       isLoading: false,
       isLoadingSubmit: false,
@@ -351,9 +354,10 @@ export default {
   },
   methods: {
     getDataQurban() {
+      const { SEAKUN_PACKAGE_API } = this;
       this.isLoading = true;
       axios
-        .get('https://seakun-packet-api-v1.herokuapp.com/sequrban')
+        .get(`${SEAKUN_PACKAGE_API}/sequrban`)
         .then((res) => {
           this.dataQurban = res.data;
           this.isLoading = false;
@@ -361,9 +365,10 @@ export default {
         .catch((err) => console.log(err));
     },
     getDataDetailQurban(id) {
+      const { SEAKUN_PACKAGE_API } = this;
       this.isLoading = true;
       axios
-        .get(`https://seakun-packet-api-v1.herokuapp.com/sequrban/${id}`)
+        .get(`${SEAKUN_PACKAGE_API}/sequrban/${id}`)
         .then((res) => {
           this.dataDetailQurban = res.data;
           this.isLoading = false;
@@ -572,6 +577,7 @@ export default {
       this.isShowModalConfirmation = false;
     },
     submitDataOrder() {
+      const { SEAKUN_API } = this;
       this.isLoadingSubmit = true;
       this.dataParamOrder = {
         email: this.dataParamOrder.email,
@@ -600,10 +606,7 @@ export default {
         remaining_payment: parseInt(this.dataDetailQurban.remainingPayment),
       };
       axios
-        .post(
-          'https://seakun-api.herokuapp.com/sequrban/register',
-          this.dataParamOrder
-        )
+        .post(`${SEAKUN_API}/sequrban/register`, this.dataParamOrder)
         .then((res) => {
           this.toPaymentPage();
           // this.executeApiMailSeakun(payload);
