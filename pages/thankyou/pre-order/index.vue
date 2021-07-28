@@ -63,12 +63,14 @@
 <script>
 import axios from 'axios';
 import { setNameProvider } from '~/helpers/word-transformation.js';
+import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
 
 export default {
   name: 'PreOrderPage',
   layout: 'new',
   data() {
     return {
+      SEAKUN_PACKAGE_API,
       setNameProvider,
       provider: '',
       packet: '',
@@ -99,6 +101,7 @@ export default {
       }
     },
     getDataPacket() {
+      const { SEAKUN_PACKAGE_API } = this;
       const {
         provider,
         packet_id,
@@ -107,7 +110,7 @@ export default {
       this.provider = provider === 'microsoft' ? 'microsoft365' : provider;
       axios
         .get(
-          `https://seakun-packet-api-v1.herokuapp.com/${this.provider.toLowerCase()}/${packet_id}`
+          `${SEAKUN_PACKAGE_API}/${this.provider.toLowerCase()}/${packet_id}`
         )
         .then((res) => {
           const { data, status } = res;
@@ -126,8 +129,9 @@ export default {
         .catch((err) => console.log(err));
     },
     getVouchersData() {
+      const { SEAKUN_PACKAGE_API } = this;
       axios
-        .get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
+        .get(`${SEAKUN_PACKAGE_API}/vouchers`)
         .then((res) => {
           this.vouchersData = res.data;
         })
