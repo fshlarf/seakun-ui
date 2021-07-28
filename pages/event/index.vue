@@ -209,6 +209,7 @@ import FormInput from '~/components/atoms/FormInput';
 import ButtonDrop from '~/components/atoms/ButtonDropDown';
 import EventDetail from './views/event-detail';
 import axios from 'axios';
+import { SEAKUN_API } from '~/constants/api.js';
 
 export default {
   components: {
@@ -220,6 +221,7 @@ export default {
   },
   data() {
     return {
+      SEAKUN_API,
       dataEvent: {},
       dataUser: {
         fullname: '',
@@ -262,8 +264,9 @@ export default {
   },
   methods: {
     getDataEvent() {
+      const { SEAKUN_API } = this;
       axios
-        .get(`https://seakun-api.herokuapp.com/event/${this.$route.query.name}`)
+        .get(`${SEAKUN_API}/event/${this.$route.query.name}`)
         .then((res) => {
           this.dataEvent = res.data;
         })
@@ -322,6 +325,7 @@ export default {
         : (this.errorMsg.source_info = '');
     },
     postRegisteredUser() {
+      const { SEAKUN_API } = this;
       this.isDisableBtn = true;
       let payload = {
         ...this.dataUser,
@@ -329,7 +333,7 @@ export default {
         slug_event: this.dataEvent.slug_event,
       };
       axios
-        .post('https://seakun-api.herokuapp.com/event/register-user', payload)
+        .post(`${SEAKUN_API}/event/register-user`, payload)
         .then((res) => {
           this.isDisableBtn = false;
           this.$router.push('/thankyou/event-registered');

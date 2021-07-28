@@ -105,6 +105,7 @@ import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
 import axios from 'axios';
 import ModalPackages from './views/ModalPackages.vue';
+import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
 
 export default {
   components: {
@@ -116,6 +117,7 @@ export default {
   },
   data() {
     return {
+      SEAKUN_PACKAGE_API,
       showModalScheme: false,
       providerList,
       isLoadingProduct: false,
@@ -189,11 +191,10 @@ export default {
       this.isShowModalPackages = false;
     },
     async fechProviders(type) {
+      const { SEAKUN_PACKAGE_API } = this;
       this.isLoadingProduct = true;
       try {
-        const { data } = await axios.get(
-          `https://seakun-packet-api-v1.herokuapp.com/${type}`
-        );
+        const { data } = await axios.get(`${SEAKUN_PACKAGE_API}/${type}`);
         for (let i = 1; i <= 20; i++) {
           data.forEach((element) => {
             if (element.id === i) this.dataProductDigital.push(element);
@@ -216,11 +217,12 @@ export default {
       this.$router.push(`/${product.slug}`);
     },
     async fetchPackages(provider) {
+      const { SEAKUN_PACKAGE_API } = this;
       const theProvider = provider === 'microsoft' ? 'microsoft365' : provider;
 
       try {
         const { data } = await axios.get(
-          `https://seakun-packet-api-v1.herokuapp.com/${theProvider}`
+          `${SEAKUN_PACKAGE_API}/${theProvider}`
         );
         if (data) {
           this.dataPackages = data;

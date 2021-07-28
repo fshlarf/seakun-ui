@@ -57,7 +57,7 @@
 
     <ModalPackages
       :is-show="isShowModalPackages"
-      :provider="setNameProvider"
+      :provider="setNameProvider(provider)"
       @on-close="onCloseModalPackages"
       :packages="dataPackages"
       :slug="provider"
@@ -68,6 +68,8 @@
 </template>
 
 <script>
+import { setNameProvider } from '~/helpers/word-transformation.js';
+import { SEAKUN_API, SEAKUN_PACKAGE_API } from '~/constants/api.js';
 import ProviderPill from '~/components/mollecules/ProviderPill.vue';
 import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
@@ -80,6 +82,9 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      SEAKUN_API,
+      SEAKUN_PACKAGE_API,
+      setNameProvider,
       shimmerInitialData: Array(4),
       isLoading: true,
       dataDetailGroup: [],
@@ -164,44 +169,6 @@ export default {
   mounted() {
     this.getCustomersData('netflix');
   },
-  computed: {
-    setNameProvider() {
-      switch (this.provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'apple-one':
-          return 'Apple One';
-          break;
-        case 'wattpad':
-          return 'Wattpad';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
-        default:
-          return this.provider;
-      }
-    },
-  },
   methods: {
     selectProvider(provider) {
       this.getCustomersData(provider.slug);
@@ -209,10 +176,9 @@ export default {
       this.highlight = provider.slug;
     },
     getCustomersData(provider) {
+      const { SEAKUN_API } = this;
       axios
-        .get(
-          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
-        )
+        .get(`${SEAKUN_API}/registered-user/group-${provider}`)
         .then((res) => {
           this.processDataCustomers(res.data, provider);
           this.isLoading = false;
@@ -256,15 +222,14 @@ export default {
       this.isShowModalPackages = false;
     },
     async fetchPackages() {
+      const { SEAKUN_PACKAGE_API } = this;
       const provider =
         this.provider === 'microsoft'
           ? 'microsoft365'
           : this.provider.toLowerCase();
 
       try {
-        const { data } = await axios.get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider}`
-        );
+        const { data } = await axios.get(`${SEAKUN_PACKAGE_API}/${provider}`);
         if (data) {
           this.dataPackages = data;
           this.isFetchingPacket = false;

@@ -67,12 +67,16 @@
 
 <script>
 import axios from 'axios';
+import { setNameProvider } from '~/helpers/word-transformation.js';
+import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
 
 export default {
   name: 'UserHostPage',
   layout: 'new',
   data() {
     return {
+      SEAKUN_PACKAGE_API,
+      setNameProvider,
       provider: '',
       packet: '',
       packetId: null,
@@ -86,6 +90,7 @@ export default {
   },
   methods: {
     getPaymentDetail() {
+      const { SEAKUN_PACKAGE_API } = this;
       const {
         provider,
         packet_id,
@@ -94,9 +99,7 @@ export default {
       this.provider = provider;
 
       axios
-        .get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider.toLowerCase()}/${packet_id}`
-        )
+        .get(`${SEAKUN_PACKAGE_API}/${provider.toLowerCase()}/${packet_id}`)
         .then((res) => {
           const { data, status } = res;
           if (status === 200) {
@@ -114,8 +117,9 @@ export default {
         .catch((err) => console.log(err));
     },
     getVouchersData() {
+      const { SEAKUN_PACKAGE_API } = this;
       axios
-        .get('https://seakun-packet-api-v1.herokuapp.com/vouchers')
+        .get(`${SEAKUN_PACKAGE_API}/vouchers`)
         .then((res) => {
           this.vouchersData = res.data;
         })
@@ -140,34 +144,6 @@ export default {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
       } else if (num == 0) {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      }
-    },
-    setNameProvider(provider) {
-      switch (provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
       }
     },
   },

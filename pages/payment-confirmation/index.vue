@@ -169,6 +169,11 @@ import moment from 'moment';
 import Input from '../../components/atoms/Input.vue';
 import { currencyFormat } from '~/helpers';
 import axios from 'axios';
+import {
+  SEAKUN_API,
+  SEAKUN_PACKAGE_API,
+  SEAKUN_MAIL_API,
+} from '~/constants/api.js';
 
 export default {
   name: 'paymentConfirmation',
@@ -184,6 +189,9 @@ export default {
     Input,
   },
   data: () => ({
+    SEAKUN_API,
+    SEAKUN_PACKAGE_API,
+    SEAKUN_MAIL_API,
     moment,
     isLoadingSubmit: false,
     bankSeakun: 'Pilih Bank tujuan milik Seakun.id',
@@ -303,10 +311,9 @@ export default {
       }
     },
     getDataDetailPacket(provider) {
+      const { SEAKUN_PACKAGE_API } = this;
       axios
-        .get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider}/${this.packet_id}`
-        )
+        .get(`${SEAKUN_PACKAGE_API}/${provider}/${this.packet_id}`)
         .then((res) => {
           this.dataDetailPacket = res.data;
           provider === 'sequrban'
@@ -336,6 +343,7 @@ export default {
       }
     },
     submitConfirmation() {
+      const { SEAKUN_API } = this;
       this.isLoadingSubmit = true;
 
       const formData = new FormData();
@@ -354,7 +362,7 @@ export default {
 
       axios
         .post(
-          `https://seakun-api.herokuapp.com/confirm-payment/${
+          `${SEAKUN_API}/confirm-payment/${
             this.provider.toLowerCase() === 'sequrban' ? 'on-demand' : 'digital'
           }`,
           formData,
@@ -389,6 +397,7 @@ export default {
       }
     },
     executeApiMailConfirmPayment() {
+      const { SEAKUN_MAIL_API } = this;
       let payload = {
         type: 'downpayment',
         provider: this.provider,
@@ -399,10 +408,7 @@ export default {
         date: this.time1,
       };
       axios
-        .post(
-          'https://seakun-mail-api-v1.herokuapp.com/payment-confirm',
-          payload
-        )
+        .post(`${SEAKUN_MAIL_API}/payment-confirm`, payload)
         .then((res) => {
           this.toThankyouPage();
           this.isLoadingSubmit = false;
