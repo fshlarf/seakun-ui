@@ -67,12 +67,14 @@
 
 <script>
 import axios from 'axios';
+import { setNameProvider } from '~/helpers/word-transformation.js';
 
 export default {
   name: 'UserHostPage',
   layout: 'new',
   data() {
     return {
+      setNameProvider,
       provider: '',
       packet: '',
       packetId: null,
@@ -140,34 +142,6 @@ export default {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
       } else if (num == 0) {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      }
-    },
-    setNameProvider(provider) {
-      switch (provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
       }
     },
   },

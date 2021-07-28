@@ -57,7 +57,7 @@
 
     <ModalPackages
       :is-show="isShowModalPackages"
-      :provider="setNameProvider"
+      :provider="setNameProvider(provider)"
       @on-close="onCloseModalPackages"
       :packages="dataPackages"
       :slug="provider"
@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import { setNameProvider } from '~/helpers/word-transformation.js';
 import ProviderPill from '~/components/mollecules/ProviderPill.vue';
 import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
@@ -80,6 +81,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      setNameProvider,
       shimmerInitialData: Array(4),
       isLoading: true,
       dataDetailGroup: [],
@@ -163,44 +165,6 @@ export default {
   },
   mounted() {
     this.getCustomersData('netflix');
-  },
-  computed: {
-    setNameProvider() {
-      switch (this.provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'apple-one':
-          return 'Apple One';
-          break;
-        case 'wattpad':
-          return 'Wattpad';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
-        default:
-          return this.provider;
-      }
-    },
   },
   methods: {
     selectProvider(provider) {

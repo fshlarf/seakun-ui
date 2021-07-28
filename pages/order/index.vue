@@ -122,7 +122,7 @@
 
       <ModalPackages
         :is-show="isShowModalPackages"
-        :provider="setNameProvider"
+        :provider="setNameProvider(provider)"
         @on-close="onCloseModalPackages"
         :packages="dataPackages"
         :slug="provider"
@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import { setNameProvider } from '~/helpers/word-transformation.js';
 import axios from 'axios';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
@@ -166,6 +167,7 @@ export default {
     ModalPackages,
   },
   data: () => ({
+    setNameProvider,
     provider: '',
     packageId: '',
     packet: '',
@@ -227,36 +229,6 @@ export default {
       this.getOrderDetail();
     }
     this.setFieldValueFromLocalStorage();
-  },
-  computed: {
-    setNameProvider() {
-      switch (this.provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
-      }
-    },
   },
   methods: {
     async getOrderDetail() {
