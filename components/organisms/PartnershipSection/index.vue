@@ -41,7 +41,7 @@
       class="relative flex justify-center z-0 tn:-mt-6 tn:block md:hidden text-center px-7 mb-16"
     >
       <div class="tn:block md:hidden absolute mx-auto z-10 top-0">
-        <a  href="mailto:partnership@seakun.id">
+        <a href="mailto:partnership@seakun.id">
           <Button
             class="mx-auto btn-partner"
             variant="secondary"
@@ -62,17 +62,17 @@ export default {
       dataCounter: [
         {
           id: 1,
-          value: '18.000+',
+          value: '25.000+',
           label: 'Total Transaksi',
         },
         {
           id: 2,
-          value: '7.000+',
+          value: '8.000+',
           label: 'Total Pengguna',
         },
         {
           id: 3,
-          value: '10',
+          value: '12',
           label: 'Total Layanan',
         },
         {
