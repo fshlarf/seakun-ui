@@ -135,6 +135,11 @@
 
 <script>
 import { setNameProvider } from '~/helpers/word-transformation.js';
+import {
+  SEAKUN_API,
+  SEAKUN_PACKAGE_API,
+  SEAKUN_MAIL_API,
+} from '~/constants/api.js';
 import axios from 'axios';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
@@ -167,6 +172,9 @@ export default {
     ModalPackages,
   },
   data: () => ({
+    SEAKUN_API,
+    SEAKUN_PACKAGE_API,
+    SEAKUN_MAIL_API,
     setNameProvider,
     provider: '',
     packageId: '',
@@ -232,6 +240,7 @@ export default {
   },
   methods: {
     async getOrderDetail() {
+      const { SEAKUN_PACKAGE_API } = this;
       const { detailOrder } = this;
       this.detailOrder = {
         ...detailOrder,
@@ -244,7 +253,7 @@ export default {
             : this.provider.toLowerCase();
 
         const fetchGetDetailOrder = await axios.get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider}/${this.packageId}`
+          `${SEAKUN_PACKAGE_API}/${provider}/${this.packageId}`
         );
         if (fetchGetDetailOrder.status == 200) {
           const { data } = fetchGetDetailOrder;
@@ -398,6 +407,7 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     async postRegisteredUser() {
+      const { SEAKUN_API } = this;
       this.isShowLoading = true;
 
       let payload = {
@@ -424,7 +434,7 @@ export default {
       const headers = { 'Access-Control-Allow-Origin': '*' };
       try {
         const fetchPostUser = await axios.post(
-          'https://seakun-api.herokuapp.com/registered-user',
+          `${SEAKUN_API}/registered-user`,
           payload,
           {
             headers: headers,
@@ -440,12 +450,13 @@ export default {
       }
     },
     executeApiMailSeakun(payload) {
+      const { SEAKUN_MAIL_API } = this;
       let newPayload = {
         ...payload,
         payment_type: this.detailOrder.data.paymentType,
       };
       axios
-        .post('https://seakun-mail-api-v1.herokuapp.com/', newPayload)
+        .post(`${SEAKUN_MAIL_API}/`, newPayload)
         .then((res) => {
           this.isDisableBtn = false;
           // Redirect to thankyou page when successfully registration
@@ -489,15 +500,14 @@ export default {
       this.fetchPackages(product.slug);
     },
     async fetchPackages() {
+      const { SEAKUN_PACKAGE_API } = this;
       const provider =
         this.provider === 'microsoft'
           ? 'microsoft365'
           : this.provider.toLowerCase();
 
       try {
-        const { data } = await axios.get(
-          `https://seakun-packet-api-v1.herokuapp.com/${provider}`
-        );
+        const { data } = await axios.get(`${SEAKUN_PACKAGE_API}/${provider}`);
         if (data) {
           this.dataPackages = data;
         }
