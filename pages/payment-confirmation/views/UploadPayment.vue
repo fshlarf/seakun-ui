@@ -12,7 +12,7 @@
       :class="{ 'border border-red-500': error.isError }"
       type="file"
       :id="name"
-      accept="image/*"
+      accept="image/*,.pdf"
       @change="getImage"
       hidden
     />
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     getImage(event) {
-      const imageFiles = event.target.files
+      const imageFiles = event.target.files;
       this.$emit('get-image', imageFiles[0]);
     },
   },

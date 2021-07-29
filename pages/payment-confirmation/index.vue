@@ -108,7 +108,14 @@
             v-model="time1"
             valueType="format"
             :disabled-date="(time1) => time1 >= new Date()"
+            @change="validateInput('paymentDate')"
           ></DatePicker>
+          <p
+            v-if="errorForm.paymentDate.isError"
+            class="text-red-500 text-xs pt-1 italic"
+          >
+            {{ errorForm.paymentDate.message }}
+          </p>
         </div>
 
         <UploadPayment
@@ -122,7 +129,13 @@
         />
 
         <div class="mb-4 mx-auto" :class="{ hidden: !isUpload }">
-          <img class="mx-auto" id="previewImage" alt="your image" />
+          <img
+            v-if="isImage"
+            class="mx-auto"
+            id="previewImage"
+            alt="your image"
+          />
+          <p v-else class="font-bold" id="showFileName"></p>
         </div>
 
         <Button
@@ -179,6 +192,7 @@ export default {
       dateTime: null,
       photoUrl: '',
       isUpload: false,
+      isImage: false,
       paymenDestination: false,
       paymentUsage: false,
       packet_id: '',
@@ -220,6 +234,10 @@ export default {
           message: '',
         },
         uploadImage: {
+          isError: false,
+          message: '',
+        },
+        paymentDate: {
           isError: false,
           message: '',
         },
@@ -398,7 +416,14 @@ export default {
     //     .catch((err) => console.log(err));
     // },
     validateInput(input) {
-      const { nominal, bankCustomer, bankSeakun, imageFile, userName } = this;
+      const {
+        nominal,
+        bankCustomer,
+        bankSeakun,
+        imageFile,
+        userName,
+        time1,
+      } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
       const nominalFormat = /^[0-9]*$/;
       let bankList = [];
@@ -427,6 +452,10 @@ export default {
           message: '',
         },
         uploadImage: {
+          isError: false,
+          message: '',
+        },
+        paymentDate: {
           isError: false,
           message: '',
         },
@@ -496,6 +525,16 @@ export default {
           errorTemp.uploadImage = {
             isError: true,
             message: 'Bukti pembayaran harus diisi',
+          };
+          isValid = false;
+        }
+      }
+
+      if (input === 'paymentDate' || !input) {
+        if (time1 === null) {
+          errorTemp.paymentDate = {
+            isError: true,
+            message: 'Tanggal pembayaran harus diisi',
           };
           isValid = false;
         }
@@ -606,7 +645,13 @@ export default {
         this.isUpload = true;
         this.imageFile = file;
         const imageUpload = document.getElementById('previewImage');
-        imageUpload.src = URL.createObjectURL(this.imageFile);
+        const pdfUpload = document.getElementById('showFileName');
+        if (file['type'].split('/')[0] === 'image') {
+          this.isImage = true;
+          imageUpload.src = URL.createObjectURL(this.imageFile);
+        } else {
+          pdfUpload.innerHTML = this.imageFile.name;
+        }
         this.errorForm.uploadImage.isError = false;
       }
     },
