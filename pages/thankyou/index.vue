@@ -107,12 +107,11 @@
 
       <div class="">
         <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
-          Mohon menunggu 1x30 menit. Jika melewati rentang waktu tersebut dan
-          pesanan kamu belum di proses, harap hubungi admin via whatsapp
+          Untuk proses yang lebih cepat, harap konfirmasi ulang melalui Whatsapp dengan klik nomor berikut
           <a
             class="text-primary"
             target="_blank"
-            href="https://api.whatsapp.com/send?phone=6282124852227"
+            :href="getLinkWhatsapp()"
             >+6282124852227</a
           >
         </p>
@@ -143,6 +142,7 @@ export default {
       currencyFormat,
       moment,
       isLoading: false,
+      order_uid : "",
       dataDetailOrder: {
         transferAmount: '',
         paymentHolder: '',
@@ -170,6 +170,7 @@ export default {
   mounted() {
     this.OrderService = new OrderService(this);
     const { order_uid, customer_uid } = this.$router.history.current.query;
+    this.order_uid = order_uid
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
@@ -177,13 +178,10 @@ export default {
       switch (bank) {
         case 'digibank / dbs':
           return 'digibank';
-          break;
         case 'keb hana / line bank':
           return 'keb hana';
-          break;
         case 'syariah indonesia / bsi':
           return 'bsi';
-          break;
         default:
           return bank;
       }
@@ -205,6 +203,7 @@ export default {
             paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
             destinationHolderName: dataResult.payment.paymentToName,
             transferAmount: dataResult.payment.transferAmount,
+            orderNumber : dataResult.orderNumber,
             paymentDate: moment
               .unix(dataResult.payment.paymentDate)
               .locale('id')
@@ -241,6 +240,15 @@ export default {
       }
       return '-';
     },
+    getLinkWhatsapp (){
+      const orderNumber = this.dataDetailOrder.orderNumber
+      const name = this.dataDetailOrder.paymentHolder
+      const packageName  = this.dataProduct.packageName
+
+      return `https://api.whatsapp.com/send/?phone=6282124852227&text=
+        Halo+saya+sudah+melakukan+pesanan+dan+pembayaran%0A%0A*No+Order:*+${orderNumber}%0A*Nama:*+${name}%0A*Pesanan:*+${packageName}&app_absent=0`
+
+    }
   },
 };
 </script>
