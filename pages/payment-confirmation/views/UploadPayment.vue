@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     getImage(event) {
-      const imageFiles = event.target.files
+      const imageFiles = event.target.files;
       this.$emit('get-image', imageFiles[0]);
     },
   },
