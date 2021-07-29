@@ -46,10 +46,10 @@
             v-for="(packageDetail, id) in product.variants"
             :key="id"
           >
-            <p class="font-semibold md:font-normal">
+            <p class="font-semibold md:font-normal xl:w-[45%]">
               {{ packageDetail.packageName }}
             </p>
-            <p class="font-bold">
+            <p class="font-bold xl:w-[55%] xl:text-right">
               {{ formatMoneyRupiah(packageDetail.grandTotal) }}
               <span
                 v-if="packageDetail.duration === 12"
