@@ -21,11 +21,7 @@
             Terima kasih telah melakukan pendaftaran.
             <br />Karena kamu terdaftar sebagai User Host, Admin Seakun.id akan
             memandu kamu untuk melakukan proses
-            {{
-              provider === 'youtube'
-                ? 'pendaftaran menggunakan nomor ponsel yang kamu miliki'
-                : 'payment'
-            }}
+            {{ setWordingHost(provider) }}
             ke {{ setNameProvider(provider) }}.
           </p>
           <p>
@@ -144,6 +140,17 @@ export default {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
       } else if (num == 0) {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
+      }
+    },
+    setWordingHost(provider) {
+      if (provider.toLowerCase() === 'youtube') {
+        return 'pendaftaran menggunakan nomor ponsel yang kamu miliki';
+      } else if (provider.toLowerCase() === 'netflix') {
+        return 'payment';
+      } else if (provider.toLowerCase() === 'apple-one') {
+        return 'verifikasi Apple ID';
+      } else {
+        return 'payment';
       }
     },
   },
