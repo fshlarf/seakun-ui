@@ -90,7 +90,6 @@
             :value="nominal"
             class="text-grey-400 mt-4"
             @keyup="validateInput('nominal')"
-            disabled
             :error="errorForm.nominal"
           />
         </div>
@@ -129,12 +128,38 @@
           :error="errorForm.uploadImage"
         />
 
-        <div class="mb-4 mx-auto hidden" :class="{ block: isUpload && (/(gif|jpe?g|tiff?|png|webp|bmp)$/i).test(fileExtension)}">
+        <div
+          class="mb-4 mx-auto hidden"
+          :class="{
+            block:
+              isUpload &&
+              /(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(fileExtension),
+          }"
+        >
           <img class="mx-auto" id="previewImage" alt="your image" />
         </div>
-         <div class="mb-4 mx-auto hidden" :class="{ block: isUpload && fileExtension === 'pdf'}">
-          <a class=" cursor-pointer mx-auto d-flex justify-center w-full text-center bg-yellow-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" target="_blank" id="previewPdf" alt="your image" > 
-           <svg class="mr-2" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px">    <path d="M13.172,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8.828c0-0.53-0.211-1.039-0.586-1.414l-4.828-4.828 C14.211,2.211,13.702,2,13.172,2z M15,18H9c-0.552,0-1-0.448-1-1v0c0-0.552,0.448-1,1-1h6c0.552,0,1,0.448,1,1v0 C16,17.552,15.552,18,15,18z M15,14H9c-0.552,0-1-0.448-1-1v0c0-0.552,0.448-1,1-1h6c0.552,0,1,0.448,1,1v0 C16,13.552,15.552,14,15,14z M13,9V3.5L18.5,9H13z"/></svg>
+        <div
+          class="mb-4 mx-auto hidden"
+          :class="{ block: isUpload && fileExtension === 'pdf' }"
+        >
+          <a
+            class="cursor-pointer mx-auto d-flex justify-center w-full text-center bg-yellow-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+            target="_blank"
+            id="previewPdf"
+            alt="your image"
+          >
+            <svg
+              class="mr-2"
+              fill="#000000"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24px"
+              height="24px"
+            >
+              <path
+                d="M13.172,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8.828c0-0.53-0.211-1.039-0.586-1.414l-4.828-4.828 C14.211,2.211,13.702,2,13.172,2z M15,18H9c-0.552,0-1-0.448-1-1v0c0-0.552,0.448-1,1-1h6c0.552,0,1,0.448,1,1v0 C16,17.552,15.552,18,15,18z M15,14H9c-0.552,0-1-0.448-1-1v0c0-0.552,0.448-1,1-1h6c0.552,0,1,0.448,1,1v0 C16,13.552,15.552,14,15,14z M13,9V3.5L18.5,9H13z"
+              />
+            </svg>
             Preview pdf
           </a>
         </div>
@@ -645,20 +670,19 @@ export default {
     getPaymentImage(file) {
       if (file) {
         this.isUpload = true;
-        const fileExtension = this.getFileExtension(file.name)
-        this.fileExtension = fileExtension
-        this.imageFile = file
-        
+        const fileExtension = this.getFileExtension(file.name);
+        this.fileExtension = fileExtension;
+        this.imageFile = file;
+
         if (fileExtension !== 'pdf') {
           // this.imageFile = {...this.imageFile,urlImage : URL.createObjectURL(this.imageFile) }
           const imageUpload = document.getElementById('previewImage');
           imageUpload.src = URL.createObjectURL(this.imageFile);
-        }else {
+        } else {
           const imageUpload = document.getElementById('previewPdf');
           imageUpload.href = URL.createObjectURL(this.imageFile);
-
         }
-       
+
         this.errorForm.uploadImage.isError = false;
       }
     },
@@ -690,8 +714,8 @@ export default {
       return currencyFormat(num);
     },
     getFileExtension(filename) {
-        return filename.substring(filename.lastIndexOf('.') + 1);;
-    }
+      return filename.substring(filename.lastIndexOf('.') + 1);
+    },
   },
 };
 </script>
@@ -712,4 +736,3 @@ export default {
   display: block !important;
 }
 </style>
-
