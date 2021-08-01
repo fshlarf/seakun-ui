@@ -1,5 +1,7 @@
 <template>
-  <div class="container tn:bg-white md:bg-transparent w-full mx-auto md:py-4">
+  <div
+    class="container tn:bg-white md:bg-transparent w-full mx-auto md:pt-4 tn:-mb-12 md:mb-0"
+  >
     <div
       class="wrapper-form w-full bg-white mx-auto xl:max-w-2xl md:rounded-3xl md:shadow-xl py-4 tn:px-3 md:px-5"
     >
@@ -195,7 +197,7 @@ import MasterService from '~/services/MasterServices.js';
 
 export default {
   name: 'paymentConfirmation',
-  layout: 'navigationBlank',
+  layout: 'new',
   components: {
     InputForm,
     DownArrowIcon,

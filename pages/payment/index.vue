@@ -77,7 +77,7 @@ export default {
     WarningInfo,
     Snackbar,
   },
-  layout: 'navigationBlank',
+  layout: 'new',
   data() {
     return {
       MasterService,
@@ -100,7 +100,7 @@ export default {
         data: [],
         loading: true,
       },
-      moment
+      moment,
     };
   },
   mounted() {
@@ -174,7 +174,7 @@ export default {
         );
         if (fetchPayment.data) {
           const dataResult = fetchPayment.data.data;
-          this.setOrderToLocalStorage(dataResult)
+          this.setOrderToLocalStorage(dataResult);
           this.detailPaymentDigital = {
             name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
             price: dataResult.payment.totalPrice,
@@ -227,15 +227,16 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-    setOrderToLocalStorage (dataOrder ){
+    setOrderToLocalStorage(dataOrder) {
       try {
-         const datOrderLocalStorage = localStorage['swo'] ? JSON.parse(localStorage['swo'])
-        : null;
-        if (datOrderLocalStorage){
+        const datOrderLocalStorage = localStorage['swo']
+          ? JSON.parse(localStorage['swo'])
+          : null;
+        if (datOrderLocalStorage) {
           ///if order exist in localstorage
-           if(dataOrder.order_uid === datOrderLocalStorage.order_uid){
-             return
-           }
+          if (dataOrder.order_uid === datOrderLocalStorage.order_uid) {
+            return;
+          }
         }
 
         localStorage.setItem(
@@ -243,10 +244,9 @@ export default {
           JSON.stringify({ ...dataOrder, createdAt: moment().unix() })
         );
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-       
-    } ,
+    },
     getVouchersData() {
       axios
         .get('https://seakun-packet-api-v2.herokuapp.com/vouchers')

@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl w-full mx-auto py-4 px-4">
+  <div class="max-w-2xl w-full mx-auto pt-4 px-4">
     <div class="">
       <h2 class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
       <p class="md:text-lg tn:text-base tn:mt-1 md:mt-3">
@@ -159,7 +159,7 @@ import moment from 'moment';
 
 export default {
   name: 'OrderPage',
-  layout: 'navigationBlank',
+  layout: 'new',
   components: {
     ProductHighLightLoading,
     ProductHighLight,

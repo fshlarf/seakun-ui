@@ -1,5 +1,5 @@
 <template>
-  <div class="thankyou max-w-2xl w-full mx-auto py-4">
+  <div class="thankyou max-w-2xl w-full mx-auto pt-4 tn:-mb-4 md:mb-0">
     <div
       class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full pt-4"
     >
@@ -107,11 +107,9 @@
 
       <div class="">
         <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
-          Untuk proses yang lebih cepat, harap konfirmasi ulang melalui Whatsapp dengan klik nomor berikut
-          <a
-            class="text-primary"
-            target="_blank"
-            :href="getLinkWhatsapp()"
+          Untuk proses yang lebih cepat, harap konfirmasi ulang melalui Whatsapp
+          dengan klik nomor berikut
+          <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
             >+6282124852227</a
           >
         </p>
@@ -135,14 +133,14 @@ import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
 export default {
   name: 'thankyou-page',
-  layout: 'navigationBlank',
+  layout: 'new',
   data() {
     return {
       OrderService,
       currencyFormat,
       moment,
       isLoading: false,
-      order_uid : "",
+      order_uid: '',
       dataDetailOrder: {
         transferAmount: '',
         paymentHolder: '',
@@ -170,7 +168,7 @@ export default {
   mounted() {
     this.OrderService = new OrderService(this);
     const { order_uid, customer_uid } = this.$router.history.current.query;
-    this.order_uid = order_uid
+    this.order_uid = order_uid;
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
@@ -203,7 +201,7 @@ export default {
             paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
             destinationHolderName: dataResult.payment.paymentToName,
             transferAmount: dataResult.payment.transferAmount,
-            orderNumber : dataResult.orderNumber,
+            orderNumber: dataResult.orderNumber,
             paymentDate: moment
               .unix(dataResult.payment.paymentDate)
               .locale('id')
@@ -240,15 +238,14 @@ export default {
       }
       return '-';
     },
-    getLinkWhatsapp (){
-      const orderNumber = this.dataDetailOrder.orderNumber
-      const name = this.dataDetailOrder.paymentHolder
-      const packageName  = this.dataProduct.packageName
+    getLinkWhatsapp() {
+      const orderNumber = this.dataDetailOrder.orderNumber;
+      const name = this.dataDetailOrder.paymentHolder;
+      const packageName = this.dataProduct.packageName;
 
       return `https://api.whatsapp.com/send/?phone=6282124852227&text=
-        Halo+saya+sudah+melakukan+pesanan+dan+pembayaran%0A%0A*No+Order:*+${orderNumber}%0A*Nama:*+${name}%0A*Pesanan:*+${packageName}&app_absent=0`
-
-    }
+        Halo+saya+sudah+melakukan+pesanan+dan+pembayaran%0A%0A*No+Order:*+${orderNumber}%0A*Nama:*+${name}%0A*Pesanan:*+${packageName}&app_absent=0`;
+    },
   },
 };
 </script>
