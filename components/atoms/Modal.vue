@@ -7,11 +7,11 @@
     >
       <div class="z-50 relative p-3 mx-auto my-0 w-full">
         <div
-          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden  "
+          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5 lg:w-3/5 "
           :class="classModal"
         >
           <button
-            class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold primary focus:outline-none"
+            class="fill-current h-6 w-6 absolute right-0 top-0 tn:m-3 md:m-4 font-3xl font-bold primary focus:outline-none"
             @click="onClose"
           >
             <svg
@@ -60,7 +60,7 @@ export default {
   name: 'Modal',
   data() {
     return {
-      classModal: `${this.size ? `w-${this.size} xl:w-${this.size} md:w-${this.size}`: 'xl:w-1/2 md:w-4/5 lg:w-3/5 tn:w-full '}`,
+      classModal: `${this.size ? `xl:w-${this.size}`: 'xl:w-1/2'}`,
     };
   },
   props: {
