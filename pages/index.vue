@@ -19,7 +19,7 @@
     >
       <div class="py-4">
         Diinformasikan kepada pengguna Seakun per tanggal 8 Agustus 2021,
-        whatsapp Seakun.id yg sebelumnya (+6282124852232) mengalami kendala.
+        whatsapp Seakun.id yg sebelumnya (+6282124852227) mengalami kendala.
         Jadi
         <b
           >segala proses pembayaran maupun pengaduan harap diinfokan ke nomor
