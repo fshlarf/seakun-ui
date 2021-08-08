@@ -73,8 +73,8 @@
           </div>
           <div class="flex space-x-2">
             <img src="/images/footer/phone-icon.svg" alt="#" />
-            <a href="https://api.whatsapp.com/send?phone=6282124852227"
-              >+62821 2485 2227</a
+            <a href="https://api.whatsapp.com/send?phone=6282124852232"
+              >+62821 2485 2232</a
             >
           </div>
           <div class="flex space-x-2 items-start">

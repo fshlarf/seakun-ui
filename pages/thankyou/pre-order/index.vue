@@ -50,8 +50,8 @@
             Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi oleh Admin
             melalui Whatsapp untuk proses selanjutnya.
             <br />Hubungi Admin
-            <a href="https://api.whatsapp.com/send?phone=6282124852227"
-              >+6282124852227</a
+            <a href="https://api.whatsapp.com/send?phone=6282124852232"
+              >+6282124852232</a
             >
           </p>
         </div>

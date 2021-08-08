@@ -37,8 +37,8 @@
           <a
             class="text-primary"
             target="_blank"
-            href="https://api.whatsapp.com/send?phone=6282124852227"
-            >+6282124852227</a
+            href="https://api.whatsapp.com/send?phone=6282124852232"
+            >+6282124852232</a
           >
         </p>
       </div>
@@ -116,12 +116,12 @@ export default {
     contentWarning() {
       const { provider, holder, duration } = this.$router.history.current.query;
       let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852227?text=${text}">+6282124852227</a>`;
+      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852232?text=${text}">+6282124852232</a>`;
     },
     confirmationWhatsapp() {
       const { provider, holder, duration } = this.$router.history.current.query;
       let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `https://wa.me/6282124852227?text=${text}`;
+      return `https://wa.me/6282124852232?text=${text}`;
     },
   },
   methods: {

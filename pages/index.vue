@@ -12,6 +12,26 @@
     <BenefitSection />
     <QnaSection />
     <Footer />
+    <Modal
+      :is-show="isShowInfoModal"
+      size="auto"
+      @onClose="isShowInfoModal = false"
+    >
+      <div class="py-4">
+        Diinformasikan kepada pengguna Seakun per tanggal 8 Agustus 2021,
+        whatsapp Seakun.id yg sebelumnya (+6282124852232) mengalami kendala.
+        Jadi
+        <b
+          >segala proses pembayaran maupun pengaduan harap diinfokan ke nomor
+          whatsapp berikut
+          <a
+            href="https://api.whatsapp.com/send?phone=6282124852232"
+            class="text-primary"
+            >+6282124852232</a
+          >
+        </b>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -28,6 +48,7 @@ import UserGroupSection from '~/components/organisms/UserGroupSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
 import Footer from '~/components/mollecules/Footer';
+import Modal from '~/components/atoms/Modal.vue';
 
 export default {
   components: {
@@ -43,6 +64,12 @@ export default {
     BenefitSection,
     QnaSection,
     Footer,
+    Modal,
+  },
+  data() {
+    return {
+      isShowInfoModal: true,
+    };
   },
 };
 </script>
