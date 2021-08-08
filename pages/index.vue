@@ -4,7 +4,7 @@
     <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
-    <WhatsappNoticeBanner/>
+    <WhatsappNoticeBanner />
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
@@ -13,8 +13,7 @@
     <BenefitSection />
     <QnaSection />
     <Footer />
-    <WhatsappNoticeModal/>
-    
+    <WhatsappNoticeModal />
   </div>
 </template>
 
@@ -49,9 +48,8 @@ export default {
     QnaSection,
     Footer,
     WhatsappNoticeModal,
-    WhatsappNoticeBanner
+    WhatsappNoticeBanner,
   },
-
 };
 </script>
 

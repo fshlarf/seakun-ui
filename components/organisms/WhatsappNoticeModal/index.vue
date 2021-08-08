@@ -24,25 +24,22 @@
           >
         </b>
       </div>
-    </Modal>
+  </Modal>
 </template>
 
 <script>
 import Modal from '~/components/atoms/Modal.vue';
 
 export default {
-    components: {
-        Modal
-    },
-    data() {
-        return {
-        isShowInfoModal: true,
+  components: {
+    Modal,
+  },
+  data() {
+    return {
+      isShowInfoModal: true,
     };
   },
-
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
