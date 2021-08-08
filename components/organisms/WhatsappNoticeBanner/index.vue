@@ -1,11 +1,11 @@
 <template>
-  <div class="whatsapp-banner container iner tn:mt-2 lg:pt-10 pt-10">
-    <div class="bg-warning-seakun rounded-3xl d-flex xs:flex-row px-16 py-6 items-center">
+  <div class="whatsapp-banner container iner tn:mt-2 lg:pt-10 pt-10 -mb-16">
+    <div class="bg-warning-seakun rounded-3xl md:flex md:flex-row tn:px-4 md:px-6 lg:px-16 py-6 items-center">
        <div class="whatsapp-banner-img ">  
-        <img class="h-56 w-auto" src="/images/illustration-whatsapp-banner.svg"/>
+        <img class="tn:h-44 md:h-56 w-auto mx-auto" src="/images/illustration-whatsapp-banner.svg"/>
       </div>
-      <div class="whatsapp-banner-content flex-1 px-8">
-        <h1 class="text-3xl font-bold text-green-seakun-dark mt-4 mb-4 ">  Info Penting </h1>   
+      <div class="whatsapp-banner-content flex-1 md:px-8 tn:text-center md:text-left">
+        <h1 class="text-3xl font-bold text-secondary tn:my-2 md:my-4 ">  Info Penting </h1>   
         <p class="font-bold mb-2 my-2">
           Kepada pengguna Seakun, per-tanggal 8 Agustus 2021, WhatsApp Seakun.id yg sebelumnya (+6282124852227) mengalami kendala.
         </p>
