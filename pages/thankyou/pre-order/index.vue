@@ -85,7 +85,7 @@ export default {
     setNumberMember(provider) {
       switch (provider.toLowerCase()) {
         case 'canva':
-          return '9';
+          return '4';
           break;
         case 'gramedia':
           return '2';
