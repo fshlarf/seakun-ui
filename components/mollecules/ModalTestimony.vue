@@ -9,13 +9,13 @@
         class="h-full object-cover mx-auto"
       />
     </div>
-    <div class="text-center">
+    <div class="tn:px-4 md:px-8">
       <h1
-        class="font-bold text-secondary md:text-lg lg:text-xl xl:text-2xl my-1 md:my-2 mb-3"
+        class="text-center font-bold text-secondary md:text-lg lg:text-xl xl:text-2xl my-1 md:my-2 mb-3"
       >
         {{ customer.name }} ({{ customer.provider }})
       </h1>
-      <p class="my-2 text-xs md:text-sm lg:text-base">
+      <p class="my-2 tn:text-sm md:text-md lg:text-base">
         {{ customer.testimony }}
       </p>
     </div>

@@ -86,8 +86,8 @@ export default {
     dataLengthTestimony() {
       const newDataTestimony = this.dataTestimony;
       newDataTestimony.map((x) => {
-        if (x.testimony.length > 220) {
-          x.sortTestimony = x.testimony.slice(0, 220);
+        if (x.testimony.length > 155) {
+          x.sortTestimony = x.testimony.slice(0, 155);
         } else {
           x.sortTestimony = x.testimony;
         }
