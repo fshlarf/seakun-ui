@@ -1,13 +1,13 @@
 <template>
-  <div class="pt-20">
+  <div class="tn:pt-8 md:pt-20">
     <div
       class="relative z-0 partner-bg gradient tn:px-4 py-4 lg:px-16 xl:px-28 tn:h-[620px] md:h-52 lg:h-60 xl:h-80"
     >
-      <div class="container text-white xl:mt-12 xl:mb-4">
+      <div class="md:container tn:px-4 text-white xl:mt-12 xl:mb-4">
         <h2 class="tn:text-xl md:text-2xl font-bold tn:my-2 md:my-2 xl:mb-4">
           Ingin Usaha kamu ada di Seakun.id?
         </h2>
-        <p class="xl:text-lg font-semibold">
+        <p class="tn:text-sm md:text-md xl:text-lg font-semibold">
           Jangan khawatir ya, Seakun bisa kok meningkatkan usaha kamu disini!
           <br />Ayo klik tombol di bawah ini untuk mewujudkannya!
         </p>

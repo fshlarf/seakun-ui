@@ -15,7 +15,7 @@
           class="w-full h-full"
         >
           <template v-slot:preview>
-            <p class="font-medium text-sm md:text-base">
+            <p class="font-medium tn:text-sm md:text-base lg:text-center">
               Seakun memberikan kewenangan kepada Anda sebagai User Host dalam
               Satu Group untuk melakukan pembayaran ke Provider (Netflix) dengan
               menggunakan Kartu Debit/Kredit milik Anda.
@@ -30,7 +30,7 @@
           class="w-full h-full"
         >
           <template v-slot:preview>
-            <p class="font-medium text-sm md:text-base">
+            <p class="font-medium tn:text-sm md:text-base lg:text-center">
               Anda menjadi user reguler premium. Pembayaran provider menjadi
               tanggung jawab kami.
             </p>
