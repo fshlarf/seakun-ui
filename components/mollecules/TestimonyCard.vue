@@ -1,7 +1,7 @@
 <template>
   <div class="tn:w-60 lg:w-full rounded-3xl shadow-xl tn:py-2 md:py-4 tn:px-6 md:px-10">
     <div
-      class="my-1 mx-auto rounded-full overflow-hidden w-12 h-12 md:w-14 md:h-14 lg:w-20 lg:h-20"
+      class="my-3 mx-auto rounded-full overflow-hidden tn:w-12 tn:h-12 lg:w-16 lg:h-16"
     >
       <img
         :src="`${customer.photo}`"
@@ -11,11 +11,11 @@
     </div>
     <div>
       <h1
-        class="text-center font-bold text-secondary md:text-lg lg:text-xl xl:text-2xl my-1 md:my-2 mb-3"
+        class="text-center font-bold text-secondary tn:text-sm md:text-lg lg:text-xl xl:text-2xl md:my-2 mb-3"
       >
         {{ customer.name }} ({{ customer.provider }})
       </h1>
-      <p class="my-2 tn:text-sm md:text-md lg:text-base">
+      <p class="my-2 tn:text-xs md:text-md lg:text-base">
         {{ customer.sortTestimony
         }}<span v-if="customer.sortTestimony.length === 155"
           >...
