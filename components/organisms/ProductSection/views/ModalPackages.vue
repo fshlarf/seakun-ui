@@ -27,7 +27,12 @@
           :class="`mx-auto ${!item.active ? 'inactive' : ''}`"
           class="w-full h-full"
         >
-          <CardPackage :slug="slug" :packet="item" class="xl:w-[416px]" @choosePacket="choosePacket" />
+          <CardPackage
+            :slug="slug"
+            :packet="item"
+            class="xl:w-[416px]"
+            @choosePacket="choosePacket"
+          />
         </div>
       </div>
     </div>
@@ -82,8 +87,8 @@ export default {
       }
     },
     choosePacket(item) {
-      this.$emit('choosePacket', item)
-    }
+      this.$emit('choosePacket', item);
+    },
   },
 };
 </script>

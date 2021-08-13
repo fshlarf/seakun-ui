@@ -61,7 +61,7 @@
       @on-close="onCloseModalPackages"
       :packages="dataPackages"
       :slug="provider"
-      @choose-packet="choosePacket"
+      @choosePacket="choosePacket"
       :is-loading="isFetchingPacket"
     />
   </div>

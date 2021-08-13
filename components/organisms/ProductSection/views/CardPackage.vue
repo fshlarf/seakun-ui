@@ -71,11 +71,11 @@
       </div>
       <div class="px-2">
         <Button
-        variant="primary"
-        label="Pilih"
-        @click="$emit('choosePacket', packet)"
-        class="w-full py-2"
-         />
+          variant="primary"
+          label="Pilih"
+          @click="$emit('choosePacket', packet)"
+          class="w-full py-2"
+        />
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
 
 <script>
 import { currencyFormat } from '~/helpers';
-import Button from '~/components/atoms/Button.vue'
+import Button from '~/components/atoms/Button.vue';
 
 export default {
   name: 'CardPackage',
@@ -92,7 +92,7 @@ export default {
     slug: { type: String, default: '' },
   },
   components: {
-    Button
+    Button,
   },
   methods: {
     formatMoneyRupiah(num) {
