@@ -258,10 +258,6 @@ h5 {
 h5 {
   margin-top: 32px;
 }
-ul {
-  // list-style: decimal;
-  // list-style-position: inside;
-}
 .terms-of-use {
   padding: 50px 300px !important;
 }
