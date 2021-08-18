@@ -40,12 +40,15 @@
 
 <script>
 import axios from 'axios';
+import { SEAKUN_API, SEAKUN_PACKAGE_API } from '~/constants/api.js';
 import SequrbanVariantCard from './SequrbanVariantCard';
 import ModalDetailVariant from './ModalDetailVariant';
 import CardShimmer from '~/components/mollecules/CardShimmer';
 export default {
   data() {
     return {
+      SEAKUN_API,
+      SEAKUN_PACKAGE_API,
       isShowModal: false,
       isLoading: true,
       isLoadingDetail: false,
@@ -68,9 +71,10 @@ export default {
       this.isShowModal = true;
     },
     getDataCows() {
+      const { SEAKUN_PACKAGE_API } = this;
       this.isLoading = true;
       axios
-        .get('https://seakun-packet-api-v2.herokuapp.com/sequrban')
+        .get(`${SEAKUN_PACKAGE_API}/sequrban`)
         .then((res) => {
           this.dataCows = res.data;
           this.isLoading = false;
@@ -78,9 +82,10 @@ export default {
         .catch((err) => console.log(err));
     },
     getDataCowsById(id) {
+      const { SEAKUN_PACKAGE_API } = this;
       this.isLoadingDetail = true;
       axios
-        .get(`https://seakun-packet-api-v2.herokuapp.com/sequrban/${id}`)
+        .get(`${SEAKUN_PACKAGE_API}/sequrban/${id}`)
         .then((res) => {
           this.dataDetailCows = res.data;
           this.isLoadingDetail = false;

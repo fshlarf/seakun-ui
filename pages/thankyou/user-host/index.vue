@@ -21,11 +21,7 @@
             Terima kasih telah melakukan pendaftaran.
             <br />Karena kamu terdaftar sebagai User Host, Admin Seakun.id akan
             memandu kamu untuk melakukan proses
-            {{
-              provider === 'youtube'
-                ? 'pendaftaran menggunakan nomor ponsel yang kamu miliki'
-                : 'payment'
-            }}
+            {{ setWordingHost(provider) }}
             ke {{ setNameProvider(provider) }}.
           </p>
           <p>
@@ -55,8 +51,8 @@
             melalui Whatsapp untuk proses selanjutnya.
             <br />
             <br />Hubungi Admin di
-            <a href="https://api.whatsapp.com/send?phone=6282124852227"
-              >+6282124852227</a
+            <a href="https://api.whatsapp.com/send?phone=6282124852232"
+              >+6282124852232</a
             >
           </p>
         </div>
@@ -130,8 +126,9 @@ export default {
       }
     },
     getVouchersData() {
+      const { SEAKUN_PACKAGE_API } = this;
       axios
-        .get('https://seakun-packet-api-v2.herokuapp.com/vouchers')
+        .get(`${SEAKUN_PACKAGE_API}/vouchers`)
         .then((res) => {
           this.vouchersData = res.data;
         })

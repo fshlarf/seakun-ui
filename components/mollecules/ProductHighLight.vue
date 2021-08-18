@@ -39,6 +39,7 @@
 
 <script>
 import { currencyFormat } from '~/helpers/word-transformation.js';
+import { setNameProvider } from '~/helpers/word-transformation.js';
 
 export default {
   name: 'ProductHighlight',
@@ -66,6 +67,7 @@ export default {
   },
   data: () => ({
     currencyFormat,
+    setNameProvider,
   }),
   methods: {
     setNameProvider(provider) {

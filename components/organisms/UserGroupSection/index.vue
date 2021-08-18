@@ -138,24 +138,24 @@ export default {
           slug: 'disney-hotstar',
           icon: '/images/icons/disney-hotstar.png',
         },
-        // {
-        //   id: 8,
-        //   name: 'Apple One',
-        //   slug: 'apple-one',
-        //   icon: '/images/icons/apple-one.svg',
-        // },
-        // {
-        //   id: 9,
-        //   name: 'Wattpad',
-        //   slug: 'wattpad',
-        //   icon: '/images/icons/wattpad.svg',
-        // },
-        // {
-        //   id: 10,
-        //   name: 'Nintendo Switch',
-        //   slug: 'nintendo-switch',
-        //   icon: '/images/icons/nintendo.svg',
-        // },
+        {
+          id: 8,
+          name: 'Apple One',
+          slug: 'apple-one',
+          icon: '/images/icons/apple-one.svg',
+        },
+        {
+          id: 9,
+          name: 'Wattpad',
+          slug: 'wattpad',
+          icon: '/images/icons/wattpad.svg',
+        },
+        {
+          id: 10,
+          name: 'Nintendo Switch',
+          slug: 'nintendo-switch',
+          icon: '/images/icons/nintendo.svg',
+        },
       ],
     };
   },
@@ -198,10 +198,9 @@ export default {
       this.isLoadingProduct = false;
     },
     getCustomersData(provider) {
+      const { SEAKUN_API } = this;
       axios
-        .get(
-          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
-        )
+        .get(`${SEAKUN_API}/registered-user/group-${provider}`)
         .then((res) => {
           this.processDataCustomers(res.data, provider);
           this.isLoading = false;

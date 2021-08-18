@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'ProvoderPill',
+  name: 'ProviderPill',
   props: {
     provider: {
       type: Object,

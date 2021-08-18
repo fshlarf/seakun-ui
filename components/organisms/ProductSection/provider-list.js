@@ -360,46 +360,82 @@ export const providerList = [
   },
   {
     name: 'canva',
-    title: 'Harga Paket Premium (1 Bulan)',
+    title: 'Harga Paket Canva Pro (1 Bulan)',
     img: '/images/canva.png',
     screenshot: '/images/ss-canva-month.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Pro Canva',
       'Seakun bertindak sebagai user Host dalam grup',
       'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 9 member untuk join 1 grup Premium',
+      'Seakun mengundang 4 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
       {
-        title: 'Harga Paket Premium Canva',
-        value: 'US$75,9 => Rp1.138.500',
+        title: 'Harga Paket Canva Pro',
+        value: 'Rp95.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
-        value: '9',
+        value: '4',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.138.500 ÷ 9 = Rp130.295',
+        value: 'Rp95.000 ÷ 4 = Rp23.750',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.205',
+        value: 'Rp5.250',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp136.500',
+        value: 'Rp29.000',
         is_total: true,
       },
+      // {
+      //   title: '*Berdasarkan 1$ = Rp15.000',
+      //   value: '',
+      // },
+      // {
+      //   title:
+      //     '** Sisa dari pembayaran (jika kurs dibawah Rp15.000) merupakan profit Seakun',
+      //   value: '',
+      // },
+    ],
+  },
+  {
+    name: 'canva',
+    title: 'Harga Paket Canva Pro (1 Tahun)',
+    img: '/images/canva.png',
+    screenshot: '/images/ss-canva-year.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Pro Canva',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 4 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    informations: [
       {
-        title: '*Berdasarkan 1$ = Rp15.000',
-        value: '',
+        title: 'Harga Paket Canva Pro',
+        value: 'Rp769.000',
       },
       {
-        title:
-          '** Sisa dari pembayaran (jika kurs dibawah Rp15.000) merupakan profit Seakun',
-        value: '',
+        title: 'Jumlah member dalam 1 grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp769.000 ÷ 4 = Rp192.250',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp60.750',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp253.000',
+        is_total: true,
       },
     ],
   },
