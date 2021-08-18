@@ -64,6 +64,8 @@
 <script>
 import axios from 'axios';
 import OrderService from '~/services/OrderServices.js';
+import { setNameProvider } from '~/helpers/word-transformation.js';
+import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
 
 export default {
   name: 'UserHostPage',
@@ -76,6 +78,8 @@ export default {
       packetId: null,
       total: '',
       vouchersData: [],
+      setNameProvider,
+      SEAKUN_PACKAGE_API
     };
   },
   mounted() {
@@ -155,35 +159,15 @@ export default {
         return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
       }
     },
-    setNameProvider(provider) {
-      switch (provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'microsoft365':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
+    setWordingHost(provider) {
+      if (provider.toLowerCase() === 'youtube') {
+        return 'pendaftaran menggunakan nomor ponsel yang kamu miliki';
+      } else if (provider.toLowerCase() === 'netflix') {
+        return 'payment';
+      } else if (provider.toLowerCase() === 'apple-one') {
+        return 'verifikasi Apple ID';
+      } else {
+        return 'payment';
       }
     },
   },
