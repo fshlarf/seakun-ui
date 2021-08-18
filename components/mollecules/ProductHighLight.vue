@@ -69,47 +69,6 @@ export default {
     currencyFormat,
     setNameProvider,
   }),
-  methods: {
-    setNameProvider(provider) {
-      switch (provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'microsoft365':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
-        case 'apple-one':
-          return 'Apple One';
-          break;
-        case 'wattpad':
-          return 'Wattpad';
-          break;
-        default:
-          return provider;
-      }
-    },
-  },
 };
 </script>
 
