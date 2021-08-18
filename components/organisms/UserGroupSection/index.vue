@@ -198,9 +198,8 @@ export default {
       this.isLoadingProduct = false;
     },
     getCustomersData(provider) {
-      const { SEAKUN_API } = this;
       axios
-        .get(`${SEAKUN_API}/registered-user/group-${provider}`)
+        .get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
         .then((res) => {
           this.processDataCustomers(res.data, provider);
           this.isLoading = false;

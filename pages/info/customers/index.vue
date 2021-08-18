@@ -98,11 +98,10 @@ export default {
   },
   methods: {
     getCustomersData() {
-      const { SEAKUN_API } = this;
       let provider = this.$route.query.provider;
       this.isLoading = true;
       axios
-        .get(`${SEAKUN_API}/registered-user/group-${provider}`)
+        .get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
         .then((res) => this.processDataCustomers(res.data))
         .catch((err) => console.log(err))
         .finally(() => (this.isLoading = false));
