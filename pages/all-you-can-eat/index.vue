@@ -1,19 +1,20 @@
 <template>
   <div>
-      <AyceHeaderSection />
+    <HeaderSection />
+    <DetailMenuSection />
   </div>
 </template>
 
 <script>
-import AyceHeaderSection from './views/AyceHeaderSection.vue'
+import HeaderSection from './views/HeaderSection.vue';
+import DetailMenuSection from './views/DetailMenuSection.vue';
 export default {
-    components: {
-        AyceHeaderSection
-    },
-    layout: 'new'
-}
+  components: {
+    HeaderSection,
+    DetailMenuSection,
+  },
+  layout: 'new',
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
