@@ -144,18 +144,18 @@ export default {
           slug: 'apple-one',
           icon: '/images/icons/apple-one.svg',
         },
-        {
-          id: 9,
-          name: 'Wattpad',
-          slug: 'wattpad',
-          icon: '/images/icons/wattpad.svg',
-        },
-        {
-          id: 10,
-          name: 'Nintendo Switch',
-          slug: 'nintendo-switch',
-          icon: '/images/icons/nintendo.svg',
-        },
+        // {
+        //   id: 9,
+        //   name: 'Wattpad',
+        //   slug: 'wattpad',
+        //   icon: '/images/icons/wattpad.svg',
+        // },
+        // {
+        //   id: 10,
+        //   name: 'Nintendo Switch',
+        //   slug: 'nintendo-switch',
+        //   icon: '/images/icons/nintendo.svg',
+        // },
       ],
     };
   },

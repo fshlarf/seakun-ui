@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full rounded-xl shadow-xl text-center p-4">
+  <div class="w-full rounded-xl shadow-xl py-4 tn:px-6 md:px-8 lg:px-6">
     <div class="text-center">
-      <h1 class="font-bold text-secondary text-xl md:text-2xl my-1 md:my-2">
+      <h1 class="font-bold text-secondary text-center tn:text-xl md:text-2xl tn:my-1 md:my-2">
         {{ title }}
       </h1>
     </div>

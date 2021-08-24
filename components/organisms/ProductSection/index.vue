@@ -83,7 +83,7 @@
       :provider="choosedProvider"
       @on-close="onCloseModalPackages"
       :slug="choosedSlugProvider"
-      @choose-packet="choosePacket"
+      @choosePacket="choosePacket"
       :is-loading="isLoadingProduct"
     />
 

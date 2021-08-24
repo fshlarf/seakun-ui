@@ -1,7 +1,7 @@
 <template>
   <div class="whatsapp-banner container iner tn:mt-2 lg:pt-10 pt-10 -mb-16">
     <div
-      class="bg-warning-seakun rounded-3xl md:flex md:flex-row tn:px-4 md:px-6 lg:px-16 py-6 items-center"
+      class="bg-warning-seakun rounded-3xl md:flex md:flex-row tn:px-6 lg:px-16 py-6 items-center"
     >
       <div class="whatsapp-banner-img">
         <img
@@ -10,9 +10,9 @@
         />
       </div>
       <div
-        class="whatsapp-banner-content flex-1 md:px-8 tn:text-center md:text-left"
+        class="whatsapp-banner-content flex-1 md:px-8"
       >
-        <h1 class="text-3xl font-bold text-secondary tn:my-2 md:my-4">
+        <h1 class="text-3xl font-bold text-secondary tn:text-center md:text-left tn:my-2 md:my-4">
           Info Penting
         </h1>
         <p class="font-bold mb-2 my-2">
