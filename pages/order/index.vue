@@ -137,6 +137,12 @@
 </template>
 
 <script>
+import { setNameProvider } from '~/helpers/word-transformation.js';
+import {
+  SEAKUN_API,
+  SEAKUN_PACKAGE_API,
+  SEAKUN_MAIL_API,
+} from '~/constants/api.js';
 import axios from 'axios';
 import OrderService from '~/services/OrderServices.js';
 import MasterService from '~/services/MasterServices.js';

@@ -7,7 +7,7 @@
     >
       <div class="z-50 relative p-3 mx-auto my-0 w-full">
         <div
-          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5 lg:w-3/5"
+          class="modal-popup bg-white rounded-2xl shadow-lg border flex flex-col overflow-hidden tn:w-full md:w-4/5 lg:w-3/5 "
           :class="classModal"
         >
           <button
@@ -60,7 +60,7 @@ export default {
   name: 'Modal',
   data() {
     return {
-      classModal: `${this.size ? 'xl:w-' + this.size : 'xl:w-1/2'}`,
+      classModal: `${this.size ? `xl:w-${this.size}`: 'xl:w-1/2'}`,
     };
   },
   props: {

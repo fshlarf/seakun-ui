@@ -689,6 +689,7 @@ export default {
       }
     },
     executeApiMailConfirmPayment() {
+      const { SEAKUN_MAIL_API } = this;
       let payload = {
         type: 'downpayment',
         provider: this.provider,
@@ -699,10 +700,7 @@ export default {
         date: this.time1,
       };
       axios
-        .post(
-          'https://seakun-mail-api-v2.herokuapp.com/payment-confirm',
-          payload
-        )
+        .post(`${SEAKUN_MAIL_API}/payment-confirm`, payload)
         .then((res) => {
           this.toThankyouPage();
           this.isLoadingSubmit = false;

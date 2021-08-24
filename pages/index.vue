@@ -4,6 +4,7 @@
     <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
+    <WhatsappNoticeBanner />
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
@@ -13,6 +14,7 @@
     <QnaSection />
     <WarningOrder/>
     <Footer />
+    <WhatsappNoticeModal />
   </div>
 </template>
 
@@ -30,6 +32,8 @@ import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
 import WarningOrder from '~/components/organisms/WarningOrder';
 import Footer from '~/components/mollecules/Footer';
+import WhatsappNoticeModal from '~/components/organisms/WhatsappNoticeModal';
+import WhatsappNoticeBanner from '~/components/organisms/WhatsappNoticeBanner';
 
 export default {
   components: {
@@ -46,6 +50,8 @@ export default {
     QnaSection,
     WarningOrder,
     Footer,
+    WhatsappNoticeModal,
+    WhatsappNoticeBanner,
   },
 };
 </script>

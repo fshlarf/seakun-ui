@@ -1,7 +1,7 @@
 <template>
   <div class="terms-of-use">
-    <h3 class="text-2xl">Syarat dan Ketentuan Penggunaan</h3>
-    <h5 style="margin-bottom: 30px">Terakhir diperbaharui: 15 April 2021</h5>
+    <h3 class="text-3xl">Syarat dan Ketentuan Penggunaan</h3>
+    <h5 class="font-bold text-xl" style="margin-bottom: 30px">Terakhir diperbaharui: 15 April 2021</h5>
     <div>
       <b>PENTING.</b> Anda dimohon untuk membaca Syarat dan Ketentuan Penggunaan
       (“Ketentuan Penggunaan”) ini sebelum menggunakan layanan yang disediakan
@@ -19,8 +19,8 @@
     </div>
 
     <div>
-      <h5>Ketentuan Umum</h5>
-      <ul>
+      <h5 class="text-xl mb-2">Ketentuan Umum</h5>
+      <ul class="list-outside pl-8 list-decimal">
         <li>
           Platform Seakun.id (Website dan Aplikasi) ini merupakan milik PT.
           Seakun Global Teknologi. Kami bekerja sama dengan pihak ketiga (“Mitra
@@ -47,7 +47,7 @@
     </div>
 
     <div>
-      <h5>Kewajiban Pengguna</h5>
+      <h5 class="text-xl mb-2">Kewajiban Pengguna</h5>
       <div>
         Kami menyediakan beberapa layanan yang sudah memiliki aturan penggunaan
         berdasarkan ketentuan yang diterbitkan oleh masing-masing provider.
@@ -59,30 +59,30 @@
         Ada beberapa ketentuan layanan pengguna untuk masing-masing provider
         yang sudah disediakan di Seakun.id diantaranya sebagai berikut.
       </div>
-      <ul>
+      <ul class="list-outside pl-8 list-decimal">
         <li>
           Netflix, bisa dilihat pada tautan berikut
-          <a href="http://netflix.com/">ini</a>.
+          <a class="text-blue-500" href="http://netflix.com/">ini</a>.
         </li>
         <li>
           Spotify, bisa dilihat pada tautan berikut
-          <a href="http://spotify.com/">ini</a>.
+          <a class="text-blue-500" href="http://spotify.com/">ini</a>.
         </li>
         <li>
           Youtube, bisa dilihat pada tautan berikut
-          <a href="http://youtube.com/">ini</a>.
+          <a class="text-blue-500" href="http://youtube.com/">ini</a>.
         </li>
         <li>
           Gramedia, bisa dilihat pada tautan berikut
-          <a href="http://gramedia.com/">ini</a>.
+          <a class="text-blue-500" href="http://gramedia.com/">ini</a>.
         </li>
         <li>
           Microsoft365, bisa dilihat pada tautan berikut
-          <a href="http://microsoft.com/">ini</a>.
+          <a class="text-blue-500" href="http://microsoft.com/">ini</a>.
         </li>
         <li>
           Canva, bisa dilihat pada tautan berikut
-          <a href="http://canva.com/">ini</a>.
+          <a class="text-blue-500" href="http://canva.com/">ini</a>.
         </li>
       </ul>
       <div>
@@ -92,13 +92,13 @@
     </div>
 
     <div>
-      <h5>Kesediaan dan Persetujuan Pengguna</h5>
+      <h5 class="text-xl mb-2">Kesediaan dan Persetujuan Pengguna</h5>
       <div>
         Untuk layanan yang Kami sediakan, ada beberapa provider yang menghimbau
         bahwa plan premium yang mereka sediakan harus memenuhi beberapa kriteria
         berikut
       </div>
-      <ul>
+      <ul class="list-outside pl-8 list-decimal">
         <li>
           Netflix Premium, satu grup (satu akun) dianjurkan untuk berada dalam
           satu rumah.
@@ -121,7 +121,7 @@
         bersama lewat Seakun.id untuk provider dan plan berlangganan yang sudah
         disebutkan sebelumnya, berarti Anda dianggap setuju bila Anda:
       </div>
-      <ul>
+      <ul class="list-outside pl-8 list-decimal">
         <li>
           Dianggap sebagai anggota keluarga dengan member yang ada dalam satu
           grup yang sama dan berlangganan ke provider Netflix dan/atau Youtube
@@ -136,7 +136,7 @@
     </div>
 
     <div>
-      <h5>User Host</h5>
+      <h5 class="text-xl mb-2">User Host</h5>
       <div>
         User Host merupakan user yang diberikan kewenangan oleh Seakun.id untuk
         melakukan proses administrasi dan/atau melakukan pembayaran ke provider
@@ -155,13 +155,13 @@
     </div>
 
     <div>
-      <h5>Pengakhiran Masa Berlangganan</h5>
+      <h5 class="text-xl mb-2">Pengakhiran Masa Berlangganan</h5>
 
       <div>
         Kami berhak secara penuh untuk melakukan pengakhiran masa berlangganan
         Anda ke pihak provider jika Anda masuk ke beberapa opsi berikut.
       </div>
-      <ul>
+      <ul class="list-outside pl-8 list-decimal">
         <li>
           Tidak melakukan pembayaran ke pihak Seakun.id melewati tanggal
           pembayaran yang sudah ditetapkan oleh Seakun.id berdasarkan tanggal
@@ -180,14 +180,14 @@
     </div>
 
     <div>
-      <h5>Aturan dan Larangan Pengguna</h5>
+      <h5 class="text-xl mb-2">Aturan dan Larangan Pengguna</h5>
       <div>
         Kami membuat aturan yang harus diterapkan oleh setiap pengguna Platform
         Seakun.id yang bertujuan untuk menjaga kenyamanan masing-masing pengguna
         yaitu sebagai berikut.
       </div>
 
-      <ul>
+      <ul class="list-outside pl-8 list-decimal">
         <li>
           Anda dihimbau untuk mengakses sesuai dengan profil yang sudah
           diberikan oleh Seakun.id dan menonton/streaming maksimum 1 device jika
@@ -206,7 +206,7 @@
         Platform Seakun.id. Diantaranya adalah sebagai berikut.
       </div>
 
-      <ul>
+      <ul class="list-outside pl-8 list-decimal">
         <li>
           Dilarang untuk menyebarkan informasi akun dan/atau informasi berupa
           link invitation dan/atau informasi berupa alamat User Host yang
@@ -225,7 +225,7 @@
     </div>
 
     <div>
-      <h5>Kontak Kami</h5>
+      <h5 class="text-xl mb-2">Kontak Kami</h5>
       <div>
         Anda dapat menghubungi Kami terkait dengan Kebijakan Privasi dan
         Ketentuan Penggunaan melalui surat elektronik cs@seakun.id.
@@ -257,9 +257,6 @@ h5 {
 }
 h5 {
   margin-top: 32px;
-}
-ul {
-  list-style: decimal;
 }
 .terms-of-use {
   padding: 50px 300px !important;

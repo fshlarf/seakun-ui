@@ -83,7 +83,7 @@
       :provider="choosedProvider"
       @on-close="onCloseModalPackages"
       :slug="choosedSlugProvider"
-      @choose-packet="choosePacket"
+      @choosePacket="choosePacket"
       :is-loading="isLoadingProduct"
     />
 
@@ -104,6 +104,7 @@ import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
 import ModalPackages from './views/ModalPackages.vue';
+import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
 
 export default {
   components: {
@@ -136,7 +137,7 @@ export default {
           slug: 'sequrban',
           img: '/images/product/sekurban.png',
           icon: '/images/icons/sekurban.svg',
-          isActive: true,
+          isActive: false,
           isNew: true,
           preview:
             'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',

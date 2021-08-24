@@ -138,12 +138,12 @@ export default {
           slug: 'disney-hotstar',
           icon: '/images/icons/disney-hotstar.png',
         },
-        // {
-        //   id: 8,
-        //   name: 'Apple One',
-        //   slug: 'apple-one',
-        //   icon: '/images/icons/apple-one.svg',
-        // },
+        {
+          id: 8,
+          name: 'Apple One',
+          slug: 'apple-one',
+          icon: '/images/icons/apple-one.svg',
+        },
         // {
         //   id: 9,
         //   name: 'Wattpad',
@@ -199,9 +199,7 @@ export default {
     },
     getCustomersData(provider) {
       axios
-        .get(
-          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
-        )
+        .get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
         .then((res) => {
           this.processDataCustomers(res.data, provider);
           this.isLoading = false;

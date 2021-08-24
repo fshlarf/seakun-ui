@@ -70,6 +70,7 @@
 
 <script>
 import axios from 'axios';
+import { SEAKUN_API } from '~/constants/api.js';
 import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import CardShimmer from '~/components/mollecules/CardShimmer';
 import Footer from '~/components/mollecules/Footer';
@@ -86,6 +87,7 @@ export default {
   },
   data() {
     return {
+      SEAKUN_API,
       customers: [],
       shimmerInitialData: Array(4),
       isLoading: false,
@@ -99,9 +101,7 @@ export default {
       let provider = this.$route.query.provider;
       this.isLoading = true;
       axios
-        .get(
-          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
-        )
+        .get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
         .then((res) => this.processDataCustomers(res.data))
         .catch((err) => console.log(err))
         .finally(() => (this.isLoading = false));
