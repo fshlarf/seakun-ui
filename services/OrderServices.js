@@ -9,7 +9,7 @@ class OrderService {
 
   getDetailOrder(orderUid, customerUid) {
     return this.serviceApi.get(
-      `/customer?orderUid=${orderUid}&customerUid=${customerUid}`
+      `/customer/detail?orderUid=${orderUid}&customerUid=${customerUid}`
     );
   }
 
