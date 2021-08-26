@@ -24,12 +24,15 @@
         <div
           v-for="(item, id) in provider.variants"
           :key="id"
-          :class="`w-full h-full mx-auto ${
-            item.isActive !== 1 ? 'inactive' : ''
-          }`"
-          @click="$emit('choose-packet', item)"
+          :class="`mx-auto ${item.isActive == 1 ? '' : 'inactive'}`"
+          class="w-full h-full"
         >
-          <CardPackage :slug="slug" :packet="item" class="xl:w-[416px]" />
+          <CardPackage
+            :slug="slug"
+            :packet="item"
+            class="xl:w-[416px]"
+            @choosePacket="choosePacket"
+          />
         </div>
       </div>
     </div>
@@ -51,7 +54,6 @@ export default {
     isShow: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
     provider: { type: Object, default: () => {} },
-    packages: { type: Array, default: () => [] },
     slug: { type: String, default: '' },
   },
   data() {
@@ -82,6 +84,9 @@ export default {
       } else {
         return `<span class="font-bold">Pre-order:</span> Member akan diinfokan untuk melakukan pembayaran setelah satu grup full. Link invitation ke Paket Premium akan dikirim setelah member melakukan pembayaran ke Seakun.`;
       }
+    },
+    choosePacket(item) {
+      this.$emit('choosePacket', item);
     },
   },
 };

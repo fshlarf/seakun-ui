@@ -128,12 +128,12 @@ export default {
     contentWarning() {
       const { provider, holder, duration } = this.$router.history.current.query;
       let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852227?text=${text}">+6282124852227</a>`;
+      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852232?text=${text}">+6282124852232</a>`;
     },
     confirmationWhatsapp() {
       const { provider, holder, duration } = this.$router.history.current.query;
       let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `https://wa.me/6282124852227?text=${text}`;
+      return `https://wa.me/6282124852232?text=${text}`;
     },
   },
   methods: {
@@ -250,8 +250,9 @@ export default {
       }
     },
     getVouchersData() {
+      const { SEAKUN_PACKAGE_API } = this;
       axios
-        .get('https://seakun-packet-api-v2.herokuapp.com/vouchers')
+        .get(`${SEAKUN_PACKAGE_API}/vouchers`)
         .then((res) => {
           this.vouchersData = res.data;
         })

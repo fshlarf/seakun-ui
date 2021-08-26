@@ -120,7 +120,7 @@
               title="Bagaimana agar saya mengetahui event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id?"
             >
               Follow instagram
-              <a href="https://www.instagram.com/seakun.id/">@seakun.id</a>
+              <a href="https://www.instagram.com/seakun_id/">@seakun.id</a>
               untuk mengetahui informasi event Undian Voucher e-Wallet dan
               Giveaway yang diadakan Seakun.id secara berkala.
             </Accordion>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative card-package tn:px-1 md:px-3 md:mx-3 py-4 mb-2 shadow-md border tn:rounded-3xl md:rounded-xl cursor-pointer"
+    class="relative tn:px-1 md:px-3 md:mx-3 py-4 shadow-md border !rounded-lg"
   >
     <div v-if="packet.isPo === 1" class="">
       <div
@@ -23,7 +23,7 @@
       </h1>
       <p
         class="text-center text-red-700 tn:text-sm md:text-md"
-        v-if="!packet.isActive"
+        v-if="packet.isActive === 0"
       >
         Paket tidak aktif
       </p>
@@ -54,7 +54,7 @@
             />
             <p
               :class="`ml-2 tn:text-xs md:text-sm ${
-                packet.isActive ? 'font-bold' : 'font-normal'
+                packet.isActive === 1 ? 'font-bold' : 'font-normal'
               }`"
             >
               {{ item.description }}
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-        <div class="mt-3">
+        <div class="my-3">
           <nuxt-link
             v-if="packet.isPo === 1"
             to="/info/pre-order"
@@ -71,18 +71,30 @@
           >
         </div>
       </div>
+      <div class="px-2">
+        <Button
+          variant="primary"
+          label="Pilih"
+          @click="$emit('choosePacket', packet)"
+          class="w-full py-2"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { currencyFormat } from '~/helpers';
+import Button from '~/components/atoms/Button.vue';
 
 export default {
   name: 'CardPackage',
   props: {
     packet: { type: Object, default: {} },
     slug: { type: String, default: '' },
+  },
+  components: {
+    Button,
   },
   methods: {
     formatMoneyRupiah(num) {
@@ -98,10 +110,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-package:hover {
-  border: 1px solid #8dcabe !important;
-}
-
 .preorder {
   position: absolute;
   top: 0.5rem;
