@@ -77,6 +77,7 @@
         :packageName="detailPaymentDigital.name"
         :grandTotal="detailPaymentDigital.price"
         :totalMonth="detailPaymentDigital.duration"
+        :order-number="detailPaymentDigital.orderNumber"
       />
     </div>
   </div>

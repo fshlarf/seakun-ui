@@ -94,6 +94,7 @@ export default {
         price: 0,
         payment: 0,
         duration: 0,
+        orderNumber: '',
       },
       detailPaymentSequrban: {},
       paymentSeakunList: {
@@ -180,6 +181,7 @@ export default {
             price: dataResult.payment.totalPrice,
             payment: dataResult.payment.payment,
             duration: dataResult.provider.package.variant.duration,
+            orderNumber: dataResult.orderNumber,
           };
           this.provider = dataResult.provider.slug;
         } else {

@@ -10,10 +10,18 @@
           alt="Image not found"
         />
       </div>
-      <div class="detail-product__price tn:col-span-5 md:col-span-4 ml-4">
+      <div
+        class="detail-product__price tn:col-span-5 md:col-span-4 ml-4 space-y-1"
+      >
         <p v-if="isLoading" class="font-bold shimmer w-9/12"></p>
         <p v-else class="md:text-lg tn:text-sm font-bold">
           {{ packageName }}
+        </p>
+        <p
+          v-if="orderNumber"
+          class="md:text-lg tn:text-sm font-semibold text-[#66738F] uppercase"
+        >
+          {{ orderNumber }}
         </p>
         <p v-if="totalMonth === 12" class="md:text-lg tn:text-sm font-normal">
           {{ currencyFormat(grandTotal) }} / 1 Tahun
@@ -52,6 +60,10 @@ export default {
       dafault: false,
     },
     packageName: {
+      type: String,
+      default: '',
+    },
+    orderNumber: {
       type: String,
       default: '',
     },
