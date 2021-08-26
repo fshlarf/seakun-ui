@@ -20,21 +20,26 @@
             setelah member dalam satu grup telah terkumpul
             {{ setNumberMember(provider) }} orang.
           </p>
-          <div class="box">
-            <div class="row">
-              <div class="col box-title">Provider</div>
-              <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ setNameProvider(provider) }}</div>
+          <div class="box text-left">
+            <div class="grid grid-cols-12">
+              <div class="ml-1 col-span-4 font-bold">Provider</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ setNameProvider(provider) }}</div>
             </div>
-            <div class="row mt-1">
-              <div class="col box-title">Paket</div>
-              <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ packet }}</div>
+            <div class="grid grid-cols-12 mt-1">
+              <div class="ml-1 col-span-4 font-bold">Paket</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ packet }}</div>
             </div>
-            <div class="row mt-1">
-              <div class="col box-title">Harga</div>
-              <div class="col col-lg-1">:</div>
-              <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
+            <div class="grid grid-cols-12 mt-1">
+              <div class="ml-1 col-span-4 font-bold">Harga</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ formatMoneyRupiah(total) }}</div>
+            </div>
+            <div class="grid grid-cols-12 mt-1">
+              <div class="ml-1 col-span-4 font-bold">Nomor Pesanan</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ orderNumber }}</div>
             </div>
           </div>
           <p>
@@ -73,6 +78,7 @@ export default {
       provider: '',
       packet: '',
       total: '',
+      orderNumber: ''
     };
   },
   mounted() {
@@ -158,6 +164,7 @@ export default {
           this.packet = dataResult.provider.package.variant.name;
           this.total = dataResult.payment.totalPrice;
           this.provider = dataResult.provider.slug;
+          this.orderNumber = dataResult.orderNumber;
         } else {
           throw new Error(fetchPayment);
         }
@@ -224,29 +231,11 @@ export default {
     border: 1px solid #86d0c1;
     border-radius: 4px;
     padding: 16px;
-    max-width: 26rem;
+    max-width: 29rem;
     margin: 0 auto;
   }
   .col {
     text-align: center;
-
-    &.box {
-      &-title {
-        text-align: left;
-        font-weight: 700;
-        max-width: 7rem;
-      }
-      &-item {
-        text-align: left;
-        &-noRek {
-          cursor: pointer;
-          text-align: left;
-          &:hover {
-            color: #86d0c1;
-          }
-        }
-      }
-    }
     h3 {
       margin-top: 20px !important;
       margin-bottom: 20px !important;
