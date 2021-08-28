@@ -8,7 +8,7 @@
       </div>
     </template>
 
-    <div v-if="!isLoading">
+    <div class="pb-2" v-if="!isLoading">
       <div
         v-if="preOrderPackage.includes(slug)"
         class="tn:mx-1 md:mx-3 mb-3"
@@ -19,7 +19,7 @@
 
       <div
         v-if="provider && provider.variants !== ''"
-        class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-1 xl:space-y-0"
+        class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-3 xl:space-y-0"
       >
         <div
           v-for="(item, id) in provider.variants"

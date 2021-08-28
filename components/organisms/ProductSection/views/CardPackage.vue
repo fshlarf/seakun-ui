@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative tn:px-1 md:px-3 md:mx-3 py-4 shadow-md border !rounded-lg"
+    class="relative tn:px-1 md:px-3 md:mx-3 py-4 shadow-md border !rounded-3xl"
   >
     <div v-if="packet.isPo === 1" class="">
       <div
