@@ -126,7 +126,7 @@
         @on-close="onCloseModalPackages"
         :packages="dataPackages"
         :slug="provider"
-        @choose-packet="choosePacket"
+        @choosePacket="choosePacket"
         :is-loading="isFetchingPacket"
       />
     </div>
@@ -265,6 +265,10 @@ export default {
           this.price = data.grandTotal;
           this.subcriptionDuration = data.totalMonth;
           if (data.prices.length > 0) {
+            this.price = data.prices[0].price;
+            this.subcriptionDuration = data.prices[0].month;
+            this.detailOrder.data.grandTotal = data.prices[0].price;
+            this.detailOrder.data.totalMonth = data.prices[0].month;
             this.pricesList = data.prices?.map((value) => ({
               ...value,
               name: `${value.month} bulan ( ${currencyFormat(value.price)} )`,

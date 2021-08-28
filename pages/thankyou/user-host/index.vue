@@ -41,6 +41,11 @@
               <div class="col box-item">{{ packet }}</div>
             </div>
             <div class="row mt-1">
+              <div class="col box-title">Durasi</div>
+              <div class="col col-lg-1">:</div>
+              <div class="col box-item">{{ duration }} Bulan</div>
+            </div>
+            <div class="row mt-1">
               <div class="col box-title">Harga</div>
               <div class="col col-lg-1">:</div>
               <div class="col box-item">{{ formatMoneyRupiah(total) }}</div>
@@ -78,6 +83,7 @@ export default {
       packetId: null,
       total: '',
       vouchersData: [],
+      duration: 0,
     };
   },
   mounted() {
@@ -91,9 +97,11 @@ export default {
         provider,
         packet_id,
         voucher,
+        price,
+        duration,
       } = this.$router.history.current.query;
+      this.duration = duration;
       this.provider = provider;
-
       axios
         .get(`${SEAKUN_PACKAGE_API}/${provider.toLowerCase()}/${packet_id}`)
         .then((res) => {
@@ -106,7 +114,7 @@ export default {
                 this.checkValidVoucher(this.vouchersData, data, voucher);
               }, 500);
             } else {
-              this.total = data.grandTotal;
+              this.total = price;
             }
           }
         })
