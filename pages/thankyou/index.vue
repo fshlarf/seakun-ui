@@ -23,6 +23,7 @@
           :packageName="dataProduct.packageName"
           :grandTotal="dataProduct.grandTotal"
           :totalMonth="dataProduct.totalMonth"
+          :order-number="dataProduct.orderNumber"
         />
       </div>
       <div v-else class="mt-8">
@@ -156,6 +157,7 @@ export default {
         grandTotal: 0,
         totalMonth: 0,
         payment: 0,
+        orderNumber: '',
       },
     };
   },
@@ -214,6 +216,7 @@ export default {
             grandTotal: dataResult.payment.totalPrice,
             totalMonth: dataResult.provider.package.variant.duration,
             payment: dataResult.payment.payment,
+            orderNumber: dataResult.orderNumber,
           };
         } else {
           throw new Error(fetchDataOrder);

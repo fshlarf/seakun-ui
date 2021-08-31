@@ -47,9 +47,15 @@
       </div>
 
       <!-- </div> -->
-      <p class="payment-detail__alert tn:my-1 md:my-2">
+      <!-- <p class="payment-detail__alert tn:my-1 md:my-2">
         Pastikan nominal sesuai hingga 3 digit terakhir
-      </p>
+      </p> -->
+      <div class="px-2">
+        <WarningInfo
+          class="w-full"
+          text="Pastikan nominal sesuai hingga 3 digit terakhir"
+        />
+      </div>
     </div>
     <div class="payment-method">
       <h3 class="payment-method__title text-center font-bold mt-10">
@@ -77,6 +83,7 @@
 
 <script>
 import Snackbar from '~/components/mollecules/Snackbar.vue';
+import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import PaymentMethodList from './PaymentMethodList.vue';
 import PaymentMethodListLoading from './PaymentMethodListLoading.vue';
@@ -89,6 +96,7 @@ export default {
     CopyIcon,
     PaymentMethodList,
     PaymentMethodListLoading,
+    WarningInfo,
   },
   props: {
     isLoading: {

@@ -45,6 +45,11 @@
               <div class="">:</div>
               <div class="col-span-7">{{ formatMoneyRupiah(total) }}</div>
             </div>
+            <div class="grid grid-cols-12 mt-1">
+              <div class="ml-1 col-span-4 font-bold">Nomor Pesanan</div>
+              <div class="">:</div>
+              <div class="col-span-7">{{ orderNumber }}</div>
+            </div>
           </div>
           <p>
             Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi oleh Admin
@@ -77,6 +82,7 @@ export default {
       packet: '',
       packetId: null,
       total: '',
+      orderNumber: '',
       vouchersData: [],
       setNameProvider,
       SEAKUN_PACKAGE_API
@@ -108,6 +114,7 @@ export default {
           this.packet = dataResult.provider.package.variant.name;
           this.total = dataResult.payment.totalPrice;
           this.provider = dataResult.provider.slug;
+          this.orderNumber = dataResult.orderNumber;
         } else {
           throw new Error(fetchPayment);
         }
