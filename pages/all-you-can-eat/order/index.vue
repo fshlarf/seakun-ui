@@ -317,13 +317,7 @@ export default {
     },
   },
   mounted() {
-    // const { provider, packet_id } = this.$router.history.current.query;
     const { order_type } = this.$router.history.current.query;
-    // if (provider) {
-    //   this.provider = provider;
-    //   this.packageId = packet_id;
-    //   this.getOrderDetail();
-    // }
     this.orderType = order_type;
     this.setFieldValueFromLocalStorage();
     this.choosedPackage = this.dataPackages[0];
