@@ -2,12 +2,6 @@
   <section>
     <Snackbar ref="snackbar" />
     <div class="payment-detail text-center mt-16">
-      <!-- <p
-        v-if="provider.toLowerCase() === 'sequrban'"
-        class="payment-detail__label my-3 text-xl"
-      >
-        Transfer DP (uang muka)
-      </p> -->
       <p class="payment-detail__label my-3 text-xl">Total transfer</p>
 
       <div class="total-payment flex align-items-center justify-center">
@@ -17,18 +11,6 @@
         >
           <p class="shimmer w-6/12"></p>
         </div>
-
-        <!-- <div
-          v-else-if="provider.toLowerCase() === 'sequrban'"
-          class="payment-detail__price flex align-items-center justify-center"
-          @click="clickCopyHandler('Nominal', detailPayment.data.downPayment)"
-        >
-          <p
-            class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPayment.data.downPayment)"
-          ></p>
-          <CopyIcon />
-        </div> -->
 
         <div
           v-else
@@ -41,89 +23,25 @@
           ></p>
           <CopyIcon />
         </div>
-
-        <!-- <div
-          v-else
-          class="payment-detail__price flex align-items-center justify-center cursor-pointer"
-          @click="clickCopyHandler('Nominal', detailPayment.data.grandTotal)"
-        >
-          <p
-            class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPayment.data.grandTotal)"
-          ></p>
-          <CopyIcon />
-        </div> -->
       </div>
-
-      <!-- </div> -->
-      <!-- <p class="payment-detail__alert my-3">
-        Pastikan nominal sesuai hingga 3 digit terakhir
-      </p> -->
     </div>
     <div class="payment-method">
       <h3 class="payment-method__title text-center text-bold mt-6">
         Transfer Ke
       </h3>
-      <!-- <div
-        v-if="provider.toLowerCase() === 'sequrban'"
-        class="payment-method__options grid grid-cols-2 gap-1 px-4 py-6"
-      >
-        <div
-          v-for="(payment, index) in paymentMethodSekurban"
-          :key="index"
-          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
-        >
-          <img
-            :src="`/images/payment/${payment.name}.png`"
-            class="w-8/12 my-2"
-          />
-          <p
-            class="mt-4 payment-options__norek text-sm font-bold"
-            @click="clickCopyHandler('Rekening', payment.accountNumber)"
-          >
-            {{ payment.accountNumber }}
-            <span class="ml-1">
-              <CopyIcon
-                @click="clickCopyHandler('Rekening', payment.accountNumber)"
-            /></span>
-          </p>
-          <p class="my-1 payment-options__account-name text-sm">
-            {{ payment.accountName }}
-          </p>
-        </div>
-      </div> -->
-      <div
-        class="payment-method__options grid grid-cols-2 gap-1 px-4 py-6"
-      >
-        <div
-          v-for="(payment, index) in paymetnMethod"
-          :key="index"
-          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
-        >
-          <img
-            :src="`/images/payment/${payment.name}.png`"
-            class="w-8/12 my-2"
-          />
-          <p
-            class="mt-4 payment-options__norek text-sm font-bold"
-            @click="clickCopyHandler('Rekening', payment.accountNumber)"
-          >
-            {{ payment.accountNumber }}
-            <span class="ml-1">
-              <CopyIcon
-                @click="clickCopyHandler('Rekening', payment.accountNumber)"
-            /></span>
-          </p>
-          <p class="my-1 payment-options__account-name text-sm">
-            {{ payment.accountName }}
-          </p>
-        </div>
-      </div>
+      <PaymentMethodList
+          v-if="!paymentSeakunListLoading"
+          :PaymentMethodList="paymetnMethod"
+          @clickCopyHandler="clickCopyHandler"
+        />
+        <PaymentMethodListLoading v-else />
     </div>
   </section>
 </template>
 
 <script>
+import PaymentMethodList from './PaymentMethodList.vue'
+import PaymentMethodListLoading from './PaymentMethodListLoading.vue'
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import { currencyFormat } from '~/helpers/word-transformation.js';
@@ -133,24 +51,14 @@ export default {
   components: {
     Snackbar,
     CopyIcon,
+    PaymentMethodList,
+    PaymentMethodListLoading
   },
   props: {
-    // provider: {
-    //   type: String,
-    //   default: '',
-    // },
-    // packageId: {
-    //   type: Number,
-    //   default: null,
-    // },
-    // packageName: {
-    //   type: String,
-    //   default: '',
-    // },
-    // total: {
-    //   type: String | Number,
-    //   default: null,
-    // },
+    paymentSeakunListLoading: {
+      type: Boolean,
+      default: false
+    },
     detailPayment: {
       type: Object,
       default: () => ({
@@ -193,18 +101,6 @@ export default {
         accountName: 'Seakun ID / Eka Pusna',
       },
     ],
-    // paymentMethodSekurban: [
-    //   {
-    //     name: 'mandiri',
-    //     accountNumber: '1150046427383',
-    //     accountName: 'PT. Seakun Global',
-    //   },
-    //   {
-    //     name: 'bca',
-    //     accountNumber: '7660777738',
-    //     accountName: 'PT. Seakun Global',
-    //   },
-    // ],
   }),
   methods: {
     clickCopyHandler(name, value) {

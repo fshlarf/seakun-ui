@@ -23,7 +23,7 @@
       <DetailPayment
         :detailPayment="detailPayment"
       />
-      <div class="tos-alert px-4 mt-4 text-lg" v-if="type !== 'digital'">
+      <div class="tos-alert px-4 mt-4 text-lg">
         <p>
           Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
           kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 60 menit. jika
@@ -41,7 +41,6 @@
         <Button
           class="w-full bg-green-seakun text-white"
           label="Konfirmasi Pesanan"
-          @click="onClickConfirm"
         />
       </div>
     </div>
