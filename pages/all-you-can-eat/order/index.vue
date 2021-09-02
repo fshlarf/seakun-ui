@@ -70,7 +70,9 @@
           />
         </div>
       </div>
-      <div class="mt-4">
+
+      <div v-if="orderType === 'take_away'">
+        <div class="mt-4">
           <p class="pb-1 tn:text-sm">Lokasi</p>
           <ButtonDrop
             :btnText="location"
@@ -93,36 +95,53 @@
 
         <div class="mt-4">
           <p class="pb-1 tn:text-sm">Alamat pengiriman</p>
-          <textarea class="w-full rounded border p-3 focus:outline-none" placeholder="Tulis alamatmu di sini" name="alamat" id="" cols="" rows="3"></textarea>
+          <textarea
+            class="w-full rounded border p-3 focus:outline-none"
+            placeholder="Tulis alamatmu di sini"
+            name="alamat"
+            id=""
+            cols=""
+            rows="3"
+          ></textarea>
         </div>
 
         <div class="mt-3">
-          <p class="pb-1 tn:text-sm">Alamat pengiriman 2 <span class="text-gray-400">(opsional)</span></p>
-          <textarea class="w-full rounded border p-3 focus:outline-none" placeholder="Tulis alamatmu di sini" name="alamat" id="" cols="" rows="3"></textarea>
+          <p class="pb-1 tn:text-sm">
+            Alamat pengiriman 2 <span class="text-gray-400">(opsional)</span>
+          </p>
+          <textarea
+            class="w-full rounded border p-3 focus:outline-none"
+            placeholder="Tulis alamatmu di sini"
+            name="alamat"
+            id=""
+            cols=""
+            rows="3"
+          ></textarea>
         </div>
+      </div>
 
-        <div class="grid grid-cols-3 gap-3 mt-3">
-          <InputForm
-            v-model="city"
-            label="Kota / Kecamatan"
-            placeholder="Masukkan kota / kecamatan"
-            class="mt-0 col-span-2"
-            :error="errorForm.city"
-            id="city"
-            @change="setLocalStorage('city')"
-            @keyup="validationForm('city')"
-          />
-          <InputForm
-            v-model="postal_code"
-            label="Kode pos"
-            placeholder="Kode pos"
-            class="mt-0"
-            :error="errorForm.postal_code"
-            id="postal_code"
-            @change="setLocalStorage('postal_code')"
-            @keyup="validationForm('postal_code')"
-          />
-        </div>
+      <div class="grid grid-cols-3 gap-3 mt-3">
+        <InputForm
+          v-model="city"
+          label="Kota / Kecamatan"
+          placeholder="Masukkan kota / kecamatan"
+          class="mt-0 col-span-2"
+          :error="errorForm.city"
+          id="city"
+          @change="setLocalStorage('city')"
+          @keyup="validationForm('city')"
+        />
+        <InputForm
+          v-model="postal_code"
+          label="Kode pos"
+          placeholder="Kode pos"
+          class="mt-0"
+          :error="errorForm.postal_code"
+          id="postal_code"
+          @change="setLocalStorage('postal_code')"
+          @keyup="validationForm('postal_code')"
+        />
+      </div>
       <div class="ml-2 mt-6">
         <label
           class="space-x-1 md:text-base tn:text-sm"
@@ -181,11 +200,9 @@ import DropdownCodeNumber from './views/DropdownCodeNumber.vue';
 import Voucher from './views/Voucher.vue';
 import Button from '~/components/atoms/Button';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
-import {
-  currencyFormat
-} from '~/helpers/word-transformation.js';
+import { currencyFormat } from '~/helpers/word-transformation.js';
 import ModalPackages from './views/ModalPackages.vue';
-import PopUpLocation from './views/PopUpLocation.vue'
+import PopUpLocation from './views/PopUpLocation.vue';
 
 export default {
   name: 'OrderPage',
@@ -199,7 +216,7 @@ export default {
     DropdownCodeNumber,
     ModalPackages,
     PopUpLocation,
-    Voucher
+    Voucher,
   },
   data: () => ({
     SEAKUN_API,
@@ -207,6 +224,7 @@ export default {
     SEAKUN_MAIL_API,
     packageId: '',
     packet: '',
+    orderType: '',
     detailOrder: {
       loading: true,
       data: {},
@@ -247,7 +265,7 @@ export default {
         name: 'All You Can Eat',
         variant: 'Paket 5 Orang',
         price: 120000,
-        isAvailable: true
+        isAvailable: true,
       },
       {
         id: 2,
@@ -255,7 +273,7 @@ export default {
         name: 'Bakar di Rumah',
         variant: 'Paket Berduaan',
         price: 120000,
-        isAvailable: true
+        isAvailable: true,
       },
       {
         id: 3,
@@ -263,7 +281,7 @@ export default {
         name: 'Bakar di Rumah',
         variant: 'Paket Berempatan',
         price: 120000,
-        isAvailable: true
+        isAvailable: true,
       },
       {
         id: 4,
@@ -271,7 +289,7 @@ export default {
         name: 'Bakar di Rumah',
         variant: 'Paket Ramean',
         price: 120000,
-        isAvailable: true
+        isAvailable: true,
       },
     ],
     isFetchingPacket: false,
@@ -290,8 +308,8 @@ export default {
       'Jakarta Barat',
       'Jakarta Timur',
       'Jakarta Pusat',
-      'Jakarta Selatan'
-    ]
+      'Jakarta Selatan',
+    ],
   }),
   watch: {
     codeNumber() {
@@ -299,14 +317,10 @@ export default {
     },
   },
   mounted() {
-    const { provider, packet_id } = this.$router.history.current.query;
-    if (provider) {
-      this.provider = provider;
-      this.packageId = packet_id;
-      this.getOrderDetail();
-    }
+    const { order_type } = this.$router.history.current.query;
+    this.orderType = order_type;
     this.setFieldValueFromLocalStorage();
-    this.choosedPackage = this.dataPackages[0]
+    this.choosedPackage = this.dataPackages[0];
   },
   methods: {
     showLocationList(type) {
@@ -437,7 +451,7 @@ export default {
       this.isShowModalPackages = true;
     },
     choosePacket(variant) {
-      this.choosedPackage = variant
+      this.choosedPackage = variant;
       this.isShowModalPackages = false;
     },
     setFieldValueFromLocalStorage() {
