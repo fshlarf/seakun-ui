@@ -38,9 +38,7 @@ import Title from '~/components/atoms/Title';
 
 export default {
   components: {
-    NavbarBlank,
     GroupCard,
-    Footer,
     CardShimmerVertical,
     Title,
   },
