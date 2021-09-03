@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 my-8 rounded-2xl shadow w-72">
+  <div v-if="group" class="p-4 my-8 rounded-2xl shadow w-72">
     <div class="flex justify-between items-center">
       <img :class="setWidthImage(group.name)" :src="`${group.brand}`" alt="#" />
       <div
@@ -40,7 +40,7 @@ export default {
   props: {
     group: {
       type: Object,
-      default: {},
+      default: () => {},
     },
   },
   components: {
@@ -66,9 +66,13 @@ export default {
     },
     setWidthImage(provider) {
       const theProvider = provider.toLowerCase();
-      return theProvider === 'canva' || theProvider === 'disney-hotstar'
-        ? 'w-11'
-        : 'w-28';
+      if (theProvider === 'canva' || theProvider === 'disney-hotstar') {
+        return 'w-11'
+      } else if (theProvider === 'apple-one') {
+        return 'w-20'
+      } else {
+        return 'w-28'
+      }
     },
   },
 };
