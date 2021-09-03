@@ -80,7 +80,6 @@ export default {
             startDate: e.start_date,
           };
         });
-        console.log(theArr[0]);
       customers &&
         customers.map((e, i) => {
           if (newArr.includes(e.group)) {
