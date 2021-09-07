@@ -556,4 +556,44 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'apple-music',
+    img: '/images/apple-music.png',
+    screenshot: '/images/ss-apple-music.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Apple Music',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Apple Music (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket',
+        value: 'Rp75.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp75.000 ÷ 5 = Rp15.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp20.000',
+        is_total: true,
+      },
+    ],
+  },
 ];
