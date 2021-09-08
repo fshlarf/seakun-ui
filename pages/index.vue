@@ -13,7 +13,7 @@
     <BenefitSection />
     <QnaSection />
     <Footer />
-    <WhatsappNoticeModal />
+    <!-- <WhatsappNoticeModal /> -->
   </div>
 </template>
 
