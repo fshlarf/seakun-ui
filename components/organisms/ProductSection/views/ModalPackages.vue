@@ -8,7 +8,7 @@
       </div>
     </template>
 
-    <div v-if="!isLoading">
+    <div class="pb-2" v-if="!isLoading">
       <div
         v-if="preOrderPackage.includes(slug)"
         class="ml-3 mb-2"
