@@ -155,7 +155,7 @@ export default {
       const { OrderService } = this;
 
       try {
-        const fetchPayment = await OrderService.getPaymentConfirmation(
+        const fetchPayment = await OrderService.getDetailOrder(
           orderUid,
           customerUid
         );
