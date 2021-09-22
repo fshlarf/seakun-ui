@@ -7,6 +7,6 @@ services:
             context: .
             dockerfile: ./_build/Dockerfile
         volumes:
-            - /_build/nginx/sites-available:/etc/nginx/sites-available:ro
+            - ./_build/nginx/sites-available:/etc/nginx/sites-available:ro
         ports:
             - 80:80
