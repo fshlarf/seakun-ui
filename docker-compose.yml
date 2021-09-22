@@ -9,4 +9,4 @@ services:
         volumes:
             - /_build/nginx/sites-available:/etc/nginx/sites-available:ro
         ports:
-            - '80:80'
+            - 80:80
