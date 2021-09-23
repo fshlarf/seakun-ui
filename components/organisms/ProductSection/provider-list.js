@@ -596,4 +596,84 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'google-one',
+    img: '/images/google-one.png',
+    screenshot: '/images/ss-google-one-standard.png',
+    schemes: [
+      'Seakun membuat akun gmail dan membeli Paket Standar Google',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 2 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Standar',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket',
+        value: 'Rp43.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp43.000 ÷ 2 = Rp21.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp26.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'google-one',
+    img: '/images/google-one.png',
+    screenshot: '/images/ss-google-one-premium.png',
+    schemes: [
+      'Seakun membuat akun gmail dan membeli Paket Premium Google',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket',
+        value: 'Rp135.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp135.000 ÷ 5 = Rp27.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.500',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp33.500',
+        is_total: true,
+      },
+    ],
+  },
 ];
