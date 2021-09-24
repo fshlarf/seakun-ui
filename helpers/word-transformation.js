@@ -51,6 +51,9 @@ export function setNameProvider(provider) {
     case 'nintendo':
       return 'Nintendo Switch';
       break;
+    case 'google-one':
+      return 'Google One';
+      break;
     default:
       return provider;
   }
