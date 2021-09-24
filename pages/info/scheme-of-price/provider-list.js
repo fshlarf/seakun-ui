@@ -639,39 +639,39 @@ export const providerList = [
   {
     name: 'google-one',
     img: '/images/google-one.png',
-    screenshot: '/images/ss-google-one-standard.png',
+    screenshot: '/images/ss-google-one-premium.png',
     schemes: [
-      'Seakun membuat akun gmail dan membeli Paket Standar Google',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 2 member untuk join 1 grup Premium',
+      'Seakun membuat akun gmail dan membeli Paket Premium Google',
+      'Member bertindak sebagai user Host dalam grup',
+      'Seakun akan menggunakan No. hp User Host untuk OTP',
+      'Seakun mengundang User Host untuk join grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Standar',
+        value: 'Paket Premium User Host',
         is_total: true,
       },
       {
         title: 'Harga Paket',
-        value: 'Rp43.000',
+        value: 'Rp135.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
-        value: '2',
+        value: '5',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp43.000 ÷ 2 = Rp21.500',
+        value: 'Rp135.000 ÷ 5 = Rp27.000',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
+        value: 'Rp0',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp26.500',
+        value: 'Rp27.000',
         is_total: true,
       },
     ],
@@ -690,7 +690,7 @@ export const providerList = [
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium',
+        value: 'Paket Premium Reguler',
         is_total: true,
       },
       {
