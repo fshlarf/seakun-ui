@@ -12,7 +12,7 @@
     <UserGroupSection />
     <BenefitSection />
     <QnaSection />
-    <WarningOrder/>
+    <WarningOrder />
     <Footer />
     <WhatsappNoticeModal />
   </div>

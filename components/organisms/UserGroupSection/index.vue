@@ -9,12 +9,12 @@
         kategori untuk melihat.
       </p>
     </div>
-    <div class="my-6 container-group">
-      <div class="flex items-center">
-        <span class="-ml-10 mr-4 mt-1">
+    <div class="my-6 container-group w-full">
+      <div class="flex items-center w-full">
+        <span class="hidden xl:block -ml-10 mr-4 mt-1">
           <ButtonChevron
             mode="left"
-            class="hidden xl:block self-center opacity-30 hover:opacity-100"
+            class="self-center opacity-30 hover:opacity-100"
             @click-chevron="scrollPill('left')"
           />
         </span>
@@ -35,19 +35,19 @@
             @selectProvider="selectProvider"
           />
         </div>
-        <span class="-mr-14 z-20 mt-1 ml-2">
+        <span class="hidden xl:block -mr-14 z-20 mt-1 ml-2">
           <ButtonChevron
-            class="hidden xl:block self-center opacity-30 hover:opacity-100"
+            class="self-center opacity-30 hover:opacity-100"
             @click-chevron="scrollPill('right')"
           />
         </span>
       </div>
 
-      <div v-if="!isLoading" class="relative flex items-center">
-        <span class="-ml-10 mr-4">
+      <div v-if="!isLoading" class="relative flex items-center w-full">
+        <span class="hidden xl:block -ml-10 mr-4">
           <ButtonChevron
             mode="left"
-            class="hidden xl:block self-center opacity-30 hover:opacity-100"
+            class="self-center opacity-30 hover:opacity-100"
             @click-chevron="scrollCard('left')"
           />
         </span>
@@ -68,9 +68,9 @@
             @click-chevron="toCustomerPage"
           />
         </div>
-        <span class="-mr-14 z-20 ml-2">
+        <span class="hidden xl:block -mr-14 z-20 ml-2">
           <ButtonChevron
-            class="hidden xl:block self-center opacity-30 hover:opacity-100"
+            class="self-center opacity-30 hover:opacity-100"
             @click-chevron="scrollCard('right')"
           />
         </span>
