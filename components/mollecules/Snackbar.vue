@@ -1,6 +1,6 @@
 <template>
   <div
-    class="snackbar flex items-center p-2 space-x-4 rounded-md text-white  "
+    class="snackbar flex items-center p-2 space-x-4 rounded-md text-white"
     :class="['snackbar', { snackbar__show: show },  {'bg-red-400' : color=='bg-red-400'},`bg-${color}`]"
   >
     <div class="flex items-center justify-center w-1/12">
@@ -27,7 +27,7 @@ export default {
   data: () => ({
     show: false,
     tempTimeOut: null,
-    color: 'green-seakun',
+    color: '',
     message: '',
     duration : 3500
   }),
