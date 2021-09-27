@@ -41,7 +41,7 @@
         <div class="w-full">
           <img
             class="w-full -right-8"
-            src="/images/header-main.svg"
+            src="/images/header-main2.svg"
             alt="Image not found"
           />
         </div>

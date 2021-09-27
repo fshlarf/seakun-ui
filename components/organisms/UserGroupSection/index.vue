@@ -9,36 +9,71 @@
         kategori untuk melihat.
       </p>
     </div>
-    <div class="my-6 container-group">
-      <div
-        class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
-      >
-        <ProviderPill
-          v-for="(provider, id) in dataProviderList"
-          :key="id"
-          :provider="provider"
-          :is-loading="isLoading"
-          :data-group="dataDetailGroup"
-          class="my-2 w-full h-full flex-none cursor-pointer"
-          :class="{
-            'high-light ': provider.slug === highlight,
-          }"
-          @selectProvider="selectProvider"
-        />
+    <div class="my-6 container-group w-full">
+      <div class="flex items-center w-full">
+        <span class="hidden xl:block -ml-10 mr-4 mt-1">
+          <ButtonChevron
+            mode="left"
+            class="self-center opacity-30 hover:opacity-100"
+            @click-chevron="scrollPill('left')"
+          />
+        </span>
+        <div
+          id="container-pill"
+          class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
+        >
+          <ProviderPill
+            v-for="(provider, id) in dataProviderList"
+            :key="id"
+            :provider="provider"
+            :is-loading="isLoading"
+            :data-group="dataDetailGroup"
+            class="my-2 w-full h-full flex-none cursor-pointer"
+            :class="{
+              'high-light ': provider.slug === highlight,
+            }"
+            @selectProvider="selectProvider"
+          />
+        </div>
+        <span class="hidden xl:block -mr-14 z-20 mt-1 ml-2">
+          <ButtonChevron
+            class="self-center opacity-30 hover:opacity-100"
+            @click-chevron="scrollPill('right')"
+          />
+        </span>
       </div>
 
-      <div
-        v-if="!isLoading"
-        class="scroll-provider flex space-x-6 overflow-x-auto overscroll-auto px-3 pt-2 -ml-4"
-      >
-        <GroupCard
-          v-for="(group, id) in dataDetailGroup"
-          :key="id"
-          :group="group"
-          class="my-2 w-full h-full flex-none"
-          @click-order="onClickOrder"
-        />
-        <ButtonChevron class="self-center" @click-chevron="toCustomerPage" />
+      <div v-if="!isLoading" class="relative flex items-center w-full">
+        <span class="hidden xl:block -ml-10 mr-4">
+          <ButtonChevron
+            mode="left"
+            class="self-center opacity-30 hover:opacity-100"
+            @click-chevron="scrollCard('left')"
+          />
+        </span>
+        <div
+          id="container-card"
+          class="scroll-provider flex space-x-6 overflow-x-auto overscroll-auto px-3 pt-2 -ml-4"
+        >
+          <GroupCard
+            v-for="(group, id) in dataDetailGroup"
+            :key="id"
+            :group="group"
+            class="my-2 w-full h-full flex-none"
+            @click-order="onClickOrder"
+          />
+          <ButtonChevron
+            btnText="Selengkapnya"
+            class="self-center"
+            @click-chevron="toCustomerPage"
+          />
+        </div>
+        <span class="hidden xl:block -mr-14 z-20 ml-2">
+          <ButtonChevron
+            class="self-center opacity-30 hover:opacity-100"
+            @click-chevron="scrollCard('right')"
+          />
+        </span>
       </div>
 
       <div
@@ -174,6 +209,20 @@ export default {
     this.getProviders();
   },
   methods: {
+    scrollPill(direction) {
+      if (direction === 'right') {
+        document.getElementById('container-pill').scrollLeft += 600;
+      } else {
+        document.getElementById('container-pill').scrollLeft -= 600;
+      }
+    },
+    scrollCard(direction) {
+      if (direction === 'right') {
+        document.getElementById('container-card').scrollLeft += 600;
+      } else {
+        document.getElementById('container-card').scrollLeft -= 600;
+      }
+    },
     selectProvider(provider) {
       this.getCustomersData(provider.slug);
       this.isLoading = true;
@@ -199,7 +248,9 @@ export default {
     },
     getCustomersData(provider) {
       axios
-        .get(`https://seakun-api.herokuapp.com/registered-user/group-${provider}`)
+        .get(
+          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
+        )
         .then((res) => {
           this.processDataCustomers(res.data, provider);
           this.isLoading = false;
@@ -278,5 +329,11 @@ export default {
 }
 .container {
   max-width: 1450px !important;
+}
+#container-card {
+  scroll-behavior: smooth;
+}
+#container-pill {
+  scroll-behavior: smooth;
 }
 </style>
