@@ -173,11 +173,11 @@ export default {
         accountNumber: '085774642738',
         accountName: 'Seakun ID / Eka Pusna',
       },
-      {
-        name: 'dana',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
-      },
+      // {
+      //   name: 'dana',
+      //   accountNumber: '085774642738',
+      //   accountName: 'Seakun ID / Eka Pusna',
+      // },
     ],
     paymentMethodSekurban: [
       {

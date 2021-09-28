@@ -230,10 +230,10 @@ export default {
         //   name: '',
         //   value: 'ovo',
         // },
-        {
-          name: 'DANA',
-          value: 'dana',
-        },
+        // {
+        //   name: 'DANA',
+        //   value: 'dana',
+        // },
         {
           name: 'LinkAja',
           value: 'linkaja',
