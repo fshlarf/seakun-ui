@@ -46,22 +46,26 @@
     </div>
     <div class="max-w-sm mx-auto mt-2">
       <div class="flex justify-between items-center">
-        <img class="w-[66px]" src="images/icon/links/leafs-left.svg" alt="#" />
+        <img class="w-[66px]" src="images/icons/links/leafs-left.svg" alt="#" />
         <div class="my-8 flex justify-center items-center space-x-3">
           <a href="https://instagram.com/official.seakun"
             ><img
               class=""
-              src="images/icon/links/Instagram.png"
+              src="images/icons/links/Instagram.png"
               alt="Instagram"
           /></a>
           <a href="https://twitter.com/seakun_id"
-            ><img class="" src="images/icon/links/Twitter.png" alt="Twitter"
+            ><img class="" src="images/icons/links/Twitter.png" alt="Twitter"
           /></a>
           <a href="https://www.linkedin.com/company/seakun-id/"
-            ><img class="" src="images/icon/links/Linkedin.png" alt="LinkedIn"
+            ><img class="" src="images/icons/links/Linkedin.png" alt="LinkedIn"
           /></a>
         </div>
-        <img class="w-[80px]" src="images/icon/links/leafs-right.svg" alt="#" />
+        <img
+          class="w-[80px]"
+          src="images/icons/links/leafs-right.svg"
+          alt="#"
+        />
       </div>
     </div>
   </div>
