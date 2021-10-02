@@ -2,7 +2,7 @@
   <div class="pt-8 h-screen" style="background-color: #f4f9f8">
     <div class="max-w-sm mx-auto px-8">
       <div class="mt-4 mb-10 flex justify-center space-x-4 items-center">
-        <img class="w-8 h-8 rounded-full" src="images/seakunid.png" alt="" />
+        <img class="w-8 h-8 rounded-full" src="/images/seakunid.png" alt="" />
         <p class="text-primary font-bold text-xl">Seakun.id</p>
       </div>
       <div class="grid grid-cols-1 gap-6">
@@ -46,24 +46,31 @@
     </div>
     <div class="max-w-sm mx-auto mt-2">
       <div class="flex justify-between items-center">
-        <img class="w-[66px]" src="images/icons/links/leafs-left.svg" alt="#" />
+        <img
+          class="w-[66px]"
+          src="/images/icons/links/leafs-left.svg"
+          alt="#"
+        />
         <div class="my-8 flex justify-center items-center space-x-3">
           <a href="https://instagram.com/official.seakun"
             ><img
               class=""
-              src="images/icons/links/Instagram.png"
+              src="/images/icons/links/Instagram.png"
               alt="Instagram"
           /></a>
           <a href="https://twitter.com/seakun_id"
-            ><img class="" src="images/icons/links/Twitter.png" alt="Twitter"
+            ><img class="" src="/images/icons/links/Twitter.png" alt="Twitter"
           /></a>
           <a href="https://www.linkedin.com/company/seakun-id/"
-            ><img class="" src="images/icons/links/Linkedin.png" alt="LinkedIn"
+            ><img
+              class=""
+              src="/images/icons/links/Linkedin.png"
+              alt="LinkedIn"
           /></a>
         </div>
         <img
           class="w-[80px]"
-          src="images/icons/links/leafs-right.svg"
+          src="/images/icons/links/leafs-right.svg"
           alt="#"
         />
       </div>
