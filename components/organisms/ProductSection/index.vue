@@ -128,29 +128,29 @@ export default {
       },
       dataProductDigital: [],
       dataProductOnDemand: [
+        // {
+        //   id: 1,
+        //   name: 'Sequrban',
+        //   slug: 'sequrban',
+        //   img: '/images/product/sekurban.png',
+        //   icon: '/images/icons/sekurban.svg',
+        //   isActive: false,
+        //   isNew: true,
+        //   preview:
+        //     'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
+        // },
+        // {
+        //   id: 2,
+        //   name: 'Pahamify',
+        //   slug: 'pahamify',
+        //   img: '/images/product/pahamify.png',
+        //   icon: '/images/icons/pahamify.svg',
+        //   isActive: false,
+        //   preview:
+        //     'Belajar jarak jauh lebih mudah, lengkap, dan murah bersama konten premium Pahamify',
+        // },
         {
           id: 1,
-          name: 'Sequrban',
-          slug: 'sequrban',
-          img: '/images/product/sekurban.png',
-          icon: '/images/icons/sekurban.svg',
-          isActive: false,
-          isNew: true,
-          preview:
-            'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
-        },
-        {
-          id: 2,
-          name: 'Pahamify',
-          slug: 'pahamify',
-          img: '/images/product/pahamify.png',
-          icon: '/images/icons/pahamify.svg',
-          isActive: false,
-          preview:
-            'Belajar jarak jauh lebih mudah, lengkap, dan murah bersama konten premium Pahamify',
-        },
-        {
-          id: 3,
           name: 'Kulina',
           slug: 'kulina',
           img: '/images/product/kulina.png',
