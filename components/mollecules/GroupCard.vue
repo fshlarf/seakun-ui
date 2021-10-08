@@ -51,27 +51,27 @@ export default {
       return members.some((el) => el === '') ? false : true;
     },
     setName(name) {
-      const regex = /(?!^)[\s\S](?!$)/g;
-      let arrayName = name.split(' ');
-      let newArr = arrayName.map((e, i) => {
-        if (i == arrayName.length - 1) {
-          e = e.replace(regex, '*');
-          return e;
-        } else {
-          return e;
-        }
-      });
-      newArr = newArr.join(' ');
-      return newArr;
+      // const regex = /(?!^)[\s\S](?!$)/g;
+      // let arrayName = name.split(' ');
+      // let newArr = arrayName.map((e, i) => {
+      //   if (i == arrayName.length - 1) {
+      //     e = e.replace(regex, '*');
+      //     return e;
+      //   } else {
+      //     return e;
+      //   }
+      // });
+      // newArr = newArr.join(' ');
+      return name;
     },
     setWidthImage(provider) {
       const theProvider = provider.toLowerCase();
       if (theProvider === 'canva' || theProvider === 'disney-hotstar') {
-        return 'w-11'
+        return 'w-11';
       } else if (theProvider === 'apple-one') {
-        return 'w-20'
+        return 'w-20';
       } else {
-        return 'w-28'
+        return 'w-28';
       }
     },
   },

@@ -5,6 +5,7 @@
       height="1em"
       viewBox="0 0 16 16"
       class="cursor-pointer text-white bg-primary w-9 h-9 p-2 rounded-full mx-auto mb-2"
+      :class="{ reverse: mode === 'left' }"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -22,10 +23,18 @@ export default {
   props: {
     btnText: {
       type: String,
-      default: 'Selengkapnya',
+      default: '',
+    },
+    mode: {
+      type: String,
+      default: '',
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.reverse {
+  transform: rotate(180deg);
+}
+</style>
