@@ -614,8 +614,8 @@ export const providerList = [
         is_total: true,
       },
       {
-        title: 'Harga Paket',
-        value: 'Rp135.000',
+        title: 'Harga Paket + tax Google One',
+        value: 'Rp148.500',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -623,7 +623,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp135.000 ÷ 5 = Rp27.000',
+        value: 'Rp148.500 ÷ 5 = Rp29.700',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -631,7 +631,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp27.000',
+        value: 'Rp29.700',
         is_total: true,
       },
     ],
@@ -654,8 +654,8 @@ export const providerList = [
         is_total: true,
       },
       {
-        title: 'Harga Paket',
-        value: 'Rp135.000',
+        title: 'Harga Paket + tax Google One',
+        value: 'Rp148.500',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -663,15 +663,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp135.000 ÷ 5 = Rp27.000',
+        value: 'Rp148.500 ÷ 5 = Rp29.700',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.500',
+        value: 'Rp6.300',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp33.500',
+        value: 'Rp36.000',
         is_total: true,
       },
     ],
