@@ -1,4 +1,4 @@
-import definePlugin from './config/definePlugin'
+import definePlugin from './config/definePlugin';
 
 export default {
   /*
@@ -111,7 +111,17 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    "@nuxtjs/svg"
+    '@nuxtjs/svg',
+    [
+      'nuxt-facebook-pixel-module',
+      {
+        /* module options */
+        track: 'PageView',
+        pixelId: '380285150190068',
+        autoPageView: true,
+        disabled: false,
+      },
+    ],
   ],
   /*
    ** Axios module configuration
