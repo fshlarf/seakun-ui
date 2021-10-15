@@ -1,90 +1,48 @@
 <template>
   <div>
-    <NavbarBlank />
-    <div class="customer container">
+    <div class="customer tn:px-4 md:px-8 xl:px-28 tn:pt-8 lg:pt-16">
       <Title title="Group Berlangganan" />
       <div v-if="isLoading">
-        <div class="row row-cols-1 row-cols-md-4">
+        <div class="grid md:grid-cols-4 gap-6">
           <div
             class="col"
             v-for="(item, index) in shimmerInitialData"
             :key="index"
           >
-            <CardShimmer />
+            <CardShimmerVertical />
           </div>
         </div>
       </div>
-      <div class="row row-cols-1 row-cols-md-4" v-if="customers.length > 0">
-        <div
-          class="col mb-4"
+      <div
+        class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center tn:gap-2 md:gap-3 lg:gap-6 mt-8"
+        v-if="customers.length > 0"
+      >
+        <GroupCard
           v-for="(customer, index) in customers"
           :key="index"
-        >
-          <div
-            :class="`card card-${setClassStatus(customer.names)}`"
-            v-if="customer"
-          >
-            <div class="card-header">
-              <div class="card-header--title">
-                <h5>Group {{ customer.group }}</h5>
-                <img
-                  :src="`/images/${
-                    customer.provider && customer.provider.toLowerCase()
-                  }.png`"
-                  alt="Netflix"
-                />
-              </div>
-              <div
-                :class="`card-header--status ${setClassStatus(customer.names)}`"
-              >
-                {{ setStatus(customer.names) }}
-              </div>
-            </div>
-            <div class="card-content">
-              <ul>
-                <li
-                  v-for="(name, index) in customer.names"
-                  :key="index"
-                  :class="setClassUserName(name)"
-                >
-                  {{ setName(name) }}
-                </li>
-              </ul>
-              <div class="btn-container">
-                <a
-                  v-if="isButtonShow(customer.names)"
-                  class="btn btn-register btn-sm"
-                  @click="clickRegister"
-                  >Daftar Sekarang</a
-                >
-                <a v-else class="btn-register btn-sm">&nbsp;</a>
-              </div>
-            </div>
-          </div>
-        </div>
+          :group="customer"
+          @click-order="clickRegister"
+          class="flex-none w-full mx-auto my-2"
+        />
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import { SEAKUN_API } from '~/constants/api.js';
-import NavbarBlank from '~/components/mollecules/NavbarBlank';
-import CardShimmer from '~/components/mollecules/CardShimmer';
-import Footer from '~/components/mollecules/Footer';
-import CustomersGroupCard from '~/components/mollecules/CustomersGroupCard';
+import GroupCard from '~/components/mollecules/GroupCard';
+import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import Title from '~/components/atoms/Title';
 
 export default {
   components: {
-    NavbarBlank,
-    Footer,
-    CardShimmer,
-    CustomersGroupCard,
+    GroupCard,
+    CardShimmerVertical,
     Title,
   },
+  layout: 'new',
   data() {
     return {
       SEAKUN_API,
@@ -114,16 +72,17 @@ export default {
         customers.map((e, i) => {
           newArr.push(e.group);
           theArr[parseInt(e.group) - 1] = {
-            group: parseInt(e.group),
-            names: [],
-            provider: e.provider,
+            groupNumber: parseInt(e.group),
+            members: [],
+            name: e.provider,
+            brand: `/images/${e.provider}.png`,
             startDate: e.start_date,
           };
         });
       customers &&
         customers.map((e, i) => {
           if (newArr.includes(e.group)) {
-            theArr[parseInt(e.group) - 1].names.push(e.customer_name);
+            theArr[parseInt(e.group) - 1].members.push(e.customer_name);
           }
         });
 
@@ -167,86 +126,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.customer {
-  padding: 100px 0 40px !important;
-
-  .card {
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-    border: none;
-
-    &-header {
-      background-color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 14px !important;
-      &--title {
-        display: block;
-        h5 {
-          font-weight: 700;
-          font-size: 14px;
-        }
-        img {
-          max-width: 7rem;
-        }
-      }
-      &--status {
-        color: white;
-        padding: 4px 16px !important;
-        border-radius: 4px;
-        font-size: 0.75rem;
-      }
-    }
-    &-content {
-      padding-top: 6px;
-    }
-    .Full {
-      background-color: indianred;
-    }
-    .Available {
-      background-color: green;
-    }
-    .available-slot {
-      color: green !important;
-      font-weight: 600;
-    }
-    .btn-container {
-      padding: 8px 16px 16px;
-    }
-    .btn-register {
-      background-color: white;
-      border-color: green !important;
-      color: green;
-      width: 100%;
-    }
-  }
-  ul,
-  li {
-    list-style: none;
-    padding: 5px 8px;
-    margin-bottom: 0 !important;
-  }
-}
-@media (max-width: 800px) {
-  .customer {
-    padding: 100px 10px 0px !important;
-
-    .card {
-      &-header {
-        &--title {
-          img {
-            max-width: 5rem;
-          }
-        }
-        &--status {
-          color: white;
-          padding: 4px 16px !important;
-          border-radius: 4px;
-          font-size: 0.75rem;
-        }
-      }
-    }
-  }
-}
-</style>
+<style scoped></style>

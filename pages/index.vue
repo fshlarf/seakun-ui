@@ -14,7 +14,7 @@
     <QnaSection />
     <WarningOrder/>
     <Footer />
-    <WhatsappNoticeModal />
+    <!-- <WhatsappNoticeModal /> -->
   </div>
 </template>
 
