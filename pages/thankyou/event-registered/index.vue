@@ -13,7 +13,7 @@
             />
           </div>
           <div class="md:px-12 lg:px-20 xl:px-24">
-            <h3 class="text-2xl font-bold text-center">Thank You!</h3>
+            <h3 class="text-2xl font-bold text-center mb-3">Thank You!</h3>
             <p class="text-center">
               Pendaftaran kamu telah berhasil kami simpan. Link meeting room
               bisa stay tune di email kamu, see you online!
