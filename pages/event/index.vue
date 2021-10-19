@@ -441,7 +441,7 @@ h5 {
   .event {
     display: block;
     width: 100% !important;
-    padding: 80px 10px !important;
+    padding: 40px 10px !important;
     font-size: 14px !important;
     &-reg {
       width: 100% !important;
