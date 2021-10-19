@@ -453,6 +453,7 @@ h5 {
       padding: 0 0px;
       padding-bottom: 16px;
       margin: 0px 0px;
+      height: auto;
       &__info {
         &--key {
           width: 28% !important;
