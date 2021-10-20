@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import Button from '~/components/atoms/button.vue';
+import Button from '~/components/atoms/Button.vue';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 export default {
   components: {

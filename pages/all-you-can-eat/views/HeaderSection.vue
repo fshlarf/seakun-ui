@@ -16,18 +16,18 @@
         <div></div>
         <div class="text-white tn:pl-3 tn:pt-6 md:pt-0 md:pl-6 lg:p-10">
           <p
-            class="tn:text-lg md:text-xl lg:text-4xl xl:text-5xl font-bold lg:my-2 xl:my-6"
+            class="tn:text-lg md:text-xl lg:text-3xl xl:text-4xl font-bold lg:my-2 xl:my-6"
           >
-            Vendor
+            Voyage Harris Harmoni
           </p>
-          <p class="hidden md:block md:my-2 md:text-xl">Captionnya</p>
-          <div class="flex">
-            <p class="hidden md:block">dari</p>
-            <p class="hidden md:block mt-2 ml-2 text-4xl font-bold">Rp53.000</p>
+          <p class="hidden md:block md:my-2 md:text-xl">Buat momen spesial untuk orang tercinta anda!</p>
+          <div class="flex items-center">
+            <p class="hidden md:block">dari <span class="line-through">Rp.338.000</span></p>
+            <p class="hidden md:flex mt-2 ml-2 text-4xl font-bold">Rp218.000</p>
           </div>
           <div class="mt-2">
             <Button
-              variant="secondary"
+              variant="forth"
               label="Pesan Sekarang"
               class="font-bold md:my-2 lg:w-1/2 md:py-2 tn:text-xs md:text-base"
               @click="onClickOrder"
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Button from '~/components/atoms/button.vue';
+import Button from '~/components/atoms/Button.vue';
 import BannerMobile from './BannerMobile.vue';
 export default {
   components: {
