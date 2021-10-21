@@ -16,14 +16,13 @@
     </div>
     <div v-if="showMenu">
       <DetailMenu
-        :data-menus="dataPreview"
-        :data-images="listMenus"
+        :detail-restaurant="dataRestaurant"
         :image-preview="preview"
         @onClickImage="onClickImage"
       />
     </div>
     <div v-if="showLocation">
-      <LocationMenu :restaurant="dataLocation" />
+      <LocationMenu :restaurant="dataRestaurant" />
     </div>
     <div v-if="showPhoto">
       <PhotoMenu />
@@ -50,76 +49,21 @@ export default {
       showTermsAndCondition: false,
       menuLable: ['Menu', 'Lokasi', 'Foto', 'Syarat & Ketentuan'],
       preview: '',
-      dataPreview: {},
-      dataLocation: {},
-      listMenus: [
-        {
-          id: 1,
-          name: 'Voyage Restaurant Harris Harmoni',
-          location: 'Harmoni, Jakarta Pusat',
-          phone: '+622122036000',
-          src: 'images/all you can eat/menu/Voyage-01.jpg',
-          address:
-            'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
-          latitude: '-6.164298',
-          longitude: '106.820630',
-        },
-        {
-          id: 2,
-          name: 'Voyage Restaurant Harris Harmoni',
-          location: 'Harmoni, Jakarta Pusat',
-          phone: '+622122036000',
-          src: 'images/all you can eat/menu/Voyage-02.jpg',
-          address:
-            'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
-          latitude: '-6.164298',
-          longitude: '106.820630',
-        },
-        {
-          id: 3,
-          name: 'Voyage Restaurant Harris Harmoni',
-          location: 'Harmoni, Jakarta Pusat',
-          phone: '+622122036000',
-          src: 'images/all you can eat/menu/Voyage-03.jpg',
-          address:
-            'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
-          latitude: '-6.164298',
-          longitude: '106.820630',
-        },
-        {
-          id: 4,
-          name: 'Voyage Restaurant Harris Harmoni',
-          location: 'Harmoni, Jakarta Pusat',
-          phone: '+622122036000',
-          src: 'images/all you can eat/menu/Voyage-04.jpg',
-          address:
-            'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
-          latitude: '-6.164298',
-          longitude: '106.820630',
-        },
-        {
-          id: 5,
-          name: 'Voyage Restaurant Harris Harmoni',
-          location: 'Harmoni, Jakarta Pusat',
-          phone: '+622122036000',
-          src: 'images/all you can eat/menu/Voyage-05.jpg',
-          address:
-            'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
-          latitude: '-6.164298',
-          longitude: '106.820630',
-        },
-        {
-          id: 6,
-          name: 'Voyage Restaurant Harris Harmoni',
-          location: 'Harmoni, Jakarta Pusat',
-          phone: '+622122036000',
-          src: 'images/all you can eat/menu/Voyage-06.jpg',
-          address:
-            'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
-          latitude: '-6.164298',
-          longitude: '106.820630',
-        },
-      ],
+      dataRestaurant: {
+        name: 'Voyage Restaurant Harris Harmoni',
+        location: 'Harmoni, Jakarta Pusat',
+        phone: '+622122036000',
+        images: [
+          'images/all you can eat/menu/Voyage-01.jpg',
+          'images/all you can eat/menu/Voyage-02.jpg',
+          'images/all you can eat/menu/Voyage-03.jpg',
+          'images/all you can eat/menu/Voyage-04.jpg',
+          'images/all you can eat/menu/Voyage-05.jpg',
+          'images/all you can eat/menu/Voyage-06.jpg',
+        ],
+        address:
+          'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
+      },
     };
   },
   components: {
@@ -130,9 +74,7 @@ export default {
     PhotoMenu,
   },
   mounted() {
-    this.preview = this.listMenus[0].src;
-    this.dataPreview = this.listMenus[0];
-    this.dataLocation = this.listMenus[0];
+    this.preview = this.dataRestaurant.images[0];
   },
   methods: {
     onClickMenu(menu) {
@@ -160,9 +102,7 @@ export default {
       }
     },
     onClickImage(data) {
-      this.preview = data.src;
-      this.dataPreview = data;
-      this.dataLocation = data;
+      this.preview = data;
     },
   },
 };

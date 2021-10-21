@@ -1,7 +1,7 @@
 <template>
   <div class="md:my-4">
     <div class="md:grid md:grid-cols-2 md:gap-8 tn:space-y-4 md:space-y-0">
-      <div>
+      <div class="border">
         <div class="mapouter">
           <div class="gmap_canvas">
             <iframe
@@ -13,8 +13,8 @@
               scrolling="no"
               marginheight="0"
               marginwidth="0"
-            ></iframe
-            ><a href="https://putlocker-is.org"></a><br /><style>
+            ></iframe>
+            <a href="https://putlocker-is.org"></a><br /><style>
               .mapouter {
                 position: relative;
                 text-align: right;

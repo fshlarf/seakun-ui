@@ -11,21 +11,26 @@
       <div class="md:col-span-3">
         <div class="scroll-menu flex space-x-1 overflow-x-auto overscroll-auto">
           <img
-            v-for="(image, id) in dataImages"
+            v-for="(image, id) in detailRestaurant.images"
             :key="id"
             class="w-24 h-24 object-cover cursor-pointer rounded-lg"
-            :src="`${image.src}`"
+            :src="`${image}`"
             alt="image not found"
             @click="$emit('onClickImage', image)"
           />
         </div>
         <div class="my-3 space-y-2">
-          <p class="text-3xl font-bold"> {{ dataMenus.name }} </p>
+          <p class="text-3xl font-bold">{{ detailRestaurant.name }}</p>
           <p>
-            {{ dataMenus.location }}
+            {{ detailRestaurant.location }}
           </p>
-          <p class="flex items-center text-sm space-x-2 text-secondary"><span><img class="mr-1" src="images/icons/atoms/call-icon.svg" alt="#"></span> {{ dataMenus.phone }} </p>
-          <p>{{ dataMenus.address }}</p>
+          <p class="flex items-center text-sm space-x-2 text-secondary">
+            <span
+              ><img class="mr-1" src="images/icons/atoms/call-icon.svg" alt="#"
+            /></span>
+            {{ detailRestaurant.phone }}
+          </p>
+          <p>{{ detailRestaurant.address }}</p>
           <Button
             class="my-4 py-2 tn:w-full md:w-auto"
             label="PILIH VARIAN"
@@ -49,13 +54,9 @@ export default {
       type: String,
       default: '',
     },
-    dataMenus: {
+    detailRestaurant: {
       type: Object,
       default: () => {},
-    },
-    dataImages: {
-      type: Array,
-      default: () => [],
     },
   },
   data() {
