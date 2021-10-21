@@ -1,6 +1,13 @@
 <template>
   <div class="my-4">
-    <p class="text-2xl font-bold">Skenario</p>
+    <p class="text-2xl font-bold">Syarat & Ketentuan Paket Individu</p>
+    <ul class="list-decimal list-inside my-2">
+      <li>Lorem ipsum</li>
+      <li>Lorem ipsum</li>
+      <li>Lorem ipsum</li>
+      <li>Lorem ipsum</li>
+    </ul>
+    <p class="text-2xl font-bold">Syarat & Ketentuan Paket Rombongan</p>
     <ul class="list-decimal list-inside my-2">
       <li>Lorem ipsum</li>
       <li>Lorem ipsum</li>
