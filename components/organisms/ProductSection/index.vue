@@ -1,5 +1,5 @@
 <template>
-  <div id="provider" class="container iner tn:mt-8 lg:pt-20 pt-20">
+  <div id="provider" class="container tn:pt-8 md:pt-14 lg:pt-20">
     <div class="">
       <div class="flex justify-between items-center mb-2 px-2">
         <h1
