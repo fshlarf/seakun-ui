@@ -35,6 +35,7 @@
             class="my-4 py-2 tn:w-full md:w-auto"
             label="PILIH VARIAN"
             variant="third"
+            @click="onClickChooseVariant"
           />
         </div>
       </div>
@@ -63,6 +64,16 @@ export default {
     return {
       currencyFormat,
     };
+  },
+  methods: {
+    onClickChooseVariant() {
+      const variantSection = document.getElementById('package-variant');
+      variantSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    },
   },
 };
 </script>
