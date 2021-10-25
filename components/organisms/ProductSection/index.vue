@@ -130,25 +130,36 @@ export default {
       dataProductOnDemand: [
         {
           id: 1,
-          name: 'Sequrban',
-          slug: 'sequrban',
-          img: '/images/product/sekurban.png',
-          icon: '/images/icons/sekurban.svg',
-          isActive: false,
+          name: 'AYCE Harris Harmoni',
+          slug: 'all-you-can-eat',
+          img: '/images/product/ayce.png',
+          icon: '/images/icons/ayce.svg',
+          isActive: true,
           isNew: true,
           preview:
-            'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
+            'Makan sepuasnya di restoran favorit kamu. Ajak teman dan keluargamu, biar lebih murah dan lebih seru!',
         },
-        {
-          id: 2,
-          name: 'Pahamify',
-          slug: 'pahamify',
-          img: '/images/product/pahamify.png',
-          icon: '/images/icons/pahamify.svg',
-          isActive: false,
-          preview:
-            'Belajar jarak jauh lebih mudah, lengkap, dan murah bersama konten premium Pahamify',
-        },
+        // {
+        //   id: 1,
+        //   name: 'Sequrban',
+        //   slug: 'sequrban',
+        //   img: '/images/product/sekurban.png',
+        //   icon: '/images/icons/sekurban.svg',
+        //   isActive: false,
+        //   isNew: true,
+        //   preview:
+        //     'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
+        // },
+        // {
+        //   id: 2,
+        //   name: 'Pahamify',
+        //   slug: 'pahamify',
+        //   img: '/images/product/pahamify.png',
+        //   icon: '/images/icons/pahamify.svg',
+        //   isActive: false,
+        //   preview:
+        //     'Belajar jarak jauh lebih mudah, lengkap, dan murah bersama konten premium Pahamify',
+        // },
         {
           id: 3,
           name: 'Kulina',
