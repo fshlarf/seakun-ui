@@ -182,8 +182,8 @@ export default {
     MasterService,
     provider: '',
     detailOrder: {
-      isHost: 0,
-      isPo: 0,
+      isHost: false,
+      isPo: false,
     },
     email: '',
     userName: '',
@@ -470,8 +470,8 @@ export default {
         email: this.email,
         phoneNumber: `${this.codePhone}${this.phoneNumber}`,
         packageVariantUid: this.longSubcribe.variantUid,
-        ispreorder: this.detailOrder.isPo === 1,
-        userhost: this.detailOrder.isHost === 1,
+        ispreorder: this.detailOrder.isPo,
+        userhost: this.detailOrder.isHost,
         voucherUid: '',
       };
       try {
