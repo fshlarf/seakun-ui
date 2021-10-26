@@ -90,6 +90,7 @@ export default {
 		}(window, document, 'ttq');`,
       },
     ],
+    __dangerouslyDisableSanitizers: ['script'],
   },
   /*
    ** Global CSS
