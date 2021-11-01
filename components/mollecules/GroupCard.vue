@@ -66,7 +66,12 @@ export default {
     },
     setWidthImage(provider) {
       const theProvider = provider.toLowerCase();
-      if (theProvider === 'canva' || theProvider === 'disney-hotstar') {
+      if (
+        theProvider === 'canva' ||
+        theProvider === 'disney-hotstar' ||
+        theProvider === 'wattpad' ||
+        theProvider === 'google-one'
+      ) {
         return 'w-11';
       } else if (theProvider === 'apple-one') {
         return 'w-20';
