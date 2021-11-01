@@ -105,6 +105,7 @@
         class="my-3 py-2 tn:w-full md:w-[40%]"
         label="PESAN"
         variant="third"
+        @click="$emit('onClickChooseVariant', packet)"
       />
     </div>
   </div>

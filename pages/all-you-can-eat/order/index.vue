@@ -12,11 +12,48 @@
         class="md:text-sm tn:text-base text-green-seakun cursor-pointer"
         @click="onClickChangePacket"
       >
-        Ubah Paket
+        Ubah Varian
       </p>
     </div>
     <div>
-      <AyceProductHighLight :variant="choosedPackage" />
+      <AyceProductHighLight
+        :variant="choosedPackage"
+        :grand-total="finalPrice"
+      />
+    </div>
+    <div v-if="choosedPackage.memberType === 'group'" class="mt-6">
+      <div class="md:flex justify-between">
+        <div>
+          <p>Jumlah Orang yang Makan</p>
+          <div class="flex space-x-4 items-center mt-2">
+            <button
+              class="!border-2 !border-gray-300 !rounded-full w-7 h-7 font-bold focus:outline-none"
+              :disabled="totalPerson === 2"
+              @click="reducePerson"
+            >
+              -
+            </button>
+            <p class="text-primary font-semibold text-lg">{{ totalPerson }}</p>
+            <button
+              class="!border-2 !border-gray-300 !rounded-full w-7 h-7 font-bold focus:outline-none"
+              @click="addPerson"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="mt-6 md:mt-0">
+          <p>Total Harga</p>
+          <p class="text-primary text-2xl font-bold mt-1">
+            {{ currencyFormat(grandTotal) }}
+          </p>
+        </div>
+      </div>
+      <div class="flex md:justify-end">
+        <div class="bg-third shadow-md rounded-xl py-1 px-4 max-w-max mt-2">
+          <p class="text-secondary font-semibold">Selamat! Kamu hemat Rp0,-</p>
+        </div>
+      </div>
     </div>
     <div class="mt-6 pt-2">
       <h2 class="md:text-xl tn:text-lg font-bold">Informasi Pengguna</h2>
@@ -71,55 +108,6 @@
         </div>
       </div>
 
-      <div v-if="orderType === 'take_away'">
-        <div class="mt-4">
-          <p class="pb-1 tn:text-sm">Lokasi</p>
-          <ButtonDrop
-            :btnText="location"
-            @click="showLocationList('ayce')"
-            @keyup="isShowLocation = false"
-            :error="errorForm.location"
-          />
-          <div class="w-full">
-            <PopUpLocation
-              :data-list="locationList"
-              :show="isShowLocation"
-              @onClickItem="
-                (value) => {
-                  onClickLocation('ayce', value);
-                }
-              "
-            />
-          </div>
-        </div>
-
-        <div class="mt-4">
-          <p class="pb-1 tn:text-sm">Alamat pengiriman</p>
-          <textarea
-            class="w-full rounded border p-3 focus:outline-none"
-            placeholder="Tulis alamatmu di sini"
-            name="alamat"
-            id=""
-            cols=""
-            rows="3"
-          ></textarea>
-        </div>
-
-        <div class="mt-3">
-          <p class="pb-1 tn:text-sm">
-            Alamat pengiriman 2 <span class="text-gray-400">(opsional)</span>
-          </p>
-          <textarea
-            class="w-full rounded border p-3 focus:outline-none"
-            placeholder="Tulis alamatmu di sini"
-            name="alamat"
-            id=""
-            cols=""
-            rows="3"
-          ></textarea>
-        </div>
-      </div>
-
       <div class="grid grid-cols-3 gap-3 mt-3">
         <InputForm
           v-model="city"
@@ -165,18 +153,20 @@
         class="w-full bg-green-seakun text-white py-2 mt-8"
         label="Lanjutkan"
         :is-loading="isShowLoading"
+        @click="toPaymentPage"
       />
       <Button
         variant="secondary"
         class="w-full py-2 mt-3"
         label="Kembali"
         :is-loading="isShowLoading"
+        @click="toHomePage"
       />
 
       <ModalPackages
         :is-show-modal="isShowModalPackages"
         :is-loading="isFetchingPacket"
-        :data-variants="dataPackages"
+        :data-variants="packageList"
         :current-package-variant="choosedPackage"
         @closeModal="onCloseModalPackages"
         @choosePackage="choosePacket"
@@ -203,6 +193,7 @@ import { internationalPhoneNumbers } from '~/constants/code-phone.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import ModalPackages from './views/ModalPackages.vue';
 import PopUpLocation from './views/PopUpLocation.vue';
+import { packageList } from '../variant-list';
 
 export default {
   name: 'OrderPage',
@@ -219,19 +210,19 @@ export default {
     Voucher,
   },
   data: () => ({
+    packageList,
     SEAKUN_API,
     SEAKUN_PACKAGE_API,
     SEAKUN_MAIL_API,
+    totalPerson: 2,
     packageId: '',
-    packet: '',
-    orderType: '',
-    detailOrder: {
-      loading: true,
-      data: {},
-    },
+    finalPrice: '',
+    grandTotal: 0,
     email: '',
     userName: '',
     phoneNumber: '',
+    city: '',
+    postal_code: '',
     isShowLoading: false,
     codeNumber: '+62',
     isShowCodeNumber: false,
@@ -251,106 +242,68 @@ export default {
         isError: false,
         message: '',
       },
-      location: {
+      city: {
+        isError: false,
+        message: '',
+      },
+      postal_code: {
         isError: false,
         message: '',
       },
     },
     isShowModalPackages: false,
     choosedPackage: {},
-    dataPackages: [
-      {
-        id: 1,
-        image: '/images/all you can eat/brand/shabu-hachi.png',
-        name: 'All You Can Eat',
-        variant: 'Paket 5 Orang',
-        price: 120000,
-        isAvailable: true,
-      },
-      {
-        id: 2,
-        image: '/images/all you can eat/brand/shabu-hachi.png',
-        name: 'Bakar di Rumah',
-        variant: 'Paket Berduaan',
-        price: 120000,
-        isAvailable: true,
-      },
-      {
-        id: 3,
-        image: '/images/all you can eat/brand/shabu-hachi.png',
-        name: 'Bakar di Rumah',
-        variant: 'Paket Berempatan',
-        price: 120000,
-        isAvailable: true,
-      },
-      {
-        id: 4,
-        image: '/images/all you can eat/brand/shabu-hachi.png',
-        name: 'Bakar di Rumah',
-        variant: 'Paket Ramean',
-        price: 120000,
-        isAvailable: true,
-      },
-    ],
     isFetchingPacket: false,
     registeredUser: {
       name: '',
       email: '',
       phone: '',
+      city: '',
+      postal_code: '',
     },
-    location: 'Pilih lokasi',
-    city: '',
-    postal_code: '',
-    isShowLocation: false,
-    isShowCity: false,
-    locationList: [
-      'Jakarta Utara',
-      'Jakarta Barat',
-      'Jakarta Timur',
-      'Jakarta Pusat',
-      'Jakarta Selatan',
-    ],
   }),
   watch: {
     codeNumber() {
       this.validationForm('userPhone');
     },
+    totalPerson() {
+      this.calculateGrandTotal();
+    },
   },
   mounted() {
-    const { order_type } = this.$router.history.current.query;
-    this.orderType = order_type;
+    const { packet_id } = this.$router.history.current.query;
+    this.packageId = packet_id;
     this.setFieldValueFromLocalStorage();
-    this.choosedPackage = this.dataPackages[0];
+    this.choosedPackage = this.packageList[this.packageId - 1];
+    this.finalPrice = this.choosedPackage.detailPrice.finalPrice;
+    this.grandTotal = this.finalPrice * this.totalPerson;
   },
   methods: {
-    showLocationList(type) {
-      if (type == 'ayce') {
-        this.isShowLocation = !this.isShowLocation;
-      }
-
-      if (type == 'city') {
-        this.isShowCity = !this.isShowCity;
-      }
+    calculateGrandTotal() {
+      this.grandTotal = this.finalPrice * this.totalPerson;
     },
-    onClickLocation(type, value) {
-      if (type == 'ayce') {
-        this.location = value;
-        this.isShowLocation = false;
-      }
-
-      if (type == 'city') {
-        this.city = value;
-        this.isShowCity = false;
-      }
+    addPerson() {
+      this.totalPerson++;
+    },
+    reducePerson() {
+      this.totalPerson--;
     },
     onClickItemCodeNumber(item) {
       this.codeNumber = item.dialCode;
       this.isShowCodeNumber = false;
     },
     validationForm(input) {
-      const { email, userName, phoneNumber, errorForm } = this;
+      const {
+        email,
+        userName,
+        phoneNumber,
+        city,
+        postal_code,
+        errorForm,
+      } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
       const idnPhoneFormat = /^[8][0-9]*$/;
+      const postalCodeFormat = /^[0-9]*$/;
       const globalPhoneFormat = /^[0-9]*$/;
       let isValid = true;
       let errorTemp = {
@@ -363,6 +316,14 @@ export default {
           message: '',
         },
         phoneNumber: {
+          isError: false,
+          message: '',
+        },
+        city: {
+          isError: false,
+          message: '',
+        },
+        postal_code: {
           isError: false,
           message: '',
         },
@@ -428,21 +389,38 @@ export default {
         }
       }
 
+      if (input === 'city' || !input) {
+        if (city === '') {
+          errorTemp.city = {
+            isError: true,
+            message: 'Kota dan Kecamatan harus diisi',
+          };
+          isValid = false;
+        }
+      }
+
+      if (input === 'postal_code' || !input) {
+        if (postal_code === '') {
+          errorTemp.city = {
+            isError: true,
+            message: 'Kode Pos harus diisi',
+          };
+          isValid = false;
+        } else if (!postal_code.match(postalCodeFormat)) {
+          errorTemp.postal_code = {
+            isError: true,
+            message: 'Format Kode Pos salah',
+          };
+          isValid = false;
+        }
+      }
+
       this.errorForm = { ...errorTemp };
       return isValid;
     },
     validateEmail(email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
-    },
-    setPathToRedirect(payload) {
-      if (payload.userhost) {
-        return '/thankyou/user-host';
-      } else if (payload.ispreorder) {
-        return '/thankyou/pre-order';
-      } else {
-        return '/payment';
-      }
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
@@ -451,8 +429,18 @@ export default {
       this.isShowModalPackages = true;
     },
     choosePacket(variant) {
-      this.choosedPackage = variant;
       this.isShowModalPackages = false;
+      this.$router.push(`/all-you-can-eat/order?packet_id=${variant.id}`);
+      this.choosedPackage = variant;
+      this.finalPrice = variant.detailPrice.finalPrice;
+    },
+    toPaymentPage() {
+      this.$router.push(
+        `/all-you-can-eat/payment?variant_id=${this.choosedPackage.id}`
+      );
+    },
+    toHomePage() {
+      this.$router.push('/');
     },
     setFieldValueFromLocalStorage() {
       const registeredUser = JSON.parse(
@@ -462,6 +450,8 @@ export default {
         this.userName = registeredUser.name;
         this.email = registeredUser.email;
         this.phoneNumber = registeredUser.phone;
+        this.city = registeredUser.city;
+        this.postal_code = registeredUser.postal_code;
       }
     },
     setLocalStorage(id) {
@@ -474,6 +464,7 @@ export default {
         );
       });
     },
+    currencyFormat,
   },
 };
 </script>
