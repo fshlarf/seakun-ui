@@ -20,9 +20,13 @@
           >
             Voyage Harris Harmoni
           </p>
-          <p class="hidden md:block md:my-2 md:text-xl">Buat momen spesial untuk orang tercinta anda!</p>
+          <p class="hidden md:block md:my-2 md:text-xl">
+            Buat momen spesial untuk orang tercinta anda!
+          </p>
           <div class="flex items-center">
-            <p class="hidden md:block">dari <span class="line-through">Rp.338.000</span></p>
+            <p class="hidden md:block">
+              dari <span class="line-through">Rp.338.000</span>
+            </p>
             <p class="hidden md:flex mt-2 ml-2 text-4xl font-bold">Rp218.000</p>
           </div>
           <div class="mt-2">
@@ -52,7 +56,12 @@ export default {
   },
   methods: {
     onClickOrder() {
-      console.log('tes');
+      const variantSection = document.getElementById('package-variant');
+      variantSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
     },
   },
 };

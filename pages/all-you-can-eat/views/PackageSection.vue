@@ -33,7 +33,8 @@ export default {
   },
   methods: {
     toggleShow(id) {
-      this.packages[id - 1].isShowTerms = !this.packages[id - 1].isShowTerms;
+      this.packageList[id - 1].isShowTerms = !this.packageList[id - 1]
+        .isShowTerms;
     },
     onClickChooseVariant(packet) {
       this.$router.push(`all-you-can-eat/order?packet_id=${packet.id}`);
