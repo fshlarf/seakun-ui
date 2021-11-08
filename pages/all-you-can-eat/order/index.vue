@@ -269,16 +269,27 @@ export default {
     totalPerson() {
       this.calculateGrandTotal();
     },
+    $route(to, from) {
+      // this.searchId = to.query.searchId
+      if (to !== from) {
+        this.getDetailVariant();
+        // this.dataContents = []
+        // this.getDataContents()
+      }
+    },
   },
   mounted() {
-    const { packet_id } = this.$router.history.current.query;
-    this.packageId = packet_id;
+    this.getDetailVariant();
     this.setFieldValueFromLocalStorage();
-    this.choosedPackage = this.packageList[this.packageId - 1];
-    this.finalPrice = this.choosedPackage.detailPrice.finalPrice;
-    this.grandTotal = this.finalPrice * this.totalPerson;
   },
   methods: {
+    getDetailVariant() {
+      const { packet_id } = this.$router.history.current.query;
+      this.packageId = packet_id;
+      this.choosedPackage = this.packageList[this.packageId - 1];
+      this.finalPrice = this.choosedPackage.detailPrice.finalPrice;
+      this.grandTotal = this.finalPrice * this.totalPerson;
+    },
     calculateGrandTotal() {
       this.grandTotal = this.finalPrice * this.totalPerson;
     },
@@ -401,7 +412,7 @@ export default {
 
       if (input === 'postal_code' || !input) {
         if (postal_code === '') {
-          errorTemp.city = {
+          errorTemp.postal_code = {
             isError: true,
             message: 'Kode Pos harus diisi',
           };
@@ -431,16 +442,19 @@ export default {
     choosePacket(variant) {
       this.isShowModalPackages = false;
       this.$router.push(`/all-you-can-eat/order?packet_id=${variant.id}`);
-      this.choosedPackage = variant;
-      this.finalPrice = variant.detailPrice.finalPrice;
+      // this.choosedPackage = variant;
+      // this.finalPrice = variant.detailPrice.finalPrice;
     },
     toPaymentPage() {
-      this.$router.push(
-        `/all-you-can-eat/payment?variant_id=${this.choosedPackage.id}`
-      );
+      this.validationForm();
+      if (this.validationForm()) {
+        this.$router.push(
+          `/all-you-can-eat/payment?variant_id=${this.choosedPackage.id}`
+        );
+      }
     },
     toHomePage() {
-      this.$router.push('/');
+      this.$router.push('/all-you-can-eat');
     },
     setFieldValueFromLocalStorage() {
       const registeredUser = JSON.parse(
@@ -464,7 +478,6 @@ export default {
         );
       });
     },
-    currencyFormat,
   },
 };
 </script>
