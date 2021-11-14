@@ -13,14 +13,14 @@
           yang praktis, legal, aman dan murah
         </p>
         <div class="flex space-x-2 xl:space-x-3 my-3">
-          <a href="https://instagram.com/seakun_id" target="_blank"
-            ><img src="/images/footer/instagram.svg" alt="#"
+          <a href="https://instagram.com/official.seakun" target="_blank"
+            ><img src="/images/footer/instagram.svg" alt="instagram icon"
           /></a>
           <a href="https://twitter.com/seakun_id" target="_blank"
-            ><img src="/images/footer/twitter.svg" alt="#"
+            ><img src="/images/footer/twitter.svg" alt="twitter icon"
           /></a>
           <a href="https://www.linkedin.com/company/seakun-id/" target="_blank"
-            ><img src="/images/footer/linkedin.svg" alt="#"
+            ><img src="/images/footer/linkedin.svg" alt="linkedin icon"
           /></a>
         </div>
       </div>
@@ -29,20 +29,36 @@
           Seakun.id
         </h1>
         <ul class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
-          <li><a class="hover:no-underline" href="#">Tentang Kami</a></li>
-          <li><a class="hover:no-underline" href="#">Cara Pesan</a></li>
-          <li>
-            <a class="hover:no-underline" href="#">Syarat dan Ketentuan</a>
-          </li>
-          <li><a class="hover:no-underline" href="#">Kebijakan Privasi</a></li>
-          <li><a class="hover:no-underline" href="#">Pusat Bantuan</a></li>
-          <li>
-            <a class="hover:no-underline" href="#"
-              >Karir
-              <span class="hiring text-primary font-mono">
-                ..we're hiring</span
-              ></a
+          <li @click="scrollTo('about-us')">
+            <nuxt-link class="hover:no-underline" to="/"
+              >Tentang Kami</nuxt-link
             >
+          </li>
+          <li @click="scrollTo('orderFlow')">
+            <nuxt-link class="hover:no-underline" to="/">Cara Pesan</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link class="hover:no-underline" to="/terms-of-use"
+              >Syarat dan Ketentuan</nuxt-link
+            >
+          </li>
+          <li>
+            <nuxt-link class="hover:no-underline" to="/"
+              >Kebijakan Privasi</nuxt-link
+            >
+          </li>
+          <li>
+            <nuxt-link class="hover:no-underline" to="/"
+              >Pusat Bantuan</nuxt-link
+            >
+          </li>
+          <li>
+            <nuxt-link class="hover:no-underline" to="/"
+              >Karir
+              <span v-if="isHiring" class="hiring text-primary font-mono">
+                ..we're hiring</span
+              >
+            </nuxt-link>
           </li>
         </ul>
       </div>
@@ -51,13 +67,31 @@
           Produk
         </h1>
         <ul class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
-          <li><a class="hover:no-underline" href="#">Produk Digital</a></li>
-          <li><a class="hover:no-underline" href="#">Produk on Demand</a></li>
-          <li><a class="hover:no-underline" href="#">Program Patungan</a></li>
-          <li>
-            <a class="hover:no-underline" href="#">Program Sekeranjang</a>
+          <li @click="scrollTo('provider')">
+            <nuxt-link class="hover:no-underline" to="/"
+              >Produk Digital</nuxt-link
+            >
           </li>
-          <li><a class="hover:no-underline" href="#">Pusat Bantuan</a></li>
+          <li @click="scrollTo('product-ondemand')">
+            <nuxt-link class="hover:no-underline" to="/"
+              >Produk on Demand</nuxt-link
+            >
+          </li>
+          <li>
+            <nuxt-link class="hover:no-underline" to="/"
+              >Program Patungan</nuxt-link
+            >
+          </li>
+          <li>
+            <nuxt-link class="hover:no-underline" to="/"
+              >Program Sekeranjang</nuxt-link
+            >
+          </li>
+          <li>
+            <nuxt-link class="hover:no-underline" to="/"
+              >Pusat Bantuan</nuxt-link
+            >
+          </li>
         </ul>
       </div>
       <div class="tn:my-4 lg:mt-0">
@@ -95,7 +129,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isHiring: false,
+    };
+  },
+  methods: {
+    scrollTo(id) {
+      const section = document.getElementById(id);
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    },
+  },
+};
 </script>
 
 <style>
