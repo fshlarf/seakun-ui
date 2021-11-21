@@ -19,7 +19,7 @@ export default {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000/seakun',
   },
   head: {
-    title: 'Seakun',
+    title: 'Situs cari teman patungan praktis, aman dan murah | Seakun',
     htmlAttrs: {
       lang: 'id',
     },
