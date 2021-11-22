@@ -1,13 +1,17 @@
 <template>
   <div class="my-4">
-    <p class="text-2xl font-bold">Syarat & Ketentuan Paket Cari Teman</p>
-    <ul class="list-decimal pl-6 list-outside my-2">
+    <p class="text-[20px] md:text-2xl font-bold">
+      Syarat & Ketentuan Paket Cari Teman
+    </p>
+    <ul class="list-decimal pl-6 list-outside my-2 text-sm md:text-base">
       <li v-for="(findFriend, id) in findFriensTerms" :key="id">
         {{ findFriend }}
       </li>
     </ul>
-    <p class="text-2xl font-bold mt-8">Syarat & Ketentuan Paket Rombongan</p>
-    <ul class="list-decimal pl-6 list-outside my-2">
+    <p class="text-[20px] md:text-2xl font-bold mt-8">
+      Syarat & Ketentuan Paket Rombongan
+    </p>
+    <ul class="list-decimal pl-6 list-outside my-2 text-sm md:text-base">
       <li v-for="(group, id) in groupTerms" :key="id">{{ group }}</li>
     </ul>
     <Button
