@@ -9,11 +9,11 @@
         </Tab>
       </Tabs>
     </div>
-    <div class="grid grid-cols-6 gap-3 my-4">
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 my-4">
       <img
         v-for="(image, id) in photos"
         :key="id"
-        class="w-full h-32 object-cover rounded-lg"
+        class="w-full h-24 md:h-32 object-cover rounded-lg"
         :src="`${image.image}`"
         alt="image not found"
       />
