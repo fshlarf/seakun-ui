@@ -35,7 +35,9 @@
       </div>
       <div class="space-y-2">
         <p class="text-2xl font-bold">Detail Lokasi</p>
-        <p>{{ restaurant.address }}</p>
+        <p>
+          Voyage at Harris Vertu Hotel Harmoni, <br />{{ restaurant.address }}
+        </p>
       </div>
     </div>
   </div>
