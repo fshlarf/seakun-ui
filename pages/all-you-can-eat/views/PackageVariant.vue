@@ -2,16 +2,18 @@
   <div class="grid grid-cols-5 my-8">
     <div class="col-span-2">
       <img
-        class="object-cover w-full h-[250px]"
+        class="object-cover w-full h-[300px]"
         :src="`${packet.image}`"
         alt="no image found"
       />
     </div>
     <div class="col-span-3 px-8">
-      <p class="text-2xl font-bold">
+      <p class="text-4xl font-bold">
         {{ packet.name }}
       </p>
-      <p class="text-secondary font-semibold mb-1 uppercase tracking-widest">
+      <p
+        class="text-secondary text-2xl font-bold my-1 uppercase tracking-widest"
+      >
         {{ packet.package }}
       </p>
       <div class="flex space-x-2 items-center">
@@ -26,13 +28,15 @@
         </p>
         <p class="text-gray-500 text-base">/ orang</p>
       </div>
-      <div class="bg-forth rounded-lg py-1 px-3 my-2 w-max">
+      <div class="bg-fifth rounded-lg py-1 px-3 my-2 w-max">
         <p class="text-xs font-semibold">
           Masa berlaku voucher sampai dengan {{ packet.voucher.expired }}
         </p>
       </div>
-      <p class="text-secondary font-bold mb-1">Detail Harga</p>
-      <div class="flex justify-between item-center">
+      <p class="text-secondary font-bold mt-3 mb-1 px-3 text-lg">
+        Detail Harga
+      </p>
+      <div class="flex justify-between item-center px-3 mb-1">
         <p>Harga Satuan</p>
         <p class="font-bold">
           <span class="line-through font-normal mr-2">{{
@@ -41,13 +45,13 @@
           >{{ currencyFormat(packet.detailPrice.discountPrice) }}
         </p>
       </div>
-      <div class="flex justify-between item-center">
+      <div class="flex justify-between item-center px-3">
         <p>Biaya Admin</p>
         <p class="font-bold">
           {{ currencyFormat(packet.detailPrice.adminPrice) }}
         </p>
       </div>
-      <hr class="h-[0.5px] bg-primary my-2" />
+      <hr class="h-[0.5px] bg-primary mt-3 mb-4" />
       <div
         class="flex justify-between items-center cursor-pointer"
         @click="$emit('toggleShow', packet.id)"

@@ -54,12 +54,12 @@ export default {
         location: 'Harmoni, Jakarta Pusat',
         phone: '+622122036000',
         images: [
-          'images/all you can eat/menu/Voyage-01.jpg',
-          'images/all you can eat/menu/Voyage-02.jpg',
-          'images/all you can eat/menu/Voyage-03.jpg',
-          'images/all you can eat/menu/Voyage-04.jpg',
-          'images/all you can eat/menu/Voyage-05.jpg',
-          'images/all you can eat/menu/Voyage-06.jpg',
+          '/images/all you can eat/menu/Voyage-01.jpg',
+          '/images/all you can eat/menu/Voyage-02.jpg',
+          '/images/all you can eat/menu/Voyage-03.jpg',
+          '/images/all you can eat/menu/Voyage-04.jpg',
+          '/images/all you can eat/menu/Voyage-05.jpg',
+          '/images/all you can eat/menu/Voyage-06.jpg',
         ],
         address:
           'Jl. Hayam Wuruk No.6, RT.6/RW.2, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120',
