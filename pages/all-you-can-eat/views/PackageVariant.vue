@@ -11,11 +11,20 @@
       <p class="text-4xl font-bold">
         {{ packet.name }}
       </p>
-      <p
-        class="text-secondary text-2xl font-bold my-1 uppercase tracking-widest"
-      >
-        {{ packet.package }}
-      </p>
+      <div class="flex space-x-4 items-center my-2">
+        <p class="text-secondary text-2xl font-bold uppercase tracking-widest">
+          {{ packet.package }}
+        </p>
+        <div class="bg-fifth rounded-full py-1 px-3 my-2 w-max">
+          <p
+            v-if="packet.memberType === 'single'"
+            class="text-xs font-semibold"
+          >
+            PRE-ORDER
+          </p>
+          <p v-else class="text-xs font-semibold">MIN. 2 ORANG</p>
+        </div>
+      </div>
       <div class="flex space-x-2 items-center">
         <p>
           Mulai
