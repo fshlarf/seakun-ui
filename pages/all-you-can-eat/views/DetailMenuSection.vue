@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div
-      class="scroll-menu p-3 tn:flex tn:space-x-4 tn:overflow-x-auto tn:overscroll-auto md:grid md:grid-cols-4 md:gap-8 md:flex-none md:overscroll-none md:overflow-x-hidden md:space-x-0"
+      class="scroll-menu p-3 tn:flex tn:space-x-4 tn:overflow-x-auto tn:overscroll-auto md:justify-center lg:grid lg:grid-cols-4 lg:gap-8 lg:flex-none lg:overscroll-none lg:overflow-x-hidden lg:space-x-0"
     >
       <MenuPills
         v-for="(menu, id) in menuLable"
         :key="id"
-        class="cursor-pointer tn:w-72 md:w-full h-14 flex-none"
+        class="cursor-pointer lg:w-full lg:h-14 flex-none"
         :class="{
           'high-light ': menu === activeMenu,
         }"
@@ -117,7 +117,7 @@ export default {
   scrollbar-width: none; /* Firefox */
 }
 .high-light {
-  border: 2px solid #a9e0d5;
-  background-image: linear-gradient(to right, #ffffff, #d4f1ec);
+  border: 2px solid #a9e0d5 !important;
+  background-image: linear-gradient(to right, #ffffff, #d4f1ec) !important;
 }
 </style>
