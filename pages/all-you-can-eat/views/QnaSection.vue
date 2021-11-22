@@ -27,53 +27,52 @@ export default {
       dataFaq: [
         {
           id: 1,
-          question: 'Kapan masa berlangganan di Seakun aktif?',
+          question: 'Bagaimana cara menggunakan voucher ini?',
           answer:
-            'Masa berlangganan terhitung ketika Admin Whatsapp memberikan akun sharing, link invitation atau mengundang kamu ke grup premium. Masa berlangganan akan tetap berjalan walaupun kamu tidak meng-accept undangan yang telah dikirimkan.',
+            'User diwajibkan untuk menghubungi Restoran Voyage maksimal H-1 sebelum kedatangan dan user dapat langsung makan  All You Can Eat di Restoran Voyage dengan menunjukkan kode voucher yang dikirimkan via email oleh Seakun.id',
           isShow: false,
         },
         {
           id: 2,
-          question:
-            'Bagaimana mekanisme untuk melanjutkan langganan di Seakun?',
+          question: 'Apa perbedaan paket cari teman dan paket rombongan?',
           answer:
-            'Seminggu dan maksimal sehari sebelum masa berlangganan habis, kamu akan menerima reminder perpanjangan melalui email & Whatsapp yang terdaftar. Jika kamu ingin melanjutkan masa berlangganan, silakan melakukan transfer ke rekening / e-wallet Seakun dengan nominal yang diinformasikan.',
+            'Paket cari teman dapat memebli 1 voucher saja tetapi Pre-order sampai ada teman berlangganannya. Untuk Paket rombongan langsung order dengan order min. 2 voucher.',
           isShow: false,
         },
         {
           id: 3,
-          question: 'Apa perbedaan seakun dengan platform langganan yang lain?',
+          question: 'Bagaimana jika tidak konfirmasi kehadiran?',
           answer:
-            'Seakun adalah platform yang konsepnya mempertemukan kamu dengan kawan berlangganan yang mempunyai interest yang sama, sehingga akun hanya dishare ke member dalam satu grup tertentu aja. Berbeda dengan seller akun sharing yang biasanya akan menyebarkan akun ke banyak orang. Skema harga Seakun sangat transparan karena harga berlangganan adalah harga yang dibagi rata dengan jumlah member dalam satu grup.',
+            'Jika user tidak mengkonfirmasi kehadirannya kepada Restoran Voyage, maka Restoran Voyage dan Seakun.id tidak bertanggung jawab apabila kode voucher tidak dapat digunakan atau All You Can Eat tidak dapat dipersiapkan.',
           isShow: false,
         },
-        {
-          id: 4,
-          question: 'Apa perbedaan User Host dan User Reguler?',
-          answer:
-            'User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Sedangkan User Reguler, kamu tinggal terima jadi saja, proses pendaftaran ke provider dan pencarian kawan berlangganan akan dihandle oleh Seakun.',
-          isShow: false,
-        },
-        {
-          id: 5,
-          question: 'Payment method apa saja yang available di Seakun?',
-          answer: 'Bank transfer Mandiri, BCA, Jenius, Gopay, DANA, LinkAja',
-          isShow: false,
-        },
-        {
-          id: 6,
-          question: 'Bagaimana prosedur menjadi User Host?',
-          answer: [
-            '1. Daftar dengan memilih paket User Host. Misal User Host Netflix',
-            '2. Admin akan melakukan konfirmasi melalui Whatsapp',
-            '3. Lakukan pendaftaran menggunakan akun yang ditentukan oleh Admin',
-            '4. Lakukan pembayaran di provider menggunakan kartu kredit/debit/gopay (khusus Netflix)',
-            '5. Setelah berhasil melakukan pembayaran, informasikan ke Admin',
-            '6. Admin akan mengirimkan pengganti dana yang terdebet',
-          ],
-          list: true,
-          isShow: false,
-        },
+        // {
+        //   id: 4,
+        //   question: 'Apa perbedaan User Host dan User Reguler?',
+        //   answer:
+        //     'User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Sedangkan User Reguler, kamu tinggal terima jadi saja, proses pendaftaran ke provider dan pencarian kawan berlangganan akan dihandle oleh Seakun.',
+        //   isShow: false,
+        // },
+        // {
+        //   id: 5,
+        //   question: 'Payment method apa saja yang available di Seakun?',
+        //   answer: 'Bank transfer Mandiri, BCA, Jenius, Gopay, DANA, LinkAja',
+        //   isShow: false,
+        // },
+        // {
+        //   id: 6,
+        //   question: 'Bagaimana prosedur menjadi User Host?',
+        //   answer: [
+        //     '1. Daftar dengan memilih paket User Host. Misal User Host Netflix',
+        //     '2. Admin akan melakukan konfirmasi melalui Whatsapp',
+        //     '3. Lakukan pendaftaran menggunakan akun yang ditentukan oleh Admin',
+        //     '4. Lakukan pembayaran di provider menggunakan kartu kredit/debit/gopay (khusus Netflix)',
+        //     '5. Setelah berhasil melakukan pembayaran, informasikan ke Admin',
+        //     '6. Admin akan mengirimkan pengganti dana yang terdebet',
+        //   ],
+        //   list: true,
+        //   isShow: false,
+        // },
       ],
     };
   },
