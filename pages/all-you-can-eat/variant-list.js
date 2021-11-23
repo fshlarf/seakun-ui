@@ -33,6 +33,7 @@ export const packageList = [
       'Jika user membutuhkan bantuan atau pertanyaan terkait program patungan All You Can Eat di Restoran Voyage, maka dapat langsung menghubungi nomor admin Seakun.id.',
     ],
     isShowTerms: false,
+    isShowPrice: false,
   },
   {
     id: 2,
@@ -65,6 +66,7 @@ export const packageList = [
       'Jika user membutuhkan bantuan atau pertanyaan terkait program patungan All You Can Eat di Restoran Voyage, maka dapat langsung menghubungi nomor admin Seakun.id.',
     ],
     isShowTerms: false,
+    isShowPrice: false,
   },
   {
     id: 3,
@@ -100,6 +102,7 @@ export const packageList = [
       'Jika user membutuhkan bantuan atau pertanyaan terkait program patungan All You Can Eat di Restoran Voyage, maka dapat langsung menghubungi nomor admin Seakun.id.',
     ],
     isShowTerms: false,
+    isShowPrice: false,
   },
   {
     id: 4,
@@ -132,5 +135,6 @@ export const packageList = [
       'Jika user membutuhkan bantuan atau pertanyaan terkait program patungan All You Can Eat di Restoran Voyage, maka dapat langsung menghubungi nomor admin Seakun.id.',
     ],
     isShowTerms: false,
+    isShowPrice: false,
   },
 ];

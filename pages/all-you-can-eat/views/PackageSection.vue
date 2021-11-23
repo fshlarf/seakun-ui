@@ -9,7 +9,9 @@
         :key="id"
         :packet="packet"
         :is-show-terms="packet.isShowTerms"
+        :is-show-price="packet.isShowPrice"
         @toggleShow="toggleShow"
+        @toggleShowPrice="toggleShowPrice"
         @onClickChooseVariant="onClickChooseVariant"
       />
     </div>
@@ -35,6 +37,10 @@ export default {
     toggleShow(id) {
       this.packageList[id - 1].isShowTerms = !this.packageList[id - 1]
         .isShowTerms;
+    },
+    toggleShowPrice(id) {
+      this.packageList[id - 1].isShowPrice = !this.packageList[id - 1]
+        .isShowPrice;
     },
     onClickChooseVariant(packet) {
       this.$router.push(`all-you-can-eat/order?packet_id=${packet.id}`);
