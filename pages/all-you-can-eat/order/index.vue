@@ -455,8 +455,10 @@ export default {
     toPaymentPage() {
       this.validationForm();
       if (this.validationForm()) {
+        let person =
+          this.choosedPackage.memberType === 'group' ? this.totalPerson : 1;
         this.$router.push(
-          `/all-you-can-eat/payment?variant_id=${this.choosedPackage.id}`
+          `/all-you-can-eat/payment?variant_id=${this.choosedPackage.id}&total_person=${person}`
         );
       }
     },
