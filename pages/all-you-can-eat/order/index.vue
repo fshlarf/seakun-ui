@@ -51,7 +51,9 @@
       </div>
       <div class="flex md:justify-end">
         <div class="bg-third shadow-md rounded-xl py-1 px-4 max-w-max mt-2">
-          <p class="text-secondary font-semibold">Selamat! Kamu hemat Rp0,-</p>
+          <p class="text-secondary font-semibold">
+            Selamat! Kamu hemat {{ currencyFormat(saving) }}
+          </p>
         </div>
       </div>
     </div>
@@ -218,6 +220,7 @@ export default {
     packageId: '',
     finalPrice: '',
     grandTotal: 0,
+    saving: 0,
     email: '',
     userName: '',
     phoneNumber: '',
@@ -270,11 +273,8 @@ export default {
       this.calculateGrandTotal();
     },
     $route(to, from) {
-      // this.searchId = to.query.searchId
       if (to !== from) {
         this.getDetailVariant();
-        // this.dataContents = []
-        // this.getDataContents()
       }
     },
   },
@@ -289,6 +289,15 @@ export default {
       this.choosedPackage = this.packageList[this.packageId - 1];
       this.finalPrice = this.choosedPackage.detailPrice.finalPrice;
       this.grandTotal = this.finalPrice * this.totalPerson;
+      if (packet_id == 2) {
+        this.saving =
+          this.packageList[0].detailPrice.finalPrice -
+          this.packageList[1].detailPrice.finalPrice;
+      } else if (packet_id == 4) {
+        this.saving =
+          this.packageList[2].detailPrice.finalPrice -
+          this.packageList[3].detailPrice.finalPrice;
+      }
     },
     calculateGrandTotal() {
       this.grandTotal = this.finalPrice * this.totalPerson;
@@ -442,8 +451,6 @@ export default {
     choosePacket(variant) {
       this.isShowModalPackages = false;
       this.$router.push(`/all-you-can-eat/order?packet_id=${variant.id}`);
-      // this.choosedPackage = variant;
-      // this.finalPrice = variant.detailPrice.finalPrice;
     },
     toPaymentPage() {
       this.validationForm();
