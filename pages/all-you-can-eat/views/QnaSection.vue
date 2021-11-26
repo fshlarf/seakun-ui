@@ -46,33 +46,12 @@ export default {
             'Jika user tidak mengkonfirmasi kehadirannya kepada Restoran Voyage, maka Restoran Voyage dan Seakun.id tidak bertanggung jawab apabila kode voucher tidak dapat digunakan atau All You Can Eat tidak dapat dipersiapkan.',
           isShow: false,
         },
-        // {
-        //   id: 4,
-        //   question: 'Apa perbedaan User Host dan User Reguler?',
-        //   answer:
-        //     'User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Sedangkan User Reguler, kamu tinggal terima jadi saja, proses pendaftaran ke provider dan pencarian kawan berlangganan akan dihandle oleh Seakun.',
-        //   isShow: false,
-        // },
-        // {
-        //   id: 5,
-        //   question: 'Payment method apa saja yang available di Seakun?',
-        //   answer: 'Bank transfer Mandiri, BCA, Jenius, Gopay, DANA, LinkAja',
-        //   isShow: false,
-        // },
-        // {
-        //   id: 6,
-        //   question: 'Bagaimana prosedur menjadi User Host?',
-        //   answer: [
-        //     '1. Daftar dengan memilih paket User Host. Misal User Host Netflix',
-        //     '2. Admin akan melakukan konfirmasi melalui Whatsapp',
-        //     '3. Lakukan pendaftaran menggunakan akun yang ditentukan oleh Admin',
-        //     '4. Lakukan pembayaran di provider menggunakan kartu kredit/debit/gopay (khusus Netflix)',
-        //     '5. Setelah berhasil melakukan pembayaran, informasikan ke Admin',
-        //     '6. Admin akan mengirimkan pengganti dana yang terdebet',
-        //   ],
-        //   list: true,
-        //   isShow: false,
-        // },
+        {
+          id: 4,
+          question: 'Apakah Voucher ada kadaluarsanya?',
+          answer: 'Ada, sesuai periode pembelian.',
+          isShow: false,
+        },
       ],
     };
   },
