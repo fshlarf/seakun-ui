@@ -2,46 +2,37 @@
   <section>
     <Snackbar ref="snackbar" />
     <div class="payment-detail text-center mt-16">
-      <p class="payment-detail__label my-3 text-xl">Total transfer</p>
+      <p class="payment-detail__label text-gray-500 font-semibold my-3">
+        Total transfer
+      </p>
 
       <div class="total-payment flex align-items-center justify-center">
         <div
-          v-if="detailPayment.loading"
           class="payment-detail__price flex align-items-center justify-center"
-        >
-          <p class="shimmer w-6/12"></p>
-        </div>
-
-        <div
-          v-else
-          class="payment-detail__price flex align-items-center justify-center"
-          @click="clickCopyHandler('Nominal', detailPayment.data.price)"
+          @click="clickCopyHandler('Nominal', detailPayment)"
         >
           <p
             class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPayment.data.price)"
+            v-html="formatCodePayment(detailPayment)"
           ></p>
           <CopyIcon />
         </div>
       </div>
     </div>
     <div class="payment-method">
-      <h3 class="payment-method__title text-center text-bold mt-6">
+      <h3 class="payment-method__title text-center font-bold mt-6">
         Transfer Ke
       </h3>
       <PaymentMethodList
-          v-if="!paymentSeakunListLoading"
-          :PaymentMethodList="paymetnMethod"
-          @clickCopyHandler="clickCopyHandler"
-        />
-        <PaymentMethodListLoading v-else />
+        :PaymentMethodList="paymetnMethod"
+        @clickCopyHandler="clickCopyHandler"
+      />
     </div>
   </section>
 </template>
 
 <script>
-import PaymentMethodList from './PaymentMethodList.vue'
-import PaymentMethodListLoading from './PaymentMethodListLoading.vue'
+import PaymentMethodList from './PaymentMethodList.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import { currencyFormat } from '~/helpers/word-transformation.js';
@@ -52,19 +43,11 @@ export default {
     Snackbar,
     CopyIcon,
     PaymentMethodList,
-    PaymentMethodListLoading
   },
   props: {
-    paymentSeakunListLoading: {
-      type: Boolean,
-      default: false
-    },
     detailPayment: {
-      type: Object,
-      default: () => ({
-        loading: false,
-        data: {},
-      }),
+      type: Number,
+      default: 0,
     },
   },
   data: () => ({
@@ -131,13 +114,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .payment-detail {
-  &__label {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 21px;
-    color: rgba(54, 54, 54, 0.5);
-  }
   &__price {
     p {
       font-style: normal;
@@ -151,34 +127,6 @@ export default {
     }
     svg {
       width: 16px;
-      height: auto;
-      display: inline-block;
-      fill: #8dcabe;
-      margin-top: -8px;
-      cursor: pointer;
-    }
-  }
-
-  &__alert {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
-    color: #363636;
-  }
-}
-.payment-options {
-  img {
-    height: 60px;
-    width: 120px;
-    object-fit: contain;
-  }
-  &__norek {
-    span {
-      display: inline-block;
-    }
-    svg {
-      width: 12px;
       height: auto;
       display: inline-block;
       fill: #8dcabe;

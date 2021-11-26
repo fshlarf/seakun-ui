@@ -1,49 +1,69 @@
 <template>
-  <div class="container mb-8">
-    <div class="tn:hidden md:block">
-      <div
-        class="w-full container absolute -z-20 tn:top-16 lg:top-24 right-0 left-0 mx-auto justify-center"
-      >
-        <img
-          class="w-full mx-auto self-center"
-          src="images/all you can eat/banner.svg"
-          alt="Image not found"
-        />
-      </div>
-      <div
-        class="relative z-0 md:pt-8 lg:pt-14 xl:pt-15 grid grid-cols-2 w-full"
-      >
-        <div></div>
-        <div class="text-white tn:pl-3 tn:pt-6 md:pt-0 md:pl-6 lg:p-10">
-          <p
-            class="tn:text-lg md:text-xl lg:text-4xl xl:text-5xl font-bold lg:my-2 xl:my-6"
+  <div class="container tn:pt-4 md:pt-8">
+    <div
+      class="relative z-0 bg-gradient-to-r from-[#000000] to-[#E94949] rounded-3xl overflow-hidden"
+    >
+      <div class="grid tn:grid-cols-8 md:grid-cols-2">
+        <div class="tn:col-span-3 md:col-span-1">
+          <img
+            class="tn:w-60 md:w-full md:h-[250px] lg:h-[350px] max-w-max relative z-30 -mb-2 tn:-ml-36 md:-ml-14 lg:-ml-20 xl:-ml-2 tn:mt-2 md:mt-0"
+            src="images/all you can eat/banner/main.png"
+            alt="no image found"
+          />
+          <div
+            class="absolute z-20 tn:left-4 md:left-[11rem] lg:left-[17rem] xl:left-[21rem] tn:top-3 md:top-2 lg:top-6"
           >
-            Vendor
-          </p>
-          <p class="hidden md:block md:my-2 md:text-xl">Captionnya</p>
-          <div class="flex">
-            <p class="hidden md:block">dari</p>
-            <p class="hidden md:block mt-2 ml-2 text-4xl font-bold">Rp53.000</p>
+            <img
+              class="tn:w-28 md:w-40 lg:w-52"
+              src="images/all you can eat/banner/spoon.png"
+              alt="no image found"
+            />
           </div>
-          <div class="mt-2">
-            <Button
-              variant="secondary"
-              label="Pesan Sekarang"
-              class="font-bold md:my-2 lg:w-1/2 md:py-2 tn:text-xs md:text-base"
-              @click="onClickOrder"
+          <div
+            class="absolute z-10 md:left-32 lg:left-52 xl:left-72 tn:top-7 md:top-4 lg:top-12"
+          >
+            <img
+              class="tn:w-36 md:w-56 lg:w-72"
+              src="images/all you can eat/banner/plate.png"
+              alt="no image found"
             />
           </div>
         </div>
+        <div
+          class="text-white tn:p-3 md:p-4 lg:p-10 tn:col-span-5 md:col-span-1"
+        >
+          <h1
+            class="font-bold tn:text-[20px] md:text-[28px] lg:text-[32px] xl:text-[40px] tn:my-2 lg:my-4"
+          >
+            Voyage Harris Harmoni
+          </h1>
+          <p
+            class="tn:text-[10px] md:text-sm lg:text-xl font-semibold tracking-wider"
+          >
+            Buat moment spesial untuk orang tercinta anda!
+          </p>
+          <div class="flex space-x-2 my-2">
+            <p class="font-semibold tn:text-[10px] md:text-sm lg:text-base">
+              dari
+            </p>
+            <span class="font-bold tn:text-[20px] md:text-3xl lg:text-5xl"
+              >Rp218.000</span
+            >
+          </div>
+          <Button
+            class="md:mt-3 tn:text-[9px] md:text-base tn:w-full md:w-auto tn:rounded-3xl"
+            variant="forth"
+            label="PESAN SEKARANG"
+            @click="onClickOrder"
+          />
+        </div>
       </div>
-    </div>
-    <div class="md:hidden pt-4 px-2">
-      <BannerMobile />
     </div>
   </div>
 </template>
 
 <script>
-import Button from '~/components/atoms/button.vue';
+import Button from '~/components/atoms/Button.vue';
 import BannerMobile from './BannerMobile.vue';
 export default {
   components: {
@@ -52,7 +72,12 @@ export default {
   },
   methods: {
     onClickOrder() {
-      console.log('tes');
+      const variantSection = document.getElementById('package-variant');
+      variantSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
     },
   },
 };

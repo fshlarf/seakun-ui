@@ -5,6 +5,7 @@
     <IntroductionSection />
     <PartnershipSection />
     <WhatsappNoticeBanner />
+    <HightlightSection />
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
@@ -13,7 +14,7 @@
     <BenefitSection />
     <QnaSection />
     <Footer />
-    <WhatsappNoticeModal />
+    <!-- <WhatsappNoticeModal /> -->
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import Navbar from '~/components/mollecules/Navbar';
 import HeaderSection from '~/components/organisms/HeaderSection';
 import IntroductionSection from '~/components/organisms/IntroductionSection';
 import PartnershipSection from '~/components/organisms/PartnershipSection';
+import HightlightSection from '~/components/organisms/HightlightSection';
 import ProductSection from '~/components/organisms/ProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
@@ -39,6 +41,7 @@ export default {
     HeaderSection,
     IntroductionSection,
     PartnershipSection,
+    HightlightSection,
     ProductSection,
     UserTypeSection,
     OrderFlowSection,

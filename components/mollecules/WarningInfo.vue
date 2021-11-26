@@ -18,7 +18,7 @@
         </svg>
       </div>
       <div>
-        <p class="tn:text-xs md:text-base alert-text" v-html="text"></p>
+        <p class="tn:text-xs md:text-base font-medium" v-html="text"></p>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
 .alert-card {
   background-color: #fff8ec;
 }
-.alert-text {
+/* .alert-text {
   color: #ffc801;
-}
+} */
 </style>

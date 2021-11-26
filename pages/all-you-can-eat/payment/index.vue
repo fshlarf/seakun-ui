@@ -1,47 +1,32 @@
 <template>
   <div>
-    <div class="container-payment max-w-2xl w-full mx-auto mt-20">
-      <div class="payment-illustration flex justify-center w-full">
+    <div class="max-w-2xl w-full mx-auto mt-20">
+      <div class="flex justify-center w-full">
         <img
           class="w-9/12 mx-auto"
           src="/images/thank-you.png"
           alt="Image not found"
         />
       </div>
-      <h3
-        class="payment-thankyou md:text-3xl tn:text-3xl font-bold mt-10 text-center"
-      >
+      <h3 class="md:text-3xl tn:text-3xl font-bold mt-10 text-center">
         Thank You!
       </h3>
       <HeaderPayment
-        :detailPayment="detailPayment"
         :detail-variant-ayce="dataVariantAyce"
+        :total-person="totalPerson"
+        :total="finalPrice"
       />
       <div class="px-4 text-lg mt-4 -mb-4">
         <WarningInfo :text="contentWarning" />
       </div>
-      <DetailPayment
-        :detailPayment="detailPayment"
-      />
-      <div class="tos-alert px-4 mt-4 text-lg">
-        <p>
-          Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
-          kamu dapat diproses oleh Seakun.id. Mohon menunggu 10 - 60 menit. jika
-          melewati rentang waktu tersebut dan pesanan kamu belum diproses, harap
-          hubungi admin via whatsapp
-          <a
-            class="text-primary"
-            target="_blank"
-            href="https://api.whatsapp.com/send?phone=6282124852232"
-            >+6282124852232</a
-          >
-        </p>
-      </div>
+      <DetailPayment :detail-payment="totalPayment" />
       <div class="mt-8 mx-4 mb-4 text-center">
-        <Button
-          class="w-full bg-green-seakun text-white"
-          label="Konfirmasi Pesanan"
-        />
+        <a target="_blank" href="https://wa.me/6282124852232">
+          <Button
+            class="w-full bg-green-seakun text-white"
+            label="Konfirmasi ke Whatsapp"
+          />
+        </a>
       </div>
     </div>
     <Footer />
@@ -58,6 +43,7 @@ import DetailPayment from './views/DetailPayment.vue';
 import HeaderPayment from './views/HeaderPayment.vue';
 import Footer from '~/components/mollecules/Footer';
 import WarningInfo from '~/components/mollecules/WarningInfo';
+import { packageList } from '../variant-list';
 
 export default {
   components: {
@@ -73,35 +59,27 @@ export default {
   data() {
     return {
       SEAKUN_PACKAGE_API,
+      packageList,
+      variantId: 0,
+      totalPerson: 0,
+      finalPrice: 0,
+      totalPayment: 0,
       vouchersData: [],
-      detailPayment: {
-        loading: false,
-        data: {},
-      },
-      dataVariantAyce: {
-        id: 1,
-        image: '/images/all you can eat/brand/shabu-hachi.png',
-        name: 'All You Can Eat',
-        variant: 'Paket 5 Orang',
-        price: 120000,
-        isAvailable: true,
-      },
+      dataVariantAyce: {},
     };
   },
   mounted() {
-      this.detailPayment.data = this.dataVariantAyce;
-      this.getVouchersData();
+    const { variant_id, total_person } = this.$router.history.current.query;
+    this.variantId = variant_id;
+    this.totalPerson = total_person;
+    this.dataVariantAyce = this.packageList[variant_id - 1];
+    this.finalPrice = this.dataVariantAyce.detailPrice.finalPrice;
+    this.totalPayment = this.finalPrice * this.totalPerson;
+    this.getVouchersData();
   },
   computed: {
     contentWarning() {
-      const { provider, holder, duration } = this.$router.history.current.query;
-      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852232?text=${text}">+6282124852232</a>`;
-    },
-    confirmationWhatsapp() {
-      const { provider, holder, duration } = this.$router.history.current.query;
-      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `https://wa.me/6282124852232?text=${text}`;
+      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852232">+6282124852232</a>`;
     },
   },
   methods: {
@@ -132,62 +110,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.container-sm {
-  min-width: 640px;
-  max-width: 640px;
-}
-.payment {
-  padding: 60px 40px 50px !important;
-  .box {
-    border: 1px solid #86d0c1;
-    border-radius: 4px;
-    padding: 16px;
-    margin-left: 250px !important;
-    margin-right: 250px !important;
-  }
-  .col {
-    text-align: center;
-
-    &.box {
-      &-title {
-        text-align: left;
-        font-weight: 700;
-      }
-      &-item {
-        text-align: left;
-        &-noRek {
-          cursor: pointer;
-          text-align: left;
-          &:hover {
-            color: #86d0c1;
-          }
-        }
-      }
-    }
-    p {
-      margin: 0 auto;
-      max-width: 600px;
-      margin-top: 30px;
-      margin-bottom: 40px;
-    }
-    a {
-      font-weight: 700;
-      color: #2895ff;
-    }
-  }
-  .container {
-    max-width: 1120px !important;
-    font-weight: 500 !important;
-    margin: 0 auto !important;
-  }
-  &__img {
-    img {
-      width: 40rem;
-    }
-  }
-  .row {
-    padding: 0px 8px !important;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

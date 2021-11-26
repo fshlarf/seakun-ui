@@ -51,7 +51,7 @@
 
 <script>
 import { currencyFormat } from '~/helpers/word-transformation.js';
-import Button from '~/components/atoms/button.vue';
+import Button from '~/components/atoms/Button.vue';
 export default {
   props: {
     packet: {

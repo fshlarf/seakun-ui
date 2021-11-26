@@ -64,6 +64,10 @@ button:hover:disabled {
   background-color: #c8ece5 !important;
 }
 
+.bg-fifth {
+  background-color: #e9faf5 !important;
+}
+
 .btn-primary {
   background-color: #86d0c1;
   border-color: #86d0c1 !important;
@@ -95,6 +99,19 @@ button:hover:disabled {
   border-color: #417465 !important;
   padding: 0.8rem 3rem;
   font-size: 16px;
+  &:focus,
+  &:active,
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.btn-forth {
+  background-color: #ffffff !important;
+  color: #417465 !important;
+  border-color: #417465 !important;
+  padding: 0.6rem 2rem;
+  font-weight: bold;
   &:focus,
   &:active,
   &:hover {

@@ -1,15 +1,18 @@
 <template>
-  <Modal :is-loading="isLoading" size="auto" :is-show="isShowModal" @onClose="closeModal">
+  <Modal
+    :is-loading="isLoading"
+    size="auto"
+    :is-show="isShowModal"
+    @onClose="closeModal"
+  >
     <template v-slot:header>
       <div class="">
-        <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">
-          Ubah Varian
-        </h1>
+        <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">Ubah Varian</h1>
       </div>
     </template>
     <div class="xl:w-[500px] space-y-4 pb-3">
       <VariantOptionCard
-        v-for="(packageVariant, id) in dataVariants"
+        v-for="(packageVariant, id) in variantList"
         :key="id"
         :variant="packageVariant"
         :current-variant="currentPackageVariant"
@@ -44,6 +47,17 @@ export default {
   components: {
     VariantOptionCard,
     Modal,
+  },
+  computed: {
+    variantList() {
+      const newArr = [];
+      this.dataVariants.forEach((variant) => {
+        if (variant.type === this.currentPackageVariant.type) {
+          newArr.push(variant);
+        }
+      });
+      return newArr;
+    },
   },
   methods: {
     closeModal() {

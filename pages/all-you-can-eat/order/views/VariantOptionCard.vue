@@ -2,21 +2,21 @@
   <div>
     <div v-if="!isLoading">
       <div class="w-full shadow-md rounded-xl p-3">
-          <div class="grid grid-cols-5 tn:gap-2 items-center">
-            <div class="col-span-3 md md:space-y-1">
-                <div class="md:flex items-center">
-                    <p class="tn:text-sm md:text-base font-bold">
-                        {{ variant.name }}
-                    </p>
-                    <p class="uppercase font-semibold text-sm text-secondary md:ml-2">
-                        {{ variant.variant }}
-                    </p>
-                </div>
-              <p class="md:text-xl font-extrabold">
-                {{ currencyFormat(variant.price) }}
+        <div class="grid grid-cols-4 tn:gap-2 items-center">
+          <div class="col-span-3 md:space-y-1">
+            <div class="md:flex items-center">
+              <p class="tn:text-sm md:text-base font-bold">
+                {{ variant.name }}
+                <span class="text-secondary uppercase font-normal">{{
+                  variant.package
+                }}</span>
               </p>
             </div>
-            <div class="col-span-2">
+            <p class="md:text-xl font-extrabold">
+              {{ currencyFormat(variant.detailPrice.finalPrice) }}
+            </p>
+          </div>
+          <div class="">
             <Button
               v-if="variant.isAvailable"
               :label="variant.id === currentVariant.id ? 'Dipilih' : 'Pilih'"
@@ -32,8 +32,8 @@
               class="tn:w-full md:w-3/4 float-right"
               disabled
             />
-            </div>
           </div>
+        </div>
       </div>
     </div>
     <div v-else class="w-full">
@@ -47,11 +47,11 @@ import { currencyFormat } from '~/helpers/word-transformation.js';
 import Button from '~/components/atoms/Button.vue';
 import CardShimmer from '~/components/mollecules/CardShimmer.vue';
 export default {
-    data() {
-        return {
-            currencyFormat
-        }
-    },
+  data() {
+    return {
+      currencyFormat,
+    };
+  },
   props: {
     isLoading: {
       type: Boolean,
