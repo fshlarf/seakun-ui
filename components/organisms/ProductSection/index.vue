@@ -8,7 +8,7 @@
         <h1
           class="hidden md:block md:text-xl lg:text-2xl font-bold md:mb-4 lg:mb-4"
         >
-          Berlangganan produk digital
+          Berlangganan Produk Digital
         </h1>
         <h1 class="text-2xl md:hidden font-bold">Layanan digital</h1>
         <NuxtLink
@@ -45,7 +45,7 @@
 
       <div id="product-ondemand" class="pt-5 px-2 md:my-8">
         <h1 class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4">
-          Layanan on demand
+          Layanan On Demand
         </h1>
       </div>
 

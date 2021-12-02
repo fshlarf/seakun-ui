@@ -4,7 +4,7 @@
     <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
-    <WhatsappNoticeBanner />
+    <!-- <WhatsappNoticeBanner /> -->
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
