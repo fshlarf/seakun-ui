@@ -14,7 +14,7 @@
     <QnaSection />
     <WarningOrder />
     <Footer />
-    <WhatsappNoticeModal />
+    <!-- <WhatsappNoticeModal /> -->
   </div>
 </template>
 
@@ -32,7 +32,7 @@ import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
 import WarningOrder from '~/components/organisms/WarningOrder';
 import Footer from '~/components/mollecules/Footer';
-import WhatsappNoticeModal from '~/components/organisms/WhatsappNoticeModal';
+// import WhatsappNoticeModal from '~/components/organisms/WhatsappNoticeModal';
 import WhatsappNoticeBanner from '~/components/organisms/WhatsappNoticeBanner';
 
 export default {
@@ -50,7 +50,7 @@ export default {
     QnaSection,
     WarningOrder,
     Footer,
-    WhatsappNoticeModal,
+    // WhatsappNoticeModal,
     WhatsappNoticeBanner,
   },
 };
