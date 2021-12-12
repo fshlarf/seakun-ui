@@ -37,6 +37,12 @@
           variant="primary"
         />
         <Button
+          @click="redirectToSeakun('vote')"
+          class="py-3"
+          label="Polling Layanan Baru"
+          variant="primary"
+        />
+        <Button
           class="py-3"
           label="Hubungi WA"
           variant="primary"
@@ -100,6 +106,8 @@ export default {
         this.$router.push('/#provider');
       } else if (target === 'faq') {
         this.$router.push('/#qna');
+      } else if (target === 'vote') {
+        this.$router.push('/vote');
       }
     },
   },
