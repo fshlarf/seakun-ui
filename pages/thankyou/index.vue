@@ -111,7 +111,7 @@
           Untuk proses yang lebih cepat, harap konfirmasi ulang melalui Whatsapp
           dengan klik nomor berikut
           <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
-            >+6282124852227</a
+            >+6282124852232</a
           >
         </p>
       </div>
@@ -246,7 +246,7 @@ export default {
       const name = this.dataDetailOrder.paymentHolder;
       const packageName = this.dataProduct.packageName;
 
-      return `https://api.whatsapp.com/send/?phone=6282124852227&text=
+      return `https://api.whatsapp.com/send/?phone=6282124852232&text=
         Halo+saya+sudah+melakukan+pesanan+dan+pembayaran%0A%0A*No+Order:*+${orderNumber}%0A*Nama:*+${name}%0A*Pesanan:*+${packageName}&app_absent=0`;
     },
   },
