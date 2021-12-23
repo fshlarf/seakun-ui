@@ -15,9 +15,11 @@
           <b>Perlu diperhatikan</b> bahwa harga paket dari provider bisa saja
           tidak bulat, sehingga Seakun.id melakukan pembulatan harga patungan
           dengan tujuan untuk memudahkan member dalam melihat nominal yang akan
-          ditransfer. Hasil pembulatan akan masuk sebagai keuntungan untuk
-          Seakun.id dan dengan berlangganan melalui Seakun.id, member dinyatakan
-          sudah mengerti dan setuju dengan skema harga yang sudah ditetapkan.
+          ditransfer. Hasil pembulatan, diskon, pemotongan harga dan/atau
+          benefit lain yang mempengaruhi harga dari provider menjadi hak mutlak
+          dan masuk sebagai keuntungan untuk Seakun.id. Dengan berlangganan
+          melalui Seakun.id, member dinyatakan sudah mengerti dan setuju dengan
+          skema harga yang sudah ditetapkan.
         </div>
         <div class="row justify-content-around content-mobile">
           <div v-for="(item, index) in providerList" :key="index">

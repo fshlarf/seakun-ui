@@ -1,109 +1,117 @@
 <template>
-  <div class="sider">
-    <div class="links">
-      <div class="links__container">
-        <h4 style="color: #52af9c; margin-bottom: 8px">Halo, teman!</h4>
-        <p style="text-align: center; color: #52af9c">@seakun.id</p>
-        <div class="links__container-content">
-          <div v-for="(link, id) in links" :key="id" style="min-width: 120px">
-            <Link :source="link.source" :img="link.img" :label="link.label" />
-          </div>
+  <div class="pt-8 h-screen" style="background-color: #f4f9f8">
+    <div class="max-w-sm mx-auto px-8">
+      <div class="mt-4 mb-10 flex justify-center space-x-4 items-center">
+        <img class="w-8 h-8 rounded-full" src="/images/seakunid.png" alt="" />
+        <p class="text-primary font-bold text-xl">Seakun.id</p>
+      </div>
+      <div class="grid grid-cols-1 gap-6">
+        <Button
+          @click="redirectToSeakun('home')"
+          class="py-3"
+          label="Website Seakun"
+          variant="primary"
+        />
+        <Button
+          @click="redirectToSeakun('price-scheme')"
+          class="py-3"
+          label="Skema Harga"
+          variant="primary"
+        />
+        <Button
+          @click="redirectToSeakun('order-flow')"
+          class="py-3"
+          label="Cara Berlangganan"
+          variant="primary"
+        />
+        <Button
+          @click="redirectToSeakun('product')"
+          class="py-3"
+          label="Mulai Berlangganan"
+          variant="primary"
+        />
+        <Button
+          @click="redirectToSeakun('faq')"
+          class="py-3"
+          label="FAQ"
+          variant="primary"
+        />
+        <Button
+          @click="redirectToSeakun('vote')"
+          class="py-3"
+          label="Polling Layanan Baru"
+          variant="primary"
+        />
+        <Button
+          class="py-3"
+          label="Hubungi WA"
+          variant="primary"
+          @click="goToWhatsapp"
+        />
+      </div>
+    </div>
+    <div class="max-w-sm mx-auto mt-2">
+      <div class="flex justify-between items-center">
+        <img
+          class="w-[66px]"
+          src="/images/icons/links/leafs-left.svg"
+          alt="#"
+        />
+        <div class="my-8 flex justify-center items-center space-x-3">
+          <a href="https://instagram.com/official.seakun"
+            ><img
+              class=""
+              src="/images/icons/links/Instagram.png"
+              alt="Instagram"
+          /></a>
+          <a href="https://twitter.com/seakun_id"
+            ><img class="" src="/images/icons/links/Twitter.png" alt="Twitter"
+          /></a>
+          <a href="https://www.linkedin.com/company/seakun-id/"
+            ><img
+              class=""
+              src="/images/icons/links/Linkedin.png"
+              alt="LinkedIn"
+          /></a>
         </div>
+        <img
+          class="w-[80px]"
+          src="/images/icons/links/leafs-right.svg"
+          alt="#"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Link from './views/link';
+import Button from '~/components/atoms/Button.vue';
 export default {
   components: {
-    Link,
+    Button,
   },
-  data() {
-    return {
-      links: [
-        {
-          img: '/images/links/website.png',
-          label: 'Website',
-          source: '/',
-        },
-        {
-          img: '/images/links/pre-order.png',
-          label: 'Prosedur Pre-Order',
-          source: '/info/pre-order/',
-        },
-        {
-          img: '/images/links/host.png',
-          label: 'Prosedur User Host',
-          source: '/info/user-host/',
-        },
-        {
-          img: '/images/links/whatsapp.png',
-          label: 'Whatsapp',
-          source: 'https://api.whatsapp.com/send?phone=6282124852232',
-        },
-        {
-          img: '/images/links/scheme-price.png',
-          label: 'Skema Harga',
-          source: '/info/scheme-of-price',
-        },
-      ],
-    };
+  methods: {
+    goToWhatsapp() {
+      window.location.href =
+        'https://api.whatsapp.com/send?phone=6282124852232';
+    },
+    redirectToSeakun(target) {
+      if (target === 'home') {
+        this.$router.push('/');
+      } else if (target === 'price-scheme') {
+        this.$router.push('/info/scheme-of-price');
+      } else if (target === 'order-flow') {
+        this.$router.push('/#orderFlow');
+      } else if (target === 'product') {
+        this.$router.push('/#provider');
+      } else if (target === 'faq') {
+        this.$router.push('/#qna');
+      } else if (target === 'vote') {
+        this.$router.push('/vote');
+      }
+    },
   },
 };
 </script>
 
-<style lang="scss">
-.sider {
-  background-color: #86d0c1 !important;
-  padding: 2px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  position: absolute;
-}
-.links {
-  background-color: #86d0c1 !important;
-  margin: 20px;
-  &__container {
-    padding: 20px;
-    background-color: white;
-    border: 1px dashed #86d0c1;
-    min-height: 80vh;
-    &-content {
-      justify-content: space-around;
-      display: flex;
-      flex-wrap: wrap;
-      .link {
-        cursor: pointer;
-        width: 124px;
-        height: 143px;
-        &-circle {
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100px;
-          height: 100px;
-          background: #ffffff;
-          border: 1px solid #86d0c1;
-          box-sizing: border-box;
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          border-radius: 50%;
-        }
-        &-label {
-          color: #52af9c;
-          text-align: center;
-          font-size: 12px;
-          margin-top: 6px;
-        }
-      }
-      .link:hover {
-        opacity: 0.8;
-      }
-    }
-  }
-}
-</style>
+<style></style>

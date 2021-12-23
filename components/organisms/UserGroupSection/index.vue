@@ -179,12 +179,18 @@ export default {
           slug: 'apple-one',
           icon: '/images/icons/apple-one.svg',
         },
-        // {
-        //   id: 9,
-        //   name: 'Wattpad',
-        //   slug: 'wattpad',
-        //   icon: '/images/icons/wattpad.svg',
-        // },
+        {
+          id: 9,
+          name: 'Wattpad',
+          slug: 'wattpad',
+          icon: '/images/icons/wattpad.svg',
+        },
+        {
+          id: 10,
+          name: 'Google One',
+          slug: 'google-one',
+          icon: '/images/icons/google-one.svg',
+        },
         // {
         //   id: 10,
         //   name: 'Nintendo Switch',
@@ -270,13 +276,11 @@ export default {
           brand: `/images/${e.provider}.png`,
         };
       });
-
       customers.map((e, i) => {
         if (newArr.includes(e.group)) {
           theArr[parseInt(e.group) - 1].members.push(e.customer_name);
         }
       });
-
       const netArr = theArr
         .slice(theArr.length - 5, theArr.length - 0)
         .sort()

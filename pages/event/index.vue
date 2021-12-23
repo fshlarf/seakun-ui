@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <div class="event">
       <EventDetail extendClass="mobile" :dataEvent="dataEvent" />
       <div class="event-reg">
@@ -198,7 +197,6 @@
       </div>
       <EventDetail :dataEvent="dataEvent" />
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -212,6 +210,7 @@ import axios from 'axios';
 import { SEAKUN_API } from '~/constants/api.js';
 
 export default {
+  layout: 'new',
   components: {
     Header,
     Footer,
@@ -442,7 +441,7 @@ h5 {
   .event {
     display: block;
     width: 100% !important;
-    padding: 80px 10px !important;
+    padding: 40px 10px !important;
     font-size: 14px !important;
     &-reg {
       width: 100% !important;
@@ -454,6 +453,7 @@ h5 {
       padding: 0 0px;
       padding-bottom: 16px;
       margin: 0px 0px;
+      height: auto;
       &__info {
         &--key {
           width: 28% !important;

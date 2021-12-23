@@ -5,7 +5,7 @@
     >
       <div class="md:container tn:px-4 text-white xl:mt-12 xl:mb-4">
         <h2 class="tn:text-xl md:text-2xl font-bold tn:my-2 md:my-2 xl:mb-4">
-          Ingin Usaha kamu ada di Seakun.id?
+          Ingin Usaha Kamu Ada di Seakun.id?
         </h2>
         <p class="tn:text-sm md:text-md xl:text-lg font-semibold">
           Jangan khawatir ya, Seakun bisa kok meningkatkan usaha kamu disini!
@@ -33,7 +33,7 @@
         <Button
           class="mx-auto btn-partner"
           variant="secondary"
-          label="Ajukan Kerja Usaha saya dengan Seakun"
+          label="Ajukan Kerja Usaha Saya dengan Seakun"
         />
       </a>
     </div>
@@ -45,7 +45,7 @@
           <Button
             class="mx-auto btn-partner"
             variant="secondary"
-            label="Ajukan permintaan"
+            label="Ajukan Permintaan"
           />
         </a>
       </div>
@@ -62,12 +62,12 @@ export default {
       dataCounter: [
         {
           id: 1,
-          value: '25.000+',
+          value: '55.000+',
           label: 'Total Transaksi',
         },
         {
           id: 2,
-          value: '8.000+',
+          value: '17.000+',
           label: 'Total Pengguna',
         },
         {

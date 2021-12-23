@@ -18,7 +18,7 @@ export default {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000/seakun',
   },
   head: {
-    title: 'Seakun',
+    title: 'Seakun | Situs Cari Teman Patungan Aman & Murah',
     htmlAttrs: {
       lang: 'id',
     },
@@ -80,7 +80,16 @@ export default {
           'sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI',
         crossorigin: 'anonymous',
       },
+      {
+        type: 'text/javascript',
+        innerHTML: `!function (w, d, t) {w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+		
+		  ttq.load('C5R3P0DRNQNGELT7TO3G');
+		  ttq.page();
+		}(window, document, 'ttq');`,
+      },
     ],
+    __dangerouslyDisableSanitizers: ['script'],
   },
   /*
    ** Global CSS
@@ -108,6 +117,16 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/svg',
+    [
+      'nuxt-facebook-pixel-module',
+      {
+        /* module options */
+        track: 'PageView',
+        pixelId: '380285150190068',
+        autoPageView: true,
+        disabled: false,
+      },
+    ],
   ],
   /*
    ** Axios module configuration
