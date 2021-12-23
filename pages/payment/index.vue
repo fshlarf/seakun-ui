@@ -28,6 +28,12 @@
         :packageId="packetId"
         :detailPayment="detailPayment"
       />
+      <div class="tos-alert px-4 md:mt-4 md:text-lg">
+        <p class="italic">
+          Mohon maaf, saat ini kami tidak menerima pembayaran melalui e-Wallet
+          dikarenakan keterbatasan limit
+        </p>
+      </div>
       <div class="tos-alert px-4 mt-4 text-lg" v-if="type !== 'digital'">
         <p>
           Setelah melakukan pembayaran, lakukan konfirmasi pesanan agar pesanan
