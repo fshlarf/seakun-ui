@@ -158,21 +158,21 @@ export default {
         accountNumber: '7660777738',
         accountName: 'PT. Seakun Global',
       },
-      {
-        name: 'gopay',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
-      },
+      // {
+      //   name: 'gopay',
+      //   accountNumber: '085774642738',
+      //   accountName: 'Seakun ID / Eka Pusna',
+      // },
       // {
       //   name: 'ovo',
       //   accountNumber: '085774642738',
       //   accountName: 'Seakun ID / Eka Pusna',
       // },
-      {
-        name: 'link-aja',
-        accountNumber: '085774642738',
-        accountName: 'Seakun ID / Eka Pusna',
-      },
+      // {
+      //   name: 'link-aja',
+      //   accountNumber: '085774642738',
+      //   accountName: 'Seakun ID / Eka Pusna',
+      // },
       // {
       //   name: 'dana',
       //   accountNumber: '085774642738',
