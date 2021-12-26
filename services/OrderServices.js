@@ -28,6 +28,10 @@ class OrderService {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
   }
+
+  changePackageVariant(params) {
+    return this.serviceApi.patch('/customer/variant', { ...params });
+  }
 }
 
 export default OrderService;

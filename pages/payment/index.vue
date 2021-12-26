@@ -22,6 +22,22 @@
         :package-name="packet"
         :total="total"
       />
+
+      <div class="mt-4 tn:px-2">
+        <p class="pb-1 tn:text-sm md:text-base">Ubah Masa Berlangganan</p>
+        <ButtonDrop
+          :btnText="longSubcribe.name"
+          :disabled="dataVariants.length <= 0 || isLoadingPayment"
+          @click="isShowPriceList = !isShowPriceList"
+        />
+        <div class="w-full">
+          <DropDownPricesListSubcribe
+            :show="isShowPriceList"
+            :dataList="dataVariants"
+            @onClikcItem="onClickItemPrice"
+          />
+        </div>
+      </div>
       <!-- <div v-if="type === 'digital'" class="px-4 text-lg mt-4 -mb-4">
         <WarningInfo :text="contentWarning" />
       </div> -->
@@ -39,12 +55,14 @@
           v-if="type !== 1"
           class="w-full bg-green-seakun text-white py-2"
           label="Konfirmasi Pembayaran"
+          :disabled="isLoadingPayment"
           @click="onClickConfirm('sequrban')"
         />
         <Button
           v-else
           class="w-full bg-green-seakun text-white py-2"
           label="Konfirmasi Pembayaran"
+          :disabled="isLoadingPayment"
           @click="onClickConfirm('digital')"
         />
       </div>
@@ -65,6 +83,13 @@ import DetailPayment from './views/DetailPayment.vue';
 import HeaderPayment from './views/HeaderPayment.vue';
 import WarningInfo from '~/components/mollecules/WarningInfo';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
+import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
+import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
+import {
+  currencyFormat,
+  capitalizeFirstLetter,
+  fullDate,
+} from '~/helpers/word-transformation.js';
 import moment from 'moment';
 
 export default {
@@ -76,11 +101,15 @@ export default {
     DetailPayment,
     WarningInfo,
     Snackbar,
+    ButtonDrop,
+    DropDownPricesListSubcribe,
   },
   layout: 'new',
   data() {
     return {
       MasterService,
+      OrderService,
+      currencyFormat,
       provider: '',
       packet: '',
       packetId: null,
@@ -101,6 +130,21 @@ export default {
         data: [],
         loading: true,
       },
+      longSubcribe: {
+        variantUid: '',
+        name: 'Pilih Masa Berlangganan',
+        month: 0,
+        price: 0,
+        payment: 0,
+        grandTotal: 0,
+      },
+      isShowPriceList: false,
+      dataVariants: [],
+      orderUid: '',
+      customerUid: '',
+      variantUid: '',
+      packageUid: '',
+      isLoadingVariant: false,
       moment,
     };
   },
@@ -113,6 +157,8 @@ export default {
       order_uid,
       customer_uid,
     } = this.$router.history.current.query;
+    this.orderUid = order_uid;
+    this.customerUid = customer_uid;
     this.type = parseInt(type);
     this.provider = provider;
     if (this.type === 1) {
@@ -164,6 +210,56 @@ export default {
         loading: false,
       };
     },
+    async getDetailVariant(uid) {
+      this.isLoadingPayment = true;
+      const { MasterService } = this;
+      try {
+        const fetchDetailVariant = await MasterService.getVariantByPackageUid(
+          uid
+        );
+        if (fetchDetailVariant.data) {
+          const { data } = fetchDetailVariant.data;
+          this.dataVariants = data;
+
+          const variantSelected = this.dataVariants.find(
+            (variant) => this.variantUid == variant.uid
+          );
+
+          if (variantSelected) {
+            const rupiah = currencyFormat(variantSelected.grandTotal);
+            this.longSubcribe = {
+              variantUid: variantSelected.uid,
+              name: `${
+                variantSelected.duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${variantSelected.duration} bulan ( ${rupiah} )`
+              } `,
+              month: variantSelected.duration,
+              price: variantSelected.price,
+              grandTotal: variantSelected.grandTotal,
+            };
+          } else {
+            const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
+            this.longSubcribe = {
+              variantUid: this.dataVariants[0].uid,
+              name: `${
+                this.dataVariants[0].duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${this.dataVariants[0].duration} bulan ( ${rupiah} )`
+              } `,
+              month: this.dataVariants[0].duration,
+              price: this.dataVariants[0].price,
+              grandTotal: this.dataVariants[0].grandTotal,
+            };
+          }
+        } else {
+          throw new Error(fetchDetailVariant);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingPayment = false;
+    },
     async getPaymentDigital(orderUid, customerUid) {
       const { OrderService } = this;
       this.isLoadingPayment = true;
@@ -184,6 +280,9 @@ export default {
             orderNumber: dataResult.orderNumber,
           };
           this.provider = dataResult.provider.slug;
+          this.packageUid = dataResult.provider.package.uid;
+          this.variantUid = dataResult.provider.package.variant.uid;
+          await this.getDetailVariant(this.packageUid);
         } else {
           throw new Error(fetchPayment);
         }
@@ -228,6 +327,31 @@ export default {
           }
         })
         .catch((err) => console.log(err));
+    },
+    async onClickItemPrice(item) {
+      this.isShowPriceList = false;
+      this.isLoadingPayment = true;
+      this.paymentSeakunList.loading = true;
+      this.variantUid = item.uid;
+
+      const { OrderService } = this;
+      const payload = {
+        orderUid: this.orderUid,
+        customerUid: this.customerUid,
+        packageVariantUid: this.variantUid,
+      };
+      try {
+        const fetchChangeVariant = await OrderService.changePackageVariant(
+          payload
+        );
+        if (fetchChangeVariant.data) {
+          await this.getPaymentDigital(this.orderUid, this.customerUid);
+        }
+        this.isLoadingPayment = false;
+        this.paymentSeakunList.loading = false;
+      } catch (err) {
+        console.log(err);
+      }
     },
     setOrderToLocalStorage(dataOrder) {
       try {
