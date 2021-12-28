@@ -21,7 +21,7 @@
         href="https://api.whatsapp.com/send?phone=6282124852232"
       >
         <Button
-          class="mt-4 w-full"
+          class="mt-4 w-full !py-4"
           variant="secondary"
           label="Hubungi admin untuk proses order"
         />
