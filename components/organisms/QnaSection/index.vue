@@ -57,7 +57,7 @@ export default {
         {
           id: 5,
           question: 'Payment method apa saja yang available di Seakun?',
-          answer: 'Bank transfer Mandiri, BCA, Jenius, Gopay, DANA, LinkAja',
+          answer: 'Bank transfer Mandiri, BCA, Jenius, Gopay, LinkAja',
           isShow: false,
         },
         {

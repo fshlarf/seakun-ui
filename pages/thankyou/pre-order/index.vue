@@ -134,6 +134,7 @@ export default {
       }
     },
     setNumberMember(provider) {
+      const { packet_id } = this.$router.history.current.query;
       switch (provider.toLowerCase()) {
         case 'canva':
           return '4';
@@ -146,6 +147,9 @@ export default {
           break;
         case 'wattpad':
           return '3';
+          break;
+        case 'google-one':
+          return parseInt(packet_id) === 1 ? '2' : '5';
           break;
         default:
           return '5';

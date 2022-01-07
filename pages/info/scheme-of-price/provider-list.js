@@ -515,6 +515,45 @@ export const providerList = [
     ],
   },
   {
+    name: 'wattpad',
+    img: '/images/wattpad.png',
+    screenshot: '/images/ss-wattpad.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Wattpad PREMIUM',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Wattpad (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Wattpad',
+        value: 'Rp65.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp65.000 ÷ 3 = Rp21.666,7',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp4.833,3',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp26.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
     name: 'apple-one',
     img: '/images/apple-one.png',
     screenshot: '/images/ss-apple-one.png',
@@ -554,40 +593,121 @@ export const providerList = [
     ],
   },
   {
-    name: 'wattpad',
-    img: '/images/wattpad.png',
-    screenshot: '/images/ss-wattpad.png',
+    name: 'apple-music',
+    img: '/images/apple-music.png',
+    screenshot: '/images/ss-apple-music.png',
     schemes: [
-      'Seakun membuat akun dan membeli Paket Wattpad PREMIUM',
+      'Seakun membuat akun dan membeli Paket Premium Apple Music',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Wattpad (Bulanan)',
+        value: 'Paket Premium Apple Music (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Wattpad',
-        value: 'Rp65.000',
+        title: 'Harga Paket',
+        value: 'Rp75.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
-        value: '3',
+        value: '5',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp65.000 ÷ 3 = Rp21.666,7',
+        value: 'Rp75.000 ÷ 5 = Rp15.000',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp4.833,3',
+        value: 'Rp5.000',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp26.500',
+        value: 'Rp20.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'google-one',
+    img: '/images/google-one.png',
+    screenshot: '/images/ss-google-one-premium.png',
+    schemes: [
+      'Seakun membuat akun gmail dan membeli Paket Premium Google',
+      'Member bertindak sebagai user Host dalam grup',
+      'Seakun akan menggunakan No. hp User Host untuk OTP',
+      'Seakun mengundang User Host untuk join grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Host',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket + tax Google One',
+        value: 'Rp148.500',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp148.500 ÷ 5 = Rp29.700',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp29.700',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'google-one',
+    img: '/images/google-one.png',
+    screenshot: '/images/ss-google-one-premium.png',
+    schemes: [
+      'Seakun membuat akun gmail dan membeli Paket Premium Google',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Reguler',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket + tax Google One',
+        value: 'Rp148.500',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp148.500 ÷ 5 = Rp29.700',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.300',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp36.000',
         is_total: true,
       },
     ],

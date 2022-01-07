@@ -1,7 +1,9 @@
 <template>
   <div class="terms-of-use">
     <h3 class="text-3xl">Syarat dan Ketentuan Penggunaan</h3>
-    <h5 class="font-bold text-xl" style="margin-bottom: 30px">Terakhir diperbaharui: 15 April 2021</h5>
+    <h5 class="font-bold text-xl" style="margin-bottom: 30px">
+      Terakhir diperbaharui: 15 April 2021
+    </h5>
     <div>
       <b>PENTING.</b> Anda dimohon untuk membaca Syarat dan Ketentuan Penggunaan
       (“Ketentuan Penggunaan”) ini sebelum menggunakan layanan yang disediakan
@@ -176,6 +178,16 @@
           terkait maupun pelanggaran terhadap ketentuan yang dibuat oleh
           Seakun.id.
         </li>
+        <li>
+          Melakukan tindakan berupa perkataan kasar, penghinaan, pengancaman dan
+          tindak kekerasan kepada salah satu Tim Seakun.id, baik secara langsung
+          maupun tidak langsung.
+        </li>
+        <li>
+          Melakukan pencemaran nama baik atas pelayanan Seakun.id tanpa
+          sebelumnya ada itikad baik untuk menyelesaikan masalah yang dimiliki
+          langsung ke Pihak Seakun.id.
+        </li>
       </ul>
     </div>
 
@@ -222,6 +234,25 @@
           apapun pada aplikasi/website Gramedia.
         </li>
       </ul>
+    </div>
+
+    <div>
+      <h5 class="text-xl mb-2">Pelanggaran Atas Hukum</h5>
+      <div>
+        Pihak Seakun.id berhak melakukan pelaporan hukum terhadap pihak yang
+        dengan sengaja menyerang kehormatan atau nama baik Pihak Seakun.id
+        dengan pasal pencemaran nama baik, penghinaan dan/atau fitnah di muka
+        umum sesuai ketentuan undang-undang yang berlaku.
+      </div>
+    </div>
+
+    <div>
+      <h5 class="text-xl mb-2">Kompensasi</h5>
+      <div>
+        Kompensasi akan diberikan oleh pihak Seakun.id jika terjadi kerugian
+        akibat kelalaian / kesalahan dari pelayanan Seakun.id. Besaran
+        kompensasi diberikan sesuai justifikasi dan ketetapan dari Seakun.id.
+      </div>
     </div>
 
     <div>

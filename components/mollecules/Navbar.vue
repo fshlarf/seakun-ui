@@ -86,7 +86,7 @@ export default {
         },
         {
           id: 5,
-          label: 'QnA',
+          label: 'FAQ',
         },
       ],
     };

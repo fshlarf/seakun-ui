@@ -1,11 +1,14 @@
 <template>
   <div id="provider" class="container iner tn:mt-8 lg:pt-20 pt-20">
     <div class="">
-      <div class="flex justify-between items-center mb-2 px-2">
+      <div
+        id="product-digital"
+        class="flex justify-between items-center mb-2 px-2"
+      >
         <h1
           class="hidden md:block md:text-xl lg:text-2xl font-bold md:mb-4 lg:mb-4"
         >
-          Berlangganan produk digital
+          Berlangganan Produk Digital
         </h1>
         <h1 class="text-2xl md:hidden font-bold">Layanan digital</h1>
         <NuxtLink
@@ -40,9 +43,9 @@
         </div>
       </div>
 
-      <div class="pt-5 px-2 md:my-8">
+      <div id="product-ondemand" class="pt-5 px-2 md:my-8">
         <h1 class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4">
-          Layanan on demand
+          Layanan On Demand
         </h1>
       </div>
 
@@ -131,29 +134,29 @@ export default {
         name: '',
       },
       dataProductOnDemand: [
+        // {
+        //   id: 1,
+        //   name: 'Sequrban',
+        //   slug: 'sequrban',
+        //   img: '/images/product/sekurban.png',
+        //   icon: '/images/icons/sekurban.svg',
+        //   isActive: false,
+        //   isNew: true,
+        //   preview:
+        //     'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
+        // },
+        // {
+        //   id: 2,
+        //   name: 'Pahamify',
+        //   slug: 'pahamify',
+        //   img: '/images/product/pahamify.png',
+        //   icon: '/images/icons/pahamify.svg',
+        //   isActive: false,
+        //   preview:
+        //     'Belajar jarak jauh lebih mudah, lengkap, dan murah bersama konten premium Pahamify',
+        // },
         {
           id: 1,
-          name: 'Sequrban',
-          slug: 'sequrban',
-          img: '/images/product/sekurban.png',
-          icon: '/images/icons/sekurban.svg',
-          isActive: false,
-          isNew: true,
-          preview:
-            'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
-        },
-        {
-          id: 2,
-          name: 'Pahamify',
-          slug: 'pahamify',
-          img: '/images/product/pahamify.png',
-          icon: '/images/icons/pahamify.svg',
-          isActive: false,
-          preview:
-            'Belajar jarak jauh lebih mudah, lengkap, dan murah bersama konten premium Pahamify',
-        },
-        {
-          id: 3,
           name: 'Kulina',
           slug: 'kulina',
           img: '/images/product/kulina.png',
