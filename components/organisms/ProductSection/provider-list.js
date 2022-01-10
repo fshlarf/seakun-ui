@@ -141,7 +141,7 @@ export const providerList = [
     ],
   },
   {
-    name: 'gramedia',
+    name: 'gramedia-digital',
     title: 'Harga Paket Premium (Fiksi)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia-fiction.png',
@@ -174,7 +174,7 @@ export const providerList = [
     ],
   },
   {
-    name: 'gramedia',
+    name: 'gramedia-digital',
     title: 'Harga Paket Premium (Non-Fiksi)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia-non-fiction.png',
@@ -287,7 +287,7 @@ export const providerList = [
     ],
   },
   {
-    name: 'microsoft365',
+    name: 'microsoft-365',
     title: 'Harga Paket Premium (1 Bulan)',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365.png',
@@ -323,7 +323,7 @@ export const providerList = [
     ],
   },
   {
-    name: 'microsoft365',
+    name: 'microsoft-365',
     title: 'Harga Paket Premium (1 Tahun)',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365-year.png',
