@@ -12,8 +12,12 @@
         Under Maintenance
       </h1>
       <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
-        Maaf kepada seluruh pengguna Seakun.id mulai dari jam 00.00 - 06.00 WIB
-        website Seakun.id sedang maintenance
+        Maaf kepada seluruh pengguna Seakun.id mulai dari tanggal 11 Januari
+        2022, jam 11.00 - 23.59 WIB website Seakun.id sedang maintenance.
+      </p>
+      <br />
+      <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
+        Kembali lagi besok tanggal 12 Januari 2022 ya. See you!
       </p>
       <a
         class="w-full"
@@ -23,7 +27,7 @@
         <Button
           class="mt-4 w-full !py-4"
           variant="secondary"
-          label="Hubungi admin untuk proses order"
+          label="Hubungi admin via whatsapp"
         />
       </a>
     </div>

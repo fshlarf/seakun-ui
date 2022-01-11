@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <Navbar />
+  <Maintenance />
+  <!-- <div> -->
+  <!-- <Navbar />
     <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
-    <!-- <WhatsappNoticeBanner /> -->
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
@@ -13,12 +13,13 @@
     <BenefitSection />
     <QnaSection />
     <WarningOrder />
-    <Footer />
-    <!-- <WhatsappNoticeModal /> -->
-  </div>
+    <Footer /> -->
+  <!-- <WhatsappNoticeModal /> -->
+  <!-- </div> -->
 </template>
 
 <script>
+import Maintenance from './info/maintenance';
 import Navbar from '~/components/mollecules/Navbar';
 import HeaderSection from '~/components/organisms/HeaderSection';
 import IntroductionSection from '~/components/organisms/IntroductionSection';
@@ -36,6 +37,7 @@ import Footer from '~/components/mollecules/Footer';
 import WhatsappNoticeBanner from '~/components/organisms/WhatsappNoticeBanner';
 
 export default {
+  layout: 'new',
   components: {
     Navbar,
     HeaderSection,
@@ -52,6 +54,7 @@ export default {
     Footer,
     // WhatsappNoticeModal,
     WhatsappNoticeBanner,
+    Maintenance,
   },
 };
 </script>
