@@ -313,7 +313,6 @@ export default {
     this.nominal = nominal;
   },
   mounted() {
-    this.$router.push('/');
     this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
     const {

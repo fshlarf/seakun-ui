@@ -149,7 +149,6 @@ export default {
     };
   },
   mounted() {
-    this.$router.push('/');
     this.MasterService = new MasterService(this);
     this.OrderService = new OrderService(this);
     const {
