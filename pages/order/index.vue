@@ -246,7 +246,6 @@ export default {
     },
   },
   mounted() {
-    this.$router.push('/');
     this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
     this.getProviders();
