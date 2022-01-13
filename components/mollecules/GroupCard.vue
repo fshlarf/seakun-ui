@@ -51,6 +51,14 @@ export default {
       return members.some((el) => el === '') ? false : true;
     },
     setName(name) {
+      let fixName = '';
+      if (name.length > 30) {
+        let a = name.slice(0, 29);
+        let b = name.slice(name.length - 1, name.length);
+        fixName = a + b;
+      } else {
+        fixName = name;
+      }
       // const regex = /(?!^)[\s\S](?!$)/g;
       // let arrayName = name.split(' ');
       // let newArr = arrayName.map((e, i) => {
@@ -62,7 +70,7 @@ export default {
       //   }
       // });
       // newArr = newArr.join(' ');
-      return name;
+      return fixName;
     },
     setWidthImage(provider) {
       const theProvider = provider.toLowerCase();
