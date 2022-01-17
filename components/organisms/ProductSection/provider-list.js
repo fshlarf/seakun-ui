@@ -441,6 +441,7 @@ export const providerList = [
   },
   {
     name: 'disney-hotstar',
+    title: 'Harga Paket Disney+ Hotstar (1 Tahun)',
     img: '/images/disney-hotstar.png',
     screenshot: '/images/ss-disney-hotstar-year.png',
     schemes: [
@@ -450,11 +451,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun ',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Disney (Tahunan)',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Disney+ Hotstar',
         value: 'Rp199.000',
@@ -481,6 +477,7 @@ export const providerList = [
   {
     name: 'apple-one',
     img: '/images/apple-one.png',
+    title: 'Harga Paket Apple One (Bulanan)',
     screenshot: '/images/ss-apple-one.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Family',
@@ -489,11 +486,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Apple One (Bulanan)',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Apple One Family',
         value: 'Rp155.000',
@@ -520,6 +512,7 @@ export const providerList = [
   {
     name: 'wattpad',
     img: '/images/wattpad.png',
+    title: 'Harga Paket Wattpad (Bulanan)',
     screenshot: '/images/ss-wattpad.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Wattpad PREMIUM',
@@ -528,11 +521,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Wattpad (Bulanan)',
-        is_total: true,
-      },
       {
         title: 'Harga Paket Wattpad',
         value: 'Rp65.000',
@@ -559,6 +547,7 @@ export const providerList = [
   {
     name: 'apple-music',
     img: '/images/apple-music.png',
+    title: 'Harga Paket Apple Music (Bulanan)',
     screenshot: '/images/ss-apple-music.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Apple Music',
@@ -569,12 +558,7 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Nama Paket',
-        value: 'Paket Premium Apple Music (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Paket',
+        title: 'Harga Paket Apple music',
         value: 'Rp75.000',
       },
       {
@@ -599,6 +583,7 @@ export const providerList = [
   {
     name: 'google-one',
     img: '/images/google-one.png',
+    title: 'Harga Paket Google One (Userhost)',
     screenshot: '/images/ss-google-one-premium.png',
     schemes: [
       'Seakun membuat akun gmail dan membeli Paket Premium Google',
@@ -608,11 +593,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Host',
-        is_total: true,
-      },
       {
         title: 'Harga Paket + tax Google One',
         value: 'Rp148.500',
@@ -639,6 +619,7 @@ export const providerList = [
   {
     name: 'google-one',
     img: '/images/google-one.png',
+    title: 'Harga Paket Google One (Reguler)',
     screenshot: '/images/ss-google-one-premium.png',
     schemes: [
       'Seakun membuat akun gmail dan membeli Paket Premium Google',
@@ -648,11 +629,6 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium Reguler',
-        is_total: true,
-      },
       {
         title: 'Harga Paket + tax Google One',
         value: 'Rp148.500',
@@ -672,6 +648,41 @@ export const providerList = [
       {
         title: 'Harga Paket Bulanan',
         value: 'Rp36.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'nord-vpn',
+    img: '/images/nord-vpn.png',
+    title: 'Harga Paket Nord VPN (Bulanan)',
+    screenshot: '/images/ss-nord-vpn.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Nord VPN',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Harga Paket + tax 10% Nord VPN',
+        value: 'Rp218.900',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp218.900 ÷ 5 = Rp43.780',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.220',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp50.000',
         is_total: true,
       },
     ],
