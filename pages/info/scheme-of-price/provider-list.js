@@ -311,7 +311,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Paket Premium',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365.png',
     schemes: [
@@ -351,7 +350,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Paket Premium',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365-year.png',
     schemes: [
@@ -391,7 +389,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Paket Canva Pro 1 Bulan',
     img: '/images/canva.png',
     screenshot: '/images/ss-canva-month.png',
     schemes: [
@@ -440,7 +437,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Paket Canva Pro 1 Tahun',
     img: '/images/canva.png',
     screenshot: '/images/ss-canva-year.png',
     schemes: [
@@ -476,7 +472,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Paket Premium',
     img: '/images/disney-hotstar.png',
     screenshot: '/images/ss-disney-hotstar-year.png',
     schemes: [
@@ -515,7 +510,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'wattpad',
     img: '/images/wattpad.png',
     screenshot: '/images/ss-wattpad.png',
     schemes: [
@@ -554,7 +548,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'apple-one',
     img: '/images/apple-one.png',
     screenshot: '/images/ss-apple-one.png',
     schemes: [
@@ -593,7 +586,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'apple-music',
     img: '/images/apple-music.png',
     screenshot: '/images/ss-apple-music.png',
     schemes: [
@@ -633,7 +625,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'google-one',
     img: '/images/google-one.png',
     screenshot: '/images/ss-google-one-premium.png',
     schemes: [
@@ -673,7 +664,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'google-one',
     img: '/images/google-one.png',
     screenshot: '/images/ss-google-one-premium.png',
     schemes: [
@@ -708,6 +698,44 @@ export const providerList = [
       {
         title: 'Harga Paket Bulanan',
         value: 'Rp36.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    img: '/images/nord-vpn.png',
+    screenshot: '/images/ss-nord-vpn.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Nord VPN',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Nord VPN (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket + tax 10%',
+        value: 'Rp218.900',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp218.900 ÷ 5 = Rp43.780',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.220',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp50.000',
         is_total: true,
       },
     ],

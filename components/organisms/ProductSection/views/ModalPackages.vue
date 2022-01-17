@@ -62,9 +62,9 @@ export default {
         'apple-one',
         'canva',
         'disney-hotstar',
-        'gramedia',
-        'microsoft365',
-        'nintendo',
+        'gramedia-digital',
+        'microsoft-365',
+        'nord-vpn',
         'wattpad',
       ],
     };
