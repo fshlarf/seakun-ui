@@ -62,6 +62,11 @@
               <div>{{ info.value }}</div>
             </div>
           </div>
+          <div v-if="scheme.notes" class="tn:my-2 md:my-3">
+            <p class="italic tn:text-xs md:text-sm xl:text-xs font-semibold">
+              {{ scheme.notes }}
+            </p>
+          </div>
           <div class="h-px w-full bg-gray-400 my-2"></div>
           <div class="">
             <h1 class="tn:text-lg xl:text-sm font-bold my-2">

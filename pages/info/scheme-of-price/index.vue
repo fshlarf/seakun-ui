@@ -53,6 +53,11 @@
                   {{ info.value }}
                 </div>
               </div>
+              <div v-if="item.notes" class="tn:my-2 md:my-3">
+                <p class="italic tn:text-sm md:text-base font-semibold">
+                  {{ item.notes }}
+                </p>
+              </div>
               <div class="divider"></div>
               <p class="font-weight-bold">Skema Berlangganan</p>
               <ol style="padding-left: 1rem" class="list-decimal">

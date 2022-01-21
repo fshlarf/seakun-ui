@@ -663,6 +663,8 @@ export const providerList = [
       'Akun dishare HANYA ke 6 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Harga Paket Premium NordVPN',

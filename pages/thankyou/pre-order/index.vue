@@ -78,7 +78,7 @@ export default {
       provider: '',
       packet: '',
       total: '',
-      orderNumber: ''
+      orderNumber: '',
     };
   },
   mounted() {
@@ -147,6 +147,9 @@ export default {
           break;
         case 'wattpad':
           return '3';
+          break;
+        case 'nord-vpn':
+          return '6';
           break;
         case 'google-one':
           return parseInt(packet_id) === 1 ? '2' : '5';
