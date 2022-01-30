@@ -1,5 +1,5 @@
 <template>
-  <Modal :is-show="showModal" size="auto" @onClose="closeModal">
+  <Modal :is-show="showModal" size="xl:w-auto" @onClose="closeModal">
     <template v-slot:header>
       <div class="flex tn:gap-2 md:gap-3 xl:gap-4 items-center">
         <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">

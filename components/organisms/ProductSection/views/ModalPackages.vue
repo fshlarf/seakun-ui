@@ -1,5 +1,5 @@
 <template>
-  <Modal :is-show="isShow" size="auto" @onClose="$emit('on-close')">
+  <Modal :is-show="isShow" size="xl:w-auto" @onClose="$emit('on-close')">
     <template v-slot:header>
       <div class="">
         <h1 class="tn:text-base md:text-lg xl:text-xl font-bold">
