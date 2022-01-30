@@ -130,7 +130,7 @@
           :provider="providers"
           @on-close="onCloseModalPackages"
           :slug="provider"
-          @choose-packet="choosePacket"
+          @choosePacket="choosePacket"
           :is-loading="isLoadingVariant"
         />
       </div>
