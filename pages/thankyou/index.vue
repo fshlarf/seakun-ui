@@ -113,7 +113,7 @@
           <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
             >+6282124852232</a
           >
-          jika pesanan kamu belum diproses di batas waktu proses pesanan
+          jika pesanan kamu belum diproses di batas waktu proses pesanan.
         </p>
       </div>
       <Button
