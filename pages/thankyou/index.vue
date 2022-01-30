@@ -108,11 +108,12 @@
 
       <div class="">
         <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
-          Untuk proses yang lebih cepat, harap konfirmasi ulang melalui Whatsapp
-          dengan klik nomor berikut
+          Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
+          Whatsapp di nomor
           <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
             >+6282124852232</a
           >
+          jika pesanan kamu belum diproses di batas waktu proses pesanan.
         </p>
       </div>
       <Button
