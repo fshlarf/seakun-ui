@@ -68,7 +68,9 @@
         @keyup="validationForm('userEmail')"
       />
       <div class="mt-4">
-        <p class="pb-1 tn:text-sm">Nomor telepon</p>
+        <p class="pb-1 tn:text-sm">
+          Nomor whatsapp (Pastikan nomor sudah benar dan aktif)
+        </p>
         <div class="grid grid-cols-8 gap-2 items-center">
           <div class="col-span-2">
             <ButtonDrop
@@ -115,7 +117,7 @@
 
       <Button
         :disabled="!isAgreeTos"
-        @click="submitOrder"
+        @click="onClickConfirmData"
         class="w-full bg-green-seakun text-white py-2 tn:mt-4 md:mt-6"
         label="Konfirmasi pesanan"
         :is-loading="isShowLoading"
@@ -133,6 +135,14 @@
         />
       </div>
     </div>
+
+    <ModalDataConfirmation
+      :show-modal="isShowModalConfirmation"
+      :data-order="dataCustomer"
+      :is-loading="isShowLoading"
+      @clickSubmit="submitDataOrder"
+      @onClose="closeModalConfirmation"
+    />
   </div>
 </template>
 
@@ -161,6 +171,7 @@ import {
   fullDate,
 } from '~/helpers/word-transformation.js';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
+import ModalDataConfirmation from './views/ModalDataConfirmation.vue';
 import moment from 'moment';
 
 export default {
@@ -176,6 +187,7 @@ export default {
     DropDownPricesListSubcribe,
     // Voucher,
     ModalPackages,
+    ModalDataConfirmation,
   },
   data: () => ({
     OrderService,
@@ -236,9 +248,15 @@ export default {
       email: '',
       phone: '',
     },
+    dataCustomer: {
+      name: '',
+      email: '',
+      phoneNumber: '',
+    },
     providerSlug: '',
     packageName: '',
     variantName: '',
+    isShowModalConfirmation: false,
   }),
   watch: {
     codeNumber() {
@@ -453,7 +471,7 @@ export default {
       this.errorForm = { ...errorTemp };
       return isValid;
     },
-    submitOrder() {
+    submitDataOrder() {
       if (this.validationForm()) {
         this.onSubmitOrder();
       }
@@ -523,8 +541,19 @@ export default {
         return '/thankyou/pre-order';
       }
     },
+    onClickConfirmData() {
+      this.dataCustomer = {
+        name: this.userName,
+        email: this.email,
+        phoneNumber: this.phoneNumber,
+      };
+      this.isShowModalConfirmation = true;
+    },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
+    },
+    closeModalConfirmation() {
+      this.isShowModalConfirmation = false;
     },
     onClickChangePacket() {
       this.isShowModalPackages = true;

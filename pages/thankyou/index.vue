@@ -108,10 +108,8 @@
 
       <div class="">
         <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
-          Pesanan akan diproses maksimal 1x24 jam. Durasi proses pesanan
-          bergantung pada penyesuaian member dalam satu grup dan proses
-          pendaftaran group ke provider terkait. Hubungi Admin melalui Whatsapp
-          di nomor
+          Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
+          Whatsapp di nomor
           <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
             >+6282124852232</a
           >
