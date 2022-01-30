@@ -708,34 +708,40 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Nord VPN',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Akun dishare HANYA ke 6 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Nord VPN (Bulanan)',
+        value: 'Paket Premium NordVPN (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket + tax 10%',
-        value: 'Rp218.900',
+        title: 'Harga Paket Premium NordVPN',
+        value: 'Rp179.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 10%',
+        value: 'Rp196.900',
       },
       {
         title: 'Jumlah member dalam 1 grup',
-        value: '5',
+        value: '6',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp218.900 ÷ 5 = Rp43.780',
+        value: 'Rp196.900 ÷ 6 = Rp32.816,7',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.220',
+        value: 'Rp5.183,3',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp50.000',
+        value: 'Rp38.000',
         is_total: true,
       },
     ],
