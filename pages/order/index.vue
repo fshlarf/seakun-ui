@@ -251,6 +251,7 @@ export default {
     dataCustomer: {
       name: '',
       email: '',
+      codeNumber: '',
       phoneNumber: '',
     },
     providerSlug: '',
@@ -545,6 +546,7 @@ export default {
       this.dataCustomer = {
         name: this.userName,
         email: this.email,
+        codeNumber: this.codeNumber,
         phoneNumber: this.phoneNumber,
       };
       this.isShowModalConfirmation = true;
