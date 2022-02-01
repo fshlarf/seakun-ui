@@ -18,7 +18,9 @@
     </div>
     <div class="mt-2 tn:px-3">
       <h1 class="text-sm">Nomor whatsapp</h1>
-      <p class="font-bold">{{ dataOrder.phoneNumber }}</p>
+      <p class="font-bold">
+        {{ dataOrder.codeNumber }}{{ dataOrder.phoneNumber }}
+      </p>
     </div>
     <Button
       variant="primary"
