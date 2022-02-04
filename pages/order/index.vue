@@ -143,7 +143,6 @@
       @clickSubmit="submitDataOrder"
       @onClose="closeModalConfirmation"
     />
-    
     <ModalBlackListWarning
       :show-modal="isShowModalBlackList"
       @onClose="closeModalBlackList"
