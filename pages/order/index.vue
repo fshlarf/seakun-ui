@@ -143,6 +143,10 @@
       @clickSubmit="submitDataOrder"
       @onClose="closeModalConfirmation"
     />
+    <ModalBlackListWarning
+      :show-modal="isShowModalBlackList"
+      @onClose="closeModalBlackList"
+    />
   </div>
 </template>
 
@@ -172,6 +176,7 @@ import {
 } from '~/helpers/word-transformation.js';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
 import ModalDataConfirmation from './views/ModalDataConfirmation.vue';
+import ModalBlackListWarning from './views/ModalBlackListWarning.vue';
 import moment from 'moment';
 
 export default {
@@ -188,6 +193,7 @@ export default {
     // Voucher,
     ModalPackages,
     ModalDataConfirmation,
+    ModalBlackListWarning,
   },
   data: () => ({
     OrderService,
@@ -258,6 +264,7 @@ export default {
     packageName: '',
     variantName: '',
     isShowModalConfirmation: false,
+    isShowModalBlackList: false,
   }),
   watch: {
     codeNumber() {
@@ -504,8 +511,6 @@ export default {
             type: dataResult.provider.type,
             redirectUrl: dataResult.redirectUrl,
           };
-          console.log(this.detailOrder.isHost);
-          console.log(payload);
           localStorage.setItem(
             'swo',
             JSON.stringify({ ...dataResult, createdAt: moment().unix() })
@@ -515,6 +520,10 @@ export default {
           throw new Error(fetchCreateOrder);
         }
       } catch (error) {
+        if (error.response.data.message.includes('blocked customer')) {
+          this.isShowModalConfirmation = false;
+          this.isShowModalBlackList = true;
+        }
         console.log(error);
       }
       this.isShowLoading = false;
@@ -549,13 +558,18 @@ export default {
         codeNumber: this.codeNumber,
         phoneNumber: this.phoneNumber,
       };
-      this.isShowModalConfirmation = true;
+      if (this.validationForm()) {
+        this.isShowModalConfirmation = true;
+      }
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
     },
     closeModalConfirmation() {
       this.isShowModalConfirmation = false;
+    },
+    closeModalBlackList() {
+      this.isShowModalBlackList = false;
     },
     onClickChangePacket() {
       this.isShowModalPackages = true;
