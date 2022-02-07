@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-8 h-screen" style="background-color: #f4f9f8">
+  <div class="pt-8" style="background-color: #f4f9f8">
     <div class="max-w-sm mx-auto px-8">
       <div class="mt-4 mb-10 flex justify-center space-x-4 items-center">
         <img class="w-8 h-8 rounded-full" src="/images/seakunid.png" alt="" />
@@ -40,6 +40,12 @@
           @click="redirectToSeakun('vote')"
           class="py-3"
           label="Polling Layanan Baru"
+          variant="primary"
+        />
+        <Button
+          @click="goToSeakunHelp"
+          class="py-3"
+          label="Laporan Kendala"
           variant="primary"
         />
         <Button
@@ -94,6 +100,9 @@ export default {
     goToWhatsapp() {
       window.location.href =
         'https://api.whatsapp.com/send?phone=6282124852232';
+    },
+    goToSeakunHelp() {
+      window.location.href = 'https://forms.gle/t1AbaxnjEtJr8NAPA';
     },
     redirectToSeakun(target) {
       if (target === 'home') {

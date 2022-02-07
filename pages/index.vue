@@ -4,6 +4,8 @@
     <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
+    <!-- <WhatsappNoticeBanner /> -->
+    <SeakunHelpBanner />
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
@@ -31,6 +33,7 @@ import QnaSection from '~/components/organisms/QnaSection';
 import WarningOrder from '~/components/organisms/WarningOrder';
 import Footer from '~/components/mollecules/Footer';
 import WhatsappNoticeBanner from '~/components/organisms/WhatsappNoticeBanner';
+import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
 
 export default {
   components: {
@@ -48,6 +51,7 @@ export default {
     WarningOrder,
     Footer,
     WhatsappNoticeBanner,
+    SeakunHelpBanner,
   },
 };
 </script>

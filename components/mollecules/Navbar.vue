@@ -88,6 +88,10 @@ export default {
           id: 5,
           label: 'FAQ',
         },
+        {
+          id: 6,
+          label: 'Laporan Kendala',
+        },
       ],
     };
   },
@@ -101,46 +105,43 @@ export default {
           top: 0,
           behavior: 'smooth',
         });
-      }
-      if (id === 1) {
+      } else if (id === 1) {
         const providerSection = document.getElementById('provider');
         providerSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'nearest',
         });
-      }
-      if (id === 2) {
+      } else if (id === 2) {
         const penggunaSection = document.getElementById('pengguna');
         penggunaSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'nearest',
         });
-      }
-      if (id === 3) {
+      } else if (id === 3) {
         const orderFlowSection = document.getElementById('orderFlow');
         orderFlowSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'nearest',
         });
-      }
-      if (id === 4) {
+      } else if (id === 4) {
         const testimonySection = document.getElementById('testimony');
         testimonySection.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'nearest',
         });
-      }
-      if (id === 5) {
+      } else if (id === 5) {
         const qnaSection = document.getElementById('qna');
         qnaSection.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'nearest',
         });
+      } else if (id === 6) {
+        window.open('https://forms.gle/t1AbaxnjEtJr8NAPA', '_blank');
       }
       this.open = false;
     },
