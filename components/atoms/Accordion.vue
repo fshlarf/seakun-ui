@@ -66,9 +66,7 @@
               </li>
             </ul>
           </div>
-          <div v-else>
-            <p class="text-sm">{{ answer.answer }}</p>
-          </div>
+          <div v-else v-html="answer.answer"></div>
         </div>
       </div>
     </div>

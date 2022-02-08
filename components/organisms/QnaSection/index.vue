@@ -74,6 +74,19 @@ export default {
           list: true,
           isShow: false,
         },
+        {
+          id: 7,
+          question: 'Bagaimana bila ada kendala ketika proses pembayaran?',
+          answer: `Bila kamu mengalami kendala dalam melakukan proses pembayaran, seperti: tidak mendapat konfirmasi dan follow up. Mohon isi form pada <a href='https://forms.gle/t1AbaxnjEtJr8NAPA' target='_blank' class='text-secondary font-bold'>link ini</a>. Kami akan segera menghubungi kamu maksimal dalam 1x24 jam.`,
+          isShow: false,
+        },
+        {
+          id: 8,
+          question:
+            'Apa yang harus dilakukan bila akun langganan mengalami masalah?',
+          answer: `Bila akun kamu mengalami masalah, seperti: telah melakukan pembayaran namun akun berubah menjadi free kembali. Mohon isi form pada <a href='https://forms.gle/t1AbaxnjEtJr8NAPA' target='_blank' class='text-secondary font-bold'>link ini</a>. Kami akan segera menghubungi kamu maksimal 1x24 jam.`,
+          isShow: false,
+        },
       ],
     };
   },

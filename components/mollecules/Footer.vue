@@ -48,8 +48,11 @@
             >
           </li>
           <li>
-            <nuxt-link class="hover:no-underline" to="/"
-              >Pusat Bantuan</nuxt-link
+            <a
+              class="hover:no-underline"
+              href="https://forms.gle/t1AbaxnjEtJr8NAPA"
+              target="_blank"
+              >Laporan Kendala</a
             >
           </li>
           <li>
@@ -85,11 +88,6 @@
           <li>
             <nuxt-link class="hover:no-underline" to="/"
               >Program Sekeranjang</nuxt-link
-            >
-          </li>
-          <li>
-            <nuxt-link class="hover:no-underline" to="/"
-              >Pusat Bantuan</nuxt-link
             >
           </li>
         </ul>
