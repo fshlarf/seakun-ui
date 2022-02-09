@@ -66,6 +66,8 @@ export default {
         'microsoft-365',
         'nord-vpn',
         'wattpad',
+        'google-one',
+        'amazon-prime',
       ],
     };
   },
