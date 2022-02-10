@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="flex tn:gap-2 md:gap-3 xl:gap-4 items-center">
         <h1 class="tn:text-sm md:text-lg xl:text-xl font-bold">
-          Skema Harga {{ dataScheme.slug }}
+          Skema Harga {{ dataScheme.name }}
         </h1>
         <p
           class="tn:text-xs md:text-sm text-primary font-semibold cursor-pointer"
@@ -16,7 +16,7 @@
     <div class="tn:space-y-3 xl:space-y-0 xl:flex xl:justify-center xl:w-auto">
       <div v-for="(scheme, id) in dataScheme.list" :key="id">
         <div
-          v-if="scheme.name === dataScheme.slug"
+          v-if="scheme.slug === dataScheme.slug"
           class="scheme-card tn:px-2 tn:py-2 md:px-8 xl:px-4 xl:mx-2 tn:border-top md:border rounded-xl xl:py-3"
         >
           <div class="h-10 mx-auto">

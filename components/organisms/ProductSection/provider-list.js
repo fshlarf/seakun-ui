@@ -1,6 +1,7 @@
 export const providerList = [
   {
-    name: 'netflix',
+    name: 'Netflix',
+    slug: 'netflix',
     title: 'Harga Paket Premium (User Host)',
     img: '/images/netflix.png',
     screenshot: '/images/ss-netflix.png',
@@ -36,7 +37,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'netflix',
+    name: 'Netflix',
+    slug: 'netflix',
     title: 'Harga Paket Premium (Reguler)',
     img: '/images/netflix.png',
     screenshot: '/images/ss-netflix.png',
@@ -72,7 +74,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'spotify',
+    name: 'Spotify',
+    slug: 'spotify',
     title: 'Harga Paket Premium Spotify',
     img: '/images/spotify.png',
     screenshot: '/images/ss-spotify.png',
@@ -108,7 +111,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'gramedia',
+    name: 'Gramedia Digital',
+    slug: 'gramedia-digital',
     title: 'Harga Paket Premium (Full)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia.png',
@@ -141,7 +145,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'gramedia-digital',
+    name: 'Gramedia Digital',
+    slug: 'gramedia-digital',
     title: 'Harga Paket Premium (Fiksi)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia-fiction.png',
@@ -174,7 +179,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'gramedia-digital',
+    name: 'Gramedia Digital',
+    slug: 'gramedia-digital',
     title: 'Harga Paket Premium (Non-Fiksi)',
     img: '/images/gramedia.png',
     screenshot: '/images/ss-gramedia-non-fiction.png',
@@ -207,7 +213,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'youtube',
+    name: 'Youtube',
+    slug: 'youtube',
     title: 'Harga Paket Premium (User Host)',
     img: '/images/youtube.png',
     screenshot: '/images/ss-youtube.png',
@@ -247,7 +254,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'youtube',
+    name: 'Youtube',
+    slug: 'youtube',
     title: 'Harga Paket Premium (Reguler)',
     img: '/images/youtube.png',
     screenshot: '/images/ss-youtube.png',
@@ -287,7 +295,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'microsoft-365',
+    name: 'Microsoft 365',
+    slug: 'microsoft-365',
     title: 'Harga Paket Premium (1 Bulan)',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365.png',
@@ -323,7 +332,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'microsoft-365',
+    name: 'Microsoft 365',
+    slug: 'microsoft-365',
     title: 'Harga Paket Premium (1 Tahun)',
     img: '/images/microsoft365.png',
     screenshot: '/images/ss-microsoft365-year.png',
@@ -359,7 +369,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'canva',
+    name: 'Canva',
+    slug: 'canva',
     title: 'Harga Paket Canva Pro (1 Bulan)',
     img: '/images/canva.png',
     screenshot: '/images/ss-canva-month.png',
@@ -404,7 +415,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'canva',
+    name: 'Canva',
+    slug: 'canva',
     title: 'Harga Paket Canva Pro (1 Tahun)',
     img: '/images/canva.png',
     screenshot: '/images/ss-canva-year.png',
@@ -440,7 +452,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'disney-hotstar',
+    name: 'Disney+ Hotstar',
+    slug: 'disney-hotstar',
     title: 'Harga Paket Disney+ Hotstar (1 Tahun)',
     img: '/images/disney-hotstar.png',
     screenshot: '/images/ss-disney-hotstar-year.png',
@@ -475,7 +488,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'apple-one',
+    name: 'Apple One',
+    slug: 'apple-one',
     img: '/images/apple-one.png',
     title: 'Harga Paket Apple One (Bulanan)',
     screenshot: '/images/ss-apple-one.png',
@@ -510,7 +524,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'wattpad',
+    name: 'Wattpad',
+    slug: 'wattpad',
     img: '/images/wattpad.png',
     title: 'Harga Paket Wattpad (Bulanan)',
     screenshot: '/images/ss-wattpad.png',
@@ -545,7 +560,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'apple-music',
+    name: 'Apple Music',
+    slug: 'apple-music',
     img: '/images/apple-music.png',
     title: 'Harga Paket Apple Music (Bulanan)',
     screenshot: '/images/ss-apple-music.png',
@@ -581,7 +597,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'google-one',
+    name: 'Google One',
+    slug: 'google-one',
     img: '/images/google-one.png',
     title: 'Harga Paket Google One (Userhost)',
     screenshot: '/images/ss-google-one-premium.png',
@@ -617,7 +634,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'google-one',
+    name: 'Google One',
+    slug: 'google-one',
     img: '/images/google-one.png',
     title: 'Harga Paket Google One (Reguler)',
     screenshot: '/images/ss-google-one-premium.png',
@@ -653,7 +671,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'nord-vpn',
+    name: 'Nord VPN',
+    slug: 'nord-vpn',
     img: '/images/nord-vpn.png',
     title: 'Harga Paket NordVPN (Bulanan)',
     screenshot: '/images/ss-nord-vpn.png',
@@ -694,7 +713,8 @@ export const providerList = [
     ],
   },
   {
-    name: 'amazon-prime',
+    name: 'Amazon Prime Video',
+    slug: 'amazon-prime',
     img: '/images/amazon-prime.png',
     title: 'Paket Premium Amazon Prime Video (Bulanan)',
     screenshot: '/images/ss-amazon-prime.png',
