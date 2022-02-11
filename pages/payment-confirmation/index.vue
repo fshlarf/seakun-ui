@@ -6,7 +6,7 @@
       class="wrapper-form w-full bg-white mx-auto xl:max-w-2xl md:rounded-3xl md:shadow-xl py-4 tn:px-3 md:px-5"
     >
       <div class="header-confirmation">
-        <h3 class="font-bold text-2xl">Konfirmasi Pembayaran</h3>
+        <h3 class="font-bold text-2xl">Konfirmasi & Upload Bukti Pembayaran</h3>
         <p class="my-2 text-sm">
           Silakan isi terlebih dahulu sebelum melakukan pemesanan
         </p>
