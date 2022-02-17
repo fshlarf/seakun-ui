@@ -8,7 +8,7 @@
     </div>
     <div class="max-w-2xl w-full mx-auto pt-5 px-4">
       <OrderDetail />
-      <OrderList @changeDuration="OpenCloseModal" :imageProduct="`/images/product/brand/netflix.png`" />
+      <OrderList @changeDuration="OpenCloseModalDuration" :imageProduct="`/images/product/brand/netflix.png`" />
       <PaymentDetail
         :paymentTotal="53140"
         :dataPaymentMethod="dataPaymentMethod"
@@ -17,10 +17,12 @@
       <Button
         label="Bayar"
         class="w-full bg-green-seakun text-base text-white font-bold py-2 my-5"
+        @click="OpenCloseModalPayment"
       />
     </div>
      <Snackbar ref="snackbar" />
-     <ModalDuration :durationData="durationData" :showModal="isShowModal" @onClose='OpenCloseModal' />
+     <ModalDuration :durationData="durationData" :showModal="isShowModalDuration" @onClose='OpenCloseModalDuration' />
+     <ModalPayment :showModal="isShowModalPayment" @onClose='OpenCloseModalPayment' />
   </div>
 </template>
 
@@ -33,6 +35,7 @@ import OrderDetail from './views/OrderDetail.vue';
 import PaymentDetail from './views/PaymentDetail.vue';
 import OrderList from './views/OrderList.vue'
 import ModalDuration from './views/ModalDuration.vue'
+import ModalPayment from './views/ModalPayment.vue'
 
 export default {
   name: 'NewPayment',
@@ -45,13 +48,15 @@ export default {
     PaymentDetail,
     Snackbar,
     OrderList,
-    ModalDuration
+    ModalDuration,
+    ModalPayment
   },
   data: () => ({
     subcriptionPeriod: {
       name: '1 Bulan (Rp53.000)',
     },
-    isShowModal: false,
+    isShowModalDuration: false,
+    isShowModalPayment: false,
     dataVariants: [],
     durationData: [true,false,false],
     dataPaymentMethod: [0, 1, 2, 3, 4, 5, 6, 7],
@@ -73,8 +78,11 @@ export default {
       //   this.fallbackCopyText(name, value);
       // }
     },
-    OpenCloseModal (){
-      this.isShowModal = !this.isShowModal
+    OpenCloseModalDuration (){
+      this.isShowModalDuration = !this.isShowModalDuration
+    },
+    OpenCloseModalPayment (){
+      this.isShowModalPayment = !this.isShowModalPayment
     },
     fallbackCopyText(name, value) {
       let textArea = document.createElement('textarea');
