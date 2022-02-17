@@ -16,20 +16,26 @@
           </div>
         </div>
         <div class="flex flex-row items-center mb-2 mt-4 mx-2">
-           <CheckBox /> <p class="ml-2 text-base font-normal">QRIS, E-Wallet, Virtual Account</p>
+          <CheckBox />
+          <p class="ml-2 text-base font-normal">
+            QRIS, E-Wallet, Virtual Account
+          </p>
         </div>
         <div class="flex flex-row items-center mb-3 mx-2">
-            <CheckBox /><p class="ml-2 text-base font-normal">Konfirmasi Pembayaran Otomatis</p>
+          <CheckBox />
+          <p class="ml-2 text-base font-normal">
+            Konfirmasi Pembayaran Otomatis
+          </p>
         </div>
         <div class="px-2 pb-2">
-        <Button 
+          <Button
             label="Bayar Otomatis"
             class="w-full bg-green-seakun text-base text-white font-bold"
-        />
+          />
         </div>
       </div>
       <div class="flex-1 shadow-md rounded-md p-1 ml-2">
-         <p class="text-lg font-bold text-center">Pembayaran Manual</p>
+        <p class="text-lg font-bold text-center">Pembayaran Manual</p>
         <div class="flex flex-wrap justify-center mt-3">
           <div
             v-for="(payment, index) in dataPaymentMethodManual"
@@ -40,16 +46,20 @@
           </div>
         </div>
         <div class="flex flex-row items-center mb-2 mt-4 mx-2">
-           <CheckBox class="w-4" /> <p class="ml-2 text-base font-normal">Tranfer Manual ke Bank BCA, Mandiri dan jenius.</p>
+          <CheckBox class="w-4" />
+          <p class="ml-2 text-base font-normal">
+            Tranfer Manual ke Bank BCA, Mandiri dan jenius.
+          </p>
         </div>
         <div class="flex flex-row items-center mb-3 mx-2">
-            <CheckBox /><p class="ml-2 text-base font-normal">Konfirmasi Pembayaran Manual</p>
+          <CheckBox />
+          <p class="ml-2 text-base font-normal">Konfirmasi Pembayaran Manual</p>
         </div>
         <div class="px-2 pb-2">
-        <Button 
+          <Button
             label="Bayar Otomatis"
             class="w-full bg-green-seakun text-base text-white font-bold"
-        />
+          />
         </div>
       </div>
     </div>
@@ -58,14 +68,14 @@
 <script>
 import Modal from '~/components/atoms/Modal';
 import CheckBox from '~/assets/images/icon/checkbox.svg?inline';
-import Button from '~/components/atoms/Button'
+import Button from '~/components/atoms/Button';
 
 export default {
   name: 'ModalPayment',
   components: {
     Modal,
     CheckBox,
-    Button
+    Button,
   },
   props: {
     showModal: {
@@ -73,13 +83,13 @@ export default {
       default: false,
     },
     dataPaymentMethodOtomatis: {
-        type: Array,
-        default: [0,2,3,4,5,6,7]
+      type: Array,
+      default: () => [0, 2, 3, 4, 5, 6, 7],
     },
     dataPaymentMethodManual: {
-        type: Array,
-        default: [0,2,3,]
-    }
+      type: Array,
+      default: () => [0, 2, 3],
+    },
   },
   methods: {
     onClose() {
