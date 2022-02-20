@@ -43,6 +43,9 @@
         </div>
       </div>
     </div>
+    <div v-if="orderWarning" class="pt-4">
+      <WarningInfo class="w-full" :text="orderWarning" />
+    </div>
     <div class="mt-6 pt-2">
       <h2 class="md:text-xl tn:text-lg font-bold">Informasi Pengguna</h2>
     </div>
@@ -143,7 +146,6 @@
       @clickSubmit="submitDataOrder"
       @onClose="closeModalConfirmation"
     />
-    
     <ModalBlackListWarning
       :show-modal="isShowModalBlackList"
       @onClose="closeModalBlackList"
@@ -179,6 +181,7 @@ import ModalPackages from '~/components/organisms/ProductSection/views/ModalPack
 import ModalDataConfirmation from './views/ModalDataConfirmation.vue';
 import ModalBlackListWarning from './views/ModalBlackListWarning.vue';
 import moment from 'moment';
+import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 
 export default {
   name: 'OrderPage',
@@ -195,6 +198,7 @@ export default {
     ModalPackages,
     ModalDataConfirmation,
     ModalBlackListWarning,
+    WarningInfo,
   },
   data: () => ({
     OrderService,
@@ -264,6 +268,7 @@ export default {
     providerSlug: '',
     packageName: '',
     variantName: '',
+    orderWarning: '',
     isShowModalConfirmation: false,
     isShowModalBlackList: false,
   }),
@@ -286,6 +291,20 @@ export default {
       this.variantUid = variant_id;
       this.packageUid = package_id;
       this.getDetailVariant(this.packageUid);
+
+      if (provider === 'spotify') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Spotify, sebelum melakukan pendaftaran pastikan akun Spotify kamu tidak menggunakan domain pribadi dan belum pernah bergabung ke family lain selama 12 bulan terakhir.';
+      } else if (provider === 'youtube') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Youtube, sebelum melakukan pendaftaran pastikan akun Youtube kamu belum pernah berpindah family selama 12 bulan terakhir.';
+      } else if (provider === 'google-one') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Google kamu belum pernah berpindah family selama 12 bulan terakhir.';
+      } else if (provider === 'apple-one') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Apple, sebelum melakukan pendaftaran pastikan akun Apple kamu belum pernah berpindah family selama 12 bulan terakhir.';
+      }
     }
     this.setFieldValueFromLocalStorage();
   },
