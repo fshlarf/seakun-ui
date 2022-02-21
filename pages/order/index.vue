@@ -602,6 +602,10 @@ export default {
       this.packageUid = packet.packageUid;
       this.packageName = packet.packageName;
       this.variantName = packet.name;
+      this.detailOrder = {
+        isHost: packet.isHost,
+        isPo: packet.isPo,
+      };
       this.getDetailVariant(this.packageUid);
       this.isShowModalPackages = false;
     },
