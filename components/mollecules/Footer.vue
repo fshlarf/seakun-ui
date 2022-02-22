@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="text-center text-white tn:py-2 lg:py-4">
-      <p>Copyright &copy; 2021 Seakun.id. All rights reserved</p>
+      <p>Copyright &copy; 2020 - 2022 Seakun.id. All rights reserved</p>
     </div>
   </div>
 </template>
