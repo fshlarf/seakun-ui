@@ -29,25 +29,25 @@
     <div
       class="tn:hidden md:block text-center z-10 px-7 md:mt-28 lg:mt-36 xl:mt-40"
     >
-      <a type="button" href="mailto:partnership@seakun.id">
+      <nuxt-link to="/vote">
         <Button
           class="mx-auto btn-partner"
           variant="secondary"
           label="Ajukan Kerja Usaha Saya dengan Seakun"
         />
-      </a>
+      </nuxt-link>
     </div>
     <div
       class="relative flex justify-center z-0 tn:-mt-6 tn:block md:hidden text-center px-7 mb-16"
     >
       <div class="tn:block md:hidden absolute mx-auto z-10 top-0">
-        <a href="mailto:partnership@seakun.id">
+        <nuxt-link to="/vote">
           <Button
             class="mx-auto btn-partner"
             variant="secondary"
             label="Ajukan Permintaan"
           />
-        </a>
+        </nuxt-link>
       </div>
     </div>
   </div>
