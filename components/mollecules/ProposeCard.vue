@@ -14,13 +14,13 @@
       </div>
     </div>
     <div class="tn:px-2 md:px-4 w-full mx-auto">
-      <a class="w-full" href="mailto:partnership@seakun.id">
+      <nuxt-link class="w-full" to="/vote">
         <Button
           variant="secondary"
           label="Ajukan permintaan"
           class="w-full h-full my-2 font-bold text-sm md:text-base"
         />
-      </a>
+      </nuxt-link>
     </div>
   </div>
 </template>
