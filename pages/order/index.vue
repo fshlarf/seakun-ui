@@ -43,6 +43,9 @@
         </div>
       </div>
     </div>
+    <div v-if="orderWarning" class="pt-4">
+      <WarningInfo class="w-full" :text="orderWarning" />
+    </div>
     <div class="mt-6 pt-2">
       <h2 class="md:text-xl tn:text-lg font-bold">Informasi Pengguna</h2>
     </div>
@@ -143,6 +146,11 @@
       @clickSubmit="submitDataOrder"
       @onClose="closeModalConfirmation"
     />
+    
+    <ModalBlackListWarning
+      :show-modal="isShowModalBlackList"
+      @onClose="closeModalBlackList"
+    />
   </div>
 </template>
 
@@ -172,7 +180,9 @@ import {
 } from '~/helpers/word-transformation.js';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
 import ModalDataConfirmation from './views/ModalDataConfirmation.vue';
+import ModalBlackListWarning from './views/ModalBlackListWarning.vue';
 import moment from 'moment';
+import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 
 export default {
   name: 'OrderPage',
@@ -188,6 +198,8 @@ export default {
     // Voucher,
     ModalPackages,
     ModalDataConfirmation,
+    ModalBlackListWarning,
+    WarningInfo,
   },
   data: () => ({
     OrderService,
@@ -257,7 +269,9 @@ export default {
     providerSlug: '',
     packageName: '',
     variantName: '',
+    orderWarning: '',
     isShowModalConfirmation: false,
+    isShowModalBlackList: false,
   }),
   watch: {
     codeNumber() {
@@ -278,6 +292,20 @@ export default {
       this.variantUid = variant_id;
       this.packageUid = package_id;
       this.getDetailVariant(this.packageUid);
+
+      if (provider === 'spotify') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Spotify, sebelum melakukan pendaftaran pastikan akun Spotify kamu tidak menggunakan domain pribadi dan belum pernah bergabung ke family lain selama 12 bulan terakhir.';
+      } else if (provider === 'youtube') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Youtube, sebelum melakukan pendaftaran pastikan akun Youtube kamu belum pernah berpindah family selama 12 bulan terakhir.';
+      } else if (provider === 'google-one') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Google kamu belum pernah berpindah family selama 12 bulan terakhir.';
+      } else if (provider === 'apple-one') {
+        this.orderWarning =
+          'Terkait aturan yang berlaku dari Apple, sebelum melakukan pendaftaran pastikan akun Apple kamu belum pernah berpindah family selama 12 bulan terakhir.';
+      }
     }
     this.setFieldValueFromLocalStorage();
   },
@@ -504,8 +532,6 @@ export default {
             type: dataResult.provider.type,
             redirectUrl: dataResult.redirectUrl,
           };
-          console.log(this.detailOrder.isHost);
-          console.log(payload);
           localStorage.setItem(
             'swo',
             JSON.stringify({ ...dataResult, createdAt: moment().unix() })
@@ -515,6 +541,10 @@ export default {
           throw new Error(fetchCreateOrder);
         }
       } catch (error) {
+        if (error.response.data.message.includes('blocked customer')) {
+          this.isShowModalConfirmation = false;
+          this.isShowModalBlackList = true;
+        }
         console.log(error);
       }
       this.isShowLoading = false;
@@ -549,13 +579,18 @@ export default {
         codeNumber: this.codeNumber,
         phoneNumber: this.phoneNumber,
       };
-      this.isShowModalConfirmation = true;
+      if (this.validationForm()) {
+        this.isShowModalConfirmation = true;
+      }
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
     },
     closeModalConfirmation() {
       this.isShowModalConfirmation = false;
+    },
+    closeModalBlackList() {
+      this.isShowModalBlackList = false;
     },
     onClickChangePacket() {
       this.isShowModalPackages = true;
@@ -568,6 +603,10 @@ export default {
       this.packageUid = packet.packageUid;
       this.packageName = packet.packageName;
       this.variantName = packet.name;
+      this.detailOrder = {
+        isHost: packet.isHost,
+        isPo: packet.isPo,
+      };
       this.getDetailVariant(this.packageUid);
       this.isShowModalPackages = false;
     },

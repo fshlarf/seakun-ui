@@ -746,4 +746,42 @@ export const providerList = [
       },
     ],
   },
+  {
+    img: '/images/amazon-prime.png',
+    screenshot: '/images/ss-amazon-prime.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Prime Video',
+      'Dalam 1 akun tersebut, Seakun membuat 3 profile',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium Amazon Prime Video sesuai dengan durasi berlangganan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Prime Video (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket',
+        value: 'Rp79.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp79.000 ÷ 3 = Rp26.333,33',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.666,67',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp33.000',
+        is_total: true,
+      },
+    ],
+  },
 ];

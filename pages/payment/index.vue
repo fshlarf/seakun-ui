@@ -61,7 +61,7 @@
         <Button
           v-else
           class="w-full bg-green-seakun text-white py-2"
-          label="Konfirmasi Pembayaran"
+          label="Upload Bukti Pembayaran"
           :disabled="isLoadingPayment"
           @click="onClickConfirm('digital')"
         />
@@ -126,6 +126,7 @@ export default {
         orderNumber: '',
       },
       detailPaymentSequrban: {},
+      activeSeakunPayment: ['Jenius', 'BCA', 'Mandiri'],
       paymentSeakunList: {
         data: [],
         loading: true,
@@ -195,9 +196,15 @@ export default {
         );
         if (fetchSeakunPayment.data) {
           const dataResult = fetchSeakunPayment.data.data;
+          const activePayment = [];
+          dataResult.forEach((element) => {
+            if (this.activeSeakunPayment.includes(element.bank)) {
+              activePayment.push(element);
+            }
+          });
           this.paymentSeakunList = {
             loading: false,
-            data: dataResult,
+            data: activePayment,
           };
         } else {
           throw new Error(fetchSeakunPayment);

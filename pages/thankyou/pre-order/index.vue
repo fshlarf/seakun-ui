@@ -18,13 +18,13 @@
             Terima kasih telah melakukan pendaftaran.
             <br />Paket ini adalah paket Pre-Order dimana akun akan dibuat
             setelah member dalam satu grup telah terkumpul
-            {{ setNumberMember(provider) }} orang.
+            {{ setNumberMember(slug) }} orang.
           </p>
           <div class="box text-left">
             <div class="grid grid-cols-12">
               <div class="ml-1 col-span-4 font-bold">Provider</div>
               <div class="">:</div>
-              <div class="col-span-7">{{ setNameProvider(provider) }}</div>
+              <div class="col-span-7">{{ provider }}</div>
             </div>
             <div class="grid grid-cols-12 mt-1">
               <div class="ml-1 col-span-4 font-bold">Paket</div>
@@ -76,6 +76,7 @@ export default {
     return {
       OrderService,
       provider: '',
+      slug: '',
       packet: '',
       total: '',
       orderNumber: '',
@@ -94,58 +95,18 @@ export default {
     this.getVouchersData();
   },
   methods: {
-    setNameProvider(provider) {
-      switch (provider) {
-        case 'netflix':
-          return 'Netflix';
-          break;
-        case 'spotify':
-          return 'Spotify';
-          break;
-        case 'youtube':
-          return 'Youtube';
-          break;
-        case 'gramedia':
-          return 'Gramedia';
-          break;
-        case 'microsoft':
-          return 'Microsoft 365';
-          break;
-        case 'microsoft365':
-          return 'Microsoft 365';
-          break;
-        case 'canva':
-          return 'Canva';
-          break;
-        case 'disney-hotstar':
-          return 'Disney+ Hotstar';
-          break;
-        case 'nintendo':
-          return 'Nintendo Switch';
-          break;
-        case 'apple-one':
-          return 'Apple One';
-          break;
-        case 'wattpad':
-          return 'Wattpad';
-          break;
-        default:
-          return provider;
-      }
-    },
-    setNumberMember(provider) {
+    setNumberMember(slug) {
       const { packet_id } = this.$router.history.current.query;
-      switch (provider.toLowerCase()) {
+      switch (slug.toLowerCase()) {
         case 'canva':
           return '4';
           break;
         case 'gramedia':
-          return '2';
-          break;
         case 'disney-hotstar':
           return '2';
           break;
         case 'wattpad':
+        case 'amazon-prime':
           return '3';
           break;
         case 'nord-vpn':
@@ -170,7 +131,8 @@ export default {
           const dataResult = fetchPayment.data.data;
           this.packet = dataResult.provider.package.variant.name;
           this.total = dataResult.payment.totalPrice;
-          this.provider = dataResult.provider.slug;
+          this.provider = dataResult.provider.name;
+          this.slug = dataResult.provider.slug;
           this.orderNumber = dataResult.orderNumber;
         } else {
           throw new Error(fetchPayment);

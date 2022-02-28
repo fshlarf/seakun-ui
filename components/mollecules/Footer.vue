@@ -48,8 +48,11 @@
             >
           </li>
           <li>
-            <nuxt-link class="hover:no-underline" to="/"
-              >Pusat Bantuan</nuxt-link
+            <a
+              class="hover:no-underline"
+              href="https://forms.gle/t1AbaxnjEtJr8NAPA"
+              target="_blank"
+              >Laporan Kendala</a
             >
           </li>
           <li>
@@ -87,11 +90,6 @@
               >Program Sekeranjang</nuxt-link
             >
           </li>
-          <li>
-            <nuxt-link class="hover:no-underline" to="/"
-              >Pusat Bantuan</nuxt-link
-            >
-          </li>
         </ul>
       </div>
       <div class="tn:my-4 lg:mt-0">
@@ -123,7 +121,7 @@
       </div>
     </div>
     <div class="text-center text-white tn:py-2 lg:py-4">
-      <p>Copyright &copy; 2021 Seakun.id. All rights reserved</p>
+      <p>Copyright &copy; 2020 - 2022 Seakun.id. All rights reserved</p>
     </div>
   </div>
 </template>
