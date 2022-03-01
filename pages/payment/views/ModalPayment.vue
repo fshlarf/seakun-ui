@@ -12,7 +12,7 @@
             :key="index"
             class="flex bg-white shadow-md w-36 h-11 mx-1 my-2 rounded-xl justify-center"
           >
-            <img src="/images/payment/bca.png" />
+            <img :src="`/images/payment/${payment}.png`" />
           </div>
         </div>
         <div class="flex flex-row items-center mb-2 mt-4 mx-2">
@@ -30,6 +30,7 @@
         <div class="px-2 pb-2">
           <Button
             label="Bayar Otomatis"
+            @click="onClickOtomatis"
             class="w-full bg-green-seakun text-base text-white font-bold"
           />
         </div>
@@ -42,7 +43,7 @@
             :key="index"
             class="flex bg-white shadow-md w-36 h-11 mx-1 my-2 rounded-xl justify-center"
           >
-            <img src="/images/payment/bca.png" />
+            <img :src="`/images/payment/${payment}.png`" />
           </div>
         </div>
         <div class="flex flex-row items-center mb-2 mt-4 mx-2">
@@ -57,7 +58,8 @@
         </div>
         <div class="px-2 pb-2">
           <Button
-            label="Bayar Otomatis"
+            label="Bayar Manual"
+            @click="onClickManual"
             class="w-full bg-green-seakun text-base text-white font-bold"
           />
         </div>
@@ -84,12 +86,30 @@ export default {
     },
     dataPaymentMethodOtomatis: {
       type: Array,
-      default: () => [0, 2, 3, 4, 5, 6, 7],
+      default: () => [
+        'qris',
+        'ovo',
+        'dana',
+        'bca',
+        'mandiri',
+        'shopee pay',
+        'bni',
+        'bri',
+        'link aja',
+      ],
     },
     dataPaymentMethodManual: {
       type: Array,
-      default: () => [0, 2, 3],
+      default: () => ['bca', 'mandiri', 'jenius'],
     },
+    onClickManual: {
+      type: Function,
+      default: () => {}
+    },
+    onClickOtomatis: {
+      type: Function,
+      default: () => {}
+    }
   },
   methods: {
     onClose() {

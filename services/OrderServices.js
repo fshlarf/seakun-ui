@@ -23,6 +23,12 @@ class OrderService {
     );
   }
 
+  getCheckoutData(orderUid, customerUid) {
+    return this.serviceApi.get(
+      `/customer/payment/checkout?orderUid=${orderUid}&customerUid=${customerUid}`
+    );
+  }
+
   updatePaymentConfirmation(params, header) {
     return this.serviceApi.post('/customer/payment/confirm', params, {
       headers: { 'Content-Type': 'multipart/form-data' },
