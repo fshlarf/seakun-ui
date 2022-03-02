@@ -1,46 +1,14 @@
 <template>
   <div>
+    <div class="p-2 bg-checkout mt-[-3px]">
+      <p class="text-base text-[#417465] font-bold text-center">
+        Ini halaman terakhir dari proses orderanmu. Pastikan semua sudah benar,
+        ya. :)
+      </p>
+    </div>
     <div class="container-payment max-w-2xl w-full mx-auto mt-20">
-      <div class="payment-illustration flex justify-center w-full">
-        <img
-          class="w-9/12 mx-auto"
-          src="/images/thank-you.png"
-          alt="Image not found"
-        />
-      </div>
-      <h3
-        class="payment-thankyou md:text-3xl tn:text-3xl font-bold mt-10 text-center"
-      >
-        Thank You!
-      </h3>
-      <HeaderPayment
-        :is-loading="isLoadingPayment"
-        :provider="provider"
-        :detail-payment-digital="detailPaymentDigital"
-        :detail-payment-sequrban="detailPaymentSequrban"
-        :package-id="packetId"
-        :package-name="packet"
-        :total="total"
-      />
-
-      <div class="mt-4 tn:px-2">
-        <p class="pb-1 tn:text-sm md:text-base">Ubah Masa Berlangganan</p>
-        <ButtonDrop
-          :btnText="longSubcribe.name"
-          :disabled="dataVariants.length <= 0 || isLoadingPayment"
-          @click="isShowPriceList = !isShowPriceList"
-        />
-        <div class="w-full">
-          <DropDownPricesListSubcribe
-            :show="isShowPriceList"
-            :dataList="dataVariants"
-            @onClikcItem="onClickItemPrice"
-          />
-        </div>
-      </div>
-      <!-- <div v-if="type === 'digital'" class="px-4 text-lg mt-4 -mb-4">
-        <WarningInfo :text="contentWarning" />
-      </div> -->
+      <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
+      <OrderList :isLoading="isLoadingPayment" :orderData="orderData" />
       <DetailPayment
         :is-loading="isLoadingPayment"
         :provider="provider"
@@ -85,6 +53,8 @@ import WarningInfo from '~/components/mollecules/WarningInfo';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
+import OrderDetail from './views/OrderDetail.vue';
+import OrderList from './views/OrderList.vue';
 import {
   currencyFormat,
   capitalizeFirstLetter,
@@ -103,6 +73,8 @@ export default {
     Snackbar,
     ButtonDrop,
     DropDownPricesListSubcribe,
+    OrderDetail,
+    OrderList,
   },
   layout: 'new',
   data() {
@@ -125,6 +97,7 @@ export default {
         duration: 0,
         orderNumber: '',
       },
+      orderData: [],
       detailPaymentSequrban: {},
       activeSeakunPayment: ['Jenius', 'BCA', 'Mandiri'],
       paymentSeakunList: {
@@ -139,12 +112,19 @@ export default {
         payment: 0,
         grandTotal: 0,
       },
+      detailOrder: {
+        name: '',
+        phone: '',
+        email: '',
+      },
+      totalPayment: 0,
       isShowPriceList: false,
       dataVariants: [],
       orderUid: '',
       customerUid: '',
       variantUid: '',
       packageUid: '',
+      additionalOrder: '',
       isLoadingVariant: false,
       moment,
     };
@@ -157,14 +137,16 @@ export default {
       type,
       order_uid,
       customer_uid,
+      additionalOrder,
     } = this.$router.history.current.query;
     this.orderUid = order_uid;
     this.customerUid = customer_uid;
     this.type = parseInt(type);
     this.provider = provider;
+    this.additionalOrder = additionalOrder;
     if (this.type === 1) {
       this.getSeakunPayment();
-      this.getPaymentDigital(order_uid, customer_uid);
+      this.getPaymentDigital(order_uid, customer_uid, additionalOrder);
     }
     if (provider === 'sequrban') {
       this.getPaymentSequrban();
@@ -267,25 +249,56 @@ export default {
       }
       this.isLoadingPayment = false;
     },
-    async getPaymentDigital(orderUid, customerUid) {
+    async getPaymentDigital(orderUid, customerUid, additionalOrder) {
       const { OrderService } = this;
       this.isLoadingPayment = true;
-
       try {
         const fetchPayment = await OrderService.getPaymentConfirmation(
           orderUid,
-          customerUid
+          customerUid,
+          additionalOrder
         );
         if (fetchPayment.data) {
           const dataResult = fetchPayment.data.data;
-          this.setOrderToLocalStorage(dataResult);
-          this.detailPaymentDigital = {
-            name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
-            price: dataResult.payment.totalPrice,
-            payment: dataResult.payment.payment,
-            duration: dataResult.provider.package.variant.duration,
-            orderNumber: dataResult.orderNumber,
+          const { moreOrder, ...rest } = dataResult;
+          this.detailOrder = {
+            name: dataResult.customerName,
+            phone: '+' + dataResult.customerPhone,
+            email: dataResult.customerEmail,
           };
+          let newOrder = [
+            {
+              ...rest,
+            },
+          ];
+          if (moreOrder && moreOrder.length > 0) {
+            const moreData = moreOrder.map(({ ...res }) => ({
+              ...res,
+            }));
+            let orders = [...newOrder, ...moreData];
+            this.orderData = orders;
+            let total = 0;
+            for (let i = 0; i < orders.length; i++) {
+              total += orders[i].payment.payment;
+            }
+            this.detailPaymentDigital = {
+              name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
+              price: dataResult.payment.totalPrice,
+              payment: total,
+              duration: dataResult.provider.package.variant.duration,
+              orderNumber: dataResult.orderNumber,
+            };
+          } else {
+            this.orderData = newOrder;
+            this.detailPaymentDigital = {
+              name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
+              price: dataResult.payment.totalPrice,
+              payment: rest.payment.payment,
+              duration: dataResult.provider.package.variant.duration,
+              orderNumber: dataResult.orderNumber,
+            };
+          }
+          this.setOrderToLocalStorage(dataResult);
           this.provider = dataResult.provider.slug;
           this.packageUid = dataResult.provider.package.uid;
           this.variantUid = dataResult.provider.package.variant.uid;

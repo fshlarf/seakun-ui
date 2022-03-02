@@ -17,9 +17,9 @@ class OrderService {
     return this.serviceApi.post('/customer', { ...params });
   }
 
-  getPaymentConfirmation(orderUid, customerUid) {
+  getPaymentConfirmation(orderUid, customerUid, additionalOrder) {
     return this.serviceApi.get(
-      `/customer/payment/confirm?orderUid=${orderUid}&customerUid=${customerUid}`
+      `/customer/payment/confirm?orderUid=${orderUid}&customerUid=${customerUid}&additionalOrder=${additionalOrder}`
     );
   }
 

@@ -7,11 +7,6 @@
         :key="index"
         class="border-[1px] border-green-seakun flex p-3 bg-white mt-4 rounded-xl items-center"
       >
-        <div @click="$emit('onChecked',order, index)" v-if="orderData.length > 1" class="cursor-pointer">
-          <CheckedBox v-if="order.checked && !order.disable" />
-          <DisableCheckbox v-else-if="order.disable" />
-          <UncheckBox v-else />
-        </div>
         <div class="flex flex-column ml-3 w-full">
           <div class="flex flex-row items-center justify-between">
             <div class="flex flex-row items-center">
@@ -44,12 +39,6 @@
                 </p>
               </div>
             </div>
-            <Button
-              label="Ubah Durasi"
-              @click="$emit('changeDuration', order)"
-              class="bg-green-seakun text-base text-white font-bold py-2 self-end"
-              :disabled="!order.checked"
-            />
           </div>
           <div class="my-3 border-b border-[#E5E5E5]" />
           <div class="flex flex-row justify-between items-center">
@@ -65,19 +54,11 @@
 </template>
 <script>
 import { currencyFormat } from '~/helpers/word-transformation.js';
-import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
-import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
-import DisableCheckbox from '~/assets/images/icon/disable-checkbox.svg?inline';
-import Button from '~/components/atoms/Button';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 
 export default {
   name: 'OrderList',
   components: {
-    CheckedBox,
-    Button,
-    UncheckBox,
-    DisableCheckbox,
     ProductHighLightLoading,
   },
   props: {

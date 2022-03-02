@@ -9,14 +9,10 @@
       <p class="text-base font-normal opacity-50">Total bayar</p>
       <div class="payment-detail__price flex cursor-pointer">
         <p
-          class="text-2xl font-normal my-2"
+          class="text-2xl font-bold my-2 text-green-seakun"
           v-html="formatCodePayment(paymentTotal)"
         ></p>
-        <CopyIcon />
-      </div>
-      <p class="text-sm font-normal">
-        Pastikan nominal sesuai hingga 3 digit terakhir
-      </p>
+      </div> 
     </div>
     <div class="mt-12">
       <p class="text-xl text-center font-bold">
@@ -35,14 +31,10 @@
   </div>
 </template>
 <script>
-import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 
 export default {
   name: 'PaymentDetail',
-  components: {
-    CopyIcon,
-  },
   data: () => ({
     currencyFormat,
   }),
@@ -80,12 +72,7 @@ export default {
     formatCodePayment(value) {
       if (value) {
         const currency = this.currencyFormat(value);
-        const startTotal = currency.substring(0, currency.length - 3);
-        const lastCode = currency.substring(
-          currency.length - 3,
-          currency.length
-        );
-        return `${startTotal}<span class="text-green-seakun font-bold">${lastCode}</span>`;
+        return currency
       }
       return '-';
     },

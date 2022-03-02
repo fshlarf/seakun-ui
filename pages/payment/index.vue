@@ -17,7 +17,6 @@
       <PaymentDetail
         :isLoading="isLoadingPayment"
         :paymentTotal="totalPayment"
-        :copyNominal="clickCopyHandler('Nominal', totalPayment)"
       />
       <Button
         label="Bayar"
@@ -221,17 +220,19 @@ export default {
           await this.getPaymentDigital(this.orderUid, this.customerUid);
         }
       } catch (err) {
-        console.log(JSON.stringify(err,null,2));
+        console.log(JSON.stringify(err, null, 2));
       }
     },
     async createInvoice() {
       this.isLoadingPaymentButton = true;
       this.OpenCloseModalPayment();
       const { PaymentService } = this;
-      const orders = this.orderData.filter((item)=>item.checked).map((item) => ({
-        orderUid: item.orderUid,
-        packageVariantUid: item.provider.package.variant.uid,
-      }));
+      const orders = this.orderData
+        .filter((item) => item.checked)
+        .map((item) => ({
+          orderUid: item.orderUid,
+          packageVariantUid: item.provider.package.variant.uid,
+        }));
       const payload = {
         customerUid: this.customerUid,
         order: orders,
@@ -240,7 +241,7 @@ export default {
         const fetchCreateInvoice = await PaymentService.createInvoice(payload);
         if (fetchCreateInvoice.data) {
           const dataResult = fetchCreateInvoice.data.data;
-          window.location.href = dataResult.invoice_url
+          window.location.href = dataResult.invoice_url;
         } else {
           throw new Error(fetchCreateInvoice);
         }
@@ -250,7 +251,18 @@ export default {
       this.isLoadingPaymentButton = false;
     },
     manualPayment() {
-      window.location.href = this.orderData[0].redirectUrl;
+      const orders = this.orderData
+        .filter((item) => item.checked && item.orderUid !== this.orderUid)
+        .map((item) => item.orderUid);
+      this.$router.push({
+        path: `/payment-manual`,
+        query: {
+            type: this.type,
+            order_uid: this.orderUid,
+            customer_uid: this.customerUid,
+            additionalOrder: orders.join()
+          },
+      })
     },
     async getDetailVariant(data) {
       this.OpenCloseModalDuration();
@@ -280,54 +292,11 @@ export default {
       }
       this.isLoadingVariant = false;
     },
-    clickCopyHandler(name, value) {
-      // if (navigator.clipboard) {
-      //   navigator.clipboard.writeText(value).then(
-      //     () => {
-      //       this.$refs.snackbar.showSnackbar({
-      //         color: 'black',
-      //         message: `${name} berhasil disalin`,
-      //         className: '',
-      //       });
-      //     },
-      //     (err) => console.log(err)
-      //   );
-      // } else {
-      //   this.fallbackCopyText(name, value);
-      // }
-    },
     OpenCloseModalDuration() {
       this.isShowModalDuration = !this.isShowModalDuration;
     },
     OpenCloseModalPayment() {
       this.isShowModalPayment = !this.isShowModalPayment;
-    },
-    fallbackCopyText(name, value) {
-      let textArea = document.createElement('textarea');
-      textArea.value = value;
-
-      // Avoid scrolling to bottom
-      textArea.style.top = '0';
-      textArea.style.left = '0';
-      textArea.style.position = 'fixed';
-
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-
-      try {
-        let successful = document.execCommand('copy');
-        if (successful) {
-          this.$refs.snackbar.showSnackbar({
-            color: 'black',
-            message: `${name} berhasil disalin`,
-            className: '',
-          });
-        }
-      } catch (err) {
-        console.error('Fallback: Oops, unable to copy', err);
-      }
-      document.body.removeChild(textArea);
     },
   },
 };
