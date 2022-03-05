@@ -6,7 +6,7 @@
         ya. :)
       </p>
     </div>
-    <div class="container-payment max-w-2xl w-full mx-auto mt-20">
+    <div class="container-payment max-w-2xl w-full mx-auto mt-20 px-4">
       <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
       <OrderList :isLoading="isLoadingPayment" :orderData="orderData" />
       <DetailPayment
@@ -431,9 +431,9 @@ export default {
           }&nominal=${this.detailPaymentSequrban.downPayment}`
         );
       } else if (productType === 'digital') {
-        const { customer_uid, order_uid } = this.$router.history.current.query;
+        const { customer_uid, order_uid, additionalOrder } = this.$router.history.current.query;
         this.$router.push(
-          `/payment-confirmation?order_uid=${order_uid}&customer_uid=${customer_uid}`
+          `/payment-confirmation?order_uid=${order_uid}&customer_uid=${customer_uid}&additionalOrder=${additionalOrder}`
         );
       }
     },

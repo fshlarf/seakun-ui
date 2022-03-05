@@ -7,9 +7,9 @@ class OrderService {
     this.serviceApi = httpRequest(ctx, API_ORDER_URL).serviceApi;
   }
 
-  getDetailOrder(orderUid, customerUid) {
+  getDetailOrder(orderUid, customerUid,additionalOrder) {
     return this.serviceApi.get(
-      `/customer/detail?orderUid=${orderUid}&customerUid=${customerUid}`
+      `/customer/detail?orderUid=${orderUid}&customerUid=${customerUid}&additionalOrder=${additionalOrder}`
     );
   }
 

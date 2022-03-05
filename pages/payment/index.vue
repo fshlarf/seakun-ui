@@ -150,21 +150,37 @@ export default {
               checked: true,
             },
           ];
-          if (moreOrder.length > 0) {
+          if (moreOrder && moreOrder.length > 0) {
             const moreData = moreOrder.map(({ ...res }) => ({
               ...res,
               disable: false,
               checked: false,
             }));
             let orders = [...newOrder, ...moreData];
-            this.orderData = orders;
-            let total = 0;
-            for (let i = 0; i < orders.length; i++) {
-              if (orders[i].checked) {
-                total += orders[i].payment.totalPrice;
+            if (this.orderData.length > 0) {
+              const order = orders.map(({ ...res }, index) => ({
+                ...res,
+                disable: this.orderData[index].disable,
+                checked: this.orderData[index].checked,
+              }));
+              this.orderData = order;
+              let total = 0;
+              for (let i = 0; i < order.length; i++) {
+                if (order[i].checked) {
+                  total += order[i].payment.totalPrice;
+                }
               }
+              this.totalPayment = total;
+            } else {
+              this.orderData = orders;
+              let total = 0;
+              for (let i = 0; i < orders.length; i++) {
+                if (orders[i].checked) {
+                  total += orders[i].payment.totalPrice;
+                }
+              }
+              this.totalPayment = total;
             }
-            this.totalPayment = total;
           } else {
             this.orderData = newOrder;
             this.totalPayment = rest.payment.totalPrice;
@@ -235,6 +251,7 @@ export default {
         }));
       const payload = {
         customerUid: this.customerUid,
+        totalAmount: this.totalPayment,
         order: orders,
       };
       try {
@@ -248,7 +265,6 @@ export default {
       } catch (error) {
         console.log(JSON.stringify(error, null, 2));
       }
-      this.isLoadingPaymentButton = false;
     },
     manualPayment() {
       const orders = this.orderData
@@ -257,12 +273,12 @@ export default {
       this.$router.push({
         path: `/payment-manual`,
         query: {
-            type: this.type,
-            order_uid: this.orderUid,
-            customer_uid: this.customerUid,
-            additionalOrder: orders.join()
-          },
-      })
+          type: this.type,
+          order_uid: this.orderUid,
+          customer_uid: this.customerUid,
+          additionalOrder: orders.join(),
+        },
+      });
     },
     async getDetailVariant(data) {
       this.OpenCloseModalDuration();

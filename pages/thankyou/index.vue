@@ -16,18 +16,14 @@
         </p>
       </div>
 
-      <div v-if="!isLoading" class="mt-8">
-        <ProductHighLight
-          :provider="dataProduct.provider"
-          :isLoading="isLoading"
-          :packageName="dataProduct.packageName"
-          :grandTotal="dataProduct.grandTotal"
-          :totalMonth="dataProduct.totalMonth"
-          :order-number="dataProduct.orderNumber"
+      <ProductHighLightLoading v-if="isLoading" />
+      <div v-else v-for="(order, index) in orderData" :key="index">
+        <OrderCard
+          :orderData="orderData"
+          :order="order"
+          :index="index"
+          :expiredAt="true"
         />
-      </div>
-      <div v-else class="mt-8">
-        <CardShimmer />
       </div>
 
       <p class="tn:my-1 md:my-2 text-center tn:mt-8 md:mt-10 text-gray-500">
@@ -129,7 +125,8 @@
 import Button from '~/components/atoms/Button';
 import CardShimmer from '~/components/mollecules/CardShimmer';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
-import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
+import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
+import OrderCard from '~/components/mollecules/OrderCard.vue';
 import OrderService from '~/services/OrderServices.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
@@ -143,6 +140,7 @@ export default {
       moment,
       isLoading: false,
       order_uid: '',
+      orderData: [],
       dataDetailOrder: {
         transferAmount: '',
         paymentHolder: '',
@@ -166,13 +164,18 @@ export default {
     Button,
     CardShimmer,
     CardShimmerVertical,
-    ProductHighLight,
+    ProductHighLightLoading,
+    OrderCard,
   },
   mounted() {
     this.OrderService = new OrderService(this);
-    const { order_uid, customer_uid } = this.$router.history.current.query;
+    const {
+      order_uid,
+      customer_uid,
+      additionalOrder,
+    } = this.$router.history.current.query;
     this.order_uid = order_uid;
-    this.getDetailOrder(order_uid, customer_uid);
+    this.getDetailOrder(order_uid, customer_uid, additionalOrder);
   },
   methods: {
     setNameBank(bank) {
@@ -187,29 +190,62 @@ export default {
           return bank;
       }
     },
-    async getDetailOrder(orderUid, customerUid) {
+    async getDetailOrder(orderUid, customerUid, additionalOrder) {
       this.isLoading = true;
       const { OrderService } = this;
       try {
         const fetchDataOrder = await OrderService.getDetailOrder(
           orderUid,
-          customerUid
+          customerUid,
+          additionalOrder
         );
         if (fetchDataOrder.data) {
           const dataResult = fetchDataOrder.data.data;
-          this.dataDetailOrder = {
+          const { moreOrder, ...rest } = dataResult;
+          let newOrder = [
+            {
+              ...rest,
+            },
+          ];
+          if (moreOrder && moreOrder.length > 0) {
+            const moreData = moreOrder.map(({ ...res }) => ({
+              ...res,
+            }));
+            let orders = [...newOrder, ...moreData];
+            this.orderData = orders;
+            let total = 0;
+            for (let i = 0; i < orders.length; i++) {
+              total += orders[i].payment.totalPrice;
+            }
+            this.dataDetailOrder = {
             paymentHolder: dataResult.payment.paymentFromName,
             destinationBank: dataResult.payment.paymentToBank,
             paymentBankFrom: dataResult.payment.paymentFromBank.toLowerCase(),
             paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
             destinationHolderName: dataResult.payment.paymentToName,
-            transferAmount: dataResult.payment.transferAmount,
+            transferAmount: total,
             orderNumber: dataResult.orderNumber,
             paymentDate: moment
               .unix(dataResult.payment.paymentDate)
               .locale('id')
               .format('D MMMM YYYY'),
           };
+          } else {
+            this.orderData = newOrder;
+            this.dataDetailOrder = {
+            paymentHolder: dataResult.payment.paymentFromName,
+            destinationBank: dataResult.payment.paymentToBank,
+            paymentBankFrom: dataResult.payment.paymentFromBank.toLowerCase(),
+            paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
+            destinationHolderName: dataResult.payment.paymentToName,
+            transferAmount: dataResult.payment.totalPrice,
+            orderNumber: dataResult.orderNumber,
+            paymentDate: moment
+              .unix(dataResult.payment.paymentDate)
+              .locale('id')
+              .format('D MMMM YYYY'),
+          };
+          }
 
           this.dataProduct = {
             provider: dataResult.provider.slug,

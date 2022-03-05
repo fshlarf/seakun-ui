@@ -42,6 +42,7 @@
         </div>
       </div>
       <Button
+        @click="onClick"
         label="Kembali ke Daftar Pesanan"
         class="w-full bg-green-seakun text-base text-white font-bold py-2 my-4"
       />
@@ -71,6 +72,9 @@ export default {
     formatMoneyRupiah(num) {
       return currencyFormat(num);
     },
+    onClick(){
+      this.$emit('onClick')
+    }
   },
 };
 </script>

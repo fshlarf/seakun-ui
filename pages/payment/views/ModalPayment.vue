@@ -3,8 +3,8 @@
     <template v-slot:header>
       <div class="font-bold text-lg">Pilih Tipe Pembayaran</div>
     </template>
-    <div class="flex flex-row py-2">
-      <div class="flex-1 shadow-md rounded-md p-1 mr-2">
+    <div class="inline-grid md:grid-cols-2 gap-4 py-2">
+      <div class="flex-1 shadow-md rounded-md p-1">
         <p class="text-lg font-bold text-center">Pembayaran Otomatis</p>
         <div class="flex flex-wrap justify-center mt-3">
           <div
@@ -35,7 +35,7 @@
           />
         </div>
       </div>
-      <div class="flex-1 shadow-md rounded-md p-1 ml-2">
+      <div class="flex-1 shadow-md rounded-md p-1">
         <p class="text-lg font-bold text-center">Pembayaran Manual</p>
         <div class="flex flex-wrap justify-center mt-3">
           <div

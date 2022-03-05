@@ -10,6 +10,12 @@ class PaymentServices {
   createInvoice(params) {
     return this.serviceApi.post('/customer/checkout', { ...params });
   }
+
+  createPaymentConfirmation(params, header) {
+    return this.serviceApi.post('/customer/manual-confirm', params, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  }
 }
 
 export default PaymentServices;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SuccessPayment v-if="result == 'true'" />
+    <SuccessPayment v-if="result == 'true'" @onClick="toHomePage()" />
     <FailedPayment v-else />
   </div>
 </template>
@@ -21,6 +21,12 @@ export default {
   mounted() {
     const { success } = this.$router.history.current.query;
     this.result = success;
+    localStorage.removeItem('swo');
   },
+  methods: {
+    toHomePage() {
+      this.$router.push('/');
+    },
+  }
 };
 </script>
