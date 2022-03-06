@@ -213,39 +213,23 @@ export default {
             }));
             let orders = [...newOrder, ...moreData];
             this.orderData = orders;
-            let total = 0;
-            for (let i = 0; i < orders.length; i++) {
-              total += orders[i].payment.totalPrice;
-            }
-            this.dataDetailOrder = {
-            paymentHolder: dataResult.payment.paymentFromName,
-            destinationBank: dataResult.payment.paymentToBank,
-            paymentBankFrom: dataResult.payment.paymentFromBank.toLowerCase(),
-            paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
-            destinationHolderName: dataResult.payment.paymentToName,
-            transferAmount: total,
-            orderNumber: dataResult.orderNumber,
-            paymentDate: moment
-              .unix(dataResult.payment.paymentDate)
-              .locale('id')
-              .format('D MMMM YYYY'),
-          };
           } else {
             this.orderData = newOrder;
-            this.dataDetailOrder = {
+          }
+
+          this.dataDetailOrder = {
             paymentHolder: dataResult.payment.paymentFromName,
             destinationBank: dataResult.payment.paymentToBank,
             paymentBankFrom: dataResult.payment.paymentFromBank.toLowerCase(),
             paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
             destinationHolderName: dataResult.payment.paymentToName,
-            transferAmount: dataResult.payment.totalPrice,
+            transferAmount: dataResult.payment.transferAmount,
             orderNumber: dataResult.orderNumber,
             paymentDate: moment
               .unix(dataResult.payment.paymentDate)
               .locale('id')
               .format('D MMMM YYYY'),
           };
-          }
 
           this.dataProduct = {
             provider: dataResult.provider.slug,

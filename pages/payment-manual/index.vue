@@ -278,13 +278,13 @@ export default {
             let orders = [...newOrder, ...moreData];
             this.orderData = orders;
             let total = 0;
-            for (let i = 0; i < orders.length; i++) {
-              total += orders[i].payment.payment;
+            for (let i = 0; i < moreData.length; i++) {
+              total += moreData[i].payment.totalPrice;
             }
             this.detailPaymentDigital = {
               name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
               price: dataResult.payment.totalPrice,
-              payment: total,
+              payment: total+dataResult.payment.payment,
               duration: dataResult.provider.package.variant.duration,
               orderNumber: dataResult.orderNumber,
             };

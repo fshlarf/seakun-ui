@@ -439,10 +439,10 @@ export default {
             let orders = [...newOrder, ...moreData];
             this.orderData = orders;
             let total = 0;
-            for (let i = 0; i < orders.length; i++) {
-              total += orders[i].payment.totalPrice;
+            for (let i = 0; i < moreData.length; i++) {
+              total += moreData[i].payment.totalPrice;
             }
-            this.nominal = total;
+            this.nominal = total+dataResult.payment.payment;
           } else {
             this.orderData = newOrder;
             this.nominal = rest.payment.payment;
