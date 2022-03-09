@@ -64,10 +64,6 @@ export default {
   name: 'thankyou-page',
   layout: 'new',
   props: {
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
     dataOrder: {
       type: Array,
       default: () => [],
