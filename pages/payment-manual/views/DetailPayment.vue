@@ -36,11 +36,11 @@
         <div
           v-else
           class="payment-detail__price flex align-items-center justify-center cursor-pointer"
-          @click="clickCopyHandler('Nominal', detailPaymentDigital.payment)"
+          @click="clickCopyHandler('Nominal', totalPaymentDigital)"
         >
           <p
             class="my-3 text-xl mr-2 cursor-pointer"
-            v-html="formatCodePayment(detailPaymentDigital.payment)"
+            v-html="formatCodePayment(totalPaymentDigital)"
           ></p>
           <CopyIcon />
         </div>
@@ -107,9 +107,9 @@ export default {
       type: String,
       default: '',
     },
-    packageId: {
+    totalPaymentDigital: {
       type: Number,
-      default: null,
+      default: 0,
     },
     packageName: {
       type: String,

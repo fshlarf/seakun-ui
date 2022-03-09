@@ -1,93 +1,105 @@
 <template>
-  <div class="max-w-2xl w-full mx-auto pt-5 px-4">
+  <div class="thankyou max-w-2xl w-full mx-auto pt-4 tn:-mb-4 md:mb-0">
     <div
-      class="flex flex-column bg-green-seakun-secondary rounded-[30px] p-5 items-center"
+      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full pt-4"
     >
-      <CloseIcon class="w-3 cursor-pointer self-end" />
       <img
-        class="w-4/12"
+        class="w-1/3 mx-auto"
         src="/images/thank-you-new.png"
-        alt="image not found"
+        alt="Image not found"
       />
-      <p class="text-3xl font-bold my-6">Terima Kasih!</p>
-      <p class="text-lg font-normal text-center">
-        Anda dapat melakukan pembayaran dengan
-        <span class="font-bold">BCA Virtual Account</span> sebelum
-        <span class="font-bold">Kamis, 25 Maret 2021, 20:56 WIB</span>.
-      </p>
-      <div class="w-full rounded-xl bg-payment p-3 mt-2">
-        <div class="flex justify-between mb-2">
-          <p class="text-base font-normal">Provider</p>
-          <p class="text-base font-bold">Netflix</p>
+      <div class="text-center tn:px-4 md:px-12">
+        <h3 class="font-bold text-3xl mt-4 text-center">Terima Kasih!</h3>
+        <p class="text-center md:text-lg mt-4 text-gray-500">
+          Selamat, pembayaran kamu berhasil dikonfirmasi. pesanan kamu akan
+          segera diproses oleh admin Seakun.
+        </p>
+      </div>
+
+      <div
+        class="tn:px-4 md:px-6 tn:py-4 md:py-8 mt-2 bg-gray-50 tn:rounded-xl md:rounded-3xl"
+      >
+        <div>
+          <p class="font-bold text-lg">Detail Pesanan</p>
+          <OrderCard
+            v-for="(detailOrder, id) in dataOrder"
+            :key="id"
+            :order="detailOrder"
+          />
         </div>
-        <div class="flex justify-between mb-3">
-          <p class="text-base font-normal">Paket</p>
-          <p class="text-base font-bold">Paket Premium Group (Familiy)</p>
-        </div>
-        <p class="text-lg font-bold mb-2">Detail Pembayaran</p>
-        <div class="flex justify-between mb-2">
-          <p class="text-base font-normal">Metode Pembayaran</p>
-          <p class="text-base font-bold">BCA Virtual Account</p>
-        </div>
-        <div class="copy flex justify-between mb-2 cursor-pointer">
-          <p class="text-base font-normal">Nomor Virtual Account</p>
-          <div class="flex">
-            <p class="text-base font-bold">884893998383</p>
-            <CopyIcon />
+        <div class="mt-4 md:space-y-1">
+          <div class="text-center">
+            <p>Total Pembayaran</p>
+            <p class="font-bold text-xl">{{ currencyFormat(totalTransfer) }}</p>
           </div>
         </div>
-        <div class="flex justify-between">
-          <p class="text-base font-normal">Total Pembayaran</p>
-          <p class="text-base font-bold">{{ formatMoneyRupiah(53000) }}</p>
-        </div>
       </div>
+
       <Button
-        @click="onClick"
-        label="Kembali ke Daftar Pesanan"
-        class="w-full bg-green-seakun text-base text-white font-bold py-2 my-4"
+        class="w-full bg-green-seakun text-white tn:mt-5 md:mt-8 py-[12px] rounded-2xl"
+        label="Kembali ke beranda"
+        @click="toHomePage()"
       />
-      <p class="text-base font-normal">
-        Jika ada kendala, silakan hubungi
-        <span class="text-green-seakun-dark cursor-pointer">Admin Seakun</span>.
-      </p>
+      <div>
+        <p class="text-center md:text-lg tn:mt-2 md:mt-4">
+          Jika ada kendala, silakan hubungi
+          <a
+            href="https://api.whatsapp.com/send/?phone=6282124852232"
+            target="_blank"
+            class="text-primary"
+            >Admin Seakun</a
+          >
+        </p>
+      </div>
     </div>
   </div>
 </template>
+
 <script>
-import CopyIcon from '~/assets/images/icon/copy.svg?inline';
-import CloseIcon from '~/assets/images/icon/close.svg?inline';
 import Button from '~/components/atoms/Button';
+import OrderCard from './OrderCard.vue';
 import { currencyFormat } from '~/helpers/word-transformation.js';
+import moment from 'moment';
 export default {
-  name: 'SuccessPayment',
-  components: {
-      CopyIcon,
-      CloseIcon,
-      Button
-  },
-  data: () => ({
-    currencyFormat,
-  }),
-  methods: {
-    formatMoneyRupiah(num) {
-      return currencyFormat(num);
+  name: 'thankyou-page',
+  layout: 'new',
+  props: {
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
-    onClick(){
-      this.$emit('onClick')
-    }
+    dataOrder: {
+      type: Array,
+      default: () => [],
+    },
+    totalTransfer: {
+      type: Number,
+      default: null,
+    },
+  },
+  data() {
+    return {
+      currencyFormat,
+      moment,
+    };
+  },
+  components: {
+    Button,
+    OrderCard,
+  },
+  methods: {
+    toHomePage() {
+      this.$router.push('/');
+    },
   },
 };
 </script>
-<style lang="scss" scoped>
-.copy {
-  svg {
-    width: 16px;
-    height: auto;
-    display: inline-block;
-    fill: #8dcabe;
-    margin-top: -4px;
-    margin-left: 12px;
-    cursor: pointer;
-  }
+
+<style lang="scss">
+.thankyou-container {
+  background: rgba(254, 254, 254, 0.55);
+  backdrop-filter: blur(90px);
+  /* Note: backdrop-filter has minimal browser support */
+  /* Note: backdrop-filter has minimal browser support */
 }
 </style>

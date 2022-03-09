@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <SuccessPayment v-if="result == 'true'" @onClick="toHomePage()" /> -->
-    <SuccessPayment2
+    <SuccessPayment
       v-if="result == 'true'"
       :data-order="dataOrders"
       :total-transfer="totalTransfer"
@@ -13,7 +12,6 @@
 <script>
 import OrderService from '~/services/OrderServices.js';
 import SuccessPayment from './views/SuccessPayment.vue';
-import SuccessPayment2 from './views/SuccessPayment2.vue';
 import FailedPayment from './views/FailedPayment.vue';
 
 export default {
@@ -21,7 +19,6 @@ export default {
   layout: 'new',
   components: {
     SuccessPayment,
-    SuccessPayment2,
     FailedPayment,
   },
   data: () => ({
@@ -43,9 +40,7 @@ export default {
       const { OrderService } = this;
       this.isLoadingDataOrder = true;
       try {
-        const fetchDetailOrder = await OrderService.getDetailOrderAutomaticPayment(
-          orderUids
-        );
+        const fetchDetailOrder = await OrderService.getMultipleOrder(orderUids);
         if (fetchDetailOrder.data) {
           const dataResult = fetchDetailOrder.data.data;
           this.dataOrders = dataResult;

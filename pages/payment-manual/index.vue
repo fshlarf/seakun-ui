@@ -6,16 +6,15 @@
         ya. :)
       </p>
     </div>
-    <div class="container-payment max-w-2xl w-full mx-auto mt-20 px-4">
+    <div class="container-payment max-w-2xl w-full mx-auto mt-10 px-4">
       <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
       <OrderList :isLoading="isLoadingPayment" :orderData="orderData" />
       <DetailPayment
         :is-loading="isLoadingPayment"
         :provider="provider"
-        :package-id="packetId"
         :paymentSeakunList="paymentSeakunList.data"
         :paymentSeakunListLoading="paymentSeakunList.loading"
-        :detail-payment-digital="detailPaymentDigital"
+        :total-payment-digital="totalPayment"
         :detail-payment-sequrban="detailPaymentSequrban"
       />
       <div class="tn:mt-4 md:mt-8 tn:mx-3 md:mx-4 mb-4 text-center">
@@ -48,11 +47,7 @@ import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Button from '~/components/atoms/Button';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import DetailPayment from './views/DetailPayment.vue';
-import HeaderPayment from './views/HeaderPayment.vue';
-import WarningInfo from '~/components/mollecules/WarningInfo';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
-import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
-import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
 import OrderDetail from './views/OrderDetail.vue';
 import OrderList from './views/OrderList.vue';
 import {
@@ -67,12 +62,8 @@ export default {
     NavbarBlank,
     CopyIcon,
     Button,
-    HeaderPayment,
     DetailPayment,
-    WarningInfo,
     Snackbar,
-    ButtonDrop,
-    DropDownPricesListSubcribe,
     OrderDetail,
     OrderList,
   },
@@ -90,13 +81,6 @@ export default {
       type: 0,
       vouchersData: [],
       isLoadingPayment: false,
-      detailPaymentDigital: {
-        name: '',
-        price: 0,
-        payment: 0,
-        duration: 0,
-        orderNumber: '',
-      },
       orderData: [],
       detailPaymentSequrban: {},
       activeSeakunPayment: ['Jenius', 'BCA', 'Mandiri'],
@@ -104,28 +88,16 @@ export default {
         data: [],
         loading: true,
       },
-      longSubcribe: {
-        variantUid: '',
-        name: 'Pilih Masa Berlangganan',
-        month: 0,
-        price: 0,
-        payment: 0,
-        grandTotal: 0,
-      },
       detailOrder: {
         name: '',
         phone: '',
         email: '',
       },
       totalPayment: 0,
-      isShowPriceList: false,
-      dataVariants: [],
+      orderUids: '',
       orderUid: '',
       customerUid: '',
-      variantUid: '',
-      packageUid: '',
       additionalOrder: '',
-      isLoadingVariant: false,
       moment,
     };
   },
@@ -137,33 +109,20 @@ export default {
       type,
       order_uid,
       customer_uid,
-      additionalOrder,
     } = this.$router.history.current.query;
-    this.orderUid = order_uid;
+    this.orderUids = order_uid;
     this.customerUid = customer_uid;
     this.type = parseInt(type);
     this.provider = provider;
-    this.additionalOrder = additionalOrder;
     if (this.type === 1) {
       this.getSeakunPayment();
-      this.getPaymentDigital(order_uid, customer_uid, additionalOrder);
+      this.getdataCustomer(order_uid, customer_uid);
+      this.getDataOrderDigital(order_uid);
     }
     if (provider === 'sequrban') {
       this.getPaymentSequrban();
     }
     this.getVouchersData();
-  },
-  computed: {
-    contentWarning() {
-      const { provider, holder, duration } = this.$router.history.current.query;
-      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852232?text=${text}">+6282124852232</a>`;
-    },
-    confirmationWhatsapp() {
-      const { provider, holder, duration } = this.$router.history.current.query;
-      let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `https://wa.me/6282124852232?text=${text}`;
-    },
   },
   methods: {
     async getSeakunPayment() {
@@ -199,110 +158,68 @@ export default {
         loading: false,
       };
     },
-    async getDetailVariant(uid) {
-      this.isLoadingPayment = true;
-      const { MasterService } = this;
-      try {
-        const fetchDetailVariant = await MasterService.getVariantByPackageUid(
-          uid
-        );
-        if (fetchDetailVariant.data) {
-          const { data } = fetchDetailVariant.data;
-          this.dataVariants = data;
-
-          const variantSelected = this.dataVariants.find(
-            (variant) => this.variantUid == variant.uid
-          );
-
-          if (variantSelected) {
-            const rupiah = currencyFormat(variantSelected.grandTotal);
-            this.longSubcribe = {
-              variantUid: variantSelected.uid,
-              name: `${
-                variantSelected.duration === 12
-                  ? `1 tahun ( ${rupiah} )`
-                  : `${variantSelected.duration} bulan ( ${rupiah} )`
-              } `,
-              month: variantSelected.duration,
-              price: variantSelected.price,
-              grandTotal: variantSelected.grandTotal,
-            };
-          } else {
-            const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
-            this.longSubcribe = {
-              variantUid: this.dataVariants[0].uid,
-              name: `${
-                this.dataVariants[0].duration === 12
-                  ? `1 tahun ( ${rupiah} )`
-                  : `${this.dataVariants[0].duration} bulan ( ${rupiah} )`
-              } `,
-              month: this.dataVariants[0].duration,
-              price: this.dataVariants[0].price,
-              grandTotal: this.dataVariants[0].grandTotal,
-            };
-          }
-        } else {
-          throw new Error(fetchDetailVariant);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      this.isLoadingPayment = false;
-    },
-    async getPaymentDigital(orderUid, customerUid, additionalOrder) {
+    async getdataCustomer(orderUid, customerUid) {
       const { OrderService } = this;
       this.isLoadingPayment = true;
+      const newArr = orderUid.split(',');
+      this.orderUid = newArr[0];
+      const moreOrderUid = [];
+      if (newArr.length > 1) {
+        newArr.forEach((order) => {
+          if (order !== this.orderUid) {
+            moreOrderUid.push(order);
+          }
+        });
+      }
+      this.additionalOrder = moreOrderUid;
       try {
-        const fetchPayment = await OrderService.getPaymentConfirmation(
-          orderUid,
-          customerUid,
-          additionalOrder
+        const fetchPayment = await OrderService.getDetailOrder(
+          this.orderUid,
+          customerUid
         );
         if (fetchPayment.data) {
           const dataResult = fetchPayment.data.data;
-          const { moreOrder, ...rest } = dataResult;
           this.detailOrder = {
             name: dataResult.customerName,
             phone: '+' + dataResult.customerPhone,
             email: dataResult.customerEmail,
           };
-          let newOrder = [
-            {
-              ...rest,
-            },
-          ];
-          if (moreOrder && moreOrder.length > 0) {
-            const moreData = moreOrder.map(({ ...res }) => ({
-              ...res,
-            }));
-            let orders = [...newOrder, ...moreData];
-            this.orderData = orders;
-            let total = 0;
-            for (let i = 0; i < moreData.length; i++) {
-              total += moreData[i].payment.totalPrice;
-            }
-            this.detailPaymentDigital = {
-              name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
-              price: dataResult.payment.totalPrice,
-              payment: total+dataResult.payment.payment,
-              duration: dataResult.provider.package.variant.duration,
-              orderNumber: dataResult.orderNumber,
-            };
-          } else {
-            this.orderData = newOrder;
-            this.detailPaymentDigital = {
-              name: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
-              price: dataResult.payment.totalPrice,
-              payment: rest.payment.payment,
-              duration: dataResult.provider.package.variant.duration,
-              orderNumber: dataResult.orderNumber,
-            };
-          }
-          this.setOrderToLocalStorage(dataResult);
-          this.provider = dataResult.provider.slug;
-          this.packageUid = dataResult.provider.package.uid;
-          this.variantUid = dataResult.provider.package.variant.uid;
-          await this.getDetailVariant(this.packageUid);
+        } else {
+          throw new Error(fetchPayment);
+        }
+      } catch (error) {
+        if (error.response?.status == 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
+            className: '',
+            color: 'red-400',
+            duration: 4000,
+          });
+          setTimeout(
+            function () {
+              this.$router.push('/');
+            }.bind(this),
+            3000
+          );
+        }
+        console.log(error);
+      }
+      this.isLoadingPayment = false;
+    },
+    async getDataOrderDigital(orderUid) {
+      const { OrderService } = this;
+      this.isLoadingPayment = true;
+      try {
+        const fetchPayment = await OrderService.getMultipleOrder(orderUid);
+        if (fetchPayment.data) {
+          const dataResult = fetchPayment.data.data;
+          this.orderData = dataResult;
+          let totalPrice = 0;
+          const uniqueCode = dataResult[0].payment.uniqueCode;
+          dataResult.forEach((item) => {
+            totalPrice = totalPrice + item.payment.totalPrice;
+          });
+          this.totalPayment = totalPrice + uniqueCode;
         } else {
           throw new Error(fetchPayment);
         }
@@ -347,31 +264,6 @@ export default {
           }
         })
         .catch((err) => console.log(err));
-    },
-    async onClickItemPrice(item) {
-      this.isShowPriceList = false;
-      this.isLoadingPayment = true;
-      this.paymentSeakunList.loading = true;
-      this.variantUid = item.uid;
-
-      const { OrderService } = this;
-      const payload = {
-        orderUid: this.orderUid,
-        customerUid: this.customerUid,
-        packageVariantUid: this.variantUid,
-      };
-      try {
-        const fetchChangeVariant = await OrderService.changePackageVariant(
-          payload
-        );
-        if (fetchChangeVariant.data) {
-          await this.getPaymentDigital(this.orderUid, this.customerUid);
-        }
-        this.isLoadingPayment = false;
-        this.paymentSeakunList.loading = false;
-      } catch (err) {
-        console.log(err);
-      }
     },
     setOrderToLocalStorage(dataOrder) {
       try {
@@ -431,9 +323,8 @@ export default {
           }&nominal=${this.detailPaymentSequrban.downPayment}`
         );
       } else if (productType === 'digital') {
-        const { customer_uid, order_uid, additionalOrder } = this.$router.history.current.query;
         this.$router.push(
-          `/payment-confirmation?order_uid=${order_uid}&customer_uid=${customer_uid}&additionalOrder=${additionalOrder}`
+          `/payment-confirmation?order_uid=${this.orderUid}&customer_uid=${this.customerUid}&additionalOrder=${this.additionalOrder}`
         );
       }
     },
