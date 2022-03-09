@@ -267,7 +267,9 @@ export default {
       }
     },
     manualPayment() {
-      const orders = this.orderData.map((item) => item.orderUid);
+      const orders = this.orderData
+        .filter((item) => item.checked)
+        .map((item) => item.orderUid);
       this.$router.push({
         path: `/payment-manual`,
         query: {
