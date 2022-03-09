@@ -15,6 +15,7 @@
 <script>
 import OrderService from '~/services/OrderServices.js';
 import SuccessPayment from './views/SuccessPayment.vue';
+import SuccessPayment2 from './views/SuccessPayment2.vue';
 import FailedPayment from './views/FailedPayment.vue';
 
 export default {
