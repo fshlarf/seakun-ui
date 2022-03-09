@@ -7,10 +7,14 @@ class OrderService {
     this.serviceApi = httpRequest(ctx, API_ORDER_URL).serviceApi;
   }
 
-  getDetailOrder(orderUid, customerUid,additionalOrder) {
+  getDetailOrder(orderUid, customerUid, additionalOrder) {
     return this.serviceApi.get(
       `/customer/detail?orderUid=${orderUid}&customerUid=${customerUid}&additionalOrder=${additionalOrder}`
     );
+  }
+
+  getDetailOrderAutomaticPayment(orderUid) {
+    return this.serviceApi.get(`/customer/details?orderUid=${orderUid}`);
   }
 
   createOrder(params) {
