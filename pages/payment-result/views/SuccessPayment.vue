@@ -1,7 +1,7 @@
 <template>
   <div class="thankyou max-w-2xl w-full mx-auto pt-4 tn:-mb-4 md:mb-0">
     <div
-      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full pt-4"
+      class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full pt-4"
     >
       <img
         class="w-1/3 mx-auto"
@@ -94,12 +94,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.thankyou-container {
-  background: rgba(254, 254, 254, 0.55);
-  backdrop-filter: blur(90px);
-  /* Note: backdrop-filter has minimal browser support */
-  /* Note: backdrop-filter has minimal browser support */
-}
-</style>
