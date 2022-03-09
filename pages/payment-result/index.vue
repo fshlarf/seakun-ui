@@ -1,8 +1,10 @@
 <template>
   <div>
-    <!-- <SuccessPayment v-if="result == 'true'" @onClick="toHomePage()" /> -->
-    <SuccessPayment2
-      v-if="result == 'true'"
+    <div v-if="isLoadingDataOrder" class="flex justify-center py-80 z-10">
+      <div class="spinner-border text-primary opacity-50"></div>
+    </div>
+    <SuccessPayment
+      v-else-if="result == 'true'"
       :data-order="dataOrders"
       :total-transfer="totalTransfer"
       @onClick="toHomePage()"
@@ -21,14 +23,13 @@ export default {
   layout: 'new',
   components: {
     SuccessPayment,
-    SuccessPayment2,
     FailedPayment,
   },
   data: () => ({
     OrderService,
     result: false,
     dataOrders: [],
-    isLoadingDataOrder: false,
+    isLoadingDataOrder: true,
     totalTransfer: null,
   }),
   mounted() {
@@ -43,9 +44,7 @@ export default {
       const { OrderService } = this;
       this.isLoadingDataOrder = true;
       try {
-        const fetchDetailOrder = await OrderService.getDetailOrderAutomaticPayment(
-          orderUids
-        );
+        const fetchDetailOrder = await OrderService.getMultipleOrder(orderUids);
         if (fetchDetailOrder.data) {
           const dataResult = fetchDetailOrder.data.data;
           this.dataOrders = dataResult;
@@ -68,3 +67,13 @@ export default {
   },
 };
 </script>
+<style>
+.spinner-border {
+  display: flex;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border: 0.5em solid currentColor;
+  border-right-color: transparent;
+}
+</style>

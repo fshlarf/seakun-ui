@@ -139,7 +139,7 @@ export default {
       currencyFormat,
       moment,
       isLoading: false,
-      order_uid: '',
+      orderUids: '',
       orderData: [],
       dataDetailOrder: {
         transferAmount: '',
@@ -169,13 +169,9 @@ export default {
   },
   mounted() {
     this.OrderService = new OrderService(this);
-    const {
-      order_uid,
-      customer_uid,
-      additionalOrder,
-    } = this.$router.history.current.query;
-    this.order_uid = order_uid;
-    this.getDetailOrder(order_uid, customer_uid, additionalOrder);
+    const { order_uid, customer_uid } = this.$router.history.current.query;
+    this.orderUids = order_uid;
+    this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
     setNameBank(bank) {
@@ -190,54 +186,40 @@ export default {
           return bank;
       }
     },
-    async getDetailOrder(orderUid, customerUid, additionalOrder) {
+    async getDetailOrder(orderUid, customerUid) {
       this.isLoading = true;
       const { OrderService } = this;
       try {
-        const fetchDataOrder = await OrderService.getDetailOrder(
+        const fetchDataOrder = await OrderService.getMultipleOrder(
           orderUid,
-          customerUid,
-          additionalOrder
+          customerUid
         );
         if (fetchDataOrder.data) {
           const dataResult = fetchDataOrder.data.data;
-          const { moreOrder, ...rest } = dataResult;
-          let newOrder = [
-            {
-              ...rest,
-            },
-          ];
-          if (moreOrder && moreOrder.length > 0) {
-            const moreData = moreOrder.map(({ ...res }) => ({
-              ...res,
-            }));
-            let orders = [...newOrder, ...moreData];
-            this.orderData = orders;
-          } else {
-            this.orderData = newOrder;
-          }
+          this.orderData = dataResult;
+          const firstOrder = dataResult[0];
 
           this.dataDetailOrder = {
-            paymentHolder: dataResult.payment.paymentFromName,
-            destinationBank: dataResult.payment.paymentToBank,
-            paymentBankFrom: dataResult.payment.paymentFromBank.toLowerCase(),
-            paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
-            destinationHolderName: dataResult.payment.paymentToName,
-            transferAmount: dataResult.payment.transferAmount,
-            orderNumber: dataResult.orderNumber,
+            paymentHolder: firstOrder.payment.paymentFromName,
+            destinationBank: firstOrder.payment.paymentToBank,
+            paymentBankFrom: firstOrder.payment.paymentFromBank.toLowerCase(),
+            paymentBankTo: firstOrder.payment.paymentToBank.toLowerCase(),
+            destinationHolderName: firstOrder.payment.paymentToName,
+            transferAmount: firstOrder.payment.transferAmount,
+            orderNumber: firstOrder.orderNumber,
             paymentDate: moment
-              .unix(dataResult.payment.paymentDate)
+              .unix(firstOrder.payment.paymentDate)
               .locale('id')
               .format('D MMMM YYYY'),
           };
 
           this.dataProduct = {
-            provider: dataResult.provider.slug,
-            packageName: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
-            grandTotal: dataResult.payment.totalPrice,
-            totalMonth: dataResult.provider.package.variant.duration,
-            payment: dataResult.payment.payment,
-            orderNumber: dataResult.orderNumber,
+            provider: firstOrder.provider.slug,
+            packageName: `${firstOrder.provider.name} - ${firstOrder.provider.package.variant.name}`,
+            grandTotal: firstOrder.payment.totalPrice,
+            totalMonth: firstOrder.provider.package.variant.duration,
+            payment: firstOrder.payment.payment,
+            orderNumber: firstOrder.orderNumber,
           };
         } else {
           throw new Error(fetchDataOrder);

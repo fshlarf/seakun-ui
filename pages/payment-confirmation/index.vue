@@ -19,7 +19,9 @@
             :key="index"
             class="flex justify-between"
           >
-            <p v-if="orderData.length > 1" class="order-code__label mb-2">Kode pemesanan {{ index + 1 }}</p>
+            <p v-if="orderData.length > 1" class="order-code__label mb-2">
+              Kode pemesanan {{ index + 1 }}
+            </p>
             <p v-else class="order-code__label mb-2">Kode pemesanan</p>
             <p class="order-code__code text-green-seakun-dark font-bold">
               {{ item.orderNumber }}
@@ -111,7 +113,7 @@
           :error="errorForm.userName"
         />
         <div class="my-4">
-          <p>Tanggal Pembayaran</p>
+          <p class="text-sm mb-2">Tanggal Pembayaran</p>
           <DatePicker
             class="datepicker"
             v-model="time1"
@@ -442,7 +444,7 @@ export default {
             for (let i = 0; i < moreData.length; i++) {
               total += moreData[i].payment.totalPrice;
             }
-            this.nominal = total+dataResult.payment.payment;
+            this.nominal = total + dataResult.payment.payment;
           } else {
             this.orderData = newOrder;
             this.nominal = rest.payment.payment;
@@ -661,7 +663,7 @@ export default {
       this.isLoadingSubmit = true;
       const formDataDigital = new FormData();
       for (let i = 0; i < this.orderData.length; i++) {
-        formDataDigital.append('orderUid', this.orderData[i].orderUid)
+        formDataDigital.append('orderUid', this.orderData[i].orderUid);
       }
       formDataDigital.append('paymentTo', this.paymentToUid);
       formDataDigital.append('paymentFromBank', this.paymentFromUid);
@@ -702,9 +704,14 @@ export default {
       this.isLoadingSubmit = false;
     },
     toThankyouPage() {
-      const { order_uid, customer_uid, additionalOrder } = this.$router.history.current.query;
+      const {
+        order_uid,
+        customer_uid,
+        additionalOrder,
+      } = this.$router.history.current.query;
+      const orderUids = `${order_uid},${additionalOrder}`;
       this.$router.push(
-        `/thankyou?&order_uid=${order_uid}&customer_uid=${customer_uid}&additionalOrder=${additionalOrder}`
+        `/thankyou?&order_uid=${orderUids}&customer_uid=${customer_uid}`
       );
     },
     getPaymentImage(file) {
