@@ -1,9 +1,9 @@
 <template>
   <div
-    class=" flex border-[1px] border-green-seakun p-3 bg-white mt-4 rounded-xl items-center"
+    class="flex border-[1px] border-green-seakun p-3 bg-white mt-4 rounded-xl items-center"
   >
     <div
-      @click="onChecked"
+      @click="onChecked(order)"
       v-if="orderData.length > 1 && checkedBox"
       class="cursor-pointer mr-3 flex"
     >
@@ -12,7 +12,7 @@
       <UncheckBox v-else />
     </div>
     <div class="flex flex-column w-full">
-      <div class="flex items-center ">
+      <div class="flex items-center">
         <div class="w-20 mr-4">
           <img
             alt="image-product"
@@ -40,7 +40,7 @@
               v-if="!expiredAt && order.expiredAt"
               class="text-base font-normal mt-1 opacity-80"
             >
-              Expired: {{moment.unix(order.expiredAt).format('DD MMM YYYY')}}
+              Expired: {{ moment.unix(order.expiredAt).format('DD MMM YYYY') }}
             </p>
           </div>
           <Button
@@ -79,8 +79,8 @@ export default {
   },
   data() {
     return {
-      moment
-    }
+      moment,
+    };
   },
   props: {
     order: {
@@ -101,15 +101,17 @@ export default {
     },
     expiredAt: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     formatMoneyRupiah(num) {
       return currencyFormat(num);
     },
-    onChecked() {
-      this.$emit('onChecked');
+    onChecked(order) {
+      if (!order.disable) {
+        this.$emit('onChecked');
+      }
     },
     changeDuration() {
       this.$emit('changeDuration');
