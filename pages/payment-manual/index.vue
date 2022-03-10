@@ -1,12 +1,6 @@
 <template>
-  <div>
-    <div class="p-2 bg-checkout mt-[-3px]">
-      <p class="text-base text-[#417465] font-bold text-center">
-        Ini halaman terakhir dari proses orderanmu. Pastikan semua sudah benar,
-        ya. :)
-      </p>
-    </div>
-    <div class="container-payment max-w-2xl w-full mx-auto mt-10 px-4">
+  <div class="pt-8">
+    <div class="container-payment max-w-2xl w-full mx-auto px-4">
       <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
       <OrderList :isLoading="isLoadingPayment" :orderData="orderData" />
       <DetailPayment
