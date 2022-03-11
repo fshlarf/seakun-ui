@@ -1,10 +1,10 @@
 <template>
   <div>
-       <div v-if="isLoading" class="text-center mt-4">
-        <p class="shimmer w-7/12"></p>
-        <p class="shimmer w-6/12"></p>
-        <p class="shimmer w-9/12"></p>
-      </div>
+    <div v-if="isLoading" class="text-center mt-4">
+      <p class="shimmer w-7/12"></p>
+      <p class="shimmer w-6/12"></p>
+      <p class="shimmer w-9/12"></p>
+    </div>
     <div v-else class="flex flex-column mt-4 items-center">
       <p class="text-base font-normal opacity-50 mt-4">Total bayar</p>
       <div class="payment-detail__price flex cursor-pointer">
@@ -12,7 +12,7 @@
           class="text-2xl font-bold my-2 text-green-seakun"
           v-html="formatCodePayment(paymentTotal)"
         ></p>
-      </div> 
+      </div>
     </div>
     <div class="mt-12">
       <p class="text-xl text-center font-bold">
@@ -49,15 +49,15 @@ export default {
         'qris',
         'ovo',
         'dana',
-        'visa',
+        'shopee pay',
+        'link aja',
         'bca',
         'mandiri',
-        'shopee pay',
-        'master card',
         'bni',
         'bri',
-        'link aja',
-        'jcb',
+        'permata',
+        'jenius',
+        'alfamart'
       ],
     },
     copyNominal: {
@@ -65,14 +65,14 @@ export default {
     },
     isLoading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     formatCodePayment(value) {
       if (value) {
         const currency = this.currencyFormat(value);
-        return currency
+        return currency;
       }
       return '-';
     },
