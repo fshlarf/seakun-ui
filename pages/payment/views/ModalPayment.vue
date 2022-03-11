@@ -15,17 +15,36 @@
             <img :src="`/images/payment/${payment}.png`" />
           </div>
         </div>
-        <div class="flex flex-row items-center mb-2 mt-4 mx-2">
-          <CheckBox />
-          <p class="ml-2 text-base font-normal">
-            QRIS, E-Wallet, Virtual Account
-          </p>
+        <div class="flex flex-row mb-2 mt-4 mx-2">
+          <div class="mt-1">
+            <CheckBox />
+          </div>
+          <div>
+            <p class="ml-2 text-base font-normal">
+              QRIS, E-Wallet, berlaku disemua durasi berlangganan
+            </p>
+          </div>
         </div>
-        <div class="flex flex-row items-center mb-3 mx-2">
-          <CheckBox />
-          <p class="ml-2 text-base font-normal">
-            Konfirmasi Pembayaran Otomatis
-          </p>
+        <div class="flex flex-row mb-2 mx-2">
+          <div class="mt-1">
+            <CheckBox />
+          </div>
+          <div>
+            <p class="ml-2 text-base font-normal">
+              Virtual Account dan Retail hanya berlaku untuk durasi di atas 3
+              bulan berlangganan
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-row mb-3 mx-2">
+          <div class="mt-1">
+            <CheckBox />
+          </div>
+          <div>
+            <p class="ml-2 text-base font-normal">
+              Konfirmasi pembayaran otomatis
+            </p>
+          </div>
         </div>
         <div class="px-2 pb-2">
           <Button
@@ -46,15 +65,25 @@
             <img :src="`/images/payment/${payment}.png`" />
           </div>
         </div>
-        <div class="flex flex-row items-center mb-2 mt-4 mx-2">
-          <CheckBox class="w-4" />
-          <p class="ml-2 text-base font-normal">
-            Tranfer Manual ke Bank BCA, Mandiri dan jenius.
-          </p>
+        <div class="flex flex-row mb-2 mt-4 mx-2">
+          <div class="mt-1">
+            <CheckBox class="w-4" />
+          </div>
+          <div>
+            <p class="ml-2 text-base font-normal">
+              Transfer manual ke Bank BCA, Mandiri dan jenius
+            </p>
+          </div>
         </div>
-        <div class="flex flex-row items-center mb-3 mx-2">
-          <CheckBox />
-          <p class="ml-2 text-base font-normal">Konfirmasi Pembayaran Manual</p>
+        <div class="flex flex-row mb-3 mx-2">
+          <div class="mt-1">
+            <CheckBox />
+          </div>
+          <div>
+            <p class="ml-2 text-base font-normal">
+              Konfirmasi pembayaran manual (upload bukti transfer di website)
+            </p>
+          </div>
         </div>
         <div class="px-2 pb-2">
           <Button
@@ -90,12 +119,13 @@ export default {
         'qris',
         'ovo',
         'dana',
-        'bca',
-        'mandiri',
         'shopee pay',
+        'link aja',
+        'mandiri',
         'bni',
         'bri',
-        'link aja',
+        'permata',
+        'alfamart',
       ],
     },
     dataPaymentMethodManual: {
@@ -104,12 +134,12 @@ export default {
     },
     onClickManual: {
       type: Function,
-      default: () => {}
+      default: () => {},
     },
     onClickOtomatis: {
       type: Function,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   methods: {
     onClose() {
