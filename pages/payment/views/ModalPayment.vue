@@ -6,14 +6,8 @@
     <div class="inline-grid md:grid-cols-2 gap-4 py-2">
       <div class="flex-1 shadow-md rounded-md p-1">
         <p class="text-lg font-bold text-center">Pembayaran Otomatis</p>
-        <div class="flex flex-wrap justify-center mt-3">
-          <div
-            v-for="(payment, index) in dataPaymentMethodOtomatis"
-            :key="index"
-            class="flex bg-white shadow-md w-36 h-11 mx-1 my-2 rounded-xl justify-center"
-          >
-            <img :src="`/images/payment/${payment}.png`" />
-          </div>
+        <div class="mt-3 px-3">
+          <img class="w-full" src="/images/payment/auto-payment.png" />
         </div>
         <div class="flex flex-row mb-2 mt-4 mx-2">
           <div class="mt-1">
@@ -56,14 +50,8 @@
       </div>
       <div class="flex-1 shadow-md rounded-md p-1">
         <p class="text-lg font-bold text-center">Pembayaran Manual</p>
-        <div class="flex flex-wrap justify-center mt-3">
-          <div
-            v-for="(payment, index) in dataPaymentMethodManual"
-            :key="index"
-            class="flex bg-white shadow-md w-36 h-11 mx-1 my-2 rounded-xl justify-center"
-          >
-            <img :src="`/images/payment/${payment}.png`" />
-          </div>
+        <div class="mt-3 px-3">
+          <img class="mx-auto" src="/images/payment/manual-payment.png" />
         </div>
         <div class="flex flex-row mb-2 mt-4 mx-2">
           <div class="mt-1">

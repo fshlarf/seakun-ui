@@ -36,7 +36,7 @@
       <div class="my-3 border-b border-[#E5E5E5]" />
       <div class="flex justify-between items-center">
         <p class="text-base font-normal opacity-50">Status Pembayaran</p>
-        <p class="text-primary font-bold">SUCCESS</p>
+        <p class="text-primary font-bold">SUKSES</p>
       </div>
     </div>
   </div>

@@ -18,14 +18,8 @@
       <p class="text-xl text-center font-bold">
         Metode Pembayaran yang Tersedia
       </p>
-      <div class="flex flex-wrap justify-center mt-3">
-        <div
-          v-for="(payment, index) in dataPaymentMethod"
-          :key="index"
-          class="flex bg-white shadow-md w-36 h-11 mx-1 my-2 rounded-xl justify-center"
-        >
-          <img :src="`/images/payment/${payment}.png`" />
-        </div>
+      <div class="mt-4 mx-auto w-full">
+        <img class="w-full" src="/images/payment/all-payment.png" />
       </div>
     </div>
   </div>
@@ -57,7 +51,7 @@ export default {
         'bri',
         'permata',
         'jenius',
-        'alfamart'
+        'alfamart',
       ],
     },
     copyNominal: {
