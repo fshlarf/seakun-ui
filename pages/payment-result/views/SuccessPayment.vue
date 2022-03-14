@@ -42,13 +42,14 @@
       />
       <div>
         <p class="text-center md:text-lg tn:mt-2 md:mt-4">
-          Jika ada kendala, silakan hubungi
+          Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
+          pesanan kamu belum diproses, harap hubungi admin via whatsapp
           <a
             href="https://api.whatsapp.com/send/?phone=6282124852232"
             target="_blank"
             class="text-primary"
-            >Admin Seakun</a
-          >
+            >+6282124852232</a
+          >.
         </p>
       </div>
     </div>
