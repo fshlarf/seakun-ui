@@ -17,7 +17,7 @@
       </div>
 
       <div
-        class="tn:px-4 md:px-6 tn:py-4 md:py-8 mt-2 bg-gray-50 tn:rounded-xl md:rounded-3xl"
+        class="tn:px-4 md:px-6 tn:py-4 md:py-8 mt-2 bg-gray-50 shadow-md tn:rounded-xl md:rounded-3xl"
       >
         <div>
           <p class="font-bold text-lg">Detail Pesanan</p>
@@ -35,13 +35,8 @@
         </div>
       </div>
 
-      <Button
-        class="w-full bg-green-seakun text-white tn:mt-5 md:mt-8 py-[12px] rounded-2xl"
-        label="Kembali ke beranda"
-        @click="toHomePage()"
-      />
       <div>
-        <p class="text-center md:text-lg tn:mt-2 md:mt-4">
+        <p class="tn:mt-4 md:mt-6 lg:mt-8">
           Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
           pesanan kamu belum diproses, harap hubungi admin via whatsapp
           <a
@@ -52,6 +47,11 @@
           >.
         </p>
       </div>
+      <Button
+        class="w-full bg-green-seakun text-white tn:mt-5 md:mt-6 py-[12px] rounded-2xl"
+        label="Kembali ke beranda"
+        @click="toHomePage()"
+      />
     </div>
   </div>
 </template>
