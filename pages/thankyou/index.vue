@@ -16,18 +16,14 @@
         </p>
       </div>
 
-      <div v-if="!isLoading" class="mt-8">
-        <ProductHighLight
-          :provider="dataProduct.provider"
-          :isLoading="isLoading"
-          :packageName="dataProduct.packageName"
-          :grandTotal="dataProduct.grandTotal"
-          :totalMonth="dataProduct.totalMonth"
-          :order-number="dataProduct.orderNumber"
+      <ProductHighLightLoading v-if="isLoading" />
+      <div v-else v-for="(order, index) in orderData" :key="index">
+        <OrderCard
+          :orderData="orderData"
+          :order="order"
+          :index="index"
+          :expiredAt="true"
         />
-      </div>
-      <div v-else class="mt-8">
-        <CardShimmer />
       </div>
 
       <p class="tn:my-1 md:my-2 text-center tn:mt-8 md:mt-10 text-gray-500">
@@ -129,7 +125,8 @@
 import Button from '~/components/atoms/Button';
 import CardShimmer from '~/components/mollecules/CardShimmer';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
-import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
+import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
+import OrderCard from '~/components/mollecules/OrderCard.vue';
 import OrderService from '~/services/OrderServices.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
@@ -142,7 +139,8 @@ export default {
       currencyFormat,
       moment,
       isLoading: false,
-      order_uid: '',
+      orderUids: '',
+      orderData: [],
       dataDetailOrder: {
         transferAmount: '',
         paymentHolder: '',
@@ -166,12 +164,13 @@ export default {
     Button,
     CardShimmer,
     CardShimmerVertical,
-    ProductHighLight,
+    ProductHighLightLoading,
+    OrderCard,
   },
   mounted() {
     this.OrderService = new OrderService(this);
     const { order_uid, customer_uid } = this.$router.history.current.query;
-    this.order_uid = order_uid;
+    this.orderUids = order_uid;
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
@@ -191,33 +190,36 @@ export default {
       this.isLoading = true;
       const { OrderService } = this;
       try {
-        const fetchDataOrder = await OrderService.getDetailOrder(
+        const fetchDataOrder = await OrderService.getMultipleOrder(
           orderUid,
           customerUid
         );
         if (fetchDataOrder.data) {
           const dataResult = fetchDataOrder.data.data;
+          this.orderData = dataResult;
+          const firstOrder = dataResult[0];
+
           this.dataDetailOrder = {
-            paymentHolder: dataResult.payment.paymentFromName,
-            destinationBank: dataResult.payment.paymentToBank,
-            paymentBankFrom: dataResult.payment.paymentFromBank.toLowerCase(),
-            paymentBankTo: dataResult.payment.paymentToBank.toLowerCase(),
-            destinationHolderName: dataResult.payment.paymentToName,
-            transferAmount: dataResult.payment.transferAmount,
-            orderNumber: dataResult.orderNumber,
+            paymentHolder: firstOrder.payment.paymentFromName,
+            destinationBank: firstOrder.payment.paymentToBank,
+            paymentBankFrom: firstOrder.payment.paymentFromBank.toLowerCase(),
+            paymentBankTo: firstOrder.payment.paymentToBank.toLowerCase(),
+            destinationHolderName: firstOrder.payment.paymentToName,
+            transferAmount: firstOrder.payment.transferAmount,
+            orderNumber: firstOrder.orderNumber,
             paymentDate: moment
-              .unix(dataResult.payment.paymentDate)
+              .unix(firstOrder.payment.paymentDate)
               .locale('id')
               .format('D MMMM YYYY'),
           };
 
           this.dataProduct = {
-            provider: dataResult.provider.slug,
-            packageName: `${dataResult.provider.name} - ${dataResult.provider.package.variant.name}`,
-            grandTotal: dataResult.payment.totalPrice,
-            totalMonth: dataResult.provider.package.variant.duration,
-            payment: dataResult.payment.payment,
-            orderNumber: dataResult.orderNumber,
+            provider: firstOrder.provider.slug,
+            packageName: `${firstOrder.provider.name} - ${firstOrder.provider.package.variant.name}`,
+            grandTotal: firstOrder.payment.totalPrice,
+            totalMonth: firstOrder.provider.package.variant.duration,
+            payment: firstOrder.payment.payment,
+            orderNumber: firstOrder.orderNumber,
           };
         } else {
           throw new Error(fetchDataOrder);

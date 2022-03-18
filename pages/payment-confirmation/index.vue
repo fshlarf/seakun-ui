@@ -12,12 +12,21 @@
         </p>
         <div
           v-if="orderNumber"
-          class="order-code bg-green-seakun-secondary w-full rounded-lg mt-2 flex justify-between px-4 py-3"
+          class="order-code bg-green-seakun-secondary w-full rounded-lg mt-2 px-4 pt-3 pb-1"
         >
-          <p class="order-code__label">Kode pemesanan</p>
-          <p class="order-code__code text-green-seakun-dark font-bold">
-            {{ orderNumber }}
-          </p>
+          <div
+            v-for="(item, index) in orderData"
+            :key="index"
+            class="flex justify-between"
+          >
+            <p v-if="orderData.length > 1" class="order-code__label mb-2">
+              Kode pemesanan {{ index + 1 }}
+            </p>
+            <p v-else class="order-code__label mb-2">Kode pemesanan</p>
+            <p class="order-code__code text-green-seakun-dark font-bold">
+              {{ item.orderNumber }}
+            </p>
+          </div>
         </div>
       </div>
       <div class="form-confirmation mt-7">
@@ -104,7 +113,7 @@
           :error="errorForm.userName"
         />
         <div class="my-4">
-          <p>Tanggal Pembayaran</p>
+          <p class="text-sm mb-2">Tanggal Pembayaran</p>
           <DatePicker
             class="datepicker"
             v-model="time1"
@@ -194,6 +203,7 @@ import { currencyFormat } from '~/helpers';
 import axios from 'axios';
 import OrderService from '~/services/OrderServices.js';
 import MasterService from '~/services/MasterServices.js';
+import PaymentService from '~/services/PaymentServices.js';
 
 export default {
   name: 'paymentConfirmation',
@@ -213,6 +223,7 @@ export default {
     return {
       OrderService,
       MasterService,
+      PaymentService,
       moment,
       isLoadingSubmit: false,
       bankSeakun: 'Pilih Bank tujuan milik Seakun.id',
@@ -245,6 +256,7 @@ export default {
       time1: moment().format('YYYY-MM-DD').toString(),
       fileExtension: '',
       imageFile: {},
+      orderData: [],
       errorForm: {
         bankSeakun: {
           isError: false,
@@ -315,14 +327,16 @@ export default {
   mounted() {
     this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
+    this.PaymentService = new PaymentService(this);
     const {
       provider,
       order_uid,
       customer_uid,
+      additionalOrder,
     } = this.$router.history.current.query;
 
     if (order_uid && customer_uid) {
-      this.getDataPayment(order_uid, customer_uid);
+      this.getDataPayment(order_uid, customer_uid, additionalOrder);
     }
     this.getSeakunPayment();
     this.getSeakunPaymentFrom();
@@ -396,20 +410,45 @@ export default {
       }
       this.isShowLoading = false;
     },
-    async getDataPayment(orderUid, customerUid) {
+    async getDataPayment(orderUid, customerUid, additionalOrder) {
       const { OrderService } = this;
 
       this.isShowLoading = true;
       try {
         const fetchPayment = await OrderService.getPaymentConfirmation(
           orderUid,
-          customerUid
+          customerUid,
+          additionalOrder
         );
         if (fetchPayment.data) {
           const dataResult = fetchPayment.data.data;
-          this.nominal = dataResult.payment.payment;
+          const { moreOrder, ...rest } = dataResult;
           this.dataDetailPayment = dataResult;
           this.orderNumber = dataResult.orderNumber;
+          let newOrder = [
+            {
+              ...rest,
+              disable: true,
+              checked: true,
+            },
+          ];
+          if (moreOrder && moreOrder.length > 0) {
+            const moreData = moreOrder.map(({ ...res }) => ({
+              ...res,
+              disable: false,
+              checked: false,
+            }));
+            let orders = [...newOrder, ...moreData];
+            this.orderData = orders;
+            let total = 0;
+            for (let i = 0; i < moreData.length; i++) {
+              total += moreData[i].payment.totalPrice;
+            }
+            this.nominal = total + dataResult.payment.payment;
+          } else {
+            this.orderData = newOrder;
+            this.nominal = rest.payment.payment;
+          }
         } else {
           throw new Error(fetchPayment);
         }
@@ -620,21 +659,22 @@ export default {
         });
     },
     async submitConfirmationDigital() {
-      const { OrderService } = this;
+      const { PaymentService } = this;
       this.isLoadingSubmit = true;
       const formDataDigital = new FormData();
-
-      formDataDigital.append('orderUid', this.dataDetailPayment.orderUid);
+      for (let i = 0; i < this.orderData.length; i++) {
+        formDataDigital.append('orderUid', this.orderData[i].orderUid);
+      }
       formDataDigital.append('paymentTo', this.paymentToUid);
       formDataDigital.append('paymentFromBank', this.paymentFromUid);
       formDataDigital.append('paymentFromName', this.userName);
-      formDataDigital.append('transferAmount', parseInt(this.nominal));
+      formDataDigital.append('paymentAmount', parseInt(this.nominal));
       formDataDigital.append('paymentAt', moment(this.time1).unix());
       formDataDigital.append('file', this.imageFile);
       formDataDigital.append('customerUid', this.dataDetailPayment.customerUid);
 
       try {
-        const fetchConfirmPayment = await OrderService.updatePaymentConfirmation(
+        const fetchConfirmPayment = await PaymentService.createPaymentConfirmation(
           formDataDigital
         );
 
@@ -664,9 +704,14 @@ export default {
       this.isLoadingSubmit = false;
     },
     toThankyouPage() {
-      const { order_uid, customer_uid } = this.$router.history.current.query;
+      const {
+        order_uid,
+        customer_uid,
+        additionalOrder,
+      } = this.$router.history.current.query;
+      const orderUids = `${order_uid},${additionalOrder}`;
       this.$router.push(
-        `/thankyou?&order_uid=${order_uid}&customer_uid=${customer_uid}`
+        `/thankyou?&order_uid=${orderUids}&customer_uid=${customer_uid}`
       );
     },
     getPaymentImage(file) {
