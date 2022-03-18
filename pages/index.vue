@@ -53,9 +53,6 @@ export default {
     WhatsappNoticeBanner,
     SeakunHelpBanner,
   },
-  beforeMount() {
-    this.$router.push('/info/maintenance');
-  },
 };
 </script>
 
