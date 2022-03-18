@@ -107,27 +107,27 @@ export default {
       dataVariants: [],
     };
   },
-  beforeMount() {
-    this.$router.push('/info/maintenance');
-  },
-  // mounted() {
-  //   this.OrderService = new OrderService(this);
-  //   this.MasterService = new MasterService(this);
-  //   this.PaymentService = new PaymentService(this);
-  //   const {
-  //     provider,
-  //     type,
-  //     order_uid,
-  //     customer_uid,
-  //   } = this.$router.history.current.query;
-  //   this.provider = provider;
-  //   this.type = parseInt(type);
-  //   this.orderUid = order_uid;
-  //   this.customerUid = customer_uid;
-  //   if (this.type === 1) {
-  //     this.getPaymentDigital(order_uid, customer_uid);
-  //   }
+  // beforeMount() {
+  //   this.$router.push('/info/maintenance');
   // },
+  mounted() {
+    this.OrderService = new OrderService(this);
+    this.MasterService = new MasterService(this);
+    this.PaymentService = new PaymentService(this);
+    const {
+      provider,
+      type,
+      order_uid,
+      customer_uid,
+    } = this.$router.history.current.query;
+    this.provider = provider;
+    this.type = parseInt(type);
+    this.orderUid = order_uid;
+    this.customerUid = customer_uid;
+    if (this.type === 1) {
+      this.getPaymentDigital(order_uid, customer_uid);
+    }
+  },
   methods: {
     async getPaymentDigital(orderUid, customerUid) {
       const { OrderService } = this;
