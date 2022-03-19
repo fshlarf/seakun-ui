@@ -75,10 +75,9 @@
         </div>
         <div class="px-2 pb-2">
           <Button
-            label="Bayar Manual (Coming Soon)"
+            label="Bayar Manual"
             @click="onClickManual"
             class="w-full bg-green-seakun text-base text-white font-bold"
-            disabled
           />
         </div>
       </div>
