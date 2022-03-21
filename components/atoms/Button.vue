@@ -38,11 +38,21 @@ export default {
       type: Boolean,
       default: false,
     },
+    shape: {
+      type: String,
+      default: '',
+    },
+    addClass: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
       classBtn: `btn btn-${this.variant} ${
         this.size ? 'btn-' + this.size : ''
+      } ${this.shape === 'pill' ? '!rounded-full' : ''} ${
+        this.addClass ? this.addClass : ''
       }`,
     };
   },

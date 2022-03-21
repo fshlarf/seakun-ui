@@ -106,6 +106,18 @@ button:hover:disabled {
   }
 }
 
+.btn-forth {
+  background-color: #ffffff !important;
+  color: #417465 !important;
+  padding: 0.8rem 3rem;
+  font-size: 16px;
+  &:focus,
+  &:active,
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .text-primary {
   color: #86d0c1 !important;
 }
