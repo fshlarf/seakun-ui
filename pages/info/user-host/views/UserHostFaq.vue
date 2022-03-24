@@ -82,7 +82,7 @@
                 <li>
                   Bersedia mendahulukan pembayaran ke provider entertainment
                   yang terkait dengan uang pribadi (akan diganti Seakun.id
-                  paling lama 4 jam setelah menunjukkan bukti pembayaran).
+                  paling lama 24 jam setelah menunjukkan bukti pembayaran).
                 </li>
               </ol>
             </Accordion>
