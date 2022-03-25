@@ -75,6 +75,7 @@
               <ol class="mt-2">
                 <li>
                   Memiliki
+                  <b>e-wallet (Dana/Gopay)</b> atau
                   <b>kartu debit/kredit internasional</b>
                   seperti BNI, Mandiri, Jenius dan kartu lain yang memiliki logo
                   VISA dan Mastercard.
@@ -82,7 +83,7 @@
                 <li>
                   Bersedia mendahulukan pembayaran ke provider entertainment
                   yang terkait dengan uang pribadi (akan diganti Seakun.id
-                  paling lama 4 jam setelah menunjukkan bukti pembayaran).
+                  paling lama 24 jam setelah menunjukkan bukti pembayaran).
                 </li>
               </ol>
             </Accordion>

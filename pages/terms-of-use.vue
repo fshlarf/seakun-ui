@@ -2,7 +2,7 @@
   <div class="terms-of-use">
     <h3 class="text-3xl">Syarat dan Ketentuan Penggunaan</h3>
     <h5 class="font-bold text-xl" style="margin-bottom: 30px">
-      Terakhir diperbaharui: 15 April 2021
+      Terakhir diperbaharui: 25 Maret 2022
     </h5>
     <div>
       <b>PENTING.</b> Anda dimohon untuk membaca Syarat dan Ketentuan Penggunaan
@@ -234,6 +234,23 @@
           apapun pada aplikasi/website Gramedia.
         </li>
       </ul>
+    </div>
+
+    <div>
+      <h5 class="text-xl mb-2">Pembayaran</h5>
+      <div>
+        Seakun.id menyediakan dua metode pembayaran yaitu pembayaran otomatis
+        dan manual. Pada pembayaran otomatis tersedia pembayaran melalui QRIS,
+        E-wallet, Retail dan Virtual Account. Virtual Account dan Retail hanya
+        berlaku untuk durasi di atas 3 bulan berlangganan. Untuk pembayaran
+        manual tersedia transfer bank ke Bank Mandiri, BCA dan Jenius atas nama
+        PT. Seakun Global Teknologi. Dengan memilih pembayaran menggunakan
+        metode manual, pengguna bersedia melakukan pembayaran dengan total
+        nominal sesuai dengan pesanan yang dipesan ditambah 2 kode unik. Kode
+        unik bertujuan untuk memudahkan sistem dalam mengolah transaksi. Dan
+        dengan memilih pembayaran metode manual, pengguna setuju nominal 2 kode
+        unik menjadi keuntungan Seakun.id.
+      </div>
     </div>
 
     <div>

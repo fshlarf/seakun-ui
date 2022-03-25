@@ -12,12 +12,12 @@
         Under Maintenance
       </h1>
       <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
-        Maaf kepada seluruh pengguna Seakun.id mulai tanggal 11 Januari 2022
-        website Seakun.id sedang maintenance.
+        Maaf kepada seluruh pengguna Seakun.id sedang dilakukan proses
+        maintenance.
       </p>
       <br />
       <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
-        Kembali lagi besok tanggal 12 Januari 2022 jam 09.00 WIB ya. See you!
+        Kembali aktif lagi Sabtu, 19 Maret 2022 pukul 06.00 WIB ya. See you!
       </p>
       <a
         class="w-full"
@@ -40,6 +40,9 @@ export default {
   layout: 'new',
   components: {
     Button,
+  },
+  beforeMount() {
+    this.$router.push('/');
   },
 };
 </script>
