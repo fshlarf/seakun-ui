@@ -10,10 +10,10 @@
               untuk
               <b
                 >memberikan kewenangan ke salah satu anggota member di dalam
-                satu grup berlangganan bersama untuk menggunakan kartu
-                debit/kredit miliknya untuk melakukan pembayaran</b
-              >
-              ke Provider Entertainment.
+                satu grup berlangganan bersama untuk melakukan administrasi ke
+                provider tertentu</b
+              >. Administrasi tersebut bisa berupa pendaftaran atau melakukan
+              pembayaran ke provider tersebut.
             </div>
             <br />
             <div class="info__intro">

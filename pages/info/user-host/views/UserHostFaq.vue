@@ -75,6 +75,7 @@
               <ol class="mt-2">
                 <li>
                   Memiliki
+                  <b>e-wallet (Dana/Gopay)</b> atau
                   <b>kartu debit/kredit internasional</b>
                   seperti BNI, Mandiri, Jenius dan kartu lain yang memiliki logo
                   VISA dan Mastercard.
