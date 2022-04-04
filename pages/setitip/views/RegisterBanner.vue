@@ -10,12 +10,18 @@
         <span class="font-bold">Setitip, Nebeng Kartu Kredit</span> lewat
         <span class="font-bold">Seakun.id</span>!
       </p>
-      <Button
-        label="Daftar Sekarang"
-        variant="forth"
-        shape="pill"
-        add-class="font-bold shadow tn:inline md:block mx-auto tn:text-sm md:text-base px-4 py-3"
-      />
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScymtKO4tV2y42PtCUSQG4v8tCiiWrmmw9QNrWUcxkAyDvD5g/viewform"
+        target="_blank"
+        class="!no-underline"
+      >
+        <Button
+          label="Daftar Sekarang"
+          variant="forth"
+          shape="pill"
+          add-class="font-bold shadow tn:inline md:block mx-auto tn:text-sm md:text-base px-4 py-3"
+        />
+      </a>
     </div>
   </div>
 </template>

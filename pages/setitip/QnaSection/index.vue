@@ -27,64 +27,46 @@ export default {
       dataFaq: [
         {
           id: 1,
-          question: 'Kapan masa berlangganan di Seakun aktif?',
+          question: 'Apa yang dimaksud Setitip?',
           answer:
-            'Masa berlangganan terhitung ketika Admin Whatsapp memberikan akun sharing, link invitation atau mengundang kamu ke grup premium. Masa berlangganan akan tetap berjalan walaupun kamu tidak meng-accept undangan yang telah dikirimkan.',
+            'Setitip merupakan layanan baru dari Seakun dengan tujuan membantu user yang tidak memilki kartu kredit atau kartu debit internasional agar bisa membeli dan menikmati produk, produk digital atau jasa apapun di seluruh dunia tanpa terhalang metode pembayaran.',
           isShow: false,
         },
         {
           id: 2,
           question:
-            'Bagaimana mekanisme untuk melanjutkan langganan di Seakun?',
+            'Berapa lama menunggu waktu belanja yang dilakukan Seakun setelah saya transfer ke Seakun?',
           answer:
-            'Seminggu dan maksimal sehari sebelum masa berlangganan habis, kamu akan menerima reminder perpanjangan melalui email & Whatsapp yang terdaftar. Jika kamu ingin melanjutkan masa berlangganan, silakan melakukan transfer ke rekening / e-wallet Seakun dengan nominal yang diinformasikan.',
+            'Proses pembelian belanjaan kamu sesuai dengan produk yang kamu pesan paling lama 1 x 24 jam. Apabila sudah melewati rentang waktu tersebut dan pesanan belum diproses, silahkan lapor di Seakun.id/help.',
           isShow: false,
         },
         {
           id: 3,
-          question: 'Apa perbedaan seakun dengan platform langganan yang lain?',
+          question:
+            'Apakah saya harus memberikan credential (akun) saya ke Seakun?',
           answer:
-            'Seakun adalah platform yang konsepnya mempertemukan kamu dengan kawan berlangganan yang mempunyai interest yang sama, sehingga akun hanya dishare ke member dalam satu grup tertentu aja. Berbeda dengan seller akun sharing yang biasanya akan menyebarkan akun ke banyak orang. Skema harga Seakun sangat transparan karena harga berlangganan adalah harga yang dibagi rata dengan jumlah member dalam satu grup.',
+            'Ya, benar. Sementara Seakun perlu login ke akun kamu dan mempurchase belanjaan yang sudah kamu pesan menggunakan kartu debit online internasional / kartu kredit milik Seakun. Setelah proses purchase selesai, kamu boleh mengganti password akun tersebut.',
           isShow: false,
         },
         {
           id: 4,
-          question: 'Apa perbedaan User Host dan User Reguler?',
+          question: 'Apakah aman memberikan password akun saya ke Seakun?',
           answer:
-            'User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Sedangkan User Reguler, kamu tinggal terima jadi saja, proses pendaftaran ke provider dan pencarian kawan berlangganan akan dihandle oleh Seakun.',
+            'Seakun berkomitmen dan bertanggung jawab penuh dalam menjaga kerahasiaan akun user yang dibagikan ke Seakun. Jadi tentu aman untuk memberikan credential (akun) kamu ke Seakun.',
           isShow: false,
         },
         {
           id: 5,
-          question: 'Payment method apa saja yang available di Seakun?',
-          answer: 'Bank transfer Mandiri, BCA, Jenius, Gopay, LinkAja',
+          question: 'Berapa biaya admin untuk layanan Setitip?',
+          answer:
+            'Seakun perlu mengambil biaya 5% dari harga produk yang kamu pesan sebagai biaya administrasi layanan Setitip.',
           isShow: false,
         },
         {
           id: 6,
-          question: 'Bagaimana prosedur menjadi User Host?',
-          answer: [
-            '1. Daftar dengan memilih paket User Host. Misal User Host Netflix',
-            '2. Admin akan melakukan konfirmasi melalui Whatsapp',
-            '3. Lakukan pendaftaran menggunakan akun yang ditentukan oleh Admin',
-            '4. Lakukan pembayaran di provider menggunakan kartu kredit/debit/gopay (khusus Netflix)',
-            '5. Setelah berhasil melakukan pembayaran, informasikan ke Admin',
-            '6. Admin akan mengirimkan pengganti dana yang terdebet',
-          ],
-          list: true,
-          isShow: false,
-        },
-        {
-          id: 7,
-          question: 'Bagaimana bila ada kendala ketika proses pembayaran?',
-          answer: `Bila kamu mengalami kendala dalam melakukan proses pembayaran, seperti: tidak mendapat konfirmasi dan follow up. Mohon isi form pada <a href='https://forms.gle/t1AbaxnjEtJr8NAPA' target='_blank' class='text-secondary font-bold'>link ini</a>. Kami akan segera menghubungi kamu maksimal dalam 1x24 jam.`,
-          isShow: false,
-        },
-        {
-          id: 8,
-          question:
-            'Apa yang harus dilakukan bila akun langganan mengalami masalah?',
-          answer: `Bila akun kamu mengalami masalah, seperti: telah melakukan pembayaran namun akun berubah menjadi free kembali. Mohon isi form pada <a href='https://forms.gle/t1AbaxnjEtJr8NAPA' target='_blank' class='text-secondary font-bold'>link ini</a>. Kami akan segera menghubungi kamu maksimal 1x24 jam.`,
+          question: 'Produk apa yang bisa saya beli menggunakan Setitip?',
+          answer:
+            'Produk yang dapat kamu beli menggunakan layanana Setitip adalah semua produk baik barang atau produk digital dari seluruh dunia yang memenuhi kriteria aman untuk dibeli menurut penilaian Seakun.',
           isShow: false,
         },
       ],

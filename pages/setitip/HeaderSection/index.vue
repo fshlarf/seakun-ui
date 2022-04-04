@@ -26,13 +26,18 @@
           <span class="font-bold">Mudah, Cepat</span> dan
           <span class="font-bold">Aman</span>.
         </p>
-        <Button
-          label="Daftar Sekarang"
-          variant="primary"
-          shape="pill"
-          add-class="tn:text-sm md:text-base tn:py-2 md:py-3 px-4 font-bold tn:flex md:block justify-center tn:mx-auto md:mx-0"
-          @click="toOrderPage"
-        />
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScymtKO4tV2y42PtCUSQG4v8tCiiWrmmw9QNrWUcxkAyDvD5g/viewform"
+          target="_blank"
+          class="!no-underline"
+        >
+          <Button
+            label="Daftar Sekarang"
+            variant="primary"
+            shape="pill"
+            add-class="tn:text-sm md:text-base tn:py-2 md:py-3 px-4 font-bold tn:flex md:block justify-center tn:mx-auto md:mx-0"
+          />
+        </a>
       </div>
       <img
         src="/images/setitip/header/banner.png"
@@ -51,7 +56,8 @@ export default {
   },
   methods: {
     toOrderPage() {
-      this.$router.push('/setitip/order');
+      window.location =
+        'https://docs.google.com/forms/d/e/1FAIpQLScymtKO4tV2y42PtCUSQG4v8tCiiWrmmw9QNrWUcxkAyDvD5g/viewform';
     },
   },
 };
