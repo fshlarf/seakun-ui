@@ -11,7 +11,7 @@
         :total-payment-digital="totalPayment"
         :detail-payment-sequrban="detailPaymentSequrban"
       />
-      <div class="tn:text-sm md:text-base tn:mx-3 md:mx-4 tn:mt-4 md:mt-8">
+      <div class="tn:text-sm md:text-base md:mx-4 tn:mt-4 md:mt-8">
         <p class="tn:mb-2 md:mb-4">
           Segera <span class="font-bold">upload bukti pembayaran</span> kamu
           agar orderan dapat segera diproses oleh Admin Seakun.
@@ -20,13 +20,16 @@
           <span class="font-bold">Catatan:</span> Dengan melakukan pembayaran
           menggunakan metode manual, pengguna setuju untuk membayar total biaya
           berlangganan ditambah dengan kode unik. Selengkapnya dapat dibaca pada
-          <nuxt-link to="/terms-of-use" target="_blank"
+          <nuxt-link
+            class="text-blue-400 font-semibold"
+            to="/terms-of-use"
+            target="_blank"
             >Syarat dan Ketentuan</nuxt-link
           >
           Seakun.id
         </p>
       </div>
-      <div class="tn:mt-4 md:mt-8 tn:mx-3 md:mx-4 mb-4 text-center">
+      <div class="tn:mt-4 md:mt-8 md:mx-4 mb-4 text-center">
         <Button
           v-if="type !== 1"
           class="w-full bg-green-seakun text-white py-2"
