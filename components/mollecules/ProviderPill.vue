@@ -7,9 +7,9 @@
     <p class="text-lg font-bold">
       {{ provider.name }}
       <span
-        v-if="!isLoading && provider.slug === dataGroup[0].name"
+        v-if="!isLoading && dataGroup.length > 0 && provider.slug === dataGroup[0].providerSlug"
         class="text-sm font-normal"
-        >({{ dataGroup[0].groupNumber }} grup)</span
+        >({{ dataGroup[0].group }} grup)</span
       >
     </p>
   </div>

@@ -35,6 +35,7 @@ import { SEAKUN_API } from '~/constants/api.js';
 import GroupCard from '~/components/mollecules/GroupCard';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import Title from '~/components/atoms/Title';
+import MasterService from '~/services/MasterServices.js';
 
 export default {
   components: {
@@ -45,6 +46,7 @@ export default {
   layout: 'new',
   data() {
     return {
+      MasterService,
       SEAKUN_API,
       customers: [],
       shimmerInitialData: Array(4),
@@ -52,9 +54,33 @@ export default {
     };
   },
   mounted() {
-    this.getCustomersData();
+    this.MasterService = new MasterService(this);
+    let provider = this.$route.query.provider;
+    // this.getCustomersData();
+    this.getAccountGroups(provider);
   },
   methods: {
+    async getAccountGroups(providerUid) {
+      this.isLoading = true;
+      const { MasterService } = this;
+      const params = {
+        page: 1,
+        limit: 5,
+        providerUid
+      }
+      try {
+        const fetchAccountGroups = await MasterService.getAccountGroups(params)
+        if (fetchAccountGroups.data){
+          const { data } = fetchAccountGroups.data
+          this.customers = data ? data : [];
+          this.isLoading = false;
+        }else{
+          throw new Error(fetchAccountGroups);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     getCustomersData() {
       const { SEAKUN_API } = this;
       let provider = this.$route.query.provider;

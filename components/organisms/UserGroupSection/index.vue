@@ -130,63 +130,64 @@ export default {
         limit: 20,
       },
       highlight: 'netflix',
+      providerUid: 'c17134e5-87fa-4acc-ab6e-c558c90c1fb5',
       dataProviderList: [
         {
-          id: 1,
+          id: 'c17134e5-87fa-4acc-ab6e-c558c90c1fb5',
           name: 'Netflix',
           slug: 'netflix',
           icon: '/images/icons/netflix.svg',
         },
         {
-          id: 2,
+          id: 'bfdc540d-6e38-4ec8-ae31-126bc0f07c2f',
           name: 'Spotify',
           slug: 'spotify',
           icon: '/images/icons/spotify.svg',
         },
         {
-          id: 3,
+          id: '1ab65f85-0665-4e96-aca4-1ec232b95774',
           name: 'Gramedia',
           slug: 'gramedia',
           icon: '/images/icons/gramedia-digital.svg',
         },
         {
-          id: 4,
+          id: '1ec4b4fa-a756-456b-a01a-f48ff48fad58',
           name: 'Youtube',
           slug: 'youtube',
           icon: '/images/icons/youtube.svg',
         },
         {
-          id: 5,
+          id: '9ff8bca6-1c8c-4ef1-b4c3-a26971810e7f',
           name: 'Microsoft 365',
           slug: 'microsoft',
           icon: '/images/icons/microsoft-365.svg',
         },
         {
-          id: 6,
+          id: '44ae9b57-106a-48e1-9977-bb4c0d356cf3',
           name: 'Canva',
           slug: 'canva',
           icon: '/images/icons/canva.svg',
         },
         {
-          id: 7,
+          id: '1b888c0a-bf61-4f06-8ff7-b09b6d8ce7fa',
           name: 'Disney+ Hotstar',
           slug: 'disney-hotstar',
           icon: '/images/icons/disney-hotstar.png',
         },
         {
-          id: 8,
+          id: '1156974a-8bcb-487c-8a2f-766e5d79b561',
           name: 'Apple One',
           slug: 'apple-one',
           icon: '/images/icons/apple-one.svg',
         },
         {
-          id: 9,
+          id: 'ecd90f47-4db0-4f6c-ab4e-e0c1f996e24e',
           name: 'Wattpad',
           slug: 'wattpad',
           icon: '/images/icons/wattpad.svg',
         },
         {
-          id: 10,
+          id: 'df936c0d-d6f2-4d2d-a5eb-fa59a128cbd5',
           name: 'Google One',
           slug: 'google-one',
           icon: '/images/icons/google-one.svg',
@@ -211,7 +212,8 @@ export default {
   },
   mounted() {
     this.MasterService = new MasterService(this);
-    this.getCustomersData('netflix');
+    // this.getCustomersData('netflix');
+    this.getAccountGroups(this.providerUid)
     this.getProviders();
   },
   methods: {
@@ -230,9 +232,10 @@ export default {
       }
     },
     selectProvider(provider) {
-      this.getCustomersData(provider.slug);
+      this.getAccountGroups(provider.id);
       this.isLoading = true;
       this.highlight = provider.slug;
+      this.providerUid = provider.id
     },
     async getProviders() {
       this.isLoadingProduct = true;
@@ -251,6 +254,26 @@ export default {
         console.log(error);
       }
       this.isLoadingProduct = false;
+    },
+    async getAccountGroups(providerUid) {
+      const {MasterService} = this;
+      const params = {
+        page: 1,
+        limit: 5,
+        providerUid
+      }
+      try {
+        const fetchAccountGroups = await MasterService.getAccountGroups(params)
+        if (fetchAccountGroups.data){
+          const { data } = fetchAccountGroups.data
+          this.dataDetailGroup = data ? data : [];
+          this.isLoading = false;
+        }else{
+          throw new Error(fetchAccountGroups);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
     getCustomersData(provider) {
       axios
@@ -288,7 +311,7 @@ export default {
       this.dataDetailGroup = netArr;
     },
     toCustomerPage() {
-      this.$router.push(`/info/customers?provider=${this.highlight}`);
+      this.$router.push(`/info/customers?provider=${this.providerUid}`);
     },
     onClickOrder(provider) {
       if (provider.toLowerCase() === 'microsoft') {
