@@ -37,7 +37,7 @@ export default {
           question:
             'Berapa lama menunggu waktu belanja yang dilakukan Seakun setelah saya transfer ke Seakun?',
           answer:
-            'Proses pembelian belanjaan kamu sesuai dengan produk yang kamu pesan paling lama 1 x 24 jam. Apabila sudah melewati rentang waktu tersebut dan pesanan belum diproses, silahkan lapor di Seakun.id/help.',
+            "Proses pembelian belanjaan kamu sesuai dengan produk yang kamu pesan paling lama 1 x 24 jam. Apabila sudah melewati rentang waktu tersebut dan pesanan belum diproses, silahkan lapor di <a href='seakun.id/help' target='_blank' class='text-secondary font-bold'>Seakun.id/help</a>.",
           isShow: false,
         },
         {
@@ -66,7 +66,7 @@ export default {
           id: 6,
           question: 'Produk apa yang bisa saya beli menggunakan Setitip?',
           answer:
-            'Produk yang dapat kamu beli menggunakan layanana Setitip adalah semua produk baik barang atau produk digital dari seluruh dunia yang memenuhi kriteria aman untuk dibeli menurut penilaian Seakun.',
+            'Produk yang dapat kamu beli menggunakan layanan Setitip adalah semua produk baik barang atau produk digital dari seluruh dunia yang memenuhi kriteria aman untuk dibeli menurut penilaian Seakun.',
           isShow: false,
         },
       ],

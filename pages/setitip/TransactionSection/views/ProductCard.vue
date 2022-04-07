@@ -29,26 +29,40 @@
           </div>
         </div>
         <div class="tn:mb-1 tn:px-2 tn:mt-3 lg:px-4">
-          <div class="flex mb-2">
+          <div class="flex space-x-2 items-center mb-2">
+            <p>Dibeli oleh:</p>
             <div
-              class="rounded-full border border-px border-white bg-red-500 text-white w-7 h-7 flex justify-center items-center text-xs"
+              v-for="(user, id) in product.users"
+              :key="id"
+              class="rounded-full relative cursor-pointer border border-px border-white bg-primary text-white w-7 h-7 flex justify-center items-center text-xs"
+              @mouseenter="toggleTooltip()"
+              @mouseleave="toggleTooltip()"
             >
-              A
-            </div>
-            <div
-              class="rounded-full border border-px border-white bg-yellow-500 text-white w-7 h-7 flex -ml-1 justify-center items-center text-xs"
-            >
-              B
-            </div>
-            <div
-              class="rounded-full border border-px border-white bg-yellow-300 text-white w-7 h-7 flex -ml-1 justify-center items-center text-xs"
-            >
-              C
-            </div>
-            <div
-              class="rounded-full border border-px border-white bg-blue-300 text-white w-7 h-7 flex -ml-1 justify-center items-center text-xs"
-            >
-              5+
+              {{ user.initial }}
+              <div
+                class="absolute z-10 tn:-top-10 md:-top-8 tn:left-15 md:-left-12"
+                :class="{ hidden: !tooltipShow, block: tooltipShow }"
+              >
+                <div class="relative mx-2">
+                  <div
+                    class="bg-third text-black text-center text-xs rounded py-1 px-2 left-0 w-24"
+                  >
+                    {{ user.name }}
+                    <svg
+                      class="absolute h-2 w-full left-0 top-full"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 255 255"
+                      xml:space="preserve"
+                    >
+                      <polygon
+                        class="fill-current text-third tn:hidden md:block"
+                        points="0,0 127.5,127.5 255,0"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <p class="text-secondary text-xl font-bold">
@@ -69,9 +83,17 @@ export default {
       default: {},
     },
   },
+  data() {
+    return {
+      tooltipShow: false,
+    };
+  },
   methods: {
     formatMoneyRupiah(num) {
       return currencyFormat(num);
+    },
+    toggleTooltip() {
+      this.tooltipShow = !this.tooltipShow;
     },
   },
 };

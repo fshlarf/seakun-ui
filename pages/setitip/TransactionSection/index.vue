@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       isLoadingProduct: false,
+      dataUsers: [],
       dataTransaction: [
         {
           id: 1,
@@ -54,39 +55,45 @@ export default {
           slug: 'fifa22',
           img: '/images/setitip/product/fifa.png',
           icon: '/images/setitip/icons/fifa.svg',
-          price: 217500,
-          preview:
-            'Pembelian Game Fifa 22 di Platform Origin. Butuh cepat, soalnya sedang discount 65%!',
+          price: 659000,
+          preview: 'Pembelian Game Fifa 22 di Platform Origin.',
+          users: [
+            {
+              name: 'Faishal Arif',
+              initial: 'FA',
+            },
+          ],
         },
         {
           id: 2,
-          name: 'Fifa 22 (Origin)',
-          slug: 'fifa22',
-          img: '/images/setitip/product/fifa.png',
-          icon: '/images/setitip/icons/fifa.svg',
-          price: 217500,
-          preview:
-            'Pembelian Game Fifa 22 di Platform Origin. Butuh cepat, soalnya sedang discount 65%!',
+          name: 'Adobe Photoshop',
+          slug: 'adobe-photoshop',
+          img: '/images/setitip/product/photoshop.jpg',
+          icon: '/images/setitip/icons/adobe.svg',
+          price: 3237600,
+          preview: 'Pembelian Adobe Photoshop 1 tahun.',
+          users: [
+            {
+              name: 'Aadilah Azis',
+              initial: 'AA',
+            },
+          ],
         },
         {
           id: 3,
-          name: 'Fifa 22 (Origin)',
-          slug: 'fifa22',
-          img: '/images/setitip/product/fifa.png',
-          icon: '/images/setitip/icons/fifa.svg',
-          price: 217500,
+          name: 'Playstation PUBG',
+          slug: 'ps-pubg',
+          img: '/images/setitip/product/pubg.jpg',
+          icon: '/images/setitip/icons/playstation.svg',
+          price: 129000,
           preview:
-            'Pembelian Game Fifa 22 di Platform Origin. Butuh cepat, soalnya sedang discount 65%!',
-        },
-        {
-          id: 4,
-          name: 'Fifa 22 (Origin)',
-          slug: 'fifa22',
-          img: '/images/setitip/product/fifa.png',
-          icon: '/images/setitip/icons/fifa.svg',
-          price: 217500,
-          preview:
-            'Pembelian Game Fifa 22 di Platform Origin. Butuh cepat, soalnya sedang discount 65%!',
+            'Pembelian Game Playstation 4 Players Unknown Battle Ground (PUBG)',
+          users: [
+            {
+              name: 'Benny Fazrido',
+              initial: 'BF',
+            },
+          ],
         },
       ],
     };
