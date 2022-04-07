@@ -43,6 +43,8 @@
         </div>
       </div>
 
+      <SetitipBanner />
+
       <div id="product-ondemand" class="pt-5 px-2 md:my-8">
         <h1 class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4">
           Layanan On Demand
@@ -107,6 +109,7 @@ import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from './provider-list';
 import ModalPackages from './views/ModalPackages.vue';
+import SetitipBanner from './views/SetitipBanner.vue';
 import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
 
 export default {
@@ -116,6 +119,7 @@ export default {
     ProposeCard,
     ModalPriceScheme,
     ModalPackages,
+    SetitipBanner,
   },
   data() {
     return {
