@@ -40,7 +40,7 @@
             >
               {{ user.initial }}
               <div
-                class="absolute z-10 tn:-top-10 md:-top-8 tn:left-15 md:-left-12"
+                class="absolute z-10 tn:-top-7 md:-top-8 tn:-left-8 md:-left-12"
                 :class="{ hidden: !tooltipShow, block: tooltipShow }"
               >
                 <div class="relative mx-2">
