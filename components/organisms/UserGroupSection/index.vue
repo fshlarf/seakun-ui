@@ -19,6 +19,7 @@
           />
         </span>
         <div
+          v-if="!isLoadingProduct"
           id="container-pill"
           class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
         >
@@ -34,6 +35,19 @@
             }"
             @selectProvider="selectProvider"
           />
+        </div>
+        <div
+          v-else
+          id="container-pill"
+          class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-3 -ml-4"
+        >
+          <div
+            class="max-w-sm w-72 h-16 py-3 px-3 tn:rounded-full lg:rounded-2xl shadow flex space-x-2 items-center justify-center"
+            v-for="(item, index) in shimmerInitialData"
+            :key="index"
+          >
+            <div class="shimmer h-8 w-96"></div>
+          </div>
         </div>
         <span class="hidden xl:block -mr-14 z-20 mt-1 ml-2">
           <ButtonChevron
@@ -129,76 +143,9 @@ export default {
         page: 1,
         limit: 20,
       },
-      highlight: 'netflix',
-      providerUid: 'c17134e5-87fa-4acc-ab6e-c558c90c1fb5',
-      dataProviderList: [
-        {
-          id: 'c17134e5-87fa-4acc-ab6e-c558c90c1fb5',
-          name: 'Netflix',
-          slug: 'netflix',
-          icon: '/images/icons/netflix.svg',
-        },
-        {
-          id: 'bfdc540d-6e38-4ec8-ae31-126bc0f07c2f',
-          name: 'Spotify',
-          slug: 'spotify',
-          icon: '/images/icons/spotify.svg',
-        },
-        {
-          id: '1ab65f85-0665-4e96-aca4-1ec232b95774',
-          name: 'Gramedia',
-          slug: 'gramedia',
-          icon: '/images/icons/gramedia-digital.svg',
-        },
-        {
-          id: '1ec4b4fa-a756-456b-a01a-f48ff48fad58',
-          name: 'Youtube',
-          slug: 'youtube',
-          icon: '/images/icons/youtube.svg',
-        },
-        {
-          id: '9ff8bca6-1c8c-4ef1-b4c3-a26971810e7f',
-          name: 'Microsoft 365',
-          slug: 'microsoft',
-          icon: '/images/icons/microsoft-365.svg',
-        },
-        {
-          id: '44ae9b57-106a-48e1-9977-bb4c0d356cf3',
-          name: 'Canva',
-          slug: 'canva',
-          icon: '/images/icons/canva.svg',
-        },
-        {
-          id: '1b888c0a-bf61-4f06-8ff7-b09b6d8ce7fa',
-          name: 'Disney+ Hotstar',
-          slug: 'disney-hotstar',
-          icon: '/images/icons/disney-hotstar.png',
-        },
-        {
-          id: '1156974a-8bcb-487c-8a2f-766e5d79b561',
-          name: 'Apple One',
-          slug: 'apple-one',
-          icon: '/images/icons/apple-one.svg',
-        },
-        {
-          id: 'ecd90f47-4db0-4f6c-ab4e-e0c1f996e24e',
-          name: 'Wattpad',
-          slug: 'wattpad',
-          icon: '/images/icons/wattpad.svg',
-        },
-        {
-          id: 'df936c0d-d6f2-4d2d-a5eb-fa59a128cbd5',
-          name: 'Google One',
-          slug: 'google-one',
-          icon: '/images/icons/google-one.svg',
-        },
-        // {
-        //   id: 10,
-        //   name: 'Nintendo Switch',
-        //   slug: 'nintendo-switch',
-        //   icon: '/images/icons/nintendo.svg',
-        // },
-      ],
+      highlight: 'youtube',
+      providerUid: '1ec4b4fa-a756-456b-a01a-f48ff48fad58',
+      dataProviderList: [],
     };
   },
   components: {
@@ -213,8 +160,8 @@ export default {
   mounted() {
     this.MasterService = new MasterService(this);
     // this.getCustomersData('netflix');
-    this.getAccountGroups(this.providerUid)
     this.getProviders();
+    this.getAccountGroups(this.providerUid);
   },
   methods: {
     scrollPill(direction) {
@@ -232,10 +179,10 @@ export default {
       }
     },
     selectProvider(provider) {
-      this.getAccountGroups(provider.id);
+      this.getAccountGroups(provider.uid);
       this.isLoading = true;
       this.highlight = provider.slug;
-      this.providerUid = provider.id
+      this.providerUid = provider.uid;
     },
     async getProviders() {
       this.isLoadingProduct = true;
@@ -247,6 +194,7 @@ export default {
         if (fetchProviderList.data) {
           const { data } = fetchProviderList.data;
           this.dataProviders = data;
+          this.dataProviderList = data;
         } else {
           throw new Error(fetchProviderList);
         }
@@ -256,19 +204,20 @@ export default {
       this.isLoadingProduct = false;
     },
     async getAccountGroups(providerUid) {
-      const {MasterService} = this;
+      const { MasterService } = this;
       const params = {
         page: 1,
         limit: 5,
-        providerUid
-      }
+        providerUid,
+      };
       try {
-        const fetchAccountGroups = await MasterService.getAccountGroups(params)
-        if (fetchAccountGroups.data){
-          const { data } = fetchAccountGroups.data
+        const fetchAccountGroups = await MasterService.getAccountGroups(params);
+        if (fetchAccountGroups.data) {
+          const { data } = fetchAccountGroups.data;
           this.dataDetailGroup = data ? data : [];
           this.isLoading = false;
-        }else{
+          console.log(data);
+        } else {
           throw new Error(fetchAccountGroups);
         }
       } catch (error) {

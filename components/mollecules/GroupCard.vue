@@ -16,7 +16,7 @@
     <div class="h-px w-full bg-primary my-2"></div>
     <ol class="space-y-1">
       <li v-for="(member, id) in group.accountGroup" :key="id">
-        <span v-if="member">{{ id + 1 }}. {{ setName(member.customerName) }}</span>
+        <span v-if="member.customerName != '-'">{{ id + 1 }}. {{ setName(member.customerName) }}</span>
         <span v-else class="text-secondary font-bold"
           >{{ id + 1 }}. Slot tersedia</span
         >
@@ -28,7 +28,7 @@
         variant="primary"
         class="w-full mt-4 font-bold"
         :disabled="setDisabledBtn(group.accountGroup)"
-        @click="$emit('click-order', group.name)"
+        @click="$emit('click-order', group.providerName)"
       />
     </div>
   </div>
