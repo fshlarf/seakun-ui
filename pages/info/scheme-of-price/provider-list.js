@@ -784,4 +784,42 @@ export const providerList = [
       },
     ],
   },
+  {
+    img: '/images/apple-one.png',
+    screenshot: '/images/ss-apple-one-premium.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Apple One Premium',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Apple One Premium (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Apple One Premium',
+        value: 'Rp275.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp275.000 ÷ 5 = Rp55.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp60.000',
+        is_total: true,
+      },
+    ],
+  },
 ];

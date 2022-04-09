@@ -85,7 +85,7 @@ export default {
       orderNumber: '',
       vouchersData: [],
       setNameProvider,
-      SEAKUN_PACKAGE_API
+      SEAKUN_PACKAGE_API,
     };
   },
   mounted() {
@@ -172,6 +172,8 @@ export default {
       } else if (provider.toLowerCase() === 'netflix') {
         return 'payment';
       } else if (provider.toLowerCase() === 'apple-one') {
+        return 'verifikasi Apple ID';
+      } else if (provider.toLowerCase() === 'apple-one-premium') {
         return 'verifikasi Apple ID';
       } else {
         return 'payment';
