@@ -45,6 +45,9 @@ export function setNameProvider(provider) {
     case 'apple-one':
       return 'Apple One';
       break;
+    case 'apple-one-premium':
+      return 'Apple One Premium';
+      break;
     case 'wattpad':
       return 'Wattpad';
       break;
