@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/svg": "^0.1.12",
     "autoprefixer": "^10.2.6",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "node-sass": "^6.0.1",
     "nuxt": "^2.13.0",
     "nuxt-facebook-pixel-module": "^1.5.0",
