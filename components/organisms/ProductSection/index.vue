@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <SetitipBanner />
+      <!-- <SetitipBanner /> -->
 
       <div id="product-ondemand" class="pt-5 px-2 md:my-8">
         <h1 class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4">
