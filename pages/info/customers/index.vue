@@ -25,12 +25,22 @@
           class="flex-none w-full mx-auto my-2"
         />
       </div>
+      <div v-if="isLoadingNext">
+        <div class="grid md:grid-cols-4 gap-6 mt-4">
+          <div
+            class="col"
+            v-for="(item, index) in shimmerInitialData"
+            :key="index"
+          >
+            <CardShimmerVertical />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 import { SEAKUN_API } from '~/constants/api.js';
 import GroupCard from '~/components/mollecules/GroupCard';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
@@ -51,45 +61,76 @@ export default {
       customers: [],
       shimmerInitialData: Array(4),
       isLoading: false,
+      isLoadingNext: false,
+      pagination: {
+        currentPage: 1,
+        perPages: 8,
+      },
     };
   },
   mounted() {
     this.MasterService = new MasterService(this);
     let provider = this.$route.query.provider;
-    // this.getCustomersData();
     this.getAccountGroups(provider);
+    this.getNextAccountGroup(provider);
   },
   methods: {
     async getAccountGroups(providerUid) {
       this.isLoading = true;
       const { MasterService } = this;
       const params = {
-        page: 1,
-        limit: 5,
-        providerUid
-      }
+        page: this.pagination.currentPage,
+        limit: this.pagination.perPages,
+        providerUid,
+      };
       try {
-        const fetchAccountGroups = await MasterService.getAccountGroups(params)
-        if (fetchAccountGroups.data){
-          const { data } = fetchAccountGroups.data
+        const fetchAccountGroups = await MasterService.getAccountGroups(params);
+        if (fetchAccountGroups.data) {
+          const { data, pagination } = fetchAccountGroups.data;
           this.customers = data ? data : [];
+          this.pagination = pagination;
           this.isLoading = false;
-        }else{
+        } else {
           throw new Error(fetchAccountGroups);
         }
       } catch (error) {
         console.log(error);
       }
     },
-    getCustomersData() {
-      const { SEAKUN_API } = this;
-      let provider = this.$route.query.provider;
-      this.isLoading = true;
-      axios
-        .get(`${SEAKUN_API}/registered-user/group-${provider}`)
-        .then((res) => this.processDataCustomers(res.data))
-        .catch((err) => console.log(err))
-        .finally(() => (this.isLoading = false));
+    getNextAccountGroup(providerUid) {
+      window.onscroll = async () => {
+        let heightFooter = document.getElementsByClassName('footer')[0];
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight >=
+          document.documentElement.offsetHeight - heightFooter.offsetHeight;
+        if (bottomOfWindow && !this.isLoading && !this.isLoadingNext) {
+          if (this.pagination.currentPage !== this.pagination.numOfPages) {
+            this.isLoadingNext = true;
+            const { MasterService } = this;
+            const params = {
+              page: this.pagination.currentPage + 1,
+              limit: this.pagination.perPages,
+              providerUid,
+            };
+            try {
+              const fetchAccountGroups = await MasterService.getAccountGroups(
+                params
+              );
+              if (fetchAccountGroups.data) {
+                const { data, pagination } = fetchAccountGroups.data;
+                this.customers = [...this.customers, ...data];
+                this.pagination = pagination;
+                this.isLoadingNext = false;
+                console.log(data);
+              } else {
+                throw new Error(fetchAccountGroups);
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        }
+      };
     },
     processDataCustomers(customers) {
       let newArr = [];
