@@ -24,7 +24,7 @@
           class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
         >
           <ProviderPill
-            v-for="(provider, id) in dataProviderList"
+            v-for="(provider, id) in dataProviders"
             :key="id"
             :provider="provider"
             :is-loading="isLoading"
@@ -58,7 +58,10 @@
       </div>
 
       <div v-if="!isLoading" class="relative flex items-center w-full">
-        <span class="hidden xl:block -ml-10 mr-4">
+        <span
+          v-if="dataDetailGroup.length >= 5"
+          class="hidden xl:block -ml-10 mr-4"
+        >
           <ButtonChevron
             mode="left"
             class="self-center opacity-30 hover:opacity-100"
@@ -77,19 +80,22 @@
             @click-order="onClickOrder"
           />
           <ButtonChevron
+            v-if="dataDetailGroup.length >= 5"
             btnText="Selengkapnya"
             class="self-center"
             @click-chevron="toCustomerPage"
           />
         </div>
-        <span class="hidden xl:block -mr-14 z-20 ml-2">
+        <span
+          v-if="dataDetailGroup.length >= 5"
+          class="hidden xl:block -mr-14 z-20 ml-2"
+        >
           <ButtonChevron
             class="self-center opacity-30 hover:opacity-100"
             @click-chevron="scrollCard('right')"
           />
         </span>
       </div>
-
       <div
         v-else
         class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto px-3 py-2"
@@ -145,7 +151,6 @@ export default {
       },
       highlight: 'youtube',
       providerUid: '1ec4b4fa-a756-456b-a01a-f48ff48fad58',
-      dataProviderList: [],
     };
   },
   components: {
@@ -159,7 +164,6 @@ export default {
   },
   mounted() {
     this.MasterService = new MasterService(this);
-    // this.getCustomersData('netflix');
     this.getProviders();
     this.getAccountGroups(this.providerUid);
   },
@@ -194,7 +198,6 @@ export default {
         if (fetchProviderList.data) {
           const { data } = fetchProviderList.data;
           this.dataProviders = data;
-          this.dataProviderList = data;
         } else {
           throw new Error(fetchProviderList);
         }
@@ -216,48 +219,12 @@ export default {
           const { data } = fetchAccountGroups.data;
           this.dataDetailGroup = data ? data : [];
           this.isLoading = false;
-          console.log(data);
         } else {
           throw new Error(fetchAccountGroups);
         }
       } catch (error) {
         console.log(error);
       }
-    },
-    getCustomersData(provider) {
-      axios
-        .get(
-          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
-        )
-        .then((res) => {
-          this.processDataCustomers(res.data, provider);
-          this.isLoading = false;
-        })
-        .catch((err) => console.log(err));
-    },
-    processDataCustomers(customers, provider) {
-      let newArr = [];
-      let theArr = [];
-
-      customers.map((e, i) => {
-        newArr.push(e.group);
-        theArr[parseInt(e.group) - 1] = {
-          groupNumber: parseInt(e.group),
-          members: [],
-          name: e.provider,
-          brand: `/images/${e.provider}.png`,
-        };
-      });
-      customers.map((e, i) => {
-        if (newArr.includes(e.group)) {
-          theArr[parseInt(e.group) - 1].members.push(e.customer_name);
-        }
-      });
-      const netArr = theArr
-        .slice(theArr.length - 5, theArr.length - 0)
-        .sort()
-        .reverse();
-      this.dataDetailGroup = netArr;
     },
     toCustomerPage() {
       this.$router.push(`/info/customers?provider=${this.providerUid}`);
