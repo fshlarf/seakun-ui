@@ -121,7 +121,6 @@ export default {
                 this.customers = [...this.customers, ...data];
                 this.pagination = pagination;
                 this.isLoadingNext = false;
-                console.log(data);
               } else {
                 throw new Error(fetchAccountGroups);
               }
