@@ -785,10 +785,10 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/apple-one.png',
-    screenshot: '/images/ss-apple-one-premium.png',
+    img: '/images/apple-one-premier.png',
+    screenshot: '/images/ss-apple-one-premier.png',
     schemes: [
-      'Seakun membuat akun dan membeli Paket Apple One Premium',
+      'Seakun membuat akun dan membeli Paket Apple One Premier',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
@@ -796,11 +796,11 @@ export const providerList = [
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Apple One Premium (Bulanan)',
+        value: 'Paket Apple One Premier (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Apple One Premium',
+        title: 'Harga Paket Apple One Premier',
         value: 'Rp275.000',
       },
       {
