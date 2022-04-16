@@ -12,27 +12,34 @@
     <div class="container">
       <div
         id="slider-desktop"
-        class="tn:hidden md:flex space-x-2 overflow-x-auto overflow-y-hidden slider md:pt-28 lg:pt-36 xl:pt-24"
+        class="tn:hidden md:block md:pt-28 lg:pt-36 xl:pt-24"
       >
+        <!-- <div
+        id="slider-desktop"
+        class="tn:hidden md:flex space-x-2 overflow-x-auto overflow-y-hidden slider md:pt-28 lg:pt-36 xl:pt-24"
+      > -->
         <div class="tn:hidden md:block w-full h-full flex-none slide-first">
           <BannerMain @onClickOrder="onClickOrder" />
         </div>
-        <div class="tn:hidden md:block w-full h-full flex-none slide-first">
+        <!-- <div class="tn:hidden md:block w-full h-full flex-none slide-first">
           <BannerSetitip />
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="relative z-0 pt-20">
       <div
         id="slider-mobile"
-        class="px-3 md:hidden flex overflow-x-auto space-x-3 overflow-y-hidden slider2 place-items-stretch items-stretch"
+        class="px-3 md:hidden place-items-stretch items-stretch"
       >
-        <div class="w-11/12 h-auto flex-none md:hidden">
+        <!-- id="slider-mobile"
+        class="px-3 md:hidden flex overflow-x-auto space-x-3 overflow-y-hidden slider2 place-items-stretch items-stretch"
+      > -->
+        <div class="w-full h-auto flex-none md:hidden">
           <BannerMainMobile @clickOrder="onClickOrder" />
         </div>
-        <div class="w-11/12 h-auto flex-none md:hidden">
+        <!-- <div class="w-11/12 h-auto flex-none md:hidden">
           <BannerSetitipMobile />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -55,7 +62,7 @@ export default {
     BannerSetitipMobile,
   },
   mounted() {
-    this.doSlider();
+    // this.doSlider();
   },
   methods: {
     onClickOrder() {
