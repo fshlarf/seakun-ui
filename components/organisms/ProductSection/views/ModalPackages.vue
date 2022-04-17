@@ -60,6 +60,7 @@ export default {
     return {
       preOrderPackage: [
         'apple-one',
+        'apple-one-premium',
         'canva',
         'disney-hotstar',
         'gramedia-digital',
