@@ -28,6 +28,10 @@ class MasterService {
   getSeakunPaymentFrom(params) {
     return this.serviceApi.get('/customer/seakun-payment-from', { params });
   }
+
+  getAccountGroups(params) {
+    return this.serviceApi.get(`/customer/account`, { params });
+  }
 }
 
 export default MasterService;

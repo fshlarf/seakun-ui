@@ -1,22 +1,22 @@
 <template>
   <div v-if="group" class="p-4 my-8 rounded-2xl shadow w-72">
     <div class="flex justify-between items-center">
-      <img :class="setWidthImage(group.name)" :src="`${group.brand}`" alt="#" />
+      <img :class="setWidthImage(group.providerSlug)" :src="`/images/${group.providerSlug}.png`" alt="#" />
       <div
         :class="`px-2  ${
-          group.members.some((el) => el === '') ? 'bg-green-600' : 'full'
+          group.accountGroup.some((el) => el.customerName === '-') ? 'bg-green-600' : 'full'
         } rounded-full`"
       >
         <p class="text-white text-sm font-bold">
-          {{ group.members.some((el) => el === '') ? 'available' : 'full' }}
+          {{ group.accountGroup.some((el) => el.customerName === '-') ? 'available' : 'full' }}
         </p>
       </div>
     </div>
-    <p class="my-2 font-bold">Group {{ group.groupNumber }}</p>
+    <p class="my-2 font-bold">Group {{ group.group }}</p>
     <div class="h-px w-full bg-primary my-2"></div>
     <ol class="space-y-1">
-      <li v-for="(member, id) in group.members" :key="id">
-        <span v-if="member">{{ id + 1 }}. {{ setName(member) }}</span>
+      <li v-for="(member, id) in group.accountGroup" :key="id">
+        <span v-if="member.customerName != '-'">{{ id + 1 }}. {{ setName(member.customerName) }}</span>
         <span v-else class="text-secondary font-bold"
           >{{ id + 1 }}. Slot tersedia</span
         >
@@ -27,8 +27,8 @@
         label="Pesan Sekarang"
         variant="primary"
         class="w-full mt-4 font-bold"
-        :disabled="setDisabledBtn(group.members)"
-        @click="$emit('click-order', group.name)"
+        :disabled="setDisabledBtn(group.accountGroup)"
+        @click="$emit('click-order', group.providerName)"
       />
     </div>
   </div>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     setDisabledBtn(members) {
-      return members.some((el) => el === '') ? false : true;
+      return members.some((el) => el.customerName === '-') ? false : true;
     },
     setName(name) {
       let fixName = '';

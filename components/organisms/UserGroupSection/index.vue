@@ -19,11 +19,12 @@
           />
         </span>
         <div
+          v-if="!isLoadingProduct"
           id="container-pill"
           class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
         >
           <ProviderPill
-            v-for="(provider, id) in dataProviderList"
+            v-for="(provider, id) in dataProviders"
             :key="id"
             :provider="provider"
             :is-loading="isLoading"
@@ -35,6 +36,19 @@
             @selectProvider="selectProvider"
           />
         </div>
+        <div
+          v-else
+          id="container-pill"
+          class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-3 -ml-4"
+        >
+          <div
+            class="max-w-sm w-72 h-16 py-3 px-3 tn:rounded-full lg:rounded-2xl shadow flex space-x-2 items-center justify-center"
+            v-for="(item, index) in shimmerInitialData"
+            :key="index"
+          >
+            <div class="shimmer h-8 w-96"></div>
+          </div>
+        </div>
         <span class="hidden xl:block -mr-14 z-20 mt-1 ml-2">
           <ButtonChevron
             class="self-center opacity-30 hover:opacity-100"
@@ -44,7 +58,10 @@
       </div>
 
       <div v-if="!isLoading" class="relative flex items-center w-full">
-        <span class="hidden xl:block -ml-10 mr-4">
+        <span
+          v-if="dataDetailGroup.length >= 5"
+          class="hidden xl:block -ml-10 mr-4"
+        >
           <ButtonChevron
             mode="left"
             class="self-center opacity-30 hover:opacity-100"
@@ -63,19 +80,22 @@
             @click-order="onClickOrder"
           />
           <ButtonChevron
+            v-if="dataDetailGroup.length >= 5"
             btnText="Selengkapnya"
             class="self-center"
             @click-chevron="toCustomerPage"
           />
         </div>
-        <span class="hidden xl:block -mr-14 z-20 ml-2">
+        <span
+          v-if="dataDetailGroup.length >= 5"
+          class="hidden xl:block -mr-14 z-20 ml-2"
+        >
           <ButtonChevron
             class="self-center opacity-30 hover:opacity-100"
             @click-chevron="scrollCard('right')"
           />
         </span>
       </div>
-
       <div
         v-else
         class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto px-3 py-2"
@@ -129,75 +149,8 @@ export default {
         page: 1,
         limit: 20,
       },
-      highlight: 'netflix',
-      dataProviderList: [
-        {
-          id: 1,
-          name: 'Netflix',
-          slug: 'netflix',
-          icon: '/images/icons/netflix.svg',
-        },
-        {
-          id: 2,
-          name: 'Spotify',
-          slug: 'spotify',
-          icon: '/images/icons/spotify.svg',
-        },
-        {
-          id: 3,
-          name: 'Gramedia',
-          slug: 'gramedia',
-          icon: '/images/icons/gramedia-digital.svg',
-        },
-        {
-          id: 4,
-          name: 'Youtube',
-          slug: 'youtube',
-          icon: '/images/icons/youtube.svg',
-        },
-        {
-          id: 5,
-          name: 'Microsoft 365',
-          slug: 'microsoft',
-          icon: '/images/icons/microsoft-365.svg',
-        },
-        {
-          id: 6,
-          name: 'Canva',
-          slug: 'canva',
-          icon: '/images/icons/canva.svg',
-        },
-        {
-          id: 7,
-          name: 'Disney+ Hotstar',
-          slug: 'disney-hotstar',
-          icon: '/images/icons/disney-hotstar.png',
-        },
-        {
-          id: 8,
-          name: 'Apple One',
-          slug: 'apple-one',
-          icon: '/images/icons/apple-one.svg',
-        },
-        {
-          id: 9,
-          name: 'Wattpad',
-          slug: 'wattpad',
-          icon: '/images/icons/wattpad.svg',
-        },
-        {
-          id: 10,
-          name: 'Google One',
-          slug: 'google-one',
-          icon: '/images/icons/google-one.svg',
-        },
-        // {
-        //   id: 10,
-        //   name: 'Nintendo Switch',
-        //   slug: 'nintendo-switch',
-        //   icon: '/images/icons/nintendo.svg',
-        // },
-      ],
+      highlight: 'youtube',
+      providerUid: '1ec4b4fa-a756-456b-a01a-f48ff48fad58',
     };
   },
   components: {
@@ -211,8 +164,8 @@ export default {
   },
   mounted() {
     this.MasterService = new MasterService(this);
-    this.getCustomersData('netflix');
     this.getProviders();
+    this.getAccountGroups(this.providerUid);
   },
   methods: {
     scrollPill(direction) {
@@ -230,9 +183,10 @@ export default {
       }
     },
     selectProvider(provider) {
-      this.getCustomersData(provider.slug);
+      this.getAccountGroups(provider.uid);
       this.isLoading = true;
       this.highlight = provider.slug;
+      this.providerUid = provider.uid;
     },
     async getProviders() {
       this.isLoadingProduct = true;
@@ -252,43 +206,28 @@ export default {
       }
       this.isLoadingProduct = false;
     },
-    getCustomersData(provider) {
-      axios
-        .get(
-          `https://seakun-api.herokuapp.com/registered-user/group-${provider}`
-        )
-        .then((res) => {
-          this.processDataCustomers(res.data, provider);
+    async getAccountGroups(providerUid) {
+      const { MasterService } = this;
+      const params = {
+        page: 1,
+        limit: 5,
+        providerUid,
+      };
+      try {
+        const fetchAccountGroups = await MasterService.getAccountGroups(params);
+        if (fetchAccountGroups.data) {
+          const { data } = fetchAccountGroups.data;
+          this.dataDetailGroup = data ? data : [];
           this.isLoading = false;
-        })
-        .catch((err) => console.log(err));
-    },
-    processDataCustomers(customers, provider) {
-      let newArr = [];
-      let theArr = [];
-
-      customers.map((e, i) => {
-        newArr.push(e.group);
-        theArr[parseInt(e.group) - 1] = {
-          groupNumber: parseInt(e.group),
-          members: [],
-          name: e.provider,
-          brand: `/images/${e.provider}.png`,
-        };
-      });
-      customers.map((e, i) => {
-        if (newArr.includes(e.group)) {
-          theArr[parseInt(e.group) - 1].members.push(e.customer_name);
+        } else {
+          throw new Error(fetchAccountGroups);
         }
-      });
-      const netArr = theArr
-        .slice(theArr.length - 5, theArr.length - 0)
-        .sort()
-        .reverse();
-      this.dataDetailGroup = netArr;
+      } catch (error) {
+        console.log(error);
+      }
     },
     toCustomerPage() {
-      this.$router.push(`/info/customers?provider=${this.highlight}`);
+      this.$router.push(`/info/customers?provider=${this.providerUid}`);
     },
     onClickOrder(provider) {
       if (provider.toLowerCase() === 'microsoft') {

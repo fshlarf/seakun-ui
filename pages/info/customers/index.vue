@@ -25,16 +25,27 @@
           class="flex-none w-full mx-auto my-2"
         />
       </div>
+      <div v-if="isLoadingNext">
+        <div class="grid md:grid-cols-4 gap-6 mt-4">
+          <div
+            class="col"
+            v-for="(item, index) in shimmerInitialData"
+            :key="index"
+          >
+            <CardShimmerVertical />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 import { SEAKUN_API } from '~/constants/api.js';
 import GroupCard from '~/components/mollecules/GroupCard';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import Title from '~/components/atoms/Title';
+import MasterService from '~/services/MasterServices.js';
 
 export default {
   components: {
@@ -45,25 +56,80 @@ export default {
   layout: 'new',
   data() {
     return {
+      MasterService,
       SEAKUN_API,
       customers: [],
       shimmerInitialData: Array(4),
       isLoading: false,
+      isLoadingNext: false,
+      pagination: {
+        currentPage: 1,
+        perPages: 8,
+      },
     };
   },
   mounted() {
-    this.getCustomersData();
+    this.MasterService = new MasterService(this);
+    let provider = this.$route.query.provider;
+    this.getAccountGroups(provider);
+    this.getNextAccountGroup(provider);
   },
   methods: {
-    getCustomersData() {
-      const { SEAKUN_API } = this;
-      let provider = this.$route.query.provider;
+    async getAccountGroups(providerUid) {
       this.isLoading = true;
-      axios
-        .get(`${SEAKUN_API}/registered-user/group-${provider}`)
-        .then((res) => this.processDataCustomers(res.data))
-        .catch((err) => console.log(err))
-        .finally(() => (this.isLoading = false));
+      const { MasterService } = this;
+      const params = {
+        page: this.pagination.currentPage,
+        limit: this.pagination.perPages,
+        providerUid,
+      };
+      try {
+        const fetchAccountGroups = await MasterService.getAccountGroups(params);
+        if (fetchAccountGroups.data) {
+          const { data, pagination } = fetchAccountGroups.data;
+          this.customers = data ? data : [];
+          this.pagination = pagination;
+          this.isLoading = false;
+        } else {
+          throw new Error(fetchAccountGroups);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    getNextAccountGroup(providerUid) {
+      window.onscroll = async () => {
+        let heightFooter = document.getElementsByClassName('footer')[0];
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight >=
+          document.documentElement.offsetHeight - heightFooter.offsetHeight;
+        if (bottomOfWindow && !this.isLoading && !this.isLoadingNext) {
+          if (this.pagination.currentPage !== this.pagination.numOfPages) {
+            this.isLoadingNext = true;
+            const { MasterService } = this;
+            const params = {
+              page: this.pagination.currentPage + 1,
+              limit: this.pagination.perPages,
+              providerUid,
+            };
+            try {
+              const fetchAccountGroups = await MasterService.getAccountGroups(
+                params
+              );
+              if (fetchAccountGroups.data) {
+                const { data, pagination } = fetchAccountGroups.data;
+                this.customers = [...this.customers, ...data];
+                this.pagination = pagination;
+                this.isLoadingNext = false;
+              } else {
+                throw new Error(fetchAccountGroups);
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        }
+      };
     },
     processDataCustomers(customers) {
       let newArr = [];
