@@ -2,7 +2,7 @@
   <div v-if="group" class="p-4 my-8 rounded-2xl shadow w-72">
     <div class="flex justify-between items-center">
       <img
-        :class="setWidthImage(group.providerSlug)"
+        class="max-h-[2.2rem] max-w-[10rem]"
         :src="`/images/${group.providerSlug}.png`"
         alt="#"
       />
@@ -90,10 +90,14 @@ export default {
         theProvider === 'canva' ||
         theProvider === 'disney-hotstar' ||
         theProvider === 'wattpad' ||
-        theProvider === 'google-one'
+        theProvider === 'google-one' ||
+        theProvider === 'prime-video'
       ) {
         return 'w-11';
-      } else if (theProvider === 'apple-one') {
+      } else if (
+        theProvider === 'apple-one' ||
+        theProvider === 'apple-one-premier'
+      ) {
         return 'w-20';
       } else {
         return 'w-28';
