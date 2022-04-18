@@ -1,14 +1,24 @@
 <template>
   <div v-if="group" class="p-4 my-8 rounded-2xl shadow w-72">
     <div class="flex justify-between items-center">
-      <img :class="setWidthImage(group.providerSlug)" :src="`/images/${group.providerSlug}.png`" alt="#" />
+      <img
+        class="max-h-[2.2rem] max-w-[10rem]"
+        :src="`/images/${group.providerSlug}.png`"
+        alt="#"
+      />
       <div
         :class="`px-2  ${
-          group.accountGroup.some((el) => el.customerName === '-') ? 'bg-green-600' : 'full'
+          group.accountGroup.some((el) => el.customerName === '-')
+            ? 'bg-green-600'
+            : 'full'
         } rounded-full`"
       >
         <p class="text-white text-sm font-bold">
-          {{ group.accountGroup.some((el) => el.customerName === '-') ? 'available' : 'full' }}
+          {{
+            group.accountGroup.some((el) => el.customerName === '-')
+              ? 'available'
+              : 'full'
+          }}
         </p>
       </div>
     </div>
@@ -16,7 +26,9 @@
     <div class="h-px w-full bg-primary my-2"></div>
     <ol class="space-y-1">
       <li v-for="(member, id) in group.accountGroup" :key="id">
-        <span v-if="member.customerName != '-'">{{ id + 1 }}. {{ setName(member.customerName) }}</span>
+        <span v-if="member.customerName != '-'"
+          >{{ id + 1 }}. {{ setName(member.customerName) }}</span
+        >
         <span v-else class="text-secondary font-bold"
           >{{ id + 1 }}. Slot tersedia</span
         >
@@ -28,7 +40,7 @@
         variant="primary"
         class="w-full mt-4 font-bold"
         :disabled="setDisabledBtn(group.accountGroup)"
-        @click="$emit('click-order', group.providerName)"
+        @click="$emit('click-order', group.providerSlug)"
       />
     </div>
   </div>
@@ -78,10 +90,14 @@ export default {
         theProvider === 'canva' ||
         theProvider === 'disney-hotstar' ||
         theProvider === 'wattpad' ||
-        theProvider === 'google-one'
+        theProvider === 'google-one' ||
+        theProvider === 'prime-video'
       ) {
         return 'w-11';
-      } else if (theProvider === 'apple-one') {
+      } else if (
+        theProvider === 'apple-one' ||
+        theProvider === 'apple-one-premier'
+      ) {
         return 'w-20';
       } else {
         return 'w-28';
