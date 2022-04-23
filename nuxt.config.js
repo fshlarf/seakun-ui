@@ -109,7 +109,6 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: ['@nuxtjs/tailwindcss'],
-  router: { middleware: ['forceHttps'] },
   /*
    ** Nuxt.js modules
    */
