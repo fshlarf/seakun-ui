@@ -115,7 +115,7 @@
       :provider="dataPackages"
       @on-close="onCloseModalPackages"
       :slug="provider"
-      @choose-packet="choosePacket"
+      @choosePacket="choosePacket"
       :is-loading="isLoadingProduct"
     />
   </div>
