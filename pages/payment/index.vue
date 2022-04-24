@@ -261,7 +261,17 @@ export default {
         const fetchCreateInvoice = await PaymentService.createInvoice(payload);
         if (fetchCreateInvoice.data) {
           const dataResult = fetchCreateInvoice.data.data;
-          window.location.href = dataResult.invoice_url;
+          if (dataResult) {
+            window.location.href = dataResult.invoice_url;
+          } else {
+            this.isLoadingPaymentButton = false;
+            this.$refs.snackbar.showSnackbar({
+              message: `Terjadi kesalahan. Harap coba kembali`,
+              className: '',
+              color: 'red-400',
+              duration: 6000,
+            });
+          }
         } else {
           throw new Error(fetchCreateInvoice);
         }
