@@ -275,6 +275,7 @@ export default {
             throw new Error(fetchCreateInvoice);
           }
         } catch (error) {
+          counter++;
           console.log(JSON.stringify(error, null, 2));
         }
       } while (counter < 3);
