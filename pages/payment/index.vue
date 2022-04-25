@@ -257,16 +257,36 @@ export default {
         totalAmount: this.totalPayment,
         order: orders,
       };
-      try {
-        const fetchCreateInvoice = await PaymentService.createInvoice(payload);
-        if (fetchCreateInvoice.data) {
-          const dataResult = fetchCreateInvoice.data.data;
-          window.location.href = dataResult.invoice_url;
-        } else {
-          throw new Error(fetchCreateInvoice);
+      let counter = 0;
+      do {
+        try {
+          const fetchCreateInvoice = await PaymentService.createInvoice(
+            payload
+          );
+          if (fetchCreateInvoice.data) {
+            const dataResult = fetchCreateInvoice.data.data;
+            if (dataResult) {
+              counter = 5;
+              window.location.href = dataResult.invoice_url;
+            } else {
+              counter++;
+            }
+          } else {
+            throw new Error(fetchCreateInvoice);
+          }
+        } catch (error) {
+          counter++;
+          console.log(JSON.stringify(error, null, 2));
         }
-      } catch (error) {
-        console.log(JSON.stringify(error, null, 2));
+      } while (counter < 3);
+      if (counter === 3) {
+        this.isLoadingPaymentButton = false;
+        this.$refs.snackbar.showSnackbar({
+          message: `Terjadi kesalahan. Harap coba kembali`,
+          className: '',
+          color: 'red-400',
+          duration: 6000,
+        });
       }
     },
     manualPayment() {
