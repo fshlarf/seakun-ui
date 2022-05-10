@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[86],{751:function(n,t,e){"use strict";e.r(t);var o={mounted:function(){window.location="https://forms.gle/t1AbaxnjEtJr8NAPA"}},l=e(6),component=Object(l.a)(o,(function(){var n=this.$createElement;return(this._self._c||n)("div")}),[],!1,null,null,null);t.default=component.exports}}]);
