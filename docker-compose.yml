@@ -10,3 +10,4 @@ services:
             - ./_build/nginx/sites-available:/etc/nginx/sites-available:ro
         ports:
             - 80:80
+            - 443:443

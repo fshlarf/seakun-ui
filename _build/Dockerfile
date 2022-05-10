@@ -8,6 +8,8 @@ WORKDIR ${WORKDIR}
 COPY ./_build/supervisord/run-supervisorctl.sh ${WORKDIR}/_build/supervisord/
 COPY ./_build/supervisord/run-supervisord.sh ${WORKDIR}/_build/supervisord/
 COPY ./_build/supervisord/supervisord.conf ${WORKDIR}/_build/supervisord/
+COPY ./_build/cert/seakun.id/fullchain.pem ${WORKDIR}/_build/cert/seakun.id/
+COPY ./_build/cert/seakun.id/privkey.pem ${WORKDIR}/_build/cert/seakun.id/
 
 ##install
 RUN apk update && \
