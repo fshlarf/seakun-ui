@@ -41,9 +41,9 @@ export default {
   components: {
     Button,
   },
-  // beforeMount() {
-  //   this.$router.push('/');
-  // },
+  beforeMount() {
+    this.$router.push('/');
+  },
 };
 </script>
 
