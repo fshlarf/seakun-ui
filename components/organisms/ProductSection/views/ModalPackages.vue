@@ -60,6 +60,7 @@ export default {
     return {
       preOrderPackage: [
         'apple-one',
+        'apple-tv',
         'apple-one-premier',
         'canva',
         'disney-hotstar',
@@ -69,6 +70,7 @@ export default {
         'wattpad',
         'google-one',
         'amazon-prime',
+        'iqiyi',
       ],
     };
   },
