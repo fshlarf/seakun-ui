@@ -99,6 +99,7 @@ export default {
       const { packet_id } = this.$router.history.current.query;
       switch (slug.toLowerCase()) {
         case 'canva':
+        case 'iqiyi':
           return '4';
           break;
         case 'gramedia':
