@@ -822,4 +822,80 @@ export const providerList = [
       },
     ],
   },
+  {
+    img: '/images/apple-tv.png',
+    screenshot: '/images/ss-apple-tv.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Apple TV',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Apple TV (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Apple TV Premium',
+        value: 'Rp69.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp69.000 ÷ 5 = Rp13.800',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp4.700',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp18.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    img: '/images/iqiyi.png',
+    screenshot: '/images/ss-iqiyi.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Iqiyi',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Reguler',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Premium Iqiyi',
+        value: 'Rp59.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp59.000 ÷ 4 = Rp14.750',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp4.750',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp19.500',
+        is_total: true,
+      },
+    ],
+  },
 ];

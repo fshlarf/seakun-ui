@@ -146,7 +146,7 @@
       @clickSubmit="submitDataOrder"
       @onClose="closeModalConfirmation"
     />
-    
+
     <ModalBlackListWarning
       :show-modal="isShowModalBlackList"
       @onClose="closeModalBlackList"
@@ -302,7 +302,11 @@ export default {
       } else if (provider === 'google-one') {
         this.orderWarning =
           'Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Google kamu belum pernah berpindah family selama 12 bulan terakhir.';
-      } else if (provider === 'apple-one') {
+      } else if (
+        provider === 'apple-one' ||
+        provider === 'apple-tv' ||
+        provider === 'apple-one-premier'
+      ) {
         this.orderWarning =
           'Terkait aturan yang berlaku dari Apple, sebelum melakukan pendaftaran pastikan akun Apple kamu belum pernah berpindah family selama 12 bulan terakhir.';
       }
