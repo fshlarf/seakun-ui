@@ -6,7 +6,7 @@
       </h1>
       <p class="font-semibold">
         Psst! Sudah ada ratusan grup loh, yang bergabung bersama kami! Klik
-        provider untuk melihat selengkapnya.
+        kategori untuk melihat.
       </p>
     </div>
     <div class="my-6 container-group w-full">
