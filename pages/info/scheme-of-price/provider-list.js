@@ -898,4 +898,44 @@ export const providerList = [
       },
     ],
   },
+  {
+    img: '/images/zoom.png',
+    screenshot: '/images/ss-zoom.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Pro di Zoom',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun membuat grup whatsapp untuk sistem booking zoom',
+      'Akun hanya dapat melakukan 1 meeting dalam 1 waktu',
+      'Member yang telah join ke grup dapat menikmati fitur Pro selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Pro User Reguler',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Pro Zoom + PPN 11%',
+        value: 'Rp249.583,5',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp249.583,5 ÷ 5 = Rp49.916,7',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.583,3',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp56.500',
+        is_total: true,
+      },
+    ],
+  },
 ];

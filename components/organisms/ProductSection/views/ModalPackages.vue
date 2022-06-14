@@ -71,6 +71,7 @@ export default {
         'google-one',
         'amazon-prime',
         'iqiyi',
+        'zoom',
       ],
     };
   },
