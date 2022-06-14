@@ -57,7 +57,7 @@
         </span>
       </div>
 
-      <!-- <div v-if="!isLoading" class="relative flex items-center w-full">
+      <div v-if="!isLoading" class="relative flex items-center w-full">
         <span
           v-if="dataDetailGroup.length >= 5"
           class="hidden xl:block -ml-10 mr-4"
@@ -95,8 +95,8 @@
             @click-chevron="scrollCard('right')"
           />
         </span>
-      </div> -->
-      <!-- <div
+      </div>
+      <div
         v-else
         class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto px-3 py-2"
       >
@@ -107,17 +107,17 @@
         >
           <CardShimmerVertical />
         </div>
-      </div> -->
+      </div>
     </div>
 
-    <!-- <ModalPackages
+    <ModalPackages
       :is-show="isShowModalPackages"
       :provider="dataPackages"
       @on-close="onCloseModalPackages"
       :slug="provider"
       @choosePacket="choosePacket"
       :is-loading="isLoadingProduct"
-    /> -->
+    />
   </div>
 </template>
 
@@ -165,7 +165,7 @@ export default {
   mounted() {
     this.MasterService = new MasterService(this);
     this.getProviders();
-    // this.getAccountGroups(this.providerUid);
+    this.getAccountGroups(this.providerUid);
   },
   methods: {
     scrollPill(direction) {
@@ -183,11 +183,10 @@ export default {
       }
     },
     selectProvider(provider) {
-      // this.getAccountGroups(provider.uid);
+      this.getAccountGroups(provider.uid);
       this.isLoading = true;
       this.highlight = provider.slug;
       this.providerUid = provider.uid;
-      this.toCustomerPage();
     },
     async getProviders() {
       this.isLoadingProduct = true;
