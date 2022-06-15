@@ -856,4 +856,46 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Zoom',
+    slug: 'zoom',
+    title: 'Harga Paket Pro',
+    img: '/images/zoom.png',
+    screenshot: '/images/ss-zoom.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Pro di Zoom',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Pro selama 1 bulan',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Harga Paket Pro Zoom',
+        value: 'Rp232.345',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp257.902,95',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp257.902,95 ÷ 5 = Rp51.580,59',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.419,4',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp58.000',
+        is_total: true,
+      },
+    ],
+  },
 ];

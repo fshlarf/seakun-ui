@@ -9,6 +9,7 @@
     <ProductSection />
     <UserTypeSection />
     <OrderFlowSection />
+    <PaymentSection />
     <TestimonySection />
     <UserGroupSection />
     <BenefitSection />
@@ -26,6 +27,7 @@ import PartnershipSection from '~/components/organisms/PartnershipSection';
 import ProductSection from '~/components/organisms/ProductSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
+import PaymentSection from '~/components/organisms/PaymentSection';
 import TestimonySection from '~/components/organisms/TestimonySection';
 import UserGroupSection from '~/components/organisms/UserGroupSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
@@ -44,6 +46,7 @@ export default {
     ProductSection,
     UserTypeSection,
     OrderFlowSection,
+    PaymentSection,
     TestimonySection,
     UserGroupSection,
     BenefitSection,
