@@ -231,8 +231,8 @@ export const providerList = [
         value: 'Rp89.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 10%',
-        value: 'Rp97.900',
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp98.790',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -240,7 +240,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp97.900 ÷ 5 = Rp19.580',
+        value: 'Rp98.790 ÷ 5 = Rp19.758',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -248,7 +248,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp19.580',
+        value: 'Rp19.758',
         is_total: true,
       },
     ],
@@ -272,8 +272,8 @@ export const providerList = [
         value: 'Rp89.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 10%',
-        value: 'Rp97.900',
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp98.790',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -281,11 +281,11 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp97.900 ÷ 5 = Rp19.580',
+        value: 'Rp98.790 ÷ 5 = Rp19.758',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.420',
+        value: 'Rp5.242',
       },
       {
         title: 'Harga Paket Bulanan',
@@ -611,8 +611,12 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Harga Paket + tax Google One',
-        value: 'Rp148.500',
+        title: 'Harga Paket Premium Google One',
+        value: 'Rp135.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp149.850',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -620,15 +624,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp148.500 ÷ 5 = Rp29.700',
+        value: 'Rp149.850 ÷ 5 = Rp29.970',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp0',
+        value: 'Rp0 (FREE)',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp29.700',
+        value: 'Rp29.970',
         is_total: true,
       },
     ],
@@ -648,8 +652,12 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Harga Paket + tax Google One',
-        value: 'Rp148.500',
+        title: 'Harga Paket Premium Google One',
+        value: 'Rp135.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp149.850',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -657,11 +665,11 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp148.500 ÷ 5 = Rp29.700',
+        value: 'Rp149.850 ÷ 5 = Rp29.970',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.300',
+        value: 'Rp6.030',
       },
       {
         title: 'Harga Paket Bulanan',
@@ -686,12 +694,8 @@ export const providerList = [
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
-        title: 'Harga Paket Premium NordVPN',
-        value: 'Rp179.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 10%',
-        value: 'Rp196.900',
+        title: 'Harga Paket NordVPN + pajak 11%',
+        value: 'Rp199.980',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -699,11 +703,11 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp196.900 ÷ 6 = Rp32.816,7',
+        value: 'Rp199.980 ÷ 6 = Rp33.330',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.183,3',
+        value: 'Rp4.670',
       },
       {
         title: 'Harga Paket Bulanan',
