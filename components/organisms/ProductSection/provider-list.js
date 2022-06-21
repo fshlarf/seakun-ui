@@ -285,11 +285,11 @@ export const providerList = [
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.242',
+        value: 'Rp5.742',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp25.000',
+        value: 'Rp25.500',
         is_total: true,
       },
     ],
@@ -669,11 +669,11 @@ export const providerList = [
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.030',
+        value: 'Rp6.530',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp36.000',
+        value: 'Rp36.500',
         is_total: true,
       },
     ],
@@ -695,7 +695,7 @@ export const providerList = [
     informations: [
       {
         title: 'Harga Paket NordVPN + pajak 11%',
-        value: 'Rp199.980',
+        value: 'Rp206.288',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -703,15 +703,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp199.980 ÷ 6 = Rp33.330',
+        value: 'Rp206.288 ÷ 6 = Rp34.381',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp4.670',
+        value: 'Rp5.119',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp38.000',
+        value: 'Rp39.500',
         is_total: true,
       },
     ],
