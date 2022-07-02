@@ -103,6 +103,7 @@ export default {
           return '4';
           break;
         case 'gramedia':
+        case 'vidio':
         case 'disney-hotstar':
           return '2';
           break;
