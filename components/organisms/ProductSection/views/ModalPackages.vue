@@ -72,6 +72,7 @@ export default {
         'amazon-prime',
         'iqiyi',
         'zoom',
+        'vidio',
       ],
     };
   },

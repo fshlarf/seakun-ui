@@ -27,7 +27,7 @@
               v-if="order.provider.package.variant.duration === 12"
               class="text-base font-normal mt-1 opacity-80"
             >
-              {{ formatMoneyRupiah(order.provider.package.variant.price) }}
+              {{ formatMoneyRupiah(order.payment.totalPrice) }}
               x (1 Tahun)
             </p>
             <p v-else class="text-base font-normal mt-1 opacity-80">
