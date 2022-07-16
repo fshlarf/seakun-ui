@@ -54,7 +54,7 @@
 
 <script>
 import OrderService from '~/services/OrderServices.js';
-import Button from '~/components/atoms/button';
+import Button from '~/components/atoms/Button';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
