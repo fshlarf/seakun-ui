@@ -208,7 +208,9 @@ export default {
         );
         if (fetchProviderList.data) {
           const { data } = fetchProviderList.data;
-          this.dataProviders = data;
+          this.dataProviders = data.filter((provider) => {
+            return provider.slug !== 'vidio';
+          });
         } else {
           throw new Error(fetchProviderList);
         }

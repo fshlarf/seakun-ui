@@ -946,48 +946,48 @@ export const providerList = [
       },
     ],
   },
-  {
-    img: '/images/vidio.png',
-    screenshot: '/images/ss-vidio.png',
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Diamond EPL di Vidio',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 2 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Diamond EPL selama 1 tahun',
-    ],
-    notes:
-      'Harga Promo ini (Rp450.000) berlaku sampai 5 Agustus 2022. Selanjutnya akan mengikuti harga normal (Rp631.000)',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Vidio Diamond EPL',
-        is_total: true,
-      },
-      {
-        title: 'Harga Paket Vidio Diamond EPL',
-        value: 'Rp450.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp499.500',
-      },
-      {
-        title: 'Jumlah Member Dalam 1 Grup',
-        value: '2',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp499.500 ÷ 2 = Rp249.750',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp35.250',
-      },
-      {
-        title: 'Harga Paket Setahun',
-        value: 'Rp285.000',
-        is_total: true,
-      },
-    ],
-  },
+  // {
+  //   img: '/images/vidio.png',
+  //   screenshot: '/images/ss-vidio.png',
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket Diamond EPL di Vidio',
+  //     'Seakun bertindak sebagai user Host dalam grup',
+  //     'Akun dishare HANYA ke 2 member dalam 1 grup',
+  //     'Member yang telah join ke grup dapat menikmati fitur Diamond EPL selama 1 tahun',
+  //   ],
+  //   notes:
+  //     'Harga Promo ini (Rp450.000) berlaku sampai 5 Agustus 2022. Selanjutnya akan mengikuti harga normal (Rp631.000)',
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Paket Vidio Diamond EPL',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Paket Vidio Diamond EPL',
+  //       value: 'Rp450.000',
+  //     },
+  //     {
+  //       title: 'Harga setelah dikenakan pajak 11%',
+  //       value: 'Rp499.500',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Dalam 1 Grup',
+  //       value: '2',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp499.500 ÷ 2 = Rp249.750',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp35.250',
+  //     },
+  //     {
+  //       title: 'Harga Paket Setahun',
+  //       value: 'Rp285.000',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
 ];
