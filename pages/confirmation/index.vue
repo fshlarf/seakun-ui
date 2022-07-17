@@ -155,7 +155,10 @@ export default {
       const payload = {
         orderUid: orderUid,
         customerUid: customerUid,
-        notes: 'CONFIRM BY SYSTEM',
+        notes:
+          this.orderType === 'pre-order'
+            ? 'Fix ikut pre-order - confirmed by system'
+            : 'Fix menjadi user host - confirmed by system',
       };
 
       try {
@@ -171,13 +174,13 @@ export default {
             message: `Order Anda Sudah Terkonfirmasi. Tidak Perlu Konfirmasi Ulang`,
             className: '',
             color: 'red-400',
-            duration: 6000,
+            duration: 4000,
           });
           setTimeout(
             function () {
               this.$router.push('/');
             }.bind(this),
-            3000
+            4000
           );
         }
         console.log(error);
