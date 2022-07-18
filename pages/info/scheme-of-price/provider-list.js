@@ -1,7 +1,7 @@
 export const providerList = [
   {
-    img: '/images/netflix.png',
-    screenshot: '/images/ss-netflix.png',
+    img: '/images/product/brand/netflix.png',
+    screenshot: '/images/price scheme/netflix.png',
     schemes: [
       'Seakun meminta membuat akun di Netflix dan melakukan pembayaran',
       'Setelah berhasil membayar, Seakun akan proses profil User Host di Netflix',
@@ -39,8 +39,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/netflix.png',
-    screenshot: '/images/ss-netflix.png',
+    img: '/images/product/brand/netflix.png',
+    screenshot: '/images/price scheme/netflix.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Netflix',
       'Dalam 1 akun tersebut, Seakun membuat profile sebanyak 4',
@@ -78,8 +78,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/spotify.png',
-    screenshot: '/images/ss-spotify.png',
+    img: '/images/product/brand/spotify.png',
+    screenshot: '/images/price scheme/spotify.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Spotify',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -117,8 +117,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/gramedia.png',
-    screenshot: '/images/ss-gramedia.png',
+    img: '/images/product/brand/gramedia.png',
+    screenshot: '/images/price scheme/gramedia.png',
     schemes: [
       'Seakun membuat akun dan membeli PAKET PREMIUM di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
@@ -131,7 +131,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Premium Gramedia Digital',
-        value: 'Rp89.000',
+        value: 'Rp99.000',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -139,7 +139,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp89.000 ÷ 2 = Rp44.500',
+        value: 'Rp99.000 ÷ 2 = Rp49.500',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -147,14 +147,14 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp49.500',
+        value: 'Rp54.500',
         is_total: true,
       },
     ],
   },
   {
-    img: '/images/gramedia.png',
-    screenshot: '/images/ss-gramedia-fiction.png',
+    img: '/images/product/brand/gramedia.png',
+    screenshot: '/images/price scheme/gramedia-fiction.png',
     schemes: [
       'Seakun membuat akun dan membeli PAKET FIKSI di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
@@ -167,7 +167,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Premium Fiksi',
-        value: 'Rp45.000',
+        value: 'Rp49.000',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -175,7 +175,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp45.000 ÷ 2 = Rp22.500',
+        value: 'Rp49.000 ÷ 2 = Rp24.500',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -183,14 +183,14 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp27.500',
+        value: 'Rp29.500',
         is_total: true,
       },
     ],
   },
   {
-    img: '/images/gramedia.png',
-    screenshot: '/images/ss-gramedia-non-fiction.png',
+    img: '/images/product/brand/gramedia.png',
+    screenshot: '/images/price scheme/gramedia-non-fiction.png',
     schemes: [
       ' Seakun membuat akun dan membeli PAKET NON-FIKSI di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
@@ -203,7 +203,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Premium Non-Fiksi',
-        value: 'Rp45.000',
+        value: 'Rp49.000',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -211,7 +211,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp45.000 ÷ 2 = Rp22.500',
+        value: 'Rp49.000 ÷ 2 = Rp24.500',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -219,14 +219,14 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp27.500',
+        value: 'Rp29.500',
         is_total: true,
       },
     ],
   },
   {
-    img: '/images/youtube.png',
-    screenshot: '/images/ss-youtube.png',
+    img: '/images/product/brand/youtube.png',
+    screenshot: '/images/price scheme/youtube.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Youtube',
       'Member bertindak sebagai user Host dalam grup',
@@ -268,8 +268,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/youtube.png',
-    screenshot: '/images/ss-youtube.png',
+    img: '/images/product/brand/youtube.png',
+    screenshot: '/images/price scheme/youtube.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Youtube',
       'Seakun bertindak sebagai user Host dalam grup ',
@@ -311,8 +311,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/microsoft365.png',
-    screenshot: '/images/ss-microsoft365.png',
+    img: '/images/product/brand/microsoft365.png',
+    screenshot: '/images/price scheme/microsoft365.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -350,8 +350,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/microsoft365.png',
-    screenshot: '/images/ss-microsoft365-year.png',
+    img: '/images/product/brand/microsoft365.png',
+    screenshot: '/images/price scheme/microsoft365-year.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -389,8 +389,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/canva.png',
-    screenshot: '/images/ss-canva-month.png',
+    img: '/images/product/brand/canva.png',
+    screenshot: '/images/price scheme/canva-month.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Pro Canva',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -437,8 +437,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/canva.png',
-    screenshot: '/images/ss-canva-year.png',
+    img: '/images/product/brand/canva.png',
+    screenshot: '/images/price scheme/canva-year.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Pro Canva',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -472,8 +472,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/disney-hotstar.png',
-    screenshot: '/images/ss-disney-hotstar-year.png',
+    img: '/images/product/brand/disney-hotstar.png',
+    screenshot: '/images/price scheme/disney-hotstar-year.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Disney+ Hotstar',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -510,8 +510,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/wattpad.png',
-    screenshot: '/images/ss-wattpad.png',
+    img: '/images/product/brand/wattpad.png',
+    screenshot: '/images/price scheme/wattpad.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Wattpad PREMIUM',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -548,8 +548,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/apple-one.png',
-    screenshot: '/images/ss-apple-one.png',
+    img: '/images/product/brand/apple-one.png',
+    screenshot: '/images/price scheme/apple-one.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Family',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -586,8 +586,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/apple-music.png',
-    screenshot: '/images/ss-apple-music.png',
+    img: '/images/product/brand/apple-music.png',
+    screenshot: '/images/price scheme/apple-music.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Apple Music',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -625,8 +625,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/google-one.png',
-    screenshot: '/images/ss-google-one-premium.png',
+    img: '/images/product/brand/google-one.png',
+    screenshot: '/images/price scheme/google-one-premium.png',
     schemes: [
       'Seakun membuat akun gmail dan membeli Paket Premium Google',
       'Member bertindak sebagai user Host dalam grup',
@@ -664,8 +664,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/google-one.png',
-    screenshot: '/images/ss-google-one-premium.png',
+    img: '/images/product/brand/google-one.png',
+    screenshot: '/images/price scheme/google-one-premium.png',
     schemes: [
       'Seakun membuat akun gmail dan membeli Paket Premium Google',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -703,8 +703,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/nord-vpn.png',
-    screenshot: '/images/ss-nord-vpn.png',
+    img: '/images/product/brand/nord-vpn.png',
+    screenshot: '/images/price scheme/nord-vpn.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Nord VPN',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -747,8 +747,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/amazon-prime.png',
-    screenshot: '/images/ss-amazon-prime.png',
+    img: '/images/product/brand/amazon-prime.png',
+    screenshot: '/images/price scheme/amazon-prime.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Prime Video',
       'Dalam 1 akun tersebut, Seakun membuat 3 profile',
@@ -785,8 +785,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/apple-one-premier.png',
-    screenshot: '/images/ss-apple-one-premier.png',
+    img: '/images/product/brand/apple-one-premier.png',
+    screenshot: '/images/price scheme/apple-one-premier.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Premier',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -823,8 +823,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/apple-tv.png',
-    screenshot: '/images/ss-apple-tv.png',
+    img: '/images/product/brand/apple-tv.png',
+    screenshot: '/images/price scheme/apple-tv.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple TV',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -861,8 +861,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/iqiyi.png',
-    screenshot: '/images/ss-iqiyi.png',
+    img: '/images/product/brand/iqiyi.png',
+    screenshot: '/images/price scheme/iqiyi.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Iqiyi',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -899,8 +899,8 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/zoom.png',
-    screenshot: '/images/ss-zoom.png',
+    img: '/images/product/brand/zoom.png',
+    screenshot: '/images/price scheme/zoom.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Pro di Zoom',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -943,8 +943,8 @@ export const providerList = [
     ],
   },
   // {
-  //   img: '/images/vidio.png',
-  //   screenshot: '/images/ss-vidio.png',
+  //   img: '/images/product/brand/vidio.png',
+  //   screenshot: '/images/price scheme/vidio.png',
   //   schemes: [
   //     'Seakun membuat akun dan membeli Paket Diamond EPL di Vidio',
   //     'Seakun bertindak sebagai user Host dalam grup',
