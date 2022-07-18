@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center">
       <img
         class="max-h-[2.2rem] max-w-[10rem]"
-        :src="`/images/${group.providerSlug}.png`"
+        :src="`/images/product/brand/${group.providerSlug}.png`"
         alt="#"
       />
       <div
