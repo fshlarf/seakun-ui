@@ -940,4 +940,40 @@ export const providerList = [
   //     },
   //   ],
   // },
+  {
+    name: 'HBO Go',
+    slug: 'hbo-go',
+    title: 'Harga Paket Premium',
+    img: '/images/hbo-go.png',
+    screenshot: '/images/ss-hbo-go.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di HBO Go',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Harga Paket Premium HBO Go',
+        value: 'Rp60.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp60.000 ÷ 2 = Rp30.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.500',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp36.500',
+        is_total: true,
+      },
+    ],
+  },
 ];

@@ -104,6 +104,7 @@ export default {
           break;
         case 'gramedia':
         case 'vidio':
+        case 'hbo-go':
         case 'disney-hotstar':
           return '2';
           break;
