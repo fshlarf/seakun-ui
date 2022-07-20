@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import OrderService from '~/services/OrderServices.js';
 import OrderCard from '../views/order-card';
 import Button from '~/components/atoms/Button';
@@ -95,6 +94,7 @@ export default {
           break;
         case 'gramedia-digital':
         case 'vidio':
+        case 'hbo-go':
         case 'disney-hotstar':
           return '2';
           break;

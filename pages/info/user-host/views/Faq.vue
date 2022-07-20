@@ -1,26 +1,47 @@
 <template>
-  <div class="info faq -mb-12">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-lg-6 faq-title-container">FAQ</div>
-        <div class="col-md-8 col-lg-6 tn:mb-6 xl:mb-10">
-          <AccordionContainer>
-            <Accordion name="faq1" title="Apa itu User Host?">
-              User Host adalah user yang berlangganan provider Entertainment via
+  <div class="container tn:pt-14 md:pt-20 tn:mb-12 xl:mb-20">
+    <div class="text-center">
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
+        Frequently Asked Questions (FAQ)
+      </h1>
+    </div>
+    <div class="grid tn:grid-cols-1 lg:grid-cols-2 lg:gap-8 items-center">
+      <Accordion
+        v-for="(faq, id) in dataFaq"
+        :key="id"
+        :is-show-answer="faq.isShow"
+        :title="faq.question"
+        :answer="faq"
+        @toggleShow="toggleShow"
+        class="w-full h-full"
+      />
+    </div>
+  </div>
+</template>
+
+<script>
+import Accordion from '~/components/atoms/Accordion.vue';
+export default {
+  data() {
+    return {
+      dataFaq: [
+        {
+          id: 1,
+          question: 'Apa itu User Host?',
+          answer: `User Host adalah user yang berlangganan provider Entertainment via
               Seakun.id dan
               <b>
                 user yang bertanggung-jawab melakukan payment ke provider
                 Entertainment menggunakan kartu debit/kredit pribadi miliknya.
-              </b>
-            </Accordion>
-
-            <Accordion
-              name="faq2"
-              title="Bagaimana cara daftar sebagai User Host?"
-            >
-              Untuk menjadi Host kamu bisa mengikuti langkah-langkah sebagai
+              </b>`,
+          isShow: false,
+        },
+        {
+          id: 2,
+          question: 'Bagaimana cara daftar sebagai User Host?',
+          answer: `Untuk menjadi Host kamu bisa mengikuti langkah-langkah sebagai
               berikut.
-              <ol class="mt-2">
+              <ol class="mt-2 list-decimal list-outside">
                 <li>
                   Daftar sebagai User Host dengan memilih paket yang berlabel
                   User Host di pilihan paket yang tersedia.
@@ -66,13 +87,15 @@
                   bukti pembayaran ke Admin. Selanjutnya akan memiliki langkah
                   yang sama di mulai dari langkah nomor 4.
                 </li>
-              </ol>
-            </Accordion>
-
-            <Accordion name="faq3" title="Apa syarat menjadi User Host?">
-              Untuk menjadi User Host ada beberapa syarat yang harus dipenuhi
+              </ol>`,
+          isShow: false,
+        },
+        {
+          id: 3,
+          question: 'Apa syarat menjadi User Host?',
+          answer: `Untuk menjadi User Host ada beberapa syarat yang harus dipenuhi
               yaitu sebagai berikut.
-              <ol class="mt-2">
+              <ol class="mt-2 list-decimal list-outside">
                 <li>
                   Memiliki
                   <b>e-wallet (Dana/Gopay)</b> atau
@@ -85,14 +108,14 @@
                   yang terkait dengan uang pribadi (akan diganti Seakun.id
                   paling lama 24 jam setelah menunjukkan bukti pembayaran).
                 </li>
-              </ol>
-            </Accordion>
-
-            <Accordion
-              name="faq4"
-              title="Apakah menjadi User Host aman untuk data pribadi dan kartu debit/kredit saya?"
-            >
-              Seakun.id berkomitmen penuh dalam menjaga data penggunanya.
+              </ol>`,
+          isShow: false,
+        },
+        {
+          id: 4,
+          question:
+            'Apakah menjadi User Host aman untuk data pribadi dan kartu debit/kredit saya?',
+          answer: `Seakun.id berkomitmen penuh dalam menjaga data penggunanya.
               Seakun.id juga punya aturan terkait kerahasiaan data penggunanya
               termasuk data User Host. Untuk data kartu debit/kredit yang
               digunakan juga dipastikan aman karena proses payment dilakukan
@@ -105,43 +128,36 @@
                 class="img-info"
                 src="/images/netflix-payment-info.png"
                 alt="netflix-payment-info"
-              />
-            </Accordion>
-
-            <Accordion
-              name="faq5"
-              title="Bagaimana jika saya yang telah terdaftar menjadi User Host ingin berhenti berlangganan?"
-            >
-              Bila kamu sebagai User Host ingin berhenti berlangganan harap
-              hubungi admin paling lambat h-2 sebelum masa berlangganan selesai.
-            </Accordion>
-
-            <Accordion
-              name="faq6"
-              title="Bagaimana agar saya mengetahui event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id?"
-            >
-              Follow instagram
-              <a href="https://www.instagram.com/seakun_id/">@seakun.id</a>
-              untuk mengetahui informasi event Undian Voucher e-Wallet dan
-              Giveaway yang diadakan Seakun.id secara berkala.
-            </Accordion>
-          </AccordionContainer>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-import Accordion from '~/components/atoms/AccordionNew';
-import AccordionContainer from '~/components/atoms/AccordionContainer';
-
-export default {
-  name: 'UserHostFAQ',
-  layout: 'new',
+              />`,
+          isShow: false,
+        },
+        {
+          id: 5,
+          question:
+            'Bagaimana jika saya yang telah terdaftar menjadi User Host ingin berhenti berlangganan?',
+          answer:
+            'Bila kamu sebagai User Host ingin berhenti berlangganan harap hubungi admin paling lambat h-2 sebelum masa berlangganan selesai.',
+          isShow: false,
+        },
+        {
+          id: 6,
+          question:
+            'Bagaimana agar saya mengetahui event Undian Voucher e-Wallet dan Giveaway yang diadakan Seakun.id?',
+          answer: `Follow instagram <a href='https://www.instagram.com/official.seakun/' target='_blank' class='text-secondary font-bold'>@official.seakun</a> untuk mengetahui informasi event undian Voucher e-wallet dan Giveaway yang diadakan Seakun.id secara berkala.`,
+          isShow: false,
+        },
+      ],
+    };
+  },
   components: {
     Accordion,
-    AccordionContainer,
+  },
+  methods: {
+    toggleShow(id) {
+      this.dataFaq[id - 1].isShow = !this.dataFaq[id - 1].isShow;
+    },
   },
 };
 </script>
+
+<style></style>
