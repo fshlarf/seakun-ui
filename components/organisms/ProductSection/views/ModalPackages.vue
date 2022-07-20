@@ -73,6 +73,7 @@ export default {
         'iqiyi',
         'zoom',
         'vidio',
+        'hbo-go'
       ],
     };
   },
