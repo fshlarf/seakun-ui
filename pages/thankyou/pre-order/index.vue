@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import OrderService from '~/services/OrderServices.js';
 import OrderCard from '../views/order-card';
 import Button from '~/components/atoms/Button';

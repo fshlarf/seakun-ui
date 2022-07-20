@@ -38,6 +38,32 @@
           <OrderCard :order-data="dataDetailOrder" />
         </div>
 
+        <div v-if="dataDetailProcedure" class="mb-10 lg:px-16">
+          <h3 class="text-center text-2xl font-bold tn:mb-4 md:mb-7">
+            Prosedur
+          </h3>
+          <div
+            v-for="(flow, id) in dataDetailProcedure.flow"
+            :key="id"
+            class="my-2 relative z-20"
+          >
+            <div class="flex space-x-5 items-start">
+              <div class="flex flex-column justify-center space-y-2">
+                <div class="w-[24px] h-[24px] bg-[#52AF9C] rounded-full"></div>
+                <img
+                  v-if="id < dataDetailProcedure.flow.length - 1"
+                  src="/images/icons/atoms/arrow-flow.png"
+                  alt="arrow indicator"
+                  class="w-[16px] mx-auto"
+                />
+              </div>
+              <div>
+                <p class="tn:text-sm md:text-base">{{ flow }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <p
           class="text-center font-bold text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
         >
@@ -61,7 +87,7 @@
 import OrderService from '~/services/OrderServices.js';
 import OrderCard from '../views/order-card';
 import Button from '~/components/atoms/Button';
-
+import userHostProviders from '../../../constants/user-host-flow.json';
 export default {
   name: 'PreOrderPage',
   layout: 'new',
@@ -71,11 +97,13 @@ export default {
   },
   data() {
     return {
+      userHostProviders,
       OrderService,
       provider: '',
       orderNumber: '',
       slug: '',
       dataDetailOrder: {},
+      dataDetailProcedure: {},
     };
   },
   mounted() {
@@ -130,6 +158,9 @@ export default {
           this.orderNumber = this.dataDetailOrder.orderNumber;
           this.provider = this.dataDetailOrder.provider.name;
           this.slug = this.dataDetailOrder.provider.slug;
+          this.dataDetailProcedure = this.userHostProviders.find((item) => {
+            return item.slug === this.dataDetailOrder.provider.slug;
+          });
         } else {
           throw new Error(fetchOrderDetail);
         }
