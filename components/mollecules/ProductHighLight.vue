@@ -6,7 +6,7 @@
       <div v-if="provider" class="tn:col-span-2 md:col-span-1">
         <img
           class="detail-product__image w-full"
-          :src="`/images/${provider}.png`"
+          :src="`/images/product/brand/${provider}.png`"
           alt="Image not found"
         />
       </div>
