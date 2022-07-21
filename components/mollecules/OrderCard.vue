@@ -27,13 +27,12 @@
               v-if="order.provider.package.variant.duration === 12"
               class="text-base font-normal mt-1 opacity-80"
             >
-              {{ formatMoneyRupiah(order.payment.totalPrice) }}
+              {{ formatMoneyRupiah(order.provider.package.variant.grandTotal) }}
               x (1 Tahun)
             </p>
             <p v-else class="text-base font-normal mt-1 opacity-80">
-              {{ formatMoneyRupiah(order.payment.totalPrice) }} x ({{
-                order.provider.package.variant.duration
-              }}
+              {{ formatMoneyRupiah(order.provider.package.variant.grandTotal) }}
+              x ({{ order.provider.package.variant.duration }}
               Bulan)
             </p>
             <p
@@ -56,7 +55,7 @@
       <div class="flex justify-between items-center">
         <p class="text-base font-normal opacity-50">Biaya Langganan</p>
         <p class="text-base font-bold">
-          {{ formatMoneyRupiah(order.payment.totalPrice) }}
+          {{ formatMoneyRupiah(order.provider.package.variant.grandTotal) }}
         </p>
       </div>
     </div>
