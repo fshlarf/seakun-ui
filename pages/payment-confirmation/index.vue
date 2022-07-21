@@ -442,12 +442,17 @@ export default {
             this.orderData = orders;
             let total = 0;
             for (let i = 0; i < moreData.length; i++) {
-              total += moreData[i].payment.totalPrice;
+              total += moreData[i].provider.package.variant.grandTotal;
             }
-            this.nominal = total + dataResult.payment.payment;
+            this.nominal =
+              total +
+              dataResult.provider.package.variant.grandTotal +
+              dataResult.payment.uniqueCode;
           } else {
             this.orderData = newOrder;
-            this.nominal = rest.payment.payment;
+            this.nominal =
+              rest.provider.package.variant.grandTotal +
+              rest.payment.uniqueCode;
           }
         } else {
           throw new Error(fetchPayment);

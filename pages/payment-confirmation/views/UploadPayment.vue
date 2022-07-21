@@ -12,7 +12,7 @@
       :class="{ 'border border-red-500': error.isError }"
       type="file"
       :id="name"
-      accept="image/*,.pdf"
+      accept="image/png, image/jpg, image/jpeg,.pdf"
       @change="getImage"
       hidden
     />

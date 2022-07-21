@@ -170,7 +170,7 @@ export default {
               let total = 0;
               for (let i = 0; i < order.length; i++) {
                 if (order[i].checked) {
-                  total += order[i].payment.totalPrice;
+                  total += order[i].provider.package.variant.grandTotal;
                 }
               }
               this.totalPayment = total;
@@ -179,14 +179,14 @@ export default {
               let total = 0;
               for (let i = 0; i < orders.length; i++) {
                 if (orders[i].checked) {
-                  total += orders[i].payment.totalPrice;
+                  total += orders[i].provider.package.variant.grandTotal;
                 }
               }
               this.totalPayment = total;
             }
           } else {
             this.orderData = newOrder;
-            this.totalPayment = rest.payment.totalPrice;
+            this.totalPayment = rest.provider.package.variant.grandTotal;
           }
         } else {
           throw new Error(fetchPayment);
@@ -217,7 +217,7 @@ export default {
       let total = 0;
       for (let i = 0; i < copyArray.length; i++) {
         if (copyArray[i].checked) {
-          total += copyArray[i].payment.totalPrice;
+          total += copyArray[i].provider.package.variant.grandTotal;
         }
       }
       this.totalPayment = total;
