@@ -229,7 +229,7 @@ export default {
           let totalPrice = 0;
           const uniqueCode = dataResult[0].payment.uniqueCode;
           dataResult.forEach((item) => {
-            totalPrice = totalPrice + item.payment.totalPrice;
+            totalPrice = totalPrice + item.provider.package.variant.grandTotal;
           });
           this.totalPayment = totalPrice + uniqueCode;
         } else {
