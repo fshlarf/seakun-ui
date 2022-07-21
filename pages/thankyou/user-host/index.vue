@@ -12,7 +12,7 @@
           />
         </div>
         <p
-          class="text-center font-bold text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
         >
           User Host adalah program Seakun.id untuk memberikan kewenangan ke user
           untuk melakukan administrasi ke provider tertentu. Administrasi
@@ -26,7 +26,7 @@
           >.
         </p>
         <p
-          class="text-center font-bold text-[#2d2d2d] opacity-80 tn:text-sm md:text-base tn:mt-4 lg:mt-8"
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base tn:mt-4 lg:mt-8"
         >
           Terima kasih telah melakukan pendaftaran. <br />
           Karena kamu terdaftar sebagai User Host, Admin Seakun.id akan memandu
@@ -65,11 +65,13 @@
         </div>
 
         <p
-          class="text-center font-bold text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
         >
-          Apabila kamu setuju menjadi User Host, lakukan konfirmasi bahwa kamu
-          setuju menjadi user host dengan klik tombol di bawah. Atau kamu bisa
-          klik link yang sudah dikirimkan ke whatsapp kamu.
+          Apabila kamu setuju menjadi User Host dan mengerti prosedur sebagai
+          User Host, lakukan konfirmasi dengan klik tombol di bawah. Atau kamu
+          bisa klik link yang sudah dikirimkan ke whatsapp kamu. Konfirmasi ini
+          bertujuan untuk memasukkan nama dan data diri kamu pada grup yang
+          available secara sistematis sebagai User Host.
         </p>
         <div class="w-full tn:mt-8 md:mt-12 md:px-16">
           <Button
