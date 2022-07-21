@@ -12,12 +12,18 @@
         >
           Harap Menunggu...
         </h3>
-        <p class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base">
+        <p
+          v-if="orderType === 'user-host'"
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+        >
           Harap menunggu, kamu sedang melakukan konfirmasi ke sistem Seakun
-          bahwa kamu sudah komitmen untuk ikut pre-order. Konfirmasi ini
-          bertujuan untuk memasukkan nama dan data diri kamu pada grup yang
-          available secara sistematis. Harap tidak menutup browser sebelum
-          proses selesai.
+          bahwa kamu sudah komitmen untuk menjadi User Host {{ provider }}.
+          Harap tidak menutup browser sebelum proses selesai.
+        </p>
+        <p v-else class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base">
+          Harap menunggu, kamu sedang melakukan konfirmasi ke sistem Seakun
+          bahwa kamu sudah komitmen untuk ikut pre-order. Harap tidak menutup
+          browser sebelum proses selesai.
         </p>
       </div>
 
@@ -34,7 +40,18 @@
         >
           Konfirmasi Berhasil!
         </h3>
-        <p class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base">
+        <p
+          v-if="orderType === 'user-host'"
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+        >
+          Kamu sudah terkonfirmasi <b>fix</b> menjadi
+          <b>User Host {{ provider }}</b> di Seakun.id dengan nomor order
+          <b>{{ orderNumber }}</b
+          >. Dalam <b>waktu 1 x 24 jam</b> kamu akan dihubungi admin Seakun
+          untuk memandu kamu melanjutkan proses pendaftaran akun dan/atau
+          pembayaran ke provider terkait.
+        </p>
+        <p v-else class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base">
           Kamu sudah terkonfirmasi <b>fix</b> ikut pre order layanan
           {{ provider }} di Seakun.id dengan nomor order <b>{{ orderNumber }}</b
           >. Kamu akan diberitahukan oleh admin Seakun apabila grup pre-order
@@ -58,7 +75,7 @@ import Button from '~/components/atoms/Button';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
-  name: 'PreOrderPage',
+  name: 'ConfirmPage',
   layout: 'new',
   components: {
     Button,
@@ -70,6 +87,7 @@ export default {
       orderType: '',
       provider: '',
       orderNumber: '',
+      slug: '',
       dataDetailOrder: {},
       countdown: 7,
       isConfirm: false,
@@ -99,13 +117,36 @@ export default {
     }
   },
   methods: {
+    getPaymentProcess(slug) {
+      switch (slug.toLowerCase()) {
+        case 'netflix':
+        case 'disney-hotstar':
+          return 'pendaftaran akun dan pembayaran';
+          break;
+        case 'youtube':
+        case 'google-one':
+          return 'pendaftaran';
+          break;
+        case 'apple-one':
+        case 'apple-one-premier':
+        case 'apple-tv':
+          return 'pembayaran';
+          break;
+        default:
+          return 'pembayaran';
+      }
+    },
     confirm() {
-      const { provider, orderNumber } = this;
+      const { provider, orderNumber, dataDetailOrder, slug } = this;
       let message;
       if (this.orderType == 'pre-order') {
-        message = `Halo, saya fix ikut pre-order grup ${provider} ya. \r\nNomor order: *${orderNumber}* \r\nTerima kasih`;
+        message = `Halo Admin, saya ${dataDetailOrder.customerName} dengan nomor order ${orderNumber} sudah konfirmasi fix ikut Pre Order ${provider}. Saya tunggu ya follow up dari admin Seakun apabila grup pre order sudah full, terimakasih.`;
       } else {
-        message = `Halo, saya fix mendaftar sebagai User Host ${provider} ya. \r\nNomor order: *${orderNumber}* \r\nTerima kasih`;
+        message = `Halo Admin, saya ${
+          dataDetailOrder.customerName
+        } dengan nomor order ${orderNumber} sudah konfirmasi ikut menjadi User Host ${provider}. Saya tunggu selama 1 x 24 jam ya agar dipandu dalam proses ${this.getPaymentProcess(
+          slug
+        )} ke ${provider}, terimakasih.`;
       }
       window.location.href = `https://api.whatsapp.com/send?phone=6282124852232&text=${encodeURIComponent(
         message
@@ -123,6 +164,7 @@ export default {
           this.dataDetailOrder = fetchOrderDetail.data.data;
           this.orderNumber = this.dataDetailOrder.orderNumber;
           this.provider = this.dataDetailOrder.provider.name;
+          this.slug = this.dataDetailOrder.provider.slug;
           if (this.dataDetailOrder.provider.package.isPO) {
             this.orderType = 'pre-order';
           } else if (this.dataDetailOrder.provider.package.isHost) {

@@ -12,7 +12,7 @@
           />
         </div>
         <p
-          class="text-center font-bold text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
         >
           Terima kasih telah melakukan pendaftaran. <br />
           Paket ini adalah paket Pre-Order dimana akun akan dibuat setelah
@@ -32,12 +32,13 @@
         </div>
 
         <p
-          class="text-center font-bold text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
         >
           Lakukan konfirmasi ulang bahwa kamu fix berkomitmen untuk ikut
           pre-order layanan patungan {{ provider }} di Seakun dengan cara klik
           tombol di bawah. Atau kamu bisa klik link yang sudah dikirimkan ke
-          whatsapp kamu.
+          whatsapp kamu. Konfirmasi ini bertujuan untuk memasukkan nama dan data
+          diri kamu pada grup yang available secara sistematis.
         </p>
         <div class="w-full tn:mt-8 md:mt-12 md:px-16">
           <Button
