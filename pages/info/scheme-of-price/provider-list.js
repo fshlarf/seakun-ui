@@ -245,8 +245,8 @@ export const providerList = [
         value: 'Rp89.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp98.790',
+        title: 'Harga setelah dikenakan pajak 10%',
+        value: 'Rp97.900',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -254,7 +254,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp98.790 ÷ 5 = Rp19.758',
+        value: 'Rp97.900 ÷ 5 = Rp19.580',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -262,7 +262,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp19.758',
+        value: 'Rp19.580',
         is_total: true,
       },
     ],
@@ -288,8 +288,8 @@ export const providerList = [
         value: 'Rp89.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp98.790',
+        title: 'Harga setelah dikenakan pajak 10%',
+        value: 'Rp97.900',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -297,15 +297,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp98.790 ÷ 5 = Rp19.758',
+        value: 'Rp97.900 ÷ 5 = Rp19.580',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.742',
+        value: 'Rp5.420',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp25.500',
+        value: 'Rp25.000',
         is_total: true,
       },
     ],
@@ -641,12 +641,8 @@ export const providerList = [
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Google One',
-        value: 'Rp135.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp149.850',
+        title: 'Harga Paket + tax Google One',
+        value: 'Rp148.500',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -654,15 +650,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp149.850 ÷ 5 = Rp29.970',
+        value: 'Rp148.500 ÷ 5 = Rp29.700',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp0 (FREE)',
+        value: 'Rp0',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp29.970',
+        value: 'Rp29.700',
         is_total: true,
       },
     ],
@@ -684,12 +680,8 @@ export const providerList = [
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Google One',
-        value: 'Rp135.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp149.850',
+        title: 'Harga Paket + tax Google One',
+        value: 'Rp148.500',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -697,15 +689,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp149.850 ÷ 5 = Rp29.970',
+        value: 'Rp148.500 ÷ 5 = Rp29.700',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.530',
+        value: 'Rp6.300',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp36.500',
+        value: 'Rp36.000',
         is_total: true,
       },
     ],
@@ -728,8 +720,12 @@ export const providerList = [
         is_total: true,
       },
       {
-        title: 'Harga Paket NordVPN + pajak 11%',
-        value: 'Rp206.288',
+        title: 'Harga Paket Premium NordVPN',
+        value: 'Rp179.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 10%',
+        value: 'Rp196.900',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -737,15 +733,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp206.288 ÷ 6 = Rp34.381',
+        value: 'Rp196.900 ÷ 6 = Rp32.816,7',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.119',
+        value: 'Rp5.183,3',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp39.500',
+        value: 'Rp38.000',
         is_total: true,
       },
     ],
