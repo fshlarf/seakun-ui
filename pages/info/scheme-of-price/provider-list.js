@@ -987,8 +987,8 @@ export const providerList = [
   //   ],
   // },
   {
-    img: '/images/hbo-go.png',
-    screenshot: '/images/ss-hbo-go.png',
+    img: '/images/product/brand/hbo-go.png',
+    screenshot: '/images/price scheme/hbo-go.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di HBO Go',
       'Seakun bertindak sebagai user Host dalam grup',
