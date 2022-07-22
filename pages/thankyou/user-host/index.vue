@@ -1,65 +1,84 @@
 <template>
-  <div class="payment">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="payment__img flex justify-center">
-            <img src="/images/thank-you.png" alt="Image not found" />
-          </div>
-          <h3 class="payment-thankyou text-2xl font-bold mt-10 text-center">
-            Thank You!
+  <div class="lg:pt-10 w-full">
+    <div
+      class="tn:w-full lg:w-[780px] mx-auto md:px-[75px] lg:pb-20 lg:rounded-3xl lg:shadow-2xl"
+    >
+      <div class="col">
+        <div class="">
+          <img
+            src="/images/thankyou/thank-you.png"
+            alt="Image not found"
+            style="margin: 0 auto"
+          />
+        </div>
+        <p
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+        >
+          User Host adalah program Seakun.id untuk memberikan kewenangan ke user
+          untuk melakukan administrasi ke provider tertentu. Administrasi
+          tersebut bisa berupa pendaftaran atau melakukan payment ke provider
+          tersebut.
+          <nuxt-link
+            class="underline font-bold text-blue-500"
+            to="/info/user-host"
+            target="_blank"
+            >Baca ketentuan User Host</nuxt-link
+          >.
+        </p>
+        <p
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base tn:mt-4 lg:mt-8"
+        >
+          Terima kasih telah melakukan pendaftaran. <br />
+          Karena kamu terdaftar sebagai User Host, Admin Seakun.id akan memandu
+          kamu untuk melakukan proses pendaftaran dan pembayaran ke
+          {{ provider }}.
+        </p>
+
+        <div class="w-full tn:my-6 md:my-8 lg:my-12 md:px-6">
+          <OrderCard :order-data="dataDetailOrder" />
+        </div>
+
+        <div v-if="dataDetailProcedure" class="mb-10 lg:px-16">
+          <h3 class="text-center text-2xl font-bold tn:mb-4 md:mb-7">
+            Prosedur
           </h3>
-
-          <p>
-            User Host adalah program Seakun.id untuk memberikan kewenangan ke
-            user untuk melakukan administrasi ke provider tertentu. Administrasi
-            tersebut bisa berupa pendaftaran atau melakukan payment ke provider
-            tersebut.
-          </p>
-
-          <p>
-            Terima kasih telah melakukan pendaftaran.
-            <br />Karena kamu terdaftar sebagai User Host, Admin Seakun.id akan
-            memandu kamu untuk melakukan proses
-            {{ setWordingHost(provider) }}
-            ke {{ setNameProvider(provider) }}.
-          </p>
-          <p>
-            <a href="/info/user-host" target="_blank">
-              <i>Baca ketentuan User Host selengkapnya</i>
-            </a>
-          </p>
-          <div class="box text-left">
-            <div class="grid grid-cols-12">
-              <div class="ml-1 col-span-4 font-bold">Provider</div>
-              <div class="">:</div>
-              <div class="col-span-7">{{ setNameProvider(provider) }}</div>
-            </div>
-            <div class="grid grid-cols-12 mt-1">
-              <div class="ml-1 col-span-4 font-bold">Paket</div>
-              <div class="">:</div>
-              <div class="col-span-7">{{ packet }}</div>
-            </div>
-            <div class="grid grid-cols-12 mt-1">
-              <div class="ml-1 col-span-4 font-bold">Harga</div>
-              <div class="">:</div>
-              <div class="col-span-7">{{ formatMoneyRupiah(total) }}</div>
-            </div>
-            <div class="grid grid-cols-12 mt-1">
-              <div class="ml-1 col-span-4 font-bold">Nomor Pesanan</div>
-              <div class="">:</div>
-              <div class="col-span-7">{{ orderNumber }}</div>
+          <div
+            v-for="(flow, id) in dataDetailProcedure.flow"
+            :key="id"
+            class="my-2 relative z-20"
+          >
+            <div class="flex space-x-5 items-start">
+              <div class="flex flex-column justify-center space-y-2">
+                <div class="w-[24px] h-[24px] bg-[#52AF9C] rounded-full"></div>
+                <img
+                  v-if="id < dataDetailProcedure.flow.length - 1"
+                  src="/images/icons/atoms/arrow-flow.png"
+                  alt="arrow indicator"
+                  class="w-[16px] mx-auto"
+                />
+              </div>
+              <div>
+                <p class="tn:text-sm md:text-base">{{ flow }}</p>
+              </div>
             </div>
           </div>
-          <p>
-            Pastikan nomor Whatsapp kamu aktif, kamu akan dihubungi oleh Admin
-            melalui Whatsapp untuk proses selanjutnya.
-            <br />
-            <br />Hubungi Admin di
-            <a href="https://api.whatsapp.com/send?phone=6282124852232"
-              >+6282124852232</a
-            >
-          </p>
+        </div>
+
+        <p
+          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+        >
+          Apabila kamu setuju menjadi User Host dan mengerti prosedur sebagai
+          User Host, lakukan konfirmasi dengan klik tombol di bawah. Atau kamu
+          bisa klik link yang sudah dikirimkan ke whatsapp kamu. Konfirmasi ini
+          bertujuan untuk memasukkan nama dan data diri kamu pada grup yang
+          available secara sistematis sebagai User Host.
+        </p>
+        <div class="w-full tn:mt-8 md:mt-12 md:px-16">
+          <Button
+            class="w-full bg-green-seakun text-white py-3"
+            label="Konfirmasi ikut sebagai User Host"
+            @click="confirm()"
+          />
         </div>
       </div>
     </div>
@@ -67,56 +86,85 @@
 </template>
 
 <script>
-import axios from 'axios';
 import OrderService from '~/services/OrderServices.js';
-import { setNameProvider } from '~/helpers/word-transformation.js';
-import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
-
+import OrderCard from '../views/order-card';
+import Button from '~/components/atoms/Button';
+import userHostProviders from '../../../constants/user-host-flow.json';
 export default {
-  name: 'UserHostPage',
+  name: 'PreOrderPage',
   layout: 'new',
+  components: {
+    OrderCard,
+    Button,
+  },
   data() {
     return {
+      userHostProviders,
       OrderService,
       provider: '',
-      packet: '',
-      packetId: null,
-      total: '',
       orderNumber: '',
-      vouchersData: [],
-      setNameProvider,
-      SEAKUN_PACKAGE_API,
+      slug: '',
+      dataDetailOrder: {},
+      dataDetailProcedure: {},
     };
   },
   mounted() {
     this.OrderService = new OrderService(this);
-    const {
-      type,
-      order_uid,
-      customer_uid,
-    } = this.$router.history.current.query;
+    const { order_uid, customer_uid } = this.$router.history.current.query;
     if (order_uid && customer_uid) {
-      this.getPaymentDigital(order_uid, customer_uid);
+      this.getOrderDetail(order_uid, customer_uid);
     }
-    this.getVouchersData();
   },
   methods: {
-    async getPaymentDigital(orderUid, customerUid) {
+    confirm() {
+      const { order_uid, customer_uid } = this.$router.history.current.query;
+      this.$router.push(
+        `/confirmation?order_uid=${order_uid}&customer_uid=${customer_uid}`
+      );
+    },
+    setNumberMember(slug) {
+      switch (slug.toLowerCase()) {
+        case 'canva':
+        case 'iqiyi':
+          return '4';
+          break;
+        case 'gramedia-digital':
+        case 'vidio':
+        case 'disney-hotstar':
+          return '2';
+          break;
+        case 'wattpad':
+        case 'amazon-prime':
+          return '3';
+          break;
+        case 'nord-vpn':
+          return '6';
+          break;
+        case 'google-one':
+          return '5';
+          break;
+        default:
+          return '5';
+      }
+    },
+    async getOrderDetail(orderUid, customerUid) {
       const { OrderService } = this;
 
       try {
-        const fetchPayment = await OrderService.getDetailOrder(
+        const fetchOrderDetail = await OrderService.getDetailOrder(
           orderUid,
           customerUid
         );
-        if (fetchPayment.data) {
-          const dataResult = fetchPayment.data.data;
-          this.packet = dataResult.provider.package.variant.name;
-          this.total = dataResult.payment.totalPrice;
-          this.provider = dataResult.provider.slug;
-          this.orderNumber = dataResult.orderNumber;
+        if (fetchOrderDetail.data) {
+          this.dataDetailOrder = fetchOrderDetail.data.data;
+          this.orderNumber = this.dataDetailOrder.orderNumber;
+          this.provider = this.dataDetailOrder.provider.name;
+          this.slug = this.dataDetailOrder.provider.slug;
+          this.dataDetailProcedure = this.userHostProviders.find((item) => {
+            return item.slug === this.dataDetailOrder.provider.slug;
+          });
         } else {
-          throw new Error(fetchPayment);
+          throw new Error(fetchOrderDetail);
         }
       } catch (error) {
         if (error.response?.status == 404) {
@@ -136,48 +184,10 @@ export default {
         console.log(error);
       }
     },
-    getVouchersData() {
-      const { SEAKUN_PACKAGE_API } = this;
-      axios
-        .get(`${SEAKUN_PACKAGE_API}/vouchers`)
-        .then((res) => {
-          this.vouchersData = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    checkValidVoucher(vouchersData, dataPacket, voucher) {
-      let validateArray = [];
-      vouchersData.map((e) => {
-        e.voucher_code == voucher.toLowerCase() && e.active
-          ? validateArray.push(1)
-          : validateArray.push(0);
-      });
-      validateArray.sort().reverse();
-      validateArray[0] == 1
-        ? (this.total = dataPacket.voucherGrandTotal)
-        : (this.total = dataPacket.grandTotal);
-    },
     formatMoneyRupiah(num) {
-      if (num) {
-        return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      } else if (num == 0) {
-        return `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-      }
-    },
-    setWordingHost(provider) {
-      if (provider.toLowerCase() === 'youtube') {
-        return 'pendaftaran menggunakan nomor ponsel yang kamu miliki';
-      } else if (provider.toLowerCase() === 'netflix') {
-        return 'payment';
-      } else if (provider.toLowerCase() === 'apple-one') {
-        return 'verifikasi Apple ID';
-      } else if (provider.toLowerCase() === 'apple-one-premium') {
-        return 'verifikasi Apple ID';
-      } else {
-        return 'payment';
-      }
+      return num && num > 0
+        ? `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
+        : 'Rp0';
     },
   },
 };
@@ -185,51 +195,6 @@ export default {
 
 <style lang="scss" scoped>
 .payment {
-  padding: 30px 40px 10px !important;
-
-  .container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
-  }
-  .box {
-    border: 1px solid #86d0c1;
-    border-radius: 4px;
-    padding: 16px;
-    max-width: 29rem;
-    margin: 0 auto;
-  }
-  .col {
-    text-align: center;
-    h3 {
-      margin-top: 20px !important;
-      margin-bottom: 20px !important;
-      font-weight: 700;
-    }
-    p {
-      margin: 0 auto;
-      max-width: 600px;
-      margin-top: 30px;
-      margin-bottom: 40px;
-    }
-    a {
-      font-weight: 700;
-      color: #2895ff;
-    }
-  }
-  .container {
-    max-width: 1120px !important;
-    font-weight: 500 !important;
-    margin: 0 auto !important;
-  }
-  &__img {
-    img {
-      width: 40rem;
-    }
-  }
-  .row {
-    padding: 0px 8px !important;
-  }
   #snackbar {
     background-color: #daeeef;
     color: #2f524b;
@@ -265,36 +230,6 @@ export default {
     left: 30% !important;
     top: 60% !important;
     margin-left: 0px !important;
-  }
-  .payment {
-    padding: 0 !important;
-    margin-bottom: -3rem;
-    // margin-top: 18px;
-    Ï &__img {
-      text-align: center;
-      margin-top: 20px;
-    }
-    &__header {
-      &-h3 {
-        font-size: 22px;
-        margin-top: 16px;
-      }
-    }
-    img {
-      width: 330px !important;
-      margin: 16px auto;
-    }
-    h2 {
-      font-size: 20px;
-    }
-    .box {
-      font-size: 13px;
-    }
-  }
-}
-@media only screen and (min-width: 880px) and (max-width: 1020px) {
-  .container {
-    display: contents !important;
   }
 }
 </style>

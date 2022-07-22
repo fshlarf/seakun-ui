@@ -42,6 +42,10 @@ class OrderService {
   changePackageVariant(params) {
     return this.serviceApi.patch('/customer/variant', { ...params });
   }
+
+  updateOrderNotes(params) {
+    return this.serviceApi.patch('/customer/notes', { ...params });
+  }
 }
 
 export default OrderService;

@@ -295,7 +295,7 @@ export default {
 
       if (provider === 'spotify') {
         this.orderWarning =
-          'Terkait aturan yang berlaku dari Spotify, sebelum melakukan pendaftaran pastikan akun Spotify kamu tidak menggunakan domain pribadi dan belum pernah bergabung ke family lain selama 12 bulan terakhir.';
+          'Terkait aturan yang berlaku dari Spotify, sebelum melakukan pendaftaran pastikan akun Spotify kamu belum pernah bergabung ke family lain selama 12 bulan terakhir.';
       } else if (provider === 'youtube') {
         this.orderWarning =
           'Terkait aturan yang berlaku dari Youtube, sebelum melakukan pendaftaran pastikan akun Youtube kamu belum pernah berpindah family selama 12 bulan terakhir.';

@@ -60,11 +60,11 @@
           :class="{ accordion: isShowAnswer }"
         >
           <div v-if="answer.list">
-            <ul>
+            <ol class="list-decimal list-outside">
               <li v-for="(list, id) in answer.answer" :key="id">
                 {{ list }}
               </li>
-            </ul>
+            </ol>
           </div>
           <div v-else v-html="answer.answer"></div>
         </div>
