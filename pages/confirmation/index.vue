@@ -91,7 +91,7 @@
           class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base text-center"
         >
           Kamu sudah melakukan konfirmasi sebagai User Host. Nama dan data diri
-          kamu sudah dimasukkan ke dalam available grup sebagi User Host. Kamu
+          kamu sudah dimasukkan ke dalam available grup sebagai User Host. Kamu
           akan dihubungi Admin Seakun dalam waktu 1 x 24 jam.
         </p>
         <p
