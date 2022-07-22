@@ -3,24 +3,26 @@
     <div class="w-full">
       <div class="flex tn:space-x-4 md:space-x-6 items-center">
         <div class="tn:w-20 md:w-24">
-          <img alt="image-product" :src="`/images/product/brand/${slug}.png`" />
+          <img
+            class="mx-auto"
+            alt="image-product"
+            :src="`/images/product/brand/${slug}.png`"
+          />
         </div>
-        <div class="flex justify-between items-center w-full">
-          <div class="md:space-y-1 text-base">
-            <p class="tn:text-sm md:text-base font-bold">
-              {{ providerName }} -
-              {{ packageName }}
-            </p>
-            <p class="tn:text-sm md:text-base font-bold">
-              {{ orderNumber }}
-            </p>
-            <p v-if="duration === 12" class="tn:text-sm md:text-base font-bold">
-              1 Tahun
-            </p>
-            <p v-else class="tn:text-sm md:text-base font-bold">
-              {{ duration }} Bulan
-            </p>
-          </div>
+        <div class="md:space-y-1 text-base">
+          <p class="tn:text-sm md:text-base font-bold">
+            {{ providerName }} -
+            {{ packageName }}
+          </p>
+          <p class="tn:text-sm md:text-base font-bold">
+            {{ orderNumber }}
+          </p>
+          <p v-if="duration === 12" class="tn:text-sm md:text-base font-bold">
+            1 Tahun
+          </p>
+          <p v-else class="tn:text-sm md:text-base font-bold">
+            {{ duration }} Bulan
+          </p>
         </div>
       </div>
       <div class="tn:my-2 md:my-3 border-b border-[#E5E5E5]" />

@@ -1,10 +1,12 @@
 <template>
   <div class="lg:pt-10 w-full">
     <div
-      class="tn:w-full lg:w-[780px] mx-auto tn:px-4 md:px-20 lg:pb-20 lg:rounded-3xl lg:shadow-2xl bg-box"
+      class="tn:w-full lg:w-[780px] mx-auto tn:px-4 md:px-20 tn:pb-8 md:pb-12 xl:pb-16 lg:rounded-3xl lg:shadow-2xl bg-box"
     >
-      <div v-if="!isConfirm" class="tn:pt-8 lg:pt-20">
-        <div class="w-full flex justify-center text-primary opacity-50 mb-6">
+      <div v-if="confirmStatus === 0">
+        <div
+          class="w-full flex justify-center text-primary opacity-50 tn:pb-6 tn:pt-20"
+        >
           <i class="fa fa-circle-o-notch fa-spin fa-5x mx-auto"></i>
         </div>
         <h3
@@ -14,24 +16,27 @@
         </h3>
         <p
           v-if="orderType === 'user-host'"
-          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base text-center"
         >
           Harap menunggu, kamu sedang melakukan konfirmasi ke sistem Seakun
           bahwa kamu sudah komitmen untuk menjadi User Host {{ provider }}.
           Harap tidak menutup browser sebelum proses selesai.
         </p>
-        <p v-else class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base">
+        <p
+          v-else
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base text-center"
+        >
           Harap menunggu, kamu sedang melakukan konfirmasi ke sistem Seakun
           bahwa kamu sudah komitmen untuk ikut pre-order. Harap tidak menutup
           browser sebelum proses selesai.
         </p>
       </div>
 
-      <div v-else class="">
-        <div class="my-6">
+      <div v-else-if="confirmStatus === 1">
+        <div class="tn:pb-4 tn:pt-14">
           <img
             src="/images/thankyou/confirm-success.png"
-            alt="Image not found"
+            alt="confirm success"
             style="margin: 0 auto"
           />
         </div>
@@ -42,7 +47,7 @@
         </h3>
         <p
           v-if="orderType === 'user-host'"
-          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base text-center"
         >
           Kamu sudah terkonfirmasi <b>fix</b> menjadi
           <b>User Host {{ provider }}</b> di Seakun.id dengan nomor order
@@ -51,7 +56,10 @@
           untuk memandu kamu melanjutkan proses pendaftaran akun dan/atau
           pembayaran ke provider terkait.
         </p>
-        <p v-else class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base">
+        <p
+          v-else
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base text-center"
+        >
           Kamu sudah terkonfirmasi <b>fix</b> ikut pre order layanan
           {{ provider }} di Seakun.id dengan nomor order <b>{{ orderNumber }}</b
           >. Kamu akan diberitahukan oleh admin Seakun apabila grup pre-order
@@ -62,6 +70,44 @@
             Sedang mengalihkan ke whatsapp Seakun...
           </p>
           <p class="tn:text-xl md:text-2xl font-bold">{{ countdown }}</p>
+        </div>
+      </div>
+
+      <div v-else>
+        <div class="tn:pb-4 tn:pt-10">
+          <img
+            src="/images/thankyou/already-confirm.png"
+            alt="already confirmed"
+            style="margin: 0 auto"
+          />
+        </div>
+        <h3
+          class="text-center tn:text-2xl md:text-3xl font-bold tn:mb-3 md:mb-6"
+        >
+          Ooops...
+        </h3>
+        <p
+          v-if="orderType === 'user-host'"
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base text-center"
+        >
+          Kamu sudah melakukan konfirmasi sebagai User Host. Nama dan data diri
+          kamu sudah dimasukkan ke dalam available grup sebagi User Host. Kamu
+          akan dihubungi Admin Seakun dalam waktu 1 x 24 jam.
+        </p>
+        <p
+          v-else
+          class="text-[#2d2d2d] opacity-80 tn:text-sm md:text-base text-center"
+        >
+          Kamu sudah melakukan konfirmasi ikut Pre-Order. Nama dan data diri
+          kamu sudah dimasukkan ke dalam available grup. Mohon menunggu sampai
+          grup terisi penuh ya, kamu akan segera dihubungi Admin Seakun.
+        </p>
+        <div class="w-full tn:mt-8 md:mt-12 md:px-12">
+          <Button
+            class="w-full bg-green-seakun text-white py-3 font-bold"
+            label="Patungan layanan lain yuk!"
+            @click="toHomePage"
+          />
         </div>
       </div>
     </div>
@@ -90,22 +136,13 @@ export default {
       slug: '',
       dataDetailOrder: {},
       countdown: 7,
-      isConfirm: false,
+      confirmStatus: 0,
     };
   },
   watch: {
     countdown(val) {
       if (val === 0) {
         this.confirm();
-      }
-    },
-    isConfirm(val) {
-      if (val === true) {
-        setInterval(() => {
-          if (this.countdown > 0) {
-            this.countdown--;
-          }
-        }, 1000);
       }
     },
   },
@@ -186,7 +223,7 @@ export default {
             function () {
               this.$router.push('/');
             }.bind(this),
-            3000
+            4000
           );
         }
         console.log(error);
@@ -206,24 +243,18 @@ export default {
       try {
         const fetchUpdateNotes = await OrderService.updateOrderNotes(payload);
         if (fetchUpdateNotes.data) {
-          this.isConfirm = true;
+          this.confirmStatus = 1;
+          setInterval(() => {
+            if (this.countdown > 0) {
+              this.countdown--;
+            }
+          }, 1000);
         } else {
           throw new Error(fetchUpdateNotes);
         }
       } catch (error) {
         if (error.response?.status == 422) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Order Anda Sudah Terkonfirmasi. Tidak Perlu Konfirmasi Ulang`,
-            className: '',
-            color: 'red-400',
-            duration: 4000,
-          });
-          setTimeout(
-            function () {
-              this.$router.push('/');
-            }.bind(this),
-            4000
-          );
+          this.confirmStatus = 2;
         }
         console.log(error);
       }
@@ -232,6 +263,9 @@ export default {
       return num && num > 0
         ? `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
         : 'Rp0';
+    },
+    toHomePage() {
+      this.$router.push('/#provider');
     },
   },
 };
