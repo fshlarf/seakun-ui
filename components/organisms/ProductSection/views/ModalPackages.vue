@@ -1,5 +1,5 @@
 <template>
-  <Modal :is-show="isShow" size="xl:w-auto" @onClose="$emit('on-close')">
+  <Modal :is-show="isShow" size="xl:w-auto" @onClose="onClose">
     <template v-slot:header>
       <div class="">
         <h1 class="tn:text-base md:text-lg xl:text-xl font-bold">
@@ -18,11 +18,11 @@
       </div>
 
       <div
-        v-if="provider && provider.variants !== ''"
+        v-if="provider && packageVariants"
         class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-3 xl:space-y-0"
       >
         <div
-          v-for="(item, id) in provider.variants"
+          v-for="(item, id) in packageVariants"
           :key="id"
           :class="`mx-auto ${item.isActive == 1 ? '' : 'inactive'}`"
           class="w-full h-full"
@@ -73,9 +73,18 @@ export default {
         'iqiyi',
         'zoom',
         'vidio',
-        'hbo-go'
+        'hbo-go',
+        'scribd',
       ],
+      packageVariants: [],
     };
+  },
+  watch: {
+    provider(val) {
+      if (val) {
+        this.setPackageVariants(val);
+      }
+    },
   },
   components: {
     Modal,
@@ -93,8 +102,16 @@ export default {
         return `<span class="font-bold">Pre-order:</span> Member akan diinfokan untuk melakukan pembayaran setelah satu grup full. Link invitation ke Paket Premium akan dikirim setelah member melakukan pembayaran ke Seakun.`;
       }
     },
+    setPackageVariants() {
+      this.packageVariants = this.provider.variants.sort((a, b) =>
+        a.isActive < b.isActive ? 1 : b.isActive < a.isActive ? -1 : 0
+      );
+    },
     choosePacket(item) {
       this.$emit('choosePacket', item);
+    },
+    onClose() {
+      this.$emit('onClose');
     },
   },
 };

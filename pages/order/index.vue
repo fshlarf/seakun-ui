@@ -126,17 +126,14 @@
         :is-loading="isShowLoading"
       />
 
-      <div v-for="(providers, id) in dataProviders" :key="id">
-        <ModalPackages
-          v-if="provider === providers.slug"
-          :is-show="isShowModalPackages"
-          :provider="providers"
-          @on-close="onCloseModalPackages"
-          :slug="provider"
-          @choosePacket="choosePacket"
-          :is-loading="isLoadingVariant"
-        />
-      </div>
+      <ModalPackages
+        :is-show="isShowModalPackages"
+        :provider="choosedProvider"
+        @onClose="onCloseModalPackages"
+        :slug="provider"
+        @choosePacket="choosePacket"
+        :is-loading="isLoadingVariant"
+      />
     </div>
 
     <ModalDataConfirmation
@@ -272,6 +269,7 @@ export default {
     orderWarning: '',
     isShowModalConfirmation: false,
     isShowModalBlackList: false,
+    choosedProvider: {},
   }),
   watch: {
     codeNumber() {
@@ -326,6 +324,7 @@ export default {
           this.dataProviders = data;
           this.dataProviders.forEach((element) => {
             if (element.slug === this.provider) {
+              this.choosedProvider = element;
               this.providerSlug = element.slug;
               element.variants.forEach((variant) => {
                 if (variant.uid === this.variantUid) {

@@ -113,7 +113,7 @@
     <ModalPackages
       :is-show="isShowModalPackages"
       :provider="dataPackages"
-      @on-close="onCloseModalPackages"
+      @onClose="onCloseModalPackages"
       :slug="provider"
       @choosePacket="choosePacket"
       :is-loading="isLoadingProduct"
