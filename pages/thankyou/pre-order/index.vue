@@ -91,6 +91,7 @@ export default {
       switch (slug.toLowerCase()) {
         case 'canva':
         case 'iqiyi':
+        case 'scribd':
           return '4';
           break;
         case 'gramedia-digital':
