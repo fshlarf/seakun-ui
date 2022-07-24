@@ -980,4 +980,40 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Scribd',
+    slug: 'scribd',
+    title: 'Harga Paket Premium',
+    img: '/images/product/brand/scribd.png',
+    screenshot: '/images/price scheme/scribd.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Scribd',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Harga Paket Premium Scribd',
+        value: 'Rp70.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp70.000 ÷ 4 = Rp17.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp22.500',
+        is_total: true,
+      },
+    ],
+  },
 ];
