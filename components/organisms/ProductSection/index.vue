@@ -10,7 +10,7 @@
         >
           Berlangganan Produk Digital
         </h1>
-        <h1 class="text-2xl md:hidden font-bold">Layanan digital</h1>
+        <h1 class="text-2xl md:hidden font-bold">Layanan Digital</h1>
         <NuxtLink
           to="/"
           class="hidden text-sm md:text-base text-primary font-bold"
@@ -47,7 +47,7 @@
 
       <div id="product-ondemand" class="pt-5 px-2 md:my-8">
         <h1 class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4">
-          Layanan On Demand
+          Layanan Non Digital
         </h1>
       </div>
 
@@ -60,7 +60,6 @@
             <ProductCard
               :product="product"
               class="md:w-full md:h-full"
-              v-if="product.preview"
               @on-click-product="onClickProductOnDemand"
             />
           </div>
@@ -138,36 +137,66 @@ export default {
         name: '',
       },
       dataProductOnDemand: [
-        // {
-        //   id: 1,
-        //   name: 'Sequrban',
-        //   slug: 'sequrban',
-        //   img: '/images/product/sekurban.png',
-        //   icon: '/images/icons/sekurban.svg',
-        //   isActive: false,
-        //   isNew: true,
-        //   preview:
-        //     'Lengkapi ibadahmu bersama Seakun. Berkurban sapi lebih murah dengan sistem patungan. Halal, mudah, aman.',
-        // },
-        // {
-        //   id: 2,
-        //   name: 'Pahamify',
-        //   slug: 'pahamify',
-        //   img: '/images/product/pahamify.png',
-        //   icon: '/images/icons/pahamify.svg',
-        //   isActive: false,
-        //   preview:
-        //     'Belajar jarak jauh lebih mudah, lengkap, dan murah bersama konten premium Pahamify',
-        // },
         {
           id: 1,
-          name: 'Kulina',
-          slug: 'kulina',
-          img: '/images/product/kulina.png',
-          icon: '/images/icons/kulina.svg',
+          name: 'Sekeranjang',
+          slug: 'sekeranjang',
+          img: '/images/product/on demand/sekeranjang.png',
           isActive: false,
           preview:
-            'Menu hemat, berkualitas, dan murah. Pesan makan siangmu bersama teman-teman di kulina',
+            'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan  kuantitas banyak untuk mendapatkan discount sampai 50%.',
+        },
+        {
+          id: 2,
+          name: 'Sefitnes',
+          slug: 'sefitnes',
+          img: '/images/product/on demand/sefitnes.png',
+          isActive: false,
+          preview:
+            'Cari teman patungan berlangganan gym, fitness dan fasilitas olahraga untuk mendapatakan potongan harga.',
+        },
+        {
+          id: 3,
+          name: 'Seatap',
+          slug: 'seatap',
+          img: '/images/product/on demand/seatap.png',
+          isActive: false,
+          preview:
+            'Cari teman patungan untuk sewa rumah, kostan atau apartemen.',
+        },
+        {
+          id: 4,
+          name: 'Sekelas',
+          slug: 'sekelas',
+          img: '/images/product/on demand/sekelas.png',
+          isActive: false,
+          preview:
+            'Cari teman patungan untuk beli dan berlangganan kelas online atau offline.',
+        },
+        {
+          id: 5,
+          name: 'Segame',
+          slug: 'segame',
+          img: '/images/product/on demand/segame.png',
+          isActive: false,
+          preview:
+            'Cari teman patungan, langganan dan main bareng futsal, sepakbola, tenis, badminton dll.',
+        },
+        {
+          id: 6,
+          name: 'Sekatering',
+          slug: 'sekatering',
+          img: '/images/product/on demand/sekatering.png',
+          isActive: false,
+          preview: 'Cari teman patungan berlangganan katering terdekat.',
+        },
+        {
+          id: 7,
+          name: 'Sejalan',
+          slug: 'sejalan',
+          img: '/images/product/on demand/sejalan.png',
+          isActive: false,
+          preview: 'Berlangganan bersama ojek online terpercaya.',
         },
       ],
       dataProposeProvider: {

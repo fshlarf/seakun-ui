@@ -4,7 +4,14 @@
   >
     <div class="md:h-48">
       <img
+        v-if="product.variants"
         :src="`/images/product/${product.slug}.png`"
+        alt="image not found"
+        class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none md:w-full md:h-auto"
+      />
+      <img
+        v-else
+        :src="`/images/product/on demand/${product.slug}.png`"
         alt="image not found"
         class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none md:w-full md:h-auto"
       />
@@ -24,9 +31,8 @@
       <div class="h-full">
         <div class="flex tn:pt-2 items-center mb-1 md:mb-2 md:px-2">
           <img
-            :src="`/images/icons/${product.slug}${
-              product.slug === 'disney-hotstar' ? '.png' : '.svg'
-            }`"
+            v-if="product.variants"
+            :src="`/images/icons/${product.slug}.svg`"
             alt="#"
             class="w-8 ml-1"
           />

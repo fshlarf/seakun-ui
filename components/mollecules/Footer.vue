@@ -77,7 +77,7 @@
           </li>
           <li @click="scrollTo('product-ondemand')">
             <nuxt-link class="hover:no-underline" to="/"
-              >Produk on Demand</nuxt-link
+              >Produk Non Digital</nuxt-link
             >
           </li>
           <li>
@@ -114,7 +114,7 @@
             <div class="space-y-1">
               <p class="font-bold">Jam Operasional</p>
               <p>Setiap Hari</p>
-              <p>09.00 - 21.00</p>
+              <p>09.00 - 21.00 WIB</p>
             </div>
           </div>
         </div>
