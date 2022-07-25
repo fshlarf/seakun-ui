@@ -86,7 +86,7 @@
     <ModalPackages
       :is-show="isShowModalPackages"
       :provider="choosedProvider"
-      @on-close="onCloseModalPackages"
+      @onClose="onCloseModalPackages"
       :slug="choosedSlugProvider"
       @choosePacket="choosePacket"
       :is-loading="isLoadingProduct"
