@@ -77,7 +77,7 @@
           </li>
           <li @click="scrollTo('product-ondemand')">
             <nuxt-link class="hover:no-underline" to="/"
-              >Produk on Demand</nuxt-link
+              >Produk Non Digital</nuxt-link
             >
           </li>
           <li>
