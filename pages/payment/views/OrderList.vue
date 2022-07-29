@@ -67,7 +67,7 @@ export default {
   methods: {
     findGramedia(orderList) {
       this.isGramediaExist = orderList.some(
-        (el) => el.provider.slug === 'gramedia-digital'
+        (el) => el.provider.slug === 'gramedia-digital' && el.orderStatus === 4
       );
     },
     onClickPriceScheme(e) {
