@@ -13,6 +13,7 @@
         @changeDuration="getDetailVariant"
         :orderData="orderData"
         @onChecked="onCheckedOrder"
+        @onClickPriceScheme="onClickPriceScheme"
       />
       <PaymentDetail
         :isLoading="isLoadingPayment"
@@ -40,6 +41,12 @@
       :showModal="isShowModalPayment"
       @onClose="OpenCloseModalPayment"
     />
+    <ModalPriceScheme
+      :show-modal="showModalScheme"
+      :data-scheme="dataDetailProvider"
+      @closeModal="closeModalScheme"
+      @toSchemePage="toSchemePage"
+    />
   </div>
 </template>
 
@@ -56,6 +63,8 @@ import ModalPayment from './views/ModalPayment.vue';
 import OrderService from '~/services/OrderServices.js';
 import MasterService from '~/services/MasterServices.js';
 import PaymentService from '~/services/PaymentServices.js';
+import { providerList } from '~/components/organisms/ProductSection/provider-list';
+import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 
 export default {
   name: 'NewPayment',
@@ -70,9 +79,11 @@ export default {
     OrderList,
     ModalDuration,
     ModalPayment,
+    ModalPriceScheme,
   },
   data() {
     return {
+      providerList,
       OrderService,
       MasterService,
       PaymentService,
@@ -105,6 +116,12 @@ export default {
         customerUid: '',
       },
       dataVariants: [],
+      showModalScheme: false,
+      dataDetailProvider: {
+        list: {},
+        slug: '',
+        name: '',
+      },
     };
   },
   // beforeMount() {
@@ -127,8 +144,22 @@ export default {
     if (this.type === 1) {
       this.getPaymentDigital(order_uid, customer_uid);
     }
+    this.dataDetailProvider = {
+      list: this.providerList,
+      slug: 'gramedia-digital',
+      name: 'Gramedia Digital',
+    };
   },
   methods: {
+    onClickPriceScheme() {
+      this.showModalScheme = true;
+    },
+    closeModalScheme() {
+      this.showModalScheme = false;
+    },
+    toSchemePage() {
+      this.$router.push('/info/scheme-of-price');
+    },
     async getPaymentDigital(orderUid, customerUid) {
       const { OrderService } = this;
       this.isLoadingPayment = true;

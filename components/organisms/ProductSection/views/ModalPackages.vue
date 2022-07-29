@@ -10,7 +10,7 @@
 
     <div class="pb-2" v-if="!isLoading">
       <div
-        v-if="preOrderPackage.includes(slug)"
+        v-if="preOrderPackage.includes(slug) && provider.variants"
         class="tn:mx-1 md:mx-3 mb-3"
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
