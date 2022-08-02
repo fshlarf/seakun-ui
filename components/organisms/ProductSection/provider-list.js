@@ -298,7 +298,7 @@ export const providerList = [
     name: 'Microsoft 365',
     slug: 'microsoft-365',
     title: 'Harga Paket Premium (1 Bulan)',
-    img: '/images/product/brand/microsoft365.png',
+    img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price scheme/microsoft365.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
@@ -335,7 +335,7 @@ export const providerList = [
     name: 'Microsoft 365',
     slug: 'microsoft-365',
     title: 'Harga Paket Premium (1 Tahun)',
-    img: '/images/product/brand/microsoft365.png',
+    img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price scheme/microsoft365-year.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
@@ -1008,6 +1008,171 @@ export const providerList = [
       {
         title: 'Harga Paket Bulanan',
         value: 'Rp22.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'McAfee',
+    slug: 'mcafee',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/mcafee.png',
+    screenshot: '/images/price scheme/mcafee.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di McAfee',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 10 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    notes: "Harga Rp550.000 hanya berlaku untuk tahun pertama. Tahun berikut nya akan menggunakan harga Rp800.000 per tahun",
+    informations: [
+      {
+        title: 'Harga Paket Premium McAfee',
+        value: 'Rp550.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp610.500',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '10',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp610.500 ÷ 10 = Rp61.050',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp28.950',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp90.000',
+        is_total: true,
+      }
+    ],
+  },
+  {
+    name: 'Setapp',
+    slug: 'setapp',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/setapp.png',
+    screenshot: '/images/price scheme/setapp.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Setapp',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Harga Paket Premium Setapp',
+        value: 'Rp224.850',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp249.583,5',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp249.583,5 ÷ 4 = Rp62.395,87',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp.6.604,13',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp69.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Bitdefender',
+    slug: 'bitdefender',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/bitdefender.png',
+    screenshot: '/images/price scheme/bitdefender.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Bitdefender',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    informations: [
+      {
+        title: 'Harga Paket Premium Bitdefender',
+        value: 'Rp512.955',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp569.380,05',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp569.380,05 ÷ 5 = Rp113.876,01',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp78.123,99',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp192.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'LastPass',
+    slug: 'lastpass',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/lastpass.png',
+    screenshot: '/images/price scheme/lastpass.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di LastPass',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Harga Paket Premium 1 Tahun',
+        value: 'Rp720.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp799.200',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp799.200 ÷ 5 = Rp159.840',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp76.800',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp236.640',
         is_total: true,
       },
     ],

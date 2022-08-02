@@ -5,9 +5,7 @@
   >
     <img
       class="h-full"
-      :src="`/images/icons/${provider.slug}${
-        provider.slug === 'disney-hotstar' ? '.png' : '.svg'
-      }`"
+      :src="`/images/icons/${provider.slug}.svg`"
       alt="#"
     />
     <p class="text-lg font-bold">

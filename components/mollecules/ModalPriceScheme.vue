@@ -19,9 +19,9 @@
           v-if="scheme.slug === dataScheme.slug"
           class="scheme-card tn:px-2 tn:py-2 md:px-8 xl:px-4 xl:mx-2 tn:border-top md:border rounded-xl xl:py-3"
         >
-          <div class="h-10 mx-auto">
+          <div class="relative h-10 w-44 mx-auto flex justify-center items-center">
             <img
-              class="h-full mx-auto"
+              class="block max-h-[100%] max-w-[100%]"
               :src="`${scheme.img}`"
               alt="Image not found"
             />
