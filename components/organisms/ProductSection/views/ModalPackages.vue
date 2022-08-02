@@ -75,6 +75,10 @@ export default {
         'vidio',
         'hbo-go',
         'scribd',
+        'mcafee',
+        'setapp',
+        'bitdefender',
+        'lastpass'
       ],
       packageVariants: [],
     };

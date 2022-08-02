@@ -147,7 +147,7 @@ export default {
       dataProviders: [],
       paramGetProviderList: {
         page: 1,
-        limit: 20,
+        limit: 50,
       },
       highlight: 'youtube',
       providerUid: '1ec4b4fa-a756-456b-a01a-f48ff48fad58',

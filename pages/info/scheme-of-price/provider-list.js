@@ -311,7 +311,7 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/product/brand/microsoft365.png',
+    img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price scheme/microsoft365.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
@@ -350,7 +350,7 @@ export const providerList = [
     ],
   },
   {
-    img: '/images/product/brand/microsoft365.png',
+    img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price scheme/microsoft365-year.png',
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
