@@ -246,7 +246,7 @@ export default {
     dataProviders: [],
     paramGetProviderList: {
       page: 1,
-      limit: 20,
+      limit: 50,
     },
     variantUid: '',
     packageUid: '',
