@@ -147,7 +147,7 @@ export default {
         'months',
         true
       );
-      return differentMonth < 3;
+      return differentMonth < 1;
     },
   },
 };
