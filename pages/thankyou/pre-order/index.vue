@@ -92,6 +92,7 @@ export default {
         case 'canva':
         case 'iqiyi':
         case 'scribd':
+        case 'setapp':
           return '4';
           break;
         case 'gramedia-digital':
@@ -107,7 +108,12 @@ export default {
         case 'nord-vpn':
           return '6';
           break;
+        case 'mcafee':
+          return '10';
+          break;
         case 'google-one':
+        case 'bitdefender':
+        case 'lastpass':
           return '5';
           break;
         default:

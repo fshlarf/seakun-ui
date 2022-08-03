@@ -72,7 +72,7 @@ export default {
         },
         {
           id: 3,
-          value: '18',
+          value: '22',
           label: 'Total Layanan',
         },
         {
