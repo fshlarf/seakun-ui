@@ -1024,7 +1024,8 @@ export const providerList = [
       'Akun dishare HANYA ke 10 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
-    notes: "Harga Rp550.000 hanya berlaku untuk tahun pertama. Tahun berikut nya akan menggunakan harga Rp800.000 per tahun",
+    notes:
+      'Harga Rp550.000 hanya berlaku untuk tahun pertama. Tahun berikut nya akan menggunakan harga Rp800.000 per tahun',
     informations: [
       {
         title: 'Harga Paket Premium McAfee',
@@ -1050,7 +1051,7 @@ export const providerList = [
         title: 'Harga Paket Tahunan',
         value: 'Rp90.000',
         is_total: true,
-      }
+      },
     ],
   },
   {
@@ -1168,11 +1169,11 @@ export const providerList = [
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp76.800',
+        value: 'Rp74.160',
       },
       {
         title: 'Harga Paket Tahunan',
-        value: 'Rp236.640',
+        value: 'Rp234.000',
         is_total: true,
       },
     ],

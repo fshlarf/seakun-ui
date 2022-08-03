@@ -70,7 +70,7 @@
               src="/images/icons/links/Instagram.png"
               alt="Instagram"
           /></a>
-          <a href="https://twitter.com/seakun_id"
+          <a href="https://twitter.com/OfficialSeakun"
             ><img class="" src="/images/icons/links/Twitter.png" alt="Twitter"
           /></a>
           <a href="https://www.linkedin.com/company/seakun-id/"
