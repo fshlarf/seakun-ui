@@ -591,8 +591,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Apple Music',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [

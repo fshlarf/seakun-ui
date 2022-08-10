@@ -78,7 +78,8 @@ export default {
         'mcafee',
         'setapp',
         'bitdefender',
-        'lastpass'
+        'lastpass',
+        'apple-music',
       ],
       packageVariants: [],
     };
