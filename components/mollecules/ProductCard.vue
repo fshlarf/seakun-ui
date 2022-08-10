@@ -2,32 +2,35 @@
   <div
     class="w-full h-full border-none max-w-sm bg-white shadow-xl rounded-xl overflow-hidden text-gray-900 md:pb-3"
   >
-    <div class="md:h-48">
+    <div
+      class="relative tn:h-36 md:h-56 lg:h-52 xl:h-48 tn:w-full flex justify-center items-center overflow-hidden tn:rounded-br-3xl lg:rounded-br-none"
+    >
       <img
         v-if="product.variants"
         :src="`/images/product/${product.slug}.png`"
         alt="image not found"
-        class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none md:w-full md:h-auto"
+        class="block object-cover min-h-full min-w-full"
       />
       <img
         v-else
         :src="`/images/product/on demand/${product.slug}.png`"
         alt="image not found"
-        class="object-cover rounded-br-3xl max-h-[185px] lg:rounded-br-none md:w-full md:h-auto"
+        class="block object-cover min-h-full min-w-full"
       />
-    </div>
 
-    <div
-      class="w-full h-full relative px-2 py-0 md:px-4 grid flex-rows content-between"
-    >
       <div
         v-if="checkIsNewProduct(product.createdAt)"
-        class="absolute tn:ml-2 tn:-top-8 md:-top-12 px-3 py-1 text-center rounded-full bg-yellow-400"
+        class="absolute tn:left-3 tn:bottom-3 px-3 py-1 text-center rounded-full bg-yellow-400"
       >
         <p class="tn:text-xs md:text-base lg:text-base text-black font-bold">
           Baru
         </p>
       </div>
+    </div>
+
+    <div
+      class="w-full h-full relative px-2 py-0 md:px-4 grid flex-rows content-between"
+    >
       <div class="h-full">
         <div class="flex tn:pt-2 items-center mb-1 md:mb-2 md:px-2">
           <img

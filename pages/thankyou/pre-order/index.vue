@@ -114,6 +114,7 @@ export default {
         case 'google-one':
         case 'bitdefender':
         case 'lastpass':
+        case 'apple-music':
           return '5';
           break;
         default:
