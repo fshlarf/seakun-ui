@@ -23,7 +23,7 @@
         v-else
         :provider="providerSlug"
         :isLoading="isLoadingProduct"
-        :packageName="`${packageName} - ${variantName}`"
+        :packageName="`${providerName} - ${variantName}`"
         :grandTotal="longSubcribe.grandTotal"
         :total-month="longSubcribe.month"
       />
@@ -264,6 +264,7 @@ export default {
       phoneNumber: '',
     },
     providerSlug: '',
+    providerName: '',
     packageName: '',
     variantName: '',
     orderWarning: '',
@@ -326,6 +327,7 @@ export default {
             if (element.slug === this.provider) {
               this.choosedProvider = element;
               this.providerSlug = element.slug;
+              this.providerName = element.name;
               element.variants.forEach((variant) => {
                 if (variant.uid === this.variantUid) {
                   this.packageName = variant.packageName;
