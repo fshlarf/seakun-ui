@@ -253,7 +253,7 @@ export default {
           throw new Error(fetchUpdateNotes);
         }
       } catch (error) {
-        if (error.response?.status == 422) {
+        if (error.response?.status == 422 || error.response?.status == 403) {
           this.confirmStatus = 2;
         }
         console.log(error);
