@@ -12,7 +12,7 @@
         <div class="md:space-y-1 text-base">
           <p class="tn:text-sm md:text-base font-bold">
             {{ providerName }} -
-            {{ packageName }}
+            {{ variant }}
           </p>
           <p class="tn:text-sm md:text-base font-bold">
             {{ orderNumber }}
@@ -66,7 +66,7 @@ export default {
       slug: '',
       orderNumber: '',
       providerName: '',
-      packageName: '',
+      variant: '',
       duration: null,
       totalPrice: null,
     };
@@ -77,7 +77,7 @@ export default {
         this.slug = val.provider.slug;
         this.orderNumber = val.orderNumber;
         this.providerName = val.provider.name;
-        this.packageName = val.provider.package.name;
+        this.variant = val.provider.package.variant.name;
         this.duration = val.provider.package.variant.duration;
         this.totalPrice = val.payment.totalPrice;
       }
