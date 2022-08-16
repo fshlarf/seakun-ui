@@ -80,6 +80,7 @@ export default {
         'bitdefender',
         'lastpass',
         'apple-music',
+        'wetv',
       ],
       packageVariants: [],
     };
