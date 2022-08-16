@@ -99,6 +99,7 @@ export default {
         case 'vidio':
         case 'hbo-go':
         case 'disney-hotstar':
+        case 'wetv':
           return '2';
           break;
         case 'wattpad':
