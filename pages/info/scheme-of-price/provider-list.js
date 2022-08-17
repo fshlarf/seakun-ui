@@ -1235,4 +1235,80 @@ export const providerList = [
       },
     ],
   },
+  {
+    img: '/images/product/brand/wetv.png',
+    screenshot: '/images/price scheme/wetv.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket VIP di WeTV',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur VIP selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket VIP 1 Bulan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket VIP 1 Bulan',
+        value: 'Rp49.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp49.000 ÷ 2 = Rp24.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp29.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    img: '/images/product/brand/wetv.png',
+    screenshot: '/images/price scheme/wetv-3.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket VIP di WeTV',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur VIP selama 3 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket VIP 3 Bulan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket VIP 3 Bulan',
+        value: 'Rp129.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp129.000 ÷ 2 = Rp64.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp15.000',
+      },
+      {
+        title: 'Harga Paket 3 Bulanan',
+        value: 'Rp79.500',
+        is_total: true,
+      },
+    ],
+  },
 ];
