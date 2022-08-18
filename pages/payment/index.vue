@@ -344,6 +344,9 @@ export default {
         orderNumber: data.orderNumber,
         orderUid: data.orderUid,
         customerUid: data.customerUid,
+        duration: data.provider.package.variant.duration,
+        isHost: data.provider.package.isHost,
+        isPo: data.provider.package.isPO,
       };
       const { MasterService } = this;
       try {
