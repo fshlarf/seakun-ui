@@ -3,7 +3,7 @@
     <template v-slot:header>
       <div class="font-bold text-lg">Ubah Durasi Berlangganan</div>
     </template>
-    <div class="flex mb-8">
+    <div class="flex items-center space-x-2 mb-8">
       <img
         :src="`/images/product/brand/${orderData.packageName}.png`"
         alt="image not found"
@@ -22,7 +22,7 @@
     </div>
     <div v-else>
       <div
-        v-for="(item, index) in durationData"
+        v-for="(item, index) in listDuration"
         :key="index"
         v-bind:style="[
           item.uid === orderData.variantUid
@@ -55,6 +55,7 @@ export default {
     return {
       currencyFormat,
       dataLoading: [0, 1, 2],
+      provider: ['microsoft', 'microsoft-365', 'microsoft365', 'canva'], // special case for provider with different price for 1 year subscription
     };
   },
   props: {
@@ -69,8 +70,27 @@ export default {
     orderData: Object,
     isLoading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+  },
+  computed: {
+    listDuration() {
+      if (this.orderData) {
+        if (this.provider.includes(this.orderData.packageName)) {
+          if ([1, 3, 6].includes(this.orderData.duration)) {
+            return this.durationData.filter((item) => {
+              return item.duration !== 12;
+            });
+          } else {
+            return this.durationData.filter((item) => {
+              return item.duration === 12;
+            });
+          }
+        } else {
+          return this.durationData;
+        }
+      }
+    },
   },
   methods: {
     onClose() {
