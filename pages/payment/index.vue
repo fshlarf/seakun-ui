@@ -124,9 +124,9 @@ export default {
       },
     };
   },
-  // beforeMount() {
-  //   this.$router.push('/info/maintenance');
-  // },
+  beforeMount() {
+    this.$router.push('/info/maintenance');
+  },
   mounted() {
     this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
