@@ -91,7 +91,6 @@ export default {
       switch (slug.toLowerCase()) {
         case 'canva':
         case 'iqiyi':
-        case 'scribd':
         case 'setapp':
           return '4';
           break;
@@ -103,6 +102,7 @@ export default {
           return '2';
           break;
         case 'wattpad':
+        case 'scribd':
         case 'amazon-prime':
           return '3';
           break;
