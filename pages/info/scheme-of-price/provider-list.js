@@ -1001,8 +1001,8 @@ export const providerList = [
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium HBO Go',
-        value: 'Rp60.000',
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp66.600',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -1010,15 +1010,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp60.000 ÷ 2 = Rp30.000',
+        value: 'Rp66.600 ÷ 2 = Rp33.300',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.500',
+        value: 'Rp6.000',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp36.500',
+        value: 'Rp39.300',
         is_total: true,
       },
     ],
@@ -1029,7 +1029,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Scribd',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 4 member dalam 1 grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
@@ -1044,19 +1044,19 @@ export const providerList = [
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
-        value: '4',
+        value: '3',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp70.000 ÷ 4 = Rp17.500',
+        value: 'Rp70.000 ÷ 3 = Rp23.333,33',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
+        value: 'Rp5.166,67',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp22.500',
+        value: 'Rp28.500',
         is_total: true,
       },
     ],
