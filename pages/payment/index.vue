@@ -13,7 +13,8 @@
         @changeDuration="getDetailVariant"
         :orderData="orderData"
         @onChecked="onCheckedOrder"
-        @onClickPriceScheme="onClickPriceScheme"
+        @onClickGramedia="onClickGramedia"
+        @onClickHbo="onClickHbo"
       />
       <PaymentDetail
         :isLoading="isLoadingPayment"
@@ -144,14 +145,22 @@ export default {
     if (this.type === 1) {
       this.getPaymentDigital(order_uid, customer_uid);
     }
-    this.dataDetailProvider = {
-      list: this.providerList,
-      slug: 'gramedia-digital',
-      name: 'Gramedia Digital',
-    };
   },
   methods: {
-    onClickPriceScheme() {
+    onClickGramedia() {
+      this.dataDetailProvider = {
+        list: this.providerList,
+        slug: 'gramedia-digital',
+        name: 'Gramedia Digital',
+      };
+      this.showModalScheme = true;
+    },
+    onClickHbo() {
+      this.dataDetailProvider = {
+        list: this.providerList,
+        slug: 'hbo-go',
+        name: 'HBO Go',
+      };
       this.showModalScheme = true;
     },
     closeModalScheme() {
