@@ -138,11 +138,11 @@ export const providerList = [
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.300',
+        value: 'Rp15.300',
       },
       {
         title: 'Harga Paket 3 Bulan',
-        value: 'Rp57.500',
+        value: 'Rp67.500',
         is_total: true,
       },
     ],
