@@ -117,6 +117,45 @@ export const providerList = [
     ],
   },
   {
+    img: '/images/product/brand/spotify.png',
+    screenshot: '/images/price scheme/spotify3.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Spotify',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Reguler 3 Bulan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Premium Spotify 3 Bulan',
+        value: 'Rp261.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp261.000 ÷ 5 = Rp52.200',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.300',
+      },
+      {
+        title: 'Harga Paket 3 Bulan',
+        value: 'Rp57.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
     img: '/images/product/brand/gramedia.png',
     screenshot: '/images/price scheme/gramedia.png',
     schemes: [

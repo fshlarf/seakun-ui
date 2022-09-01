@@ -115,6 +115,10 @@ export default {
         orderNumber: '',
         orderUid: '',
         customerUid: '',
+        duration: null,
+        isHost: null,
+        isPo: null,
+        status: null,
       },
       dataVariants: [],
       showModalScheme: false,
@@ -356,6 +360,7 @@ export default {
         duration: data.provider.package.variant.duration,
         isHost: data.provider.package.isHost,
         isPo: data.provider.package.isPO,
+        status: data.orderStatus,
       };
       const { MasterService } = this;
       try {

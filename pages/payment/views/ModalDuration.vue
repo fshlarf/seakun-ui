@@ -76,18 +76,36 @@ export default {
   computed: {
     listDuration() {
       if (this.orderData) {
-        if (this.provider.includes(this.orderData.packageName)) {
-          if ([1, 3, 6].includes(this.orderData.duration)) {
-            return this.durationData.filter((item) => {
-              return item.duration !== 12;
-            });
+        if (this.orderData.status === 1) {
+          if (this.provider.includes(this.orderData.packageName)) {
+            if ([1, 3, 6].includes(this.orderData.duration)) {
+              return this.durationData.filter((item) => {
+                return item.duration !== 12 && item.active;
+              });
+            } else {
+              return this.durationData.filter((item) => {
+                return item.duration === 12 && item.active;
+              });
+            }
           } else {
-            return this.durationData.filter((item) => {
-              return item.duration === 12;
+            return this.durationData.filter(item => {
+              return item.active
             });
           }
         } else {
-          return this.durationData;
+          if (this.provider.includes(this.orderData.packageName)) {
+            if ([1, 3, 6].includes(this.orderData.duration)) {
+              return this.durationData.filter((item) => {
+                return item.duration !== 12;
+              });
+            } else {
+              return this.durationData.filter((item) => {
+                return item.duration === 12;
+              });
+            }
+          } else {
+            return this.durationData;
+          }
         }
       }
     },
