@@ -21,9 +21,6 @@
           @onChecked="$emit('onChecked', order, index)"
         />
       </div>
-      <div v-if="isGramediaExist" class="tn:mt-4" @click="onClickGramedia">
-        <WarningInfo class="w-full" :text="orderWarningGramedia" />
-      </div>
       <div v-if="isHboExist" class="tn:mt-4" @click="onClickHbo">
         <WarningInfo class="w-full" :text="orderWarningHbo" />
       </div>
@@ -55,38 +52,23 @@ export default {
   },
   data() {
     return {
-      orderWarningGramedia:
-        'Provider Gramedia Digital telah melakukan perubahan harga untuk semua paket berlangganan. <span role="button" class="font-bold text-secondary underline" id="click-here">Klik di sini</span> untuk melihat skema harga yang baru.',
-      isGramediaExist: false,
       orderWarningHbo:
         'Telah terjadi perubahan harga HBO Go dikarenakan penambahan pajak 11%. <span role="button" class="font-bold text-secondary underline" id="click-here">Klik di sini</span> untuk melihat skema harga yang baru.',
-      isHboaExist: false,
+      isHboExist: false,
     };
   },
   watch: {
     orderData(val) {
       if (val) {
-        this.findGramedia(val);
         this.findHbo(val);
       }
     },
   },
   methods: {
-    findGramedia(orderList) {
-      this.isGramediaExist = orderList.some(
-        (el) => el.provider.slug === 'gramedia-digital' && el.orderStatus === 4
-      );
-    },
     findHbo(orderList) {
       this.isHboExist = orderList.some(
         (el) => el.provider.slug === 'hbo-go' && el.orderStatus === 4
       );
-    },
-    onClickGramedia(e) {
-      let clickedId = e.target.id;
-      if (clickedId === 'click-here') {
-        this.$emit('onClickGramedia');
-      }
     },
     onClickHbo(e) {
       let clickedId = e.target.id;
