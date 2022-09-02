@@ -357,7 +357,9 @@ export default {
         );
         if (fetchDetailVariant.data) {
           const { data } = fetchDetailVariant.data;
-          this.dataVariants = data;
+          this.dataVariants = data.filter(el => {
+            return el.active === true
+          })
 
           const variantSelected = this.dataVariants.find(
             (variant) => this.variantUid == variant.uid
