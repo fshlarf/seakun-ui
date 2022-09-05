@@ -14,6 +14,7 @@
         :orderData="orderData"
         @onChecked="onCheckedOrder"
         @onClickHbo="onClickHbo"
+        @onClickCanva="onClickCanva"
       />
       <PaymentDetail
         :isLoading="isLoadingPayment"
@@ -155,6 +156,14 @@ export default {
         list: this.providerList,
         slug: 'hbo-go',
         name: 'HBO Go',
+      };
+      this.showModalScheme = true;
+    },
+    onClickCanva() {
+      this.dataDetailProvider = {
+        list: this.providerList,
+        slug: 'canva',
+        name: 'Canva',
       };
       this.showModalScheme = true;
     },
