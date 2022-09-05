@@ -24,6 +24,9 @@
       <div v-if="isHboExist" class="tn:mt-4" @click="onClickHbo">
         <WarningInfo class="w-full" :text="orderWarningHbo" />
       </div>
+      <div v-if="isCanvaExist" class="tn:mt-4" @click="onClickCanva">
+        <WarningInfo class="w-full" :text="orderWarningCanva" />
+      </div>
     </div>
   </div>
 </template>
@@ -52,15 +55,19 @@ export default {
   },
   data() {
     return {
+      isHboExist: false,
+      isCanvaExist: false,
       orderWarningHbo:
         'Telah terjadi perubahan harga HBO Go dikarenakan penambahan pajak 11%. <span role="button" class="font-bold text-secondary underline" id="click-here">Klik di sini</span> untuk melihat skema harga yang baru.',
-      isHboExist: false,
+      orderWarningCanva:
+        'Telah terjadi perubahan harga Canva dikarenakan Provider Canva memperbarui harga berlangganannya. <span role="button" class="font-bold text-secondary underline" id="click-here">Klik di sini</span> untuk melihat skema harga yang baru.',
     };
   },
   watch: {
     orderData(val) {
       if (val) {
         this.findHbo(val);
+        this.findCanva(val);
       }
     },
   },
@@ -74,6 +81,17 @@ export default {
       let clickedId = e.target.id;
       if (clickedId === 'click-here') {
         this.$emit('onClickHbo');
+      }
+    },
+    findCanva(orderList) {
+      this.isCanvaExist = orderList.some(
+        (el) => el.provider.slug === 'canva' && el.orderStatus === 4
+      );
+    },
+    onClickCanva(e) {
+      let clickedId = e.target.id;
+      if (clickedId === 'click-here') {
+        this.$emit('onClickCanva');
       }
     },
   },

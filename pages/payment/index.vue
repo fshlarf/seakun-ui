@@ -13,8 +13,8 @@
         @changeDuration="getDetailVariant"
         :orderData="orderData"
         @onChecked="onCheckedOrder"
-        @onClickGramedia="onClickGramedia"
         @onClickHbo="onClickHbo"
+        @onClickCanva="onClickCanva"
       />
       <PaymentDetail
         :isLoading="isLoadingPayment"
@@ -151,19 +151,19 @@ export default {
     }
   },
   methods: {
-    onClickGramedia() {
-      this.dataDetailProvider = {
-        list: this.providerList,
-        slug: 'gramedia-digital',
-        name: 'Gramedia Digital',
-      };
-      this.showModalScheme = true;
-    },
     onClickHbo() {
       this.dataDetailProvider = {
         list: this.providerList,
         slug: 'hbo-go',
         name: 'HBO Go',
+      };
+      this.showModalScheme = true;
+    },
+    onClickCanva() {
+      this.dataDetailProvider = {
+        list: this.providerList,
+        slug: 'canva',
+        name: 'Canva',
       };
       this.showModalScheme = true;
     },
