@@ -82,7 +82,7 @@
 import NavbarBlank from '~/components/mollecules/NavbarBlank';
 import Footer from '~/components/mollecules/Footer';
 import Title from '~/components/atoms/Title';
-import { providerList } from './provider-list';
+import { providerList } from '../../../constants/price-scheme';
 
 export default {
   components: {

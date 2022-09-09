@@ -14,6 +14,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Host',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Netflix',
         value: 'Rp186.000',
       },
@@ -50,6 +55,11 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Reguler',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium Netflix',
         value: 'Rp186.000',
@@ -88,6 +98,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium Reguler',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Spotify',
         value: 'Rp86.900',
       },
@@ -125,6 +140,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium Reguler 3 Bulan',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Spotify 3 Bulan',
         value: 'Rp261.000',
       },
@@ -158,6 +178,11 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Full Premium',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium Gramedia Digital',
         value: 'Rp99.000',
@@ -193,6 +218,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium Fiksi',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Fiksi',
         value: 'Rp49.000',
       },
@@ -226,6 +256,11 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Non-Fiksi',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium Non-Fiksi',
         value: 'Rp49.000',
@@ -264,12 +299,17 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Host',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Youtube',
         value: 'Rp89.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 10%',
-        value: 'Rp97.900',
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp98.790',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -277,7 +317,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp97.900 ÷ 5 = Rp19.580',
+        value: 'Rp98.790 ÷ 5 = Rp19.758',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -285,7 +325,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp19.580',
+        value: 'Rp19.758',
         is_total: true,
       },
     ],
@@ -301,16 +341,21 @@ export const providerList = [
       'Seakun bertindak sebagai user Host dalam grup ',
       'Member membuat/menyediakan akun masing-masing ',
       'Seakun mengundang 5 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium',
+      'Member yang telah join ke grup dapat menikmati firut Premium',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Reguler',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium Youtube',
         value: 'Rp89.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 10%',
-        value: 'Rp97.900',
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp98.790',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -318,15 +363,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp97.900 ÷ 5 = Rp19.580',
+        value: 'Rp98.790 ÷ 5 = Rp19.758',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.420',
+        value: 'Rp5.742',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp25.000',
+        value: 'Rp25.500',
         is_total: true,
       },
     ],
@@ -345,6 +390,11 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Microsoft 365 (1 Bulan)',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium Microsoft 365',
         value: 'Rp129.999 ~Rp130.000',
@@ -383,6 +433,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium Microsoft 365 (1 Tahun)',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Microsoft 365',
         value: 'Rp1.299.999',
       },
@@ -419,6 +474,11 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Canva Teams Bulanan',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Canva Teams',
         value: 'Rp124.000',
@@ -457,6 +517,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Canva Teams 1 Tahun',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Canva Teams',
         value: 'Rp1.240.000',
       },
@@ -493,6 +558,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium Disney (Tahunan)',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Disney+ Hotstar',
         value: 'Rp199.000',
       },
@@ -516,42 +586,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Apple One',
-    slug: 'apple-one',
-    title: 'Harga Paket Apple One (Bulanan)',
-    img: '/images/product/brand/apple-one.png',
-    screenshot: '/images/price scheme/apple-one.png',
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Apple One Family',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
-    ],
-    informations: [
-      {
-        title: 'Harga Paket Apple One Family',
-        value: 'Rp155.000',
-      },
-      {
-        title: 'Jumlah member dalam 1 grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp155.000 ÷ 5 = Rp31.000',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp36.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
     name: 'Wattpad',
     slug: 'wattpad',
     title: 'Harga Paket Wattpad (Bulanan)',
@@ -564,6 +598,11 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Wattpad (Bulanan)',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Wattpad',
         value: 'Rp65.000',
@@ -588,6 +627,47 @@ export const providerList = [
     ],
   },
   {
+    name: 'Apple One',
+    slug: 'apple-one',
+    title: 'Harga Paket Apple One (Bulanan)',
+    img: '/images/product/brand/apple-one.png',
+    screenshot: '/images/price scheme/apple-one.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Apple One Family',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Apple One (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Apple One Family',
+        value: 'Rp155.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp155.000 ÷ 5 = Rp31.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp36.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
     name: 'Apple Music',
     slug: 'apple-music',
     title: 'Harga Paket Apple Music (Bulanan)',
@@ -601,7 +681,12 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Harga Paket Apple music',
+        title: 'Nama Paket',
+        value: 'Paket Premium Apple Music (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket',
         value: 'Rp75.000',
       },
       {
@@ -638,8 +723,17 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Harga Paket + tax Google One',
-        value: 'Rp148.500',
+        title: 'Nama Paket',
+        value: 'Paket Premium User Host',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Google One',
+        value: 'Rp135.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp149.850',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -647,7 +741,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp148.500 ÷ 5 = Rp29.700',
+        value: 'Rp149.850 ÷ 5 = Rp29.970',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -655,7 +749,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp29.700',
+        value: 'Rp29.970',
         is_total: true,
       },
     ],
@@ -675,8 +769,17 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Harga Paket + tax Google One',
-        value: 'Rp148.500',
+        title: 'Nama Paket',
+        value: 'Paket Premium Reguler',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Google One',
+        value: 'Rp135.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp149.850',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -684,15 +787,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp148.500 ÷ 5 = Rp29.700',
+        value: 'Rp149.850 ÷ 5 = Rp29.970',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.300',
+        value: 'Rp6.530',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp36.000',
+        value: 'Rp36.500',
         is_total: true,
       },
     ],
@@ -713,12 +816,17 @@ export const providerList = [
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
-        title: 'Harga Paket Premium NordVPN',
-        value: 'Rp179.000',
+        title: 'Nama Paket',
+        value: 'Paket Premium NordVPN (Bulanan)',
+        is_total: true,
       },
       {
-        title: 'Harga setelah dikenakan pajak 10%',
-        value: 'Rp196.900',
+        title: 'Harga Paket Premium NordVPN',
+        value: '$11.99',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: '$13.31 = Rp206.288',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -726,15 +834,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp196.900 ÷ 6 = Rp32.816,7',
+        value: 'Rp206.288 ÷ 6 = Rp34.381',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.183,3',
+        value: 'Rp5.119',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp38.000',
+        value: 'Rp39.500',
         is_total: true,
       },
     ],
@@ -753,7 +861,12 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Paket Premium Amazon Prime Video (Bulanan)',
+        title: 'Nama Paket',
+        value: 'Paket Premium Prime Video (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket',
         value: 'Rp79.000',
       },
       {
@@ -789,8 +902,13 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Apple One Premier (Bulanan)',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Apple One Premier',
-        value: '275.000',
+        value: 'Rp275.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -825,8 +943,13 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Apple TV (Bulanan)',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Apple TV Premium',
-        value: '69.000',
+        value: 'Rp69.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -860,6 +983,11 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Reguler',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium Iqiyi',
         value: 'Rp59.000',
@@ -898,6 +1026,11 @@ export const providerList = [
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Pro User Reguler',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Pro Zoom',
         value: 'Rp232.345',
@@ -941,6 +1074,11 @@ export const providerList = [
   //     'Harga Promo ini (Rp450.000) berlaku sampai 5 Agustus 2022. Selanjutnya akan mengikuti harga normal (Rp631.000)',
   //   informations: [
   //     {
+  //       title: 'Nama Paket',
+  //       value: 'Paket Vidio Diamond EPL',
+  //       is_total: true,
+  //     },
+  //     {
   //       title: 'Harga Paket Vidio Diamond EPL',
   //       value: 'Rp450.000',
   //     },
@@ -981,8 +1119,9 @@ export const providerList = [
     ],
     informations: [
       {
-        title: 'Harga Paket Premium HBO Go',
-        value: 'Rp60.000',
+        title: 'Nama Paket',
+        value: 'Paket Premium User Reguler',
+        is_total: true,
       },
       {
         title: 'Harga setelah dikenakan pajak 11%',
@@ -1021,6 +1160,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium User Reguler',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Scribd',
         value: 'Rp70.000',
       },
@@ -1058,6 +1202,11 @@ export const providerList = [
     notes:
       'Harga Rp550.000 hanya berlaku untuk tahun pertama. Tahun berikut nya akan menggunakan harga Rp800.000 per tahun',
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Tahun',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium McAfee',
         value: 'Rp550.000',
@@ -1101,12 +1250,17 @@ export const providerList = [
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Bulan',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium Setapp',
-        value: 'Rp224.850',
+        value: 'Rp232.345',
       },
       {
         title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp249.583,5',
+        value: 'Rp257.902,95',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -1114,15 +1268,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp249.583,5 ÷ 4 = Rp62.395,87',
+        value: 'Rp257.902,95 ÷ 4 = Rp64.475,74',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp.6.604,13',
+        value: 'Rp.6.524,26',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp69.000',
+        value: 'Rp71.000',
         is_total: true,
       },
     ],
@@ -1140,6 +1294,11 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Tahun',
+        is_total: true,
+      },
       {
         title: 'Harga Paket Premium Bitdefender',
         value: 'Rp512.955',
@@ -1183,6 +1342,11 @@ export const providerList = [
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Tahun',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket Premium 1 Tahun',
         value: 'Rp720.000',
       },
@@ -1223,6 +1387,11 @@ export const providerList = [
     ],
     informations: [
       {
+        title: 'Nama Paket',
+        value: 'Paket VIP 1 Bulan',
+        is_total: true,
+      },
+      {
         title: 'Harga Paket VIP 1 Bulan',
         value: 'Rp49.000',
       },
@@ -1258,6 +1427,11 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur VIP selama 3 bulan',
     ],
     informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket VIP 3 Bulan',
+        is_total: true,
+      },
       {
         title: 'Harga Paket VIP 3 Bulan',
         value: 'Rp129.000',
