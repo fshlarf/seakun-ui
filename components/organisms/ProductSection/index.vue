@@ -106,7 +106,7 @@ import MasterService from '~/services/MasterServices.js';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
-import { providerList } from './provider-list';
+import { providerList } from '../../../constants/price-scheme';
 import ModalPackages from './views/ModalPackages.vue';
 import SetitipBanner from './views/SetitipBanner.vue';
 import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
