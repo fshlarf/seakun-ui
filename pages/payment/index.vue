@@ -70,7 +70,7 @@ import ModalPayment from './views/ModalPayment.vue';
 import OrderService from '~/services/OrderServices.js';
 import MasterService from '~/services/MasterServices.js';
 import PaymentService from '~/services/PaymentServices.js';
-import { providerList } from '~/components/organisms/ProductSection/provider-list';
+import { providerList } from '../../constants/price-scheme';
 import { priceChangeList } from '../../constants/price-change';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import WarningPriceChange from './views/WarningPriceChange.vue';
