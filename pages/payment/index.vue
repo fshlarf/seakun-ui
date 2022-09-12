@@ -13,9 +13,15 @@
         @changeDuration="getDetailVariant"
         :orderData="orderData"
         @onChecked="onCheckedOrder"
-        @onClickHbo="onClickHbo"
-        @onClickCanva="onClickCanva"
       />
+      <div class="tn:mt-4 space-y-3">
+        <WarningPriceChange
+          v-for="(provider, id) in updatedProviderList"
+          :key="id"
+          :provider="provider"
+          @click="onClickPriceScheme"
+        />
+      </div>
       <PaymentDetail
         :isLoading="isLoadingPayment"
         :paymentTotal="totalPayment"
@@ -64,8 +70,10 @@ import ModalPayment from './views/ModalPayment.vue';
 import OrderService from '~/services/OrderServices.js';
 import MasterService from '~/services/MasterServices.js';
 import PaymentService from '~/services/PaymentServices.js';
-import { providerList } from '~/components/organisms/ProductSection/provider-list';
+import { providerList } from '../../constants/price-scheme';
+import { priceChangeList } from '../../constants/price-change';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
+import WarningPriceChange from './views/WarningPriceChange.vue';
 
 export default {
   name: 'NewPayment',
@@ -81,10 +89,12 @@ export default {
     ModalDuration,
     ModalPayment,
     ModalPriceScheme,
+    WarningPriceChange,
   },
   data() {
     return {
       providerList,
+      priceChangeList,
       OrderService,
       MasterService,
       PaymentService,
@@ -132,6 +142,17 @@ export default {
   // beforeMount() {
   //   this.$router.push('/info/maintenance');
   // },
+  computed: {
+    updatedProviderList() {
+      const providerSlugs = [];
+      this.orderData.forEach((order) => {
+        providerSlugs.push(order.provider.slug);
+      });
+      return this.priceChangeList.filter((provider) => {
+        return providerSlugs.includes(provider.slug);
+      });
+    },
+  },
   mounted() {
     this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
@@ -151,19 +172,11 @@ export default {
     }
   },
   methods: {
-    onClickHbo() {
+    onClickPriceScheme(provider) {
       this.dataDetailProvider = {
         list: this.providerList,
-        slug: 'hbo-go',
-        name: 'HBO Go',
-      };
-      this.showModalScheme = true;
-    },
-    onClickCanva() {
-      this.dataDetailProvider = {
-        list: this.providerList,
-        slug: 'canva',
-        name: 'Canva',
+        slug: provider.slug,
+        name: provider.name,
       };
       this.showModalScheme = true;
     },
