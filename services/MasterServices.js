@@ -32,6 +32,32 @@ class MasterService {
   getAccountGroups(params) {
     return this.serviceApi.get(`/customer/account`, { params });
   }
+
+  getProductService(params) {
+    return this.serviceApi.get('/customer/product/service', {
+      params,
+    });
+  }
+
+  getProducts(params) {
+    return this.serviceApi.get('/customer/product', { params });
+  }
+
+  getProductByUid(uid) {
+    return this.serviceApi.get(`/customer/product/detail?productUID=${uid}`);
+  }
+
+  createProduct(params) {
+    return this.serviceApi.post('/customer/product', {
+      ...params,
+    });
+  }
+
+  uploadPhotos(params) {
+    return this.serviceApi.post('/customer/product/photos', params, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  }
 }
 
 export default MasterService;
