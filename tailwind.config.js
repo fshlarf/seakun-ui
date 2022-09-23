@@ -1,18 +1,17 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
   purge: {
-    content : [
+    content: [
       './components/**/*.{vue,js}',
       './layouts/**/*.vue',
       './pages/**/*.vue',
       './plugins/**/*.{js,ts}',
       './nuxt.config.{js,ts}',
     ],
-    safelist: ['bg-red-400','bg-red-500'],
-
+    safelist: ['bg-red-400', 'bg-red-500'],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -20,16 +19,19 @@ module.exports = {
       tn: '0px',
       ...defaultTheme.screens,
     },
-    
+
     extend: {
-      colors : {
-        'green-seakun' : '#8DCABE',
-        'green-seakun-secondary' : '#F4F9F8',
-        'green-seakun-dark' : '#52AF9C',
-        'warning-seakun' : '#FFEBC3',
-        'checkout' : '#BEEAE2',
-        'payment' : 'rgba(255, 255, 255, 0.6)'
-      }
+      colors: {
+        main: '#2D2D2D',
+        primary: '#86d0c1',
+        secondary: '#417465',
+        'green-seakun': '#8DCABE',
+        'green-seakun-secondary': '#F4F9F8',
+        'green-seakun-dark': '#52AF9C',
+        'warning-seakun': '#FFEBC3',
+        checkout: '#BEEAE2',
+        payment: 'rgba(255, 255, 255, 0.6)',
+      },
     },
   },
   variants: {
