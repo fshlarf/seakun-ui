@@ -668,7 +668,11 @@ export default {
         }
       }
       if (input === 'price' || !input) {
-        if (dataDetailProduct.price === '') {
+        const price = dataDetailProduct.price;
+        if (price && price.length > 1 && price.charAt(0) == '0') {
+          this.dataDetailProduct.price = price.slice(1, price.length);
+        }
+        if (!dataDetailProduct.price) {
           this.errorForm.price = {
             isError: true,
             message: 'Harga normal harus diisi',
@@ -680,13 +684,30 @@ export default {
             message: 'Format harga salah. cth: 123000',
           };
           this.isFormValid = false;
+        } else if (dataDetailProduct.price === '0') {
+          this.errorForm.price = {
+            isError: true,
+            message: 'Harga tidak boleh 0',
+          };
+          this.isFormValid = false;
         } else {
           this.errorForm.price.isError = false;
           this.isFormValid = true;
         }
       }
       if (input === 'jointPrice' || !input) {
-        if (dataDetailProduct.jointPrice === '') {
+        const jointPrice = dataDetailProduct.jointPrice;
+        if (
+          jointPrice &&
+          jointPrice.length > 1 &&
+          jointPrice.charAt(0) == '0'
+        ) {
+          this.dataDetailProduct.jointPrice = jointPrice.slice(
+            1,
+            jointPrice.length
+          );
+        }
+        if (!dataDetailProduct.jointPrice) {
           this.errorForm.jointPrice = {
             isError: true,
             message: 'Harga patungan harus diisi',
@@ -698,6 +719,12 @@ export default {
             message: 'Format harga salah. cth: 123000',
           };
           this.isFormValid = false;
+        } else if (dataDetailProduct.jointPrice === '0') {
+          this.errorForm.jointPrice = {
+            isError: true,
+            message: 'Harga tidak boleh 0',
+          };
+          this.isFormValid = false;
         } else {
           this.errorForm.jointPrice.isError = false;
           this.isFormValid = true;
@@ -705,10 +732,10 @@ export default {
       }
       if (input === 'quota' || !input) {
         const quota = dataDetailProduct.quota;
-        if (quota.length > 1 && quota.charAt(0) == '0') {
+        if (quota && quota.length > 1 && quota.charAt(0) == '0') {
           this.dataDetailProduct.quota = quota.slice(1, quota.length);
         }
-        if (dataDetailProduct.quota === '') {
+        if (!dataDetailProduct.quota) {
           this.errorForm.quota = {
             isError: true,
             message: 'Total member harus diisi',
