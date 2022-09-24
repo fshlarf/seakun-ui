@@ -1,6 +1,29 @@
 <template>
   <div class="w-full">
-    <div class="bg-white rounded-lg tn:p-6">
+    <div class="w-full">
+      <p
+        v-if="product && product.sekeranjang"
+        class="text-[#A0A3BD] text-[20px] font-medium"
+      >
+        {{ product.sekeranjang.productBrand }}
+      </p>
+      <h1 class="text-[44px] font-bold tracking-tight">{{ product.name }}</h1>
+      <p class="text-[32px] font-bold tn:mt-4 tracking-tight">
+        {{ currencyFormat(product.finalPrice) }}
+      </p>
+      <div class="flex items-center space-x-3 tn:mt-2">
+        <p
+          class="text-[#BA0000] font-bold text-[18px] bg-[#FFF2F2] tn:px-2 rounded-sm"
+        >
+          Hemat hingga
+        </p>
+        <p class="text-[21px]">
+          {{ currencyFormat(product.price - product.finalPrice) }}
+        </p>
+      </div>
+    </div>
+
+    <div class="w-full bg-white rounded-lg tn:px-6 tn:py-5 tn:mt-6">
       <p class="font-bold text-[#66738F]">Bagikan link produk</p>
       <div
         class="rounded-md overflow-hidden border-2 border-[#A0A3BD] flex justify-between items-stretch tn:mt-2"
@@ -56,7 +79,7 @@
       </div>
     </div>
 
-    <div class="bg-white rounded-2xl tn:p-6 tn:mt-4">
+    <div class="w-full bg-white rounded-2xl tn:p-6 tn:mt-4">
       <div class="flex justify-between items-center">
         <p class="font-medium text-[#66738F]">Total harga</p>
         <p class="text-[24px] font-bold text-[#417465]">

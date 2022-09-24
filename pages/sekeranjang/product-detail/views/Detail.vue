@@ -1,6 +1,46 @@
 <template>
   <div class="w-full">
-    <div class="rounded-2xl bg-white tn:p-7 space-y-3">
+    <div v-if="product.photos && product.photos.length > 0" class="w-full">
+      <div class="w-full h-[448px] overflow-hidden">
+        <img
+          class="object-cover-center"
+          :src="product.photos[0].popFile"
+          alt="first photo"
+        />
+      </div>
+      <div class="tn:mt-4 grid grid-cols-4 gap-4">
+        <div v-if="product.photos[1]" class="w-full h-[123px] overflow-hidden">
+          <img
+            class="object-cover-center"
+            :src="product.photos[1].popFile"
+            alt="second photo"
+          />
+        </div>
+        <div v-if="product.photos[2]" class="w-full h-[123px] overflow-hidden">
+          <img
+            class="object-cover-center"
+            :src="product.photos[2].popFile"
+            alt="third photo"
+          />
+        </div>
+        <div v-if="product.photos[3]" class="w-full h-[123px] overflow-hidden">
+          <img
+            class="object-cover-center"
+            :src="product.photos[3].popFile"
+            alt="forth photo"
+          />
+        </div>
+        <div v-if="product.photos[4]" class="w-full h-[123px] overflow-hidden">
+          <img
+            class="object-cover-center"
+            :src="product.photos[4].popFile"
+            alt="fifth photo"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="rounded-2xl bg-white tn:p-7 space-y-3 tn:mt-8">
       <p class="text-[20px] font-bold">Detail Promo</p>
       <div class="grid grid-cols-3 items-start">
         <p class="text-[18px] font-bold">Periode Promo</p>
