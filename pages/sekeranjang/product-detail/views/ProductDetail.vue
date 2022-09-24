@@ -1,15 +1,15 @@
 <template>
   <div class="container tn:pt-20">
-    <ProductGallery
-      :product="dataDetailProduct"
-      :is-loading="isLoadingProduct"
-    />
     <div
       v-if="!isLoadingProduct"
-      class="grid grid-cols-3 items-start gap-8 tn:mt-6"
+      class="grid grid-cols-3 items-start gap-8 tn:mt-6 relative"
     >
       <Detail class="col-span-2" :product="dataDetailProduct" />
-      <Sidebar :product="dataDetailProduct" @clickCopy="clickCopyHandler" />
+      <Sidebar
+        class="sticky top-28"
+        :product="dataDetailProduct"
+        @clickCopy="clickCopyHandler"
+      />
     </div>
     <div v-else class="tn:mt-6">
       <DetailProductLoading />
@@ -21,13 +21,11 @@
 <script>
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import MasterService from '~/services/MasterServices.js';
-import ProductGallery from './ProductGallery.vue';
 import Detail from './Detail.vue';
 import Sidebar from './Sidebar.vue';
 import DetailProductLoading from './DetailProductLoading.vue';
 export default {
   components: {
-    ProductGallery,
     Detail,
     Sidebar,
     Snackbar,
