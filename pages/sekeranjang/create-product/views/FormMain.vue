@@ -338,7 +338,7 @@
           <span class="font-bold">Sampai {{ toLocalDate(promoEnd) }}</span>
         </p>
         <p v-else>
-          Masa Promo:
+          Periode Promo:
           <span class="font-bold">-</span>
         </p>
         <p>

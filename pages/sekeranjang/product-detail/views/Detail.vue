@@ -1,41 +1,99 @@
 <template>
   <div class="w-full">
-    <div v-if="product.photos && product.photos.length > 0" class="w-full">
-      <div class="w-full h-[448px] overflow-hidden">
+    <div class="flex items-center space-x-3 text-[14px]">
+      <nuxt-link class="text-secondary tn:py-0" to="/sekeranjang"
+        >Sekeranjang</nuxt-link
+      >
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+        class="w-[10px] h-[10px]"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="gray"
+        stroke-width="1"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+        />
+      </svg>
+      <p class="tn:py-0">{{ product.name }}</p>
+    </div>
+    <div
+      v-if="product.photos && product.photos.length > 0"
+      class="w-full tn:mt-3"
+    >
+      <div class="w-full h-[448px] overflow-hidden bg-gray-300">
         <img
           class="object-cover-center"
-          :src="product.photos[0].popFile"
-          alt="first photo"
+          :src="activePhoto.popFile"
+          alt="active photo"
         />
       </div>
-      <div class="tn:mt-4 grid grid-cols-4 gap-4">
-        <div v-if="product.photos[1]" class="w-full h-[123px] overflow-hidden">
-          <img
-            class="object-cover-center"
-            :src="product.photos[1].popFile"
-            alt="second photo"
-          />
+      <div class="w-full relative z-0">
+        <div id="photo-scroll" class="tn:mt-4 hide-scrollbar overflow-hidden">
+          <div id="photo-content" class="flex items-center space-x-4 w-max">
+            <div
+              v-for="(photo, id) in dataPhotos"
+              :key="id"
+              role="button"
+              class="w-[123px] h-[123px] overflow-hidden flex-none"
+              :class="`${
+                activePhoto === photo ? 'border-4 border-green-seakun' : ''
+              }`"
+              @click="activePhoto = photo"
+            >
+              <img
+                class="object-cover-center"
+                :src="photo.popFile"
+                alt="list photo"
+              />
+            </div>
+          </div>
         </div>
-        <div v-if="product.photos[2]" class="w-full h-[123px] overflow-hidden">
-          <img
-            class="object-cover-center"
-            :src="product.photos[2].popFile"
-            alt="third photo"
-          />
+        <div
+          v-if="!isStartPoint"
+          class="cursor-pointer absolute z-10 -left-4 top-0 bottom-0 my-auto mx-0 rounded-full w-10 h-10 bg-black opacity-60 flex justify-center items-center text-white font-bold"
+          @click="scrollPhotos('left')"
+        >
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="w-4 h-4 reverse tn:mr-1"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="white"
+            stroke-width="2"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
         </div>
-        <div v-if="product.photos[3]" class="w-full h-[123px] overflow-hidden">
-          <img
-            class="object-cover-center"
-            :src="product.photos[3].popFile"
-            alt="forth photo"
-          />
-        </div>
-        <div v-if="product.photos[4]" class="w-full h-[123px] overflow-hidden">
-          <img
-            class="object-cover-center"
-            :src="product.photos[4].popFile"
-            alt="fifth photo"
-          />
+        <div
+          v-if="!isEndScroll"
+          class="cursor-pointer absolute z-10 -right-4 top-0 bottom-0 my-auto mx-0 rounded-full w-10 h-10 bg-black opacity-60 flex justify-center items-center text-white font-bold"
+          @click="scrollPhotos('right')"
+        >
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="w-4 h-4 tn:ml-1"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="white"
+            stroke-width="2"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
         </div>
       </div>
     </div>
@@ -44,10 +102,20 @@
       <p class="text-[20px] font-bold">Detail Promo</p>
       <div class="grid grid-cols-3 items-start">
         <p class="text-[18px] font-bold">Periode Promo</p>
-        <p class="col-span-2 text-[18px] font-medium">
+        <p
+          v-if="product.promoStartAt && product.promoEndAt"
+          class="col-span-2 text-[18px] font-medium"
+        >
           {{ toLocalDate(product.promoStartAt) }} -
           {{ toLocalDate(product.promoEndAt) }}
         </p>
+        <p
+          v-else-if="!product.promoStartAt && product.promoEndAt"
+          class="col-span-2 text-[18px] font-medium"
+        >
+          Sampai {{ toLocalDate(product.promoEndAt) }}
+        </p>
+        <p v-else class="col-span-2 text-[18px] font-medium">-</p>
       </div>
       <div class="grid grid-cols-3 items-start">
         <p class="text-[18px] font-bold">Link Website</p>
@@ -146,9 +214,83 @@ export default {
   data() {
     return {
       moment,
+      activePhoto: {},
+      dataPhotos: [],
+      scrollAmount: 0,
+      isStartPoint: true,
+      isEndScroll: true,
+      contentWidth: 736,
+      scrollWidth: 417,
     };
   },
+  mounted() {
+    if (this.product.photos.length > 0) {
+      this.dataPhotos = this.product.photos;
+      this.activePhoto = this.dataPhotos[0];
+      const content = document.getElementById('photo-content');
+      setTimeout(() => {
+        if (
+          this.dataPhotos.length > 0 &&
+          content.clientWidth < this.contentWidth
+        ) {
+          this.isEndScroll = true;
+        } else {
+          this.isEndScroll = false;
+        }
+      }, 500);
+    }
+  },
   methods: {
+    scrollPhotos(direction) {
+      const container = document.getElementById('photo-scroll');
+      const content = document.getElementById('photo-content');
+      let nextScroll;
+      let scrollMax = content.clientWidth;
+      if (direction === 'right') {
+        if (
+          scrollMax - (this.scrollAmount + this.scrollWidth) <
+          this.contentWidth
+        ) {
+          nextScroll = this.scrollAmount;
+          container.scrollTo({
+            top: 0,
+            left: Math.max(this.scrollAmount, scrollMax - this.contentWidth),
+            behavior: 'smooth',
+          });
+          this.isEndScroll = true;
+        } else {
+          nextScroll = this.scrollAmount + this.scrollWidth;
+          container.scrollTo({
+            top: 0,
+            left: Math.max(this.scrollAmount, nextScroll),
+            behavior: 'smooth',
+          });
+        }
+      } else {
+        if (container.scrollLeft === scrollMax - this.contentWidth) {
+          nextScroll = this.scrollAmount;
+          container.scrollTo({
+            top: 0,
+            left: Math.min(scrollMax, nextScroll),
+            behavior: 'smooth',
+          });
+        } else {
+          nextScroll = this.scrollAmount - this.scrollWidth;
+          container.scrollTo({
+            top: 0,
+            left: Math.min(this.scrollAmount, nextScroll),
+            behavior: 'smooth',
+          });
+        }
+        this.isEndScroll = false;
+      }
+      this.scrollAmount = nextScroll;
+      if (this.scrollAmount === 0) {
+        this.isStartPoint = true;
+      } else {
+        this.isStartPoint = false;
+      }
+    },
     toLocalDate(date) {
       return moment.unix(date).locale('id').format('D MMMM YYYY');
     },
@@ -157,4 +299,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.reverse {
+  transform: rotate(180deg);
+}
+</style>

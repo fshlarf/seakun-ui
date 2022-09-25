@@ -3,7 +3,8 @@
     <div class="col-span-2">
       <div class="w-full">
         <div class="w-full h-[448px] shimmer"></div>
-        <div class="tn:mt-4 grid grid-cols-4 gap-4">
+        <div class="tn:mt-4 grid grid-cols-5 gap-4">
+          <div class="w-full h-[123px] shimmer"></div>
           <div class="w-full h-[123px] shimmer"></div>
           <div class="w-full h-[123px] shimmer"></div>
           <div class="w-full h-[123px] shimmer"></div>

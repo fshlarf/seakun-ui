@@ -1,15 +1,11 @@
 <template>
-  <div class="container tn:pt-20">
+  <div class="container tn:pt-14">
     <div
       v-if="!isLoadingProduct"
       class="grid grid-cols-3 items-start gap-8 tn:mt-6 relative"
     >
       <Detail class="col-span-2" :product="dataDetailProduct" />
-      <Sidebar
-        class="sticky top-28"
-        :product="dataDetailProduct"
-        @clickCopy="clickCopyHandler"
-      />
+      <Sidebar :product="dataDetailProduct" @clickCopy="clickCopyHandler" />
     </div>
     <div v-else class="tn:mt-6">
       <DetailProductLoading />
