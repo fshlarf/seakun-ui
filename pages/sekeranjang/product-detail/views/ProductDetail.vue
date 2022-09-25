@@ -5,7 +5,11 @@
       class="grid grid-cols-3 items-start gap-8 tn:mt-6 relative"
     >
       <Detail class="col-span-2" :product="dataDetailProduct" />
-      <Sidebar :product="dataDetailProduct" @clickCopy="clickCopyHandler" />
+      <Sidebar
+        class="sticky top-28"
+        :product="dataDetailProduct"
+        @clickCopy="clickCopyHandler"
+      />
     </div>
     <div v-else class="tn:mt-6">
       <DetailProductLoading />
