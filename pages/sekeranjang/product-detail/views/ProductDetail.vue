@@ -6,9 +6,9 @@
     >
       <Detail class="col-span-2" :product="dataDetailProduct" />
       <Sidebar
-        class="sticky top-28"
         :product="dataDetailProduct"
         @clickCopy="clickCopyHandler"
+        @onClickOrder="onClickOrder"
       />
     </div>
     <div v-else class="tn:mt-6">
@@ -60,6 +60,9 @@ export default {
         console.log(e);
       }
       this.isLoadingProduct = false;
+    },
+    onClickOrder() {
+      this.$router.push(`/sekeranjang/order?product_id=${this.productUid}`);
     },
     clickCopyHandler(name, value) {
       if (navigator.clipboard) {
