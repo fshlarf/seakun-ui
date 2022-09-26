@@ -1,10 +1,6 @@
 <template>
-  <div class="relative z-0 tn:mt-20 tn:py-40">
-    <img
-      class="absolute z-0 top-0 w-full"
-      src="/images/sekeranjang/order flow/bg-flow.png"
-      alt="background flow"
-    />
+  <div class="relative z-0 tn:mt-20 tn:py-40 bg-wave">
+    <div class="w-full h-[40px] bg-wave-white absolute top-0 z-20"></div>
     <div class="relative z-10">
       <h1 class="text-[40px] font-bold text-center">Alur Pesanan</h1>
       <p class="text-center text-[#A0A3BD] w-[730px] mx-auto tn:mt-4">
@@ -82,4 +78,13 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+.bg-wave-white {
+  background-color: #ffffff;
+  clip-path: ellipse(54% 100% at 50% 0%);
+}
+.bg-wave {
+  background-color: #efefef;
+  clip-path: ellipse(129% 100% at 50% 0%);
+}
+</style>
