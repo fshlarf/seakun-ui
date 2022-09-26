@@ -934,7 +934,7 @@ export default {
       try {
         const postProductPhoto = await MasterService.uploadPhotos(formData);
         if (postProductPhoto.data) {
-          this.$router.push('/sekeranjang/submit-success');
+          this.$router.push('/sekeranjang/create-success');
         } else {
           throw new Error(postProductPhoto);
         }

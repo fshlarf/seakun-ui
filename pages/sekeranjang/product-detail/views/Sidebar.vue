@@ -29,10 +29,10 @@
       <div class="w-full bg-white rounded-lg tn:px-6 tn:py-5 tn:mt-6">
         <p class="font-bold text-[#66738F]">Bagikan link produk</p>
         <div
-          class="rounded-md overflow-hidden border-2 border-[#A0A3BD] flex justify-between items-stretch tn:mt-2"
+          class="rounded-md overflow-hidden border-2 border-[#A0A3BD] flex justify-between tn:mt-2"
         >
           <div
-            class="hide-scrollbar w-full overscroll-auto overflow-x-auto tn:py-3 tn:pl-4 tn:pr-4"
+            class="hide-scrollbar w-full overscroll-auto overflow-x-auto tn:py-4 tn:pl-4"
           >
             <div class="min-w-max h-full flex-none">
               <p class="text-[#A0A3BD] w-full h-full">
@@ -40,16 +40,18 @@
               </p>
             </div>
           </div>
-          <div class="w-4 bg-white h-auto"></div>
-          <div
-            class="bg-primary w-[50px] h-auto flex justify-center items-center cursor-pointer"
-            @click="$emit('clickCopy', 'Link produk', linkProduct)"
-          >
-            <img
-              class="w-[20px] h-[20px]"
-              src="/images/icons/atoms/copy.svg"
-              alt="copy link"
-            />
+          <div class="flex">
+            <div class="w-4 h-full"></div>
+            <div
+              class="bg-primary w-[50px] h-full flex justify-center items-center cursor-pointer"
+              @click="$emit('clickCopy', 'Link produk', linkProduct)"
+            >
+              <img
+                class="w-[20px] h-[20px]"
+                src="/images/icons/atoms/copy.svg"
+                alt="copy link"
+              />
+            </div>
           </div>
         </div>
 
@@ -116,6 +118,7 @@
           class="w-full tn:mt-4"
           add-class="tn:py-4 font-bold"
           :disabled="!isAgreeTos"
+          @click="$emit('onClickOrder')"
         />
       </div>
     </div>
