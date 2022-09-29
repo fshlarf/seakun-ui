@@ -28,10 +28,13 @@
       </div>
     </div>
 
-    <p v-if="currentStep < 3" class="text-[20px] text-center tn:my-4">
+    <p
+      v-if="currentStep < 3"
+      class="tn:text-[18px] md:text-[20px] text-center tn:pt-5 tn:mb-4"
+    >
       Silahkan isi terlebih dahulu untuk mengajukan permohonan
     </p>
-    <p v-else class="text-[20px] text-center tn:my-4">
+    <p v-else class="tn:text-[18px] md:text-[20px] text-center tn:pt-5 tn:mb-4">
       Silahkan cek kembali pengajuan permohonan
     </p>
 
@@ -151,30 +154,32 @@
 
         <div
           v-if="productPhotos.length > 0"
-          class="flex space-x-3 justify-start tn:my-4"
+          class="tn:my-4 overflow-x-auto overscroll-auto w-full hide-scrollbar"
         >
-          <div
-            v-for="(image, id) in productPhotos"
-            :key="id"
-            class="max-w-max img-container relative z-0"
-          >
+          <div class="flex justify-start">
             <div
-              v-if="image"
-              role="button"
-              class="btn-close absolute bg-red-500 w-[20px] h-[20px] rounded-full text-white -top-1 -right-1 z-30 flex justify-center items-center text-center"
-              @click="removeImage(id)"
+              v-for="(image, id) in productPhotos"
+              :key="id"
+              class="max-w-max relative z-0 tn:m-1 md:m-2"
             >
-              <p class="m-0 p-0 -top-1 -right-1 text-[20px]">&times;</p>
-            </div>
-            <div
-              v-if="image"
-              class="flex items-center w-[100px] h-[100px] rounded-xl overflow-hidden border"
-            >
-              <img
-                class="min-w-[100%] min-h-[100%] object-cover object-center"
-                :src="imageUrl(image)"
-                alt="product image"
-              />
+              <div
+                v-if="image"
+                role="button"
+                class="btn-close absolute bg-red-500 w-[20px] h-[20px] rounded-full text-white -top-1 -right-1 z-30 flex justify-center items-center text-center"
+                @click="removeImage(id)"
+              >
+                <p class="m-0 p-0 -top-1 -right-1 text-[20px]">&times;</p>
+              </div>
+              <div
+                v-if="image"
+                class="flex items-center w-[100px] h-[100px] rounded-xl overflow-hidden border"
+              >
+                <img
+                  class="min-w-[100%] min-h-[100%] object-cover object-center"
+                  :src="imageUrl(image)"
+                  alt="product image"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -240,13 +245,13 @@
           Nomor Whatsapp (Pastikan nomor sudah benar dan aktif)
         </p>
         <div class="grid grid-cols-6 gap-2 items-center">
-          <div class="col-span-1">
+          <div class="tn:col-span-2 md:col-span-1">
             <ButtonDrop
               :btnText="codeNumber"
               @click="isShowCodeNumber = !isShowCodeNumber"
             />
           </div>
-          <div class="col-span-5">
+          <div class="tn:col-span-4 md:col-span-5">
             <InputForm
               placeholder="cth. 8123456789"
               v-model="dataDetailProduct.publisherPhone"
@@ -277,11 +282,11 @@
     <div v-show="currentStep === 3" class="w-full">
       <div
         v-if="productPhotos.length > 0"
-        class="flex justify-center space-x-3 flex-wrap tn:my-4"
+        class="flex justify-center flex-wrap tn:my-4"
       >
         <div v-for="(image, id) in productPhotos" :key="id" class="max-w-max">
           <div
-            class="flex items-center w-[100px] h-[100px] rounded-xl overflow-hidden border space-x-3"
+            class="flex items-center w-[100px] h-[100px] rounded-xl overflow-hidden border tn:m-1"
           >
             <img
               class="min-w-[100%] min-h-[100%] object-cover object-center"
@@ -293,65 +298,63 @@
       </div>
 
       <div
-        class="detail-box tn:p-6 rounded-md border-l-4 bg-white tn:mt-8 space-y-2"
+        class="detail-box tn:p-5 md:p-6 rounded-md border-l-4 bg-white tn:mt-8 space-y-2"
       >
         <h3 class="text-[20px] font-bold">Detail Produk</h3>
         <hr class="tn:my-2" />
-        <p>
-          Nama Produk:
-          <span class="font-bold">{{ dataDetailProduct.name }}</span>
-        </p>
-        <p>
-          Brand Produk:
-          <span class="font-bold">{{
-            dataDetailProduct.sekeranjang.productBrand
-          }}</span>
-        </p>
-        <p>
-          Jenis Promo:
-          <span class="font-bold">{{ dataDetailProduct.promoType }}</span>
-        </p>
-        <p>
-          Harga Normal:
-          <span class="font-bold">{{
-            currencyFormat(dataDetailProduct.price)
-          }}</span>
-        </p>
-        <p>
-          Harga Patungan:
-          <span class="font-bold">{{
-            currencyFormat(dataDetailProduct.jointPrice)
-          }}</span>
-        </p>
-        <p>
-          Total Member:
-          <span class="font-bold">{{ dataDetailProduct.quota }} Orang</span>
-        </p>
-        <p v-if="promoStart && promoEnd">
-          Masa Promo:
-          <span class="font-bold"
-            >{{ toLocalDate(promoStart) }} - {{ toLocalDate(promoEnd) }}</span
-          >
-        </p>
-        <p v-else-if="!promoStart && promoEnd">
-          Masa Promo:
-          <span class="font-bold">Sampai {{ toLocalDate(promoEnd) }}</span>
-        </p>
-        <p v-else>
-          Periode Promo:
-          <span class="font-bold">-</span>
-        </p>
-        <p>
-          Link Produk:
-          <span v-if="dataDetailProduct.productUrl" class="font-bold">{{
-            dataDetailProduct.productUrl
-          }}</span>
-          <span v-else class="font-bold">-</span>
-        </p>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Nama Produk:</p>
+          <p class="col-span-3 font-bold">{{ dataDetailProduct.name }}</p>
+        </div>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Brand Produk:</p>
+          <p class="col-span-3 font-bold">
+            {{ dataDetailProduct.sekeranjang.productBrand }}
+          </p>
+        </div>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Jenis Promo:</p>
+          <p class="col-span-3 font-bold">{{ dataDetailProduct.promoType }}</p>
+        </div>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Harga Normal:</p>
+          <p class="col-span-3 font-bold">
+            {{ currencyFormat(dataDetailProduct.price) }}
+          </p>
+        </div>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Harga Patungan:</p>
+          <p class="col-span-3 font-bold">
+            {{ currencyFormat(dataDetailProduct.jointPrice) }}
+          </p>
+        </div>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Total Member:</p>
+          <p class="col-span-3 font-bold">
+            {{ dataDetailProduct.quota }} Orang
+          </p>
+        </div>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Periode Promo:</p>
+          <p class="col-span-3 font-bold" v-if="promoStart && promoEnd">
+            {{ toLocalDate(promoStart) }} - {{ toLocalDate(promoEnd) }}
+          </p>
+          <p class="col-span-3 font-bold" v-else-if="!promoStart && promoEnd">
+            Sampai {{ toLocalDate(promoEnd) }}
+          </p>
+          <p class="col-span-3 font-bold" v-else>-</p>
+        </div>
+        <div class="md:grid grid-cols-4 md:gap-2">
+          <p class="col-span-1">Link Produk:</p>
+          <p class="col-span-3 font-bold" v-if="dataDetailProduct.productUrl">
+            {{ dataDetailProduct.productUrl }}
+          </p>
+          <p v-else class="font-bold">-</p>
+        </div>
       </div>
 
       <div
-        class="detail-box tn:p-6 rounded-md border-l-4 bg-white tn:mt-8 space-y-2"
+        class="detail-box tn:p-5 md:p-6 rounded-md border-l-4 bg-white tn:mt-8 space-y-2"
       >
         <h3 class="text-[20px] font-bold">Detail Pemohon</h3>
         <hr class="tn:my-2" />
@@ -360,22 +363,21 @@
         <p>{{ codeNumber }}{{ dataDetailProduct.publisherPhone }}</p>
       </div>
 
-      <div class="ml-2 tn:mt-8">
-        <label
-          class="space-x-1 md:text-base tn:text-sm"
-          style="display: inline-block"
-          ><input
-            v-model="isAgreeTos"
-            style="vertical-align: middle"
-            type="checkbox"
-            class="tn:mr-1 tn:-mt-1"
-          />
+      <div class="flex items-start space-x-2 tn:pt-2 tn:mt-8">
+        <div class="cursor-pointer w-[24px]" @click="isAgreeTos = !isAgreeTos">
+          <CheckedBox v-if="isAgreeTos" />
+          <UncheckBox v-else />
+        </div>
+        <p>
           Menyetujui
-          <a class="text-green-seakun ml-0" href="/terms-of-use" target="_blank"
+          <a
+            class="text-secondary font-bold ml-0 text-[14px]"
+            href="/terms-of-use"
+            target="_blank"
             >syarat & ketentuan</a
           >
-          yang dibuat oleh Seakun.id
-        </label>
+          yang dibuat oleh Seakun
+        </p>
       </div>
 
       <div v-if="isShowFormWarning" class="tn:my-4">
@@ -384,15 +386,17 @@
         />
       </div>
 
-      <div class="tn:mt-4 grid grid-cols-2 items-center gap-6">
+      <div
+        class="tn:mt-6 grid tn:grid-cols-1 md:grid-cols-2 items-center tn:gap-3 md:gap-6"
+      >
         <Button
-          class="w-full tn:!py-4 font-bold"
+          class="w-full tn:!py-4 font-bold tn:order-2 md:order-1"
           variant="secondary-transparent"
           label="Edit Permohonan"
           @click="onClickNextStep(1)"
         />
         <Button
-          class="w-full tn:py-4 font-bold"
+          class="w-full tn:py-4 font-bold tn:order-1 md:order-2"
           variant="primary"
           label="Konfirmasi"
           :disabled="!isAgreeTos"
@@ -412,6 +416,8 @@
 </template>
 
 <script>
+import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
+import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import Button from '~/components/atoms/Button';
 import PopUpDropDown from '~/components/atoms/PopUpDropDown';
@@ -429,6 +435,8 @@ import 'vue2-datepicker/index.css';
 import '~/assets/styles/datepicker.scss';
 export default {
   components: {
+    CheckedBox,
+    UncheckBox,
     ButtonDrop,
     Button,
     InputForm,
@@ -919,6 +927,7 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        this.isLoadingSumbitProduct = false;
       }
     },
     async postPhotoProduct(productUid, customerUid) {
