@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <div class="max-w-[632px] mx-auto tn:pt-28 tn:pb-14">
+    <div class="max-w-[632px] mx-auto tn:px-4 tn:pt-20 md:pt-28 tn:pb-14">
       <img
         class="w-[238px] mx-auto"
         src="/images/sekeranjang/success-order.png"
@@ -23,7 +23,7 @@
       </p>
 
       <div
-        class="w-[540px] mx-auto rounded-md overflow-hidden border-2 border-[#A0A3BD] flex justify-between tn:mt-4"
+        class="tn:w-full md:w-[540px] mx-auto rounded-md overflow-hidden border-2 border-[#A0A3BD] flex justify-between tn:mt-4"
       >
         <div
           class="hide-scrollbar w-full overscroll-auto overflow-x-auto tn:py-4 tn:pl-4"
