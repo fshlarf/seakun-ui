@@ -10,18 +10,18 @@
             alt="product image"
           />
         </div>
-        <div v-if="product.sekeranjang">
+        <div v-if="product.sekeranjang" class="tn:max-w-[75%] md:max-w-[85%]">
           <p class="text-[12px] text-[#66738F]">
             {{ product.sekeranjang.productBrand }}
           </p>
-          <p class="font-bold">{{ product.name }}</p>
+          <p class="font-bold two-lines overflow-hidden">{{ product.name }}</p>
           <p class="text-[12px]">{{ product.promoType }}</p>
         </div>
       </div>
       <hr class="tn:mt-3" />
       <div class="tn:mt-3 space-y-2">
         <div class="flex justify-between items-center">
-          <p class="font-medium">Total Harga Produk</p>
+          <p class="font-medium">Total Harga</p>
           <div class="flex space-x-3 items-center">
             <p class="font-bold">
               {{ currencyFormat(product.finalPrice) }}
@@ -141,4 +141,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.two-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+</style>

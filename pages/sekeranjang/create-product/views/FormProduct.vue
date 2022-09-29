@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[632px] mx-auto tn:pt-28">
+  <div class="max-w-[632px] mx-auto tn:pt-20 md:pt-28 tn:px-4">
     <div
       role="button"
       @click="backToHome"

@@ -4,57 +4,58 @@
       v-if="!isLoading"
       class="rounded-xl shadow-md tn:p-5 tn:mt-4 bg-white space-y-2"
     >
-      <div class="grid grid-cols-3 gap-5 items-start">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
         <p class="text-[18px] font-bold">Periode promo</p>
         <p
-          class="font-medium col-span-2"
+          class="font-medium md:col-span-2"
           v-if="product.promoStartAt && product.promoEndAt"
         >
           {{ toLocalDate(product.promoStartAt) }} -
           {{ toLocalDate(product.promoEndAt) }}
         </p>
         <p
-          class="font-medium col-span-2"
+          class="font-medium md:col-span-2"
           v-else-if="!product.promoStartAt && product.promoEndAt"
         >
           Sampai {{ toLocalDate(product.promoEndAt) }}
         </p>
-        <p class="font-medium col-span-2" v-else>-</p>
+        <p class="font-medium md:col-span-2" v-else>-</p>
       </div>
-      <div class="grid grid-cols-3 gap-5 items-start">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
         <p class="font-bold">Link website</p>
-        <p class="font-medium col-span-2">
+        <p v-if="product.productUrl" class="font-medium md:col-span-2">
           {{ product.productUrl }}
         </p>
+        <p v-else class="font-medium md:col-span-2">-</p>
       </div>
-      <div class="grid grid-cols-3 gap-5 items-start">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
         <p class="font-bold">Detail promo</p>
-        <p class="font-medium col-span-2">
+        <p class="font-medium md:col-span-2">
           {{ product.promoType }}
         </p>
       </div>
-      <div class="grid grid-cols-3 gap-5 items-start">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
         <p class="font-bold">Jumlah member</p>
-        <p class="font-medium col-span-2">{{ product.quota }} Orang</p>
+        <p class="font-medium md:col-span-2">{{ product.quota }} Orang</p>
       </div>
     </div>
 
     <div v-else class="rounded-xl shadow-md tn:p-5 tn:mt-4 bg-white space-y-2">
-      <div class="grid grid-cols-3 gap-5 items-center">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-center">
         <p class="text-[18px] font-bold">Periode promo</p>
-        <div class="shimmer w-1/2 h-4 col-span-2"></div>
+        <div class="shimmer w-1/2 h-4 md:col-span-2"></div>
       </div>
-      <div class="grid grid-cols-3 gap-5 items-center">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-center">
         <p class="font-bold">Link website</p>
-        <div class="shimmer w-3/4 h-4 col-span-2"></div>
+        <div class="shimmer w-3/4 h-4 md:col-span-2"></div>
       </div>
-      <div class="grid grid-cols-3 gap-5 items-center">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-center">
         <p class="font-bold">Detail promo</p>
-        <div class="shimmer w-3/4 h-4 col-span-2"></div>
+        <div class="shimmer w-3/4 h-4 md:col-span-2"></div>
       </div>
-      <div class="grid grid-cols-3 gap-5 items-center">
+      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-center">
         <p class="font-bold">Jumlah member</p>
-        <div class="shimmer w-1/3 h-4 col-span-2"></div>
+        <div class="shimmer w-1/3 h-4 md:col-span-2"></div>
       </div>
     </div>
   </div>

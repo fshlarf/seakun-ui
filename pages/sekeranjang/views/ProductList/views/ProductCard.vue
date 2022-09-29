@@ -1,7 +1,7 @@
 <template>
   <div
     role="button"
-    class="w-[190px] rounded-lg shadow-md overflow-hidden"
+    class="tn:w-[170px] md:w-[190px] rounded-lg shadow-md overflow-hidden"
     @click="$emit('onClickProduct', product.uid)"
   >
     <div class="h-[160px] bg-[#8DCABE] overflow-hidden">
@@ -18,8 +18,11 @@
       >
         {{ product.promoType }}
       </p>
-      <p :title="product.name" class="font-bold tn:mt-1 leading-5 break-all">
-        {{ productName }}
+      <p
+        :title="product.name"
+        class="font-bold tn:mt-1 leading-5 break-all two-lines overflow-hidden"
+      >
+        {{ product.name }}
       </p>
       <p class="text-[10px] font-bold leading-4 tn:mt-2">Harga Patungan</p>
       <p class="font-bold leading-6 tn:-mt-1">
@@ -58,19 +61,16 @@ export default {
       default: () => ({}),
     },
   },
-  computed: {
-    productName() {
-      if (this.product.name && this.product.name.length > 41) {
-        return this.product.name.slice(0, 40) + '...';
-      } else {
-        return this.product.name;
-      }
-    },
-  },
   methods: {
     currencyFormat,
   },
 };
 </script>
 
-<style></style>
+<style>
+.two-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+</style>

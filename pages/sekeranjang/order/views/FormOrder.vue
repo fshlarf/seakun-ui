@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[632px] mx-auto tn:pt-20">
+  <div class="max-w-[632px] mx-auto tn:pt-20 tn:px-4">
     <div
       role="button"
       @click="backToProductDetail"
@@ -59,13 +59,13 @@
         Nomor Whatsapp (Pastikan nomor sudah benar dan aktif)
       </p>
       <div class="grid grid-cols-6 gap-2 items-center">
-        <div class="col-span-1">
+        <div class="tn:col-span-2 md:col-span-1">
           <ButtonDrop
             :btnText="codeNumber"
             @click="isShowCodeNumber = !isShowCodeNumber"
           />
         </div>
-        <div class="col-span-5">
+        <div class="tn:col-span-4 md:col-span-5">
           <InputForm
             placeholder="cth. 8123456789"
             v-model="phoneNumber"
