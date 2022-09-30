@@ -1,5 +1,5 @@
 <template>
-  <div id="detail-product">
+  <div id="detail-product" class="relative">
     <Navbar />
     <ProductDetail />
     <Footer />

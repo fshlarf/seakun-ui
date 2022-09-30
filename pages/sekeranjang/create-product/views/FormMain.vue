@@ -889,12 +889,18 @@ export default {
     },
     async onClickSubmit() {
       this.isLoadingSumbitProduct = true;
-      const { MasterService, dataDetailProduct, promoStart, promoEnd } = this;
+      const {
+        MasterService,
+        dataDetailProduct,
+        promoStart,
+        promoEnd,
+        codePhone,
+      } = this;
       const payload = {
         productServiceUid: dataDetailProduct.productServiceUid,
         publisherName: dataDetailProduct.publisherName,
         publisherEmail: dataDetailProduct.publisherEmail,
-        publisherPhone: dataDetailProduct.publisherPhone,
+        publisherPhone: codePhone + dataDetailProduct.publisherPhone,
         name: dataDetailProduct.name,
         promoType: dataDetailProduct.promoType,
         description: dataDetailProduct.description,
