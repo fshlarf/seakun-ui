@@ -1,18 +1,51 @@
 <template>
-  <div class="container tn:pt-14">
+  <div class="tn:pt-14 relative">
     <div
       v-if="!isLoadingProduct"
-      class="grid grid-cols-3 items-start gap-8 tn:mt-6 relative"
+      class="container grid grid-cols-3 items-start gap-8 tn:mt-6 relative"
     >
-      <Detail class="col-span-2" :product="dataDetailProduct" />
+      <Detail
+        class="tn:col-span-3 lg:col-span-2"
+        :product="dataDetailProduct"
+        @clickCopy="clickCopyHandler"
+      />
       <Sidebar
+        class="tn:hidden lg:block"
         :product="dataDetailProduct"
         @clickCopy="clickCopyHandler"
         @onClickOrder="onClickOrder"
       />
     </div>
-    <div v-else class="tn:mt-6">
+    <div v-else class="tn:mt-6 container">
       <DetailProductLoading />
+    </div>
+    <div class="w-full bg-white tn:p-3 fixed bottom-0 lg:hidden">
+      <div class="flex items-center space-x-2">
+        <div
+          role="button"
+          :disabled="isLoadingProduct"
+          class="cursor-pointer w-[24px]"
+          @click="isAgreeTos = !isAgreeTos"
+        >
+          <CheckedBox v-if="isAgreeTos" />
+          <UncheckBox v-else />
+        </div>
+        <p class="text-[14px]">
+          Menyetujui
+          <a class="text-green-seakun ml-0" href="/terms-of-use" target="_blank"
+            >syarat & ketentuan</a
+          >
+          Seakun
+        </p>
+      </div>
+      <Button
+        label="Ikut patungan"
+        variant="primary"
+        class="w-full tn:mt-4"
+        add-class="tn:py-4 font-bold"
+        :disabled="!isAgreeTos"
+        @click="onClickOrder"
+      />
     </div>
     <Snackbar ref="snackbar" />
   </div>
@@ -24,12 +57,18 @@ import MasterService from '~/services/MasterServices.js';
 import Detail from './Detail.vue';
 import Sidebar from './Sidebar.vue';
 import DetailProductLoading from './DetailProductLoading.vue';
+import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
+import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
+import Button from '~/components/atoms/Button';
 export default {
   components: {
     Detail,
     Sidebar,
     Snackbar,
     DetailProductLoading,
+    CheckedBox,
+    UncheckBox,
+    Button,
   },
   data() {
     return {
@@ -37,6 +76,7 @@ export default {
       productUid: '',
       dataDetailProduct: {},
       isLoadingProduct: true,
+      isAgreeTos: false,
     };
   },
   mounted() {
@@ -48,6 +88,7 @@ export default {
   methods: {
     async getProductByUid(uid) {
       this.isLoadingProduct = true;
+      this.isAgreeTos = false;
       const { MasterService } = this;
       try {
         const fetchDetailProduct = await MasterService.getProductByUid(uid);
@@ -60,6 +101,7 @@ export default {
         console.log(e);
       }
       this.isLoadingProduct = false;
+      this.isAgreeTos = true;
     },
     onClickOrder() {
       this.$router.push(`/sekeranjang/order?product_id=${this.productUid}`);

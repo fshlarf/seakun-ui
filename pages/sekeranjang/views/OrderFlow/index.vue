@@ -117,7 +117,7 @@ export default {};
   background-color: #efefef;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 500px) {
   .bg-wave {
     clip-path: ellipse(129% 100% at 50% 0%);
   }
