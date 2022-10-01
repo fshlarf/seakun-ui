@@ -412,10 +412,13 @@
       @onRecheck="onClickRecheck"
       @clickSubmit="onClickSubmit"
     />
+
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
@@ -446,6 +449,7 @@ export default {
     DatePicker,
     ModalConfirmation,
     WarningInfo,
+    Snackbar,
   },
   data() {
     return {
@@ -933,6 +937,23 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        if (error.response.data.code == 400) {
+          if (error.response.data.message.includes('duplicate email')) {
+            this.$refs.snackbar.showSnackbar({
+              color: 'bg-red-400',
+              message: 'Email sudah digunakan oleh user lain',
+              className: '',
+              duration: 5000,
+            });
+          } else if (error.response.data.message.includes('duplicate phone')) {
+            this.$refs.snackbar.showSnackbar({
+              color: 'bg-red-400',
+              message: 'Nomor whatsapp sudah digunakan oleh user lain',
+              className: '',
+              duration: 5000,
+            });
+          }
+        }
         this.isLoadingSumbitProduct = false;
       }
     },
