@@ -144,6 +144,13 @@
       @onClose="closeModalConfirmation"
     />
 
+    <ModalOrderTimeout
+      :show-modal="isShowModalOrderTiimeout"
+      :data-order="dataHelpOrder"
+      :is-loading="isShowLoading"
+      @onClose="closeModalOrderTiimeout"
+    />
+
     <ModalBlackListWarning
       :show-modal="isShowModalBlackList"
       @onClose="closeModalBlackList"
@@ -180,6 +187,7 @@ import ModalDataConfirmation from './views/ModalDataConfirmation.vue';
 import ModalBlackListWarning from './views/ModalBlackListWarning.vue';
 import moment from 'moment';
 import WarningInfo from '~/components/mollecules/WarningInfo.vue';
+import ModalOrderTimeout from './views/ModalOrderTimeout.vue';
 
 export default {
   name: 'OrderPage',
@@ -197,6 +205,7 @@ export default {
     ModalDataConfirmation,
     ModalBlackListWarning,
     WarningInfo,
+    ModalOrderTimeout,
   },
   data: () => ({
     OrderService,
@@ -271,6 +280,14 @@ export default {
     isShowModalConfirmation: false,
     isShowModalBlackList: false,
     choosedProvider: {},
+    dataHelpOrder: {
+      provider: '',
+      variant: '',
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+    },
+    isShowModalOrderTiimeout: false,
   }),
   watch: {
     codeNumber() {
@@ -357,9 +374,9 @@ export default {
         );
         if (fetchDetailVariant.data) {
           const { data } = fetchDetailVariant.data;
-          this.dataVariants = data.filter(el => {
-            return el.active === true
-          })
+          this.dataVariants = data.filter((el) => {
+            return el.active === true;
+          });
 
           const variantSelected = this.dataVariants.find(
             (variant) => this.variantUid == variant.uid
@@ -548,9 +565,24 @@ export default {
           throw new Error(fetchCreateOrder);
         }
       } catch (error) {
-        if (error.response.data.message.includes('blocked customer')) {
+        if (
+          error.response &&
+          error.response.data.message.includes('blocked customer')
+        ) {
           this.isShowModalConfirmation = false;
           this.isShowModalBlackList = true;
+        }
+        if (error.message.includes('20000ms')) {
+          this.dataHelpOrder = {
+            provider: this.providerName,
+            variant: this.variantName,
+            fullName: this.userName,
+            email: this.email,
+            phoneNumber: this.codeNumber + this.phoneNumber,
+          };
+          this.isShowModalOrderTiimeout = true;
+          this.isShowLoading = false;
+          this.isShowModalConfirmation = false;
         }
         console.log(error);
       }
@@ -598,6 +630,9 @@ export default {
     },
     closeModalBlackList() {
       this.isShowModalBlackList = false;
+    },
+    closeModalOrderTiimeout() {
+      this.isShowModalOrderTiimeout = false;
     },
     onClickChangePacket() {
       this.isShowModalPackages = true;
