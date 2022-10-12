@@ -18,7 +18,7 @@ class OrderService {
   }
 
   createOrder(params) {
-    return this.serviceApi.post('/customer', { ...params });
+    return this.serviceApi.post('/customer', { ...params }, { timeout: 20000 });
   }
 
   getPaymentConfirmation(orderUid, customerUid, additionalOrder) {
