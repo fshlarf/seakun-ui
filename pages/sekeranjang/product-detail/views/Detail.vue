@@ -113,10 +113,10 @@
       >
         {{ product.sekeranjang.productBrand }}
       </p>
-      <h1 class="text-[32px] font-semibold tracking-tight">
+      <h1 class="text-[24px] font-semibold tracking-tight">
         {{ product.name }}
       </h1>
-      <p class="text-[44px] font-bold tn:mt-1 tracking-tight">
+      <p class="text-[36px] font-bold tn:mt-1 tracking-tight">
         {{ currencyFormat(product.finalPrice) }}
       </p>
       <div class="flex items-center space-x-3 md:mt-1">
