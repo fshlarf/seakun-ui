@@ -62,12 +62,12 @@ export default {
       dataCounter: [
         {
           id: 1,
-          value: '105.000+',
+          value: '125.000+',
           label: 'Total Transaksi',
         },
         {
           id: 2,
-          value: '24.000+',
+          value: '28.000+',
           label: 'Total Pengguna',
         },
         {
