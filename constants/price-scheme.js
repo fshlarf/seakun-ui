@@ -1196,7 +1196,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di McAfee',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 10 member dalam 1 grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     notes:
@@ -1212,24 +1212,20 @@ export const providerList = [
         value: 'Rp550.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp610.500',
-      },
-      {
         title: 'Jumlah Member Dalam 1 Grup',
-        value: '10',
+        value: '5',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp610.500 ÷ 10 = Rp61.050',
+        value: 'Rp550.000 ÷ 5 = Rp110.000',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp28.950',
+        value: 'Rp29.000',
       },
       {
         title: 'Harga Paket Tahunan',
-        value: 'Rp90.000',
+        value: 'Rp139.000',
         is_total: true,
       },
     ],
