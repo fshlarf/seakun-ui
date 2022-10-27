@@ -629,7 +629,50 @@ export const providerList = [
   {
     name: 'Apple One',
     slug: 'apple-one',
-    title: 'Harga Paket Apple One (Bulanan)',
+    title: 'Harga Paket Apple One (User Host)',
+    img: '/images/product/brand/apple-one.png',
+    screenshot: '/images/price scheme/apple-one.png',
+    schemes: [
+      'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
+      'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
+      'Host melakukan setup pada iTunes dan subscribe paket Apple One Family',
+      'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Apple One (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Apple One Family',
+        value: 'Rp179.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp179.000 ÷ 5 = Rp35.800',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp35.800',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Apple One',
+    slug: 'apple-one',
+    title: 'Harga Paket Apple One (User Reguler)',
     img: '/images/product/brand/apple-one.png',
     screenshot: '/images/price scheme/apple-one.png',
     schemes: [
@@ -646,7 +689,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Apple One Family',
-        value: 'Rp155.000',
+        value: 'Rp179.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -654,15 +697,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp155.000 ÷ 5 = Rp31.000',
+        value: 'Rp179.000 ÷ 5 = Rp35.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
+        value: 'Rp5.200',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp36.000',
+        value: 'Rp41.000',
         is_total: true,
       },
     ],
@@ -670,7 +713,50 @@ export const providerList = [
   {
     name: 'Apple Music',
     slug: 'apple-music',
-    title: 'Harga Paket Apple Music (Bulanan)',
+    title: 'Harga Paket Apple Music (User Host)',
+    img: '/images/product/brand/apple-music.png',
+    screenshot: '/images/price scheme/apple-music.png',
+    schemes: [
+      'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
+      'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
+      'Host melakukan setup pada iTunes dan subscribe paket Apple Music Family',
+      'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium Apple Music (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket',
+        value: 'Rp85.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp85.000 ÷ 5 = Rp17.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp17.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Apple Music',
+    slug: 'apple-music',
+    title: 'Harga Paket Apple Music (User Reguler)',
     img: '/images/product/brand/apple-music.png',
     screenshot: '/images/price scheme/apple-music.png',
     schemes: [
@@ -687,7 +773,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket',
-        value: 'Rp75.000',
+        value: 'Rp85.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -695,7 +781,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp75.000 ÷ 5 = Rp15.000',
+        value: 'Rp85.000 ÷ 5 = Rp17.000',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -703,7 +789,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp20.000',
+        value: 'Rp22.000',
         is_total: true,
       },
     ],
@@ -891,7 +977,50 @@ export const providerList = [
   {
     name: 'Apple One Premier',
     slug: 'apple-one-premier',
-    title: 'Harga Paket Apple One Premier (Bulanan)',
+    title: 'Harga Paket Apple One Premier (User Host)',
+    img: '/images/product/brand/apple-one-premier.png',
+    screenshot: '/images/price scheme/apple-one-premier.png',
+    schemes: [
+      'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
+      'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
+      'Host melakukan setup pada iTunes dan subscribe paket Apple One Premier',
+      'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Apple One Premier (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Apple One Premier',
+        value: 'Rp299.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp299.000 ÷ 5 = Rp59.800',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp59.800',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Apple One Premier',
+    slug: 'apple-one-premier',
+    title: 'Harga Paket Apple One Premier (User Reguler)',
     img: '/images/product/brand/apple-one-premier.png',
     screenshot: '/images/price scheme/apple-one-premier.png',
     schemes: [
@@ -908,7 +1037,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Apple One Premier',
-        value: 'Rp275.000',
+        value: 'Rp299.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -916,15 +1045,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp275.000 ÷ 5 = Rp55.000',
+        value: 'Rp299.000 ÷ 5 = Rp59.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
+        value: 'Rp5.200',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp60.000',
+        value: 'Rp65.000',
         is_total: true,
       },
     ],
@@ -932,7 +1061,50 @@ export const providerList = [
   {
     name: 'Apple TV',
     slug: 'apple-tv',
-    title: 'Harga Paket Apple TV (Bulanan)',
+    title: 'Harga Paket Apple TV (User Host)',
+    img: '/images/product/brand/apple-tv.png',
+    screenshot: '/images/price scheme/apple-tv.png',
+    schemes: [
+      'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
+      'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
+      'Host melakukan setup pada iTunes dan subscribe paket Apple TV+',
+      'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Apple TV (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Apple TV Premium',
+        value: 'Rp99.000',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp99.000 ÷ 5 = Rp19.800',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp19.800',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Apple TV',
+    slug: 'apple-tv',
+    title: 'Harga Paket Apple TV (User Reguler)',
     img: '/images/product/brand/apple-tv.png',
     screenshot: '/images/price scheme/apple-tv.png',
     schemes: [
@@ -949,7 +1121,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Apple TV Premium',
-        value: 'Rp69.000',
+        value: 'Rp99.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -957,15 +1129,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp69.000 ÷ 5 = Rp13.800',
+        value: 'Rp99.000 ÷ 5 = Rp19.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp4.700',
+        value: 'Rp5.200',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp18.500',
+        value: 'Rp25.000',
         is_total: true,
       },
     ],
@@ -1169,20 +1341,24 @@ export const providerList = [
         value: 'Rp70.000',
       },
       {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp77.700',
+      },
+      {
         title: 'Jumlah Member Dalam 1 Grup',
         value: '3',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp70.000 ÷ 3 = Rp23.333,33',
+        value: 'Rp77.700 ÷ 3 = Rp25.900',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.166,67',
+        value: 'Rp5.100',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp28.500',
+        value: 'Rp31.000',
         is_total: true,
       },
     ],
