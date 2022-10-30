@@ -2,7 +2,7 @@
   <div class="terms-of-use">
     <h3 class="text-3xl">Syarat dan Ketentuan Penggunaan</h3>
     <h5 class="font-bold text-xl" style="margin-bottom: 30px">
-      Terakhir diperbaharui: 25 Maret 2022
+      Terakhir diperbaharui: 30 Oktober 2022
     </h5>
     <div>
       <b>PENTING.</b> Anda dimohon untuk membaca Syarat dan Ketentuan Penggunaan
@@ -250,6 +250,29 @@
         unik bertujuan untuk memudahkan sistem dalam mengolah transaksi. Dan
         dengan memilih pembayaran metode manual, pengguna setuju nominal 2 kode
         unik menjadi keuntungan Seakun.id.
+      </div>
+    </div>
+
+    <div>
+      <h5 class="text-xl mb-2">Perubahan Biaya Berlangganan</h5>
+      <div>
+        Perubahan biaya berlangganan bisa terjadi apabila provider tertentu
+        melakukan perubahan harga berlangganan dari layanan yang mereka miliki.
+        Perubahan harga yang terjadi mengakibatkan Seakun.id perlu menyesuaikan
+        biaya berlangganan terbaru dari layanan provider terkait sesuai dengan
+        jumlah member dalam satu grup. Informasi perubahan biaya berlangganan
+        akan tersedia di skema harga dan disosialisasikan di media sosial
+        Seakun.id. <br />
+        Untuk customer yang sudah berlangganan lebih dari 1 bulan (3, 6 atau 12
+        bulan) pada provider yang mengalami perubahan biaya berlangganan dimana
+        ada sisa periode berlangganan yang terkena dampak perubahan harga, maka
+        customer setuju untuk menerima penyesuaian biaya berlangganan yang baru
+        dan melakukan pembayaran kembali ke Seakun.id sesuai dengan ketentuan
+        waktu yang ditetapkan oleh Seakun.id. <br />
+        Apabila customer menolak melakukan pembayaran sisa dari biaya
+        berlangganan yang mengalami perubahan, maka layanan customer di
+        Seakun.id akan dibatalkan dan biaya sisa periode berlangganan yang belum
+        dinikmati akan dikembalikan (di-refund) secara pro rata.
       </div>
     </div>
 
