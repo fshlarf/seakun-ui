@@ -4,7 +4,7 @@
       <img
         class="w-full h-40 mx-auto"
         src="/images/banner/sequrban-mobile.svg"
-        alt="image not found"
+        alt="berlangganan sequrban"
       />
     </div>
     <h2 class="text-sm text-secondary font-semibold mt-3">

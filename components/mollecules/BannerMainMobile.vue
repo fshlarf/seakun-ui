@@ -4,7 +4,7 @@
       <img
         class="w-full h-40 mx-auto"
         src="/images/banner/seakun-mobile.svg"
-        alt="image not found"
+        alt="subscribe with seakun"
       />
     </div>
     <h2 class="text-sm text-secondary font-semibold mt-3">Seakun.id</h2>

@@ -8,7 +8,7 @@
           <img
             class="w-100"
             src="/images/sequrban/wadiqibas.svg"
-            alt="Image not found"
+            alt="about wadiqibas"
           />
         </div>
         <div class="my-2 space-y-2 xl:space-y-4 text-left">

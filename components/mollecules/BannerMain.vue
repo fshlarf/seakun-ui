@@ -27,7 +27,11 @@
         </div>
       </div>
       <div class="w-full -mt-14 -mb-14">
-        <img class="" src="/images/header-main2.svg" alt="Image not found" />
+        <img
+          class=""
+          src="/images/header-main2.svg"
+          alt="subscribe with seakun"
+        />
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@
       <img
         class="w-full mx-auto self-center"
         src="/images/banner-sequrban.png"
-        alt="Image not found"
+        alt="berlangganan sequrban"
       />
     </div>
     <div class="container relative z-0 md:pt-24 lg:pt-36 xl:pt-32">

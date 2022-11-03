@@ -4,7 +4,7 @@
       src="/images/seakunid.png"
       width="40"
       height="40"
-      alt="image not found"
+      alt="logo seakun"
       class="d-inline-block align-top rounded-circle mr-3"
     />
     <span class="text-primary font-weight-bold align-self-center">{{

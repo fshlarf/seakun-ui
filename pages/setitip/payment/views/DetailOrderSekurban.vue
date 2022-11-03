@@ -9,7 +9,7 @@
         <img
           class="detail-product__image w-9/12"
           :src="`${image}`"
-          alt="Image not found"
+          alt="payment setitip"
         />
       </div>
       <div class="detail-product__price col-span-4 ml-4">

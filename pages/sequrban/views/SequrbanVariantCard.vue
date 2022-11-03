@@ -9,7 +9,7 @@
       <img
         class="w-4/5 mx-auto"
         :src="`${variant.images[0]}`"
-        alt="Image not found"
+        alt="qurban variant"
       />
     </div>
     <div v-else class="w-4/5 mx-auto rounded-xl overflow-hidden">

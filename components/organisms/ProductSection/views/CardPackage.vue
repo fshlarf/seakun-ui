@@ -13,7 +13,7 @@
       <img
         class="w-auto h-14 object-contain mx-auto"
         :src="`/images/icons/modal package digital/${slug}.png`"
-        alt="Image not found"
+        alt="provider brand"
       />
     </div>
 

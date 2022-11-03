@@ -5,7 +5,7 @@
         class="grid md:grid-cols-2 justify-around items-center md:space-x-4 lg:space-x-8 xl:space-x-20"
       >
         <div class="w-full my-4">
-          <img class="w-100" src="/images/about-us.svg" alt="Image not found" />
+          <img class="w-100" src="/images/about-us.svg" alt="about seakun" />
         </div>
         <div class="my-2 space-y-2 xl:space-y-4">
           <h2 class="text-xl md:text-2xl font-bold tn:text-center md:text-left">
