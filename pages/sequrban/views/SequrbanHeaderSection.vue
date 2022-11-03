@@ -7,7 +7,7 @@
       <img
         class="w-full"
         src="/images/sequrban/banner.png"
-        alt="Image not found"
+        alt="join qurban with sequrban"
       />
     </div>
     <div

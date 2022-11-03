@@ -4,7 +4,11 @@
   >
     <div class="px-2 text-center relative z-0">
       <div class="md:px-2 md:mb-10 lg:mb-12 xl:mb-14">
-        <img :src="`${propose.img}`" alt="image not found" class="w-full p-2" />
+        <img
+          :src="`${propose.img}`"
+          alt="propose your business"
+          class="w-full p-2"
+        />
         <h1 class="md:text-xl font-bold">
           {{ propose.name }}
         </h1>

@@ -6,7 +6,7 @@
     <div class="flex mb-8">
       <img
         :src="`/images/product/brand/${orderData.packageName}.png`"
-        alt="image not found"
+        alt="provider brand"
         class="w-20 h-auto"
       />
       <p class="text-base font-bold ml-2">{{ orderData.orderNumber }}</p>
@@ -69,8 +69,8 @@ export default {
     orderData: Object,
     isLoading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     onClose() {

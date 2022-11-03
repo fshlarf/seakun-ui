@@ -9,7 +9,7 @@
             <img
               class="w-full"
               src="/images/thank-you.png"
-              alt="Image not found"
+              alt="event registration success"
             />
           </div>
           <div class="md:px-12 lg:px-20 xl:px-24">

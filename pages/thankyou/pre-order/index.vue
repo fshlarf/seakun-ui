@@ -7,7 +7,7 @@
         <div class="">
           <img
             src="/images/thankyou/thank-you.png"
-            alt="Image not found"
+            alt="pre-order registration success"
             style="margin: 0 auto"
           />
         </div>
@@ -143,7 +143,7 @@ export default {
           this.$refs.snackbar.showSnackbar({
             message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
             className: '',
-            color: 'bg-red-400',
+            color: 'red-400',
             duration: 4000,
           });
           setTimeout(

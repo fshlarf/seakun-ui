@@ -4,13 +4,6 @@
       <div class="navbar-header">
         <nuxt-link class="navbar-brand" to="/">
           <MainLogo />
-          <!-- <img
-            src="/images/seakunid.png"
-            width="30"
-            height="30"
-            alt="image not found"
-            class="d-inline-block align-top"
-          /> -->
           <span>Seakun.id</span>
         </nuxt-link>
         <button

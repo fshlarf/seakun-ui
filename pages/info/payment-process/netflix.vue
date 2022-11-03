@@ -11,12 +11,12 @@
               Lakukan Pendaftaran dengan memasukkan alamat email di kolom email
               dan klik "Get Started"
             </li>
-            <img src="/images/netflix-get-started.png" alt="Image not found" />
+            <img src="/images/netflix-get-started.png" alt="step 1" />
             <li>
               Di halaman Step 1, tambahkan password sesuai dengan ketentuan yang
               diinformasikan oleh Admin Seakun, kemudian klik "Continue"
             </li>
-            <img src="/images/netflix-register-1.png" alt="Image not found" />
+            <img src="/images/netflix-register-1.png" alt="step 2" />
             <li>
               Di halaman Step 2, pilih plan sesuai informasi dari Admin Seakun,
               kemudian klik "Continue"
@@ -26,7 +26,7 @@
               international kamu. Kemudian centang kotak "I agree" dan klik
               "Star Membership"
             </li>
-            <img src="/images/netflix-register-2.png" alt="Image not found" />
+            <img src="/images/netflix-register-2.png" alt="step 3" />
             <li>
               Jika proses pembayaran berhasil, saldo di kartu kamu akan
               terpotonh sebesar harga plan yang dipiluh dan kamu akan diarahkan
@@ -44,7 +44,7 @@
               Pastikan riwayat pembayaran telah muncul di halaman Billing
               Details
             </li>
-            <img src="/images/netflix-payment-info.png" alt="Image not found" />
+            <img src="/images/netflix-payment-info.png" alt="step 4" />
             <li>
               Informasikan ke Admin Seakun bahwa proses pendaftaran dan
               pembayaran telah berhasil. Admin akan melakukan pengecekan dan

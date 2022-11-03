@@ -6,7 +6,7 @@
       <img
         class="w-6/12 mx-auto"
         src="/images/thank-you-new.png"
-        alt="Image not found"
+        alt="payment confirmation success"
       />
       <div class="text-center tn:px-4 md:px-12">
         <h3 class="font-bold text-3xl mt-4 text-center">Thankyou!</h3>

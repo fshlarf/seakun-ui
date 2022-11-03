@@ -4,7 +4,7 @@
       <img
         class="w-2/3 mx-auto"
         src="/images/setitip/header/banner.png"
-        alt="image not found"
+        alt="setitip"
       />
     </div>
     <h2 class="text-sm text-secondary font-semibold mt-3">

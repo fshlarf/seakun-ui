@@ -7,7 +7,7 @@
         <img
           class="detail-product__image w-full"
           :src="`/images/product/brand/${provider}.png`"
-          alt="Image not found"
+          alt="product sequrban"
         />
       </div>
       <div

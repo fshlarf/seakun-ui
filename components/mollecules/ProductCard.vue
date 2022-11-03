@@ -8,13 +8,13 @@
       <img
         v-if="product.variants"
         :src="`/images/product/${product.slug}.png`"
-        alt="image not found"
+        alt="provider"
         class="block object-cover min-h-full min-w-full"
       />
       <img
         v-else
         :src="`/images/product/on demand/${product.slug}.png`"
-        alt="image not found"
+        alt="provider"
         class="block object-cover min-h-full min-w-full"
       />
 
