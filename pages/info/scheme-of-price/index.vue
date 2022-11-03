@@ -27,11 +27,11 @@
               <div class="w-1/4">
                 <img
                   :src="item.img"
-                  alt="image not found"
+                  alt="provider"
                   class="h-10 object-contain"
                 />
               </div>
-              <img :src="item.screenshot" alt="image not found" class="ss" />
+              <img :src="item.screenshot" alt="price scheme" class="ss" />
               <p class="font-weight-bold info-mobile">Detail Harga</p>
               <div
                 class="row pt-1"
