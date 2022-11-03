@@ -221,9 +221,13 @@
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 items-start">
         <p class="tn:text-[16px] md:text-[18px] font-bold">Link Website</p>
-        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+        <a
+          :href="product.productUrl"
+          target="_blank"
+          class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium break-all text-primary"
+        >
           {{ product.productUrl }}
-        </p>
+        </a>
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 items-start">
         <p class="tn:text-[16px] md:text-[18px] font-bold">Detail Promo</p>

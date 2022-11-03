@@ -346,9 +346,14 @@
         </div>
         <div class="md:grid grid-cols-4 md:gap-2">
           <p class="col-span-1">Link Produk:</p>
-          <p class="col-span-3 font-bold" v-if="dataDetailProduct.productUrl">
+          <a
+            :href="dataDetailProduct.productUrl"
+            target="_blank"
+            class="col-span-3 font-bold text-primary break-all"
+            v-if="dataDetailProduct.productUrl"
+          >
             {{ dataDetailProduct.productUrl }}
-          </p>
+          </a>
           <p v-else class="font-bold">-</p>
         </div>
       </div>
