@@ -47,7 +47,7 @@
               <div v-else>
                 <img
                   src="/images/sequrban/cow variant/type-c.svg"
-                  alt="Images not found"
+                  alt="qurban variant"
                   class="w-full"
                 />
               </div>

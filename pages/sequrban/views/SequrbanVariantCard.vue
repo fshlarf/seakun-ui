@@ -16,7 +16,7 @@
       <img
         class="w-full"
         src="/images/sequrban/cow variant/type-d.svg"
-        alt="Images not found"
+        alt="qurban variant"
       />
     </div>
     <div class="tn:space-y-1 lg:space-y-2 w-full md:pr-4">
