@@ -5,7 +5,7 @@
         <img
           class="w-9/12 mx-auto"
           src="/images/thank-you.png"
-          alt="Image not found"
+          alt="payment setitip"
         />
       </div>
       <h3

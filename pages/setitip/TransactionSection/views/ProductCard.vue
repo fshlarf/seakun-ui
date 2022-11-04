@@ -5,7 +5,7 @@
     <div class="h-48">
       <img
         :src="product.img"
-        alt="image not found"
+        alt="setitip transaction"
         class="object-cover max-h-[185px] w-full md:h-auto"
       />
     </div>

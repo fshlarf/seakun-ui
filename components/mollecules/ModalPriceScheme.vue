@@ -19,11 +19,13 @@
           v-if="scheme.slug === dataScheme.slug"
           class="scheme-card tn:px-2 tn:py-2 md:px-8 xl:px-4 xl:mx-2 tn:border-top md:border rounded-xl xl:py-3"
         >
-          <div class="relative h-10 w-44 mx-auto flex justify-center items-center">
+          <div
+            class="relative h-10 w-44 mx-auto flex justify-center items-center"
+          >
             <img
               class="block max-h-[100%] max-w-[100%]"
               :src="`${scheme.img}`"
-              alt="Image not found"
+              alt="price scheme"
             />
           </div>
           <div class="text-center">
@@ -40,14 +42,14 @@
             <img
               class="h-full mx-auto"
               :src="`${scheme.screenshot}`"
-              alt="Image not found"
+              alt="price scheme"
             />
           </div>
           <div v-else class="w-full h-full mx-auto">
             <img
               class="w-full h-full my-2 border"
               :src="`${scheme.screenshot}`"
-              alt="Image not found"
+              alt="price scheme"
             />
           </div>
           <div class="space-y-1">

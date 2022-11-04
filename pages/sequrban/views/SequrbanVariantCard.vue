@@ -9,14 +9,14 @@
       <img
         class="w-4/5 mx-auto"
         :src="`${variant.images[0]}`"
-        alt="Image not found"
+        alt="qurban variant"
       />
     </div>
     <div v-else class="w-4/5 mx-auto rounded-xl overflow-hidden">
       <img
         class="w-full"
         src="/images/sequrban/cow variant/type-d.svg"
-        alt="Images not found"
+        alt="qurban variant"
       />
     </div>
     <div class="tn:space-y-1 lg:space-y-2 w-full md:pr-4">

@@ -6,7 +6,7 @@
       <img
         class="tn:hidden md:block md:w-full md:h-full"
         src="/images/header-bg.svg"
-        alt="Image not found"
+        alt="subscribe digital product with seakun"
       />
     </div>
     <div class="container">

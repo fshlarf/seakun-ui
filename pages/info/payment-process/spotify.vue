@@ -8,22 +8,22 @@
           <ul>
             <li>Buka browser dan akses www.Spotify.com</li>
             <li>Klik Menu “Masuk”</li>
-            <img src="/images/spotify-home.png" alt="Image not found" />
+            <img src="/images/spotify-home.png" alt="step 1" />
             <li>Login menggunakan akun yg diberikan admin Seakun</li>
-            <img src="/images/spotify-login.png" alt="Image not found" />
+            <img src="/images/spotify-login.png" alt="step 2" />
             <li>Pilih Akun</li>
-            <img src="/images/spotify-profile.png" alt="Image not found" />
+            <img src="/images/spotify-profile.png" alt="step 3" />
             <li>Klik Gabung Premium</li>
-            <img src="/images/spotify-dashboard.png" alt="Image not found" />
+            <img src="/images/spotify-dashboard.png" alt="step 4" />
             <li>
               Ubah paket jika terpilih paket personal dengan cara klik “Ubah
               Paket”
             </li>
-            <img src="/images/spotify-premium.png" alt="Image not found" />
+            <img src="/images/spotify-premium.png" alt="step 5" />
             <li>Pilih Paket “Family” dan klik “Memulai”</li>
-            <img src="/images/spotify-info.png" alt="Image not found" />
+            <img src="/images/spotify-info.png" alt="step 6" />
             <li>Klik “Pakai Gopay, DANA”</li>
-            <img src="/images/spotify-payment.png" alt="Image not found" />
+            <img src="/images/spotify-payment.png" alt="step 7" />
             <li>Lakukan pembayaran menggunakan Gopay/DANA milik kamu</li>
             <li>Kirim bukti berhasil payment ke admin (Screenshot)</li>
             <li>

@@ -4,7 +4,7 @@
       <img
         class="w-full"
         src="/images/header-mobile.svg"
-        alt="Image not found"
+        alt="subscribe with seakun"
       />
     </div>
     <div class="container relative z-0 tn:pt-8 tn:px-8">

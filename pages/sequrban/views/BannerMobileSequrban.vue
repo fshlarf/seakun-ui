@@ -4,7 +4,7 @@
       <img
         class="w-full h-full mx-auto"
         src="/images/banner/sequrban-main-mobile.svg"
-        alt="image not found"
+        alt="join qurban with sequrban"
       />
     </div>
     <h1 class="text-2xl font-bold my-1">

@@ -30,7 +30,7 @@
             :key="index - 1"
             class="slide"
           >
-            <img :src="`${poster}`" alt="Image not found" />
+            <img :src="`${poster}`" alt="qurban variant" />
           </div>
         </transition-group>
         <div @click="next">
@@ -56,11 +56,15 @@
       <p class="text-secondary font-semibold upper-case mt-2">
         {{ variant.type }}, BERAT HINGGA {{ variant.weight }} KG
       </p>
-      <p class="tn:text-xl md:text-3xl font-bold mt-1">{{ toRupiah(variant.totalCost) }}<span class="text-base"> / orang</span> </p>
+      <p class="tn:text-xl md:text-3xl font-bold mt-1">
+        {{ toRupiah(variant.totalCost) }}<span class="text-base"> / orang</span>
+      </p>
     </div>
 
     <div class="tn:space-y-2 md:space-y-0 md:px-3 lg:px-6 py-2 mt-3">
-      <h2 class="tn:text-base md:text-lg text-secondary my-1 font-bold">Detail Harga</h2>
+      <h2 class="tn:text-base md:text-lg text-secondary my-1 font-bold">
+        Detail Harga
+      </h2>
       <div
         class="tn:text-xs md:text-base flex justify-between md:items-center mt-2"
       >
@@ -87,7 +91,9 @@
       >
         <p>
           Biaya servis
-          <span class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold">
+          <span
+            class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold"
+          >
             (PEMOTONGAN, PENCACAHAN, DISTRIBUSI)</span
           >
         </p>
@@ -104,8 +110,11 @@
       <div
         class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
       >
-        <p>Biaya kirim 
-            <span class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold">
+        <p>
+          Biaya kirim
+          <span
+            class="tn:text-[8px] md:text-xs text-gray-500 text-xs font-semibold"
+          >
             (jatah daging qurban)</span
           >
         </p>
@@ -119,7 +128,7 @@
         <p class="font-bold">{{ toRupiah(variant.adminFee) }}</p>
       </div>
 
-       <div
+      <div
         class="tn:text-xs md:text-base flex justify-between md:items-center md:mt-1 tn:mt-2"
       >
         <p class="font-bold">Total harga</p>

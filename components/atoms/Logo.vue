@@ -4,7 +4,7 @@
       src="/images/seakunid.png"
       width="40"
       height="40"
-      alt="image not found"
+      alt="logo seakun"
       class="rounded-full mr-2"
     />
     <span class="text-primary font-bold">{{ label }}</span>

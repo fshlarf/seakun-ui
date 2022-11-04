@@ -37,7 +37,7 @@
           <img
             class="w-3/4 mx-auto"
             src="/images/setitip/header/banner.png"
-            alt="image not found"
+            alt="use seakun cc with setitip"
           />
         </div>
         <h2 class="text-xl text-secondary font-bold mt-3">

@@ -8,14 +8,14 @@
               <div v-if="variant.images && variant.images.length > 0">
                 <img
                   :src="`${variant.images[0]}`"
-                  alt="Image not found"
+                  alt="qurban variant"
                   class="w-full"
                 />
               </div>
               <div v-else>
                 <img
                   src="/images/sequrban/cow variant/type-c.svg"
-                  alt="Images not found"
+                  alt="qurban variant"
                   class="w-full"
                 />
               </div>
@@ -40,14 +40,14 @@
               <div v-if="variant.images.length > 0">
                 <img
                   :src="`${variant.images[0]}`"
-                  alt="Image not found"
+                  alt="qurban variant"
                   class="w-full"
                 />
               </div>
               <div v-else>
                 <img
                   src="/images/sequrban/cow variant/type-c.svg"
-                  alt="Images not found"
+                  alt="qurban variant"
                   class="w-full"
                 />
               </div>

@@ -7,7 +7,7 @@
         <div class="">
           <img
             src="/images/thankyou/thank-you.png"
-            alt="Image not found"
+            alt="pre-order registration success"
             style="margin: 0 auto"
           />
         </div>
