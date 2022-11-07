@@ -7,16 +7,36 @@
         src="/images/sekeranjang/success-order.png"
         alt="order success"
       />
-      <h1
-        class="text-[24px] font-bold text-center tn:mt-3 max-w-[450px] mx-auto"
-      >
-        Terimakasih telah melakukan pesanan untuk produk xxxxxx.
-      </h1>
-      <p class="text-center tn:mt-5">
-        Di mana pada produk ini skemanya adalah buy 1 get 1. Dalam satu grup
-        terdiri dari 2 orang. Harap menunggu, kamu akan dihubungi admin untuk
-        proses berikutnya atau kamu bisa klik tombol di bawah.
-      </p>
+      <div v-if="isLoadingProduct">
+        <div class="max-w-[450px] mx-auto tn:mt-3 space-y-1">
+          <div class="shimmer h-6 w-full"></div>
+          <div class="flex justify-center">
+            <div class="shimmer h-6 w-1/2"></div>
+          </div>
+        </div>
+        <div class="tn:mt-5 max-w-[450px] mx-auto">
+          <div class="shimmer w-full"></div>
+          <div class="shimmer w-full"></div>
+          <div class="flex justify-center">
+            <div class="shimmer w-1/2"></div>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <h1
+          class="text-[24px] font-bold text-center tn:mt-3 max-w-[450px] mx-auto"
+        >
+          Terimakasih telah melakukan pesanan untuk produk
+          {{ dataDetailProduct.sekeranjangCode }}.
+        </h1>
+        <p class="text-center tn:mt-5">
+          Di mana pada produk ini skemanya adalah
+          {{ dataDetailProduct.promoType }}. Dalam satu grup terdiri dari
+          {{ dataDetailProduct.quota }} orang. Harap menunggu, kamu akan
+          dihubungi admin untuk proses berikutnya atau kamu bisa klik tombol di
+          bawah.
+        </p>
+      </div>
       <p class="text-center tn:mt-5">
         Share produk ini di media sosialmu <br />
         agar membantu kami menemukan teman patunganmu.
@@ -86,6 +106,8 @@
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import Navbar from '~/components/mollecules/NavbarBlank.vue';
 import Footer from '../views/Footer.vue';
+import SekeranjangService from '~/services/SekeranjangServices.js';
+
 export default {
   components: {
     Navbar,
@@ -94,14 +116,38 @@ export default {
   },
   data() {
     return {
+      SekeranjangService,
+      isLoadingProduct: true,
+      dataDetailProduct: {},
       productUrl: '',
     };
   },
   mounted() {
-    const { product_id } = this.$router.history.current.query;
-    this.productUrl = `https://seakun.id/sekeranjang/product-detail?product_id=${product_id}`;
+    this.SekeranjangService = new SekeranjangService(this);
+    const { product_id, order_id } = this.$router.history.current.query;
+    this.productUrl = `https://seakun.id/sekeranjang/product-detail?product_id=${product_id}&order_id=${order_id}`;
+    if (product_id) {
+      this.getProductByUid(product_id);
+    }
   },
   methods: {
+    async getProductByUid(uid) {
+      this.isLoadingProduct = true;
+      const { SekeranjangService } = this;
+      try {
+        const fetchDetailProduct = await SekeranjangService.getProductByUid(
+          uid
+        );
+        if (fetchDetailProduct.data) {
+          this.dataDetailProduct = fetchDetailProduct.data.data;
+        } else {
+          throw new Error(fetchDetailProduct);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+      this.isLoadingProduct = false;
+    },
     clickCopyHandler(name, value) {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(value).then(
@@ -135,7 +181,7 @@ export default {
         let successful = document.execCommand('copy');
         if (successful) {
           this.$refs.snackbar.showSnackbar({
-            color: 'bg-black',
+            color: 'bg-green-400',
             message: `${name} berhasil disalin`,
             className: '',
           });

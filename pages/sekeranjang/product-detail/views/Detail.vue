@@ -22,12 +22,14 @@
       <p class="tn:py-0">{{ product.name }}</p>
     </div>
     <div
-      v-if="product.photos && product.photos.length > 0"
+      v-if="product.images && product.images.length > 0"
       class="w-full tn:mt-3"
     >
-      <div class="w-full tn:h-[360px] md:h-[448px] overflow-hidden bg-gray-300">
+      <div
+        class="w-full flex justify-center items-center tn:h-[360px] md:h-[448px] overflow-hidden bg-gray-300"
+      >
         <img
-          class="object-cover-center"
+          class="w-full object-contain"
           :src="activePhoto.popFile"
           alt="active photo"
         />
@@ -342,8 +344,8 @@ export default {
     },
   },
   mounted() {
-    if (this.product.photos.length > 0) {
-      this.dataPhotos = this.product.photos;
+    if (this.product.images.length > 0) {
+      this.dataPhotos = this.product.images;
       this.activePhoto = this.dataPhotos[0];
       const content = document.getElementById('photo-content');
       setTimeout(() => {

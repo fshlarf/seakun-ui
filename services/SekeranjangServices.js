@@ -34,9 +34,13 @@ class SekeranjangService {
   }
 
   createOrder(params) {
-    return this.serviceApi.post('/customer/sekeranjang/order', {
-      ...params,
-    });
+    return this.serviceApi.post(
+      '/customer/sekeranjang/order',
+      {
+        ...params,
+      },
+      { timeout: 20000 }
+    );
   }
 
   getOrderByUid(uid) {

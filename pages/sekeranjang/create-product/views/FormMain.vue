@@ -54,10 +54,10 @@
         class="tn:mt-4"
         placeholder="cth. Samsung"
         :error="errorForm.brand"
-        v-model="dataDetailProduct.sekeranjang.productBrand"
-        id="productBrand"
-        @change="setLocalStorage('productBrand')"
-        @keyup="validationForm('productBrand')"
+        v-model="dataDetailProduct.brand"
+        id="brand"
+        @change="setLocalStorage('brand')"
+        @keyup="validationForm('brand')"
       />
       <InputForm
         label="Harga Normal (Rp)"
@@ -114,7 +114,21 @@
         @change="setLocalStorage('productUrl')"
       />
 
-      <div class="my-4 grid grid-cols-2 items-center gap-4">
+      <div class="flex items-start space-x-2 tn:pt-2 tn:mt-4">
+        <div
+          class="cursor-pointer w-[24px]"
+          @click="isHasPromoPeriod = !isHasPromoPeriod"
+        >
+          <CheckedBox v-if="isHasPromoPeriod" />
+          <UncheckBox v-else />
+        </div>
+        <p>Memiliki Periode Promo</p>
+      </div>
+
+      <div
+        v-if="isHasPromoPeriod"
+        class="tn:my-4 grid grid-cols-2 items-center gap-4"
+      >
         <div class="">
           <p class="text-sm mb-2">Mulai Promo</p>
           <DatePicker
@@ -319,7 +333,7 @@
         <div class="md:grid grid-cols-4 md:gap-2">
           <p class="col-span-1">Brand Produk:</p>
           <p class="col-span-3 font-bold">
-            {{ dataDetailProduct.sekeranjang.productBrand }}
+            {{ dataDetailProduct.brand }}
           </p>
         </div>
         <div class="md:grid grid-cols-4 md:gap-2">
@@ -403,7 +417,11 @@
         </p>
       </div>
 
-      <div v-if="isShowFormWarning" class="tn:my-4">
+      <div
+        v-if="isShowFormWarning"
+        class="tn:my-4"
+        id="warning-form-not-complete"
+      >
         <WarningInfo
           text="Data yang kamu isi masih belum lengkap. Periksa kembali sebelum melanjutkan."
         />
@@ -455,7 +473,6 @@ import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
 import { currencyFormat } from '../../../../helpers/word-transformation';
 import DatePicker from 'vue2-datepicker';
-import MasterService from '~/services/MasterServices.js';
 import SekeranjangService from '~/services/SekeranjangServices.js';
 import moment from 'moment';
 import 'vue2-datepicker/index.css';
@@ -478,7 +495,6 @@ export default {
   data() {
     return {
       moment,
-      MasterService,
       SekeranjangService,
       internationalPhoneNumbers,
       codeNumber: '+62',
@@ -489,6 +505,7 @@ export default {
       isShowPromoList: false,
       isAgreeTos: false,
       isJoinPo: false,
+      isHasPromoPeriod: false,
       isShowModalConfirmation: false,
       isShowFormWarning: false,
       isLoadingSumbitProduct: false,
@@ -595,7 +612,6 @@ export default {
     },
   },
   mounted() {
-    this.MasterService = new MasterService(this);
     this.SekeranjangService = new SekeranjangService(this);
     this.setFieldValueFromLocalStorage();
   },
@@ -677,7 +693,7 @@ export default {
         }
       }
       if (input === 'brand' || !input) {
-        if (dataDetailProduct.sekeranjang.productBrand === '') {
+        if (dataDetailProduct.brand === '') {
           this.errorForm.brand = {
             isError: true,
             message: 'Brand produk harus diisi',
@@ -907,6 +923,17 @@ export default {
           });
         });
       }
+      if (!this.isFormValid) {
+        const warningElement = document.getElementById(
+          'warning-form-not-complete'
+        );
+        if (warningElement) {
+          warningElement.classList.add('horizontal-shake');
+          setTimeout(() => {
+            warningElement.classList.remove('horizontal-shake');
+          }, 500);
+        }
+      }
     },
     validateEmail(email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -959,23 +986,6 @@ export default {
         }
       } catch (error) {
         console.log(error);
-        // if (error.response.data.code == 400) {
-        //   if (error.response.data.message.includes('duplicate email')) {
-        //     this.$refs.snackbar.showSnackbar({
-        //       color: 'bg-red-400',
-        //       message: 'Email sudah digunakan oleh user lain',
-        //       className: '',
-        //       duration: 5000,
-        //     });
-        //   } else if (error.response.data.message.includes('duplicate phone')) {
-        //     this.$refs.snackbar.showSnackbar({
-        //       color: 'bg-red-400',
-        //       message: 'Nomor whatsapp sudah digunakan oleh user lain',
-        //       className: '',
-        //       duration: 5000,
-        //     });
-        //   }
-        // }
       }
       this.isLoadingSumbitProduct = false;
     },
@@ -1036,7 +1046,7 @@ export default {
         productUrl: dataDetailProduct.productUrl,
         price: dataDetailProduct.price,
         jointPrice: dataDetailProduct.jointPrice,
-        brand: dataDetailProduct.sekeranjang.productBrand,
+        brand: dataDetailProduct.brand,
       };
       localStorage.setItem('registered_product', JSON.stringify(dataRegister));
     },
@@ -1054,5 +1064,25 @@ export default {
 }
 .detail-box {
   border-left-color: #8dcabe !important;
+}
+.horizontal-shake {
+  animation: horizontal-shaking 0.35s infinite;
+}
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 </style>
