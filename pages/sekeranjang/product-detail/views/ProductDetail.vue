@@ -53,7 +53,7 @@
 
 <script>
 import Snackbar from '~/components/mollecules/Snackbar.vue';
-import MasterService from '~/services/MasterServices.js';
+import SekeranjangService from '~/services/SekeranjangServices.js';
 import Detail from './Detail.vue';
 import Sidebar from './Sidebar.vue';
 import DetailProductLoading from './DetailProductLoading.vue';
@@ -72,7 +72,7 @@ export default {
   },
   data() {
     return {
-      MasterService,
+      SekeranjangService,
       productUid: '',
       dataDetailProduct: {},
       isLoadingProduct: true,
@@ -80,7 +80,7 @@ export default {
     };
   },
   mounted() {
-    this.MasterService = new MasterService(this);
+    this.SekeranjangService = new SekeranjangService(this);
     const { product_id } = this.$router.history.current.query;
     this.productUid = product_id;
     this.getProductByUid(this.productUid);
@@ -89,9 +89,11 @@ export default {
     async getProductByUid(uid) {
       this.isLoadingProduct = true;
       this.isAgreeTos = false;
-      const { MasterService } = this;
+      const { SekeranjangService } = this;
       try {
-        const fetchDetailProduct = await MasterService.getProductByUid(uid);
+        const fetchDetailProduct = await SekeranjangService.getProductByUid(
+          uid
+        );
         if (fetchDetailProduct.data) {
           this.dataDetailProduct = fetchDetailProduct.data.data;
         } else {

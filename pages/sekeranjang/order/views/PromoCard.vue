@@ -23,9 +23,14 @@
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
         <p class="font-bold">Link website</p>
-        <p v-if="product.productUrl" class="font-medium md:col-span-2">
+        <a
+          :href="product.productUrl"
+          target="_blank"
+          class="font-medium md:col-span-2 text-primary break-all"
+          v-if="product.productUrl"
+        >
           {{ product.productUrl }}
-        </p>
+        </a>
         <p v-else class="font-medium md:col-span-2">-</p>
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">

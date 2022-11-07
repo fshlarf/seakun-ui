@@ -9,7 +9,7 @@
         <img
           class="detail-product__image w-9/12"
           :src="`${image}`"
-          alt="sequrban"
+          alt="manual payment sequrban"
         />
       </div>
       <div class="detail-product__price col-span-4 ml-4">

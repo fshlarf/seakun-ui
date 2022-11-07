@@ -50,7 +50,7 @@ import ProductCard from './views/ProductCard.vue';
 import ProductCardShimmer from './views/ProductCardShimmer.vue';
 import Pagination from '../Pagination.vue';
 import PaginationMobile from '../PaginationMobile.vue';
-import MasterService from '../../../../services/MasterServices';
+import SekeranjangService from '../../../../services/SekeranjangServices';
 export default {
   components: {
     ProductCard,
@@ -60,11 +60,10 @@ export default {
   },
   data() {
     return {
-      MasterService,
+      SekeranjangService,
       paramProductList: {
         page: 1,
         limit: 10,
-        service: 1,
       },
       dataProduct: {
         list: [],
@@ -74,7 +73,7 @@ export default {
     };
   },
   mounted() {
-    this.MasterService = new MasterService(this);
+    this.SekeranjangService = new SekeranjangService(this);
     this.getProductList();
   },
   methods: {
@@ -95,9 +94,9 @@ export default {
     },
     async getProductList() {
       this.isLoadingProductList = true;
-      const { MasterService, paramProductList } = this;
+      const { SekeranjangService, paramProductList } = this;
       try {
-        const fetchProductList = await MasterService.getProducts(
+        const fetchProductList = await SekeranjangService.getProducts(
           paramProductList
         );
         if (fetchProductList.data) {

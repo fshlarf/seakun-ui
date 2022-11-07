@@ -9,7 +9,7 @@
             role="button"
             class="w-[50px] h-[50px] text-[20px] rounded-full border-2 border-[#8DCABE] flex justify-center items-center"
             :class="
-              step.no === currentStep
+              step.no <= currentStep
                 ? 'text-white bg-[#8DCABE]'
                 : 'bg-transparent text-[#8DCABE]'
             "
@@ -54,10 +54,10 @@
         class="tn:mt-4"
         placeholder="cth. Samsung"
         :error="errorForm.brand"
-        v-model="dataDetailProduct.sekeranjang.productBrand"
-        id="productBrand"
-        @change="setLocalStorage('productBrand')"
-        @keyup="validationForm('productBrand')"
+        v-model="dataDetailProduct.brand"
+        id="brand"
+        @change="setLocalStorage('brand')"
+        @keyup="validationForm('brand')"
       />
       <InputForm
         label="Harga Normal (Rp)"
@@ -114,7 +114,21 @@
         @change="setLocalStorage('productUrl')"
       />
 
-      <div class="my-4 grid grid-cols-2 items-center gap-4">
+      <div class="flex items-start space-x-2 tn:pt-2 tn:mt-4">
+        <div
+          class="cursor-pointer w-[24px]"
+          @click="isHasPromoPeriod = !isHasPromoPeriod"
+        >
+          <CheckedBox v-if="isHasPromoPeriod" />
+          <UncheckBox v-else />
+        </div>
+        <p>Memiliki Periode Promo</p>
+      </div>
+
+      <div
+        v-if="isHasPromoPeriod"
+        class="tn:my-4 grid grid-cols-2 items-center gap-4"
+      >
         <div class="">
           <p class="text-sm mb-2">Mulai Promo</p>
           <DatePicker
@@ -153,12 +167,12 @@
         </p>
 
         <div
-          v-if="productPhotos.length > 0"
+          v-if="productImages.length > 0"
           class="tn:my-4 overflow-x-auto overscroll-auto w-full hide-scrollbar"
         >
           <div class="flex justify-start">
             <div
-              v-for="(image, id) in productPhotos"
+              v-for="(image, id) in productImages"
               :key="id"
               class="max-w-max relative z-0 tn:m-1 md:m-2"
             >
@@ -185,7 +199,7 @@
         </div>
 
         <label
-          v-if="productPhotos.length < 5"
+          v-if="productImages.length < 5"
           role="button"
           class="image-button w-full tn:py-4 flex items-center justify-center space-x-2 text-center rounded-lg border-secondary border-dashed border-2"
           for="image"
@@ -193,7 +207,7 @@
           <img
             class="w-[16px] h-[16px]"
             src="/images/sekeranjang/create product/plus.svg"
-            alt="add photo"
+            alt="add image"
           />
           <span class="text-secondary">Tambah Foto</span>
         </label>
@@ -202,11 +216,11 @@
           class="hidden"
           type="file"
           accept="image/png, image/jpg, image/jpeg"
-          :disabled="productPhotos && productPhotos.length >= 5"
+          :disabled="productImages && productImages.length >= 5"
           @change="onUploadImage"
         />
-        <p v-if="errorForm.photo.isError" class="text-red-500 text-xs italic">
-          {{ errorForm.photo.message }}
+        <p v-if="errorForm.image.isError" class="text-red-500 text-xs italic">
+          {{ errorForm.image.message }}
         </p>
       </div>
 
@@ -270,6 +284,16 @@
           />
         </div>
       </div>
+      <InputForm
+        label="Alamat Pemohon (jika ikut patungan)"
+        placeholder="Masukkan alamat lengkap kamu"
+        class="tn:mt-2 md:mt-4 text-[16px]"
+        v-model="dataDetailProduct.publisherAddress"
+        id="publisherAddress"
+        @change="setLocalStorage('publisherAddress')"
+        @keyup="validationForm('publisherAddress')"
+        :error="errorForm.publisherAddress"
+      />
 
       <Button
         class="w-full tn:mt-6 tn:py-4 font-bold"
@@ -281,10 +305,10 @@
 
     <div v-show="currentStep === 3" class="w-full">
       <div
-        v-if="productPhotos.length > 0"
+        v-if="productImages.length > 0"
         class="flex justify-center flex-wrap tn:my-4"
       >
-        <div v-for="(image, id) in productPhotos" :key="id" class="max-w-max">
+        <div v-for="(image, id) in productImages" :key="id" class="max-w-max">
           <div
             class="flex items-center w-[100px] h-[100px] rounded-xl overflow-hidden border tn:m-1"
           >
@@ -309,7 +333,7 @@
         <div class="md:grid grid-cols-4 md:gap-2">
           <p class="col-span-1">Brand Produk:</p>
           <p class="col-span-3 font-bold">
-            {{ dataDetailProduct.sekeranjang.productBrand }}
+            {{ dataDetailProduct.brand }}
           </p>
         </div>
         <div class="md:grid grid-cols-4 md:gap-2">
@@ -346,9 +370,14 @@
         </div>
         <div class="md:grid grid-cols-4 md:gap-2">
           <p class="col-span-1">Link Produk:</p>
-          <p class="col-span-3 font-bold" v-if="dataDetailProduct.productUrl">
+          <a
+            :href="dataDetailProduct.productUrl"
+            target="_blank"
+            class="col-span-3 font-bold text-primary break-all"
+            v-if="dataDetailProduct.productUrl"
+          >
             {{ dataDetailProduct.productUrl }}
-          </p>
+          </a>
           <p v-else class="font-bold">-</p>
         </div>
       </div>
@@ -364,6 +393,14 @@
       </div>
 
       <div class="flex items-start space-x-2 tn:pt-2 tn:mt-8">
+        <div class="cursor-pointer w-[24px]" @click="isJoinPo = !isJoinPo">
+          <CheckedBox v-if="isJoinPo" />
+          <UncheckBox v-else />
+        </div>
+        <p>Ikut patungan beli produk ini</p>
+      </div>
+
+      <div class="flex items-start space-x-2 tn:pt-2">
         <div class="cursor-pointer w-[24px]" @click="isAgreeTos = !isAgreeTos">
           <CheckedBox v-if="isAgreeTos" />
           <UncheckBox v-else />
@@ -380,7 +417,11 @@
         </p>
       </div>
 
-      <div v-if="isShowFormWarning" class="tn:my-4">
+      <div
+        v-if="isShowFormWarning"
+        class="tn:my-4"
+        id="warning-form-not-complete"
+      >
         <WarningInfo
           text="Data yang kamu isi masih belum lengkap. Periksa kembali sebelum melanjutkan."
         />
@@ -432,7 +473,7 @@ import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
 import { currencyFormat } from '../../../../helpers/word-transformation';
 import DatePicker from 'vue2-datepicker';
-import MasterService from '~/services/MasterServices.js';
+import SekeranjangService from '~/services/SekeranjangServices.js';
 import moment from 'moment';
 import 'vue2-datepicker/index.css';
 import '~/assets/styles/datepicker.scss';
@@ -454,7 +495,7 @@ export default {
   data() {
     return {
       moment,
-      MasterService,
+      SekeranjangService,
       internationalPhoneNumbers,
       codeNumber: '+62',
       codePhone: 62,
@@ -463,6 +504,8 @@ export default {
       isShowCodeNumber: false,
       isShowPromoList: false,
       isAgreeTos: false,
+      isJoinPo: false,
+      isHasPromoPeriod: false,
       isShowModalConfirmation: false,
       isShowFormWarning: false,
       isLoadingSumbitProduct: false,
@@ -496,13 +539,15 @@ export default {
           text: 'Konfirmasi',
         },
       ],
-      productPhotos: [],
+      productImages: [],
       dataDetailProduct: {
-        productServiceUid: '',
+        isJoinPo: 0,
         publisherName: '',
         publisherEmail: '',
         publisherPhone: '',
+        publisherAddress: '',
         name: '',
+        brand: '',
         promoType: 'Buy 1 Get 1',
         description: '-',
         quota: null,
@@ -511,12 +556,6 @@ export default {
         promoEndAt: null,
         price: null,
         jointPrice: null,
-        sekeranjang: {
-          productBrand: '',
-          shopName: '',
-          shopAddress: '',
-          shopCity: '',
-        },
       },
       errorForm: {
         name: {
@@ -555,7 +594,11 @@ export default {
           isError: false,
           message: '',
         },
-        photo: {
+        publisherAddress: {
+          isError: false,
+          message: '',
+        },
+        image: {
           isError: false,
           message: '',
         },
@@ -569,28 +612,10 @@ export default {
     },
   },
   mounted() {
-    this.MasterService = new MasterService(this);
-    this.getService();
+    this.SekeranjangService = new SekeranjangService(this);
     this.setFieldValueFromLocalStorage();
   },
   methods: {
-    async getService() {
-      const { MasterService } = this;
-      try {
-        const fetchProductService = await MasterService.getProductService(
-          this.paramProductService
-        );
-        if (fetchProductService.data) {
-          const result = fetchProductService.data.data;
-          const sekeranjang = result[0];
-          this.dataDetailProduct.productServiceUid = sekeranjang.uid;
-        } else {
-          throw new Error(fetchProductService);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    },
     toLocalDate(date) {
       return moment(date).locale('id').format('D MMMM YYYY');
     },
@@ -620,16 +645,16 @@ export default {
     },
     onUploadImage(e) {
       const files = e.target.files;
-      const photo = files[0];
-      this.productPhotos.push(photo);
-      this.validationForm('photo');
+      const image = files[0];
+      this.productImages.push(image);
+      this.validationForm('image');
     },
     imageUrl(file) {
       return URL.createObjectURL(file);
     },
     removeImage(id) {
-      this.productPhotos.splice(id, 1);
-      this.validationForm('photo');
+      this.productImages.splice(id, 1);
+      this.validationForm('image');
     },
     onClickRecheck() {
       this.isShowModalConfirmation = !this.isShowModalConfirmation;
@@ -650,7 +675,7 @@ export default {
       }
     },
     validationForm(input) {
-      const { dataDetailProduct, promoStart, promoEnd } = this;
+      const { dataDetailProduct, promoStart, promoEnd, isJoinPo } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
       const idnPhoneFormat = /^[8][0-9]*$/;
       const globalPhoneFormat = /^[0-9]*$/;
@@ -668,7 +693,7 @@ export default {
         }
       }
       if (input === 'brand' || !input) {
-        if (dataDetailProduct.sekeranjang.productBrand === '') {
+        if (dataDetailProduct.brand === '') {
           this.errorForm.brand = {
             isError: true,
             message: 'Brand produk harus diisi',
@@ -863,15 +888,27 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'photo' || !input) {
-        if (this.productPhotos.length === 0) {
-          this.errorForm.photo = {
+      if (input === 'publisherAddress' || !input) {
+        if (isJoinPo && dataDetailProduct.publisherAddress === '') {
+          this.errorForm.publisherAddress = {
+            isError: true,
+            message: 'Alamat harus diisi',
+          };
+          this.isFormValid = false;
+        } else {
+          this.errorForm.publisherAddress.isError = false;
+          this.isFormValid = true;
+        }
+      }
+      if (input === 'image' || !input) {
+        if (this.productImages.length === 0) {
+          this.errorForm.image = {
             isError: true,
             message: 'Foto produk harus diisi minimal 1 foto',
           };
           this.isFormValid = false;
         } else {
-          this.errorForm.photo.isError = false;
+          this.errorForm.image.isError = false;
           this.isFormValid = true;
         }
       }
@@ -886,6 +923,17 @@ export default {
           });
         });
       }
+      if (!this.isFormValid) {
+        const warningElement = document.getElementById(
+          'warning-form-not-complete'
+        );
+        if (warningElement) {
+          warningElement.classList.add('horizontal-shake');
+          setTimeout(() => {
+            warningElement.classList.remove('horizontal-shake');
+          }, 500);
+        }
+      }
     },
     validateEmail(email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -894,18 +942,25 @@ export default {
     async onClickSubmit() {
       this.isLoadingSumbitProduct = true;
       const {
-        MasterService,
+        SekeranjangService,
         dataDetailProduct,
         promoStart,
         promoEnd,
         codePhone,
       } = this;
       const payload = {
-        productServiceUid: dataDetailProduct.productServiceUid,
+        isJoinPo: this.isJoinPo ? 1 : 0,
         publisherName: dataDetailProduct.publisherName,
         publisherEmail: dataDetailProduct.publisherEmail,
         publisherPhone: codePhone + dataDetailProduct.publisherPhone,
+        publisherAddress: dataDetailProduct.publisherAddress
+          ? dataDetailProduct.publisherAddress
+          : null,
+        shippingAddress: dataDetailProduct.publisherAddress
+          ? dataDetailProduct.publisherAddress
+          : null,
         name: dataDetailProduct.name,
+        brand: dataDetailProduct.brand,
         promoType: dataDetailProduct.promoType,
         description: dataDetailProduct.description,
         quota: parseInt(dataDetailProduct.quota),
@@ -918,61 +973,40 @@ export default {
           : dataDetailProduct.promoEndAt,
         price: parseInt(dataDetailProduct.price),
         jointPrice: parseInt(dataDetailProduct.jointPrice),
-        sekeranjang: {
-          productBrand: dataDetailProduct.sekeranjang.productBrand,
-          shopName: dataDetailProduct.sekeranjang.shopName,
-          shopAddress: dataDetailProduct.sekeranjang.shopAddress,
-          shopCity: dataDetailProduct.sekeranjang.shopCity,
-        },
       };
       try {
-        const postProduct = await MasterService.createProduct(payload);
+        const postProduct = await SekeranjangService.createProduct(payload);
         if (postProduct.data) {
           const result = postProduct.data.data.split(',');
           const productUid = result[0];
           const customerUid = result[1];
-          this.postPhotoProduct(productUid, customerUid);
+          this.postImageProduct(productUid, customerUid);
         } else {
           throw new Error(postProduct);
         }
       } catch (error) {
         console.log(error);
-        if (error.response.data.code == 400) {
-          if (error.response.data.message.includes('duplicate email')) {
-            this.$refs.snackbar.showSnackbar({
-              color: 'bg-red-400',
-              message: 'Email sudah digunakan oleh user lain',
-              className: '',
-              duration: 5000,
-            });
-          } else if (error.response.data.message.includes('duplicate phone')) {
-            this.$refs.snackbar.showSnackbar({
-              color: 'bg-red-400',
-              message: 'Nomor whatsapp sudah digunakan oleh user lain',
-              className: '',
-              duration: 5000,
-            });
-          }
-        }
-        this.isLoadingSumbitProduct = false;
       }
+      this.isLoadingSumbitProduct = false;
     },
-    async postPhotoProduct(productUid, customerUid) {
-      const { MasterService } = this;
+    async postImageProduct(productUid, customerUid) {
+      const { SekeranjangService } = this;
       const formData = new FormData();
 
-      formData.append('productUID', productUid);
-      formData.append('customerUID', customerUid);
-      this.productPhotos.forEach((photo) => {
-        formData.append('photo', photo);
+      formData.append('sekeranjangUid', productUid);
+      formData.append('customerUid', customerUid);
+      this.productImages.forEach((image) => {
+        formData.append('image', image);
       });
 
       try {
-        const postProductPhoto = await MasterService.uploadPhotos(formData);
-        if (postProductPhoto.data) {
+        const postProductImage = await SekeranjangService.uploadImages(
+          formData
+        );
+        if (postProductImage.data) {
           this.$router.push('/sekeranjang/create-success');
         } else {
-          throw new Error(postProductPhoto);
+          throw new Error(postProductImage);
         }
       } catch (error) {
         console.log(error);
@@ -989,14 +1023,15 @@ export default {
           registeredProduct.publisherEmail;
         this.dataDetailProduct.publisherPhone =
           registeredProduct.publisherPhone;
+        this.dataDetailProduct.publisherAddress =
+          registeredProduct.publisherAddress;
         this.dataDetailProduct.name = registeredProduct.name;
+        this.dataDetailProduct.brand = registeredProduct.brand;
         this.dataDetailProduct.promoType = registeredProduct.promoType;
         this.dataDetailProduct.quota = registeredProduct.quota;
         this.dataDetailProduct.productUrl = registeredProduct.productUrl;
         this.dataDetailProduct.price = registeredProduct.price;
         this.dataDetailProduct.jointPrice = registeredProduct.jointPrice;
-        this.dataDetailProduct.sekeranjang.productBrand =
-          registeredProduct.brand;
       }
     },
     setLocalStorage(id) {
@@ -1011,7 +1046,7 @@ export default {
         productUrl: dataDetailProduct.productUrl,
         price: dataDetailProduct.price,
         jointPrice: dataDetailProduct.jointPrice,
-        brand: dataDetailProduct.sekeranjang.productBrand,
+        brand: dataDetailProduct.brand,
       };
       localStorage.setItem('registered_product', JSON.stringify(dataRegister));
     },
@@ -1029,5 +1064,25 @@ export default {
 }
 .detail-box {
   border-left-color: #8dcabe !important;
+}
+.horizontal-shake {
+  animation: horizontal-shaking 0.35s infinite;
+}
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 </style>

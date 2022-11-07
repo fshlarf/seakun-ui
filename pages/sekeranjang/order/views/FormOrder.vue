@@ -86,7 +86,7 @@
     </div>
 
     <InputForm
-      label="Alamat Lengkap"
+      label="Alamat Domisili"
       placeholder="Masukkan alamat lengkap"
       class="tn:mt-2 md:mt-4 text-[16px]"
       v-model="address"
@@ -95,6 +95,29 @@
       @keyup="validationForm('address')"
       :error="errorForm.address"
     />
+
+    <div class="tn:mt-4">
+      <div class="flex items-center space-x-2">
+        <div
+          class="cursor-pointer w-[16px]"
+          @click="isSameAddress = !isSameAddress"
+        >
+          <CheckedBox class="w-full" v-if="isSameAddress" />
+          <UncheckBox class="w-full" v-else />
+        </div>
+        <p class="text-sm">Alamat pengiriman sama dengan domisili</p>
+      </div>
+      <InputForm
+        v-if="!isSameAddress"
+        label="Alamat Pengiriman"
+        placeholder="Masukkan alamat lengkap pengiriman"
+        class="text-[16px] tn:mt-2"
+        v-model="shippingAddress"
+        id="shippingAddress"
+        @keyup="validationForm('shippingAddress')"
+        :error="errorForm.shippingAddress"
+      />
+    </div>
 
     <hr class="tn:mt-6" />
     <div class="flex items-start space-x-2 tn:pt-2 tn:mt-4">
@@ -117,9 +140,21 @@
     <Button
       label="Ikut pre-order sekeranjang"
       variant="primary"
+      :is-loading="isLoadingCreateOrder"
       :disabled="!isAgreeTos"
       class="font-bold tn:py-5 tn:mt-6 w-full"
       @click="onClickOrder"
+    />
+
+    <ModalBlackListWarning
+      :show-modal="isShowModalBlackList"
+      @onClose="closeModalBlackList"
+    />
+
+    <ModalOrderTimeout
+      :show-modal="isShowModalOrderTimeout"
+      :data-order="dataHelpOrder"
+      @onClose="closeModalOrderTiimeout"
     />
   </div>
 </template>
@@ -134,7 +169,9 @@ import ProductOrderCard from './ProductOrderCard.vue';
 import PromoCard from './PromoCard.vue';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
 import InputForm from '~/components/atoms/Input.vue';
-import MasterService from '~/services/MasterServices.js';
+import SekeranjangService from '~/services/SekeranjangServices.js';
+import ModalBlackListWarning from '~/components/mollecules/ModalBlackListWarning.vue';
+import ModalOrderTimeout from './ModalOrderTimeout.vue';
 
 export default {
   components: {
@@ -146,11 +183,13 @@ export default {
     CheckedBox,
     UncheckBox,
     PromoCard,
+    ModalBlackListWarning,
+    ModalOrderTimeout,
   },
   data() {
     return {
       internationalPhoneNumbers,
-      MasterService,
+      SekeranjangService,
       productUid: '',
       isLoadingProduct: true,
       dataDetailProduct: {},
@@ -161,7 +200,10 @@ export default {
       email: '',
       phoneNumber: '',
       address: '',
+      shippingAddress: '',
       isAgreeTos: false,
+      isSameAddress: true,
+      isLoadingCreateOrder: false,
       errorForm: {
         fullName: {
           isError: false,
@@ -179,23 +221,38 @@ export default {
           isError: false,
           message: '',
         },
+        shippingAddress: {
+          isError: false,
+          message: '',
+        },
       },
       isFormValid: true,
+      isShowModalBlackList: false,
+      isShowModalOrderTimeout: false,
+      dataHelpOrder: {},
     };
   },
   mounted() {
-    this.MasterService = new MasterService(this);
+    this.SekeranjangService = new SekeranjangService(this);
     const { product_id } = this.$router.history.current.query;
     this.productUid = product_id;
     this.getProductByUid(this.productUid);
     this.setFieldValueFromLocalStorage();
   },
   methods: {
+    closeModalBlackList() {
+      this.isShowModalBlackList = false;
+    },
+    closeModalOrderTiimeout() {
+      this.isShowModalOrderTimeout = false;
+    },
     async getProductByUid(uid) {
       this.isLoadingProduct = true;
-      const { MasterService } = this;
+      const { SekeranjangService } = this;
       try {
-        const fetchDetailProduct = await MasterService.getProductByUid(uid);
+        const fetchDetailProduct = await SekeranjangService.getProductByUid(
+          uid
+        );
         if (fetchDetailProduct.data) {
           this.dataDetailProduct = fetchDetailProduct.data.data;
         } else {
@@ -214,9 +271,7 @@ export default {
     onClickOrder() {
       this.validationForm();
       if (this.isFormValid) {
-        this.$router.push(
-          `/sekeranjang/order-success?product_id=${this.productUid}`
-        );
+        this.submitOrder();
       }
     },
     toLocalDate(date) {
@@ -317,10 +372,84 @@ export default {
           this.isFormValid = true;
         }
       }
+      if (input === 'shippingAddress' || !input) {
+        if (!this.isSameAddress && !this.shippingAddress) {
+          this.errorForm.shippingAddress = {
+            isError: true,
+            message: 'Alamat pengiriman harus diisi',
+          };
+          this.isFormValid = false;
+        } else {
+          this.errorForm.shippingAddress.isError = false;
+          this.isFormValid = true;
+        }
+      }
+      if (!input) {
+        const errors = this.errorForm;
+        Object.keys(errors).forEach((key) => {
+          const error = errors[key];
+          Object.keys(error).forEach((k) => {
+            if (error[k] == true) {
+              this.isFormValid = false;
+            }
+          });
+        });
+      }
     },
     validateEmail(email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
+    },
+    async submitOrder() {
+      this.isLoadingCreateOrder = true;
+      const { SekeranjangService } = this;
+      const payload = {
+        sekeranjangUid: this.productUid,
+        name: this.fullName,
+        email: this.email,
+        phone: this.codePhone + this.phoneNumber,
+        address: this.address,
+        shippingAddress: this.isSameAddress
+          ? this.address
+          : this.shippingAddress,
+      };
+      try {
+        const postCreateOrder = await SekeranjangService.createOrder(payload);
+        if (postCreateOrder.data) {
+          const orderUid = postCreateOrder.data.data;
+          this.toThankyouPage(orderUid);
+        } else {
+          throw new Error(postCreateOrder);
+        }
+      } catch (e) {
+        if (
+          e.response &&
+          e.response.data.message.includes('blocked customer')
+        ) {
+          this.isShowModalBlackList = true;
+        }
+        if (e.message.includes('20000ms')) {
+          this.dataHelpOrder = {
+            product: this.dataDetailProduct.sekeranjangCode,
+            fullName: this.fullName,
+            email: this.email,
+            phoneNumber: this.codeNumber + this.phoneNumber,
+            address: this.address,
+            shippingAddress: this.isSameAddress
+              ? this.address
+              : this.shippingAddress,
+          };
+          this.isShowModalOrderTimeout = true;
+          this.isLoadingCreateOrder = false;
+        }
+        console.log(e);
+      }
+      this.isLoadingCreateOrder = false;
+    },
+    toThankyouPage(orderUid) {
+      this.$router.push(
+        `/sekeranjang/order-success?product_id=${this.productUid}&order_id=${orderUid}`
+      );
     },
     setFieldValueFromLocalStorage() {
       const registeredProductCustomer = JSON.parse(
@@ -331,6 +460,7 @@ export default {
         this.email = registeredProductCustomer.email;
         this.phoneNumber = registeredProductCustomer.phoneNumber;
         this.address = registeredProductCustomer.address;
+        this.shippingAddress = registeredProductCustomer.shippingAddress;
       }
     },
     setLocalStorage(id) {
@@ -339,6 +469,7 @@ export default {
         email: this.email,
         phoneNumber: this.phoneNumber,
         address: this.address,
+        shippingAddress: this.shippingAddress,
       };
       localStorage.setItem(
         'registered_product_customer',

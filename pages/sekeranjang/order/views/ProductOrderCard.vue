@@ -4,15 +4,15 @@
       <div class="flex space-x-4 items-start">
         <div class="rounded-lg bg-gray-200 w-[64px] h-[64px] overflow-hidden">
           <img
-            v-if="product.photos && product.photos.length > 0"
+            v-if="product.images && product.images.length > 0"
             class="object-cover-center"
-            :src="product.photos[0].popFile"
+            :src="product.images[0].popFile"
             alt="product image"
           />
         </div>
-        <div v-if="product.sekeranjang" class="tn:max-w-[75%] md:max-w-[85%]">
+        <div class="tn:max-w-[75%] md:max-w-[85%]">
           <p class="text-[12px] text-[#66738F]">
-            {{ product.sekeranjang.productBrand }}
+            {{ product.brand }}
           </p>
           <p class="font-bold two-lines overflow-hidden">{{ product.name }}</p>
           <p class="text-[12px]">{{ product.promoType }}</p>
