@@ -143,7 +143,7 @@ export default {
           this.$refs.snackbar.showSnackbar({
             message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
             className: '',
-            color: 'bg-red-400',
+            color: 'red-400',
             duration: 4000,
           });
           setTimeout(
