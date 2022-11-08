@@ -889,7 +889,7 @@ export default {
         }
       }
       if (input === 'publisherAddress' || !input) {
-        if (isJoinPo && dataDetailProduct.publisherAddress === '') {
+        if (isJoinPo && !dataDetailProduct.publisherAddress) {
           this.errorForm.publisherAddress = {
             isError: true,
             message: 'Alamat harus diisi',
