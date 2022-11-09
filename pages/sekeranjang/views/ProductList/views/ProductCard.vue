@@ -6,9 +6,9 @@
   >
     <div class="h-[160px] bg-[#8DCABE] overflow-hidden">
       <img
-        v-if="product.Thumbnail"
+        v-if="product.thumbnail"
         class="min-w-[100%] min-h-[100%] object-cover object-center"
-        :src="product.Thumbnail"
+        :src="product.thumbnail"
         alt="product image"
       />
     </div>
