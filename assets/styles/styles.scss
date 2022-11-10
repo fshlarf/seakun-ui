@@ -3,6 +3,7 @@
 
 body {
   font-family: 'Nunito', serif !important;
+  color: #2d2d2d;
 }
 
 table {
@@ -13,10 +14,6 @@ h4 {
   font-weight: 300 !important;
   margin-bottom: 24px;
   text-align: center;
-}
-
-p {
-  font-weight: 500;
 }
 
 button {
@@ -97,6 +94,19 @@ button:hover:disabled {
   }
 }
 
+.btn-secondary-transparent {
+  background-color: transparent !important;
+  color: #86d0c1 !important;
+  border-color: #86d0c1 !important;
+  padding: 0.6rem 2rem;
+  font-weight: bold;
+  &:focus,
+  &:active,
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .btn-third {
   background-color: #417465 !important;
   color: #ffffff !important;
@@ -154,6 +164,14 @@ button:hover:disabled {
   background: #408374;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .error-msg {
   color: red;
   font-size: 14px;
@@ -173,4 +191,11 @@ button[disabled]:hover {
 }
 .flex {
   display: flex;
+}
+
+.object-cover-center {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }

@@ -189,7 +189,7 @@ export default {
         navigator.clipboard.writeText(value).then(
           () => {
             this.$refs.snackbar.showSnackbar({
-              color: 'black',
+              color: 'bg-black',
               message: `${name} berhasil disalin`,
               className: '',
             });
@@ -217,7 +217,7 @@ export default {
         let successful = document.execCommand('copy');
         if (successful) {
           this.$refs.snackbar.showSnackbar({
-            color: 'black',
+            color: 'bg-black',
             message: `${name} berhasil disalin`,
             className: '',
           });

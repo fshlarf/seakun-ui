@@ -18,7 +18,7 @@
         </svg>
       </div>
       <div>
-        <p class="tn:text-xs md:text-base text-red-500" v-html="text"></p>
+        <p class="tn:text-sm md:text-base text-red-500" v-html="text"></p>
       </div>
     </div>
   </div>
