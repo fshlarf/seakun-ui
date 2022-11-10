@@ -14,8 +14,9 @@
       <p
         class="tn:px-4 text-center text-[#A0A3BD] max-w-[730px] mx-auto tn:mt-3 md:mt-4"
       >
-        Skilline is one powerful online software suite that combines all the
-        tools needed to run a successful school or office.
+        Secara ringkas Alur Pesanan produk Sekeranjang mulai dari pilih barang
+        favoritmu, lakukan pemesanan, selesaikan pembayaran hingga terima
+        barang.
       </p>
       <div
         class="tn:px-6 tn:w-full md:w-[430px] md:mx-auto lg:w-full tn:space-y-6 lg:space-y-0 lg:flex tn:justify-center lg:space-x-4 lg:items-center tn:mt-8 md:mt-12"
