@@ -114,7 +114,7 @@
         @change="setLocalStorage('productUrl')"
       />
 
-      <div class="flex items-start space-x-2 tn:pt-2 tn:mt-4">
+      <div class="flex items-center space-x-2 tn:pt-2 tn:mt-4">
         <div
           class="cursor-pointer w-[24px]"
           @click="isHasPromoPeriod = !isHasPromoPeriod"
@@ -122,7 +122,7 @@
           <CheckedBox v-if="isHasPromoPeriod" />
           <UncheckBox v-else />
         </div>
-        <p>Memiliki Periode Promo</p>
+        <p class="text-[14px]">Memiliki Periode Promo</p>
       </div>
 
       <div
@@ -160,6 +160,18 @@
           </p>
         </div>
       </div>
+
+      <TextAreaForm
+        rows="4"
+        label="Deskripsi Produk"
+        placeholder="Masukkan deskripsi produk"
+        class="tn:mt-2 md:mt-4 text-[16px]"
+        v-model="dataDetailProduct.description"
+        id="description"
+        @change="setLocalStorage('description')"
+        @keyup="validationForm('description')"
+        :error="errorForm.description"
+      />
 
       <div class="tn:mt-4">
         <p class="text-sm mb-2">
@@ -368,17 +380,23 @@
           </p>
           <p class="col-span-3 font-bold" v-else>-</p>
         </div>
-        <div class="md:grid grid-cols-4 md:gap-2">
+        <div class="md:grid grid-cols-4 md:gap-2 overflow-hidden">
           <p class="col-span-1">Link Produk:</p>
           <a
             :href="dataDetailProduct.productUrl"
             target="_blank"
-            class="col-span-3 font-bold text-primary break-all"
+            class="col-span-3 font-bold text-primary break-all one-line"
             v-if="dataDetailProduct.productUrl"
           >
             {{ dataDetailProduct.productUrl }}
           </a>
           <p v-else class="font-bold">-</p>
+        </div>
+        <div class="">
+          <p class="">Deskripsi Produk:</p>
+          <p class="font-semibold">
+            {{ dataDetailProduct.description }}
+          </p>
         </div>
       </div>
 
@@ -466,6 +484,7 @@ import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import Button from '~/components/atoms/Button';
 import PopUpDropDown from '~/components/atoms/PopUpDropDown';
 import InputForm from '~/components/atoms/Input.vue';
+import TextAreaForm from '~/components/atoms/TextArea.vue';
 import SelectOption from '~/components/atoms/SelectOption.vue';
 import ModalConfirmation from './ModalConfirmation.vue';
 import DropdownCodeNumber from './DropdownCodeNumber.vue';
@@ -484,6 +503,7 @@ export default {
     ButtonDrop,
     Button,
     InputForm,
+    TextAreaForm,
     PopUpDropDown,
     SelectOption,
     DropdownCodeNumber,
@@ -549,7 +569,7 @@ export default {
         name: '',
         brand: '',
         promoType: 'Buy 1 Get 1',
-        description: '-',
+        description: '',
         quota: null,
         productUrl: '',
         promoStartAt: null,
@@ -563,6 +583,10 @@ export default {
           message: '',
         },
         brand: {
+          isError: false,
+          message: '',
+        },
+        description: {
           isError: false,
           message: '',
         },
@@ -701,6 +725,18 @@ export default {
           this.isFormValid = false;
         } else {
           this.errorForm.brand.isError = false;
+          this.isFormValid = true;
+        }
+      }
+      if (input === 'description' || !input) {
+        if (dataDetailProduct.description === '') {
+          this.errorForm.description = {
+            isError: true,
+            message: 'Deskripsi produk harus diisi',
+          };
+          this.isFormValid = false;
+        } else {
+          this.errorForm.description.isError = false;
           this.isFormValid = true;
         }
       }
