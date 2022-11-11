@@ -1,32 +1,7 @@
 <template>
   <div class="w-full h-full relative z-0 tn:mt-8">
-    <div class="w-full">
-      <p
-        v-if="product && product.sekeranjang"
-        class="text-[#A0A3BD] text-[20px] font-medium"
-      >
-        {{ product.sekeranjang.productBrand }}
-      </p>
-      <h1 class="text-[24px] font-semibold tracking-tight">
-        {{ product.name }}
-      </h1>
-      <p class="text-[36px] font-bold tn:mt-3 tracking-tight">
-        {{ currencyFormat(product.finalPrice) }}
-      </p>
-      <div class="flex items-center space-x-3 tn:mt-1">
-        <p
-          class="text-[#BA0000] font-bold text-[18px] bg-[#FFF2F2] tn:px-2 rounded-sm"
-        >
-          Hemat hingga
-        </p>
-        <p class="text-[21px]">
-          {{ currencyFormat(product.price - product.finalPrice) }}
-        </p>
-      </div>
-    </div>
-
     <div class="sticky top-20">
-      <div class="w-full bg-white rounded-lg tn:px-6 tn:py-5 tn:mt-6">
+      <div class="w-full bg-white rounded-lg tn:px-6 tn:py-5 tn:mt-6 lg:mt-0">
         <p class="font-bold text-[#66738F]">Bagikan link produk</p>
         <div
           class="rounded-md overflow-hidden border-2 border-[#A0A3BD] flex justify-between tn:mt-2"
@@ -57,29 +32,39 @@
 
         <div class="tn:mt-5 flex justify-between items-center">
           <img
+            role="button"
             class="w-[42px] h-[42px] cursor-pointer"
             src="/images/sekeranjang/social/facebook.svg"
             alt="facebook icon"
+            @click="onClickShareLink('facebook')"
           />
           <img
+            role="button"
             class="w-[42px] h-[42px] cursor-pointer"
             src="/images/sekeranjang/social/instagram.svg"
             alt="instagram icon"
+            @click="onClickShareLink('instagram')"
           />
           <img
+            role="button"
             class="w-[42px] h-[42px] cursor-pointer"
             src="/images/sekeranjang/social/whatsapp.svg"
             alt="whatsapp icon"
+            @click="onClickShareLink('whatsapp')"
           />
           <img
+            role="button"
             class="w-[42px] h-[42px] cursor-pointer"
             src="/images/sekeranjang/social/telegram.svg"
             alt="telegram icon"
+            @click="onClickShareLink('telegram')"
           />
           <img
+            role="button"
             class="w-[42px] h-[42px] cursor-pointer"
             src="/images/sekeranjang/social/email.svg"
             alt="email icon"
+            @click="onClickShareLink('email')"
           />
         </div>
       </div>
@@ -91,6 +76,9 @@
             {{ currencyFormat(product.finalPrice) }}
           </p>
         </div>
+        <p class="font-medium text-[#66738F] text-[13px] tn:mt-2">
+          *Total harga belum termasuk ongkir
+        </p>
         <hr class="tn:my-2" />
         <div class="flex items-start space-x-2 tn:pt-2">
           <div
@@ -155,6 +143,30 @@ export default {
   },
   methods: {
     currencyFormat,
+    onClickShareLink(target) {
+      if (target === 'facebook') {
+        const share = `https://www.facebook.com/sharer/sharer.php?u=${this.linkProduct}`;
+        window.open(share, '_blank');
+      } else if (target === 'instagram') {
+        const share = `https://www.twitter.com/share?url=${encodeURIComponent(
+          this.linkProduct
+        )}`;
+        window.open(
+          share,
+          '_blank',
+          'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
+        );
+      } else if (target === 'whatsapp') {
+        const share = `https://api.whatsapp.com/send?text=${this.linkProduct}`;
+        window.open(share, '_blank');
+      } else if (target === 'telegram') {
+        const share = `https://t.me/share/url?url=${this.linkProduct}`;
+        window.open(share, '_blank');
+      } else if (target === 'email') {
+        const share = `https://mail.google.com/mail?fs=1&tf=cm&su=link+sekeranjang&body=${this.linkProduct}`;
+        window.open(share, '_blank');
+      }
+    },
   },
 };
 </script>

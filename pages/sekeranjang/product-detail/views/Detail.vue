@@ -108,28 +108,37 @@
       </div>
     </div>
 
-    <div class="w-full lg:hidden tn:mt-4">
-      <p
-        v-if="product && product.sekeranjang"
-        class="text-[#A0A3BD] text-[20px] font-medium"
-      >
-        {{ product.sekeranjang.productBrand }}
-      </p>
-      <h1 class="text-[24px] font-semibold tracking-tight">
+    <div class="w-full tn:mt-4 lg:mt-7">
+      <div class="flex items-center space-x-4">
+        <p class="text-[#A0A3BD] text-[20px] font-medium">
+          {{ product.brand }}
+        </p>
+        <p
+          class="bg-primary rounded-full py-1 px-3 text-white tn:text-[12px] lg:text-[14px]"
+        >
+          Tersedia
+        </p>
+      </div>
+      <h1 class="tn:text-[24px] lg:text-[44px] font-semibold tracking-tight">
         {{ product.name }}
       </h1>
-      <p class="text-[36px] font-bold tn:mt-1 tracking-tight">
+      <p class="text-[36px] font-bold tn:mt-1 lg:mt-5 tracking-tight">
         {{ currencyFormat(product.finalPrice) }}
       </p>
-      <div class="flex items-center space-x-3 md:mt-1">
-        <p
-          class="text-[#BA0000] font-bold text-[18px] bg-[#FFF2F2] tn:px-2 rounded-sm"
-        >
-          Hemat hingga
+      <div class="lg:flex lg:space-x-5 items-end">
+        <p class="text-[#333333] font-bold text-[22px]">
+          Harga Asli {{ currencyFormat(product.price) }}
         </p>
-        <p class="text-[21px]">
-          {{ currencyFormat(product.price - product.finalPrice) }}
-        </p>
+        <div class="flex items-center space-x-3 md:mt-1">
+          <p
+            class="text-[#BA0000] font-bold text-[18px] bg-[#FFF2F2] tn:px-2 rounded-sm"
+          >
+            Hemat hingga
+          </p>
+          <p class="text-[21px]">
+            {{ currencyFormat(product.price - product.finalPrice) }}
+          </p>
+        </div>
       </div>
     </div>
 
@@ -171,29 +180,139 @@
           class="w-[42px] h-[42px] cursor-pointer"
           src="/images/sekeranjang/social/facebook.svg"
           alt="facebook icon"
+          @click="onClickShareLink('facebook')"
         />
         <img
           class="w-[42px] h-[42px] cursor-pointer"
           src="/images/sekeranjang/social/instagram.svg"
           alt="instagram icon"
+          @click="onClickShareLink('instagram')"
         />
         <img
           class="w-[42px] h-[42px] cursor-pointer"
           src="/images/sekeranjang/social/whatsapp.svg"
           alt="whatsapp icon"
+          @click="onClickShareLink('whatsapp')"
         />
         <img
           class="w-[42px] h-[42px] cursor-pointer"
           src="/images/sekeranjang/social/telegram.svg"
           alt="telegram icon"
+          @click="onClickShareLink('telegram')"
         />
         <img
           class="w-[42px] h-[42px] cursor-pointer"
           src="/images/sekeranjang/social/email.svg"
           alt="email icon"
+          @click="onClickShareLink('email')"
         />
       </div>
     </div>
+
+    <div
+      class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 md:mt-6"
+    >
+      <p class="text-[20px] font-bold">Detail Produk</p>
+      <div class="">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Deskripsi</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ product.description }}
+        </p>
+      </div>
+      <div
+        class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
+      >
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Link Website</p>
+        <a
+          :href="product.productUrl"
+          target="_blank"
+          class="md:col-span-2 tn:text-[16px] md:text-[18px] text-primary font-medium break-all one-line"
+        >
+          {{ product.productUrl }}
+        </a>
+      </div>
+    </div>
+
+    <div
+      v-if="product.promoType === 'Buy 1 Get 1'"
+      class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 md:mt-6"
+    >
+      <p class="text-[20px] font-bold">Skema Harga</p>
+      <div class="lg:flex lg:justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Harga asli produk</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.price) }}
+        </p>
+      </div>
+      <div class="lg:flex lg:justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Jumlah Member</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ product.quota }}
+        </p>
+      </div>
+      <div class="lg:flex lg:justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Harga patungan</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.price) }} ÷ {{ product.quota }} =
+          {{ currencyFormat(product.jointPrice) }}
+        </p>
+      </div>
+      <div class="lg:flex lg:justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Biaya Admin</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.adminFee) }}
+        </p>
+      </div>
+      <div class="lg:flex lg:justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">
+          Total
+          <span class="font-normal">*</span>
+        </p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.finalPrice) }}
+        </p>
+      </div>
+    </div>
+
+    <div
+      v-else
+      class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 md:mt-6"
+    >
+      <p class="text-[20px] font-bold">Detail Harga</p>
+      <div class="flex justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Harga asli produk</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.price) }}
+        </p>
+      </div>
+      <div class="flex justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Harga patungan</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.jointPrice) }}
+        </p>
+      </div>
+      <div class="flex justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">Biaya Admin</p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.adminFee) }}
+        </p>
+      </div>
+      <div class="flex justify-between items-center">
+        <p class="tn:text-[16px] md:text-[18px] font-bold">
+          Total
+          <span class="font-normal">*</span>
+        </p>
+        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
+          {{ currencyFormat(product.finalPrice) }}
+        </p>
+      </div>
+    </div>
+
+    <p
+      class="tn:text-[14px] md:text-[16px] font-normal tn:px-3 lg:px-4 tn:mt-3"
+    >
+      * belum termasuk ongkir
+    </p>
 
     <div
       class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 lg:mt-8"
@@ -220,16 +339,6 @@
         >
           -
         </p>
-      </div>
-      <div class="grid tn:grid-cols-1 md:grid-cols-3 items-start">
-        <p class="tn:text-[16px] md:text-[18px] font-bold">Link Website</p>
-        <a
-          :href="product.productUrl"
-          target="_blank"
-          class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium break-all text-primary"
-        >
-          {{ product.productUrl }}
-        </a>
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 items-start">
         <p class="tn:text-[16px] md:text-[18px] font-bold">Detail Promo</p>
@@ -264,30 +373,6 @@
       <p class="font-medium tn:text-[16px] md:text-[18px] tn:mt-1">
         Pengiriman akan didiskusikan setelah grup patungan full
       </p>
-    </div>
-
-    <div
-      class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 md:mt-6"
-    >
-      <p class="text-[20px] font-bold">Detail Harga Produk</p>
-      <div class="tn:grid-cols-1 md:grid grid-cols-3 items-center">
-        <p class="tn:text-[16px] md:text-[18px] font-bold">Harga asli produk</p>
-        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
-          {{ currencyFormat(product.price) }}
-        </p>
-      </div>
-      <div class="tn:grid-cols-1 md:grid grid-cols-3 items-center">
-        <p class="tn:text-[16px] md:text-[18px] font-bold">Harga patungan</p>
-        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
-          {{ currencyFormat(product.jointPrice) }}
-        </p>
-      </div>
-      <div class="tn:grid-cols-1 md:grid grid-cols-3 items-center">
-        <p class="tn:text-[16px] md:text-[18px] font-bold">Biaya Admin</p>
-        <p class="md:col-span-2 tn:text-[16px] md:text-[18px] font-medium">
-          {{ currencyFormat(product.adminFee) }}
-        </p>
-      </div>
     </div>
 
     <div
@@ -413,6 +498,30 @@ export default {
     },
     toLocalDate(date) {
       return moment.unix(date).locale('id').format('D MMMM YYYY');
+    },
+    onClickShareLink(target) {
+      if (target === 'facebook') {
+        const share = `https://www.facebook.com/sharer/sharer.php?u=${this.linkProduct}`;
+        window.open(share, '_blank');
+      } else if (target === 'instagram') {
+        const share = `https://www.twitter.com/share?url=${encodeURIComponent(
+          this.linkProduct
+        )}`;
+        window.open(
+          share,
+          '_blank',
+          'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
+        );
+      } else if (target === 'whatsapp') {
+        const share = `https://api.whatsapp.com/send?text=${this.linkProduct}`;
+        window.open(share, '_blank');
+      } else if (target === 'telegram') {
+        const share = `https://t.me/share/url?url=${this.linkProduct}`;
+        window.open(share, '_blank');
+      } else if (target === 'email') {
+        const share = `https://mail.google.com/mail?fs=1&tf=cm&su=link+sekeranjang&body=${this.linkProduct}`;
+        window.open(share, '_blank');
+      }
     },
     currencyFormat,
   },
