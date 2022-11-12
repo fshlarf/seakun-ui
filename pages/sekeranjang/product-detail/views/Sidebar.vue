@@ -41,9 +41,9 @@
           <img
             role="button"
             class="w-[42px] h-[42px] cursor-pointer"
-            src="/images/sekeranjang/social/instagram.svg"
-            alt="instagram icon"
-            @click="onClickShareLink('instagram')"
+            src="/images/sekeranjang/social/twitter.svg"
+            alt="twitter icon"
+            @click="onClickShareLink('twitter')"
           />
           <img
             role="button"
@@ -147,7 +147,7 @@ export default {
       if (target === 'facebook') {
         const share = `https://www.facebook.com/sharer/sharer.php?u=${this.linkProduct}`;
         window.open(share, '_blank');
-      } else if (target === 'instagram') {
+      } else if (target === 'twitter') {
         const share = `https://www.twitter.com/share?url=${encodeURIComponent(
           this.linkProduct
         )}`;
