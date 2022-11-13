@@ -109,8 +109,8 @@
     </div>
 
     <div class="w-full tn:mt-4 lg:mt-7">
-      <div class="flex items-center space-x-4">
-        <p class="text-[#A0A3BD] text-[20px] font-medium">
+      <div class="flex items-center tn:space-x-2 lg:space-x-3">
+        <p class="text-[#A0A3BD] lg:text-[20px] font-medium">
           {{ product.brand }}
         </p>
         <p
@@ -118,6 +118,12 @@
         >
           Tersedia
         </p>
+        <div class="rounded flex !items-center !space-x-2">
+          <i class="w-[16px] h-[16px] fa-solid fa-user-group text-primary"></i>
+          <p class="font-bold text-[20px] tn:m-0 text-primary">
+            {{ product.quota }}
+          </p>
+        </div>
       </div>
       <h1 class="tn:text-[24px] lg:text-[44px] font-semibold tracking-tight">
         {{ product.name }}
@@ -127,7 +133,8 @@
       </p>
       <div class="lg:flex lg:space-x-5 items-end">
         <p class="text-[#333333] font-bold text-[22px]">
-          Harga Asli {{ currencyFormat(product.price) }}
+          Harga Asli
+          <span class="line-through">{{ currencyFormat(product.price) }}</span>
         </p>
         <div class="flex items-center space-x-1 md:mt-1">
           <img
@@ -219,7 +226,11 @@
     >
       <p class="text-[20px] font-bold">Detail Produk</p>
       <div class="">
-        <p class="tn:text-[16px] md:text-[18px] font-bold">Deskripsi</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Deskripsi
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ product.description }}
         </p>
@@ -227,7 +238,11 @@
       <div
         class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
       >
-        <p class="tn:text-[16px] md:text-[18px] font-bold">Link Website</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Link Website
+        </p>
         <a
           :href="product.productUrl"
           target="_blank"
@@ -235,6 +250,26 @@
         >
           {{ product.productUrl }}
         </a>
+      </div>
+      <div
+        class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
+      >
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Total Slot
+        </p>
+        <p>{{ product.quota }} Orang</p>
+      </div>
+      <div
+        class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
+      >
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Kode Produk
+        </p>
+        <p>{{ product.sekeranjangCode }}</p>
       </div>
     </div>
 
@@ -244,34 +279,51 @@
     >
       <p class="text-[20px] font-bold">Skema Harga</p>
       <div class="lg:flex lg:justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">Harga asli produk</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Harga asli produk
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.price) }}
         </p>
       </div>
       <div class="lg:flex lg:justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">Jumlah Member</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Jumlah Member
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ product.quota }}
         </p>
       </div>
       <div class="lg:flex lg:justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">Harga patungan</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Harga patungan
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.price) }} ÷ {{ product.quota }} =
           {{ currencyFormat(product.jointPrice) }}
         </p>
       </div>
       <div class="lg:flex lg:justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">Biaya Admin</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Biaya Admin
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.adminFee) }}
         </p>
       </div>
       <div class="lg:flex lg:justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">
-          Total
-          <span class="font-normal">*</span>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Total*
         </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.finalPrice) }}
@@ -285,27 +337,40 @@
     >
       <p class="text-[20px] font-bold">Detail Harga</p>
       <div class="flex justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">Harga asli produk</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Harga asli produk
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.price) }}
         </p>
       </div>
       <div class="flex justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">Harga patungan</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Harga patungan
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.jointPrice) }}
         </p>
       </div>
       <div class="flex justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">Biaya Admin</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Biaya Admin
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.adminFee) }}
         </p>
       </div>
       <div class="flex justify-between items-center">
-        <p class="tn:text-[16px] md:text-[18px]">
-          Total
-          <span class="font-normal">*</span>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Total*
         </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ currencyFormat(product.finalPrice) }}
@@ -324,7 +389,11 @@
     >
       <p class="text-[20px] font-bold">Detail Promo</p>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 items-start">
-        <p class="tn:text-[16px] md:text-[18px]">Periode Promo</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Periode Promo
+        </p>
         <p
           v-if="product.promoStartAt && product.promoEndAt"
           class="md:col-span-2 tn:text-[16px] md:text-[18px]"
@@ -341,7 +410,11 @@
         <p v-else class="md:col-span-2 tn:text-[16px] md:text-[18px]">-</p>
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 items-start">
-        <p class="tn:text-[16px] md:text-[18px]">Detail Promo</p>
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Jenis Promo
+        </p>
         <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
           {{ product.promoType }}
         </p>
@@ -444,7 +517,7 @@ export default {
     },
   },
   mounted() {
-    if (this.product.images.length > 0) {
+    if (this.product.images && this.product.images.length > 0) {
       this.dataPhotos = this.product.images;
       this.activePhoto = this.dataPhotos[0];
       const content = document.getElementById('photo-content');

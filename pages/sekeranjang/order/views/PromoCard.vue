@@ -21,12 +21,14 @@
         </p>
         <p class="font-medium md:col-span-2" v-else>-</p>
       </div>
-      <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
+      <div
+        class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start overflow-hidden"
+      >
         <p class="font-bold">Link website</p>
         <a
           :href="product.productUrl"
           target="_blank"
-          class="font-medium md:col-span-2 text-primary break-all"
+          class="font-medium md:col-span-2 text-primary break-all one-line"
           v-if="product.productUrl"
         >
           {{ product.productUrl }}
