@@ -7,7 +7,7 @@
         <div
           class="w-full flex justify-center text-primary opacity-50 tn:pb-6 tn:pt-20"
         >
-          <i class="fa fa-circle-o-notch fa-spin fa-5x mx-auto"></i>
+          <i class="fa-solid fa-circle-notch fa-spin fa-5x mx-auto"></i>
         </div>
         <h3
           class="text-center tn:text-2xl md:text-3xl font-bold tn:mb-3 md:mb-6"
