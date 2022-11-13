@@ -8,7 +8,7 @@
   >
     <div v-if="isLoading">
       <div>
-        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <i class="fa-solid fa-circle-notch fa-spin"></i>
         Loading...
       </div>
     </div>
