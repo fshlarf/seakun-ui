@@ -138,7 +138,8 @@ export default {
   },
   computed: {
     linkProduct() {
-      return `https://seakun.id/sekeranjang/product-detail?product_id=${this.product.uid}`;
+      const domain = window.location.origin;
+      return `${domain}/sekeranjang/product-detail?product_id=${this.product.uid}`;
     },
   },
   methods: {
