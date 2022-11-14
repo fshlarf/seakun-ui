@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="flex items-center space-x-3 text-[14px]">
-      <nuxt-link class="text-secondary tn:py-0" to="/sekeranjang"
+      <nuxt-link class="text-secondary tn:py-0" to="/sekeranjang#product-list"
         >Sekeranjang</nuxt-link
       >
       <svg
@@ -225,7 +225,9 @@
       class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 md:mt-6"
     >
       <p class="text-[20px] font-bold">Detail Produk</p>
-      <div class="">
+      <div
+        class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
+      >
         <p
           class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
         >
@@ -513,7 +515,8 @@ export default {
   },
   computed: {
     linkProduct() {
-      return `https://seakun.id/sekeranjang/product-detail?product_id=${this.product.uid}`;
+      const domain = window.location.origin;
+      return `${domain}/sekeranjang/product-detail?product_id=${this.product.uid}`;
     },
   },
   mounted() {

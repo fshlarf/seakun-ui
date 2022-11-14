@@ -5,7 +5,7 @@
       <div v-for="(step, id) in steps" :key="id" class="flex items-center">
         <div class="relative z-0">
           <div
-            @click="currentStep = step.no"
+            @click="onClickStep(step)"
             role="button"
             class="w-[50px] h-[50px] text-[20px] rounded-full border-2 border-[#8DCABE] flex justify-center items-center"
             :class="
@@ -100,6 +100,7 @@
         class="tn:mt-4"
         placeholder="cth. 8"
         :error="errorForm.quota"
+        :disabled="dataDetailProduct.promoType === 'Buy 1 Get 1'"
         v-model="dataDetailProduct.quota"
         id="quota"
         @change="setLocalStorage('quota')"
@@ -296,8 +297,18 @@
           />
         </div>
       </div>
+
+      <div class="flex items-start space-x-2 tn:pt-2 tn:mt-2">
+        <div class="cursor-pointer w-[24px]" @click="isJoinPo = !isJoinPo">
+          <CheckedBox v-if="isJoinPo" />
+          <UncheckBox v-else />
+        </div>
+        <p>Ikut patungan beli produk ini</p>
+      </div>
+
       <InputForm
-        label="Alamat Pemohon (jika ikut patungan)"
+        v-if="isJoinPo"
+        label="Alamat"
         placeholder="Masukkan alamat lengkap kamu"
         class="tn:mt-2 md:mt-4 text-[16px]"
         v-model="dataDetailProduct.publisherAddress"
@@ -408,17 +419,10 @@
         <p class="font-bold">{{ dataDetailProduct.publisherName }}</p>
         <p>{{ dataDetailProduct.publisherEmail }}</p>
         <p>{{ codeNumber }}{{ dataDetailProduct.publisherPhone }}</p>
+        <p>{{ dataDetailProduct.publisherAddress }}</p>
       </div>
 
       <div class="flex items-start space-x-2 tn:pt-2 tn:mt-8">
-        <div class="cursor-pointer w-[24px]" @click="isJoinPo = !isJoinPo">
-          <CheckedBox v-if="isJoinPo" />
-          <UncheckBox v-else />
-        </div>
-        <p>Ikut patungan beli produk ini</p>
-      </div>
-
-      <div class="flex items-start space-x-2 tn:pt-2">
         <div class="cursor-pointer w-[24px]" @click="isAgreeTos = !isAgreeTos">
           <CheckedBox v-if="isAgreeTos" />
           <UncheckBox v-else />
@@ -446,7 +450,7 @@
       </div>
 
       <div
-        class="tn:mt-6 grid tn:grid-cols-1 md:grid-cols-2 items-center tn:gap-3 md:gap-6"
+        class="tn:mt-3 lg:mt-6 grid tn:grid-cols-1 md:grid-cols-2 items-center tn:gap-3 md:gap-6"
       >
         <Button
           class="w-full tn:!py-4 font-bold tn:order-2 md:order-1"
@@ -570,7 +574,7 @@ export default {
         brand: '',
         promoType: 'Buy 1 Get 1',
         description: '',
-        quota: null,
+        quota: '2',
         productUrl: '',
         promoStartAt: null,
         promoEndAt: null,
@@ -652,18 +656,37 @@ export default {
       this.isShowCodeNumber = false;
     },
     onClickNextStep(step) {
-      this.currentStep = step;
-      const stepSection = document.getElementById('step-create-product');
-      stepSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
+      if (this.currentStep === 1 || this.currentStep === 2) {
+        this.validationForm();
+      }
+      if (this.isFormValid) {
+        this.currentStep = step;
+        const stepSection = document.getElementById('step-create-product');
+        stepSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+    },
+    onClickStep(step) {
+      if (this.currentStep === 1 || this.currentStep === 2) {
+        this.validationForm();
+      }
+      if (
+        this.isFormValid &&
+        (this.currentStep > step.no || step.no === this.currentStep + 1)
+      ) {
+        this.currentStep = step.no;
+      }
     },
     showPromoList() {
       this.isShowPromoList = !this.isShowPromoList;
     },
     onClickPromo(item) {
+      if (item.value === 'Buy 1 Get 1') {
+        this.dataDetailProduct.quota = '2';
+      }
       this.dataDetailProduct.promoType = item.value;
       this.isShowPromoList = !this.isShowPromoList;
     },
@@ -1022,8 +1045,8 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        this.isLoadingSumbitProduct = false;
       }
-      this.isLoadingSumbitProduct = false;
     },
     async postImageProduct(productUid, customerUid) {
       const { SekeranjangService } = this;
