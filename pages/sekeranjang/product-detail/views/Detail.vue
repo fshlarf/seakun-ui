@@ -423,7 +423,7 @@
       </div>
     </div>
 
-    <div
+    <!-- <div
       class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 md:mt-6"
     >
       <p class="text-[20px] font-bold">Informasi Uploader</p>
@@ -434,7 +434,7 @@
           <p class="tn:text-[16px] md:text-[18px]">Medan, Indonesia</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="rounded-xl bg-[#E9FAF5] tn:p-5 md:p-7 tn:mt-6">
       <div class="flex items-center space-x-2">
