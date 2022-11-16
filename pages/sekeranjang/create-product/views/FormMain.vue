@@ -176,7 +176,7 @@
 
       <div class="tn:mt-4">
         <p class="text-sm mb-2">
-          Foto Produk <Span class="tn:text-xs">(Max 5)</Span>
+          Foto Produk <Span class="tn:text-xs">(Maks. 5)</Span>
         </p>
 
         <div
@@ -231,6 +231,7 @@
           accept="image/png, image/jpg, image/jpeg"
           :disabled="productImages && productImages.length >= 5"
           @change="onUploadImage"
+          multiple
         />
         <p v-if="errorForm.image.isError" class="text-red-500 text-xs italic">
           {{ errorForm.image.message }}
@@ -692,8 +693,11 @@ export default {
     },
     onUploadImage(e) {
       const files = e.target.files;
-      const image = files[0];
-      this.productImages.push(image);
+      [...files].forEach((file) => {
+        if (this.productImages.length < 5) {
+          this.productImages.push(file);
+        }
+      });
       this.validationForm('image');
     },
     imageUrl(file) {
