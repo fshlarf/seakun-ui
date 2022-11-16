@@ -657,9 +657,13 @@ export default {
       this.isShowCodeNumber = false;
     },
     onClickNextStep(step) {
+      console.log('current step: ' + this.currentStep);
+      console.log('next step: ' + step);
       if (this.currentStep === 1 || this.currentStep === 2) {
         this.validationForm();
       }
+      console.log('is form valid:');
+      console.log(this.isFormValid);
       if (this.isFormValid) {
         this.currentStep = step;
         const stepSection = document.getElementById('step-create-product');
@@ -671,9 +675,13 @@ export default {
       }
     },
     onClickStep(step) {
+      console.log('current step: ' + this.currentStep);
+      console.log('next step: ' + step);
       if (this.currentStep === 1 || this.currentStep === 2) {
         this.validationForm();
       }
+      console.log('is form valid:');
+      console.log(this.isFormValid);
       if (
         this.isFormValid &&
         (this.currentStep > step.no || step.no === this.currentStep + 1)
