@@ -231,11 +231,19 @@
         <p
           class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
         >
-          Deskripsi
+          Kode Produk
         </p>
-        <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
-          {{ product.description }}
+        <p>{{ product.sekeranjangCode }}</p>
+      </div>
+      <div
+        class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
+      >
+        <p
+          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
+        >
+          Jumlah Member
         </p>
+        <p>{{ product.quota }} Orang</p>
       </div>
       <div
         class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
@@ -253,25 +261,22 @@
           {{ product.productUrl }}
         </a>
       </div>
-      <div
-        class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
-      >
+      <div class="grid tn:grid-cols-1 items-start overflow-hidden">
         <p
           class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
         >
-          Total Slot
+          Deskripsi
         </p>
-        <p>{{ product.quota }} Orang</p>
-      </div>
-      <div
-        class="grid tn:grid-cols-1 md:grid-cols-3 items-start overflow-hidden"
-      >
-        <p
-          class="tn:text-[16px] md:text-[18px] tn:font-semibold lg:font-normal"
-        >
-          Kode Produk
-        </p>
-        <p>{{ product.sekeranjangCode }}</p>
+        <hr class="tn:my-2 h-[2px]" />
+        <div>
+          <p
+            v-for="(desc, id) in description"
+            :key="id"
+            class="tn:text-[16px] md:text-[18px]"
+          >
+            {{ desc }}
+          </p>
+        </div>
       </div>
     </div>
 
@@ -517,6 +522,10 @@ export default {
     linkProduct() {
       const domain = window.location.origin;
       return `${domain}/sekeranjang/product-detail?product_id=${this.product.uid}`;
+    },
+    description() {
+      const desc = this.product.description.split('\n');
+      return desc;
     },
   },
   mounted() {

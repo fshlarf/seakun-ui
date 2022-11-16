@@ -1,10 +1,10 @@
 <template>
   <div
     role="button"
-    class="tn:w-[170px] md:w-[190px] rounded-lg shadow-md overflow-hidden"
+    class="tn:w-[170px] md:w-[190px] rounded-lg shadow-md overflow-hidden bg-white"
     @click="$emit('onClickProduct', product.uid)"
   >
-    <div class="h-[160px] bg-[#8DCABE] overflow-hidden">
+    <div class="h-[160px] bg-black overflow-hidden">
       <img
         v-if="product.thumbnail"
         class="min-w-[100%] min-h-[100%] object-cover object-center"
