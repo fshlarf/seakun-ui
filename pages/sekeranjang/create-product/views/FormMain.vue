@@ -657,13 +657,11 @@ export default {
       this.isShowCodeNumber = false;
     },
     onClickNextStep(step) {
-      console.log('current step: ' + this.currentStep);
-      console.log('next step: ' + step);
-      if (this.currentStep === 1 || this.currentStep === 2) {
-        this.validationForm();
+      if (this.currentStep === 1) {
+        this.validationForm(1);
+      } else if (this.currentStep === 2) {
+        this.validationForm(2);
       }
-      console.log('is form valid:');
-      console.log(this.isFormValid);
       if (this.isFormValid) {
         this.currentStep = step;
         const stepSection = document.getElementById('step-create-product');
@@ -675,13 +673,11 @@ export default {
       }
     },
     onClickStep(step) {
-      console.log('current step: ' + this.currentStep);
-      console.log('next step: ' + step);
-      if (this.currentStep === 1 || this.currentStep === 2) {
-        this.validationForm();
+      if (this.currentStep === 1) {
+        this.validationForm(1);
+      } else if (this.currentStep === 2) {
+        this.validationForm(2);
       }
-      console.log('is form valid:');
-      console.log(this.isFormValid);
       if (
         this.isFormValid &&
         (this.currentStep > step.no || step.no === this.currentStep + 1)
@@ -739,7 +735,7 @@ export default {
       const idnPhoneFormat = /^[8][0-9]*$/;
       const globalPhoneFormat = /^[0-9]*$/;
       const nominalFormat = /^[0-9]*$/;
-      if (input === 'name' || !input) {
+      if (input === 'name' || input === 1 || !input) {
         if (dataDetailProduct.name === '') {
           this.errorForm.name = {
             isError: true,
@@ -751,7 +747,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'brand' || !input) {
+      if (input === 'brand' || input === 1 || !input) {
         if (dataDetailProduct.brand === '') {
           this.errorForm.brand = {
             isError: true,
@@ -763,7 +759,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'description' || !input) {
+      if (input === 'description' || input === 1 || !input) {
         if (dataDetailProduct.description === '') {
           this.errorForm.description = {
             isError: true,
@@ -775,7 +771,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'price' || !input) {
+      if (input === 'price' || input === 1 || !input) {
         const price = dataDetailProduct.price;
         if (price && price.length > 1 && price.charAt(0) == '0') {
           this.dataDetailProduct.price = price.slice(1, price.length);
@@ -803,7 +799,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'jointPrice' || !input) {
+      if (input === 'jointPrice' || input === 1 || !input) {
         const jointPrice = dataDetailProduct.jointPrice;
         if (
           jointPrice &&
@@ -838,7 +834,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'quota' || !input) {
+      if (input === 'quota' || input === 1 || !input) {
         const quota = dataDetailProduct.quota;
         if (quota && quota.length > 1 && quota.charAt(0) == '0') {
           this.dataDetailProduct.quota = quota.slice(1, quota.length);
@@ -866,7 +862,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'promoEnd' || !input) {
+      if (input === 'promoEnd' || input === 1 || !input) {
         if (
           promoStart &&
           promoEnd &&
@@ -882,7 +878,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'publisherName' || !input) {
+      if (input === 'publisherName' || input === 2 || !input) {
         if (dataDetailProduct.publisherName === '') {
           this.errorForm.publisherName = {
             isError: true,
@@ -900,7 +896,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'publisherEmail' || !input) {
+      if (input === 'publisherEmail' || input === 2 || !input) {
         if (dataDetailProduct.publisherEmail === '') {
           this.errorForm.publisherEmail = {
             isError: true,
@@ -918,7 +914,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'publisherPhone' || !input) {
+      if (input === 'publisherPhone' || input === 2 || !input) {
         const publisherPhone = dataDetailProduct.publisherPhone;
         if (
           this.codeNumber === '+62' &&
@@ -959,7 +955,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'publisherAddress' || !input) {
+      if (input === 'publisherAddress' || input === 2 || !input) {
         if (isJoinPo && !dataDetailProduct.publisherAddress) {
           this.errorForm.publisherAddress = {
             isError: true,
@@ -971,7 +967,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (input === 'image' || !input) {
+      if (input === 'image' || input === 1 || !input) {
         if (this.productImages.length === 0) {
           this.errorForm.image = {
             isError: true,
@@ -983,7 +979,7 @@ export default {
           this.isFormValid = true;
         }
       }
-      if (!input) {
+      if (!input || input === 1 || input === 2) {
         const errors = this.errorForm;
         Object.keys(errors).forEach((key) => {
           const error = errors[key];
