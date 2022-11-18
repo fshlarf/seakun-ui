@@ -406,8 +406,12 @@
         </div>
         <div class="">
           <p class="">Deskripsi Produk:</p>
-          <p class="font-semibold">
-            {{ dataDetailProduct.description }}
+          <p
+            v-for="(desc, id) in descriptionPreview"
+            :key="id"
+            class="font-semibold"
+          >
+            {{ desc }}
           </p>
         </div>
       </div>
@@ -638,6 +642,12 @@ export default {
   watch: {
     codeNumber() {
       this.validationForm('publisherPhone');
+    },
+  },
+  computed: {
+    descriptionPreview() {
+      const list = this.dataDetailProduct.description.split('\n');
+      return list;
     },
   },
   mounted() {
