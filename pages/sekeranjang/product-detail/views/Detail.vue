@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <div class="flex items-center space-x-3 text-[14px]">
+    <div class="flex items-center space-x-3 text-[14px] overflow-hidden">
       <nuxt-link class="text-secondary tn:py-0" to="/sekeranjang#product-list"
         >Sekeranjang</nuxt-link
       >
@@ -19,11 +19,36 @@
           d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
         />
       </svg>
-      <p class="tn:py-0">{{ product.name }}</p>
+      <p class="tn:py-0 break-all two-lines">{{ product.name }}</p>
+    </div>
+
+    <div class="w-full overflow-hidden tn:mt-3 lg:hidden border relative z-0">
+      <div
+        class="absolute z-1 left-3 bottom-3 bg-white rounded-full tn:px-2 text-[14px] opacity-70"
+      >
+        {{ slide }}/{{ product.images.length }}
+      </div>
+      <div
+        id="swipe-container"
+        @scroll="swipe"
+        class="flex tn:overflow-x-auto tn:overscroll-auto swipe-container hide-scrollbar"
+      >
+        <div
+          v-for="(image, id) in product.images"
+          :key="id"
+          class="w-full flex-none tn:h-[360px] md:h-[448px] overflow-hidden bg-black product-img"
+        >
+          <img
+            class="w-full h-full object-contain"
+            :src="image.popFile"
+            alt="product photo"
+          />
+        </div>
+      </div>
     </div>
     <div
       v-if="product.images && product.images.length > 0"
-      class="w-full tn:mt-3"
+      class="w-full tn:mt-3 tn:hidden lg:block"
     >
       <div
         class="w-full flex justify-center items-center tn:h-[360px] md:h-[448px] overflow-hidden bg-black border"
@@ -108,7 +133,58 @@
       </div>
     </div>
 
-    <div class="w-full tn:mt-4 lg:mt-7">
+    <div class="w-full tn:mt-1 tn:px-3 lg:px-0 lg:hidden">
+      <div class="flex justify-between items-center">
+        <p class="text-[36px] font-bold tracking-tight">
+          {{ currencyFormat(product.finalPrice) }}
+        </p>
+        <div class="rounded flex !items-center !space-x-2">
+          <i class="w-[16px] h-[16px] fa-solid fa-user-group text-primary"></i>
+          <p class="font-bold text-[20px] tn:m-0 text-primary">
+            {{ product.quota }}
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center tn:space-x-2 lg:space-x-3 tn:mt-2">
+        <p class="text-[#A0A3BD] lg:text-[20px] font-medium">
+          {{ product.brand }}
+        </p>
+        <p
+          class="bg-primary rounded-full py-1 px-3 text-white tn:text-[12px] lg:text-[14px]"
+        >
+          Tersedia
+        </p>
+      </div>
+      <h1
+        class="tn:text-[24px] lg:text-[44px] font-medium tracking-tight tn:mt-1"
+      >
+        {{ product.name }}
+      </h1>
+      <hr class="h-[2px] tn:my-2" />
+      <div>
+        <p class="text-[#858FA3] font-bold text-[18px]">
+          Harga Asli
+          <span class="line-through">{{ currencyFormat(product.price) }}</span>
+        </p>
+        <div class="flex items-center space-x-1 tn:mt-1">
+          <img
+            class="w-[20px] h-[20px]"
+            src="/images/sekeranjang/product/discount.svg"
+            alt="diskon"
+          />
+          <p
+            class="text-[#BA0000] font-bold text-[18px] bg-[#FFF2F2] tn:px-2 rounded-sm"
+          >
+            Hemat hingga
+          </p>
+          <p class="text-[18px] tn:pl-2">
+            {{ currencyFormat(product.price - product.finalPrice) }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full tn:mt-5 lg:mt-7 tn:px-3 lg:px-0 tn:hidden lg:block">
       <div class="flex items-center tn:space-x-2 lg:space-x-3">
         <p class="text-[#A0A3BD] lg:text-[20px] font-medium">
           {{ product.brand }}
@@ -125,14 +201,16 @@
           </p>
         </div>
       </div>
-      <h1 class="tn:text-[24px] lg:text-[44px] font-semibold tracking-tight">
+      <h1
+        class="tn:text-[24px] lg:text-[44px] font-medium tracking-tight tn:mt-1"
+      >
         {{ product.name }}
       </h1>
       <p class="text-[36px] font-bold tn:mt-1 lg:mt-5 tracking-tight">
         {{ currencyFormat(product.finalPrice) }}
       </p>
       <div class="lg:flex lg:space-x-5 items-end">
-        <p class="text-[#333333] font-bold text-[22px]">
+        <p class="text-[#858FA3] font-bold text-[22px]">
           Harga Asli
           <span class="line-through">{{ currencyFormat(product.price) }}</span>
         </p>
@@ -516,6 +594,7 @@ export default {
         'Setelah produk dipesan oleh Seakun.id dan sedang dalam proses pengiriman, pengguna tidak bisa membatalkan pesanan.',
         'Biaya admin Seakun Rp100.000',
       ],
+      slide: 1,
     };
   },
   computed: {
@@ -546,6 +625,11 @@ export default {
     }
   },
   methods: {
+    swipe() {
+      const container = document.getElementById('swipe-container');
+      const conSize = container.clientWidth;
+      this.slide = parseInt((container.scrollLeft + conSize) / conSize);
+    },
     scrollPhotos(direction) {
       const container = document.getElementById('photo-scroll');
       const content = document.getElementById('photo-content');
@@ -631,5 +715,12 @@ export default {
 <style>
 .reverse {
   transform: rotate(180deg);
+}
+.swipe-container {
+  scroll-snap-type: x mandatory;
+}
+.product-img {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 </style>
