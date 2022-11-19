@@ -628,7 +628,9 @@ export default {
     swipe() {
       const container = document.getElementById('swipe-container');
       const conSize = container.clientWidth;
-      this.slide = parseInt((container.scrollLeft + conSize) / conSize);
+      this.slide = parseInt(
+        (container.scrollLeft + conSize + conSize / 2) / conSize
+      );
     },
     scrollPhotos(direction) {
       const container = document.getElementById('photo-scroll');
