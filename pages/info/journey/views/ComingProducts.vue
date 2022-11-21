@@ -1,5 +1,5 @@
 <template>
-  <div id="journey-coming-product" class="tn:py-12 md:py-20 relative z-0">
+  <div id="journey-coming-product" class="tn:py-16 md:py-20 relative z-0">
     <div class="text-center text-primary relative z-0 tn:px-4 md:px-0">
       <h1 class="font-bold tn:text-[24px] md:text-[32px] lg:text-[40px]">
         Segera Hadir
