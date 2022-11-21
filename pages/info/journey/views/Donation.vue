@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-[#8DCABE] relative z-0 tn:py-12 md:py-16 lg:py-32 tn:-mb-12">
+  <div
+    id="journey-donation"
+    class="bg-[#8DCABE] relative z-0 tn:py-16 md:py-20 lg:py-32 tn:-mb-12"
+  >
     <img
       class="absolute z-1 top-0 right-0"
       src="/images/journey/donate-top-right.png"

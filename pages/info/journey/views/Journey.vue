@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full tn:py-8 md:py-16">
+  <div id="journey-journey" class="w-full tn:pt-16 md:pt-20">
     <div class="max-w-[460px] mx-auto text-center text-primary">
       <h1 class="font-bold tn:text-[24px] md:text-[32px] lg:text-[40px]">
         Perjalanan Seakun
