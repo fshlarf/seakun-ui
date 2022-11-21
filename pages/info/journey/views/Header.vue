@@ -1,5 +1,8 @@
 <template>
-  <div class="tn:px-4 tn:py-4 md:py-16 relative z-0 container">
+  <div
+    id="journey-header"
+    class="tn:px-4 tn:pt-20 md:pt-24 relative z-0 container"
+  >
     <div class="relative z-0">
       <div
         class="w-full mx-auto text-center text-white absolute -z-1 tn:top-3 md:top-7 lg:top-12 xl:top-16"

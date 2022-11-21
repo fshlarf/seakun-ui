@@ -1,5 +1,5 @@
 <template>
-  <div class="tn:py-12 md:py-20 relative z-0">
+  <div id="journey-coming-product" class="tn:py-12 md:py-20 relative z-0">
     <div class="text-center text-primary relative z-0 tn:px-4 md:px-0">
       <h1 class="font-bold tn:text-[24px] md:text-[32px] lg:text-[40px]">
         Segera Hadir
@@ -61,11 +61,11 @@
                 <div
                   class="w-full h-full bg-primary rounded-lg flex items-center justify-center inner-box"
                 >
-                  <i class="fa-solid fa-user fa-lg"></i>
+                  <i class="fa-solid fa-comment fa-lg"></i>
                 </div>
               </div>
               <p class="text-[24px] tracking-tight font-bold feature-text">
-                Halaman Profil
+                Fitur Chat
               </p>
             </div>
           </div>
@@ -155,11 +155,11 @@
                   <div
                     class="w-full h-full bg-white rounded-lg flex items-center justify-center inner-box-mobile"
                   >
-                    <i class="fa-solid fa-user fa-lg"></i>
+                    <i class="fa-solid fa-comment fa-lg"></i>
                   </div>
                 </div>
                 <p class="text-[24px] tracking-tight font-bold feature-text">
-                  Halaman Profil
+                  Fitur Chat
                 </p>
               </div>
             </div>
