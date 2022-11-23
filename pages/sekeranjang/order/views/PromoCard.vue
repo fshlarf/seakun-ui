@@ -36,9 +36,9 @@
         <p v-else class="font-medium md:col-span-2">-</p>
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
-        <p class="font-bold">Detail promo</p>
-        <p class="font-medium md:col-span-2">
-          {{ product.promoType }}
+        <p class="font-bold">Jenis promo</p>
+        <p v-if="product.promoType" class="font-medium md:col-span-2">
+          {{ product.promoType.value }}
         </p>
       </div>
       <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
