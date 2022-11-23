@@ -82,10 +82,7 @@
 
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Jenis Promo</p>
-        <ButtonDrop
-          :btnText="dataDetailProduct.promoType"
-          @click="showPromoList()"
-        />
+        <ButtonDrop :btnText="promoType" @click="showPromoList()" />
         <div class="w-full">
           <PopUpDropDown
             :data-list="promoList"
@@ -100,7 +97,7 @@
         class="tn:mt-4"
         placeholder="cth. 8"
         :error="errorForm.quota"
-        :disabled="dataDetailProduct.promoType === 'Buy 1 Get 1'"
+        :disabled="dataDetailProduct.promoType == 1"
         v-model="dataDetailProduct.quota"
         id="quota"
         @change="setLocalStorage('quota')"
@@ -362,7 +359,7 @@
         </div>
         <div class="md:grid grid-cols-4 md:gap-2">
           <p class="col-span-1">Jenis Promo:</p>
-          <p class="col-span-3 font-bold">{{ dataDetailProduct.promoType }}</p>
+          <p class="col-span-3 font-bold">{{ promoType }}</p>
         </div>
         <div class="md:grid grid-cols-4 md:gap-2">
           <p class="col-span-1">Harga Normal:</p>
@@ -546,13 +543,14 @@ export default {
       promoList: [
         {
           text: 'Buy 1 Get 1',
-          value: 'Buy 1 Get 1',
+          value: 1,
         },
         {
           text: 'Beli ramean/grosir',
-          value: 'Beli ramean/grosir',
+          value: 2,
         },
       ],
+      promoType: 'Buy 1 Get 1',
       currentStep: 1,
       steps: [
         {
@@ -577,7 +575,7 @@ export default {
         publisherAddress: '',
         name: '',
         brand: '',
-        promoType: 'Buy 1 Get 1',
+        promoType: 1,
         description: '',
         quota: '2',
         productUrl: '',
@@ -699,10 +697,12 @@ export default {
       this.isShowPromoList = !this.isShowPromoList;
     },
     onClickPromo(item) {
-      if (item.value === 'Buy 1 Get 1') {
+      if (item.value == 1) {
         this.dataDetailProduct.quota = '2';
       }
       this.dataDetailProduct.promoType = item.value;
+      this.promoType = item.text;
+      this.setLocalStorage('promoType');
       this.isShowPromoList = !this.isShowPromoList;
     },
     onUploadImage(e) {
@@ -837,6 +837,15 @@ export default {
           this.errorForm.jointPrice = {
             isError: true,
             message: 'Harga tidak boleh 0',
+          };
+          this.isFormValid = false;
+        } else if (
+          parseInt(dataDetailProduct.jointPrice) >=
+          parseInt(dataDetailProduct.price)
+        ) {
+          this.errorForm.jointPrice = {
+            isError: true,
+            message: 'Harga patungan harus lebih kecil dari harga normal',
           };
           this.isFormValid = false;
         } else {
@@ -1104,11 +1113,16 @@ export default {
           registeredProduct.publisherAddress;
         this.dataDetailProduct.name = registeredProduct.name;
         this.dataDetailProduct.brand = registeredProduct.brand;
-        this.dataDetailProduct.promoType = registeredProduct.promoType;
-        this.dataDetailProduct.quota = registeredProduct.quota;
+        this.dataDetailProduct.promoType = registeredProduct.promoTypeValue;
+        this.dataDetailProduct.quota = registeredProduct.quota
+          ? registeredProduct.quota
+          : this.dataDetailProduct.quota;
         this.dataDetailProduct.productUrl = registeredProduct.productUrl;
         this.dataDetailProduct.price = registeredProduct.price;
         this.dataDetailProduct.jointPrice = registeredProduct.jointPrice;
+        this.promoType = registeredProduct.promoTypeText
+          ? registeredProduct.promoTypeText
+          : this.promoType;
       }
     },
     setLocalStorage(id) {
@@ -1118,7 +1132,8 @@ export default {
         publisherEmail: dataDetailProduct.publisherEmail,
         publisherPhone: dataDetailProduct.publisherPhone,
         name: dataDetailProduct.name,
-        promoType: dataDetailProduct.promoType,
+        promoTypeValue: dataDetailProduct.promoType,
+        promoTypeText: this.promoType,
         quota: dataDetailProduct.quota,
         productUrl: dataDetailProduct.productUrl,
         price: dataDetailProduct.price,

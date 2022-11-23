@@ -359,7 +359,7 @@
     </div>
 
     <div
-      v-if="product.promoType === 'Buy 1 Get 1'"
+      v-if="product.promoType && product.promoType.refId == 1"
       class="rounded-2xl bg-white tn:p-5 md:p-7 tn:space-y-1 md:space-y-3 tn:mt-4 md:mt-6"
     >
       <p class="text-[20px] font-bold">Skema Harga</p>
@@ -500,8 +500,11 @@
         >
           Jenis Promo
         </p>
-        <p class="md:col-span-2 tn:text-[16px] md:text-[18px]">
-          {{ product.promoType }}
+        <p
+          v-if="product.promoType"
+          class="md:col-span-2 tn:text-[16px] md:text-[18px]"
+        >
+          {{ product.promoType.value }}
         </p>
       </div>
     </div>
@@ -538,7 +541,7 @@
     >
       <p class="text-[20px] font-bold">Syarat dan Ketentuan</p>
       <ol
-        v-if="product.promoType === 'Buy 1 Get 1'"
+        v-if="product.promoType && product.promoType.refId == 1"
         class="tn:text-[16px] md:text-[18px] list-decimal tn:pl-4"
       >
         <li v-for="(term, id) in termsB1G1" :key="id">
@@ -583,7 +586,7 @@ export default {
         'Klaim produk rusak/cacat tidak bisa dilakukan tanpa bukti video unboxing.',
         'Produk dipesan oleh Seakun.id setelah seluruh member dalam satu grup selesai melakukan pembayaran.',
         'Setelah produk dipesan oleh Seakun.id dan sedang dalam proses pengiriman, pengguna tidak bisa membatalkan pesanan.',
-        'Biaya admin Seakun.id minimal Rp10.000 dan maksimal 5% dari harga produk.',
+        'Biaya admin Seakun minimal Rp15.000 dan maksimal 5% dari harga patungan.',
       ],
       termsRamean: [
         'Semua produk yang ada di Seakun.id merupakan produk original dari Official Store atau Official Seller Brand terkait.',
@@ -592,7 +595,7 @@ export default {
         'Klaim produk rusak/cacat tidak bisa dilakukan tanpa bukti video unboxing.',
         'Produk dipesan oleh Seakun.id setelah seluruh member dalam satu grup selesai melakukan pembayaran.',
         'Setelah produk dipesan oleh Seakun.id dan sedang dalam proses pengiriman, pengguna tidak bisa membatalkan pesanan.',
-        'Biaya admin Seakun Rp100.000',
+        'Biaya admin Seakun minimal Rp15.000 dan maksimal 5% dari selisih harga asli dan harga patungan.',
       ],
       slide: 1,
     };
