@@ -27,7 +27,7 @@
           class="text-[24px] font-bold text-center tn:mt-3 max-w-[450px] mx-auto"
         >
           Terimakasih telah melakukan pesanan untuk produk
-          {{ dataDetailProduct.sekeranjangCode }}.
+          {{ dataDetailProduct.name }}.
         </h1>
         <p v-if="dataDetailProduct.promoType" class="text-center tn:mt-5">
           Di mana pada produk ini skemanya adalah

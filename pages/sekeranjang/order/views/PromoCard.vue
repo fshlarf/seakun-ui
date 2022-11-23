@@ -5,7 +5,7 @@
       class="rounded-xl shadow-md tn:p-5 tn:mt-4 bg-white space-y-2"
     >
       <div class="grid tn:grid-cols-1 md:grid-cols-3 md:gap-5 md:items-start">
-        <p class="text-[18px] font-bold">Periode promo</p>
+        <p class="font-bold">Periode promo</p>
         <p
           class="font-medium md:col-span-2"
           v-if="product.promoStartAt && product.promoEndAt"
