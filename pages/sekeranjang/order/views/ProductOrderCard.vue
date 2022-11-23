@@ -15,7 +15,9 @@
             {{ product.brand }}
           </p>
           <p class="font-bold two-lines overflow-hidden">{{ product.name }}</p>
-          <p class="text-[12px]">{{ product.promoType }}</p>
+          <p v-if="product.promoType" class="text-[12px]">
+            {{ product.promoType.value }}
+          </p>
         </div>
       </div>
       <hr class="tn:mt-3" />
