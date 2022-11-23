@@ -89,7 +89,7 @@
             <UncheckBox v-else />
           </div>
           <p>
-            Saya consent menyetujui
+            Saya menyetujui
             <a
               class="text-green-seakun ml-0"
               href="/terms-of-use"
