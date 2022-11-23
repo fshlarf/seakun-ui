@@ -142,9 +142,9 @@ export default {
           name: 'Sekeranjang',
           slug: 'sekeranjang',
           img: '/images/product/on demand/sekeranjang.png',
-          isActive: false,
+          isActive: true,
           preview:
-            'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan  kuantitas banyak untuk mendapatkan discount sampai 50%.',
+            'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
         },
         {
           id: 2,
