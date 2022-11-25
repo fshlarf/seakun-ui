@@ -27,13 +27,23 @@
         </p>
       </div>
       <div
-        class="container flex justify-center flex-wrap tn:gap-3 md:gap-8 tn:mt-8 md:mt-12"
+        class="tn:hidden md:flex container justify-center flex-wrap tn:gap-3 md:gap-8 tn:my-8 md:my-12"
       >
         <TeamCard v-for="(team, id) in teams" :key="id" :member="team" />
       </div>
-      <div class="tn:mt-8 text-center font-medium text-white">
-        <nuxt-link to="#">Tampilkan lebih banyak</nuxt-link>
+      <div
+        class="w-full md:!hidden overflow-y-auto overscroll-auto h-[450px] flex flex-wrap justify-center tn:gap-2 tn:mt-4 tn:p-4 hide-scrollbar"
+      >
+        <TeamCard
+          class="flex-none"
+          v-for="(team, id) in teams"
+          :key="id"
+          :member="team"
+        />
       </div>
+      <!-- <div class="tn:mt-8 text-center font-medium text-white">
+        <nuxt-link to="#">Tampilkan lebih banyak</nuxt-link>
+      </div> -->
     </div>
   </div>
 </template>
@@ -52,82 +62,127 @@ export default {
         {
           name: 'Faishal Arif',
           position: 'Founder & CEO',
+          image: 'faishal-arif',
         },
         {
           name: 'Aadilah Aziz',
           position: 'Co-founder',
+          image: 'woman',
         },
         {
           name: 'Marlina Dian S.',
           position: 'Comissioner',
+          image: 'woman',
         },
         {
           name: 'Harry Kurniawan',
           position: 'Head of Technology',
+          image: 'man',
         },
         {
           name: 'Aslihatul Millah',
           position: 'Social Project Specialist',
+          image: 'aslihatul-millah',
         },
         {
           name: 'Riyansyah Iqbal',
           position: 'Software Engineer',
+          image: 'man',
         },
         {
           name: 'Ibnu Hazar',
           position: 'Software Engineer',
+          image: 'ibnu-hazar',
         },
         {
           name: 'Fara Nur Azizah',
           position: 'Manager Operation',
+          image: 'woman',
         },
         {
           name: 'Amelda Tiara Citra',
           position: 'Lead Operation',
+          image: 'woman',
         },
         {
           name: 'Dian Astika Rini',
           position: 'Lead Operation',
+          image: 'woman',
         },
         {
           name: 'Siti Nuraini',
           position: 'Lead Operation',
+          image: 'woman',
         },
         {
           name: 'Nurovi Andiyani',
           position: 'Lead Operation',
+          image: 'woman',
         },
         {
           name: 'Adyan Aqil Azizi',
           position: 'UI/UX',
+          image: 'adyan-aqil',
         },
         {
           name: 'Imanda Minara P.',
           position: 'Head of Operation',
+          image: 'woman',
         },
         {
           name: 'Abil Abbas A.',
           position: 'Business Development',
+          image: 'man',
         },
         {
           name: 'Ayu Dien',
           position: 'Admin Operation',
+          image: 'ayu-dien',
         },
         {
           name: 'Fadhillatuz Zuhroh',
           position: 'Admin Operation',
+          image: 'fadhillatuz-zuhroh',
         },
         {
           name: 'Zulhafni Adha',
           position: 'Admin Operation',
+          image: 'woman',
         },
         {
           name: 'Siti Nur Aisyah',
           position: 'Admin Operation',
+          image: 'siti-nur-aisyah',
         },
         {
           name: 'Nungki K.',
           position: 'Admin Operation',
+          image: 'woman',
+        },
+        {
+          name: 'Ayumi Fadhillah',
+          position: 'Admin Operation',
+          image: 'ayumi-fadhillah',
+        },
+        {
+          name: 'Masruroh',
+          position: 'Admin Operation',
+          image: 'masruroh',
+        },
+        {
+          name: 'Nadila Putri S',
+          position: 'Admin Operation',
+          image: 'nadila-putri',
+        },
+        {
+          name: 'Yona Prestica',
+          position: 'Admin Operation',
+          image: 'yona-prestica',
+        },
+        {
+          name: 'Khoirunnisa Azizah',
+          position: 'Admin Operation',
+          image: 'khoirunnisa-azizah',
         },
       ],
     };
