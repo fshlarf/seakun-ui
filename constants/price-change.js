@@ -19,11 +19,11 @@ export const priceChangeList = [
   //   slug: 'setapp',
   //   message: 'perubahan kurs Rupiah terhadap Dollar',
   // },
-  // {
-  //   name: 'Youtube',
-  //   slug: 'youtube',
-  //   message: 'perubahan pajak dari 10% menjadi 11%',
-  // },
+  {
+    name: 'Youtube',
+    slug: 'youtube',
+    message: 'kenaikan harga provider youtube dari Rp89.000 menjadi Rp99.000',
+  },
   // {
   //   name: 'Google One',
   //   slug: 'google-one',

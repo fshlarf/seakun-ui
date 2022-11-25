@@ -98,14 +98,11 @@
 
     <div class="tn:mt-4">
       <div class="flex items-center space-x-2">
-        <div
-          class="cursor-pointer w-[16px]"
-          @click="isSameAddress = !isSameAddress"
-        >
+        <div class="cursor-pointer" @click="isSameAddress = !isSameAddress">
           <CheckedBox class="w-full" v-if="isSameAddress" />
           <UncheckBox class="w-full" v-else />
         </div>
-        <p class="text-sm">Alamat pengiriman sama dengan domisili</p>
+        <p class="">Alamat pengiriman sama dengan domisili</p>
       </div>
       <InputForm
         v-if="!isSameAddress"

@@ -27,14 +27,13 @@
           class="text-[24px] font-bold text-center tn:mt-3 max-w-[450px] mx-auto"
         >
           Terimakasih telah melakukan pesanan untuk produk
-          {{ dataDetailProduct.sekeranjangCode }}.
+          {{ dataDetailProduct.name }}.
         </h1>
-        <p class="text-center tn:mt-5">
+        <p v-if="dataDetailProduct.promoType" class="text-center tn:mt-5">
           Di mana pada produk ini skemanya adalah
-          {{ dataDetailProduct.promoType }}. Dalam satu grup terdiri dari
+          {{ dataDetailProduct.promoType.value }}. Dalam satu grup terdiri dari
           {{ dataDetailProduct.quota }} orang. Harap menunggu, kamu akan
-          dihubungi admin untuk proses berikutnya atau kamu bisa klik tombol di
-          bawah.
+          dihubungi admin untuk proses berikutnya.
         </p>
       </div>
       <p class="text-center tn:mt-5">

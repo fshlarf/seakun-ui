@@ -305,11 +305,11 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Premium Youtube',
-        value: 'Rp89.000',
+        value: 'Rp99.000',
       },
       {
         title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp98.790',
+        value: 'Rp109.890',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -317,7 +317,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp98.790 ÷ 5 = Rp19.758',
+        value: 'Rp109.890 ÷ 5 = Rp21.978',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -325,7 +325,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp19.758',
+        value: 'Rp21.978',
         is_total: true,
       },
     ],
@@ -351,11 +351,11 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Premium Youtube',
-        value: 'Rp89.000',
+        value: 'Rp99.000',
       },
       {
         title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp98.790',
+        value: 'Rp109.890',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -363,15 +363,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp98.790 ÷ 5 = Rp19.758',
+        value: 'Rp109.890 ÷ 5 = Rp21.978',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.742',
+        value: 'Rp6.022',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp25.500',
+        value: 'Rp28.000',
         is_total: true,
       },
     ],
