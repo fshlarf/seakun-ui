@@ -32,7 +32,7 @@
         <TeamCard v-for="(team, id) in teams" :key="id" :member="team" />
       </div>
       <div
-        class="w-full md:!hidden overflow-y-auto overscroll-auto h-[450px] flex flex-wrap justify-center tn:gap-2 tn:mt-4 tn:p-4 hide-scrollbar"
+        class="w-full md:!hidden overflow-y-auto overscroll-auto h-[450px] flex flex-wrap justify-center tn:gap-2 tn:mt-4 tn:p-4 hide-scrollbar tn:mb-8"
       >
         <TeamCard
           class="flex-none"
@@ -67,17 +67,17 @@ export default {
         {
           name: 'Aadilah Aziz',
           position: 'Co-founder',
-          image: 'woman',
+          image: 'aadilah-aziz',
         },
         {
           name: 'Marlina Dian S.',
           position: 'Comissioner',
-          image: 'woman',
+          image: 'marlina-dian',
         },
         {
           name: 'Harry Kurniawan',
           position: 'Head of Technology',
-          image: 'man',
+          image: 'harry-kurniawan',
         },
         {
           name: 'Aslihatul Millah',
@@ -87,7 +87,7 @@ export default {
         {
           name: 'Riyansyah Iqbal',
           position: 'Software Engineer',
-          image: 'man',
+          image: 'riyansyah-iqbal',
         },
         {
           name: 'Ibnu Hazar',
@@ -97,27 +97,27 @@ export default {
         {
           name: 'Fara Nur Azizah',
           position: 'Manager Operation',
-          image: 'woman',
+          image: 'fara-nur-azizah',
         },
         {
           name: 'Amelda Tiara Citra',
           position: 'Lead Operation',
-          image: 'woman',
+          image: 'amelda-tiara',
         },
         {
           name: 'Dian Astika Rini',
           position: 'Lead Operation',
-          image: 'woman',
+          image: 'dian-astika',
         },
         {
           name: 'Siti Nuraini',
           position: 'Lead Operation',
-          image: 'woman',
+          image: 'siti-nuraini',
         },
         {
           name: 'Nurovi Andiyani',
           position: 'Lead Operation',
-          image: 'woman',
+          image: 'nurovi-andiyani',
         },
         {
           name: 'Adyan Aqil Azizi',
@@ -127,12 +127,12 @@ export default {
         {
           name: 'Imanda Minara P.',
           position: 'Head of Operation',
-          image: 'woman',
+          image: 'imanda-putri',
         },
         {
           name: 'Abil Abbas A.',
           position: 'Business Development',
-          image: 'man',
+          image: 'abil-abbas',
         },
         {
           name: 'Ayu Dien',
@@ -147,7 +147,7 @@ export default {
         {
           name: 'Zulhafni Adha',
           position: 'Admin Operation',
-          image: 'woman',
+          image: 'zulhafni-adha',
         },
         {
           name: 'Siti Nur Aisyah',
@@ -157,7 +157,7 @@ export default {
         {
           name: 'Nungki K.',
           position: 'Admin Operation',
-          image: 'woman',
+          image: 'nungki',
         },
         {
           name: 'Ayumi Fadhillah',
@@ -170,7 +170,7 @@ export default {
           image: 'masruroh',
         },
         {
-          name: 'Nadila Putri S',
+          name: 'Putri Surbakti',
           position: 'Admin Operation',
           image: 'nadila-putri',
         },
@@ -183,6 +183,26 @@ export default {
           name: 'Khoirunnisa Azizah',
           position: 'Admin Operation',
           image: 'khoirunnisa-azizah',
+        },
+        {
+          name: 'Farhah Salamah',
+          position: 'Admin Operation',
+          image: 'woman',
+        },
+        {
+          name: 'Firdaus Yulia Fika',
+          position: 'Admin Operation',
+          image: 'firdaus-yulia-fika',
+        },
+        {
+          name: 'Ersa Nur Trajeswan',
+          position: 'Admin Operation',
+          image: 'ersa-nur',
+        },
+        {
+          name: 'Sherly Marlinda',
+          position: 'Finance',
+          image: 'sherly-marlinda',
         },
       ],
     };
