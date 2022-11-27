@@ -187,7 +187,7 @@ export default {
         {
           name: 'Farhah Salamah',
           position: 'Admin Operation',
-          image: 'woman',
+          image: 'farhah',
         },
         {
           name: 'Firdaus Yulia Fika',
