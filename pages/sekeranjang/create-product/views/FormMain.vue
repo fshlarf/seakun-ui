@@ -113,10 +113,7 @@
       />
 
       <div class="flex items-center space-x-2 tn:pt-2 tn:mt-4">
-        <div
-          class="cursor-pointer w-[24px]"
-          @click="isHasPromoPeriod = !isHasPromoPeriod"
-        >
+        <div class="cursor-pointer w-[24px]" @click="onTickPromoPeriod">
           <CheckedBox v-if="isHasPromoPeriod" />
           <UncheckBox v-else />
         </div>
@@ -525,8 +522,8 @@ export default {
       internationalPhoneNumbers,
       codeNumber: '+62',
       codePhone: 62,
-      promoStart: null,
-      promoEnd: null,
+      promoStart: '',
+      promoEnd: '',
       isShowCodeNumber: false,
       isShowPromoList: false,
       isAgreeTos: false,
@@ -579,8 +576,8 @@ export default {
         description: '',
         quota: '2',
         productUrl: '',
-        promoStartAt: null,
-        promoEndAt: null,
+        promoStartAt: '',
+        promoEndAt: '',
         price: null,
         jointPrice: null,
       },
@@ -655,6 +652,13 @@ export default {
   methods: {
     toLocalDate(date) {
       return moment(date).locale('id').format('D MMMM YYYY');
+    },
+    onTickPromoPeriod() {
+      this.isHasPromoPeriod = !this.isHasPromoPeriod;
+      if (!this.isHasPromoPeriod) {
+        this.promoStart = '';
+        this.promoEnd = '';
+      }
     },
     onCloseModalConfirmation() {
       this.isShowModalConfirmation = !this.isShowModalConfirmation;
@@ -1034,39 +1038,51 @@ export default {
         promoEnd,
         codePhone,
       } = this;
-      const payload = {
-        isJoinPo: this.isJoinPo ? 1 : 0,
-        publisherName: dataDetailProduct.publisherName,
-        publisherEmail: dataDetailProduct.publisherEmail,
-        publisherPhone: codePhone + dataDetailProduct.publisherPhone,
-        publisherAddress: dataDetailProduct.publisherAddress
+
+      const formData = new FormData();
+
+      formData.append('isJoinPo', this.isJoinPo ? 1 : 0);
+      formData.append('publisherName', dataDetailProduct.publisherName);
+      formData.append('publisherEmail', dataDetailProduct.publisherEmail);
+      formData.append(
+        'publisherPhone',
+        codePhone + dataDetailProduct.publisherPhone
+      );
+      formData.append(
+        'publisherAddress',
+        dataDetailProduct.publisherAddress
           ? dataDetailProduct.publisherAddress
-          : null,
-        shippingAddress: dataDetailProduct.publisherAddress
+          : null
+      );
+      formData.append(
+        'shippingAddress',
+        dataDetailProduct.publisherAddress
           ? dataDetailProduct.publisherAddress
-          : null,
-        name: dataDetailProduct.name,
-        brand: dataDetailProduct.brand,
-        promoType: dataDetailProduct.promoType,
-        description: dataDetailProduct.description,
-        quota: parseInt(dataDetailProduct.quota),
-        productUrl: dataDetailProduct.productUrl,
-        promoStartAt: promoStart
-          ? moment(promoStart).unix()
-          : dataDetailProduct.promoStartAt,
-        promoEndAt: promoEnd
-          ? moment(promoEnd).unix()
-          : dataDetailProduct.promoEndAt,
-        price: parseInt(dataDetailProduct.price),
-        jointPrice: parseInt(dataDetailProduct.jointPrice),
-      };
+          : null
+      );
+      formData.append('name', dataDetailProduct.name);
+      formData.append('brand', dataDetailProduct.brand);
+      formData.append('promoType', dataDetailProduct.promoType);
+      formData.append('description', dataDetailProduct.description);
+      formData.append('quota', parseInt(dataDetailProduct.quota));
+      formData.append('productUrl', dataDetailProduct.productUrl);
+      formData.append(
+        'promoStartAt',
+        promoStart ? moment(promoStart).unix() : dataDetailProduct.promoStartAt
+      );
+      formData.append(
+        'promoEndAt',
+        promoEnd ? moment(promoEnd).unix() : dataDetailProduct.promoEndAt
+      );
+      formData.append('price', parseInt(dataDetailProduct.price));
+      formData.append('jointPrice', parseInt(dataDetailProduct.jointPrice));
+      this.productImages.forEach((image) => {
+        formData.append('image', image);
+      });
       try {
-        const postProduct = await SekeranjangService.createProduct(payload);
+        const postProduct = await SekeranjangService.createProduct(formData);
         if (postProduct.data) {
-          const result = postProduct.data.data.split(',');
-          const productUid = result[0];
-          const customerUid = result[1];
-          this.postImageProduct(productUid, customerUid);
+          this.$router.push('/sekeranjang/create-success');
         } else {
           throw new Error(postProduct);
         }

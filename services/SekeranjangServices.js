@@ -18,8 +18,8 @@ class SekeranjangService {
   }
 
   createProduct(params) {
-    return this.serviceApi.post('/customer/sekeranjang/product', {
-      ...params,
+    return this.serviceApi.post('/customer/sekeranjang/product', params, {
+      headers: { 'Content-Type': 'multipart/form-data' },
     });
   }
 
