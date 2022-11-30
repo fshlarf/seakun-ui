@@ -9,11 +9,11 @@ export const priceChangeList = [
   //   slug: 'canva',
   //   message: 'Provider Canva memperbarui harga berlangganannya',
   // },
-  // {
-  //   name: 'Nord VPN',
-  //   slug: 'nord-vpn',
-  //   message: 'Provider Nord VPN memperbarui harga berlangganannya',
-  // },
+  {
+    name: 'Nord VPN',
+    slug: 'nord-vpn',
+    message: 'perubahan kurs Rupiah terhadap Dollar',
+  },
   // {
   //   name: 'Setapp',
   //   slug: 'setapp',

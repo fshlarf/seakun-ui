@@ -912,7 +912,7 @@ export const providerList = [
       },
       {
         title: 'Harga setelah dikenakan pajak 11%',
-        value: '$13.31 = Rp206.288',
+        value: '$13.31 = Rp214.273',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -920,15 +920,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp206.288 ÷ 6 = Rp34.381',
+        value: 'Rp214.273 ÷ 6 = Rp35.712',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.119',
+        value: 'Rp6.288',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp39.500',
+        value: 'Rp42.000',
         is_total: true,
       },
     ],
