@@ -1072,7 +1072,9 @@ export default {
       );
       formData.append(
         'promoEndAt',
-        promoEnd ? moment(promoEnd).unix() : dataDetailProduct.promoEndAt
+        promoEnd
+          ? moment(promoEnd).endOf('day').unix()
+          : dataDetailProduct.promoEndAt
       );
       formData.append('price', parseInt(dataDetailProduct.price));
       formData.append('jointPrice', parseInt(dataDetailProduct.jointPrice));
