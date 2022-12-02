@@ -110,6 +110,9 @@ export default {
         case 'nord-vpn':
           return '6';
           break;
+        case 'nintendo-switch':
+          return '7';
+          break;
         case 'mcafee':
           return '10';
           break;
