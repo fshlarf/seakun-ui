@@ -1627,4 +1627,92 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Nintendo Switch Online',
+    slug: 'nintendo-switch',
+    title: 'Harga Paket Reguler 1 Tahun',
+    img: '/images/product/brand/nintendo-switch.png',
+    screenshot: '/images/price scheme/nintendo-switch.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Membership Family Nintendo Switch Online',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 7 member untuk join membership Family Nintendo Switch Online',
+      'Member yang telah join ke grup dapat menikmati semua benefit Membership Nintendo Switch Online',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Reguler 1 Tahun',
+        is_total: true,
+      },
+      {
+        title: 'Harga Reguler 1 Tahun',
+        value: '$34.99 = Rp563.339',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '7',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp563.339 ÷ 7 = Rp80.482',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp60.000',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp140.482',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Nintendo Switch Online',
+    slug: 'nintendo-switch',
+    title: 'Harga Paket Expansion Pack 1 Tahun',
+    img: '/images/product/brand/nintendo-switch.png',
+    screenshot: '/images/price scheme/nintendo-switch-x.png',
+    schemes: [
+      'Seakun membuat akun dan membeli Membership Family Nintendo Switch Online Expansion Pack',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 7 member untuk join membership Family Nintendo Switch Online Expansion Pack',
+      'Member yang telah join ke grup dapat menikmati semua benefit Membership Nintendo Switch Online Expansion Pack',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Expansion Pack 1 Tahun',
+        is_total: true,
+      },
+      {
+        title: 'Harga Expansion Pack 1 Tahun',
+        value: '$79.99 = Rp1.287.839',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '7',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.287.839 ÷ 7 = Rp183.988',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp60.000',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp243.988',
+        is_total: true,
+      },
+    ],
+  },
 ];
