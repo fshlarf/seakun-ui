@@ -104,6 +104,7 @@ export default {
         case 'wattpad':
         case 'scribd':
         case 'amazon-prime':
+        case 'kaspersky-total':
           return '3';
           break;
         case 'nord-vpn':
@@ -116,6 +117,7 @@ export default {
         case 'bitdefender':
         case 'lastpass':
         case 'apple-music':
+        case 'kaspersky-internet':
           return '5';
           break;
         default:
