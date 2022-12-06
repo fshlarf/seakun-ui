@@ -113,7 +113,7 @@ export default {
   left: 0;
   z-index: 5;
   background-color: black;
-  opacity: 70%;
+  opacity: 0.7;
   width: 100%;
   height: 100%;
 }
