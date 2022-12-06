@@ -7,6 +7,7 @@
     <!-- <WhatsappNoticeBanner /> -->
     <SeakunHelpBanner />
     <ProductSection />
+    <CompanyPartnerSection />
     <UserTypeSection />
     <OrderFlowSection />
     <PaymentSection />
@@ -25,6 +26,7 @@ import HeaderSection from '~/components/organisms/HeaderSection';
 import IntroductionSection from '~/components/organisms/IntroductionSection';
 import PartnershipSection from '~/components/organisms/PartnershipSection';
 import ProductSection from '~/components/organisms/ProductSection';
+import CompanyPartnerSection from '~/components/organisms/CompanyPartnerSection';
 import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
 import PaymentSection from '~/components/organisms/PaymentSection';
@@ -44,6 +46,7 @@ export default {
     IntroductionSection,
     PartnershipSection,
     ProductSection,
+    CompanyPartnerSection,
     UserTypeSection,
     OrderFlowSection,
     PaymentSection,
