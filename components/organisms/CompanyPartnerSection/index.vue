@@ -1,9 +1,7 @@
 <template>
   <div id="userType" class="container pt-20">
     <div class="text-center">
-      <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-4 lg:mb-8">
-        Partner Seakun
-      </h1>
+      <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-4 lg:mb-8">Partner</h1>
     </div>
     <div
       class="w-full h-full grid tn:grid-cols-2 md:grid-cols-4 tn:gap-3 lg:gap-6 place-items-stretch items-stretch"
