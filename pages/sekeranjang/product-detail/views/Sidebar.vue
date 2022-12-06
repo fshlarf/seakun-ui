@@ -80,7 +80,7 @@
           *Total harga belum termasuk ongkir
         </p>
         <hr class="tn:my-2" />
-        <div class="flex items-start space-x-2 tn:pt-2">
+        <div v-if="isAvailable" class="flex items-start space-x-2 tn:pt-2">
           <div
             class="cursor-pointer w-[24px]"
             @click="isAgreeTos = !isAgreeTos"
@@ -101,6 +101,7 @@
         </div>
 
         <Button
+          v-if="isAvailable"
           label="Ikut patungan"
           variant="primary"
           class="w-full tn:mt-4"
@@ -108,6 +109,12 @@
           :disabled="!isAgreeTos"
           @click="$emit('onClickOrder')"
         />
+        <div
+          v-else
+          class="tn:mt-4 w-full rounded-lg bg-red-100 text-red-500 tn:p-4 text-center font-bold"
+        >
+          Masa promo berakhir
+        </div>
       </div>
     </div>
   </div>
@@ -118,6 +125,7 @@ import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
 import Button from '~/components/atoms/Button';
 import { currencyFormat } from '../../../../helpers';
+import moment from 'moment';
 
 export default {
   components: {
@@ -140,6 +148,19 @@ export default {
     linkProduct() {
       const domain = window.location.origin;
       return `${domain}/sekeranjang/product-detail?product_id=${this.product.uid}`;
+    },
+    isAvailable() {
+      let available;
+      if (
+        this.product.promoEndAt === 0 ||
+        (this.product.promoEndAt !== 0 &&
+          moment().unix() < this.product.promoEndAt)
+      ) {
+        available = true;
+      } else {
+        available = false;
+      }
+      return available;
     },
   },
   methods: {
