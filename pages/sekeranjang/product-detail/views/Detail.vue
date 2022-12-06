@@ -150,9 +150,16 @@
           {{ product.brand }}
         </p>
         <p
+          v-if="isAvailable"
           class="bg-primary rounded-full py-1 px-3 text-white tn:text-[12px] lg:text-[14px]"
         >
           Tersedia
+        </p>
+        <p
+          v-else
+          class="bg-red-500 rounded-full py-1 px-3 text-white tn:text-[12px] lg:text-[14px]"
+        >
+          Tidak tersedia
         </p>
       </div>
       <h1
@@ -190,9 +197,16 @@
           {{ product.brand }}
         </p>
         <p
+          v-if="isAvailable"
           class="bg-primary rounded-full py-1 px-3 text-white tn:text-[12px] lg:text-[14px]"
         >
           Tersedia
+        </p>
+        <p
+          v-else
+          class="bg-red-500 rounded-full py-1 px-3 text-white tn:text-[12px] lg:text-[14px]"
+        >
+          Tidak tersedia
         </p>
         <div class="rounded flex !items-center !space-x-2">
           <i class="w-[16px] h-[16px] fa-solid fa-user-group text-primary"></i>
@@ -230,6 +244,10 @@
           </p>
         </div>
       </div>
+    </div>
+
+    <div v-if="!isAvailable" class="tn:mt-4 lg:mt-6">
+      <WarningInfo class="w-full" :text="expiredWarning" />
     </div>
 
     <div
@@ -560,8 +578,12 @@
 <script>
 import { currencyFormat } from '../../../../helpers';
 import moment from 'moment';
+import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 
 export default {
+  components: {
+    WarningInfo,
+  },
   props: {
     product: {
       type: Object,
@@ -598,6 +620,8 @@ export default {
         'Biaya admin Seakun minimal Rp15.000 dan maksimal 5% dari selisih harga asli dan harga patungan.',
       ],
       slide: 1,
+      expiredWarning:
+        'Maaf, produk ini tidak bisa di pesan karena telah melewati batas waktu promo.',
     };
   },
   computed: {
@@ -608,6 +632,19 @@ export default {
     description() {
       const desc = this.product.description.split('\n');
       return desc;
+    },
+    isAvailable() {
+      let available;
+      if (
+        this.product.promoEndAt === 0 ||
+        (this.product.promoEndAt !== 0 &&
+          moment().unix() < this.product.promoEndAt)
+      ) {
+        available = true;
+      } else {
+        available = false;
+      }
+      return available;
     },
   },
   mounted() {

@@ -20,7 +20,7 @@
       <DetailProductLoading />
     </div>
     <div class="w-full bg-white tn:p-3 fixed bottom-0 lg:hidden">
-      <div class="flex items-center space-x-2">
+      <div v-if="isAvailable" class="flex items-center space-x-2">
         <div
           role="button"
           :disabled="isLoadingProduct"
@@ -39,6 +39,7 @@
         </p>
       </div>
       <Button
+        v-if="isAvailable"
         label="Ikut patungan"
         variant="primary"
         class="w-full tn:mt-4"
@@ -46,6 +47,12 @@
         :disabled="!isAgreeTos"
         @click="onClickOrder"
       />
+      <div
+        v-else
+        class="tn:mt-4 w-full rounded-lg bg-red-100 text-red-500 tn:p-4 text-center font-bold"
+      >
+        Masa promo berakhir
+      </div>
     </div>
     <Snackbar ref="snackbar" />
   </div>
@@ -60,6 +67,7 @@ import DetailProductLoading from './DetailProductLoading.vue';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
 import Button from '~/components/atoms/Button';
+import moment from 'moment';
 export default {
   components: {
     Detail,
@@ -78,6 +86,21 @@ export default {
       isLoadingProduct: true,
       isAgreeTos: false,
     };
+  },
+  computed: {
+    isAvailable() {
+      let available;
+      if (
+        this.dataDetailProduct.promoEndAt === 0 ||
+        (this.dataDetailProduct.promoEndAt !== 0 &&
+          moment().unix() < this.dataDetailProduct.promoEndAt)
+      ) {
+        available = true;
+      } else {
+        available = false;
+      }
+      return available;
+    },
   },
   mounted() {
     this.SekeranjangService = new SekeranjangService(this);
