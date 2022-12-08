@@ -9,7 +9,7 @@
       <div
         v-for="(partner, id) in partners"
         :key="id"
-        class="shadow-xl rounded-2xl tn:px-6 tn:py-2 bg-white flex justify-center items-center"
+        class="tn:px-6 tn:py-2 flex justify-center items-center"
       >
         <img
           class="w-full"
