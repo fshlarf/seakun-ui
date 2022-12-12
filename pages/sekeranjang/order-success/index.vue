@@ -129,8 +129,9 @@ export default {
     }),
   },
   mounted() {
+    const domain = window.location.origin;
     const { product_id, order_id } = this.$router.history.current.query;
-    this.productUrl = `https://seakun.id/sekeranjang/product-detail?product_id=${product_id}&order_id=${order_id}`;
+    this.productUrl = `${domain}/sekeranjang/product-detail?product_id=${product_id}&order_id=${order_id}`;
     if (Object.keys(this.dataDetailProduct.data).length === 0) {
       this.setProductUid(product_id);
       this.getProductDetail(product_id);
