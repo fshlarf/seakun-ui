@@ -104,11 +104,11 @@
         class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto px-3 py-2"
       >
         <div
-          class="flex-none w-72 h-72"
+          class="flex-none tn:w-64 tn:h-64 md:w-72 md:h-72"
           v-for="(item, index) in shimmerInitialData"
           :key="index"
         >
-          <CardShimmerVertical />
+          <UserCardShimmer />
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@ import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import CardShimmer from '~/components/mollecules/CardShimmer';
-import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
+import UserCardShimmer from './views/group-card-loading.vue';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
 import { mapGetters, mapActions } from 'vuex';
 
@@ -149,8 +149,8 @@ export default {
     Button,
     ButtonChevron,
     CardShimmer,
-    CardShimmerVertical,
     ModalPackages,
+    UserCardShimmer,
   },
   computed: {
     ...mapGetters({
