@@ -25,7 +25,7 @@
     <Button
       variant="primary"
       label="Daftar"
-      class="w-full mt-4 py-3"
+      class="w-full mt-4 py-2"
       :is-loading="isLoading"
       @click="$emit('clickSubmit')"
     />

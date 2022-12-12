@@ -19,16 +19,16 @@
           />
         </span>
         <div
-          v-if="!isLoadingProduct"
+          v-if="!dataProviderList.loading"
           id="container-pill"
           class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
         >
           <ProviderPill
-            v-for="(provider, id) in dataProviders"
+            v-for="(provider, id) in dataProviderList.list"
             :key="id"
             :provider="provider"
-            :is-loading="isLoading"
-            :data-group="dataDetailGroup"
+            :is-loading="dataGroupList.loading"
+            :data-group="dataGroupList.list"
             class="my-2 w-full h-full flex-none cursor-pointer"
             :class="{
               'high-light ': provider.slug === highlight,
@@ -57,9 +57,12 @@
         </span>
       </div>
 
-      <div v-if="!isLoading" class="relative flex items-center w-full">
+      <div
+        v-if="!dataGroupList.loading"
+        class="relative flex items-center w-full"
+      >
         <span
-          v-if="dataDetailGroup.length >= 5"
+          v-if="dataGroupList.list && dataGroupList.list.length >= 5"
           class="hidden xl:block -ml-10 mr-4"
         >
           <ButtonChevron
@@ -73,21 +76,21 @@
           class="scroll-provider flex space-x-6 overflow-x-auto overscroll-auto px-3 pt-2 -ml-4"
         >
           <GroupCard
-            v-for="(group, id) in dataDetailGroup"
+            v-for="(group, id) in dataGroupList.list"
             :key="id"
             :group="group"
             class="my-2 w-full h-full flex-none"
             @click-order="onClickOrder"
           />
           <ButtonChevron
-            v-if="dataDetailGroup.length >= 5"
+            v-if="dataGroupList.list && dataGroupList.list.length >= 5"
             btnText="Selengkapnya"
             class="self-center"
             @click-chevron="toCustomerPage"
           />
         </div>
         <span
-          v-if="dataDetailGroup.length >= 5"
+          v-if="dataGroupList.list && dataGroupList.list.length >= 5"
           class="hidden xl:block -mr-14 z-20 ml-2"
         >
           <ButtonChevron
@@ -101,11 +104,11 @@
         class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto px-3 py-2"
       >
         <div
-          class="flex-none w-72 h-72"
+          class="flex-none tn:w-64 tn:h-64 md:w-72 md:h-72"
           v-for="(item, index) in shimmerInitialData"
           :key="index"
         >
-          <CardShimmerVertical />
+          <UserCardShimmer />
         </div>
       </div>
     </div>
@@ -116,41 +119,28 @@
       @onClose="onCloseModalPackages"
       :slug="provider"
       @choosePacket="choosePacket"
-      :is-loading="isLoadingProduct"
     />
   </div>
 </template>
 
 <script>
-import MasterService from '~/services/MasterServices.js';
 import ProviderPill from '~/components/mollecules/ProviderPill.vue';
 import GroupCard from '~/components/mollecules/GroupCard.vue';
 import Button from '~/components/atoms/Button.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import CardShimmer from '~/components/mollecules/CardShimmer';
-import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
+import UserCardShimmer from './views/group-card-loading.vue';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
-import axios from 'axios';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
     return {
-      MasterService,
       shimmerInitialData: Array(4),
-      isLoading: true,
-      dataDetailGroup: [],
       provider: '',
-      isFetchingPacket: false,
-      isLoadingProduct: false,
       isShowModalPackages: false,
       dataPackages: {},
-      dataProviders: [],
-      paramGetProviderList: {
-        page: 1,
-        limit: 50,
-      },
       highlight: 'youtube',
-      providerUid: '1ec4b4fa-a756-456b-a01a-f48ff48fad58',
     };
   },
   components: {
@@ -159,15 +149,22 @@ export default {
     Button,
     ButtonChevron,
     CardShimmer,
-    CardShimmerVertical,
     ModalPackages,
+    UserCardShimmer,
   },
-  mounted() {
-    this.MasterService = new MasterService(this);
-    this.getProviders();
-    this.getAccountGroups(this.providerUid);
+  computed: {
+    ...mapGetters({
+      dataProviderList: 'getProviders',
+      dataGroupList: 'getGroups',
+      dataCardVariant: 'getDataCardVariant',
+    }),
   },
   methods: {
+    ...mapActions({
+      fetchGroup: 'applyFilterGroup',
+      setSelectedProvider: 'setSelectedProvider',
+      setDataCardVariant: 'setDataCardVariant',
+    }),
     scrollPill(direction) {
       if (direction === 'right') {
         document.getElementById('container-pill').scrollLeft += 600;
@@ -183,50 +180,10 @@ export default {
       }
     },
     selectProvider(provider) {
-      this.getAccountGroups(provider.uid);
-      this.isLoading = true;
+      this.setSelectedProvider(provider);
+      this.fetchGroup(provider.uid);
       this.highlight = provider.slug;
       this.providerUid = provider.uid;
-    },
-    async getProviders() {
-      this.isLoadingProduct = true;
-      const { MasterService, paramGetProviderList } = this;
-      try {
-        const fetchProviderList = await MasterService.getProvider(
-          paramGetProviderList
-        );
-        if (fetchProviderList.data) {
-          const { data } = fetchProviderList.data;
-          this.dataProviders = data.filter((provider) => {
-            return provider.slug !== 'vidio';
-          });
-        } else {
-          throw new Error(fetchProviderList);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      this.isLoadingProduct = false;
-    },
-    async getAccountGroups(providerUid) {
-      const { MasterService } = this;
-      const params = {
-        page: 1,
-        limit: 5,
-        providerUid,
-      };
-      try {
-        const fetchAccountGroups = await MasterService.getAccountGroups(params);
-        if (fetchAccountGroups.data) {
-          const { data } = fetchAccountGroups.data;
-          this.dataDetailGroup = data ? data : [];
-          this.isLoading = false;
-        } else {
-          throw new Error(fetchAccountGroups);
-        }
-      } catch (error) {
-        console.log(error);
-      }
     },
     toCustomerPage() {
       this.$router.push(`/info/customers?provider=${this.providerUid}`);
@@ -237,7 +194,7 @@ export default {
       } else {
         this.provider = provider;
       }
-      this.dataProviders.forEach((providers) => {
+      this.dataProviderList.list.forEach((providers) => {
         if (providers.slug.toLowerCase() === this.provider.toLowerCase()) {
           this.dataPackages = providers;
         }
@@ -248,6 +205,13 @@ export default {
       this.isShowModalPackages = false;
     },
     choosePacket(packet) {
+      const data = {
+        ...this.dataCardVariant,
+        isPo: packet.isPo,
+        isHost: packet.isHost,
+      };
+      this.setDataCardVariant(data);
+
       this.$router.push(
         `/order?provider=${this.provider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );

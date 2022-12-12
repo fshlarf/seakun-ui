@@ -5,6 +5,7 @@ export const providerList = [
     title: 'Harga Paket Premium (User Host)',
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price scheme/netflix.png',
+    member: 4,
     schemes: [
       'Seakun meminta membuat akun di Netflix dan melakukan pembayaran',
       'Setelah berhasil membayar, Seakun akan proses profil User Host di Netflix',
@@ -47,6 +48,7 @@ export const providerList = [
     title: 'Harga Paket Premium (Reguler)',
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price scheme/netflix.png',
+    member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Netflix',
       'Dalam 1 akun tersebut, Seakun membuat profile sebanyak 4',
@@ -89,6 +91,7 @@ export const providerList = [
     title: 'Harga Paket Premium Spotify',
     img: '/images/product/brand/spotify.png',
     screenshot: '/images/price scheme/spotify.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Spotify',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -131,6 +134,7 @@ export const providerList = [
     title: 'Harga Paket Premium Spotify 3 Bulan',
     img: '/images/product/brand/spotify.png',
     screenshot: '/images/price scheme/spotify3.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Spotify',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -173,6 +177,7 @@ export const providerList = [
     title: 'Harga Paket Premium (Full)',
     img: '/images/product/brand/gramedia.png',
     screenshot: '/images/price scheme/gramedia.png',
+    member: 2,
     schemes: [
       'Seakun membuat akun dan membeli PAKET PREMIUM di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
@@ -212,6 +217,7 @@ export const providerList = [
     title: 'Harga Paket Premium (Fiksi)',
     img: '/images/product/brand/gramedia.png',
     screenshot: '/images/price scheme/gramedia-fiction.png',
+    member: 2,
     schemes: [
       'Seakun membuat akun dan membeli PAKET FIKSI di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
@@ -251,6 +257,7 @@ export const providerList = [
     title: 'Harga Paket Premium (Non-Fiksi)',
     img: '/images/product/brand/gramedia.png',
     screenshot: '/images/price scheme/gramedia-non-fiction.png',
+    member: 2,
     schemes: [
       ' Seakun membuat akun dan membeli PAKET NON-FIKSI di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
@@ -290,6 +297,7 @@ export const providerList = [
     title: 'Harga Paket Premium (User Host)',
     img: '/images/product/brand/youtube.png',
     screenshot: '/images/price scheme/youtube.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Youtube',
       'Member bertindak sebagai user Host dalam grup',
@@ -336,6 +344,7 @@ export const providerList = [
     title: 'Harga Paket Premium (Reguler)',
     img: '/images/product/brand/youtube.png',
     screenshot: '/images/price scheme/youtube.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Youtube',
       'Seakun bertindak sebagai user Host dalam grup ',
@@ -382,6 +391,7 @@ export const providerList = [
     title: 'Harga Paket Premium (1 Bulan)',
     img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price scheme/microsoft365.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -424,6 +434,7 @@ export const providerList = [
     title: 'Harga Paket Premium (1 Tahun)',
     img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price scheme/microsoft365-year.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -466,6 +477,7 @@ export const providerList = [
     title: 'Harga Paket Canva Teams (1 Bulan)',
     img: '/images/product/brand/canva.png',
     screenshot: '/images/price scheme/canva-month.png',
+    member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -508,6 +520,7 @@ export const providerList = [
     title: 'Harga Paket Canva Teams (1 Tahun)',
     img: '/images/product/brand/canva.png',
     screenshot: '/images/price scheme/canva-year.png',
+    member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -550,6 +563,7 @@ export const providerList = [
     title: 'Harga Paket Disney+ Hotstar (1 Tahun)',
     img: '/images/product/brand/disney-hotstar.png',
     screenshot: '/images/price scheme/disney-hotstar-year.png',
+    member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Disney+ Hotstar',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -591,6 +605,7 @@ export const providerList = [
     title: 'Harga Paket Wattpad (Bulanan)',
     img: '/images/product/brand/wattpad.png',
     screenshot: '/images/price scheme/wattpad.png',
+    member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Wattpad PREMIUM',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -632,6 +647,7 @@ export const providerList = [
     title: 'Harga Paket Apple One (User Host)',
     img: '/images/product/brand/apple-one.png',
     screenshot: '/images/price scheme/apple-one.png',
+    member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
@@ -675,6 +691,7 @@ export const providerList = [
     title: 'Harga Paket Apple One (User Reguler)',
     img: '/images/product/brand/apple-one.png',
     screenshot: '/images/price scheme/apple-one.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Family',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -716,6 +733,7 @@ export const providerList = [
     title: 'Harga Paket Apple Music (User Host)',
     img: '/images/product/brand/apple-music.png',
     screenshot: '/images/price scheme/apple-music.png',
+    member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
@@ -759,6 +777,7 @@ export const providerList = [
     title: 'Harga Paket Apple Music (User Reguler)',
     img: '/images/product/brand/apple-music.png',
     screenshot: '/images/price scheme/apple-music.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Apple Music',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -800,6 +819,7 @@ export const providerList = [
     title: 'Harga Paket Google One (Userhost)',
     img: '/images/product/brand/google-one.png',
     screenshot: '/images/price scheme/google-one-premium.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun gmail dan membeli Paket Premium Google',
       'Member bertindak sebagai user Host dalam grup',
@@ -846,6 +866,7 @@ export const providerList = [
     title: 'Harga Paket Google One (Reguler)',
     img: '/images/product/brand/google-one.png',
     screenshot: '/images/price scheme/google-one-premium.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun gmail dan membeli Paket Premium Google',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -892,6 +913,7 @@ export const providerList = [
     title: 'Harga Paket NordVPN (Bulanan)',
     img: '/images/product/brand/nord-vpn.png',
     screenshot: '/images/price scheme/nord-vpn.png',
+    member: 6,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Nord VPN',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -939,6 +961,7 @@ export const providerList = [
     title: 'Paket Premium Amazon Prime Video (Bulanan)',
     img: '/images/product/brand/amazon-prime.png',
     screenshot: '/images/price scheme/amazon-prime.png',
+    member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Prime Video',
       'Dalam 1 akun tersebut, Seakun membuat 3 profile',
@@ -980,6 +1003,7 @@ export const providerList = [
     title: 'Harga Paket Apple One Premier (User Host)',
     img: '/images/product/brand/apple-one-premier.png',
     screenshot: '/images/price scheme/apple-one-premier.png',
+    member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
@@ -1023,6 +1047,7 @@ export const providerList = [
     title: 'Harga Paket Apple One Premier (User Reguler)',
     img: '/images/product/brand/apple-one-premier.png',
     screenshot: '/images/price scheme/apple-one-premier.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Premier',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1064,6 +1089,7 @@ export const providerList = [
     title: 'Harga Paket Apple TV (User Host)',
     img: '/images/product/brand/apple-tv.png',
     screenshot: '/images/price scheme/apple-tv.png',
+    member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
@@ -1107,6 +1133,7 @@ export const providerList = [
     title: 'Harga Paket Apple TV (User Reguler)',
     img: '/images/product/brand/apple-tv.png',
     screenshot: '/images/price scheme/apple-tv.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple TV',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1148,6 +1175,7 @@ export const providerList = [
     title: 'Harga Paket Premium',
     img: '/images/product/brand/iqiyi.png',
     screenshot: '/images/price scheme/iqiyi.png',
+    member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Iqiyi',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1189,6 +1217,7 @@ export const providerList = [
     title: 'Harga Paket Pro',
     img: '/images/product/brand/zoom.png',
     screenshot: '/images/price scheme/zoom.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Pro di Zoom',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1283,6 +1312,7 @@ export const providerList = [
     title: 'Harga Paket Premium',
     img: '/images/product/brand/hbo-go.png',
     screenshot: '/images/price scheme/hbo-go.png',
+    member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di HBO Go',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1324,6 +1354,7 @@ export const providerList = [
     title: 'Harga Paket Premium',
     img: '/images/product/brand/scribd.png',
     screenshot: '/images/price scheme/scribd.png',
+    member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Scribd',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1369,6 +1400,7 @@ export const providerList = [
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/mcafee.png',
     screenshot: '/images/price scheme/mcafee.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di McAfee',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1412,6 +1444,7 @@ export const providerList = [
     title: 'Harga Paket Premium 1 Bulan',
     img: '/images/product/brand/setapp.png',
     screenshot: '/images/price scheme/setapp.png',
+    member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Setapp',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1459,6 +1492,7 @@ export const providerList = [
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/bitdefender.png',
     screenshot: '/images/price scheme/bitdefender.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Bitdefender',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1504,6 +1538,7 @@ export const providerList = [
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/lastpass.png',
     screenshot: '/images/price scheme/lastpass.png',
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di LastPass',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1551,6 +1586,7 @@ export const providerList = [
     title: 'Harga Paket VIP 1 Bulan',
     img: '/images/product/brand/wetv.png',
     screenshot: '/images/price scheme/wetv.png',
+    member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket VIP di WeTV',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1592,6 +1628,7 @@ export const providerList = [
     title: 'Harga Paket VIP 3 Bulan',
     img: '/images/product/brand/wetv.png',
     screenshot: '/images/price scheme/wetv-3.png',
+    member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket VIP di WeTV',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1633,6 +1670,7 @@ export const providerList = [
     title: 'Harga Paket Reguler 1 Tahun',
     img: '/images/product/brand/nintendo-switch.png',
     screenshot: '/images/price scheme/nintendo-switch.png',
+    member: 7,
     schemes: [
       'Seakun membuat akun dan membeli Membership Family Nintendo Switch Online',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1681,6 +1719,7 @@ export const providerList = [
     title: 'Harga Paket Expansion Pack 1 Tahun',
     img: '/images/product/brand/nintendo-switch.png',
     screenshot: '/images/price scheme/nintendo-switch-x.png',
+    member: 7,
     schemes: [
       'Seakun membuat akun dan membeli Membership Family Nintendo Switch Online Expansion Pack',
       'Seakun bertindak sebagai user Host dalam grup',

@@ -10,7 +10,8 @@
       @click="click"
       style="padding-top: 1rem; padding-bottom: 1rem"
     >
-      {{ btnText }}
+      <span v-if="btnText">{{ btnText }}</span
+      ><span v-else>-</span>
       <svg
         version="1.1"
         id="Layer_1"
@@ -21,7 +22,7 @@
         viewBox="0 0 512 512"
         style="enable-background: new 0 0 512 512"
         xml:space="preserve"
-        class="w-3 h-3"
+        class="w-3 h-3 float-right"
       >
         <path
           d="M509.121,125.966c-3.838-3.838-10.055-3.838-13.893,0L256.005,365.194L16.771,125.966c-3.838-3.838-10.055-3.838-13.893,0

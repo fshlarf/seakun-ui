@@ -469,7 +469,7 @@
 
     <ModalConfirmation
       :show-modal="isShowModalConfirmation"
-      :is-loading="isLoadingSumbitProduct"
+      :is-loading="isLoadingCreateProduct"
       @onClose="onCloseModalConfirmation"
       @onRecheck="onClickRecheck"
       @clickSubmit="onClickSubmit"
@@ -495,10 +495,11 @@ import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
 import { currencyFormat } from '../../../../helpers/word-transformation';
 import DatePicker from 'vue2-datepicker';
-import SekeranjangService from '~/services/SekeranjangServices.js';
 import moment from 'moment';
 import 'vue2-datepicker/index.css';
 import '~/assets/styles/datepicker.scss';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   components: {
     CheckedBox,
@@ -518,7 +519,6 @@ export default {
   data() {
     return {
       moment,
-      SekeranjangService,
       internationalPhoneNumbers,
       codeNumber: '+62',
       codePhone: 62,
@@ -531,7 +531,6 @@ export default {
       isHasPromoPeriod: false,
       isShowModalConfirmation: false,
       isShowFormWarning: false,
-      isLoadingSumbitProduct: false,
       paramProductService: {
         page: 1,
         limit: 10,
@@ -640,16 +639,21 @@ export default {
     },
   },
   computed: {
+    ...mapGetters({
+      isLoadingCreateProduct: 'sekeranjang/getLoadingCreateProduct',
+    }),
     descriptionPreview() {
       const list = this.dataDetailProduct.description.split('\n');
       return list;
     },
   },
   mounted() {
-    this.SekeranjangService = new SekeranjangService(this);
     this.setFieldValueFromLocalStorage();
   },
   methods: {
+    ...mapActions({
+      createProduct: 'sekeranjang/createProduct',
+    }),
     toLocalDate(date) {
       return moment(date).locale('id').format('D MMMM YYYY');
     },
@@ -1030,14 +1034,7 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     async onClickSubmit() {
-      this.isLoadingSumbitProduct = true;
-      const {
-        SekeranjangService,
-        dataDetailProduct,
-        promoStart,
-        promoEnd,
-        codePhone,
-      } = this;
+      const { dataDetailProduct, promoStart, promoEnd, codePhone } = this;
 
       const formData = new FormData();
 
@@ -1081,41 +1078,8 @@ export default {
       this.productImages.forEach((image) => {
         formData.append('image', image);
       });
-      try {
-        const postProduct = await SekeranjangService.createProduct(formData);
-        if (postProduct.data) {
-          this.$router.push('/sekeranjang/create-success');
-        } else {
-          throw new Error(postProduct);
-        }
-      } catch (error) {
-        console.log(error);
-        this.isLoadingSumbitProduct = false;
-      }
-    },
-    async postImageProduct(productUid, customerUid) {
-      const { SekeranjangService } = this;
-      const formData = new FormData();
 
-      formData.append('sekeranjangUid', productUid);
-      formData.append('customerUid', customerUid);
-      this.productImages.forEach((image) => {
-        formData.append('image', image);
-      });
-
-      try {
-        const postProductImage = await SekeranjangService.uploadImages(
-          formData
-        );
-        if (postProductImage.data) {
-          this.$router.push('/sekeranjang/create-success');
-        } else {
-          throw new Error(postProductImage);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      this.isLoadingSumbitProduct = false;
+      this.createProduct(formData);
     },
     setFieldValueFromLocalStorage() {
       const registeredProduct = JSON.parse(
