@@ -20,15 +20,15 @@
 
     <h3 class="text-[20px] font-bold tn:mt-6">Detail Produk</h3>
     <ProductOrderCard
-      :is-loading="isLoadingProduct"
-      :product="dataDetailProduct"
+      :is-loading="dataDetailProduct.loading"
+      :product="dataDetailProduct.data"
       class="tn:mt-4"
     />
 
     <h3 class="text-[20px] font-bold tn:mt-8">Detail Promo</h3>
     <PromoCard
-      :is-loading="isLoadingProduct"
-      :product="dataDetailProduct"
+      :is-loading="dataDetailProduct.loading"
+      :product="dataDetailProduct.data"
       class="tn:mt-4"
     />
 
@@ -149,9 +149,9 @@
     />
 
     <ModalOrderTimeout
-      :show-modal="isShowModalOrderTimeout"
-      :data-order="dataHelpOrder"
-      @onClose="closeModalOrderTiimeout"
+      :show-modal="isShowModalTimeout"
+      :data-order="dataHelperOrder"
+      @onClose="closeModalOrderTimeout"
     />
   </div>
 </template>
@@ -166,9 +166,9 @@ import ProductOrderCard from './ProductOrderCard.vue';
 import PromoCard from './PromoCard.vue';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
 import InputForm from '~/components/atoms/Input.vue';
-import SekeranjangService from '~/services/SekeranjangServices.js';
 import ModalBlackListWarning from '~/components/mollecules/ModalBlackListWarning.vue';
 import ModalOrderTimeout from './ModalOrderTimeout.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: {
@@ -186,10 +186,6 @@ export default {
   data() {
     return {
       internationalPhoneNumbers,
-      SekeranjangService,
-      productUid: '',
-      isLoadingProduct: true,
-      dataDetailProduct: {},
       isShowCodeNumber: false,
       codeNumber: '+62',
       codePhone: 62,
@@ -200,7 +196,6 @@ export default {
       shippingAddress: '',
       isAgreeTos: false,
       isSameAddress: true,
-      isLoadingCreateOrder: false,
       errorForm: {
         fullName: {
           isError: false,
@@ -224,41 +219,39 @@ export default {
         },
       },
       isFormValid: true,
-      isShowModalBlackList: false,
-      isShowModalOrderTimeout: false,
-      dataHelpOrder: {},
     };
   },
+  computed: {
+    ...mapGetters({
+      productUid: 'sekeranjang/getProductUid',
+      dataDetailProduct: 'sekeranjang/getDetailProduct',
+      dataHelperOrder: 'sekeranjang/getDataHelpOrder',
+      isShowModalTimeout: 'sekeranjang/getShowModalTimeout',
+      isShowModalBlackList: 'sekeranjang/getShowModalBlackList',
+      isLoadingCreateOrder: 'sekeranjang/getLoadingCreateOrder',
+    }),
+  },
   mounted() {
-    this.SekeranjangService = new SekeranjangService(this);
-    const { product_id } = this.$router.history.current.query;
-    this.productUid = product_id;
-    this.getProductByUid(this.productUid);
+    if (Object.keys(this.dataDetailProduct.data).length === 0) {
+      const { product_id } = this.$router.history.current.query;
+      this.setProductUid(product_id);
+      this.getDetailProduct(product_id);
+    }
     this.setFieldValueFromLocalStorage();
   },
   methods: {
+    ...mapActions({
+      setProductUid: 'sekeranjang/setProductUid',
+      getDetailProduct: 'sekeranjang/fetchDetailProduct',
+      createOrder: 'sekeranjang/createOrder',
+      setShowModalTimeout: 'sekeranjang/setShowModalTimeout',
+      setShowModalBlacklist: 'sekeranjang/setShowModalBlacklist',
+    }),
     closeModalBlackList() {
-      this.isShowModalBlackList = false;
+      this.setShowModalBlacklist(false);
     },
-    closeModalOrderTiimeout() {
-      this.isShowModalOrderTimeout = false;
-    },
-    async getProductByUid(uid) {
-      this.isLoadingProduct = true;
-      const { SekeranjangService } = this;
-      try {
-        const fetchDetailProduct = await SekeranjangService.getProductByUid(
-          uid
-        );
-        if (fetchDetailProduct.data) {
-          this.dataDetailProduct = fetchDetailProduct.data.data;
-        } else {
-          throw new Error(fetchDetailProduct);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-      this.isLoadingProduct = false;
+    closeModalOrderTimeout() {
+      this.setShowModalTimeout(false);
     },
     backToProductDetail() {
       this.$router.push(
@@ -398,8 +391,6 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     async submitOrder() {
-      this.isLoadingCreateOrder = true;
-      const { SekeranjangService } = this;
       const payload = {
         sekeranjangUid: this.productUid,
         name: this.fullName,
@@ -410,43 +401,7 @@ export default {
           ? this.address
           : this.shippingAddress,
       };
-      try {
-        const postCreateOrder = await SekeranjangService.createOrder(payload);
-        if (postCreateOrder.data) {
-          const orderUid = postCreateOrder.data.data;
-          this.toThankyouPage(orderUid);
-        } else {
-          throw new Error(postCreateOrder);
-        }
-      } catch (e) {
-        if (
-          e.response &&
-          e.response.data.message.includes('blocked customer')
-        ) {
-          this.isShowModalBlackList = true;
-        }
-        if (e.message.includes('20000ms')) {
-          this.dataHelpOrder = {
-            product: this.dataDetailProduct.sekeranjangCode,
-            fullName: this.fullName,
-            email: this.email,
-            phoneNumber: this.codeNumber + this.phoneNumber,
-            address: this.address,
-            shippingAddress: this.isSameAddress
-              ? this.address
-              : this.shippingAddress,
-          };
-          this.isShowModalOrderTimeout = true;
-          this.isLoadingCreateOrder = false;
-        }
-        console.log(e);
-      }
-      this.isLoadingCreateOrder = false;
-    },
-    toThankyouPage(orderUid) {
-      this.$router.push(
-        `/sekeranjang/order-success?product_id=${this.productUid}&order_id=${orderUid}`
-      );
+      this.createOrder(payload);
     },
     setFieldValueFromLocalStorage() {
       const registeredProductCustomer = JSON.parse(

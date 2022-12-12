@@ -22,7 +22,10 @@
       <p class="tn:py-0 break-all two-lines">{{ product.name }}</p>
     </div>
 
-    <div class="w-full overflow-hidden tn:mt-3 lg:hidden border relative z-0">
+    <div
+      v-if="product.images"
+      class="w-full overflow-hidden tn:mt-3 lg:hidden border relative z-0"
+    >
       <div
         class="absolute z-1 left-3 bottom-3 bg-white rounded-full tn:px-2 text-[14px] opacity-70"
       >

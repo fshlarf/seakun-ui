@@ -1,17 +1,17 @@
 <template>
   <div class="tn:pt-14 relative">
     <div
-      v-if="!isLoadingProduct"
+      v-if="!productDetail.loading"
       class="container grid grid-cols-3 items-start gap-8 tn:mt-6 relative"
     >
       <Detail
         class="tn:col-span-3 lg:col-span-2"
-        :product="dataDetailProduct"
+        :product="productDetail.data"
         @clickCopy="clickCopyHandler"
       />
       <Sidebar
         class="tn:hidden lg:block"
-        :product="dataDetailProduct"
+        :product="productDetail.data"
         @clickCopy="clickCopyHandler"
         @onClickOrder="onClickOrder"
       />
@@ -20,12 +20,12 @@
       <DetailProductLoading />
     </div>
     <div class="w-full bg-white tn:p-3 fixed bottom-0 lg:hidden">
-      <div v-if="isAvailable" class="flex items-center space-x-2">
+      <div v-if="isProductAvailable" class="flex items-center space-x-2">
         <div
           role="button"
-          :disabled="isLoadingProduct"
+          :disabled="productDetail.loading"
           class="cursor-pointer w-[24px]"
-          @click="isAgreeTos = !isAgreeTos"
+          @click="onClickAgreeTos"
         >
           <CheckedBox v-if="isAgreeTos" />
           <UncheckBox v-else />
@@ -39,7 +39,7 @@
         </p>
       </div>
       <Button
-        v-if="isAvailable"
+        v-if="isProductAvailable"
         label="Ikut patungan"
         variant="primary"
         class="w-full tn:mt-4"
@@ -60,14 +60,14 @@
 
 <script>
 import Snackbar from '~/components/mollecules/Snackbar.vue';
-import SekeranjangService from '~/services/SekeranjangServices.js';
 import Detail from './Detail.vue';
 import Sidebar from './Sidebar.vue';
 import DetailProductLoading from './DetailProductLoading.vue';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
 import Button from '~/components/atoms/Button';
-import moment from 'moment';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   components: {
     Detail,
@@ -78,55 +78,27 @@ export default {
     UncheckBox,
     Button,
   },
-  data() {
-    return {
-      SekeranjangService,
-      productUid: '',
-      dataDetailProduct: {},
-      isLoadingProduct: true,
-      isAgreeTos: false,
-    };
-  },
   computed: {
-    isAvailable() {
-      let available;
-      if (
-        this.dataDetailProduct.promoEndAt === 0 ||
-        (this.dataDetailProduct.promoEndAt !== 0 &&
-          moment().unix() < this.dataDetailProduct.promoEndAt)
-      ) {
-        available = true;
-      } else {
-        available = false;
-      }
-      return available;
-    },
+    ...mapGetters({
+      productUid: 'sekeranjang/getProductUid',
+      productDetail: 'sekeranjang/getDetailProduct',
+      isAgreeTos: 'sekeranjang/getAgreeTos',
+      isProductAvailable: 'sekeranjang/getProductAvailable',
+    }),
   },
   mounted() {
-    this.SekeranjangService = new SekeranjangService(this);
     const { product_id } = this.$router.history.current.query;
-    this.productUid = product_id;
-    this.getProductByUid(this.productUid);
+    this.setProductUid(product_id);
+    this.getDetailProduct(product_id);
   },
   methods: {
-    async getProductByUid(uid) {
-      this.isLoadingProduct = true;
-      this.isAgreeTos = false;
-      const { SekeranjangService } = this;
-      try {
-        const fetchDetailProduct = await SekeranjangService.getProductByUid(
-          uid
-        );
-        if (fetchDetailProduct.data) {
-          this.dataDetailProduct = fetchDetailProduct.data.data;
-        } else {
-          throw new Error(fetchDetailProduct);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-      this.isLoadingProduct = false;
-      this.isAgreeTos = true;
+    ...mapActions({
+      getDetailProduct: 'sekeranjang/fetchDetailProduct',
+      setProductUid: 'sekeranjang/setProductUid',
+      setAgreeTos: 'sekeranjang/setAgreeTos',
+    }),
+    onClickAgreeTos() {
+      this.setAgreeTos(!this.isAgreeTos);
     },
     onClickOrder() {
       this.$router.push(`/sekeranjang/order?product_id=${this.productUid}`);

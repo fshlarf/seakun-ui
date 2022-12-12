@@ -11,51 +11,66 @@
             style="margin: 0 auto"
           />
         </div>
-        <p
-          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
-        >
-          Terima kasih telah melakukan pendaftaran. <br />
-          Paket ini adalah paket Pre-Order dimana akun akan dibuat setelah
-          member dalam satu grup telah terkumpul
-          {{ setNumberMember(slug) }} orang.
-          <nuxt-link
-            class="underline font-bold text-blue-500"
-            to="/info/pre-order"
-            target="_blank"
-            >Baca ketentuan pre-order</nuxt-link
-          >. Pembayaran akan dilakukan setelah satu grup full dan akun berhasil
-          dibuat.
-        </p>
+        <div v-if="dataDetailOrder.loading" class="text-center">
+          <p class="font-bold shimmer w-full md:my-2"></p>
+          <p class="font-bold shimmer w-full md:my-2"></p>
+          <p class="font-bold shimmer w-2/3 md:my-2"></p>
 
-        <div class="w-full tn:my-6 md:my-8 lg:my-12 md:px-6">
-          <OrderCard :order-data="dataDetailOrder" />
+          <ProductHighLightLoading />
+        </div>
+        <div v-else>
+          <p
+            class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          >
+            Terima kasih telah melakukan pendaftaran. <br />
+            Paket ini adalah paket Pre-Order dimana akun akan dibuat setelah
+            member dalam satu grup telah terkumpul
+            {{ member }} orang.
+            <nuxt-link
+              class="underline font-bold text-blue-500"
+              to="/info/pre-order"
+              target="_blank"
+              >Baca ketentuan pre-order</nuxt-link
+            >. Pembayaran akan dilakukan setelah satu grup full dan akun
+            berhasil dibuat.
+          </p>
+
+          <div class="w-full tn:my-6 md:my-8 lg:my-12 md:px-6">
+            <OrderCard :order-data="dataDetailOrder.data" />
+          </div>
+
+          <p
+            class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
+          >
+            Lakukan konfirmasi ulang bahwa kamu fix berkomitmen untuk ikut
+            pre-order layanan patungan {{ provider }} di Seakun dengan cara klik
+            tombol di bawah. Atau kamu bisa klik link yang sudah dikirimkan ke
+            whatsapp kamu. Konfirmasi ini bertujuan untuk memasukkan nama dan
+            data diri kamu pada grup yang available secara sistematis.
+          </p>
         </div>
 
-        <p
-          class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
-        >
-          Lakukan konfirmasi ulang bahwa kamu fix berkomitmen untuk ikut
-          pre-order layanan patungan {{ provider }} di Seakun dengan cara klik
-          tombol di bawah. Atau kamu bisa klik link yang sudah dikirimkan ke
-          whatsapp kamu. Konfirmasi ini bertujuan untuk memasukkan nama dan data
-          diri kamu pada grup yang available secara sistematis.
-        </p>
         <div class="w-full tn:mt-8 md:mt-12 md:px-16">
           <Button
             class="w-full bg-green-seakun text-white py-3"
             label="Konfirmasi ikut pre-order"
+            :disabled="dataDetailOrder.loading"
             @click="confirm()"
           />
         </div>
       </div>
     </div>
+
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
-import OrderService from '~/services/OrderServices.js';
 import OrderCard from '../views/order-card';
 import Button from '~/components/atoms/Button';
+import { mapGetters, mapActions } from 'vuex';
+import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
   name: 'PreOrderPage',
@@ -63,106 +78,35 @@ export default {
   components: {
     OrderCard,
     Button,
+    ProductHighLightLoading,
+    Snackbar,
   },
-  data() {
-    return {
-      OrderService,
-      provider: '',
-      slug: '',
-      orderNumber: '',
-      dataDetailOrder: {},
-    };
+  computed: {
+    ...mapGetters({
+      dataDetailOrder: 'getDetailOrder',
+    }),
+    provider() {
+      return this.dataDetailOrder.data.provider.name;
+    },
+    member() {
+      return this.dataDetailOrder.data.member;
+    },
   },
   mounted() {
-    this.OrderService = new OrderService(this);
     const { order_uid, customer_uid } = this.$router.history.current.query;
     if (order_uid && customer_uid) {
-      this.getOrderDetail(order_uid, customer_uid);
+      this.getDetailOrder(order_uid, customer_uid);
     }
   },
   methods: {
+    ...mapActions({
+      getDetailOrder: 'getDetailOrder',
+    }),
     confirm() {
       const { order_uid, customer_uid } = this.$router.history.current.query;
       this.$router.push(
-        `/confirmation?order_uid=${order_uid}&customer_uid=${customer_uid}`
+        `/confirmation?type=pre-order&order_uid=${order_uid}&customer_uid=${customer_uid}`
       );
-    },
-    setNumberMember(slug) {
-      switch (slug.toLowerCase()) {
-        case 'canva':
-        case 'iqiyi':
-        case 'setapp':
-          return '4';
-          break;
-        case 'gramedia-digital':
-        case 'vidio':
-        case 'hbo-go':
-        case 'disney-hotstar':
-        case 'wetv':
-          return '2';
-          break;
-        case 'wattpad':
-        case 'scribd':
-        case 'amazon-prime':
-          return '3';
-          break;
-        case 'nord-vpn':
-          return '6';
-          break;
-        case 'nintendo-switch':
-          return '7';
-          break;
-        case 'mcafee':
-          return '10';
-          break;
-        case 'google-one':
-        case 'bitdefender':
-        case 'lastpass':
-        case 'apple-music':
-          return '5';
-          break;
-        default:
-          return '5';
-      }
-    },
-    async getOrderDetail(orderUid, customerUid) {
-      const { OrderService } = this;
-
-      try {
-        const fetchOrderDetail = await OrderService.getDetailOrder(
-          orderUid,
-          customerUid
-        );
-        if (fetchOrderDetail.data) {
-          this.dataDetailOrder = fetchOrderDetail.data.data;
-          this.orderNumber = this.dataDetailOrder.orderNumber;
-          this.provider = this.dataDetailOrder.provider.name;
-          this.slug = this.dataDetailOrder.provider.slug;
-        } else {
-          throw new Error(fetchOrderDetail);
-        }
-      } catch (error) {
-        if (error.response?.status == 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
-            className: '',
-            color: 'red-400',
-            duration: 4000,
-          });
-          setTimeout(
-            function () {
-              this.$router.push('/');
-            }.bind(this),
-            3000
-          );
-        }
-        console.log(error);
-      }
-    },
-    formatMoneyRupiah(num) {
-      return num && num > 0
-        ? `Rp${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`
-        : 'Rp0';
     },
   },
 };
