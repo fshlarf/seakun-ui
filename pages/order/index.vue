@@ -311,7 +311,7 @@ export default {
     },
     onClickVariantPrice(item) {
       this.$router.push(
-        `/new-order?provider=${this.selectedParam.providerSlug}&variant_id=${item.uid}&package_id=${item.packageUid}`
+        `/order?provider=${this.selectedParam.providerSlug}&variant_id=${item.uid}&package_id=${item.packageUid}`
       );
       const param = {
         ...this.selectedParam,
@@ -497,7 +497,7 @@ export default {
     },
     selectVariant(variant) {
       this.$router.push(
-        `/new-order?provider=${this.selectedParam.providerSlug}&variant_id=${variant.uid}&package_id=${variant.packageUid}`
+        `/order?provider=${this.selectedParam.providerSlug}&variant_id=${variant.uid}&package_id=${variant.packageUid}`
       );
       const param = {
         ...this.selectedParam,
