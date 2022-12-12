@@ -19,10 +19,14 @@
       </div>
       <div class="tn:mt-4">
         <div
-          v-if="!isLoadingProduct"
+          v-if="!dataProviderList.loading"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
         >
-          <div class="" v-for="(product, id) in dataProviders" :key="id">
+          <div
+            class=""
+            v-for="(product, id) in dataProviderList.list"
+            :key="id"
+          >
             <ProductCard
               :product="product"
               class="md:w-full md:h-full"
@@ -34,8 +38,12 @@
 
         <div
           v-else
-          class="grid tn:gap-3 md:gap-4 xl:gap-5 tn:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          class="grid tn:gap-3 md:gap-4 xl:gap-6 tn:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
+          <CardShimmerVertical />
+          <CardShimmerVertical />
+          <CardShimmerVertical />
+          <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
@@ -53,7 +61,7 @@
 
       <div class="tn:mt-4">
         <div
-          v-if="!isLoadingProduct"
+          v-if="!dataProviderList.loading"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch items-center"
         >
           <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
@@ -88,7 +96,6 @@
       @onClose="onCloseModalPackages"
       :slug="choosedSlugProvider"
       @choosePacket="choosePacket"
-      :is-loading="isLoadingProduct"
     />
 
     <ModalPriceScheme
@@ -102,14 +109,13 @@
 
 <script>
 import ProductCard from '~/components/mollecules/ProductCard';
-import MasterService from '~/services/MasterServices.js';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from '../../../constants/price-scheme';
 import ModalPackages from './views/ModalPackages.vue';
 import SetitipBanner from './views/SetitipBanner.vue';
-import { SEAKUN_PACKAGE_API } from '~/constants/api.js';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: {
@@ -122,15 +128,8 @@ export default {
   },
   data() {
     return {
-      MasterService,
       showModalScheme: false,
       providerList,
-      dataProviders: [],
-      paramGetProviderList: {
-        page: 1,
-        limit: 50,
-      },
-      isLoadingProduct: false,
       dataDetailProvider: {
         list: {},
         slug: '',
@@ -209,11 +208,17 @@ export default {
       choosedSlugProvider: '',
     };
   },
-  mounted() {
-    this.MasterService = new MasterService(this);
-    this.getProviders();
+  computed: {
+    ...mapGetters({
+      dataProviderList: 'getProviders',
+      dataCardVariant: 'getDataCardVariant',
+    }),
   },
   methods: {
+    ...mapActions({
+      setSelectedProvider: 'setSelectedProvider',
+      setDataCardVariant: 'setDataCardVariant',
+    }),
     showPriceScheme(param1, param2) {
       this.showModalScheme = true;
       this.dataDetailProvider = {
@@ -228,27 +233,8 @@ export default {
     onCloseModalPackages() {
       this.isShowModalPackages = false;
     },
-    async getProviders() {
-      this.isLoadingProduct = true;
-      const { MasterService, paramGetProviderList } = this;
-      try {
-        const fetchProviderList = await MasterService.getProvider(
-          paramGetProviderList
-        );
-        if (fetchProviderList.data) {
-          const { data } = fetchProviderList.data;
-          this.dataProviders = data.filter((provider) => {
-            return provider.slug !== 'vidio';
-          });
-        } else {
-          throw new Error(fetchProviderList);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      this.isLoadingProduct = false;
-    },
     onClickProductDigital(product) {
+      this.setSelectedProvider(product);
       this.isShowModalPackages = true;
       this.choosedProvider = product;
       this.choosedSlugProvider = product.slug;
@@ -257,6 +243,13 @@ export default {
       this.$router.push(`/${product.slug}`);
     },
     choosePacket(packet) {
+      const data = {
+        ...this.dataCardVariant,
+        isPo: packet.isPo,
+        isHost: packet.isHost,
+      };
+      this.setDataCardVariant(data);
+
       this.$router.push(
         `/order?provider=${this.choosedSlugProvider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );

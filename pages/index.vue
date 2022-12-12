@@ -38,6 +38,7 @@ import WarningOrder from '~/components/organisms/WarningOrder';
 import Footer from '~/components/mollecules/Footer';
 import WhatsappNoticeBanner from '~/components/organisms/WhatsappNoticeBanner';
 import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -58,6 +59,41 @@ export default {
     Footer,
     WhatsappNoticeBanner,
     SeakunHelpBanner,
+  },
+  computed: {
+    ...mapGetters({
+      providerList: 'getProviders',
+      groupList: 'getGroups',
+    }),
+  },
+  mounted() {
+    const userGroup = document.getElementById('pengguna');
+    if (this.providerList.list.length === 0) {
+      this.fetchProvider('youtube');
+    }
+    this.observeUserGroupSection(userGroup);
+  },
+  methods: {
+    ...mapActions({
+      fetchProvider: 'fetchProvider',
+      fetchGroup: 'fetchGroup',
+    }),
+    observeUserGroupSection(element) {
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (this.groupList.list.length === 0) {
+              this.fetchGroup();
+            }
+          }
+        },
+        {
+          root: null,
+          threshold: 0.1, // set offset 0.1 means trigger if atleast 10% of element in viewport
+        }
+      );
+      observer.observe(element);
+    },
   },
   // beforeMount() {
   //   this.$router.push('/info/maintenance');

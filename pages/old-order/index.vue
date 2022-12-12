@@ -11,7 +11,6 @@
     >
       <p class="md:text-xl tn:text-lg font-bold">Produk yang dipesan</p>
       <p
-        v-if="!providerList.loading"
         class="md:text-sm tn:text-base text-green-seakun cursor-pointer"
         @click="onClickChangePacket"
       >
@@ -19,33 +18,33 @@
       </p>
     </div>
     <div>
-      <ProductHighLightLoading
-        v-if="dataListVariant.loading"
-        class="tn:mt-3 md:mt-4"
-      />
-      <VariantCard
+      <ProductHighLightLoading v-if="isLoadingProduct" class="mt-4" />
+      <ProductHighLight
         v-else
-        :data-variant="dataCardVariant"
-        :is-loading="dataListVariant.loading"
+        :provider="providerSlug"
+        :isLoading="isLoadingProduct"
+        :packageName="`${providerName} - ${variantName}`"
+        :grandTotal="longSubcribe.grandTotal"
+        :total-month="longSubcribe.month"
       />
       <div class="mt-4">
         <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
         <ButtonDrop
-          :btnText="dataCardVariant.buttonText"
-          :disabled="dataListVariant.list && dataListVariant.list.length <= 0"
+          :btnText="longSubcribe.name"
+          :disabled="dataVariants.length <= 0"
           @click="isShowPriceList = !isShowPriceList"
         />
         <div class="w-full">
           <DropDownPricesListSubcribe
             :show="isShowPriceList"
-            :dataList="dataListVariant.list"
-            @onClikcItem="onClickVariantPrice"
+            :dataList="dataVariants"
+            @onClikcItem="onClickItemPrice"
           />
         </div>
       </div>
     </div>
-    <div v-if="providerRules" class="pt-4">
-      <WarningInfo class="w-full" :text="providerRules" />
+    <div v-if="orderWarning" class="pt-4">
+      <WarningInfo class="w-full" :text="orderWarning" />
     </div>
     <div class="mt-6 pt-2">
       <h2 class="md:text-xl tn:text-lg font-bold">Informasi Pengguna</h2>
@@ -101,51 +100,54 @@
           />
         </div>
       </div>
-
-      <div class="flex items-center space-x-2 tn:mt-3 tn:mt-6">
-        <div class="cursor-pointer w-[24px]" @click="isAgreeTos = !isAgreeTos">
-          <CheckedBox v-if="isAgreeTos" />
-          <UncheckBox v-else />
-        </div>
-        <p class="tn:text-sm md:text-base">
+      <div class="ml-2 mt-6">
+        <label
+          class="space-x-1 md:text-base tn:text-sm"
+          style="display: inline-block"
+          ><input
+            v-model="isAgreeTos"
+            style="vertical-align: middle"
+            type="checkbox"
+            class="tn:mr-1 tn:-mt-1"
+          />
           Menyetujui
           <a class="text-green-seakun ml-0" href="/terms-of-use" target="_blank"
             >aturan</a
           >
           yang dibuat oleh Seakun.id
-        </p>
+        </label>
       </div>
 
       <Button
         :disabled="!isAgreeTos"
         @click="onClickConfirmData"
-        class="w-full bg-green-seakun text-white py-3 tn:mt-3 md:mt-4"
+        class="w-full bg-green-seakun text-white py-2 tn:mt-4 md:mt-6"
         label="Konfirmasi pesanan"
-        :is-loading="isLoadingCreateOrder"
+        :is-loading="isShowLoading"
       />
 
       <ModalPackages
         :is-show="isShowModalPackages"
-        :provider="selectedProvider"
-        :slug="selectedProvider.slug"
-        :is-loading="dataListVariant.loading"
+        :provider="choosedProvider"
         @onClose="onCloseModalPackages"
-        @choosePacket="selectVariant"
+        :slug="provider"
+        @choosePacket="choosePacket"
+        :is-loading="isLoadingVariant"
       />
     </div>
 
     <ModalDataConfirmation
       :show-modal="isShowModalConfirmation"
-      :data-order="dataConfirmation"
-      :is-loading="isLoadingCreateOrder"
+      :data-order="dataCustomer"
+      :is-loading="isShowLoading"
       @clickSubmit="submitDataOrder"
       @onClose="closeModalConfirmation"
     />
 
     <ModalOrderTimeout
-      :show-modal="isShowModalOrderTimeout"
-      :data-order="dataHelperOrder"
-      :is-loading="isLoadingCreateOrder"
+      :show-modal="isShowModalOrderTiimeout"
+      :data-order="dataHelpOrder"
+      :is-loading="isShowLoading"
       @onClose="closeModalOrderTiimeout"
     />
 
@@ -157,27 +159,35 @@
 </template>
 
 <script>
+import { setNameProvider } from '~/helpers/word-transformation.js';
+import {
+  SEAKUN_API,
+  SEAKUN_PACKAGE_API,
+  SEAKUN_MAIL_API,
+} from '~/constants/api.js';
+import axios from 'axios';
+import OrderService from '~/services/OrderServices.js';
+import MasterService from '~/services/MasterServices.js';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 import ProductHighLight from '~/components/mollecules/ProductHighLight.vue';
 import InputForm from '~/components/atoms/Input.vue';
 import DropdownCodeNumber from './views/DropdownCodeNumber.vue';
+// import Voucher from './views/Voucher.vue';
 import Button from '~/components/atoms/Button';
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
 import { internationalPhoneNumbers } from '~/constants/code-phone.js';
 import {
   currencyFormat,
   capitalizeFirstLetter,
+  fullDate,
 } from '~/helpers/word-transformation.js';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
 import ModalDataConfirmation from './views/ModalDataConfirmation.vue';
 import ModalBlackListWarning from './views/ModalBlackListWarning.vue';
+import moment from 'moment';
 import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 import ModalOrderTimeout from './views/ModalOrderTimeout.vue';
-import VariantCard from './views/VariantCard.vue';
-import { mapGetters, mapActions } from 'vuex';
-import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
-import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
 
 export default {
   name: 'OrderPage',
@@ -190,19 +200,33 @@ export default {
     Button,
     DropdownCodeNumber,
     DropDownPricesListSubcribe,
+    // Voucher,
     ModalPackages,
     ModalDataConfirmation,
     ModalBlackListWarning,
     WarningInfo,
     ModalOrderTimeout,
-    VariantCard,
-    CheckedBox,
-    UncheckBox,
   },
   data: () => ({
+    OrderService,
+    MasterService,
+    provider: '',
+    detailOrder: {
+      isHost: 0,
+      isPo: 0,
+    },
     email: '',
     userName: '',
     phoneNumber: '',
+    longSubcribe: {
+      variantUid: '',
+      name: 'Pilih Masa Berlangganan',
+      month: 0,
+      price: 0,
+      payment: 0,
+      grandTotal: 0,
+    },
+    isShowLoading: false,
     codeNumber: '+62',
     codePhone: 62,
     isShowCodeNumber: false,
@@ -224,122 +248,197 @@ export default {
         message: '',
       },
     },
+    price: 0,
+    subcriptionDuration: 1,
     isShowModalPackages: false,
-    dataConfirmation: {
+    dataVariants: [],
+    dataProviders: [],
+    paramGetProviderList: {
+      page: 1,
+      limit: 50,
+    },
+    variantUid: '',
+    packageUid: '',
+    isLoadingProduct: false,
+    isLoadingVariant: false,
+    registeredUser: {
+      name: '',
+      email: '',
+      phone: '',
+    },
+    dataCustomer: {
       name: '',
       email: '',
       codeNumber: '',
       phoneNumber: '',
     },
-    providerRules: '',
+    providerSlug: '',
+    providerName: '',
+    packageName: '',
+    variantName: '',
+    orderWarning: '',
+    isShowModalConfirmation: false,
+    isShowModalBlackList: false,
+    choosedProvider: {},
+    dataHelpOrder: {
+      provider: '',
+      variant: '',
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+    },
+    isShowModalOrderTiimeout: false,
   }),
   watch: {
     codeNumber() {
       this.validationForm('userPhone');
     },
   },
-  computed: {
-    ...mapGetters({
-      providerList: 'getProviders',
-      selectedProvider: 'getSelectedProvider',
-      dataListVariant: 'getListVariant',
-      dataCardVariant: 'getDataCardVariant',
-      selectedParam: 'getSelectedParam',
-      dataHelperOrder: 'getDataHelperOrder',
-      isShowModalConfirmation: 'getShowModalConfirmation',
-      isShowModalOrderTimeout: 'getShowModalOrderTimeout',
-      isShowModalBlackList: 'getShowModalBlackList',
-      isLoadingCreateOrder: 'getLoadingCreateOrder',
-    }),
-  },
   mounted() {
+    this.OrderService = new OrderService(this);
+    this.MasterService = new MasterService(this);
+    this.getProviders();
     const {
       provider,
       variant_id,
       package_id,
     } = this.$router.history.current.query;
     if (provider) {
-      if (!this.selectedProvider.uid) {
-        this.getProviderList(provider);
-      }
-      const queryParam = {
-        providerSlug: provider,
-        packageUid: package_id,
-        variantUid: variant_id,
-      };
-      this.setSelectedParam(queryParam);
-      this.setProviderRules(provider);
-      this.getListVariants(package_id);
-    }
-    this.setFieldValueFromLocalStorage();
-  },
-  methods: {
-    ...mapActions({
-      getProviderList: 'fetchProvider',
-      setSelectedParam: 'setSelectedParam',
-      getListVariants: 'fetchListVariant',
-      setDataCardVariant: 'setDataCardVariant',
-      setModalConfirmation: 'setModalConfirmation',
-      setModalBlackList: 'setModalBlackList',
-      setModalOrderTimeout: 'setModalOrderTimeout',
-      createOrder: 'createOrder',
-    }),
-    setProviderRules(provider) {
+      this.provider = provider;
+      this.variantUid = variant_id;
+      this.packageUid = package_id;
+      this.getDetailVariant(this.packageUid);
+
       if (provider === 'spotify') {
-        this.providerRules =
+        this.orderWarning =
           'Terkait aturan yang berlaku dari Spotify, sebelum melakukan pendaftaran pastikan akun Spotify kamu belum pernah bergabung ke family lain selama 12 bulan terakhir.';
       } else if (provider === 'youtube') {
-        this.providerRules =
+        this.orderWarning =
           'Terkait aturan yang berlaku dari Youtube, sebelum melakukan pendaftaran pastikan akun Youtube kamu belum pernah berpindah family selama 12 bulan terakhir.';
       } else if (provider === 'google-one') {
-        this.providerRules =
+        this.orderWarning =
           'Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Google kamu belum pernah berpindah family selama 12 bulan terakhir.';
       } else if (
-        provider === 'apple-music' ||
         provider === 'apple-one' ||
         provider === 'apple-tv' ||
         provider === 'apple-one-premier'
       ) {
-        this.providerRules =
+        this.orderWarning =
           'Terkait aturan yang berlaku dari Apple, sebelum melakukan pendaftaran pastikan akun Apple kamu belum pernah berpindah family selama 12 bulan terakhir.';
       }
+    }
+    this.setFieldValueFromLocalStorage();
+  },
+  methods: {
+    async getProviders() {
+      this.isLoadingProduct = true;
+      const { MasterService, paramGetProviderList } = this;
+      try {
+        const fetchProviderList = await MasterService.getProvider(
+          paramGetProviderList
+        );
+        if (fetchProviderList.data) {
+          const { data } = fetchProviderList.data;
+          this.dataProviders = data;
+          this.dataProviders.forEach((element) => {
+            if (element.slug === this.provider) {
+              this.choosedProvider = element;
+              this.providerSlug = element.slug;
+              this.providerName = element.name;
+              element.variants.forEach((variant) => {
+                if (variant.uid === this.variantUid) {
+                  this.packageName = variant.packageName;
+                  this.variantName = variant.name;
+                  this.detailOrder = {
+                    isHost: variant.isHost,
+                    isPo: variant.isPo,
+                  };
+                }
+              });
+            }
+          });
+        } else {
+          throw new Error(fetchProviderList);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingProduct = false;
+    },
+    async getDetailVariant(uid) {
+      this.isLoadingVariant = true;
+      const { MasterService } = this;
+      try {
+        const fetchDetailVariant = await MasterService.getVariantByPackageUid(
+          uid
+        );
+        if (fetchDetailVariant.data) {
+          const { data } = fetchDetailVariant.data;
+          this.dataVariants = data.filter((el) => {
+            return el.active === true;
+          });
+
+          const variantSelected = this.dataVariants.find(
+            (variant) => this.variantUid == variant.uid
+          );
+
+          if (variantSelected) {
+            const rupiah = currencyFormat(variantSelected.grandTotal);
+            this.longSubcribe = {
+              variantUid: variantSelected.uid,
+              name: `${
+                variantSelected.duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${variantSelected.duration} bulan ( ${rupiah} )`
+              } `,
+              month: variantSelected.duration,
+              price: variantSelected.price,
+              grandTotal: variantSelected.grandTotal,
+            };
+          } else {
+            const rupiah = currencyFormat(this.dataVariants[0].grandTotal);
+            this.longSubcribe = {
+              variantUid: this.dataVariants[0].uid,
+              name: `${
+                this.dataVariants[0].duration === 12
+                  ? `1 tahun ( ${rupiah} )`
+                  : `${this.dataVariants[0].duration} bulan ( ${rupiah} )`
+              } `,
+              month: this.dataVariants[0].duration,
+              price: this.dataVariants[0].price,
+              grandTotal: this.dataVariants[0].grandTotal,
+            };
+          }
+        } else {
+          throw new Error(fetchDetailVariant);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingVariant = false;
     },
     onClickItemCodeNumber(item) {
       this.codeNumber = item.dialCode;
       this.codePhone = item.dialCode.slice(1);
       this.isShowCodeNumber = false;
     },
-    onClickVariantPrice(item) {
-      this.$router.push(
-        `/new-order?provider=${this.selectedParam.providerSlug}&variant_id=${item.uid}&package_id=${item.packageUid}`
-      );
-      const param = {
-        ...this.selectedParam,
-        packageUid: item.packageUid,
+    onClickItemPrice(item) {
+      const rupiah = currencyFormat(item.grandTotal);
+      this.longSubcribe = {
         variantUid: item.uid,
-      };
-      this.setSelectedParam(param);
-
-      const totalRupiah = currencyFormat(item.grandTotal);
-      const dataCard = {
-        ...this.dataCardVariant,
-        packageName: `${item.providerName} - ${item.packageName}`,
-        packageDetail: `${
+        name: `${
           item.duration === 12
-            ? `${totalRupiah} / 1 tahun`
-            : `${totalRupiah} / ${item.duration} bulan`
+            ? `1 tahun ( ${rupiah} )`
+            : `${item.duration} bulan ( ${rupiah} )`
         }`,
+        month: item.duration,
+        price: item.price,
         grandTotal: item.grandTotal,
-        totalMonth: item.duration,
-        buttonText: `${
-          item.duration === 12
-            ? `1 tahun (${totalRupiah})`
-            : `${item.duration} bulan (${totalRupiah})`
-        }`,
       };
-      this.setDataCardVariant(dataCard);
-
+      this.price = item.grandTotal;
+      this.subcriptionDuration = parseInt(item.duration);
       this.isShowPriceList = false;
+      this.variantName = item.packageName;
     },
     validationForm(input) {
       const { email, userName, phoneNumber, errorForm } = this;
@@ -435,16 +534,59 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     async onSubmitOrder() {
+      const { OrderService } = this;
+      this.isShowLoading = true;
       let payload = {
         name: capitalizeFirstLetter(this.userName),
         email: this.email,
         phoneNumber: `${this.codePhone}${this.phoneNumber}`,
-        packageVariantUid: this.selectedParam.variantUid,
-        ispreorder: this.dataCardVariant.isPo === 1,
-        userhost: this.dataCardVariant.isHost === 1,
+        packageVariantUid: this.longSubcribe.variantUid,
+        ispreorder: this.detailOrder.isPo === 1,
+        userhost: this.detailOrder.isHost === 1,
         voucherUid: '',
       };
-      this.createOrder(payload);
+      try {
+        const fetchCreateOrder = await OrderService.createOrder(payload);
+        if (fetchCreateOrder.data) {
+          const dataResult = fetchCreateOrder.data.data;
+          payload = {
+            ...payload,
+            customerUid: dataResult.customerUid,
+            orderUid: dataResult.orderUid,
+            type: dataResult.provider.type,
+            redirectUrl: dataResult.redirectUrl,
+          };
+          localStorage.setItem(
+            'swo',
+            JSON.stringify({ ...dataResult, createdAt: moment().unix() })
+          );
+          this.redirectPage(payload);
+        } else {
+          throw new Error(fetchCreateOrder);
+        }
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.data.message.includes('blocked customer')
+        ) {
+          this.isShowModalConfirmation = false;
+          this.isShowModalBlackList = true;
+        }
+        if (error.message.includes('20000ms')) {
+          this.dataHelpOrder = {
+            provider: this.providerName,
+            variant: this.variantName,
+            fullName: this.userName,
+            email: this.email,
+            phoneNumber: this.codeNumber + this.phoneNumber,
+          };
+          this.isShowModalOrderTiimeout = true;
+          this.isShowLoading = false;
+          this.isShowModalConfirmation = false;
+        }
+        console.log(error);
+      }
+      this.isShowLoading = false;
     },
     redirectPage(payload) {
       if (!payload.userhost && !payload.ispreorder) {
@@ -470,50 +612,44 @@ export default {
       }
     },
     onClickConfirmData() {
-      this.dataConfirmation = {
+      this.dataCustomer = {
         name: this.userName,
         email: this.email,
         codeNumber: this.codeNumber,
         phoneNumber: this.phoneNumber,
       };
       if (this.validationForm()) {
-        this.setModalConfirmation(true);
+        this.isShowModalConfirmation = true;
       }
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
     },
     closeModalConfirmation() {
-      this.setModalConfirmation(false);
+      this.isShowModalConfirmation = false;
     },
     closeModalBlackList() {
-      this.setModalBlackList(false);
+      this.isShowModalBlackList = false;
     },
     closeModalOrderTiimeout() {
-      this.setModalOrderTimeout(false);
+      this.isShowModalOrderTiimeout = false;
     },
     onClickChangePacket() {
       this.isShowModalPackages = true;
     },
-    selectVariant(variant) {
+    choosePacket(packet) {
       this.$router.push(
-        `/new-order?provider=${this.selectedParam.providerSlug}&variant_id=${variant.uid}&package_id=${variant.packageUid}`
+        `/order?provider=${this.provider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );
-      const param = {
-        ...this.selectedParam,
-        packageUid: variant.packageUid,
-        variantUid: variant.uid,
+      this.variantUid = packet.uid;
+      this.packageUid = packet.packageUid;
+      this.packageName = packet.packageName;
+      this.variantName = packet.name;
+      this.detailOrder = {
+        isHost: packet.isHost,
+        isPo: packet.isPo,
       };
-      this.setSelectedParam(param);
-
-      const data = {
-        ...this.dataCardVariant,
-        isPo: variant.isPo,
-        isHost: variant.isHost,
-      };
-      this.setDataCardVariant(data);
-      this.getListVariants(variant.packageUid);
-
+      this.getDetailVariant(this.packageUid);
       this.isShowModalPackages = false;
     },
     setFieldValueFromLocalStorage() {

@@ -8,7 +8,7 @@
       </div>
     </template>
 
-    <div class="pb-2" v-if="!isLoading">
+    <div class="pb-2">
       <div
         v-if="preOrderPackage.includes(slug) && provider.variants"
         class="tn:mx-1 md:mx-3 mb-3"
@@ -35,10 +35,6 @@
           />
         </div>
       </div>
-    </div>
-
-    <div v-else>
-      <CardShimmerVertical />
     </div>
   </Modal>
 </template>
@@ -81,14 +77,15 @@ export default {
         'lastpass',
         'apple-music',
         'wetv',
+        'nintendo-switch',
       ],
       packageVariants: [],
     };
   },
   watch: {
-    provider(val) {
+    isShow(val) {
       if (val) {
-        this.setPackageVariants(val);
+        this.setPackageVariants();
       }
     },
   },
@@ -109,7 +106,8 @@ export default {
       }
     },
     setPackageVariants() {
-      this.packageVariants = this.provider.variants.sort((a, b) =>
+      const variants = this.provider.variants.slice();
+      this.packageVariants = variants.sort((a, b) =>
         a.isActive < b.isActive ? 1 : b.isActive < a.isActive ? -1 : 0
       );
     },

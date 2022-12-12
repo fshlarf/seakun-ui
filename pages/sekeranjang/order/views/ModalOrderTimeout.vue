@@ -48,7 +48,7 @@ export default {
     },
     dataOrder: {
       type: Object,
-      default: {},
+      default: () => {},
     },
   },
   computed: {

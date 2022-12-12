@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     onClose() {
-      this.$emit('onClose');
+      if (!this.isLoading) this.$emit('onClose');
     },
   },
 };
