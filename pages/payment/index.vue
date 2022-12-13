@@ -253,7 +253,7 @@ export default {
           this.$refs.snackbar.showSnackbar({
             message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
             className: '',
-            color: 'red-400',
+            color: 'bg-red-400',
             duration: 4000,
           });
           setTimeout(
@@ -341,7 +341,7 @@ export default {
         this.$refs.snackbar.showSnackbar({
           message: `Terjadi kesalahan. Harap coba kembali`,
           className: '',
-          color: 'red-400',
+          color: 'bg-red-400',
           duration: 6000,
         });
       }
