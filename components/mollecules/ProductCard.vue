@@ -33,12 +33,14 @@
     >
       <div class="h-full">
         <div class="flex tn:pt-2 items-center mb-1 md:mb-2 md:px-2">
-          <img
-            v-if="product.variants"
-            :src="`/images/icons/${product.slug}.svg`"
-            alt="#"
-            class="w-8 ml-1"
-          />
+          <div class="h-8 w-8 ml-1 flex justify-center items-center">
+            <img
+              v-if="product.variants"
+              :src="`/images/icons/${product.slug}.svg`"
+              alt="#"
+              class="w-full"
+            />
+          </div>
           <h1 class="md:text-base font-bold mx-2">
             {{ product.name }}
           </h1>

@@ -68,6 +68,9 @@ export const getters = {
   getProviders(state) {
     return state.dataProvider;
   },
+  getFilterGroup(state) {
+    return state.filterGroup;
+  },
   getGroups(state) {
     return state.dataGroup;
   },
