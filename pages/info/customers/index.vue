@@ -9,7 +9,7 @@
             v-for="(item, index) in shimmerInitialData"
             :key="index"
           >
-            <CardShimmerVertical />
+            <GroupCardShimmer />
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
             v-for="(item, index) in shimmerInitialData"
             :key="index"
           >
-            <CardShimmerVertical />
+            <GroupCardShimmer />
           </div>
         </div>
       </div>
@@ -43,14 +43,14 @@
 <script>
 import { SEAKUN_API } from '~/constants/api.js';
 import GroupCard from '~/components/mollecules/GroupCard';
-import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
+import GroupCardShimmer from './views/group-card-loading.vue';
 import Title from '~/components/atoms/Title';
 import MasterService from '~/services/MasterServices.js';
 
 export default {
   components: {
     GroupCard,
-    CardShimmerVertical,
+    GroupCardShimmer,
     Title,
   },
   layout: 'new',

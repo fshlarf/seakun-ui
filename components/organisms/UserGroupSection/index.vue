@@ -29,7 +29,7 @@
             :provider="provider"
             :is-loading="dataGroupList.loading"
             :data-group="dataGroupList.list"
-            class="my-2 w-full h-full flex-none cursor-pointer"
+            class="my-2 h-full flex-none cursor-pointer"
             :class="{
               'high-light ': provider.slug === highlight,
             }"
@@ -157,6 +157,7 @@ export default {
       dataProviderList: 'getProviders',
       dataGroupList: 'getGroups',
       dataCardVariant: 'getDataCardVariant',
+      filterGroup: 'getFilterGroup',
     }),
   },
   methods: {
@@ -186,7 +187,9 @@ export default {
       this.providerUid = provider.uid;
     },
     toCustomerPage() {
-      this.$router.push(`/info/customers?provider=${this.providerUid}`);
+      this.$router.push(
+        `/info/customers?provider=${this.filterGroup.providerUid}`
+      );
     },
     onClickOrder(provider) {
       if (provider.toLowerCase() === 'microsoft') {
