@@ -18,16 +18,52 @@
         >
       </div>
 
-      <InputSearch :data-list="providerSearchList" />
+      <div class="flex justify-between items-center w-full">
+        <div class="md:w-[400px]">
+          <InputSearch
+            :data-list="providerSearchList"
+            @onEnter="onSearchProvider"
+          />
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="md:w-[200px]">
+            <ButtonDrop
+              :btnText="categoryButton"
+              :disabled="dataCategory.loading"
+              @click="isShowCategoryList = !isShowCategoryList"
+            />
+            <div class="w-full">
+              <DropDownFilter
+                :show="isShowCategoryList"
+                :dataList="providerCategoryList"
+                @onClikcItem="onClickCategory"
+              />
+            </div>
+          </div>
+          <div class="md:w-[200px]">
+            <ButtonDrop
+              :btnText="productTypeButton"
+              @click="isShowProductTypeList = !isShowProductTypeList"
+            />
+            <div class="w-full">
+              <DropDownFilter
+                :show="isShowProductTypeList"
+                :dataList="productTypeList"
+                @onClikcItem="onClickProductType"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="tn:mt-8 relative z-0">
         <div
-          v-if="!dataProviderList.loading"
+          v-if="!dataProviderListActive.loading"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
         >
           <div
             class=""
-            v-for="(product, id) in dataProviderList.list"
+            v-for="(product, id) in dataProviderListActive.list"
             :key="id"
           >
             <ProductCard
@@ -64,7 +100,7 @@
 
       <div class="tn:mt-4">
         <div
-          v-if="!dataProviderList.loading"
+          v-if="!dataProviderListActive.loading"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch items-center"
         >
           <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
@@ -120,6 +156,8 @@ import ModalPackages from './views/ModalPackages.vue';
 import SetitipBanner from './views/SetitipBanner.vue';
 import { mapGetters, mapActions } from 'vuex';
 import InputSearch from '~/components/atoms/InputSearch';
+import ButtonDrop from './views/ButtonDrop';
+import DropDownFilter from './views/DropDownFilter.vue';
 
 export default {
   components: {
@@ -130,6 +168,8 @@ export default {
     ModalPackages,
     SetitipBanner,
     InputSearch,
+    ButtonDrop,
+    DropDownFilter,
   },
   data() {
     return {
@@ -211,29 +251,36 @@ export default {
       isShowModalPackages: false,
       choosedProvider: {},
       choosedSlugProvider: '',
-      // providerSearchList: [
-      //   {
-      //     text: 'Netflix',
-      //     value: 'netflix',
-      //   },
-      //   {
-      //     text: 'Spotify',
-      //     value: 'spotify',
-      //   },
-      //   {
-      //     text: 'Youtube',
-      //     value: 'youtube',
-      //   },
-      // ],
+      isShowCategoryList: false,
+      isShowProductTypeList: false,
+      categoryButton: 'Pilih kategori',
+      productTypeButton: 'Pilih tipe produk',
+      productTypeList: [
+        {
+          text: 'All',
+          value: 0,
+        },
+        {
+          text: 'Ready',
+          value: 1,
+        },
+        {
+          text: 'Pre-order',
+          value: 2,
+        },
+      ],
     };
   },
   computed: {
     ...mapGetters({
-      dataProviderList: 'getProviders',
+      filterProvider: 'getFilterProviderActive',
+      dataProviderListActive: 'getProvidersActive',
+      dataProviderListAll: 'getProviders',
       dataCardVariant: 'getDataCardVariant',
+      dataCategory: 'getProviderCategory',
     }),
     providerSearchList() {
-      const dataList = this.dataProviderList.list.map((provider) => {
+      const dataList = this.dataProviderListAll.list.map((provider) => {
         return {
           text: provider.name,
           value: provider.name,
@@ -241,12 +288,51 @@ export default {
       });
       return dataList;
     },
+    providerCategoryList() {
+      const categories = this.dataCategory.list.map((category) => {
+        return {
+          text: category.name,
+          value: category.code,
+        };
+      });
+      return categories;
+    },
+  },
+  mounted() {
+    this.fetchProviderCategory();
   },
   methods: {
     ...mapActions({
       setSelectedProvider: 'setSelectedProvider',
       setDataCardVariant: 'setDataCardVariant',
+      applyFilterProvider: 'applyFilterProvider',
+      fetchProviderCategory: 'fetchProviderCategory',
     }),
+    onSearchProvider(keyword) {
+      const filter = {
+        ...this.filterProvider,
+        keyword,
+      };
+      this.applyFilterProvider(filter);
+    },
+    onClickCategory(category) {
+      const filter = {
+        ...this.filterProvider,
+        category: category.value,
+      };
+      this.applyFilterProvider(filter);
+      this.categoryButton = category.text;
+      this.isShowCategoryList = false;
+    },
+    onClickProductType(type) {
+      const filter = {
+        ...this.filterProvider,
+        type: type.value,
+      };
+      this.applyFilterProvider(filter);
+      this.productTypeButton = type.text;
+      this.isShowProductTypeList = false;
+    },
     showPriceScheme(param1, param2) {
       this.showModalScheme = true;
       this.dataDetailProvider = {

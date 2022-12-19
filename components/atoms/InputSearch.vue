@@ -1,30 +1,31 @@
 <template>
-  <div class="relative z-10">
+  <div class="relative z-10 tn:m-0">
     <div class="relative z-10">
       <input
         id="search-input"
         v-model="inputValue"
         type="text"
         :placeholder="placeholder"
-        class="appearance-none border-2 rounded-xl w-full tn:py-3 tn:px-9 text-[#A0A3BD] leading-tight focus:outline-none"
+        class="appearance-none border-2 border-[#A0A3BD] tn:rounded-lg w-full tn:py-3 tn:px-9 text-[#A0A3BD] leading-tight focus:outline-none"
         @input="checkDataList"
         @keydown="onKeyPress"
+        autocomplete="off"
       />
       <div class="icon-left tn:!pt-1 text-[#A0A3BD]">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div
-        class="icon-right tn:!pt-1 text-[#A0A3BD]"
+        class="icon-right tn:!pt-1 text-gray-200"
         role="button"
         @click="onClickEraseSearch"
       >
-        <i class="fa-solid fa-lg fa-times-circle"></i>
+        <i class="fa-solid fa-times fa-lg"></i>
       </div>
     </div>
     <div class="relative z-10">
       <div
         v-if="activeList.length > 0"
-        class="bg-white w-full rounded-xl overflow-hidden border-2 text-[#A0A3BD] absolute top-0 left-0 z-50"
+        class="bg-white w-full overflow-hidden text-[#A0A3BD] absolute top-0 left-0 z-50 tn:shadow-md"
       >
         <div
           role="button"
@@ -75,22 +76,10 @@ export default {
     },
     onClickItem(item) {
       this.inputValue = item.text;
-      this.$emit('onClickItem', item);
+      this.$emit('onEnter', item.text);
       this.activeList = [];
       this.activeIndex = null;
     },
-    // onUpKeyPress() {
-    //   if (this.activeIndex - 1 >= 0) {
-    //     this.activeIndex--;
-    //     this.inputValue = this.activeList[this.activeIndex].text;
-    //   }
-    // },
-    // onDownKeyPress() {
-    //   if (this.activeIndex + 1 <= this.activeList.length) {
-    //     this.activeIndex++;
-    //     this.inputValue = this.activeList[this.activeIndex].text;
-    //   }
-    // },
     onKeyPress(e) {
       console.log(e);
       if (e.keyCode == 38) {
@@ -106,8 +95,12 @@ export default {
           this.inputValue = this.activeList[this.activeIndex].text;
         }
       } else if (e.keyCode == 13) {
-        this.inputValue = this.activeList[this.activeIndex].text;
-        this.$emit('onEnter', this.activeList[this.activeIndex].value);
+        if (this.activeIndex === null) {
+          this.$emit('onEnter', this.inputValue);
+        } else {
+          this.inputValue = this.activeList[this.activeIndex].text;
+          this.$emit('onEnter', this.activeList[this.activeIndex].value);
+        }
         this.activeList = [];
         this.activeIndex = null;
       }
