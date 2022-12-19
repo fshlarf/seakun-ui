@@ -13,6 +13,12 @@ class MasterService {
     });
   }
 
+  getProviderCategory(params) {
+    return this.serviceApi.get('/customer/provider/category', {
+      params,
+    });
+  }
+
   getVariantByPackageUid(uid) {
     return this.serviceApi.get(`/customer/package/variant?packageUid=${uid}`);
   }
