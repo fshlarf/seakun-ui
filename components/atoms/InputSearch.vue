@@ -2,6 +2,7 @@
   <div class="relative z-10">
     <div class="relative z-10">
       <input
+        id="search-input"
         v-model="inputValue"
         type="text"
         :placeholder="placeholder"
@@ -113,6 +114,7 @@ export default {
     },
     onClickEraseSearch() {
       this.inputValue = '';
+      document.getElementById('search-input').focus();
     },
   },
 };
