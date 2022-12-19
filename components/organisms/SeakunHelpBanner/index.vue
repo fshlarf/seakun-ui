@@ -1,5 +1,5 @@
 <template>
-  <div class="container iner tn:mt-2 lg:pt-10 pt-10 -mb-16">
+  <div class="container tn:mt-2 lg:pt-10 pt-10">
     <div
       class="bg-pink-seakun rounded-3xl md:flex md:flex-row tn:px-6 lg:px-16 py-6 items-center"
     >

@@ -1,34 +1,33 @@
 <template>
-  <div id="provider" class="container tn:mt-8 lg:pt-20 pt-20">
+  <div id="provider" class="container lg:pt-20 pt-20">
     <div class="">
-      <div
-        id="product-digital"
-        class="flex justify-between items-center mb-2 px-2"
-      >
+      <div id="product-digital" class="flex justify-between items-center px-2">
         <h1
           class="hidden md:block md:text-xl lg:text-2xl font-bold md:mb-4 lg:mb-4"
         >
           Berlangganan Produk Digital
         </h1>
         <h1 class="text-2xl md:hidden font-bold">Layanan Digital</h1>
-        <NuxtLink
-          to="/"
-          class="hidden text-sm md:text-base text-primary font-bold"
-          >See more</NuxtLink
-        >
       </div>
 
-      <div class="flex justify-between items-center w-full">
-        <div class="md:w-[400px]">
+      <div
+        class="flex tn:flex-wrap md:flex-nowrap md:justify-between md:space-x-3 items-center w-full tn:mt-4 md:mt-2"
+      >
+        <div class="tn:w-full lg:w-[400px]">
           <InputSearch
+            placeholder="Cari produk"
             :data-list="providerSearchList"
+            :disabled="dataProviderListActive.loading"
             @onEnter="onSearchProvider"
           />
         </div>
-        <div class="flex items-center space-x-3">
-          <div class="md:w-[200px]">
+        <div
+          class="flex items-center space-x-3 tn:w-full md:w-auto tn:mt-3 md:mt-0"
+        >
+          <div class="tn:w-full md:w-[200px]">
             <ButtonDrop
               :btnText="categoryButton"
+              :is-show="isShowCategoryList"
               :disabled="dataCategory.loading"
               @click="isShowCategoryList = !isShowCategoryList"
             />
@@ -40,9 +39,11 @@
               />
             </div>
           </div>
-          <div class="md:w-[200px]">
+          <div class="tn:w-full md:w-[200px]">
             <ButtonDrop
               :btnText="productTypeButton"
+              :is-show="isShowProductTypeList"
+              :disabled="dataCategory.loading"
               @click="isShowProductTypeList = !isShowProductTypeList"
             />
             <div class="w-full">
@@ -56,22 +57,34 @@
         </div>
       </div>
 
-      <div class="tn:mt-8 relative z-0">
-        <div
-          v-if="!dataProviderListActive.loading"
-          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
-        >
+      <div class="tn:mt-6 relative z-0">
+        <div v-if="!dataProviderListActive.loading">
           <div
-            class=""
-            v-for="(product, id) in dataProviderListActive.list"
-            :key="id"
+            v-if="
+              dataProviderListActive.list &&
+              dataProviderListActive.list.length > 0
+            "
+            class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
           >
-            <ProductCard
-              :product="product"
-              class="md:w-full md:h-full"
-              @showPriceScheme="showPriceScheme"
-              @on-click-product="onClickProductDigital"
-            />
+            <div
+              class=""
+              v-for="(product, id) in dataProviderListActive.list"
+              :key="id"
+            >
+              <ProductCard
+                :product="product"
+                class="md:w-full md:h-full"
+                @showPriceScheme="showPriceScheme"
+                @on-click-product="onClickProductDigital"
+              />
+            </div>
+          </div>
+
+          <div
+            class="tn:text-lg xl:text-xl flex justify-center items-center font-bold text-gray-400 tn:h-32 xl:h-44 border tn:rounded-lg bg-gray-100"
+            v-else
+          >
+            Produk tidak ditemukan
           </div>
         </div>
 
@@ -253,8 +266,8 @@ export default {
       choosedSlugProvider: '',
       isShowCategoryList: false,
       isShowProductTypeList: false,
-      categoryButton: 'Pilih kategori',
-      productTypeButton: 'Pilih tipe produk',
+      categoryButton: 'Kategori produk',
+      productTypeButton: 'Tipe produk',
       productTypeList: [
         {
           text: 'All',

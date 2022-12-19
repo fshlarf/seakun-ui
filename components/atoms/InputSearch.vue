@@ -6,7 +6,8 @@
         v-model="inputValue"
         type="text"
         :placeholder="placeholder"
-        class="appearance-none border-2 border-[#A0A3BD] tn:rounded-lg w-full tn:py-3 tn:px-9 text-[#A0A3BD] leading-tight focus:outline-none"
+        :disabled="disabled"
+        class="appearance-none tn:border md:border-2 border-[#A0A3BD] tn:rounded-lg w-full tn:py-3 tn:px-9 text-[#A0A3BD] focus:outline-none"
         @input="checkDataList"
         @keydown="onKeyPress"
         autocomplete="off"
@@ -25,14 +26,14 @@
     <div class="relative z-10">
       <div
         v-if="activeList.length > 0"
-        class="bg-white w-full overflow-hidden text-[#A0A3BD] absolute top-0 left-0 z-50 tn:shadow-md"
+        class="bg-white w-full overflow-hidden text-[#A0A3BD] absolute top-0 left-0 z-50 tn:shadow-2xl tn:rounded"
       >
         <div
           role="button"
           @click="onClickItem(item)"
           v-for="(item, id) in activeList"
           :key="id"
-          class="tn:px-4 tn:py-2 hover:bg-[#e9faf5]"
+          class="tn:px-4 tn:py-3 hover:bg-[#e9faf5]"
           :class="{ active: activeIndex === id }"
         >
           {{ item.text }}
@@ -45,6 +46,10 @@
 <script>
 export default {
   props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     placeholder: {
       type: String,
       default: '',
@@ -81,13 +86,14 @@ export default {
       this.activeIndex = null;
     },
     onKeyPress(e) {
-      console.log(e);
       if (e.keyCode == 38) {
+        e.preventDefault();
         if (this.activeIndex - 1 >= 0) {
           this.activeIndex--;
           this.inputValue = this.activeList[this.activeIndex].text;
         }
       } else if (e.keyCode == 40) {
+        e.preventDefault();
         if (this.activeIndex === null) {
           this.activeIndex = 0;
         } else if (this.activeIndex + 1 <= this.activeList.length - 1) {

@@ -1,12 +1,15 @@
 <template>
   <div class="relative">
     <transition name="slide-up">
-      <div v-if="show" class="item-list w-full bg-white shadow rounded">
+      <div
+        v-if="show"
+        class="item-list w-full bg-white tn:shadow-2xl tn:rounded"
+      >
         <li
           v-for="dataItem in dataList"
           :key="dataItem.index"
           @click="$emit('onClikcItem', dataItem)"
-          class="pb-2 cursor-pointer"
+          class="tn:px-4 tn:py-3 cursor-pointer text-[#A0A3BD] hover:bg-[#e9faf5]"
         >
           {{ dataItem.text }}
         </li>
@@ -36,8 +39,6 @@ export default {
   position: absolute;
   top: 0;
   z-index: 20;
-  padding: 20px;
-  max-height: 200px;
   overflow-y: auto;
   list-style: none; /* Remove list bullets */
   ul {
