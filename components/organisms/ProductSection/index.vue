@@ -1,5 +1,5 @@
 <template>
-  <div id="provider" class="container iner tn:mt-8 lg:pt-20 pt-20">
+  <div id="provider" class="container tn:mt-8 lg:pt-20 pt-20">
     <div class="">
       <div
         id="product-digital"
@@ -17,7 +17,10 @@
           >See more</NuxtLink
         >
       </div>
-      <div class="tn:mt-4">
+
+      <InputSearch :data-list="providerSearchList" />
+
+      <div class="tn:mt-8 relative z-0">
         <div
           v-if="!dataProviderList.loading"
           class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
@@ -116,6 +119,7 @@ import { providerList } from '../../../constants/price-scheme';
 import ModalPackages from './views/ModalPackages.vue';
 import SetitipBanner from './views/SetitipBanner.vue';
 import { mapGetters, mapActions } from 'vuex';
+import InputSearch from '~/components/atoms/InputSearch';
 
 export default {
   components: {
@@ -125,6 +129,7 @@ export default {
     ModalPriceScheme,
     ModalPackages,
     SetitipBanner,
+    InputSearch,
   },
   data() {
     return {
@@ -206,6 +211,20 @@ export default {
       isShowModalPackages: false,
       choosedProvider: {},
       choosedSlugProvider: '',
+      // providerSearchList: [
+      //   {
+      //     text: 'Netflix',
+      //     value: 'netflix',
+      //   },
+      //   {
+      //     text: 'Spotify',
+      //     value: 'spotify',
+      //   },
+      //   {
+      //     text: 'Youtube',
+      //     value: 'youtube',
+      //   },
+      // ],
     };
   },
   computed: {
@@ -213,6 +232,15 @@ export default {
       dataProviderList: 'getProviders',
       dataCardVariant: 'getDataCardVariant',
     }),
+    providerSearchList() {
+      const dataList = this.dataProviderList.list.map((provider) => {
+        return {
+          text: provider.name,
+          value: provider.name,
+        };
+      });
+      return dataList;
+    },
   },
   methods: {
     ...mapActions({
