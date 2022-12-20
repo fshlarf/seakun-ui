@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="relative !z-10">
     <button
       class="button-dropdown flex justify-between items-center w-full tn:border md:border-2 tn:!rounded-lg text-[#A0A3BD] border-[#A0A3BD] tn:py-3 tn:px-4 bg-white focus:outline-none"
       id="menu-button"

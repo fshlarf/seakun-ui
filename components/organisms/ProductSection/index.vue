@@ -19,6 +19,7 @@
             :data-list="providerSearchList"
             :disabled="dataProviderListActive.loading"
             @onEnter="onSearchProvider"
+            @onEraseInput="onEraseInput"
           />
         </div>
         <div
@@ -36,6 +37,7 @@
                 :show="isShowCategoryList"
                 :dataList="providerCategoryList"
                 @onClikcItem="onClickCategory"
+                @hideDropDown="hideDropDown"
               />
             </div>
           </div>
@@ -51,6 +53,7 @@
                 :show="isShowProductTypeList"
                 :dataList="productTypeList"
                 @onClikcItem="onClickProductType"
+                @hideDropDown="hideDropDown"
               />
             </div>
           </div>
@@ -302,12 +305,17 @@ export default {
       return dataList;
     },
     providerCategoryList() {
+      const allCategory = {
+        text: 'All',
+        value: '',
+      };
       const categories = this.dataCategory.list.map((category) => {
         return {
           text: category.name,
           value: category.code,
         };
       });
+      categories.unshift(allCategory);
       return categories;
     },
   },
@@ -320,11 +328,15 @@ export default {
       setDataCardVariant: 'setDataCardVariant',
       applyFilterProvider: 'applyFilterProvider',
       fetchProviderCategory: 'fetchProviderCategory',
+      setProvidersActive: 'setProvidersActive',
+      setFilterProvider: 'setFilterProvider',
     }),
     onSearchProvider(keyword) {
       const filter = {
         ...this.filterProvider,
         keyword,
+        category: '',
+        type: 0,
       };
       this.applyFilterProvider(filter);
     },
@@ -332,9 +344,11 @@ export default {
       const filter = {
         ...this.filterProvider,
         category: category.value,
+        type: 0,
       };
       this.applyFilterProvider(filter);
       this.categoryButton = category.text;
+      this.productTypeButton = 'Tipe produk';
       this.isShowCategoryList = false;
     },
     onClickProductType(type) {
@@ -344,6 +358,23 @@ export default {
       };
       this.applyFilterProvider(filter);
       this.productTypeButton = type.text;
+      this.isShowProductTypeList = false;
+    },
+    onEraseInput() {
+      this.categoryButton = 'Kategori produk';
+      this.productTypeButton = 'Tipe produk';
+      const filter = {
+        ...this.filterProvider,
+        keyword: '',
+        category: '',
+        type: 0,
+      };
+      this.setFilterProvider(filter);
+      const providers = this.dataProviderListAll.list.slice();
+      this.setProvidersActive(providers);
+    },
+    hideDropDown() {
+      this.isShowCategoryList = false;
       this.isShowProductTypeList = false;
     },
     showPriceScheme(param1, param2) {

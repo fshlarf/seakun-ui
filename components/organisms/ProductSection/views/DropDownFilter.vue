@@ -1,8 +1,9 @@
 <template>
-  <div class="relative">
+  <div class="relative z-20">
     <transition name="slide-up">
       <div
         v-if="show"
+        id="dropdown-filter"
         class="item-list w-full bg-white tn:shadow-2xl tn:rounded"
       >
         <li
@@ -29,6 +30,28 @@ export default {
     dataList: {
       type: Array,
       default: () => [],
+    },
+  },
+  mounted() {
+    this.checkDropDown();
+  },
+  methods: {
+    checkDropDown() {
+      let isOutside = false;
+      document.addEventListener('click', (event) => {
+        const box = document.getElementById('dropdown-filter');
+
+        if (!box.contains(event.target)) {
+          this.$emit('hideDropDown');
+          isOutside = true;
+        }
+        console.log(isOutside);
+      });
+      if (isOutside === true) {
+        this.$emit('hideDropDown');
+        console.log('outside');
+      }
+      console.log('isOutside', isOutside);
     },
   },
 };

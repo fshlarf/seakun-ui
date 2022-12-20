@@ -299,6 +299,12 @@ export const actions = {
     commit('SET_FILTER_PROVIDER_ACTIVE', data);
     dispatch('fetchProviderActive');
   },
+  setFilterProvider({ commit }, filter) {
+    commit('SET_FILTER_PROVIDER_ACTIVE', filter);
+  },
+  setProvidersActive({ commit }, list) {
+    commit('SET_DATA_PROVIDERS_ACTIVE', list);
+  },
   setSelectedProvider({ commit }, provider) {
     commit('SET_SELECTED_PROVIDER', provider);
   },
