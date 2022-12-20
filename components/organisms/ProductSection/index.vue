@@ -162,8 +162,6 @@ import ModalPackages from './views/ModalPackages.vue';
 import SetitipBanner from './views/SetitipBanner.vue';
 import { mapGetters, mapActions } from 'vuex';
 import InputSearch from '~/components/atoms/InputSearch';
-import ButtonDrop from './views/ButtonDrop';
-import DropDownFilter from './views/DropDownFilter.vue';
 import SelectOption from './views/SelectOption.vue';
 
 export default {
@@ -175,8 +173,6 @@ export default {
     ModalPackages,
     SetitipBanner,
     InputSearch,
-    ButtonDrop,
-    DropDownFilter,
     SelectOption,
   },
   data() {
