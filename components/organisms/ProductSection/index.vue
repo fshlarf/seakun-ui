@@ -19,40 +19,33 @@
             :data-list="providerSearchList"
             :disabled="dataProviderListActive.loading"
             @onEnter="onSearchProvider"
+            @onEraseInput="onEraseInput"
           />
         </div>
         <div
           class="flex items-center space-x-3 tn:w-full md:w-auto tn:mt-3 md:mt-0"
         >
           <div class="tn:w-full md:w-[200px]">
-            <ButtonDrop
-              :btnText="categoryButton"
+            <SelectOption
+              :btn-text="categoryButton"
               :is-show="isShowCategoryList"
               :disabled="dataCategory.loading"
+              :data-list="providerCategoryList"
               @click="isShowCategoryList = !isShowCategoryList"
+              @onClikcItem="onClickCategory"
+              @hideDropDown="hideDropDownCategory"
             />
-            <div class="w-full">
-              <DropDownFilter
-                :show="isShowCategoryList"
-                :dataList="providerCategoryList"
-                @onClikcItem="onClickCategory"
-              />
-            </div>
           </div>
           <div class="tn:w-full md:w-[200px]">
-            <ButtonDrop
-              :btnText="productTypeButton"
+            <SelectOption
+              :btn-text="productTypeButton"
               :is-show="isShowProductTypeList"
               :disabled="dataCategory.loading"
+              :data-list="productTypeList"
               @click="isShowProductTypeList = !isShowProductTypeList"
+              @onClikcItem="onClickProductType"
+              @hideDropDown="hideDropDownProductType"
             />
-            <div class="w-full">
-              <DropDownFilter
-                :show="isShowProductTypeList"
-                :dataList="productTypeList"
-                @onClikcItem="onClickProductType"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -171,6 +164,7 @@ import { mapGetters, mapActions } from 'vuex';
 import InputSearch from '~/components/atoms/InputSearch';
 import ButtonDrop from './views/ButtonDrop';
 import DropDownFilter from './views/DropDownFilter.vue';
+import SelectOption from './views/SelectOption.vue';
 
 export default {
   components: {
@@ -183,6 +177,7 @@ export default {
     InputSearch,
     ButtonDrop,
     DropDownFilter,
+    SelectOption,
   },
   data() {
     return {
@@ -302,12 +297,17 @@ export default {
       return dataList;
     },
     providerCategoryList() {
+      const allCategory = {
+        text: 'All',
+        value: '',
+      };
       const categories = this.dataCategory.list.map((category) => {
         return {
           text: category.name,
           value: category.code,
         };
       });
+      categories.unshift(allCategory);
       return categories;
     },
   },
@@ -320,11 +320,15 @@ export default {
       setDataCardVariant: 'setDataCardVariant',
       applyFilterProvider: 'applyFilterProvider',
       fetchProviderCategory: 'fetchProviderCategory',
+      setProvidersActive: 'setProvidersActive',
+      setFilterProvider: 'setFilterProvider',
     }),
     onSearchProvider(keyword) {
       const filter = {
         ...this.filterProvider,
         keyword,
+        category: '',
+        type: 0,
       };
       this.applyFilterProvider(filter);
     },
@@ -332,9 +336,11 @@ export default {
       const filter = {
         ...this.filterProvider,
         category: category.value,
+        type: 0,
       };
       this.applyFilterProvider(filter);
       this.categoryButton = category.text;
+      this.productTypeButton = 'Tipe produk';
       this.isShowCategoryList = false;
     },
     onClickProductType(type) {
@@ -344,6 +350,25 @@ export default {
       };
       this.applyFilterProvider(filter);
       this.productTypeButton = type.text;
+      this.isShowProductTypeList = false;
+    },
+    onEraseInput() {
+      this.categoryButton = 'Kategori produk';
+      this.productTypeButton = 'Tipe produk';
+      const filter = {
+        ...this.filterProvider,
+        keyword: '',
+        category: '',
+        type: 0,
+      };
+      this.setFilterProvider(filter);
+      const providers = this.dataProviderListAll.list.slice();
+      this.setProvidersActive(providers);
+    },
+    hideDropDownCategory() {
+      this.isShowCategoryList = false;
+    },
+    hideDropDownProductType() {
       this.isShowProductTypeList = false;
     },
     showPriceScheme(param1, param2) {

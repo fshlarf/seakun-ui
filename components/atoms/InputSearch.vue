@@ -7,7 +7,7 @@
         type="text"
         :placeholder="placeholder"
         :disabled="disabled"
-        class="appearance-none tn:border md:border-2 border-[#A0A3BD] tn:rounded-lg w-full tn:py-3 tn:px-9 text-[#A0A3BD] focus:outline-none"
+        class="appearance-none tn:border md:border-2 border-[#A0A3BD] tn:rounded-lg w-full tn:py-3 tn:px-10 text-[#A0A3BD] focus:outline-none"
         @input="checkDataList"
         @keydown="onKeyPress"
         autocomplete="off"
@@ -16,6 +16,7 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div
+        v-if="inputValue !== ''"
         class="icon-right tn:!pt-1 text-gray-200"
         role="button"
         @click="onClickEraseSearch"
@@ -25,7 +26,7 @@
     </div>
     <div class="relative z-10">
       <div
-        v-if="activeList.length > 0"
+        id="dropdown-search"
         class="bg-white w-full overflow-hidden text-[#A0A3BD] absolute top-0 left-0 z-50 tn:shadow-2xl tn:rounded"
       >
         <div
@@ -66,7 +67,19 @@ export default {
       activeIndex: null,
     };
   },
+  mounted() {
+    this.checkDropDown();
+  },
   methods: {
+    checkDropDown() {
+      document.addEventListener('click', function handleClickOutsideBox(event) {
+        const box = document.getElementById('dropdown-search');
+
+        if (!box.contains(event.target)) {
+          box.style.display = 'none';
+        }
+      });
+    },
     checkDataList(e) {
       this.activeList = [];
       if (e.target.value) {
@@ -75,6 +88,8 @@ export default {
             this.activeList.push(item);
           }
         });
+        const box = document.getElementById('dropdown-search');
+        box.style.display = 'block';
       } else {
         this.activeIndex = null;
       }
@@ -114,6 +129,7 @@ export default {
     onClickEraseSearch() {
       this.inputValue = '';
       document.getElementById('search-input').focus();
+      this.$emit('onEraseInput');
     },
   },
 };
@@ -122,14 +138,14 @@ export default {
 <style scoped>
 .icon-left {
   position: absolute;
-  left: 0.75rem;
+  left: 16px !important;
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
 }
 .icon-right {
   position: absolute;
-  right: 0.75rem;
+  right: 16px !important;
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
