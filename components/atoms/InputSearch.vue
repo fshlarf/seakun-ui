@@ -16,7 +16,7 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div
-        v-if="inputValue !== ''"
+        v-if="inputValue != ''"
         class="icon-right tn:!pt-1 text-gray-200"
         role="button"
         @click="onClickEraseSearch"
@@ -136,6 +136,10 @@ export default {
 </script>
 
 <style scoped>
+#dropdown-search {
+  position: relative;
+  z-index: 50;
+}
 .icon-left {
   position: absolute;
   left: 16px !important;
