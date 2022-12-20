@@ -13,7 +13,7 @@
       <div
         class="flex tn:flex-wrap md:flex-nowrap md:justify-between md:space-x-3 items-center w-full tn:mt-4 md:mt-2"
       >
-        <div class="tn:w-full lg:w-[400px]">
+        <div class="tn:w-full lg:w-[400px] relative z-20">
           <InputSearch
             placeholder="Cari produk"
             :data-list="providerSearchList"
@@ -23,7 +23,7 @@
           />
         </div>
         <div
-          class="flex items-center space-x-3 tn:w-full md:w-auto tn:mt-3 md:mt-0"
+          class="flex items-center space-x-3 tn:w-full md:w-auto tn:mt-3 md:mt-0 relative z-10"
         >
           <div class="tn:w-full md:w-[200px]">
             <SelectOption

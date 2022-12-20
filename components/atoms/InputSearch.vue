@@ -16,7 +16,7 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div
-        v-if="inputValue != ''"
+        v-if="inputValue"
         class="icon-right tn:!pt-1 text-gray-200"
         role="button"
         @click="onClickEraseSearch"
@@ -27,7 +27,7 @@
     <div class="relative z-10">
       <div
         id="dropdown-search"
-        class="bg-white w-full overflow-hidden text-[#A0A3BD] absolute top-0 left-0 z-50 tn:shadow-2xl tn:rounded"
+        class="bg-white w-full overflow-hidden text-[#A0A3BD] absolute top-0 left-0 tn:!z-50 tn:shadow-2xl tn:rounded"
       >
         <div
           role="button"
@@ -135,11 +135,7 @@ export default {
 };
 </script>
 
-<style scoped>
-#dropdown-search {
-  position: relative;
-  z-index: 50;
-}
+<style>
 .icon-left {
   position: absolute;
   left: 16px !important;
