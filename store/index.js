@@ -10,7 +10,26 @@ export const state = () => ({
     list: [],
     loading: true,
   },
+  dataProviderActive: {
+    list: [],
+    loading: true,
+  },
   filterProvider: {
+    page: 1,
+    limit: 50,
+  },
+  filterProviderActive: {
+    page: 1,
+    limit: 50,
+    keyword: '',
+    category: '',
+    type: 0,
+  },
+  dataProviderCategory: {
+    list: [],
+    loading: true,
+  },
+  filterProviderCategory: {
     page: 1,
     limit: 50,
   },
@@ -65,6 +84,15 @@ export const state = () => ({
 });
 
 export const getters = {
+  getFilterProviderActive(state) {
+    return state.filterProviderActive;
+  },
+  getProvidersActive(state) {
+    return state.dataProviderActive;
+  },
+  getProviderCategory(state) {
+    return state.dataProviderCategory;
+  },
   getProviders(state) {
     return state.dataProvider;
   },
@@ -119,10 +147,37 @@ export const mutations = {
       providerUid: uid,
     };
   },
+  SET_FILTER_PROVIDER_ACTIVE(state, filter) {
+    state.filterProviderActive = filter;
+  },
   SET_FILTER_GROUP(state, providerUid) {
     state.filterGroup = {
       ...state.filterGroup,
       providerUid,
+    };
+  },
+  SET_LOADING_PROVIDER_CATEGORY(state, loading) {
+    state.dataProviderCategory = {
+      ...state.dataProviderCategory,
+      loading,
+    };
+  },
+  SET_DATA_PROVIDER_CATEGORY(state, data) {
+    state.dataProviderCategory = {
+      ...state.dataProviderCategory,
+      list: data,
+    };
+  },
+  SET_LOADING_PROVIDER_ACTIVE(state, loading) {
+    state.dataProviderActive = {
+      ...state.dataProviderActive,
+      loading,
+    };
+  },
+  SET_DATA_PROVIDERS_ACTIVE(state, data) {
+    state.dataProviderActive = {
+      ...state.dataProviderActive,
+      list: data,
     };
   },
   SET_LOADING_PROVIDER(state, loading) {
@@ -240,6 +295,16 @@ export const mutations = {
 };
 
 export const actions = {
+  applyFilterProvider({ dispatch, commit }, data) {
+    commit('SET_FILTER_PROVIDER_ACTIVE', data);
+    dispatch('fetchProviderActive');
+  },
+  setFilterProvider({ commit }, filter) {
+    commit('SET_FILTER_PROVIDER_ACTIVE', filter);
+  },
+  setProvidersActive({ commit }, list) {
+    commit('SET_DATA_PROVIDERS_ACTIVE', list);
+  },
   setSelectedProvider({ commit }, provider) {
     commit('SET_SELECTED_PROVIDER', provider);
   },
@@ -262,8 +327,27 @@ export const actions = {
     commit('SET_FILTER_GROUP', providerUid);
     dispatch('fetchGroup');
   },
+  async fetchProviderCategory({ commit, state }) {
+    commit('SET_LOADING_PROVIDER_CATEGORY', true);
+    try {
+      const MasterServices = new MasterService(this);
+      const fetchProviderCategory = await MasterServices.getProviderCategory(
+        state.filterProviderCategory
+      );
+      if (fetchProviderCategory.data) {
+        const { data } = fetchProviderCategory.data;
+        commit('SET_DATA_PROVIDER_CATEGORY', data);
+      } else {
+        throw new Error(fetchProviderCategory);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    commit('SET_LOADING_PROVIDER_CATEGORY', false);
+  },
   async fetchProvider({ commit, state }, providerSlug) {
     commit('SET_LOADING_PROVIDER', true);
+    commit('SET_LOADING_PROVIDER_ACTIVE', true);
     try {
       const MasterServices = new MasterService(this);
       const fetchProviderList = await MasterServices.getProvider(
@@ -275,6 +359,7 @@ export const actions = {
           return provider.slug !== 'vidio';
         });
         commit('SET_DATA_PROVIDERS', providers);
+        commit('SET_DATA_PROVIDERS_ACTIVE', providers);
         if (providerSlug) {
           const selectedProvider = data.find((provider) => {
             return provider.slug === providerSlug;
@@ -299,6 +384,28 @@ export const actions = {
       console.log(err);
     }
     commit('SET_LOADING_PROVIDER', false);
+    commit('SET_LOADING_PROVIDER_ACTIVE', false);
+  },
+  async fetchProviderActive({ commit, state }) {
+    commit('SET_LOADING_PROVIDER_ACTIVE', true);
+    try {
+      const MasterServices = new MasterService(this);
+      const fetchProviderList = await MasterServices.getProvider(
+        state.filterProviderActive
+      );
+      if (fetchProviderList.data) {
+        const { data } = fetchProviderList.data;
+        const providers = data.filter((provider) => {
+          return provider.slug !== 'vidio';
+        });
+        commit('SET_DATA_PROVIDERS_ACTIVE', providers);
+      } else {
+        throw new Error(fetchProviderList);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    commit('SET_LOADING_PROVIDER_ACTIVE', false);
   },
   async fetchGroup({ commit, state, dispatch }) {
     commit('SET_LOADING_GROUP', true);
