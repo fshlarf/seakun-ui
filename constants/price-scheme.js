@@ -956,6 +956,54 @@ export const providerList = [
     ],
   },
   {
+    name: 'Nord VPN',
+    slug: 'nord-vpn',
+    title: 'Harga Paket NordVPN 1 Tahun',
+    img: '/images/product/brand/nord-vpn.png',
+    screenshot: '/images/price scheme/nord-vpn-year.png',
+    member: 6,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Nord VPN 1 tahun',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 6 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium NordVPN 1 Tahun',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Premium NordVPN',
+        value: '$67.35',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: '$74.76 = Rp1.203.636',
+      },
+      {
+        title: 'Jumlah member dalam 1 grup',
+        value: '6',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.203.636 ÷ 6 = Rp200.606',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp89.394',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp290.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
     name: 'Amazon Prime Video',
     slug: 'amazon-prime',
     title: 'Paket Premium Amazon Prime Video (Bulanan)',
