@@ -13,7 +13,7 @@
       <div
         class="flex tn:flex-wrap md:flex-nowrap md:justify-between md:space-x-3 items-center w-full tn:mt-4 md:mt-2"
       >
-        <div class="tn:w-full lg:w-[400px]">
+        <div class="tn:w-full lg:w-[400px] relative z-20">
           <InputSearch
             placeholder="Cari produk"
             :data-list="providerSearchList"
@@ -23,39 +23,29 @@
           />
         </div>
         <div
-          class="flex items-center space-x-3 tn:w-full md:w-auto tn:mt-3 md:mt-0"
+          class="flex items-center space-x-3 tn:w-full md:w-auto tn:mt-3 md:mt-0 relative z-10"
         >
           <div class="tn:w-full md:w-[200px]">
-            <ButtonDrop
-              :btnText="categoryButton"
+            <SelectOption
+              :btn-text="categoryButton"
               :is-show="isShowCategoryList"
               :disabled="dataCategory.loading"
+              :data-list="providerCategoryList"
               @click="isShowCategoryList = !isShowCategoryList"
+              @onClikcItem="onClickCategory"
+              @hideDropDown="hideDropDownCategory"
             />
-            <div class="w-full">
-              <DropDownFilter
-                :show="isShowCategoryList"
-                :dataList="providerCategoryList"
-                @onClikcItem="onClickCategory"
-                @hideDropDown="hideDropDown"
-              />
-            </div>
           </div>
           <div class="tn:w-full md:w-[200px]">
-            <ButtonDrop
-              :btnText="productTypeButton"
+            <SelectOption
+              :btn-text="productTypeButton"
               :is-show="isShowProductTypeList"
               :disabled="dataCategory.loading"
+              :data-list="productTypeList"
               @click="isShowProductTypeList = !isShowProductTypeList"
+              @onClikcItem="onClickProductType"
+              @hideDropDown="hideDropDownProductType"
             />
-            <div class="w-full">
-              <DropDownFilter
-                :show="isShowProductTypeList"
-                :dataList="productTypeList"
-                @onClikcItem="onClickProductType"
-                @hideDropDown="hideDropDown"
-              />
-            </div>
           </div>
         </div>
       </div>
@@ -172,8 +162,7 @@ import ModalPackages from './views/ModalPackages.vue';
 import SetitipBanner from './views/SetitipBanner.vue';
 import { mapGetters, mapActions } from 'vuex';
 import InputSearch from '~/components/atoms/InputSearch';
-import ButtonDrop from './views/ButtonDrop';
-import DropDownFilter from './views/DropDownFilter.vue';
+import SelectOption from './views/SelectOption.vue';
 
 export default {
   components: {
@@ -184,8 +173,7 @@ export default {
     ModalPackages,
     SetitipBanner,
     InputSearch,
-    ButtonDrop,
-    DropDownFilter,
+    SelectOption,
   },
   data() {
     return {
@@ -373,8 +361,10 @@ export default {
       const providers = this.dataProviderListAll.list.slice();
       this.setProvidersActive(providers);
     },
-    hideDropDown() {
+    hideDropDownCategory() {
       this.isShowCategoryList = false;
+    },
+    hideDropDownProductType() {
       this.isShowProductTypeList = false;
     },
     showPriceScheme(param1, param2) {
