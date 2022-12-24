@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <!-- <Navbar /> -->
     <HeaderSection />
     <IntroductionSection />
     <PartnershipSection />
