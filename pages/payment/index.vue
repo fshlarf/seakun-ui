@@ -382,7 +382,17 @@ export default {
         );
         if (fetchDetailVariant.data) {
           const { data } = fetchDetailVariant.data;
-          this.dataVariants = data;
+          let variants = [];
+          data.forEach((variant) => {
+            if (variant.providerName === 'Netflix') {
+              if (variant.duration === 1) {
+                variants.push(variant);
+              }
+            } else {
+              variants.push(variant);
+            }
+          });
+          this.dataVariants = variants;
         } else {
           throw new Error(fetchDetailVariant);
         }
