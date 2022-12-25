@@ -252,14 +252,18 @@ export default {
       isLoadingCreateOrder: 'getLoadingCreateOrder',
     }),
     dataListVariantActive() {
-      let activeVariants = []
-      this.dataListVariant.list.forEach(variant => {
-        if (variant.active) {
-          activeVariants.push(variant)
+      let activeVariants = [];
+      this.dataListVariant.list.forEach((variant) => {
+        if (variant.providerName === 'Netflix') {
+          if (variant.duration === 1) {
+            activeVariants.push(variant);
+          }
+        } else {
+          activeVariants.push(variant);
         }
-      })
-      return activeVariants
-    }
+      });
+      return activeVariants;
+    },
   },
   mounted() {
     const {
