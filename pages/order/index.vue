@@ -38,7 +38,7 @@
         <div class="w-full">
           <DropDownPricesListSubcribe
             :show="isShowPriceList"
-            :dataList="dataListVariant.list"
+            :dataList="dataListVariantActive"
             @onClikcItem="onClickVariantPrice"
           />
         </div>
@@ -251,6 +251,15 @@ export default {
       isShowModalBlackList: 'getShowModalBlackList',
       isLoadingCreateOrder: 'getLoadingCreateOrder',
     }),
+    dataListVariantActive() {
+      let activeVariants = []
+      this.dataListVariant.list.forEach(variant => {
+        if (variant.active) {
+          activeVariants.push(variant)
+        }
+      })
+      return activeVariants
+    }
   },
   mounted() {
     const {

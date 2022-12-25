@@ -382,7 +382,13 @@ export default {
         );
         if (fetchDetailVariant.data) {
           const { data } = fetchDetailVariant.data;
-          this.dataVariants = data;
+          let variants = []
+          data.forEach(variant => {
+            if (variant.active) {
+              variants.push(variant)
+            }
+          })
+          this.dataVariants = variants
         } else {
           throw new Error(fetchDetailVariant);
         }
