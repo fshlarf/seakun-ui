@@ -3,37 +3,36 @@
     <template v-slot:header>
       <div class="">
         <h1 class="tn:text-base md:text-lg xl:text-xl font-bold">
-          Pilih Paket {{ provider.name }}
+          Pilih Paket
         </h1>
       </div>
     </template>
 
     <div class="pb-2">
       <div
-        v-if="preOrderPackage.includes(slug) && provider.variants"
+        v-if="provider.variants && isHasPo"
         class="tn:mx-1 md:mx-3 mb-3"
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
         <p class="tn:text-xs md:text-sm" v-html="setPreOrderNotes(slug)"></p>
+        <nuxt-link
+          class="tn:text-xs md:text-sm text-secondary inline font-semibold"
+          to="/info/pre-order"
+          >Lihat Ketentuan Pre-order Selengkapnya</nuxt-link
+        >
       </div>
 
       <div
-        v-if="provider && packageVariants"
-        class="flex tn:flex-col md:flex-row tn:flex-wrap xl:flex-nowrap md:justify-between tn:space-y-3 xl:space-y-0"
+        class="flex tn:flex-wrap xl:flex-nowrap justify-center items-start tn:gap-3 md:gap-6"
       >
-        <div
+        <PackageCard
           v-for="(item, id) in packageVariants"
           :key="id"
-          :class="`mx-auto ${item.isActive == 1 ? '' : 'inactive'}`"
-          class="w-full h-full"
-        >
-          <CardPackage
-            :slug="slug"
-            :packet="item"
-            class="xl:w-[416px]"
-            @choosePacket="choosePacket"
-          />
-        </div>
+          :slug="slug"
+          :packet="item"
+          :provider="provider"
+          @choosePacket="choosePacket"
+        />
       </div>
     </div>
   </Modal>
@@ -43,6 +42,7 @@
 import Modal from '~/components/atoms/Modal.vue';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical.vue';
 import CardPackage from './CardPackage.vue';
+import PackageCard from './PackageCard.vue';
 
 export default {
   name: 'ModalPackages',
@@ -54,31 +54,6 @@ export default {
   },
   data() {
     return {
-      preOrderPackage: [
-        'apple-one',
-        'apple-tv',
-        'apple-one-premier',
-        'canva',
-        'disney-hotstar',
-        'gramedia-digital',
-        'microsoft-365',
-        'nord-vpn',
-        'wattpad',
-        'google-one',
-        'amazon-prime',
-        'iqiyi',
-        'zoom',
-        'vidio',
-        'hbo-go',
-        'scribd',
-        'mcafee',
-        'setapp',
-        'bitdefender',
-        'lastpass',
-        'apple-music',
-        'wetv',
-        'nintendo-switch',
-      ],
       packageVariants: [],
     };
   },
@@ -93,6 +68,14 @@ export default {
     Modal,
     CardShimmerVertical,
     CardPackage,
+    PackageCard,
+  },
+  computed: {
+    isHasPo() {
+      return this.provider.variants.some((variant) => {
+        return variant.isPo === 1;
+      });
+    },
   },
   methods: {
     setPreOrderNotes(slug) {
