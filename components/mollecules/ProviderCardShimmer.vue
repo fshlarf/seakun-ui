@@ -1,6 +1,6 @@
 <template>
     <div
-      class="tn:w-[164px] md:w-[268px] bg-white !rounded-[8px] tn:p-2 md:p-[14px] provider-card relative z-0"
+      class="tn:w-full md:w-[268px] bg-white !rounded-[8px] tn:p-2 md:p-[14px] provider-card relative z-0"
     >
       <div class="tn:pt-2 md:pt-4 flex justify-center items-center">
         <div class="cloud"></div>

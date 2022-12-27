@@ -1,6 +1,6 @@
 <template>
     <div
-      class="tn:w-[164px] md:w-[268px] bg-white !rounded-[8px] tn:p-2 md:p-[14px] provider-card relative z-0"
+      class="tn:w-full md:w-[268px] bg-white !rounded-[8px] tn:p-2 md:p-[14px] provider-card relative z-0"
     >
       <div
         v-if="checkIsNewProduct(dataProvider.createdAt)"
@@ -22,7 +22,7 @@
           />
         </div>
         <h4
-          class="tn:!font-bold tn:text-[14px] md:text-base tn:m-0 text-left !leading-5"
+          class="tn:!font-bold tn:text-[14px] md:text-base tn:m-0 text-left !leading-5 max-w-[70%]"
         >
           {{ dataProvider.name }}
         </h4>
@@ -175,7 +175,7 @@
   
   <style>
   .provider-card {
-    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.06);
   }
   .cloud {
     position: relative;

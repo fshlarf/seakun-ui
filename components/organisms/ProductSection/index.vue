@@ -57,7 +57,7 @@
               dataProviderListActive.list &&
               dataProviderListActive.list.length > 0
             "
-            class="flex flex-wrap justify-center tn:!items-stretch tn:gap-3 md:gap-4"
+            class="tn:grid tn:grid-cols-2 md:flex md:flex-wrap md:justify-center tn:!items-stretch tn:gap-3 md:gap-4"
           >
             <div
               class=""
@@ -83,7 +83,7 @@
 
         <div
           v-else
-          class="flex flex-wrap justify-center tn:!items-stretch tn:gap-3 md:gap-4"
+          class="tn:grid tn:grid-cols-2 md:flex md:flex-wrap md:justify-center tn:!items-stretch tn:gap-3 md:gap-4"
         >
           <ProviderCardShimmer />
           <ProviderCardShimmer />
