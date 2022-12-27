@@ -591,10 +591,11 @@ export const providerList = [
     desc: 'Disney+ Hotstar Paket Premium User Host 1 Tahun',
     member: 2,
     schemes: [
-      'Seakun membuat akun dan membeli Paket Disney+ Hotstar',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 2 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun ',
+      'User melakukan pendaftaran ke Disney+ menggunakan nomor pribadi',
+      'User subscribe Plan Yearly seharga Rp199.000 menggunakan payment pribadi',
+      'Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi Disney+',
+      'Admin akan mengirimkan penggantian dana sebesar 49.000',
+      'User dapat menikmati fitur Premium selama 1 tahun sebagai user host',
     ],
     informations: [
       {
