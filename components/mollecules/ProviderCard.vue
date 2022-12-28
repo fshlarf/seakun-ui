@@ -74,6 +74,34 @@
             ><span class="tn:hidden md:inline-block">Bulan</span>
           </div>
           <div
+            v-else-if="
+              dataProvider.slug === 'canva' ||
+              dataProvider.slug === 'microsoft-365'
+            "
+          >
+            <div
+              v-if="variant.duration === 12"
+              class="tn:text-[8px] md:text-[10px] text-[#00BA88] bg-[#E9FAF5] tn:p-1 md:px-3 md:py-2 tn:rounded-[8px] md:rounded-[20px]"
+            >
+              1 <span class="md:hidden">Thn</span
+              ><span class="tn:hidden md:inline-block">Tahun</span>
+            </div>
+            <div
+              v-else
+              class="tn:text-[8px] md:text-[10px] text-[#00BA88] bg-[#E9FAF5] tn:p-1 md:px-3 md:py-2 tn:rounded-[8px] md:rounded-[20px]"
+            >
+              1, 3, 6 <span class="md:hidden">Bln</span
+              ><span class="tn:hidden md:inline-block">Bulan</span>
+            </div>
+          </div>
+          <div
+            v-else-if="variant.durations === '12'"
+            class="tn:text-[8px] md:text-[10px] text-[#00BA88] bg-[#E9FAF5] tn:p-1 md:px-3 md:py-2 tn:rounded-[8px] md:rounded-[20px]"
+          >
+            1 <span class="md:hidden">Thn</span
+            ><span class="tn:hidden md:inline-block">Tahun</span>
+          </div>
+          <div
             v-else
             class="tn:text-[8px] md:text-[10px] text-[#00BA88] bg-[#E9FAF5] tn:p-1 md:px-3 md:py-2 tn:rounded-[8px] md:rounded-[20px]"
           >

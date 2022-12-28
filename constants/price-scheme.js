@@ -309,58 +309,6 @@ export const providerList = [
   {
     name: 'Youtube',
     slug: 'youtube',
-    title: 'Harga Paket Premium User Host 1 Tahun',
-    img: '/images/product/brand/youtube.png',
-    screenshot: '/images/price scheme/youtube.png',
-    desc: 'Youtube Paket Premium User Host 12 Bulan',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Youtube',
-      'Member bertindak sebagai user Host dalam grup',
-      'Seakun akan menggunakan No. hp User Host untuk OTP',
-      'Seakun mengundang User Host untuk join grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium',
-    ],
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Host 12 Bulan',
-        is_total: true,
-      },
-      {
-        title: 'Harga Paket Premium Youtube',
-        value: 'Rp99.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp109.890',
-      },
-      {
-        title: 'Jumlah Member Dalam 1 Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp109.890 ÷ 5 = Rp21.978',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0 (FREE)',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp21.978',
-      },
-      {
-        title: 'Harga Paket 12 Bulan',
-        value: 'Rp21.978 x 12 = Rp263.736',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Youtube',
-    slug: 'youtube',
     title: 'Harga Paket Premium Reguler',
     img: '/images/product/brand/youtube.png',
     screenshot: '/images/price scheme/youtube.png',
