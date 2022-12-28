@@ -41,7 +41,6 @@
 <script>
 import Modal from '~/components/atoms/Modal.vue';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical.vue';
-import CardPackage from './CardPackage.vue';
 import PackageCard from './PackageCard.vue';
 
 export default {
@@ -67,7 +66,6 @@ export default {
   components: {
     Modal,
     CardShimmerVertical,
-    CardPackage,
     PackageCard,
   },
   computed: {
