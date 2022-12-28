@@ -57,16 +57,16 @@
               dataProviderListActive.list &&
               dataProviderListActive.list.length > 0
             "
-            class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-6 px-0 justify-center"
+            class="tn:grid tn:grid-cols-2 md:flex md:flex-wrap md:justify-center tn:!items-stretch tn:gap-3 md:gap-4"
           >
             <div
               class=""
               v-for="(product, id) in dataProviderListActive.list"
               :key="id"
             >
-              <ProductCard
-                :product="product"
-                class="md:w-full md:h-full"
+              <ProviderCard
+                :data-provider="product"
+                class="tn:w-full tn:h-full"
                 @showPriceScheme="showPriceScheme"
                 @on-click-product="onClickProductDigital"
               />
@@ -83,16 +83,16 @@
 
         <div
           v-else
-          class="grid tn:gap-3 md:gap-4 xl:gap-6 tn:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          class="tn:grid tn:grid-cols-2 md:flex md:flex-wrap md:justify-center tn:!items-stretch tn:gap-3 md:gap-4"
         >
-          <CardShimmerVertical />
-          <CardShimmerVertical />
-          <CardShimmerVertical />
-          <CardShimmerVertical />
-          <CardShimmerVertical />
-          <CardShimmerVertical />
-          <CardShimmerVertical />
-          <CardShimmerVertical />
+          <ProviderCardShimmer />
+          <ProviderCardShimmer />
+          <ProviderCardShimmer />
+          <ProviderCardShimmer />
+          <ProviderCardShimmer />
+          <ProviderCardShimmer />
+          <ProviderCardShimmer />
+          <ProviderCardShimmer />
         </div>
       </div>
 
@@ -107,7 +107,7 @@
       <div class="tn:mt-4">
         <div
           v-if="!dataProviderListActive.loading"
-          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch items-center"
+          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch"
         >
           <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
             <ProductCard
@@ -154,7 +154,9 @@
 
 <script>
 import ProductCard from '~/components/mollecules/ProductCard';
+import ProviderCard from '~/components/mollecules/ProviderCard';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
+import ProviderCardShimmer from '~/components/mollecules/ProviderCardShimmer';
 import ProposeCard from '~/components/mollecules/ProposeCard';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import { providerList } from '../../../constants/price-scheme';
@@ -167,6 +169,8 @@ import SelectOption from './views/SelectOption.vue';
 export default {
   components: {
     ProductCard,
+    ProviderCard,
+    ProviderCardShimmer,
     CardShimmerVertical,
     ProposeCard,
     ModalPriceScheme,
@@ -409,4 +413,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#provider {
+  font-family: 'DM Sans', sans-serif !important;
+}
+</style>
