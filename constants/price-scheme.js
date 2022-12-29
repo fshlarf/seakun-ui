@@ -542,7 +542,7 @@ export const providerList = [
       'User melakukan pendaftaran ke Disney+ menggunakan nomor pribadi',
       'User subscribe Plan Yearly seharga Rp199.000 menggunakan payment pribadi',
       'Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi Disney+',
-      'Admin akan mengirimkan penggantian dana sebesar 49.000',
+      'Admin akan mengirimkan penggantian dana sebesar 49.500',
       'User dapat menikmati fitur Premium selama 1 tahun sebagai user host',
     ],
     informations: [
