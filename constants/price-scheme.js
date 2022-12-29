@@ -565,11 +565,11 @@ export const providerList = [
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp500',
+        value: 'Rp0',
       },
       {
         title: 'Harga Paket Tahunan',
-        value: 'Rp100.000',
+        value: 'Rp99.500',
         is_total: true,
       },
     ],
