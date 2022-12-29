@@ -74,7 +74,9 @@
         :label="packet.isActive ? 'Pilih' : 'Paket tidak aktif'"
         :variant="packet.isActive ? 'primary' : ''"
         class="w-full py-3 tn:!rounded-lg md:text-[18px]"
-        :add-class="packet.isActive ? '' : '!bg-gray-400 text-white'"
+        :add-class="
+          packet.isActive ? 'tracking-wider' : '!bg-gray-400 text-white'
+        "
         @click="$emit('choosePacket', packet)"
       />
     </div>
