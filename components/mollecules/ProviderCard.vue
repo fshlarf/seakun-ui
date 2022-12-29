@@ -117,8 +117,8 @@
     <div class="w-full absolute z-10 bottom-0 left-0 tn:p-2 md:p-[14px]">
       <div class="w-full">
         <div class="bg-[#f6f6f6] h-[0.5px] w-full" />
-        <div class="tn:mt-2 tn:pr-2 flex justify-between items-center">
-          <div
+        <div class="tn:mt-2 tn:px-1 flex justify-between items-center">
+          <!-- <div
             class="bg-[#F1F9F7] text-[#417465] tn:px-2 tn:py-1 rounded-[4px] flex items-center tn:gap-[6px]"
           >
             <img
@@ -130,7 +130,7 @@
               {{ dataProvider.memberLimit }}
               <span class="tn:hidden md:inline-flex">Orang</span>
             </p>
-          </div>
+          </div> -->
           <div
             class="text-[#4BAC99] flex items-center tn:gap-1"
             role="button"
@@ -146,7 +146,7 @@
               />
             </div>
             <p class="tn:text-[10px] md:text-[14px] md:!font-medium">
-              Skema harga
+              Lihat skema harga
             </p>
           </div>
         </div>
@@ -155,7 +155,7 @@
           :label="dataProvider.active ? 'Pesan' : 'Segera hadir'"
           :disabled="!dataProvider.active"
           variant="primary"
-          class="w-full tn:mt-2"
+          class="w-full tn:mt-2 md:mt-3"
           add-class="!rounded-[8px] md:py-3"
           @click="$emit('on-click-product', dataProvider)"
         />
