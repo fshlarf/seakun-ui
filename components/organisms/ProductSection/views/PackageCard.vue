@@ -71,10 +71,12 @@
     </div>
     <div class="w-full tn:mt-3 md:mt-4 tn:px-4 tn:pb-4">
       <Button
-        :label="packet.isActive ? 'Berlangganan' : 'Paket tidak aktif'"
+        :label="packet.isActive ? 'Pilih' : 'Paket tidak aktif'"
         :variant="packet.isActive ? 'primary' : ''"
-        class="w-full py-3 tn:!rounded-lg"
-        :add-class="packet.isActive ? '' : '!bg-gray-400 text-white'"
+        class="w-full py-3 tn:!rounded-lg md:text-[18px]"
+        :add-class="
+          packet.isActive ? 'tracking-wider' : '!bg-gray-400 text-white'
+        "
         @click="$emit('choosePacket', packet)"
       />
     </div>
