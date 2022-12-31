@@ -1,12 +1,12 @@
 <template>
   <div id="pengguna" class="container pt-16">
     <div class="tn:text-center md:text-left container-title">
-      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-4">
+      <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-2 md:mb-4">
         Pengguna Seakun.id
       </h1>
       <p class="font-semibold">
-        Psst! Sudah ada ratusan grup loh, yang bergabung bersama kami! Klik
-        kategori untuk melihat.
+        Psst! Sudah ada puluhan ribu pengguna dan ribuan grup yang bergabung
+        bersama kami!
       </p>
     </div>
     <div class="my-6 container-group w-full">

@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="text-center text-white tn:py-2 lg:py-4">
-      <p>Copyright &copy; 2020 - 2022 Seakun.id. All rights reserved</p>
+      <p>&copy; 2023 PT Seakun Global Teknologi</p>
     </div>
   </div>
 </template>
