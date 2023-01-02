@@ -71,7 +71,7 @@
     </div>
     <div class="w-full tn:mt-3 md:mt-4 tn:px-4 tn:pb-4">
       <Button
-        :label="packet.isActive ? 'Pilih' : 'Kuota Sedang Penuh'"
+        :label="packet.isActive ? 'Pilih' : 'Slot Sedang Penuh'"
         :variant="packet.isActive ? 'primary' : ''"
         class="w-full py-3 tn:!rounded-lg md:text-[18px]"
         :add-class="
