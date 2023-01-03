@@ -74,6 +74,20 @@ export default {
         charset: 'utf-8',
       },
       {
+        type: 'text/javascript',
+        src: 'https://www.instagram.com/embed.js',
+        async: true,
+        defer: true,
+        charset: 'utf-8',
+      },
+      {
+        type: 'text/javascript',
+        src: 'https://www.tiktok.com/embed.js',
+        async: true,
+        defer: true,
+        charset: 'utf-8',
+      },
+      {
         src: 'https://code.jquery.com/jquery-3.5.1.slim.min.js',
         integrity:
           'sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj',

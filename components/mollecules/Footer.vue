@@ -26,7 +26,7 @@
       </div>
       <div class="tn:my-4 md:mt-0">
         <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">
-          Seakun.id
+          Seakun
         </h1>
         <ul class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <li @click="scrollTo('about-us')">

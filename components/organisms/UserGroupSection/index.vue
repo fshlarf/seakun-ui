@@ -1,8 +1,8 @@
 <template>
-  <div id="pengguna" class="container pt-16">
+  <div id="pengguna" class="container pt-16 relative z-10">
     <div class="tn:text-center md:text-left container-title">
       <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-2 md:mb-4">
-        Pengguna Seakun.id
+        Pengguna Seakun
       </h1>
       <p class="font-semibold">
         Psst! Sudah ada puluhan ribu pengguna dan ribuan grup yang bergabung

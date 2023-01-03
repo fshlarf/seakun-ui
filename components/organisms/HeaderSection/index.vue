@@ -1,7 +1,7 @@
 <template>
   <div class="relative z-0">
     <div
-      class="tn:hidden md:block w-full absolute -z-30 tn:-top-10 md:-top-10 lg:-top-18 xl:-top-60"
+      class="tn:hidden md:block w-full absolute -z-30 tn:-top-10 md:-top-10 lg:-top-18 xl:-top-60 bg-header-main"
     >
       <img
         class="tn:hidden md:block md:w-full md:h-full"
@@ -127,5 +127,16 @@ export default {
 .slider2 {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+@media screen and (min-width: 2100px) {
+  .bg-header-main {
+    top: -26rem;
+  }
+}
+@media screen and (min-width: 2400px) {
+  .bg-header-main {
+    top: -34rem;
+  }
 }
 </style>
