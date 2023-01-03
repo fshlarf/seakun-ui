@@ -27,7 +27,7 @@
           class="tn:pt-3"
         >
           <Button
-            class="w-full py-2"
+            class="w-full tn:py-3 tn:mt-2"
             variant="primary"
             label="Ajukan Laporan"
           />

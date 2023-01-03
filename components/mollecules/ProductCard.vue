@@ -33,9 +33,11 @@
     >
       <div class="h-full">
         <div class="flex tn:pt-2 items-center mb-1 md:mb-2 md:px-2">
-          <div class="h-8 w-8 ml-1 flex justify-center items-center">
+          <div
+            v-if="product.variants"
+            class="h-8 w-8 ml-1 flex justify-center items-center"
+          >
             <img
-              v-if="product.variants"
               :src="`/images/icons/${product.slug}.svg`"
               alt="#"
               class="w-full"
@@ -109,7 +111,7 @@
           <Button
             variant="primary"
             :label="product.isActive ? 'Pesan' : 'Segera hadir'"
-            class="w-full py-2 my-2 font-bold"
+            class="w-full tn:py-3 font-bold"
             :disabled="!product.isActive"
             @click="$emit('on-click-product', product)"
           />

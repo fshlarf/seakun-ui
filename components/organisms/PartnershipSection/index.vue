@@ -5,7 +5,7 @@
     >
       <div class="md:container tn:px-4 text-white xl:mt-12 xl:mb-4">
         <h2 class="tn:text-xl md:text-2xl font-bold tn:my-2 md:my-2 xl:mb-4">
-          Ingin Usaha Kamu Ada di Seakun.id?
+          Ingin Usaha Kamu Ada di Seakun?
         </h2>
         <p class="tn:text-sm md:text-md xl:text-lg font-semibold">
           Jangan khawatir ya, Seakun bisa kok meningkatkan usaha kamu disini!

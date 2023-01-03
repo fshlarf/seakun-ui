@@ -45,25 +45,25 @@
           class="tn:text-[11px] md:text-[14px] flex justify-between items-center"
         >
           <p v-if="variant.duration === 12" class="tn:!font-bold">
-            {{ formatMoneyRupiah(variant.grandTotal)
-            }}<span class="!font-normal text-[#66738F] md:hidden">/ Thn</span
+            {{ formatMoneyRupiah(variant.grandTotal) }}
+            <span class="!font-normal text-[#66738F] md:hidden">/thn</span
             ><span class="!font-normal text-[#66738F] tn:hidden md:inline-block"
-              >/ Tahun</span
+              >/tahun</span
             >
           </p>
           <p v-else-if="variant.duration > 1" class="tn:!font-bold">
-            {{ formatMoneyRupiah(variant.grandTotal)
-            }}<span class="!font-normal text-[#66738F] md:hidden"
-              >/ {{ variant.duration }} Bln</span
+            {{ formatMoneyRupiah(variant.grandTotal) }}
+            <span class="!font-normal text-[#66738F] md:hidden"
+              >/{{ variant.duration }} bln</span
             ><span class="!font-normal text-[#66738F] tn:hidden md:inline-block"
-              >/ {{ variant.duration }} Bulan</span
+              >/{{ variant.duration }} bulan</span
             >
           </p>
           <p v-else class="tn:!font-bold">
-            {{ formatMoneyRupiah(variant.grandTotal)
-            }}<span class="!font-normal text-[#66738F] md:hidden">/ Bln</span
+            {{ formatMoneyRupiah(variant.grandTotal) }}
+            <span class="!font-normal text-[#66738F] md:hidden">/bln</span
             ><span class="!font-normal text-[#66738F] tn:hidden md:inline-block"
-              >/ Bulan</span
+              >/bulan</span
             >
           </p>
           <div

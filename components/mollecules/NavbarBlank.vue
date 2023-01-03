@@ -1,10 +1,17 @@
 <template>
-  <div id="navbar" class="w-full bg-third fixed top-0 z-40 py-2 tn:shadow px-2">
+  <div
+    id="navbar"
+    class="w-full bg-third fixed top-0 z-40 tn:py-3 tn:shadow px-2"
+  >
     <div
       class="!container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between"
     >
-      <nuxt-link class="hover:no-underline" to="/">
-        <Logo label="Seakun.id" />
+      <nuxt-link to="/">
+        <img
+          class="tn:h-[30px]"
+          src="/images/navbar/brand_seakun.png"
+          alt="brand seakun"
+        />
       </nuxt-link>
     </div>
   </div>

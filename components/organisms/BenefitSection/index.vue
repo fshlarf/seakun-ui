@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-12">
+  <div class="container pt-12 relative z-20">
     <div class="tn:text-center lg:text-left">
       <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
         Kemudahan yang Kami Berikan

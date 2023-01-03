@@ -22,7 +22,7 @@
         <Button
           variant="secondary"
           label="Ajukan permintaan"
-          class="w-full h-full my-2 font-bold text-sm md:text-base"
+          class="w-full h-full tn:!py-3 font-bold text-sm md:text-base"
         />
       </nuxt-link>
     </div>

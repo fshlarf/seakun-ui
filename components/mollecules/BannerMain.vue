@@ -6,10 +6,6 @@
       class="md:text-left md:grid md:grid-cols-2 md:justify-between md:items-center md:ml-12 lg::ml-24 xl:ml-20 md:-mr-8 xl:-mr-16"
     >
       <div class="">
-        <div class="flex gap-2">
-          <div class="h-1 rounded-full bg-white w-8 my-2 cursor-pointer"></div>
-        </div>
-        <span class="md:text-2xl text-secondary font-bold my-4">Seakun.id</span>
         <p
           class="md:text-xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold md:text-white lg:my-2 xl:my-6"
         >

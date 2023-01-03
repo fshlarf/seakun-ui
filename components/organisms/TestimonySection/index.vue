@@ -1,119 +1,206 @@
 <template>
-  <div id="testimony" class="container pt-20">
+  <div
+    id="testimony"
+    class="container pt-20 relative z-0"
+    :class="{ 'show-more': !isShowMore }"
+  >
     <div class="text-center xl:hidden">
-      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-12">
+      <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-4 lg:mb-12">
         Apa kata mereka?
       </h1>
     </div>
     <div class="hidden text-left xl:block">
-      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-12">
-        Apa kata mereka yang menggunakan Seakun.id?
+      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
+        Apa kata mereka yang menggunakan Seakun?
       </h1>
     </div>
-    <div
-      class="scroll-testimony tn:p-4 tn:flex tn:space-x-6 lg:space-x-0 tn:overflow-x-scroll tn:overscroll-auto lg:block lg:grid lg:overflow-visible lg:overscroll-none lg:grid-cols-2 lg:justify-center lg:gap-6 lg:place-items-stretch lg:items-stretch"
-    >
-      <TestimonyCard
-        v-for="(testimony, id) in dataLengthTestimony"
-        :key="id"
-        :customer="testimony"
-        @onClickShowTestimony="onClickShowTestimony"
-        class="md:w-1/2 md:h-full lg:w-full lg:h-full tn:flex-none"
-      />
 
-      <ModalTestimony
-        :show-modal="showModalTestimony"
-        :customer="dataDetailTestimony"
-        @closeModal="toggleModal"
+    <div class="relative z-0">
+      <ButtonChevron
+        v-if="tweetScrollPosition !== 0"
+        mode="left"
+        class="hidden xl:block absolute z-10 -left-12 top-1/2 transform -translate-y-1/2"
+        @click-chevron="scrollTweet('left')"
+      />
+      <TwitterTestimony />
+      <ButtonChevron
+        v-if="!isTweetEndScroll"
+        mode="right"
+        class="hidden xl:block absolute z-10 -right-12 top-1/2 transform -translate-y-1/2"
+        @click-chevron="scrollTweet('right')"
       />
     </div>
+
+    <div class="relative z-0">
+      <ButtonChevron
+        v-if="tiktokScrollPosition !== 0"
+        mode="left"
+        class="hidden xl:block absolute z-10 -left-12 top-1/2 transform -translate-y-1/2"
+        @click-chevron="scrollTiktok('left')"
+      />
+      <TiktokTestimony />
+      <ButtonChevron
+        v-if="!isTiktokEndScroll"
+        mode="right"
+        class="hidden xl:block absolute z-10 -right-12 top-1/2 transform -translate-y-1/2"
+        @click-chevron="scrollTiktok('right')"
+      />
+    </div>
+
+    <div class="relative z-0">
+      <ButtonChevron
+        v-if="instagramScrollPosition !== 0"
+        mode="left"
+        class="hidden xl:block absolute z-10 -left-12 top-1/2 transform -translate-y-1/2"
+        @click-chevron="scrollInstagram('left')"
+      />
+      <InstagramTestimony />
+      <ButtonChevron
+        v-if="!isInstagramEndScroll"
+        mode="right"
+        class="hidden xl:block absolute z-10 -right-12 top-1/2 transform -translate-y-1/2"
+        @click-chevron="scrollInstagram('right')"
+      />
+    </div>
+
+    <transition name="slide-down">
+      <div
+        v-if="!isShowMore"
+        class="absolute z-10 bottom-0 left-0 w-full h-[1410px]"
+      >
+        <div class="fade-feed h-[220px] -mt-[10px]"></div>
+        <div
+          class="w-full h-[1200px] bg-[#fbfbfb] text-center text-primary font-bold text-xl"
+        >
+          <Button
+            variant="primary"
+            label="Lihat lebih banyak"
+            add-class="!rounded-full"
+            @click="isShowMore = true"
+          />
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import TestimonyCard from '/components/mollecules/TestimonyCard.vue';
-import ModalTestimony from '/components/mollecules/ModalTestimony.vue';
+import TwitterTestimony from './views/TwitterTestimony.vue';
+import TiktokTestimony from './views/TiktokTestimony.vue';
+import InstagramTestimony from './views/InstagramTestimony.vue';
+import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
+import Button from '~/components/atoms/Button.vue';
+
 export default {
+  components: {
+    TwitterTestimony,
+    TiktokTestimony,
+    InstagramTestimony,
+    ButtonChevron,
+    Button,
+  },
   data() {
     return {
-      showModalTestimony: false,
-      dataDetailTestimony: {},
-      dataTestimony: [
-        {
-          id: 1,
-          name: 'Firda',
-          provider: 'Netflix',
-          photo: '/images/testimony/testimony-woman.svg',
-          testimony:
-            'Biasanya kalau mau beli Netflix, Spotify dll secara legal tuh suka males soalnya kadang gak punya CC, harus nyari barengan, dll. Tapi kalau beli illegal suka error. Akhirnya nemu solusi karena ada Seakun.id! Menurutku ini benar-benar inovasi sih, kaya berangkat dari keresahan banget wkwkwk. Tadinya mungkin males langganan yang legal karena report, tapi sekarang jadi gampang kaan? Thank you Seakun.id',
-          sortTestimony: '',
-        },
-        {
-          id: 2,
-          name: 'Antonia Inri',
-          provider: 'Spotify',
-          photo: '/images/testimony/testimony-woman.svg',
-          testimony:
-            'I can’t recommend them enough. Ini platform langganan fitur premium bareng, Spotify, Netflix, Youtube, all without CC. Praktis, legal, aman, dan murah. I actually use them for my Spotify and it has worked wonders. Biasanya aku telat bayar Spotify tapi karena ada mereka jadi selalu diingetin deh sebelum jatuh tempo. Terus murah banget! ',
-          sortTestimony: '',
-        },
-        {
-          id: 3,
-          name: 'Arvin Aji',
-          provider: 'Gramedia',
-          photo: '/images/testimony/testimony-man.svg',
-          testimony:
-            'To deal with my brain hunger for business, economics, and finance, I got myself a premium access to magazines & books in Gramedia Digital through Seakun.id. You all should really check them out! I should thank Seakun as a platform allowing people to have premium access to digital entertainments with a much lower price though account-sharing.',
-          sortTestimony: '',
-        },
-        {
-          id: 4,
-          name: 'Iyen',
-          provider: 'Netflix',
-          photo: '/images/testimony/testimony-woman.svg',
-          testimony:
-            'Awal tau atas rekomendasi temen, terus ngerasa worth it, trusted, registrasinya simple, Adminya selain fast respon juga informatif banget. Di masa pandemi kaya gini karena seakun.id ini lah gw bisa membunuh waktu dan jadi betah di rumah dengan banyak nonton film di Netflix. Pokoknya enjoy selalu with seakun.id',
-          sortTestimony: '',
-        },
-      ],
+      tweetScrollPosition: 0,
+      tiktokScrollPosition: 0,
+      instagramScrollPosition: 0,
+      isTweetEndScroll: false,
+      isTiktokEndScroll: false,
+      isInstagramEndScroll: false,
+      isShowMore: false,
     };
   },
-  components: {
-    TestimonyCard,
-    ModalTestimony,
-  },
-  computed: {
-    dataLengthTestimony() {
-      const newDataTestimony = this.dataTestimony;
-      newDataTestimony.map((x) => {
-        if (x.testimony.length > 155) {
-          x.sortTestimony = x.testimony.slice(0, 155);
-        } else {
-          x.sortTestimony = x.testimony;
-        }
-      });
-      return newDataTestimony;
-    },
+  mounted() {
+    const tweetContainer = document.getElementById('tweet-container');
+    const tiktokContainer = document.getElementById('tiktok-container');
+    const instagramContainer = document.getElementById('instagram-container');
+
+    tweetContainer.addEventListener('scroll', () => {
+      const tweetMaxScrollWidth =
+        tweetContainer.scrollWidth - tweetContainer.clientWidth;
+      this.tweetScrollPosition = tweetContainer.scrollLeft;
+      if (this.tweetScrollPosition >= tweetMaxScrollWidth) {
+        this.isTweetEndScroll = true;
+      } else {
+        this.isTweetEndScroll = false;
+      }
+    });
+
+    tiktokContainer.addEventListener('scroll', () => {
+      const tiktokMaxScrollWidth =
+        tiktokContainer.scrollWidth - tiktokContainer.clientWidth;
+      this.tiktokScrollPosition = tiktokContainer.scrollLeft;
+      if (this.tiktokScrollPosition >= tiktokMaxScrollWidth) {
+        this.isTiktokEndScroll = true;
+      } else {
+        this.isTiktokEndScroll = false;
+      }
+    });
+
+    instagramContainer.addEventListener('scroll', () => {
+      const instagramMaxScrollWidth =
+        instagramContainer.scrollWidth - instagramContainer.clientWidth;
+      this.instagramScrollPosition = instagramContainer.scrollLeft;
+      if (this.instagramScrollPosition >= instagramMaxScrollWidth) {
+        this.isInstagramEndScroll = true;
+      } else {
+        this.isInstagramEndScroll = false;
+      }
+    });
   },
   methods: {
-    toggleModal() {
-      this.showModalTestimony = !this.showModalTestimony;
+    scrollTweet(direction) {
+      const tweetContainer = document.getElementById('tweet-container');
+      if (direction === 'right') {
+        tweetContainer.scrollLeft += 600;
+      } else {
+        tweetContainer.scrollLeft -= 600;
+      }
     },
-    onClickShowTestimony(data) {
-      this.showModalTestimony = !this.showModalTestimony;
-      const newData = this.dataTestimony[data.id - 1];
-      this.dataDetailTestimony = newData;
+    scrollTiktok(direction) {
+      const tiktokContainer = document.getElementById('tiktok-container');
+      if (direction === 'right') {
+        tiktokContainer.scrollLeft += 600;
+      } else {
+        tiktokContainer.scrollLeft -= 600;
+      }
+    },
+    scrollInstagram(direction) {
+      const instagramContainer = document.getElementById('instagram-container');
+      if (direction === 'right') {
+        instagramContainer.scrollLeft += 600;
+      } else {
+        instagramContainer.scrollLeft -= 600;
+      }
     },
   },
 };
 </script>
 
 <style>
-.scroll-testimony::-webkit-scrollbar {
-  display: none;
+.fade-feed {
+  background: linear-gradient(
+    rgba(251, 251, 251, 0.2),
+    rgba(251, 251, 251, 0.4),
+    rgba(251, 251, 251, 0.6),
+    rgba(251, 251, 251, 0.8),
+    #fbfbfb,
+    #fbfbfb
+  );
 }
-.scroll-testimony {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+.show-more {
+  margin-bottom: -1110px;
+}
+
+.slide-down-enter-active {
+  transition: all 0.8s ease;
+}
+.slide-down-leave-active {
+  transition: all 0.8s ease;
+  transform: translateY(100vh);
+}
+.slide-down-enter,
+.slide-fade-leave-to {
+  transform: translateY(100vh);
 }
 </style>
