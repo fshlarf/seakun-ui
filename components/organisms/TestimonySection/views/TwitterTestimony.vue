@@ -5,7 +5,6 @@
   >
     <div class="flex space-x-4">
       <blockquote
-        role="button"
         class="twitter-tweet"
         data-cards="hidden"
         tw-align-center
@@ -26,7 +25,6 @@
         >
       </blockquote>
       <blockquote
-        role="button"
         class="twitter-tweet"
         data-cards="hidden"
         tw-align-center
@@ -46,7 +44,6 @@
         >
       </blockquote>
       <blockquote
-        role="button"
         class="twitter-tweet"
         data-cards="hidden"
         tw-align-center
@@ -65,7 +62,6 @@
         >
       </blockquote>
       <blockquote
-        role="button"
         class="twitter-tweet"
         data-cards="hidden"
         tw-align-center
@@ -82,12 +78,7 @@
           >October 24, 2022</a
         >
       </blockquote>
-      <blockquote
-        role="button"
-        data-cards="hidden"
-        tw-align-center
-        class="twitter-tweet"
-      >
+      <blockquote data-cards="hidden" tw-align-center class="twitter-tweet">
         <p lang="in" dir="ltr">
           That&#39;s why aku males beli akun apapun di twitter. Mending kalian
           pada beli di
@@ -101,7 +92,6 @@
         >
       </blockquote>
       <blockquote
-        role="button"
         data-cards="hidden"
         tw-align-center
         class="twitter-tweet"
@@ -121,12 +111,7 @@
           >July 3, 2022</a
         >
       </blockquote>
-      <blockquote
-        role="button"
-        data-cards="hidden"
-        tw-align-center
-        class="twitter-tweet"
-      >
+      <blockquote data-cards="hidden" tw-align-center class="twitter-tweet">
         <p lang="in" dir="ltr">
           <a href="https://t.co/svYReu6af3">https://t.co/svYReu6af3</a> ini
           ngebantu banget kalo lo mau cari temen patungan untuk langganan
@@ -140,12 +125,7 @@
           >November 15, 2021</a
         >
       </blockquote>
-      <blockquote
-        role="button"
-        data-cards="hidden"
-        tw-align-center
-        class="twitter-tweet"
-      >
+      <blockquote data-cards="hidden" tw-align-center class="twitter-tweet">
         <p lang="in" dir="ltr">
           Aaak subscribe youtube (bonus youtube music!!) adalah tidak akan
           kusesali 🥲👍 Beli pakai seakun . id patungan ber5 beli legal cepet bgt
