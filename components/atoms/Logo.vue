@@ -1,11 +1,11 @@
 <template>
   <div class="flex items-center">
     <img
-      src="/images/seakunid.png"
+      src="/images/navbar/seakun_logo.png"
       width="40"
       height="40"
       alt="logo seakun"
-      class="rounded-full mr-2"
+      class="mr-2"
     />
     <span class="text-primary font-bold">{{ label }}</span>
   </div>

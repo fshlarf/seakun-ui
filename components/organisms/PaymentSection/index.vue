@@ -8,7 +8,7 @@
     >
       <div class="">
         <p class="tn:text-sm md:text-md xl:text-lg font-semibold">
-          Bertransaksi di Seakun.id sudah sangat mudah karena dilengkapi dengan
+          Bertransaksi di Seakun sudah sangat mudah karena dilengkapi dengan
           beragam metode pembayaran. Mulai dari Virtual Account, E-wallet, QRIS
           hingga retail.
         </p>

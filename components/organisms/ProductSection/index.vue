@@ -107,7 +107,7 @@
       <div class="tn:mt-4">
         <div
           v-if="!dataProviderListActive.loading"
-          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 px-0 justify-center place-items-stretch items-stretch"
+          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 px-0 justify-center place-items-stretch items-stretch"
         >
           <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
             <ProductCard
