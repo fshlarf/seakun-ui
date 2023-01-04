@@ -66,7 +66,7 @@
     <transition name="slide-down">
       <div
         v-if="!isShowMore"
-        class="absolute z-10 bottom-0 left-0 w-full h-[1410px]"
+        class="absolute z-0 bottom-0 left-0 w-full h-[1410px]"
       >
         <div class="fade-feed h-[220px] -mt-[10px]"></div>
         <div

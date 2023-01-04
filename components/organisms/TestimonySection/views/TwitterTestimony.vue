@@ -6,26 +6,34 @@
     <div class="flex space-x-4">
       <blockquote
         class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
         data-cards="hidden"
         tw-align-center
         data-conversation="none"
+        hide_thread="true"
         data-dnt="true"
       >
         <p lang="in" dir="ltr">
-          Lewat &quot;<a href="https://t.co/UdHv9TzaTL"
-            >https://t.co/UdHv9TzaTL</a
-          >&quot; kak<br />Tapi sbnrnya itu kita langganan aplikasi yg paket
-          family jadi emang lebih murah..<br />Cuman enaknya tuh anggotanya udah
-          dicariin sama team seakunnya jadi ga ribet deh hehe
+          Yesss berhasil langganan yt prem stgh harga yg legal lewat
+          &quot;seakun&quot;<br />28rb sebulan udah include yt music
+          jugaaa!!!<br />Kmren2 yt music doang 54k 😭<br />Coba tau dari kmren2
+          yaaa 😭<br />Tengkyyu
+          <a href="https://twitter.com/rdaniya12?ref_src=twsrc%5Etfw"
+            >@rdaniya12</a
+          >
+          <a href="https://t.co/2GvQ1Oyzdh">pic.twitter.com/2GvQ1Oyzdh</a>
         </p>
         &mdash; kicut | akun baru yg lama kekunci (@sombuddie)
         <a
-          href="https://twitter.com/sombuddie/status/1605938614239498240?ref_src=twsrc%5Etfw"
-          >December 22, 2022</a
+          href="https://twitter.com/sombuddie/status/1604091723529216001?ref_src=twsrc%5Etfw"
+          >17 Desember 2022</a
         >
       </blockquote>
       <blockquote
         class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
         data-cards="hidden"
         tw-align-center
         data-conversation="none"
@@ -45,6 +53,8 @@
       </blockquote>
       <blockquote
         class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
         data-cards="hidden"
         tw-align-center
         data-dnt="true"
@@ -63,6 +73,8 @@
       </blockquote>
       <blockquote
         class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
         data-cards="hidden"
         tw-align-center
         data-dnt="true"
@@ -78,7 +90,13 @@
           >October 24, 2022</a
         >
       </blockquote>
-      <blockquote data-cards="hidden" tw-align-center class="twitter-tweet">
+      <blockquote
+        data-cards="hidden"
+        tw-align-center
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+      >
         <p lang="in" dir="ltr">
           That&#39;s why aku males beli akun apapun di twitter. Mending kalian
           pada beli di
@@ -93,6 +111,8 @@
       </blockquote>
       <blockquote
         data-cards="hidden"
+        data-lang="id"
+        data-theme="light"
         tw-align-center
         class="twitter-tweet"
         data-conversation="none"
@@ -111,7 +131,13 @@
           >July 3, 2022</a
         >
       </blockquote>
-      <blockquote data-cards="hidden" tw-align-center class="twitter-tweet">
+      <blockquote
+        data-cards="hidden"
+        tw-align-center
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+      >
         <p lang="in" dir="ltr">
           <a href="https://t.co/svYReu6af3">https://t.co/svYReu6af3</a> ini
           ngebantu banget kalo lo mau cari temen patungan untuk langganan
@@ -125,7 +151,13 @@
           >November 15, 2021</a
         >
       </blockquote>
-      <blockquote data-cards="hidden" tw-align-center class="twitter-tweet">
+      <blockquote
+        data-cards="hidden"
+        tw-align-center
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+      >
         <p lang="in" dir="ltr">
           Aaak subscribe youtube (bonus youtube music!!) adalah tidak akan
           kusesali 🥲👍 Beli pakai seakun . id patungan ber5 beli legal cepet bgt

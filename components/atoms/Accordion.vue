@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="w-full my-2 shadow tn:rounded-lg md:rounded-2xl">
+    <div class="w-full my-2 tn:shadow-md tn:rounded-lg md:rounded-2xl">
       <div>
         <div
           @click="toggleShow(answer.id)"

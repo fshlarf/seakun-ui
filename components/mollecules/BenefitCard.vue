@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full rounded-xl shadow-xl p-4">
+  <div class="w-full rounded-xl tn:shadow-md p-4">
     <div class="mx-auto my-1">
       <img :src="`${benefit.img}`" alt="#" class="mx-1 sm:my-3 w-full" />
     </div>
