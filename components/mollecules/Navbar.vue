@@ -3,7 +3,11 @@
     id="navbar"
     class="w-full bg-white fixed z-40 tn:py-3 lg:py-0 tn:shadow px-2"
   >
-    <div v-if="open" class="opacity-20 fixed inset-0 z-90 bg-black"></div>
+    <div
+      v-if="open"
+      class="opacity-20 fixed inset-0 z-90 bg-black"
+      @click="open = false"
+    ></div>
     <div
       class="container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between lg:items-center"
     >

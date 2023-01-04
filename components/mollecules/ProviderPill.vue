@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-w-[18rem] h-16 py-3 px-3 tn:rounded-full lg:rounded-2xl shadow flex space-x-2 items-center justify-center"
+    class="min-w-[18rem] h-16 py-3 px-3 tn:rounded-full lg:rounded-2xl tn:shadow-md flex space-x-2 items-center justify-center"
     @click="selectProvider(provider)"
   >
     <img class="h-full" :src="`/images/icons/${provider.slug}.svg`" alt="#" />

@@ -1,5 +1,5 @@
 <template>
-  <div id="pengguna" class="container pt-16 relative z-10">
+  <div id="pengguna" class="container pt-16 relative">
     <div class="tn:text-center md:text-left container-title">
       <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-2 md:mb-4">
         Pengguna Seakun
@@ -9,99 +9,91 @@
         bersama kami!
       </p>
     </div>
-    <div class="my-6 container-group w-full">
-      <div class="flex items-center w-full">
-        <span class="hidden xl:block -ml-10 mr-4 mt-1">
-          <ButtonChevron
-            mode="left"
-            class="self-center opacity-30 hover:opacity-100"
-            @click-chevron="scrollPill('left')"
-          />
-        </span>
-        <div
-          v-if="!dataProviderList.loading"
-          id="container-pill"
-          class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-2 -ml-4"
-        >
-          <ProviderPill
-            v-for="(provider, id) in dataProviderList.list"
-            :key="id"
-            :provider="provider"
-            :is-loading="dataGroupList.loading"
-            :data-group="dataGroupList.list"
-            class="my-2 h-full flex-none cursor-pointer"
-            :class="{
-              'high-light ': provider.slug === highlight,
-            }"
-            @selectProvider="selectProvider"
-          />
-        </div>
-        <div
-          v-else
-          id="container-pill"
-          class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto px-3 py-3 -ml-4"
-        >
+
+    <div class="tn:py-6 container-group w-full">
+      <div v-if="!dataProviderList.loading" class="relative z-0">
+        <ButtonChevron
+          v-if="pillScrollPosition !== 0"
+          mode="left"
+          class="hidden xl:block absolute z-10 -left-12 top-1/2 transform -translate-y-1/2"
+          @click-chevron="scrollPill('left')"
+        />
+        <div class="flex items-center w-full">
           <div
-            class="max-w-sm w-72 h-16 py-3 px-3 tn:rounded-full lg:rounded-2xl shadow flex space-x-2 items-center justify-center"
-            v-for="(item, index) in shimmerInitialData"
-            :key="index"
+            id="container-pill"
+            class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto tn:-ml-1 px-1 tn:py-2"
           >
-            <div class="shimmer h-8 w-96"></div>
+            <ProviderPill
+              v-for="(provider, id) in dataProviderList.list"
+              :key="id"
+              :provider="provider"
+              :is-loading="dataGroupList.loading"
+              :data-group="dataGroupList.list"
+              class="my-2 h-full flex-none cursor-pointer"
+              :class="{
+                'high-light ': provider.slug === highlight,
+              }"
+              @selectProvider="selectProvider"
+            />
           </div>
         </div>
-        <span class="hidden xl:block -mr-14 z-20 mt-1 ml-2">
-          <ButtonChevron
-            class="self-center opacity-30 hover:opacity-100"
-            @click-chevron="scrollPill('right')"
-          />
-        </span>
-      </div>
-
-      <div
-        v-if="!dataGroupList.loading"
-        class="relative flex items-center w-full"
-      >
-        <span
-          v-if="dataGroupList.list && dataGroupList.list.length >= 5"
-          class="hidden xl:block -ml-10 mr-4"
-        >
-          <ButtonChevron
-            mode="left"
-            class="self-center opacity-30 hover:opacity-100"
-            @click-chevron="scrollCard('left')"
-          />
-        </span>
-        <div
-          id="container-card"
-          class="scroll-provider flex space-x-6 overflow-x-auto overscroll-auto px-3 pt-2 -ml-4"
-        >
-          <GroupCard
-            v-for="(group, id) in dataGroupList.list"
-            :key="id"
-            :group="group"
-            class="my-2 w-full h-full flex-none"
-            @click-order="onClickOrder"
-          />
-          <ButtonChevron
-            v-if="dataGroupList.list && dataGroupList.list.length >= 5"
-            btnText="Selengkapnya"
-            class="self-center"
-            @click-chevron="toCustomerPage"
-          />
-        </div>
-        <span
-          v-if="dataGroupList.list && dataGroupList.list.length >= 5"
-          class="hidden xl:block -mr-14 z-20 ml-2"
-        >
-          <ButtonChevron
-            class="self-center opacity-30 hover:opacity-100"
-            @click-chevron="scrollCard('right')"
-          />
-        </span>
+        <ButtonChevron
+          v-if="!isPillEndScroll"
+          mode="right"
+          class="hidden xl:block absolute z-10 -right-12 top-1/2 transform -translate-y-1/2"
+          @click-chevron="scrollPill('right')"
+        />
       </div>
       <div
         v-else
-        class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto px-3 py-2"
+        class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto tn:-ml-1 tn:px-1 tn:py-2"
+      >
+        <div
+          class="max-w-sm w-72 h-16 py-3 px-3 tn:rounded-full lg:rounded-2xl tn:shadow-md flex space-x-2 items-center justify-center"
+          v-for="(item, index) in shimmerInitialData"
+          :key="index"
+        >
+          <div class="shimmer h-8 w-96"></div>
+        </div>
+      </div>
+
+      <div v-if="!dataGroupList.loading" class="relative z-0">
+        <ButtonChevron
+          v-if="groupScrollPosition !== 0"
+          mode="left"
+          class="hidden xl:block absolute z-10 -left-12 top-1/2 transform -translate-y-1/2"
+          @click-chevron="scrollGroup('left')"
+        />
+        <div class="flex items-center w-full">
+          <div
+            id="container-card"
+            class="scroll-provider flex space-x-6 overflow-x-auto overscroll-auto tn:-ml-1 tn:px-1 tn:py-2"
+          >
+            <GroupCard
+              v-for="(group, id) in dataGroupList.list"
+              :key="id"
+              :group="group"
+              class="my-2 w-full h-full flex-none"
+              @click-order="onClickOrder"
+            />
+            <ButtonChevron
+              v-if="dataGroupList.list && dataGroupList.list.length >= 5"
+              btnText="Selengkapnya"
+              class="self-center"
+              @click-chevron="toCustomerPage"
+            />
+          </div>
+        </div>
+        <ButtonChevron
+          v-if="!isGroupEndScroll"
+          mode="right"
+          class="hidden xl:block absolute z-10 -right-12 top-1/2 transform -translate-y-1/2"
+          @click-chevron="scrollGroup('right')"
+        />
+      </div>
+      <div
+        v-else
+        class="scroll-provider flex space-x-6 overflow-x-auto overflow-y-auto tn:-ml-1 tn:px-1 tn:py-2"
       >
         <div
           class="flex-none tn:w-64 tn:h-64 md:w-72 md:h-72"
@@ -132,6 +124,7 @@ import CardShimmer from '~/components/mollecules/CardShimmer';
 import UserCardShimmer from './views/group-card-loading.vue';
 import ModalPackages from '~/components/organisms/ProductSection/views/ModalPackages.vue';
 import { mapGetters, mapActions } from 'vuex';
+import waitForElement from '~/helpers/utility.js';
 
 export default {
   data() {
@@ -141,6 +134,10 @@ export default {
       isShowModalPackages: false,
       dataPackages: {},
       highlight: 'youtube',
+      pillScrollPosition: 0,
+      groupScrollPosition: 0,
+      isPillEndScroll: false,
+      isGroupEndScroll: false,
     };
   },
   components: {
@@ -160,6 +157,30 @@ export default {
       filterGroup: 'getFilterGroup',
     }),
   },
+  mounted() {
+    this.waitForElement('#container-pill').then((elm) => {
+      elm.addEventListener('scroll', () => {
+        const pillMaxScrollWidth = elm.scrollWidth - elm.clientWidth;
+        this.pillScrollPosition = elm.scrollLeft;
+        if (this.pillScrollPosition >= pillMaxScrollWidth) {
+          this.isPillEndScroll = true;
+        } else {
+          this.isPillEndScroll = false;
+        }
+      });
+    });
+    this.waitForElement('#container-card').then((elm) => {
+      elm.addEventListener('scroll', () => {
+        const groupMaxScrollWidth = elm.scrollWidth - elm.clientWidth;
+        this.groupScrollPosition = elm.scrollLeft;
+        if (this.groupScrollPosition >= groupMaxScrollWidth) {
+          this.isGroupEndScroll = true;
+        } else {
+          this.isGroupEndScroll = false;
+        }
+      });
+    });
+  },
   methods: {
     ...mapActions({
       fetchGroup: 'applyFilterGroup',
@@ -173,7 +194,7 @@ export default {
         document.getElementById('container-pill').scrollLeft -= 600;
       }
     },
-    scrollCard(direction) {
+    scrollGroup(direction) {
       if (direction === 'right') {
         document.getElementById('container-card').scrollLeft += 600;
       } else {
@@ -219,6 +240,7 @@ export default {
         `/order?provider=${this.provider}&variant_id=${packet.uid}&package_id=${packet.packageUid}`
       );
     },
+    waitForElement,
   },
 };
 </script>
@@ -234,13 +256,6 @@ export default {
 .high-light {
   border: 2px solid #a9e0d5;
   background-image: linear-gradient(to right, #ffffff, #d4f1ec);
-}
-.container-title {
-  max-width: 1090px !important;
-  margin: 0 auto;
-}
-.container {
-  max-width: 1450px !important;
 }
 #container-card {
   scroll-behavior: smooth;

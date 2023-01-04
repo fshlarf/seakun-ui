@@ -1,5 +1,5 @@
 <template>
-  <div v-if="group" class="p-4 my-8 rounded-2xl shadow w-72">
+  <div v-if="group" class="p-4 my-8 rounded-2xl tn:shadow-lg w-72">
     <div class="flex justify-between items-center">
       <img
         class="max-h-[2.2rem] max-w-[10rem]"
