@@ -2,7 +2,7 @@
   <div
     id="testimony"
     class="container pt-20 relative z-0"
-    :class="{ 'show-more': !isShowMore }"
+    :class="{ 'show-more': isShowMore }"
   >
     <div class="text-center xl:hidden">
       <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-4 lg:mb-12">
@@ -30,57 +30,6 @@
         @click-chevron="scrollTweet('right')"
       />
     </div>
-
-    <div class="relative z-0">
-      <ButtonChevron
-        v-if="tiktokScrollPosition !== 0"
-        mode="left"
-        class="hidden xl:block absolute z-10 -left-12 top-1/2 transform -translate-y-1/2"
-        @click-chevron="scrollTiktok('left')"
-      />
-      <TiktokTestimony />
-      <ButtonChevron
-        v-if="!isTiktokEndScroll"
-        mode="right"
-        class="hidden xl:block absolute z-10 -right-12 top-1/2 transform -translate-y-1/2"
-        @click-chevron="scrollTiktok('right')"
-      />
-    </div>
-
-    <div class="relative z-0">
-      <ButtonChevron
-        v-if="instagramScrollPosition !== 0"
-        mode="left"
-        class="hidden xl:block absolute z-10 -left-12 top-1/2 transform -translate-y-1/2"
-        @click-chevron="scrollInstagram('left')"
-      />
-      <InstagramTestimony />
-      <ButtonChevron
-        v-if="!isInstagramEndScroll"
-        mode="right"
-        class="hidden xl:block absolute z-10 -right-12 top-1/2 transform -translate-y-1/2"
-        @click-chevron="scrollInstagram('right')"
-      />
-    </div>
-
-    <transition name="slide-down">
-      <div
-        v-if="!isShowMore"
-        class="absolute z-0 bottom-0 left-0 w-full h-[1410px]"
-      >
-        <div class="fade-feed h-[220px] -mt-[10px]"></div>
-        <div
-          class="w-full h-[1200px] bg-[#fbfbfb] text-center text-primary font-bold text-xl"
-        >
-          <Button
-            variant="primary"
-            label="Lihat lebih banyak"
-            add-class="!rounded-full"
-            @click="isShowMore = true"
-          />
-        </div>
-      </div>
-    </transition>
   </div>
 </template>
 
@@ -112,8 +61,6 @@ export default {
   },
   mounted() {
     const tweetContainer = document.getElementById('tweet-container');
-    const tiktokContainer = document.getElementById('tiktok-container');
-    const instagramContainer = document.getElementById('instagram-container');
 
     tweetContainer.addEventListener('scroll', () => {
       const tweetMaxScrollWidth =
@@ -123,28 +70,6 @@ export default {
         this.isTweetEndScroll = true;
       } else {
         this.isTweetEndScroll = false;
-      }
-    });
-
-    tiktokContainer.addEventListener('scroll', () => {
-      const tiktokMaxScrollWidth =
-        tiktokContainer.scrollWidth - tiktokContainer.clientWidth;
-      this.tiktokScrollPosition = tiktokContainer.scrollLeft;
-      if (this.tiktokScrollPosition >= tiktokMaxScrollWidth) {
-        this.isTiktokEndScroll = true;
-      } else {
-        this.isTiktokEndScroll = false;
-      }
-    });
-
-    instagramContainer.addEventListener('scroll', () => {
-      const instagramMaxScrollWidth =
-        instagramContainer.scrollWidth - instagramContainer.clientWidth;
-      this.instagramScrollPosition = instagramContainer.scrollLeft;
-      if (this.instagramScrollPosition >= instagramMaxScrollWidth) {
-        this.isInstagramEndScroll = true;
-      } else {
-        this.isInstagramEndScroll = false;
       }
     });
   },

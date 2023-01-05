@@ -174,7 +174,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      script: [
+        {
+          type: 'text/javascript',
+          src: 'https://platform.twitter.com/widgets.js',
+          async: true,
+          defer: true,
+          charset: 'utf-8',
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style>

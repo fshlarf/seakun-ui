@@ -1945,4 +1945,143 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Medium',
+    slug: 'medium',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/medium.png',
+    screenshot: '/images/price scheme/medium-month.png',
+    desc: 'Medium Paket Premium 1 Bulan',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Medium',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+      'Dikarenakan akun bersama, DILARANG melakukan transaksi pada akun',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Bulan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Premium 1 Bulan',
+        value: '$5.00 = Rp80.500',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp80.500 ÷ 5 = Rp16.100',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.400',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp21.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Medium',
+    slug: 'medium',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/medium.png',
+    screenshot: '/images/price scheme/medium-annual.png',
+    desc: 'Medium Paket Premium 1 Tahun',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Medium',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+      'Dikarenakan akun bersama, DILARANG melakukan transaksi pada akun',
+    ],
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Tahun',
+        is_total: true,
+      },
+      {
+        title: 'Harga Premium 1 Tahun',
+        value: '$50.00 = Rp805.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp805.000 ÷ 5 = Rp161.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp54.000',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp215.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Resso',
+    slug: 'resso',
+    title: 'Harga Paket Premium 3 Bulan',
+    img: '/images/product/brand/resso.png',
+    screenshot: '/images/price scheme/resso.png',
+    desc: 'Resso Paket Premium 3 Bulan',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Resso',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 3 Bulan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Premium 1 Bulan',
+        value: 'Rp59.000',
+      },
+      {
+        title: 'Harga Premium 3 Bulan',
+        value: 'Rp59.000 x 3 = Rp177.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp177.000 ÷ 5 = Rp35.400',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp15.000',
+      },
+      {
+        title: 'Harga Paket 3 Bulan',
+        value: 'Rp50.400',
+        is_total: true,
+      },
+    ],
+  },
 ];
