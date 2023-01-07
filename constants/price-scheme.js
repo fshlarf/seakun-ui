@@ -1958,7 +1958,6 @@ export const providerList = [
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
-      'Dikarenakan akun bersama, DILARANG upload konten dan melakukan kegiatan komersil',
     ],
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
@@ -2004,7 +2003,6 @@ export const providerList = [
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-      'Dikarenakan akun bersama, DILARANG upload konten dan melakukan kegiatan komersil',
     ],
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
