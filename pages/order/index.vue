@@ -315,6 +315,9 @@ export default {
       ) {
         this.providerRules =
           'Terkait aturan yang berlaku dari Apple, sebelum melakukan pendaftaran pastikan akun Apple kamu belum pernah berpindah family selama 12 bulan terakhir.';
+      } else if (provider === 'medium') {
+        this.providerRules =
+          'Dikarenakan akun bersama, DILARANG upload konten dan melakukan kegiatan komersil.';
       }
     },
     onClickItemCodeNumber(item) {
