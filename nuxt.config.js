@@ -36,7 +36,7 @@ export default {
         hid: 'keywords',
         name: 'keywords',
         content:
-          'seakun, seakun.id, berlangganan, berlangganan bareng, satu akun, paket group, paket family, patungan, netflix, spotify, joox, youtube',
+          'seakun, seakun id, seakun.id, berlangganan, berlangganan bareng, satu akun, paket group, paket family, patungan, netflix, spotify, youtube, microsoft 365, apple one, apple one premier, apple music, apple tv, gramedia digital, canva, disney hotstar, wattpad, google one, nord vpn, prime video, iqiyi, zoom, hbo go, scribd, mcafee, setapp, lastpass, wetv, nintendo switch online, medium, resso, patungan netflix, patungan spotify, patungan youtube, patungan microsoft 365, patungan apple one, patungan apple one premier, patungan apple music, patungan apple tv, patungan gramedia digital, patungan canva, patungan disney hotstar, patungan wattpad, patungan google one, patungan nord vpn, patungan prime video, patungan iqiyi, patungan zoom, patungan hbo go, patungan scribd, patungan mcafee, patungan setapp, patungan lastpass, patungan wetv, patungan nintendo switch online, patungan medium, patungan resso',
       },
     ],
     link: [
