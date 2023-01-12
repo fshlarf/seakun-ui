@@ -2086,4 +2086,98 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Freepik',
+    slug: 'freepik',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/freepik.png',
+    screenshot: '/images/price scheme/freepik-month.png',
+    desc: 'Freepik Paket Premium 1 Bulan',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Freepik',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Bulan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Premium 1 Bulan',
+        value: '€15',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: '€16.65 = Rp288.058',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp288.058 ÷ 3 = Rp96.019.33',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp9.980.67',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp106.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Freepik',
+    slug: 'freepik',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/freepik.png',
+    screenshot: '/images/price scheme/freepik-annual.png',
+    desc: 'Freepik Paket Premium 1 Tahun',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Freepik',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Tahun',
+        is_total: true,
+      },
+      {
+        title: 'Harga Premium 1 Tahun',
+        value: '€75.60',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: '€83.92 = Rp1.451.831',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.451.831 ÷ 3 = Rp483.943.57',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp106.056.43',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp590.000',
+        is_total: true,
+      },
+    ],
+  },
 ];
