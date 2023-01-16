@@ -34,7 +34,7 @@ export default {
       {
         hid: 'image',
         property: 'og:image',
-        content: 'https://seakun.id/images/about-us.png',
+        content: 'https://seakun.id/images/links/seakun.png',
       },
       {
         hid: 'keywords',
@@ -61,7 +61,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: 'https://seakun.id/images/about-us.png',
+        content: 'https://seakun.id/images/links/seakun.png',
       },
       {
         property: 'twitter:card',
@@ -86,7 +86,7 @@ export default {
       },
       {
         property: 'twitter:image',
-        content: 'https://seakun.id/images/about-us.png',
+        content: 'https://seakun.id/images/links/seakun.png',
       },
     ],
     link: [
