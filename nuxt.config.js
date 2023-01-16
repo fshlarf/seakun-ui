@@ -57,7 +57,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: 'https://seakun.id/images/about-us.svg',
+        content: 'https://seakun.id/images/about-us.png',
       },
       {
         property: 'twitter:card',
@@ -82,7 +82,7 @@ export default {
       },
       {
         property: 'twitter:image',
-        content: 'https://seakun.id/images/about-us.svg',
+        content: 'https://seakun.id/images/about-us.png',
       },
     ],
     link: [
