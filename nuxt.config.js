@@ -31,12 +31,58 @@ export default {
         content:
           'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
       },
-      { hid: 'image', property: 'og:image', content: '/images/favicon.ico' },
+      { hid: 'image', property: 'og:image', content: '/images/about-us.png' },
       {
         hid: 'keywords',
         name: 'keywords',
         content:
           'seakun, seakun id, seakun.id, berlangganan, berlangganan bareng, satu akun, paket group, paket family, patungan, netflix, spotify, youtube, microsoft 365, apple one, apple one premier, apple music, apple tv, gramedia digital, canva, disney hotstar, wattpad, google one, nord vpn, prime video, iqiyi, zoom, hbo go, scribd, mcafee, setapp, lastpass, wetv, nintendo switch online, medium, resso, patungan netflix, patungan spotify, patungan youtube, patungan microsoft 365, patungan apple one, patungan apple one premier, patungan apple music, patungan apple tv, patungan gramedia digital, patungan canva, patungan disney hotstar, patungan wattpad, patungan google one, patungan nord vpn, patungan prime video, patungan iqiyi, patungan zoom, patungan hbo go, patungan scribd, patungan mcafee, patungan setapp, patungan lastpass, patungan wetv, patungan nintendo switch online, patungan medium, patungan resso',
+      },
+      {
+        property: 'og:url',
+        content: 'https://seakun.id',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:title',
+        content: 'Seakun | Situs Cari Teman Patungan Aman & Murah',
+      },
+      {
+        property: 'og:description',
+        content:
+          'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
+      },
+      {
+        property: 'og:image',
+        content: 'https://seakun.id/images/about-us.png',
+      },
+      {
+        property: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        property: 'twitter:domain',
+        content: 'seakun.id',
+      },
+      {
+        property: 'twitter:url',
+        content: 'https://seakun.id',
+      },
+      {
+        property: 'twitter:title',
+        content: 'Seakun | Situs Cari Teman Patungan Aman & Murah',
+      },
+      {
+        property: 'twitter:description',
+        content:
+          'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
+      },
+      {
+        property: 'twitter:image',
+        content: 'https://seakun.id/images/about-us.png',
       },
     ],
     link: [
