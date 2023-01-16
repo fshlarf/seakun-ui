@@ -31,7 +31,6 @@ export default {
         content:
           'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
       },
-      { hid: 'image', property: 'og:image', content: '/images/favicon.ico' },
       {
         hid: 'keywords',
         name: 'keywords',
