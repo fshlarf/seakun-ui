@@ -64,7 +64,7 @@ export default {
         content: 'https://seakun.id/images/links/seakun.png',
       },
       {
-        property: 'twitter:card',
+        name: 'twitter:card',
         content: 'summary_large_image',
       },
       {
@@ -76,16 +76,16 @@ export default {
         content: 'https://seakun.id',
       },
       {
-        property: 'twitter:title',
+        name: 'twitter:title',
         content: 'Seakun | Situs Cari Teman Patungan Aman & Murah',
       },
       {
-        property: 'twitter:description',
+        name: 'twitter:description',
         content:
           'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
       },
       {
-        property: 'twitter:image',
+        name: 'twitter:image',
         content: 'https://seakun.id/images/links/seakun.png',
       },
     ],
