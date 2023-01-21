@@ -25,7 +25,7 @@
       <div class="w-full -mt-14 -mb-14">
         <img
           class=""
-          src="/images/header-main2.svg"
+          src="/images/banner/header.svg"
           alt="subscribe with seakun"
         />
       </div>
