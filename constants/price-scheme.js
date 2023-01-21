@@ -2159,11 +2159,11 @@ export const providerList = [
       },
       {
         title: 'Harga Premium 1 Tahun',
-        value: '€75.60',
+        value: '€108.00',
       },
       {
         title: 'Harga setelah dikenakan pajak 11%',
-        value: '€83.92 = Rp1.451.831',
+        value: '€119.88 = Rp2.074.044',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -2171,15 +2171,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.451.831 ÷ 3 = Rp483.943.57',
+        value: 'Rp2.074.044 ÷ 3 = Rp691.347.96',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp106.056.43',
+        value: 'Rp98.652.04',
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp590.000',
+        value: 'Rp790.000',
         is_total: true,
       },
     ],
