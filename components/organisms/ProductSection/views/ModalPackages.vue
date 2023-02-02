@@ -15,11 +15,21 @@
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
         <p class="tn:text-xs md:text-sm" v-html="setPreOrderNotes(slug)"></p>
+        <p class="tn:text-xs md:text-sm" v-if="isHasManyDuration">
+          Durasi berlangganan dapat dipilih di halaman berikutnya.
+        </p>
         <nuxt-link
           class="tn:text-xs md:text-sm text-secondary inline font-semibold"
           to="/info/pre-order"
           >Lihat Ketentuan Pre-order Selengkapnya</nuxt-link
         >
+      </div>
+      <div
+        v-else-if="provider.variants && isHasManyDuration"
+        class="tn:mx-1 md:mx-3 mb-3 tn:text-sm md:text-base"
+        :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
+      >
+        <p>Durasi berlangganan dapat dipilih di halaman berikutnya.</p>
       </div>
 
       <div
@@ -72,6 +82,12 @@ export default {
     isHasPo() {
       return this.provider.variants.some((variant) => {
         return variant.isPo === 1;
+      });
+    },
+    isHasManyDuration() {
+      return this.provider.variants.some((variant) => {
+        const durations = variant.durations.split(',');
+        return durations.length > 1;
       });
     },
   },
