@@ -11,25 +11,37 @@
     <div class="pb-2">
       <div
         v-if="provider.variants && isHasPo"
-        class="tn:mx-1 md:mx-3 mb-3"
+        class="tn:pl-3 tn:pr-1 md:pl-4 md:pr-3 mb-3 xl:max-w-[800px]"
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
-        <p class="tn:text-xs md:text-sm" v-html="setPreOrderNotes(slug)"></p>
-        <p class="tn:text-xs md:text-sm" v-if="isHasManyDuration">
-          Durasi berlangganan dapat dipilih di halaman berikutnya.
-        </p>
-        <nuxt-link
-          class="tn:text-xs md:text-sm text-secondary inline font-semibold"
-          to="/info/pre-order"
-          >Lihat Ketentuan Pre-order Selengkapnya</nuxt-link
-        >
+        <ul class="list-disc tn:text-xs md:text-sm">
+          <li>
+            Dengan memilih paket Pre-order artinya kamu menunggu grup penuh.
+            Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk
+            melakukan pembayaran.
+            <span>
+              <nuxt-link
+                class="tn:text-xs md:text-sm text-secondary inline font-semibold"
+                to="/info/pre-order"
+                >Lihat lebih lengkap</nuxt-link
+              >
+            </span>
+          </li>
+          <li v-if="isHasManyDuration">
+            Durasi berlangganan dapat dipilih di halaman berikutnya.
+          </li>
+        </ul>
       </div>
       <div
-        v-else-if="provider.variants && isHasManyDuration"
-        class="tn:mx-1 md:mx-3 mb-3 tn:text-sm md:text-base"
+        v-else-if="
+          provider.variants && isHasManyDuration && provider.slug !== 'netflix'
+        "
+        class="tn:pl-3 tn:pr-1 md:pl-4 md:pr-3 mb-3 xl:max-w-[800px]"
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
-        <p>Durasi berlangganan dapat dipilih di halaman berikutnya.</p>
+        <ul class="list-disc tn:text-xs md:text-sm">
+          <li>Durasi berlangganan dapat dipilih di halaman berikutnya.</li>
+        </ul>
       </div>
 
       <div
@@ -92,16 +104,6 @@ export default {
     },
   },
   methods: {
-    setPreOrderNotes(slug) {
-      const providerTypeAccount = ['gramedia', 'disney-hotstar', 'wattpad'];
-      if (providerTypeAccount.includes(slug)) {
-        return `<span class="font-bold">Pre-order:</span> Akun akan dibuatkan ketika
-          anggota member dalam satu grup sudah lengkap. Member melakukan
-          pembayaran setelah akun dibuat.`;
-      } else {
-        return `<span class="font-bold">Pre-order:</span> Member akan diinfokan untuk melakukan pembayaran setelah satu grup full. Link invitation ke Paket Premium akan dikirim setelah member melakukan pembayaran ke Seakun.`;
-      }
-    },
     setPackageVariants() {
       const variants = this.provider.variants.slice();
       this.packageVariants = variants.sort((a, b) =>
