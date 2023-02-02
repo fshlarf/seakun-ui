@@ -8,7 +8,7 @@
       <p class="font-bold tn:text-xl md:text-2xl tn:mt-0">
         {{ provider.name }}
       </p>
-      <p class="tn:text-sm md:text-base">{{ packet.name }}</p>
+      <p class="tn:text-sm md:text-base">Paket {{ packet.packageName }}</p>
       <div
         v-if="packet.isPo === 1"
         class="bg-yellow-200 tn:py-1 tn:pr-2 tn:pl-3 rounded-tl-2xl absolute bottom-0 right-0 z-10 tn:text-xs md:text-sm text-black"
@@ -42,6 +42,7 @@
       <div class="scheme tn:mt-3 md:mt-4 flex justify-between items-center">
         <p class="font-bold tn:text-[18px] md:text-[20px]">
           {{ formatMoneyRupiah(packet.grandTotal) }}
+          <span class="text-base font-normal"> /{{ packet.duration }} bln</span>
         </p>
         <div
           class="text-secondary items-center text-sm"
