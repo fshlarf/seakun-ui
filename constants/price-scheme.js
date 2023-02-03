@@ -254,58 +254,58 @@ export const providerList = [
       },
     ],
   },
-  {
-    name: 'Youtube',
-    slug: 'youtube',
-    title: 'Harga Paket Premium User Host 6 Bulan',
-    img: '/images/product/brand/youtube.png',
-    screenshot: '/images/price scheme/youtube.png',
-    desc: 'Youtube Paket Premium User Host 6 Bulan',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Youtube',
-      'Member bertindak sebagai user Host dalam grup',
-      'Seakun akan menggunakan No. hp User Host untuk OTP',
-      'Seakun mengundang User Host untuk join grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium',
-    ],
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Host 6 Bulan',
-        is_total: true,
-      },
-      {
-        title: 'Harga Paket Premium Youtube',
-        value: 'Rp99.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp109.890',
-      },
-      {
-        title: 'Jumlah Member Dalam 1 Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp109.890 ÷ 5 = Rp21.978',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0 (FREE)',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp21.978',
-      },
-      {
-        title: 'Harga Paket 6 Bulan',
-        value: 'Rp21.978 x 6 = Rp131.868',
-        is_total: true,
-      },
-    ],
-  },
+  // {
+  //   name: 'Youtube',
+  //   slug: 'youtube',
+  //   title: 'Harga Paket Premium User Host 6 Bulan',
+  //   img: '/images/product/brand/youtube.png',
+  //   screenshot: '/images/price scheme/youtube.png',
+  //   desc: 'Youtube Paket Premium User Host 6 Bulan',
+  //   member: 5,
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket Premium di Youtube',
+  //     'Member bertindak sebagai user Host dalam grup',
+  //     'Seakun akan menggunakan No. hp User Host untuk OTP',
+  //     'Seakun mengundang User Host untuk join grup Premium',
+  //     'Member yang telah join ke grup dapat menikmati fitur Premium',
+  //   ],
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Paket Premium User Host 6 Bulan',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Paket Premium Youtube',
+  //       value: 'Rp99.000',
+  //     },
+  //     {
+  //       title: 'Harga setelah dikenakan pajak 11%',
+  //       value: 'Rp109.890',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Dalam 1 Grup',
+  //       value: '5',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp109.890 ÷ 5 = Rp21.978',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp0 (FREE)',
+  //     },
+  //     {
+  //       title: 'Harga Paket Bulanan',
+  //       value: 'Rp21.978',
+  //     },
+  //     {
+  //       title: 'Harga Paket 6 Bulan',
+  //       value: 'Rp21.978 x 6 = Rp131.868',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
   {
     name: 'Youtube',
     slug: 'youtube',
@@ -836,58 +836,58 @@ export const providerList = [
       },
     ],
   },
-  {
-    name: 'Google One',
-    slug: 'google-one',
-    title: 'Harga Paket Google One (Userhost) 3 Bulan',
-    img: '/images/product/brand/google-one.png',
-    screenshot: '/images/price scheme/google-one-premium.png',
-    desc: 'Google One Paket Premium Host 3 Bulan',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun gmail dan membeli Paket Premium Google',
-      'Member bertindak sebagai user Host dalam grup',
-      'Seakun akan menggunakan No. hp User Host untuk OTP',
-      'Seakun mengundang User Host untuk join grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
-    ],
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Host',
-        is_total: true,
-      },
-      {
-        title: 'Harga Paket Google One',
-        value: 'Rp135.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp149.850',
-      },
-      {
-        title: 'Jumlah member dalam 1 grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp149.850 ÷ 5 = Rp29.970',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp29.970',
-      },
-      {
-        title: 'Harga Paket 3 Bulan',
-        value: 'Rp29.970 x 3 = Rp89.910',
-        is_total: true,
-      },
-    ],
-  },
+  // {
+  //   name: 'Google One',
+  //   slug: 'google-one',
+  //   title: 'Harga Paket Google One (Userhost) 3 Bulan',
+  //   img: '/images/product/brand/google-one.png',
+  //   screenshot: '/images/price scheme/google-one-premium.png',
+  //   desc: 'Google One Paket Premium Host 3 Bulan',
+  //   member: 5,
+  //   schemes: [
+  //     'Seakun membuat akun gmail dan membeli Paket Premium Google',
+  //     'Member bertindak sebagai user Host dalam grup',
+  //     'Seakun akan menggunakan No. hp User Host untuk OTP',
+  //     'Seakun mengundang User Host untuk join grup Premium',
+  //     'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
+  //   ],
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Paket Premium User Host',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Paket Google One',
+  //       value: 'Rp135.000',
+  //     },
+  //     {
+  //       title: 'Harga setelah dikenakan pajak 11%',
+  //       value: 'Rp149.850',
+  //     },
+  //     {
+  //       title: 'Jumlah member dalam 1 grup',
+  //       value: '5',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp149.850 ÷ 5 = Rp29.970',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp0',
+  //     },
+  //     {
+  //       title: 'Harga Paket Bulanan',
+  //       value: 'Rp29.970',
+  //     },
+  //     {
+  //       title: 'Harga Paket 3 Bulan',
+  //       value: 'Rp29.970 x 3 = Rp89.910',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
   {
     name: 'Google One',
     slug: 'google-one',
