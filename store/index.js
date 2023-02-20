@@ -494,6 +494,7 @@ export const actions = {
           'swo',
           JSON.stringify({ ...dataResult, createdAt: moment().unix() })
         );
+        localStorage.removeItem('referral_code');
         dispatch('redirectPage', params);
       } else {
         throw new Error(fetchCreateOrder);
