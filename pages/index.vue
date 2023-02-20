@@ -39,6 +39,7 @@ import Footer from '~/components/mollecules/Footer';
 import WhatsappNoticeBanner from '~/components/organisms/WhatsappNoticeBanner';
 import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
 import { mapActions, mapGetters } from 'vuex';
+import moment from 'moment';
 
 export default {
   components: {
@@ -66,7 +67,11 @@ export default {
       groupList: 'getGroups',
     }),
   },
+  // beforeMount() {
+  //   this.$router.push('/info/maintenance');
+  // },
   mounted() {
+    this.checkReferralCode();
     const userGroup = document.getElementById('pengguna');
     if (this.providerList.list.length === 0) {
       this.fetchProvider('youtube');
@@ -94,10 +99,33 @@ export default {
       );
       observer.observe(element);
     },
+    checkReferralCode() {
+      const { ref } = this.$router.history.current.query;
+      const existingDataReferral = JSON.parse(
+        localStorage.getItem('referral_code')
+      );
+      if (existingDataReferral) {
+        const now = moment();
+        const twentyFourHoursLimit = moment
+          .unix(existingDataReferral.createdAt)
+          .add(24, 'hours');
+        const isWithin24Hours = twentyFourHoursLimit.isAfter(now);
+        if (!isWithin24Hours) {
+          localStorage.removeItem('referral_code');
+        }
+      }
+      if (ref) {
+        if (existingDataReferral) {
+          localStorage.removeItem('referral_code');
+        }
+        const dataReferral = {
+          referral: ref,
+          createdAt: moment().unix(),
+        };
+        localStorage.setItem('referral_code', JSON.stringify(dataReferral));
+      }
+    },
   },
-  // beforeMount() {
-  //   this.$router.push('/info/maintenance');
-  // },
 };
 </script>
 
