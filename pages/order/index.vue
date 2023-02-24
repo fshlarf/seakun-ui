@@ -178,6 +178,7 @@ import VariantCard from './views/VariantCard.vue';
 import { mapGetters, mapActions } from 'vuex';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
+import moment from 'moment';
 
 export default {
   name: 'OrderPage',
@@ -232,6 +233,7 @@ export default {
       phoneNumber: '',
     },
     providerRules: '',
+    referralCode: null,
   }),
   watch: {
     codeNumber() {
@@ -266,6 +268,7 @@ export default {
     },
   },
   mounted() {
+    this.checkReferralCode();
     const {
       provider,
       variant_id,
@@ -459,6 +462,7 @@ export default {
         ispreorder: this.dataCardVariant.isPo === 1,
         userhost: this.dataCardVariant.isHost === 1,
         voucherUid: '',
+        referralCode: this.referralCode ? this.referralCode : null,
       };
       this.createOrder(payload);
     },
@@ -550,6 +554,23 @@ export default {
         phone: phoneNumber,
       };
       localStorage.setItem('registered_user', JSON.stringify(dataRegister));
+    },
+    checkReferralCode() {
+      const existingDataReferral = JSON.parse(
+        localStorage.getItem('referral_code')
+      );
+      if (existingDataReferral) {
+        const now = moment();
+        const twentyFourHoursLimit = moment
+          .unix(existingDataReferral.createdAt)
+          .add(24, 'hours');
+        const isWithin24Hours = twentyFourHoursLimit.isAfter(now);
+        if (isWithin24Hours) {
+          this.referralCode = existingDataReferral.referral;
+        } else {
+          localStorage.removeItem('referral_code');
+        }
+      }
     },
   },
 };
