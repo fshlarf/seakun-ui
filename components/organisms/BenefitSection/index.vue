@@ -1,62 +1,127 @@
 <template>
-  <div class="container pt-12 relative">
-    <div class="tn:text-center lg:text-left">
-      <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-4 lg:mb-8">
-        Kemudahan yang Kami Berikan
-      </h1>
+  <div class="tn:pt-20 tn:pb-[45px] md:pb-[90px] relative">
+    <h2
+      class="tn:w-[250px] md:w-[447px] font-bold tn:text-[20px] md:text-[30px] xl:text-[36px] mx-auto text-center"
+    >
+      Beragam Manfaat <br />
+      Yang Bisa Kamu Dapatkan
+    </h2>
+    <div class="xl:hidden mx-auto max-w-max">
+      <img
+        class="tn:w-[266px] md:w-[400px] lg:w-[600px] mx-auto tn:mt-[18px]"
+        src="/images/benefit/benefit.svg"
+        alt="benefit seakun"
+      />
     </div>
     <div
-      class="w-full h-full grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6 justify-center place-items-stretch items-stretch"
+      class="flex items-center justify-center tn:mt-[38px] md:mt-[45px] tn:px-6 tn:space-x-[20px] md:space-x-0 relative z-10"
     >
-      <BenefitCard
-        v-for="(benefit, id) in dataBenefit"
-        :key="id"
-        :benefit="benefit"
-        class="w-full h-full"
+      <div
+        class="md:w-[276px] tn:space-y-[20px] md:space-y-[45px] lg:space-y-[60px]"
+      >
+        <div
+          v-for="(benefit, id) in benefit1"
+          :key="id"
+          class="flex items-center tn:space-x-2 md:space-x-[11px]"
+        >
+          <div
+            class="tn:!w-[29px] tn:!h-[29px] md:!w-[58px] md:!h-[58px] flex justify-center items-center rounded-[4px] bg-[#E9FAF5] tn:p-[5px] md:p-0"
+          >
+            <img
+              class=""
+              :src="`/images/benefit/${benefit.icon}.svg`"
+              :alt="benefit.text"
+            />
+          </div>
+          <p
+            class="tn:w-[117px] md:w-[207px] tn:text-[12px] md:text-[20px] font-medium tn:leading-[12px] md:leading-[24px]"
+          >
+            {{ benefit.text }}
+          </p>
+        </div>
+      </div>
+      <div class="tn:hidden xl:block">
+        <img src="/images/benefit/benefit.svg" alt="benefit seakun" />
+      </div>
+      <div
+        class="md:w-[276px] tn:space-y-[20px] md:space-y-[45px] lg:space-y-[60px]"
+      >
+        <div
+          v-for="(benefit, id) in benefit2"
+          :key="id"
+          class="flex items-center tn:space-x-2 md:space-x-[11px]"
+        >
+          <div
+            class="tn:!w-[29px] tn:!h-[29px] md:!w-[58px] md:!h-[58px] flex justify-center items-center rounded-[4px] bg-[#E9FAF5] tn:p-[5px] md:p-0"
+          >
+            <img
+              class=""
+              :src="`/images/benefit/${benefit.icon}.svg`"
+              :alt="benefit.text"
+            />
+          </div>
+          <p
+            class="tn:w-[117px] md:w-[207px] tn:text-[12px] md:text-[20px] font-medium tn:leading-[12px] md:leading-[24px]"
+          >
+            {{ benefit.text }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="absolute -z-10 top-0 left-0 tn:w-[175px] md:w-[300px] xl:w-[427px]"
+    >
+      <img
+        class="w-full"
+        src="/images/benefit/bg-top-left.svg"
+        alt="background left"
+      />
+    </div>
+    <div
+      class="absolute -z-10 bottom-0 right-0 tn:w-[175px] md:w-[300px] xl:w-[423px]"
+    >
+      <img
+        class="w-full"
+        src="/images/benefit/bg-bottom-right.svg"
+        alt="background right"
       />
     </div>
   </div>
 </template>
 
 <script>
-import BenefitCard from '~/components/mollecules/BenefitCard.vue';
 export default {
   data() {
     return {
-      dataBenefit: [
+      benefit1: [
         {
-          id: 1,
-          title: 'Murah dan Legal',
-          img: '/images/benefit/benefit1.svg',
-          preview:
-            'Dengan patungan, berlangganan platform digital premium jadi lebih murah dan pastinya legal.',
+          text: 'Hemat Hingga 70%',
+          icon: 'percent',
         },
         {
-          id: 2,
-          title: 'Privasi Terjamin',
-          img: '/images/benefit/benefit2.svg',
-          preview:
-            'Dengan tambahan pin profil pada akun yang kami buatkan, privasi pengguna lebih terjaga dan terjamin.',
+          text: 'Privasi Terjamin',
+          icon: 'privacy',
         },
         {
-          id: 3,
-          title: 'Tanpa Kartu Kredit',
-          img: '/images/benefit/benefit3.svg',
-          preview:
-            'Tidak punya Kartu Kredit? Tenang, semua fitur premium tetap bisa dinikmati. Kami yang uruskan buat kamu.',
+          text: 'Customer Service Responsif',
+          icon: 'customer-service',
+        },
+      ],
+      benefit2: [
+        {
+          text: 'Beragam Metode Pembayaran',
+          icon: 'payment',
         },
         {
-          id: 4,
-          title: 'Teman Berlangganan',
-          img: '/images/benefit/benefit4.svg',
-          preview:
-            'Kami carikan teman yang satu keinginan dengan kamu untuk berlangganan fitur platform digital premium.',
+          text: 'Layanan Legal dan Resmi',
+          icon: 'legal',
+        },
+        {
+          text: 'Pengingat Pembayaran',
+          icon: 'reminder',
         },
       ],
     };
-  },
-  components: {
-    BenefitCard,
   },
 };
 </script>

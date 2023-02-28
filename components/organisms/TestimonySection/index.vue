@@ -5,12 +5,16 @@
     :class="{ 'show-more': isShowMore }"
   >
     <div class="text-center xl:hidden">
-      <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-4 lg:mb-12">
+      <h1
+        class="font-bold tn:text-[20px] md:text-[30px] xl:text-[36px] tn:mb-4 lg:mb-12"
+      >
         Apa kata mereka?
       </h1>
     </div>
     <div class="hidden text-left xl:block">
-      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
+      <h1
+        class="font-bold tn:text-xl md:text-2xl xl:text-[36px] md:mb-4 lg:mb-8"
+      >
         Apa kata mereka yang menggunakan Seakun?
       </h1>
     </div>

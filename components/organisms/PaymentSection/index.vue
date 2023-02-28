@@ -1,25 +1,24 @@
 <template>
-  <div id="payment" class="container pt-20">
-    <h2 class="text-xl md:text-2xl font-bold tn:text-center md:text-left mb-2">
-      Metode Pembayaran
-    </h2>
-    <div
-      class="w-full grid md:grid-cols-2 justify-around items-center md:gap-4 lg:gap-8 tn:px-2 md:px-0"
-    >
-      <div class="">
-        <p class="tn:text-sm md:text-md xl:text-lg font-semibold">
-          Bertransaksi di Seakun sudah sangat mudah karena dilengkapi dengan
-          beragam metode pembayaran. Mulai dari Virtual Account, E-wallet, QRIS
-          hingga retail.
-        </p>
-      </div>
-      <div class="w-full my-4 overflow-hidden">
-        <img
-          class="w-full"
-          src="/images/payment/all-payment.png"
-          alt="payment method"
-        />
-      </div>
+  <div
+    class="md:container tn:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 xl:gap-8 tn:pt-20"
+  >
+    <div>
+      <h2
+        class="tn:text-[20px] md:text-[30px] xl:text-[36px] md:leading-[64px] font-bold"
+      >
+        Metode Pembayaran
+      </h2>
+      <p class="font-mediu tn:text-[14px] md:text-[24px] tn:mt-2">
+        Bertransaksi di Seakun sudah sangat mudah karena dilengkapi dengan
+        beragam metode pembayaran. Mulai dari Virtual Account, E-wallet, QRIS
+        hingga retail.
+      </p>
+    </div>
+    <div class="tn:mt-6 lg:mt-0">
+      <img
+        src="/images/payment/seakun-payment.png"
+        alt="pembayaran di seakun"
+      />
     </div>
   </div>
 </template>
@@ -28,4 +27,4 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>

@@ -2,30 +2,29 @@
   <div>
     <NavbarBlank></NavbarBlank>
     <div class="container-wrapper mt-10">
-        <Nuxt />
+      <Nuxt />
     </div>
   </div>
 </template>
 <script>
-import NavbarBlank from '~/components/mollecules/NavbarBlank'
+import NavbarBlank from '~/components/mollecules/NavbarBlank';
 
 export default {
-    name:'NavigationBlank',
-    components : {
-        NavbarBlank
-    }
-    
-}
+  name: 'NavigationBlank',
+  components: {
+    NavbarBlank,
+  },
+};
 </script>
 
-<style >
+<style>
 html {
   font-family: Montserrat !important;
   font-size: 16px;
-  background: rgba(239, 239, 239, 0.1);
+  /* background: rgba(239, 239, 239, 0.1); */
 }
-body{
-  background: rgba(239, 239, 239, 0.1) !important;
+body {
+  /* background: rgba(239, 239, 239, 0.1) !important; */
 }
 *,
 *:before,
@@ -34,6 +33,6 @@ body{
   margin: 0;
 }
 .container-wrapper {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 </style>

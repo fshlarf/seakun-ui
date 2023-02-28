@@ -1,12 +1,17 @@
 <template>
   <div class="footer lg:pt-6 xl:pt-12 mt-12">
     <div
-      class="container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
+      class="!container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
     >
       <div class="max-w-md md:row-span-3 lg:col-span-2 md:pr-10 xl:pr-16">
-        <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">
-          Tentang kami
-        </h1>
+        <div class="flex items-center space-x-2 tn:mt-6 tn:mb-8">
+          <img
+            class="w-[42px]"
+            src="/images/navbar/seakun_logo.png"
+            alt="tentang seakun"
+          />
+          <p class="tn:text-lg md:text-2xl text-primary font-bold">Seakun.id</p>
+        </div>
         <p class="tn:text-sm md:text-base my-2 space-y-1">
           Platform pertama di Indonesia yang memberikan layanan Berlangganan
           Bersama agar dapat menikmati fitur premium dengan proses berlangganan
@@ -94,7 +99,7 @@
       </div>
       <div class="tn:my-4 lg:mt-0">
         <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">
-          Reach Us
+          Hubungi Kami
         </h1>
         <div class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <div class="flex space-x-2">

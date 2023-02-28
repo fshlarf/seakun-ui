@@ -51,7 +51,7 @@
           >November 12, 2022</a
         >
       </blockquote>
-      <blockquote
+      <!-- <blockquote
         class="twitter-tweet"
         data-lang="id"
         data-theme="light"
@@ -70,7 +70,7 @@
           href="https://twitter.com/kusukabawang/status/1591396826128986112?ref_src=twsrc%5Etfw"
           >November 12, 2022</a
         >
-      </blockquote>
+      </blockquote> -->
       <blockquote
         class="twitter-tweet"
         data-lang="id"

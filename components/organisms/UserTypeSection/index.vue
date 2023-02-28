@@ -1,7 +1,9 @@
 <template>
   <div id="userType" class="container pt-20">
     <div class="text-center">
-      <h1 class="font-bold tn:text-xl md:text-2xl md:mb-4 lg:mb-8">
+      <h1
+        class="font-bold tn:text-xl md:text-2xl xl:text-[36px] md:mb-4 lg:mb-8"
+      >
         Tipe User
       </h1>
     </div>
