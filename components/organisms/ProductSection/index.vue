@@ -415,8 +415,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-#provider {
-  font-family: 'DM Sans', sans-serif !important;
-}
-</style>
+<style lang="scss" scoped></style>

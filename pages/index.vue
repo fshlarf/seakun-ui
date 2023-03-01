@@ -15,6 +15,7 @@
     <WarningOrder />
     <PartnershipBanner />
     <Footer />
+    <SeakunHelpFloatingButton />
   </div>
 </template>
 
@@ -34,6 +35,7 @@ import WarningOrder from '~/components/organisms/WarningOrder';
 import PartnershipBanner from '~/components/organisms/PartnershipBanner';
 import Footer from '~/components/mollecules/Footer';
 import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
+import SeakunHelpFloatingButton from '~/components/mollecules/SeakunHelpFloatingButton';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
 
@@ -54,6 +56,7 @@ export default {
     PartnershipBanner,
     Footer,
     SeakunHelpBanner,
+    SeakunHelpFloatingButton,
   },
   computed: {
     ...mapGetters({

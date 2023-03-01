@@ -16,6 +16,7 @@
     </div>
     <div class="tn:mt-6 lg:mt-0">
       <img
+        class="w-full"
         src="/images/payment/seakun-payment.png"
         alt="pembayaran di seakun"
       />

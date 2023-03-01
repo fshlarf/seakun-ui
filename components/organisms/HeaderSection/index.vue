@@ -68,7 +68,7 @@ export default {
         (this.currentTextIndex + 1) % this.textToType.length;
       this.currentText = this.textToType[this.currentTextIndex];
       this.typeText();
-    }, 2000);
+    }, 3000);
   },
   methods: {
     typeText() {
@@ -81,7 +81,7 @@ export default {
         } else {
           clearInterval(typeInterval);
         }
-      }, 50);
+      }, 75);
     },
     onClickOrder() {
       const penggunaSection = document.getElementById('provider');

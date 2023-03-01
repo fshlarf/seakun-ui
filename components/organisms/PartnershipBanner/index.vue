@@ -8,11 +8,13 @@
       >
         Ingin Usaha Kamu Ada di Seakun?
       </p>
-      <Button
-        variant="primary"
-        label="Ajukan Kerjasama"
-        class="tn:px-12 tn:py-3 tn:w-full md:w-auto tn:mt-6 md:mt-0"
-      />
+      <nuxt-link to="/vote">
+        <Button
+          variant="primary"
+          label="Ajukan Kerjasama"
+          class="tn:px-12 tn:py-3 tn:w-full md:w-auto tn:mt-6 md:mt-0"
+        />
+      </nuxt-link>
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@
       class="tn:text-[14px] md:text-[24px] text-[#15382F] tn:w-[283px] md:w-[600px] lg:w-[928px] mx-auto font-normal tn:mt-2 lg:mt-4"
     >
       Dapatkan manfaat Patungan Berlangganan. Nikmati layanan premium dengan
-      lebih aman, hemat dan legal
+      lebih hemat, aman dan legal
     </p>
     <div
       class="xl:!container grid tn:grid-cols-2 xl:grid-cols-4 tn:gap-2 md:gap-[20px] items-center tn:mt-6 lg:mt-12 tn:px-6 md:px-20 lg:px-32"

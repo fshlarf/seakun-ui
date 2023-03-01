@@ -8,7 +8,7 @@
     </h2>
     <div class="xl:hidden mx-auto max-w-max">
       <img
-        class="tn:w-[266px] md:w-[400px] lg:w-[600px] mx-auto tn:mt-[18px]"
+        class="tn:w-[300px] md:w-[400px] lg:w-[600px] mx-auto tn:mt-[18px]"
         src="/images/benefit/benefit.svg"
         alt="benefit seakun"
       />
