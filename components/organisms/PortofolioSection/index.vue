@@ -37,7 +37,9 @@
               :src="`/images/portofolio/${porto.icon}.svg`"
               :alt="porto.name"
             />
-            <p class="tn:text-[10px] text-left">{{ porto.name }}</p>
+            <p class="tn:text-[13px] text-left">
+              {{ porto.name == 'Tingkat Kepuasan' ? 'Kepuasan' : porto.name }}
+            </p>
           </div>
           <p class="text-left tn:text-[21px] font-bold tracking-tighter">
             {{ porto.counter }}
