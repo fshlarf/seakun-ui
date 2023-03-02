@@ -1,59 +1,76 @@
 <template>
-  <div id="orderFlow" class="container pt-20">
-    <div class="mb-8">
-      <h1 class="tn:text-xl md:text-2xl text-center md:text-left font-bold">
-        Cara Berlangganan
-      </h1>
-    </div>
+  <div id="orderFlow" class="tn:pt-20">
     <div
-      class="flex flex-wrap lg:flex-nowrap justify-center lg:justify-around space-x-5 md:space-x-2 lg:space-x-2"
+      class="tn:pt-[24px] md:pt-[60px] tn:pb-[40px] md:pb-[84px] bg-[#F4FFFD]"
     >
-      <FlowCard
-        :dataFlow="dataFlow"
-        v-for="(dataFlow, id) in dataOrderFlow"
-        :key="id"
-        class="w-24 md:w-56 lg:w-auto mb-2"
-      />
+      <h2
+        class="tn:text-[20px] md:text-[30px] xl:text-[36px] leading-[64px] font-bold text-center"
+      >
+        Cara Berlangganan
+      </h2>
+      <div
+        class="flex flex-wrap gap-[20px] justify-center items-center tn:mt-[16px] md:mt-[28px]"
+      >
+        <div
+          v-for="(flow, id) in orderFlow"
+          :key="id"
+          class="tn:w-[105px] md:w-[210px]"
+        >
+          <img
+            class="mx-auto"
+            :src="`/images/order flow/${flow.img}.svg`"
+            :alt="flow.desc"
+          />
+          <div
+            class="flex items-center justify-center tn:space-x-1 md:space-x-2 tn:mt-[20px]"
+          >
+            <div
+              class="tn:w-[12px] tn:h-[12px] md:w-[24px] md:h-[24px] rounded-full flex justify-center items-center text-white bg-primary tn:text-[8px] md:text-[16px]"
+            >
+              {{ flow.step }}
+            </div>
+            <p class="text-secondary font-bold tn:text-[10px] md:text-[20px]">
+              {{ flow.desc }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import FlowCard from '~/components/mollecules/FlowCard.vue';
 export default {
   data() {
     return {
-      dataOrderFlow: [
+      orderFlow: [
         {
-          id: 1,
-          title: 'Pesan layanan',
-          img: '/images/order flow/flow-1.svg',
+          step: 1,
+          desc: 'Pesan layanan',
+          img: 'step-1',
         },
         {
-          id: 2,
-          title: 'Pembayaran',
-          img: '/images/order flow/flow-2.svg',
+          step: 2,
+          desc: 'Pembayaran',
+          img: 'step-2',
         },
         {
-          id: 3,
-          title: 'Menunggu proses',
-          img: '/images/order flow/flow-3.svg',
+          step: 3,
+          desc: 'Menunggu proses',
+          img: 'step-3',
         },
         {
-          id: 4,
-          title: 'Pesanan diterima',
-          img: '/images/order flow/flow-4.svg',
+          step: 4,
+          desc: 'Pesanan diterima',
+          img: 'step-4',
         },
         {
-          id: 5,
-          title: 'Selesai!',
-          img: '/images/order flow/flow-5.svg',
+          step: 5,
+          desc: 'Selesai!',
+          img: 'step-5',
         },
       ],
     };
-  },
-  components: {
-    FlowCard,
   },
 };
 </script>

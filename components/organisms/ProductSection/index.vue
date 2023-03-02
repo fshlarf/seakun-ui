@@ -1,13 +1,13 @@
 <template>
-  <div id="provider" class="container lg:pt-20 pt-20">
+  <div id="provider" class="container tn:pt-20">
     <div class="">
-      <div id="product-digital" class="flex justify-between items-center px-2">
+      <div id="product-digital" class="flex justify-between items-center">
         <h1
-          class="hidden md:block md:text-xl lg:text-2xl font-bold md:mb-4 lg:mb-4"
+          class="hidden md:block tn:text-[20px] md:text-[30px] xl:text-[36px] font-bold md:mb-4 lg:mb-4"
         >
           Berlangganan Produk Digital
         </h1>
-        <h1 class="text-2xl md:hidden font-bold">Layanan Digital</h1>
+        <h1 class="text-xl md:hidden font-bold">Layanan Digital</h1>
       </div>
 
       <div
@@ -27,17 +27,6 @@
         >
           <div class="tn:w-full md:w-[200px]">
             <SelectOption
-              :btn-text="categoryButton"
-              :is-show="isShowCategoryList"
-              :disabled="dataCategory.loading"
-              :data-list="providerCategoryList"
-              @click="isShowCategoryList = !isShowCategoryList"
-              @onClikcItem="onClickCategory"
-              @hideDropDown="hideDropDownCategory"
-            />
-          </div>
-          <div class="tn:w-full md:w-[200px]">
-            <SelectOption
               :btn-text="productTypeButton"
               :is-show="isShowProductTypeList"
               :disabled="dataCategory.loading"
@@ -45,6 +34,17 @@
               @click="isShowProductTypeList = !isShowProductTypeList"
               @onClikcItem="onClickProductType"
               @hideDropDown="hideDropDownProductType"
+            />
+          </div>
+          <div class="tn:w-full md:w-[200px]">
+            <SelectOption
+              :btn-text="categoryButton"
+              :is-show="isShowCategoryList"
+              :disabled="dataCategory.loading"
+              :data-list="providerCategoryList"
+              @click="isShowCategoryList = !isShowCategoryList"
+              @onClikcItem="onClickCategory"
+              @hideDropDown="hideDropDownCategory"
             />
           </div>
         </div>
@@ -98,8 +98,10 @@
 
       <!-- <SetitipBanner /> -->
 
-      <div id="product-ondemand" class="pt-5 px-2 md:my-8">
-        <h1 class="text-2xl md:text-xl lg:text-2xl font-bold my-2 md:my-4">
+      <div id="product-ondemand" class="pt-5 md:my-8">
+        <h1
+          class="tn:text-xl md:text-[30px] xl:text-[36px] font-bold my-2 md:my-4"
+        >
           Layanan Non Digital
         </h1>
       </div>
@@ -413,8 +415,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-#provider {
-  font-family: 'DM Sans', sans-serif !important;
-}
-</style>
+<style lang="scss" scoped></style>

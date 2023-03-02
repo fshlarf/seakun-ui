@@ -1,10 +1,12 @@
 <template>
-  <div id="pengguna" class="container pt-16 relative">
+  <div id="pengguna" class="container tn:pt-20 relative">
     <div class="tn:text-center md:text-left container-title">
-      <h1 class="font-bold tn:text-xl md:text-2xl tn:mb-2 md:mb-4">
+      <h1
+        class="font-bold tn:text-[20px] md:text-[30px] xl:text-[36px] tn:mb-3"
+      >
         Pengguna Seakun
       </h1>
-      <p class="font-semibold">
+      <p class="tn:text-[14px] md:text-[24px]">
         Psst! Sudah ada puluhan ribu pengguna dan ribuan grup yang bergabung
         bersama kami!
       </p>
@@ -21,7 +23,7 @@
         <div class="flex items-center w-full">
           <div
             id="container-pill"
-            class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto tn:-ml-1 px-1 tn:py-2"
+            class="scroll-provider flex space-x-[24px] overflow-x-auto overscroll-auto tn:-ml-1 px-1 tn:py-2"
           >
             <ProviderPill
               v-for="(provider, id) in dataProviderList.list"
@@ -29,7 +31,7 @@
               :provider="provider"
               :is-loading="dataGroupList.loading"
               :data-group="dataGroupList.list"
-              class="my-2 h-full flex-none cursor-pointer"
+              class="tn:mt-2 h-full flex-none cursor-pointer"
               :class="{
                 'high-light ': provider.slug === highlight,
               }"
@@ -49,7 +51,7 @@
         class="scroll-provider flex space-x-8 overflow-x-auto overscroll-auto tn:-ml-1 tn:px-1 tn:py-2"
       >
         <div
-          class="max-w-sm w-72 h-16 py-3 px-3 tn:rounded-full lg:rounded-2xl tn:shadow-md flex space-x-2 items-center justify-center"
+          class="max-w-sm w-72 h-16 py-3 px-3 tn:rounded-[8px] tn:shadow-md flex space-x-2 items-center justify-center"
           v-for="(item, index) in shimmerInitialData"
           :key="index"
         >
@@ -173,7 +175,7 @@ export default {
       elm.addEventListener('scroll', () => {
         const groupMaxScrollWidth = elm.scrollWidth - elm.clientWidth;
         this.groupScrollPosition = elm.scrollLeft;
-        if (this.groupScrollPosition >= groupMaxScrollWidth) {
+        if (this.groupScrollPosition >= groupMaxScrollWidth - 1) {
           this.isGroupEndScroll = true;
         } else {
           this.isGroupEndScroll = false;

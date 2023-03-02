@@ -23,8 +23,9 @@ module.exports = {
     extend: {
       colors: {
         main: '#2D2D2D',
-        primary: '#86d0c1',
+        primary: '#8DCABE',
         secondary: '#417465',
+        'dark-green': '#2A5446',
         'green-seakun': '#8DCABE',
         'green-seakun-secondary': '#F4F9F8',
         'green-seakun-dark': '#52AF9C',
@@ -72,9 +73,6 @@ module.exports = {
             paddingLeft: '10rem',
             paddingRight: '10rem',
           },
-        },
-        '.bg-primary': {
-          backgroundColor: '#86d0c1',
         },
       });
     },
