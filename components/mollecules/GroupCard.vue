@@ -1,5 +1,5 @@
 <template>
-  <div v-if="group" class="p-4 my-8 rounded-2xl tn:shadow-lg w-72">
+  <div v-if="group" class="p-4 my-8 rounded-[8px] tn:shadow-lg w-[280px]">
     <div class="flex justify-between items-center">
       <img
         class="max-h-[2.2rem] max-w-[10rem]"
@@ -7,13 +7,13 @@
         alt="#"
       />
       <div
-        :class="`px-2  ${
+        :class="`tn:px-2 tn:py-[1px]  ${
           group.accountGroup.some((el) => el.customerName === '-')
             ? 'bg-green-600'
             : 'full'
         } rounded-full`"
       >
-        <p class="text-white text-sm font-bold">
+        <p class="text-white text-[12px] font-bold">
           {{
             group.accountGroup.some((el) => el.customerName === '-')
               ? 'available'
@@ -23,7 +23,7 @@
       </div>
     </div>
     <p class="my-2 font-bold">Group {{ group.group }}</p>
-    <div class="h-px w-full bg-primary my-2"></div>
+    <div class="h-px w-full bg-gray-300 my-2"></div>
     <ol class="space-y-1">
       <li v-for="(member, id) in group.accountGroup" :key="id">
         <span v-if="member.customerName != '-'"
@@ -38,7 +38,7 @@
       <Button
         label="Pesan Sekarang"
         variant="primary"
-        class="w-full mt-4 font-bold"
+        class="w-full mt-3 font-bold tn:py-3"
         :disabled="setDisabledBtn(group.accountGroup)"
         @click="$emit('click-order', group.providerSlug)"
       />

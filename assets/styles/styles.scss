@@ -2,12 +2,8 @@
 @import './components/loader';
 
 body {
-  font-family: 'Nunito', serif !important;
+  font-family: 'Nunito Sans', sans-serif !important;
   color: #2d2d2d;
-}
-
-table {
-  font-family: 'Nunito', serif !important;
 }
 
 h4 {
@@ -17,7 +13,7 @@ h4 {
 }
 
 button {
-  border-radius: 5px !important;
+  border-radius: 8px !important;
 }
 
 button:disabled {
@@ -123,6 +119,18 @@ button:hover:disabled {
 .btn-forth {
   background-color: #ffffff !important;
   color: #417465 !important;
+  padding: 0.8rem 3rem;
+  font-size: 16px;
+  &:focus,
+  &:active,
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.btn-gradient-dark {
+  background-image: linear-gradient(to right, #336557, #14372e);
+  color: #ffffff !important;
   padding: 0.8rem 3rem;
   font-size: 16px;
   &:focus,

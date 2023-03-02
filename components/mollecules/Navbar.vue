@@ -1,69 +1,66 @@
 <template>
-  <div
-    id="navbar"
-    class="w-full bg-white fixed z-40 tn:py-3 lg:py-0 tn:shadow px-2"
-  >
+  <div id="navbar" class="w-full fixed z-40 tn:py-3 lg:py-0 bg-none">
     <div
       v-if="open"
       class="opacity-20 fixed inset-0 z-90 bg-black"
       @click="open = false"
     ></div>
-    <div
-      class="container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between lg:items-center"
-    >
-      <nuxt-link to="/">
-        <div @click="scrollToSection(0)">
-          <img
-            class="tn:h-[30px]"
-            src="/images/navbar/brand_seakun.png"
-            alt="brand seakun"
-          />
-        </div>
-      </nuxt-link>
-      <div
-        class="absolute tn:top-1 tn:right-1 tn:py-3 tn:px-3 md:px-3 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col tn:w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
-        :class="{ shadow: open, 'bg-white': open }"
-      >
-        <div class="items-center">
-          <button
-            class="lg:hidden rounded-lg focus:outline-none float-right"
-            @click="open = !open"
-          >
-            <svg
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              class="w-6 h-6 primary"
-            >
-              <path
-                v-show="!open"
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-              <path
-                v-show="open"
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-        </div>
-
-        <nav
-          :class="{ flex: open, hidden: !open }"
-          class="flex-col tn:pr-4 md:pr-4 tn:mt-2 md:p-0 lg:mt-0 hidden lg:flex lg:justify-end lg:flex-row"
-          v-for="(navbar, id) in navbarLink"
-          :key="id"
+    <div class="static z-0 w-full text-gray-700">
+      <div class="container lg:flex lg:justify-between lg:items-center">
+        <nuxt-link to="/">
+          <div @click="scrollToSection(0)">
+            <img
+              class="tn:h-[40px]"
+              src="/images/navbar/brand_seakun.png"
+              alt="brand seakun"
+            />
+          </div>
+        </nuxt-link>
+        <div
+          class="absolute tn:top-1 tn:right-1 tn:py-4 tn:px-4 md:px-4 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col tn:w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
+          :class="{ shadow: open, 'bg-white': open }"
         >
-          <p
-            class="cursor-pointer text-right my-3 text-sm md:text-base font-semibold md:font-bold text-primary hover:text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-12 xl:ml-16"
-            href="#"
-            @click="scrollToSection(navbar.id)"
+          <div class="items-center">
+            <button
+              class="lg:hidden rounded-lg focus:outline-none float-right"
+              @click="open = !open"
+            >
+              <svg
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                class="w-6 h-6 primary"
+              >
+                <path
+                  v-show="!open"
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+                <path
+                  v-show="open"
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <nav
+            :class="{ flex: open, hidden: !open }"
+            class="tn:flex-col tn:pr-4 md:pr-4 lg:pr-0 tn:mt-2 md:p-0 lg:mt-0 tn:hidden lg:flex lg:justify-end lg:flex-row"
+            v-for="(navbar, id) in navbarLink"
+            :key="id"
           >
-            {{ navbar.label }}
-          </p>
-        </nav>
+            <p
+              class="cursor-pointer text-right my-3 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12"
+              href="#"
+              @click="scrollToSection(navbar.id)"
+            >
+              {{ navbar.label }}
+            </p>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
@@ -106,7 +103,25 @@ export default {
   components: {
     Logo,
   },
+  mounted() {
+    window.onscroll = () => {
+      this.handleScrollEffect();
+    };
+  },
   methods: {
+    handleScrollEffect() {
+      const myNav = document.getElementById('navbar');
+      if (
+        document.body.scrollTop >= 50 ||
+        document.documentElement.scrollTop >= 50
+      ) {
+        myNav.classList.add('bg-nav');
+        myNav.classList.remove('bg-none');
+      } else {
+        myNav.classList.add('bg-none');
+        myNav.classList.remove('bg-nav');
+      }
+    },
     scrollToSection(id) {
       if (id === 0) {
         window.scrollTo({
@@ -158,9 +173,30 @@ export default {
 </script>
 
 <style>
-@media (min-width: 400px) {
-  #navbar {
-    background-color: #f4f9f8;
+.bg-nav {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  transition: 1s all ease;
+}
+.bg-none {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  transition: 1s all ease;
+}
+@media (min-width: 800px) {
+  .bg-nav {
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    transition: 1s all ease;
+  }
+  .bg-none {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding-top: 30px !important;
+    padding-bottom: 0 !important;
+    transition: 1s all ease;
   }
 }
 @media (max-width: 800px) {

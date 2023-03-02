@@ -2,32 +2,29 @@
   <div>
     <Navbar />
     <HeaderSection />
-    <IntroductionSection />
-    <PartnershipSection />
-    <!-- <WhatsappNoticeBanner /> -->
-    <SeakunHelpBanner />
+    <PortofolioSection />
+    <BenefitSection />
+    <!-- <SeakunHelpBanner /> -->
     <ProductSection />
-    <CompanyPartnerSection />
-    <UserTypeSection />
     <OrderFlowSection />
     <PaymentSection />
+    <CompanyPartnerSection />
     <TestimonySection />
     <UserGroupSection />
-    <BenefitSection />
     <QnaSection />
     <WarningOrder />
+    <PartnershipBanner />
     <Footer />
+    <SeakunHelpFloatingButton />
   </div>
 </template>
 
 <script>
 import Navbar from '~/components/mollecules/Navbar';
 import HeaderSection from '~/components/organisms/HeaderSection';
-import IntroductionSection from '~/components/organisms/IntroductionSection';
-import PartnershipSection from '~/components/organisms/PartnershipSection';
+import PortofolioSection from '~/components/organisms/PortofolioSection';
 import ProductSection from '~/components/organisms/ProductSection';
 import CompanyPartnerSection from '~/components/organisms/CompanyPartnerSection';
-import UserTypeSection from '~/components/organisms/UserTypeSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
 import PaymentSection from '~/components/organisms/PaymentSection';
 import TestimonySection from '~/components/organisms/TestimonySection';
@@ -35,9 +32,10 @@ import UserGroupSection from '~/components/organisms/UserGroupSection';
 import BenefitSection from '~/components/organisms/BenefitSection';
 import QnaSection from '~/components/organisms/QnaSection';
 import WarningOrder from '~/components/organisms/WarningOrder';
+import PartnershipBanner from '~/components/organisms/PartnershipBanner';
 import Footer from '~/components/mollecules/Footer';
-import WhatsappNoticeBanner from '~/components/organisms/WhatsappNoticeBanner';
 import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
+import SeakunHelpFloatingButton from '~/components/mollecules/SeakunHelpFloatingButton';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
 
@@ -45,11 +43,9 @@ export default {
   components: {
     Navbar,
     HeaderSection,
-    IntroductionSection,
-    PartnershipSection,
+    PortofolioSection,
     ProductSection,
     CompanyPartnerSection,
-    UserTypeSection,
     OrderFlowSection,
     PaymentSection,
     TestimonySection,
@@ -57,9 +53,10 @@ export default {
     BenefitSection,
     QnaSection,
     WarningOrder,
+    PartnershipBanner,
     Footer,
-    WhatsappNoticeBanner,
     SeakunHelpBanner,
+    SeakunHelpFloatingButton,
   },
   computed: {
     ...mapGetters({

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="w-full my-2 tn:shadow-md tn:rounded-lg md:rounded-2xl">
+    <div class="w-full tn:shadow-md tn:rounded-[8px]">
       <div>
         <div
           @click="toggleShow(answer.id)"
-          class="h-full rounded-2xl bg-white tn:px-4 md:px-10 py-6 cursor-pointer flex justify-between items-center"
-          :class="{ 'rounded-none': isShowAnswer, accordion: isShowAnswer }"
+          class="h-full rounded-t-[8px] rounded-b-[8px] bg-white tn:px-4 md:px-10 py-6 cursor-pointer flex justify-between items-center"
+          :class="{ 'rounded-b-none': isShowAnswer, accordion: isShowAnswer }"
           id="headingOne"
         >
           <div class="w-11/12">
@@ -56,7 +56,7 @@
         </div>
         <div
           v-show="isShowAnswer"
-          class="px-10 py-6 bg-primary text-white"
+          class="px-10 py-6 bg-primary text-white rounded-b-[8px]"
           :class="{ accordion: isShowAnswer }"
         >
           <div v-if="answer.list">
