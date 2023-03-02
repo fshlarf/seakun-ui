@@ -83,7 +83,7 @@ export default {
         },
         {
           id: 3,
-          label: 'Cara pesan',
+          label: 'Cara Pesan',
         },
         {
           id: 4,
