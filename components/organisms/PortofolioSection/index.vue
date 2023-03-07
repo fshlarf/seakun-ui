@@ -15,35 +15,25 @@
       <div
         v-for="(porto, id) in portofolio"
         :key="id"
-        class="w-full shadow-md rounded-[8px] bg-white tn:py-5 md:py-[32px] tn:px-[20px]"
+        class="w-full shadow-md rounded-[8px] bg-white tn:py-5 md:py-[32px] tn:px-[15px] md:px-[20px]"
       >
-        <div class="tn:hidden md:flex space-x-3 items-center">
+        <div class="tn:flex tn:space-x-2 md:space-x-3 items-center">
           <img
-            class="w-[32px]"
+            class="tn:w-[20px] md:w-[32px]"
             :src="`/images/portofolio/${porto.icon}.svg`"
             :alt="porto.name"
           />
           <div class="text-left">
-            <p class="text-[40px] font-bold -mb-3 !pb-0 tracking-tighter">
+            <p
+              class="tn:text-[21px] md:text-[40px] font-bold tn:-mb-1.5 md:-mb-3 !pb-0 tracking-tighter"
+            >
               {{ porto.counter }}
             </p>
-            <p class="text-[18px]">{{ porto.name }}</p>
-          </div>
-        </div>
-        <div class="md:hidden">
-          <div class="flex space-x-2">
-            <img
-              class="w-[16px]"
-              :src="`/images/portofolio/${porto.icon}.svg`"
-              :alt="porto.name"
-            />
-            <p class="tn:text-[13px] text-left">
+            <p class="tn:hidden md:block md:text-[18px]">{{ porto.name }}</p>
+            <p class="tn:text-[13px] text-left md:hidden">
               {{ porto.name == 'Tingkat Kepuasan' ? 'Kepuasan' : porto.name }}
             </p>
           </div>
-          <p class="text-left tn:text-[21px] font-bold tracking-tighter">
-            {{ porto.counter }}
-          </p>
         </div>
       </div>
     </div>
