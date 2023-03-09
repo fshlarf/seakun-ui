@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="bg-pre-order">
-      <div class="container tn:py-[20px] md:py-[40px] xl:py-[100px]">
-        <div class="bg-white rounded-[8px] tn:p-[20px] md:p-[50px] xl:p-[70px]">
+      <div
+        class="tn:px-[20px] md:container tn:py-[20px] md:py-[40px] xl:py-[100px]"
+      >
+        <div class="bg-white rounded-[8px] tn:p-[25px] md:p-[50px] xl:p-[70px]">
           <h1 class="tn:text-[24px] lg:text-[42px] font-bold text-center">
             Paket Pre-Order
           </h1>
@@ -19,7 +21,7 @@
               />
             </div>
             <div
-              class="tn:w-full lg:w-[500px] xl:w-[572px] tn:text-[14px] md:text-[24px] lg:text-[20px] xl:text-[24px] text-justify tn:leading-[18px] md:leading-[31px]"
+              class="tn:w-full lg:w-[500px] xl:w-[572px] tn:text-[12px] md:text-[20px] xl:text-[24px] text-justify tn:leading-[16px] md:leading-[31px]"
             >
               <p>
                 Paket Pre-Order adalah paket dimana
@@ -30,8 +32,7 @@
                 (jumlah member dalam grup tergantung dari Provider Entertainment
                 yang dipilih).
               </p>
-              <br />
-              <p>
+              <p class="tn:mt-[10px] md:mt-[20px]">
                 Setelah proses pendaftaran, Admin akan menghubungi kamu melalui
                 Whatsapp untuk menginformasikan jumlah member saat ini, masa
                 tunggu yang diperlukan, notifikasi grup jika telah full dan akun
