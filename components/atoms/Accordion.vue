@@ -4,16 +4,16 @@
       <div>
         <div
           @click="toggleShow(answer.id)"
-          class="h-full rounded-t-[8px] rounded-b-[8px] bg-white tn:px-4 md:px-10 py-6 cursor-pointer flex justify-between items-center"
+          class="h-full rounded-t-[8px] rounded-b-[8px] bg-white tn:px-4 lg:px-6 xl:px-10 tn:py-4 md:py-6 cursor-pointer flex justify-between items-center"
           :class="{ 'rounded-b-none': isShowAnswer, accordion: isShowAnswer }"
           id="headingOne"
         >
           <div class="w-11/12">
-            <h1 class="tn:text-md md:text-sm font-bold">
+            <h1 class="tn:text-sm font-bold">
               {{ title }}
             </h1>
           </div>
-          <div v-if="!isShowAnswer" class="w-4 h-4">
+          <div v-if="!isShowAnswer" class="w-3 h-3">
             <svg
               version="1.1"
               id="Layer_1"
@@ -33,7 +33,7 @@
               />
             </svg>
           </div>
-          <div v-if="isShowAnswer" class="w-4 h-4">
+          <div v-if="isShowAnswer" class="w-3 h-3">
             <svg
               version="1.1"
               id="Layer_1"
@@ -56,7 +56,7 @@
         </div>
         <div
           v-show="isShowAnswer"
-          class="px-10 py-6 bg-primary text-white rounded-b-[8px]"
+          class="tn:px-6 xl:px-10 tn:py-4 md:py-6 bg-primary text-white rounded-b-[8px] tn:text-sm"
           :class="{ accordion: isShowAnswer }"
         >
           <div v-if="answer.list">
