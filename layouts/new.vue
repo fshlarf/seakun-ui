@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavbarBlank />
-    <div class="container-wrapper mt-10">
+    <div class="container-wrapper">
       <Nuxt />
     </div>
     <Footer />
@@ -32,6 +32,6 @@ html {
   margin: 0;
 }
 .container-wrapper {
-  margin-top: 60px;
+  margin-top: 55px;
 }
 </style>
