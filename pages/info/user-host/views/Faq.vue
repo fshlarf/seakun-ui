@@ -5,7 +5,9 @@
         Frequently Asked Questions (FAQ)
       </h1>
     </div>
-    <div class="grid tn:grid-cols-1 lg:grid-cols-2 lg:gap-8 items-center">
+    <div
+      class="grid tn:grid-cols-1 lg:grid-cols-2 tn:gap-3 lg:gap-8 items-center"
+    >
       <Accordion
         v-for="(faq, id) in dataFaq"
         :key="id"
