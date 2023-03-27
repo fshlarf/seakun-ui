@@ -2057,15 +2057,15 @@ export const providerList = [
       },
       {
         title: 'Harga Premium 1 Bulan',
-        value: 'Rp59.000',
+        value: 'Rp79.000',
       },
       {
         title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp65.490',
+        value: 'Rp87.690',
       },
       {
         title: 'Harga Premium 3 Bulan',
-        value: 'Rp65.490 x 3 = Rp196.470',
+        value: 'Rp87.690 x 3 = Rp263.070',
       },
       {
         title: 'Jumlah Member Dalam 1 Grup',
@@ -2073,15 +2073,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp196.470 ÷ 5 = Rp39.294',
+        value: 'Rp263.070 ÷ 5 = Rp52.614',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp16.206',
+        value: 'Rp16.386',
       },
       {
         title: 'Harga Paket 3 Bulan',
-        value: 'Rp55.500',
+        value: 'Rp69.000',
         is_total: true,
       },
     ],
