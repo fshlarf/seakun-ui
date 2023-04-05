@@ -12,8 +12,11 @@
         Loading...
       </div>
     </div>
-    <div v-else>
+    <div v-else-if="label">
       {{ label }}
+    </div>
+    <div v-else>
+      <slot></slot>
     </div>
   </button>
 </template>
