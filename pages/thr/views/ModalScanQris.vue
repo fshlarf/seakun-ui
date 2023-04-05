@@ -5,18 +5,7 @@
     </template>
     <div>
       <img class="mx-auto" src="/images/journey/qr-code.png" alt="qris" />
-      <div class="w-full tn:mt-6 md:mt-12 text-center">
-        <Button
-          variant="primary"
-          class="tn:py-4 tn:px-8 tn:w-full md:w-auto"
-          @click="downloadQrisImage"
-        >
-          <i class="fa-solid fa-cloud-arrow-down fa-lg"></i>
-          <span class="font-bold">Unduh gambar QRIS</span>
-        </Button>
-      </div>
-      <br />
-      <p class="tn:mt-3 md:mt-6 font-bold">Cara Kirim:</p>
+      <p class="tn:mt-6 font-bold">Cara Kirim:</p>
       <ul
         class="font-base list-disc tn:pl-4 tn:mt-1 space-y-1 tn:text-sm md:text-base"
       >
@@ -25,11 +14,11 @@
           Masukkan pin e-wallet/m-banking. (4) Selesai.
         </li>
         <li>
-          Jika menggunakan smartphone, (1) Simpan gambar QRIS dengan tekan
-          tombol "Unduh gambar QRIS" di atas. (2) Buka aplikasi e-wallet atau
-          m-banking. (3) Pilih Scan QR. (4) Pilih upload image dari galery. (5)
-          Pilih gambar QRIS yang sudah diunduh. (6) Masukkan nominal yang ingin
-          di transfer. (7) Masukkan pin e-wallet/m-banking. (8) Selesai.
+          Jika menggunakan smartphone, (1) Ambil tangkapan layar (screenshot)
+          pada kode QRIS di atas. (2) Buka aplikasi e-wallet atau m-banking. (3)
+          Pilih Scan QR. (4) Pilih upload image dari galeri. (5) Pilih gambar
+          tangkapan layar QRIS yang sudah tersimpan. (6) Masukkan nominal yang
+          ingin di transfer. (7) Masukkan pin e-wallet/m-banking. (8) Selesai.
         </li>
       </ul>
     </div>

@@ -56,7 +56,7 @@
           pihak manapun.
         </p>
         <p class="tn:mt-2">
-          Hal-hal yang merupakan tanggung jawab Manajemen Seakun prihal hak-hak
+          Hal-hal yang merupakan tanggung jawab Manajemen Seakun perihal hak-hak
           karyawan sudah ditunaikan dengan baik dan mengikuti aturan yang
           berlaku.
         </p>
