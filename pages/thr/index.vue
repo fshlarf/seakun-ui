@@ -27,10 +27,6 @@
         Seakun berikan, kakak bisa memberikan THR untuk Tim Seakun yang bertugas
         dengan cara klik tombol di bawah.
       </p>
-      <p class="tn:mt-3">
-        Sekali lagi, terimakasih banyak untuk THR dan dukungan yang kakak
-        berikan, semoga berkah, sehat dan sukses selalu di manapun kakak berada.
-      </p>
       <p class="tn:mt-5">Salam, <br />Tim Seakun</p>
 
       <div class="w-full tn:mt-8 text-center">

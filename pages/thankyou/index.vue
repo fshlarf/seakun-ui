@@ -1,8 +1,20 @@
 <template>
-  <div class="thankyou max-w-2xl w-full mx-auto pt-4 tn:-mb-4 md:mb-0">
+  <div class="thankyou max-w-2xl w-full mx-auto md:pt-4 tn:-mb-4 md:mb-0">
+    <img
+      class="w-full tn:hidden md:block cursor-pointer"
+      src="/images/ramadan-gift/thankyou2.webp"
+      alt="thr banner"
+      @click="toThrPage"
+    />
     <div
-      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full pt-4"
+      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full tn:pt-3 md:mt-4"
     >
+      <img
+        class="w-full md:hidden tn:mb-6 cursor-pointer"
+        src="/images/ramadan-gift/thankyou-mobile.webp"
+        alt="thr banner"
+        @click="toThrPage"
+      />
       <img
         class="w-6/12 mx-auto"
         src="/images/thank-you-new.png"
@@ -174,6 +186,9 @@ export default {
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
+    toThrPage() {
+      this.$router.push('/thr');
+    },
     setNameBank(bank) {
       switch (bank) {
         case 'digibank / dbs':
