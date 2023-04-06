@@ -1,8 +1,20 @@
 <template>
-  <div class="thankyou max-w-2xl w-full mx-auto pt-4 tn:-mb-4 md:mb-0">
+  <div class="thankyou max-w-2xl w-full mx-auto md:pt-4 tn:-mb-4 md:mb-0">
+    <img
+      class="w-full tn:hidden md:block cursor-pointer"
+      src="/images/ramadan-gift/thankyou2.webp"
+      alt="thr banner"
+      @click="toThrPage"
+    />
     <div
-      class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full pt-4"
+      class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full tn:pt-3 md:mt-4"
     >
+      <img
+        class="w-full md:hidden tn:mb-6 cursor-pointer"
+        src="/images/ramadan-gift/thankyou-mobile.webp"
+        alt="thr banner"
+        @click="toThrPage"
+      />
       <img
         class="w-1/3 mx-auto"
         src="/images/thank-you-new.png"
@@ -87,6 +99,9 @@ export default {
   methods: {
     toHomePage() {
       this.$router.push('/');
+    },
+    toThrPage() {
+      this.$router.push('/thr');
     },
   },
 };

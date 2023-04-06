@@ -10,8 +10,9 @@
         class="font-base list-disc tn:pl-4 tn:mt-1 space-y-1 tn:text-sm md:text-base"
       >
         <li>
-          (1) Scan QRIS di atas. (2) Masukkan nominal yang ingin ditransfer. (3)
-          Masukkan pin e-wallet/m-banking. (4) Selesai.
+          (1) Scan QRIS di atas lewat aplikasi e-wallet atau m-banking. (2)
+          Masukkan nominal yang ingin ditransfer. (3) Masukkan pin
+          e-wallet/m-banking. (4) Selesai.
         </li>
         <li>
           Jika menggunakan smartphone, (1) Ambil tangkapan layar (screenshot)
