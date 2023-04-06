@@ -2,7 +2,7 @@
   <div class="container tn:pt-8 lg:pt-14">
     <div class="md:w-3/4 mx-auto">
       <img
-        src="/images/ramadan-gift/banner.png"
+        src="/images/ramadan-gift/banner.webp"
         alt="thr untuk seakun"
         class="w-full"
       />
@@ -35,15 +35,17 @@
 
       <div class="w-full tn:mt-8 text-center">
         <Button
-          variant="primary"
-          label="Kirim THR ke Seakun"
-          class="tn:py-4 tn:px-12 font-bold tn:w-full md:w-auto"
+          variant="third"
+          class="tn:!py-5 tn:px-12 font-bold tn:w-full md:w-auto"
           @click="isShowModalScan = !isShowModalScan"
-        />
+        >
+          <i class="fa-regular fa-envelope fa-lg"></i>
+          <span class="tn:ml-1">Kirim THR ke Seakun</span>
+        </Button>
       </div>
 
       <div
-        class="rounded-xl tn:px-[15px] md:px-[20px] lg:px-[30px] tn:py-[10px] md:py-[15px] lg:py-[20px] border-2 border-dashed !border-primary tn:mt-12 tn:text-sm text-gray-600 bg-[#F4F9F8]"
+        class="rounded-xl tn:px-[15px] md:px-[20px] lg:px-[30px] tn:py-[10px] md:py-[15px] lg:py-[20px] tn:mt-12 tn:text-sm text-gray-600 bg-[#F4F9F8]"
       >
         <h3 class="font-bold">Disclaimer:</h3>
         <p class="tn:mt-2">

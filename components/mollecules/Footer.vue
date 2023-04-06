@@ -1,16 +1,15 @@
 <template>
   <div class="footer lg:pt-6 xl:pt-12 mt-12">
     <div
-      class="!container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
+      class="tn:px-3 md:!container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
     >
       <div class="max-w-md md:row-span-3 lg:col-span-2 md:pr-10 xl:pr-16">
-        <div class="flex items-center space-x-2 tn:mt-6 tn:mb-8">
+        <div class="tn:mt-8 tn:mb-6 md:mb-9">
           <img
-            class="w-[42px]"
-            src="/images/navbar/seakun_logo.png"
+            class="tn:h-[30px]"
+            src="/images/navbar/brand_seakun.png"
             alt="tentang seakun"
           />
-          <p class="tn:text-lg md:text-2xl text-primary font-bold">Seakun.id</p>
         </div>
         <p class="tn:text-sm md:text-base my-2 space-y-1">
           Platform pertama di Indonesia yang memberikan layanan Berlangganan
