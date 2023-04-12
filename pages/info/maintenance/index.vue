@@ -17,8 +17,8 @@
       </p>
       <br />
       <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
-        Kembali aktif lagi Jum'at, 18 November 2022 pukul 09.00 WIB ya. See you!
-        <!-- Kembali aktif lagi malam ini pukul 23.59 WIB ya. See you! -->
+        <!-- Kembali aktif lagi Jum'at, 18 November 2022 pukul 09.00 WIB ya. See you! -->
+        Kembali aktif lagi siang ini pukul 12.00 WIB ya. See you!
       </p>
       <a
         class="w-full"
@@ -42,9 +42,9 @@ export default {
   components: {
     Button,
   },
-  beforeMount() {
-    this.$router.push('/');
-  },
+  // beforeMount() {
+  //   this.$router.push('/');
+  // },
 };
 </script>
 
