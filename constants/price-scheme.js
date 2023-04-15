@@ -2184,4 +2184,51 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Duolingo',
+    slug: 'duolingo',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/duolingo.png',
+    screenshot: '/images/price scheme/duolingo.png',
+    desc: 'Duolingo Paket Premium 1 Tahun',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Duolingo',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Tahun',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Family 1 Tahun',
+        value: 'Rp599.000',
+      },
+      {
+        title: 'Harga setelah dikenakan pajak 11%',
+        value: 'Rp664.890',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp664.890 ÷ 5 = Rp132.978',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp67.022',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp200.000',
+        is_total: true,
+      },
+    ],
+  },
 ];

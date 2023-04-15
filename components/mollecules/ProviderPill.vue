@@ -13,6 +13,7 @@
       <span
         v-if="
           !isLoading &&
+          dataGroup &&
           dataGroup.length > 0 &&
           provider.slug === dataGroup[0].providerSlug
         "
