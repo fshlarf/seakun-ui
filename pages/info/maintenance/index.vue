@@ -17,7 +17,7 @@
       </p>
       <br />
       <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
-        Kembali aktif lagi Minggu, 16 April 2022 pukul 09.00 WIB ya. See you!
+        Kembali aktif lagi Minggu, 16 April 2022 pukul 12.00 WIB ya. See you!
         <!-- Kembali aktif lagi siang ini pukul 12.00 WIB ya. See you! -->
       </p>
       <a
