@@ -64,6 +64,16 @@ class MasterService {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
   }
+
+  getDonations(params) {
+    return this.serviceApi.get('/customer/donation', { params });
+  }
+
+  addDonation(params) {
+    return this.serviceApi.post('/customer/donation', params, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  }
 }
 
 export default MasterService;
