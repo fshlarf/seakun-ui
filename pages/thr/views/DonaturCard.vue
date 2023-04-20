@@ -1,7 +1,7 @@
 <template>
   <div
     id="donatur-card"
-    class="tn:w-[300px] md:w-[256px] rounded-xl bg-white p-[20px] transition duration-500 cursor-pointer"
+    class="tn:w-[300px] xl:w-full rounded-xl bg-white p-[20px] transition duration-500 cursor-pointer"
     @click="$emit('onClickDonaturCard', donaturData)"
   >
     <p>{{ donaturData.name }}</p>

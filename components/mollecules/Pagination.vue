@@ -5,12 +5,6 @@
       @click="onClickPage(paged - 1)"
       role="button"
     >
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
-        aliquid. Praesentium, voluptates corporis deserunt odio ipsum quam, iure
-        corrupti beatae est repellendus illo eos asperiores, laudantium optio
-        quasi provident doloribus!
-      </p>
       <svg
         width="1em"
         height="1em"
@@ -160,6 +154,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -174,42 +172,44 @@ export default {
   },
   methods: {
     onClickPage(page, con) {
-      if (!con) {
-        this.$emit('clickPagination', page);
-      }
-      this.totalPages = this.numOfPages;
-      if (this.totalPages > 7) {
-        this.pageList = [];
-        if (page <= 5) {
-          const first = 1;
-          const last = 6;
-          for (let i = first; i <= last; i++) {
-            this.pageList.push(i);
-          }
-        } else if (page >= this.totalPages - 4) {
-          const first = this.totalPages - 5;
-          const last = this.totalPages;
-          for (let i = first; i <= last; i++) {
-            this.pageList.push(i);
+      if (!this.isLoading) {
+        if (!con) {
+          this.$emit('clickPagination', page);
+        }
+        this.totalPages = this.numOfPages;
+        if (this.totalPages > 7) {
+          this.pageList = [];
+          if (page <= 5) {
+            const first = 1;
+            const last = 6;
+            for (let i = first; i <= last; i++) {
+              this.pageList.push(i);
+            }
+          } else if (page >= this.totalPages - 4) {
+            const first = this.totalPages - 5;
+            const last = this.totalPages;
+            for (let i = first; i <= last; i++) {
+              this.pageList.push(i);
+            }
+          } else {
+            const first = page - 2;
+            const last = page + 2;
+            for (let i = first; i <= last; i++) {
+              if (i > 1 && i < this.totalPages) this.pageList.push(i);
+            }
           }
         } else {
-          const first = page - 2;
-          const last = page + 2;
-          for (let i = first; i <= last; i++) {
-            if (i > 1 && i < this.totalPages) this.pageList.push(i);
+          this.pageList = [];
+          const first = 1;
+          const last = this.totalPages;
+          let i = first;
+          for (i; i <= last; i++) {
+            this.pageList.push(i);
           }
         }
-      } else {
-        this.pageList = [];
-        const first = 1;
-        const last = this.totalPages;
-        let i = first;
-        for (i; i <= last; i++) {
-          this.pageList.push(i);
-        }
+        this.paged = page;
+        return this.pageList;
       }
-      this.paged = page;
-      return this.pageList;
     },
   },
 };
