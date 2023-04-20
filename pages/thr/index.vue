@@ -1,7 +1,7 @@
 <template>
   <div id="ramadan-gift" class="">
     <div
-      class="tn:bg-primary md:bg-white container md:w-3/4 mx-auto tn:pt-8 lg:pt-14"
+      class="tn:bg-primary md:bg-white md:container md:w-3/4 md:mx-auto tn:pt-8 lg:pt-14 tn:px-2"
     >
       <img
         src="/images/ramadan-gift/banner.webp"
@@ -34,12 +34,50 @@
           </Button>
         </div>
       </div>
+
+      <!-- mobile view -->
+      <div class="xl:hidden">
+        <div
+          v-if="donaturListMobile.list && donaturListMobile.list.length > 0"
+          class="flex xl:hidden"
+        >
+          <div
+            id="donatur-scroll-container"
+            class="relative tn:mt-6 md:mt-12 tn:flex items-start gap-4 tn:px-[30px] overflow-x-auto overscroll-auto hide-scrollbar xl:hidden"
+          >
+            <DonaturCard
+              v-for="(donatur, id) in donaturListMobile.list"
+              :key="id"
+              :donatur-data="donatur"
+              class="flex-none"
+              @onClickDonaturCard="onClickDonaturCard"
+            />
+            <DonaturCardLoading
+              v-if="isLoadingDataDonation"
+              class="flex-none"
+            />
+          </div>
+        </div>
+        <div v-else class="w-full tn:mt-6 md:mt-12 flex xl:hidden">
+          <div
+            class="w-full tn:flex items-center gap-4 overflow-x-auto overscroll-auto tn:px-[30px] hide-scrollbar xl:hidden"
+          >
+            <DonaturCardLoading class="flex-none" />
+            <DonaturCardLoading class="flex-none" />
+            <DonaturCardLoading class="flex-none" />
+            <DonaturCardLoading class="flex-none" />
+          </div>
+        </div>
+      </div>
+      <!-- mobile view -->
+
+      <!-- desktop view -->
       <div
         v-if="!isLoadingDataDonation"
-        class="tn:mt-6 md:mt-12 flex xl:justify-center"
+        class="tn:hidden xl:block xl:container"
       >
         <div
-          class="relative flex items-start gap-4 xl:justify-center tn:px-[30px] xl:px-0 overflow-x-auto xl:overflow-visible overscroll-auto hide-scrollbar"
+          class="relative xl:mt-12 xl:w-full xl:grid xl:grid-cols-4 items-start gap-4"
         >
           <ButtonChevron
             v-if="donaturList.pagination.currentPage !== 1"
@@ -52,7 +90,6 @@
             v-for="(donatur, id) in donaturList.list"
             :key="id"
             :donatur-data="donatur"
-            class="flex-none"
             @onClickDonaturCard="onClickDonaturCard"
           />
           <ButtonChevron
@@ -67,28 +104,32 @@
           />
         </div>
       </div>
-      <div v-else class="tn:mt-6 md:mt-12 w-full flex justify-center">
-        <div
-          class="flex xl:justify-center items-center space-x-4 overflow-x-auto overscroll-auto tn:px-[30px] xl:px-0 hide-scrollbar"
-        >
-          <DonaturCardLoading class="flex-none" />
-          <DonaturCardLoading class="flex-none" />
-          <DonaturCardLoading class="flex-none" />
-          <DonaturCardLoading class="flex-none" />
+      <div
+        v-if="isLoadingDataDonation"
+        class="tn:hidden xl:block w-full xl:mt-12 xl:container"
+      >
+        <div class="w-full xl:grid xl:grid-cols-4 items-center gap-4">
+          <DonaturCardLoading />
+          <DonaturCardLoading />
+          <DonaturCardLoading />
+          <DonaturCardLoading />
         </div>
       </div>
+      <!-- desktop view -->
+
       <div
-        class="tn:mt-4 md:mt-8"
-        v-if="!isLoadingDataDonation && donaturList.pagination"
+        class="tn:hidden xl:block xl:mt-8"
+        v-if="donaturList.list && donaturList.list.length > 0"
       >
         <Pagination
           :current-page="donaturList.pagination.currentPage"
           :num-of-pages="donaturList.pagination.numOfPages"
+          :is-loading="isLoadingDataDonation"
           @clickPagination="onClickPagination"
         />
       </div>
 
-      <div class="lg:hidden w-full text-center tn:px-[30px] tn:mt-4">
+      <div class="lg:hidden w-full text-center tn:px-[30px] tn:mt-8">
         <Button
           @click="onClickDonate"
           class="tn:w-full md:w-3/4"
@@ -169,6 +210,7 @@ import MasterService from '~/services/MasterServices.js';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import Pagination from '~/components/mollecules/Pagination.vue';
 import ModalDetailDonatur from './views/ModalDetailDonatur.vue';
+import waitForElement from '~/helpers/utility.js';
 
 export default {
   layout: 'new',
@@ -192,7 +234,17 @@ export default {
         isDisplayed: 1,
         donationType: 'ramadan',
       },
+      paramDonationListMobile: {
+        page: 1,
+        limit: 4,
+        isDisplayed: 1,
+        donationType: 'ramadan',
+      },
       donaturList: {
+        list: [],
+        pagination: {},
+      },
+      donaturListMobile: {
         list: [],
         pagination: {},
       },
@@ -203,8 +255,25 @@ export default {
   mounted() {
     this.MasterService = new MasterService(this);
     this.getDonationList();
+    this.monitorScrollBehaviour();
   },
   methods: {
+    monitorScrollBehaviour() {
+      this.waitForElement('#donatur-scroll-container').then((elm) => {
+        elm.addEventListener('scroll', () => {
+          const groupMaxScrollWidth = elm.scrollWidth - elm.clientWidth;
+          if (elm.scrollLeft >= groupMaxScrollWidth) {
+            if (
+              this.paramDonationListMobile.page <
+                this.donaturListMobile.pagination.numOfPages &&
+              !this.isLoadingDataDonation
+            ) {
+              this.getDonationListAggregation();
+            }
+          }
+        });
+      });
+    },
     async getDonationList() {
       const { MasterService } = this;
       this.isLoadingDataDonation = true;
@@ -216,6 +285,35 @@ export default {
           const { data, pagination } = fetchDonation.data;
           this.donaturList = {
             list: data,
+            pagination,
+          };
+          this.donaturListMobile = {
+            list: data,
+            pagination,
+          };
+        } else {
+          throw new Error(fetchDonation);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoadingDataDonation = false;
+    },
+    async getDonationListAggregation() {
+      const { MasterService } = this;
+      this.isLoadingDataDonation = true;
+      this.paramDonationListMobile = {
+        ...this.paramDonationListMobile,
+        page: this.paramDonationListMobile.page + 1,
+      };
+      try {
+        const fetchDonation = await MasterService.getDonations(
+          this.paramDonationListMobile
+        );
+        if (fetchDonation.data) {
+          const { data, pagination } = fetchDonation.data;
+          this.donaturListMobile = {
+            list: [...this.donaturListMobile.list, ...data],
             pagination,
           };
         } else {
@@ -254,6 +352,7 @@ export default {
       this.donaturDetail = data;
       this.isShowModalDetail = true;
     },
+    waitForElement,
   },
 };
 </script>
