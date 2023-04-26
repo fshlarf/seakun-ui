@@ -163,9 +163,21 @@ export default {
     return {
       shownPageLimit: 5,
       pageList: [],
-      paged: this.currentPage,
-      totalPages: this.numOfPages,
+      paged: 1,
+      totalPages: 0,
     };
+  },
+  watch: {
+    currentPage(val) {
+      if (val) {
+        this.paged = val;
+      }
+    },
+    numOfPages(val) {
+      if (val) {
+        this.totalPages = val;
+      }
+    },
   },
   mounted() {
     this.onClickPage(this.paged, 'init');
