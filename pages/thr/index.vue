@@ -142,7 +142,7 @@
       </div>
     </div>
     <div
-      class="tn:px-[30px] md:container tn:mt-12 grid lg:grid-cols-2 tn:gap-4 lg:gap-8 text-justify"
+      class="tn:px-[30px] md:container tn:mt-12 grid lg:grid-cols-2 tn:gap-4 lg:gap-8 text-justify items-start"
     >
       <div
         class="rounded-xl tn:px-[15px] md:px-[20px] lg:px-[30px] tn:py-[12px] md:py-[15px] lg:py-[20px] tn:text-sm text-gray-600 bg-[#F4F9F8]"
@@ -150,19 +150,18 @@
         <h1 class="font-bold text-[14px]">Hai kak!</h1>
         <p class="tn:mt-3">
           Seluruh Tim Seakun mengucapkan terimakasih banyak sudah memberikan
-          kepercayaan kepada kami agar dapat memberikan layanan terbaik ke
-          seluruh pengguna Seakun termasuk kakak.
+          kepercayaan kepada kami dalam memberikan layanan terbaik ke seluruh
+          pengguna Seakun, termasuk kakak.
         </p>
         <p class="tn:mt-3">
-          Tidak terasa sudah hampir 3 tahun Seakun membantu kakak-kakak semua
-          yang merupakan pengguna Seakun untuk dapat menghemat biaya pengeluaran
-          dalam menikmati layanan premium secara legal yang bisa menghemat
-          ratusan ribu bahkan jutaan rupiah setiap tahunnya.
+          Tidak terasa sudah hampir 3 tahun lamanya tim Seakun melayani
+          kakak-kakak semua. Sehingga kakak dapat menikmati layanan premium
+          secara legal dan menghemat hingga jutaan rupiah setiap tahunnya.
         </p>
         <p class="tn:mt-3">
-          Jika kakak merasa sangat terbantu dan sangat senang dengan layanan
-          yang Seakun berikan, kakak bisa memberikan THR untuk Tim Seakun yang
-          bertugas dengan cara klik tombol di bawah.
+          Jika kakak merasa sangat terbantu dan senang dengan layanan yang
+          Seakun berikan, kakak bisa mengirimkan THR untuk Tim Seakun yang
+          bertugas dengan cara klik tombol Kirim THR untuk Seakun di atas.
         </p>
         <p class="tn:mt-5">Salam, <br />Tim Seakun</p>
       </div>
@@ -172,13 +171,11 @@
       >
         <h3 class="font-bold text-[14px]">Disclaimer:</h3>
         <p class="tn:mt-3">
-          Program THR untuk Seakun ini dilatarbelakangi oleh beberapa pengguna
-          Seakun yang senang atas pelayanan yang diberikan oleh Seakun dan ingin
-          memberikan apresiasi tinggi berupa tips kepada Tim Seakun yang
-          bertugas. Sehingga muncul program ini dengan tujuan untuk mewadahi
-          seluruh pengguna Seakun agar bisa memberikan dukungan dan apresiasi
-          lebih kepada seluruh Tim Seakun yang bertugas tanpa ada paksaan dari
-          pihak manapun.
+          Program ini bertujuan untuk mewadahi pengguna Seakun dalam memberikan
+          dukungan dan apresiasi yang lebih kepada Tim Seakun yang bertugas,
+          tanpa ada paksaan dari pihak manapun. Program THR untuk Seakun ini
+          diinisiasi oleh beberapa pengguna Seakun yang senang atas pelayanan
+          yang diberikan oleh Seakun.
         </p>
         <p class="tn:mt-3">
           Hal-hal yang merupakan tanggung jawab Manajemen Seakun perihal hak-hak
