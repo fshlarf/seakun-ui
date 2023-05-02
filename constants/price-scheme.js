@@ -2231,4 +2231,90 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Crunchyroll',
+    slug: 'crunchyroll',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/crunchyroll.png',
+    screenshot: '/images/price scheme/crunchyroll.png',
+    desc: 'Crunchyroll Paket Premium 1 Bulan',
+    member: 4,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Crunchyroll',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Bulan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Premium 1 Bulan',
+        value: 'Rp39.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp39.000 ÷ 4 = Rp9.750',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.250',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp15.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Crunchyroll',
+    slug: 'crunchyroll',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/crunchyroll.png',
+    screenshot: '/images/price scheme/crunchyroll.png',
+    desc: 'Crunchyroll Paket Premium 1 Tahun',
+    member: 4,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Crunchyroll',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Paket Premium 1 Tahun',
+        is_total: true,
+      },
+      {
+        title: 'Harga Paket Premium 1 Tahun',
+        value: 'Rp390.000',
+      },
+      {
+        title: 'Jumlah Member Dalam 1 Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp390.000 ÷ 4 = Rp97.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp52.500',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp150.000',
+        is_total: true,
+      },
+    ],
+  },
 ];
