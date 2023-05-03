@@ -109,7 +109,7 @@
           >August 3, 2022</a
         >
       </blockquote>
-      <blockquote
+      <!-- <blockquote
         data-cards="hidden"
         data-lang="id"
         data-theme="light"
@@ -130,7 +130,7 @@
           href="https://twitter.com/zhafara88/status/1543592122351177733?ref_src=twsrc%5Etfw"
           >July 3, 2022</a
         >
-      </blockquote>
+      </blockquote> -->
       <blockquote
         data-cards="hidden"
         tw-align-center
