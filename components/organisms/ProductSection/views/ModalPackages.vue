@@ -11,11 +11,20 @@
     <div class="pb-2">
       <div
         v-if="provider.variants && isHasPo"
-        class="tn:pl-3 tn:pr-1 md:pl-4 md:pr-3 mb-3 xl:max-w-[800px]"
+        class="tn:px-3 tn:mb-5 md:px-4 md:mb-8 xl:max-w-auto flex bg-[#7BCAB9] bg-opacity-20 md:gap-[10px] tn:gap-[5px] border-[1px] border-[#7BCAB9] border-opacity-50 rounded-[12px] p-[12px]"
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
-        <ul class="list-disc tn:text-xs md:text-sm">
-          <li>
+        <div>
+          <img
+            class="md:w-[18.33px] tn:w-[12.5px]"
+            src="/images/icons/atoms/symbols-info.svg"
+            alt="symbols info"
+          />
+        </div>
+        <div
+          class="list-disc tn:text-xs md:text-sm md:pr-10 w-[100%] tn:pr-2 space-y-[8px]"
+        >
+          <p>
             Dengan memilih paket Pre-order artinya kamu menunggu grup penuh.
             Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk
             melakukan pembayaran.
@@ -26,22 +35,30 @@
                 >Lihat lebih lengkap</nuxt-link
               >
             </span>
-          </li>
-          <li v-if="isHasManyDuration">
+          </p>
+
+          <p v-if="isHasManyDuration">
             Durasi berlangganan dapat dipilih di halaman berikutnya.
-          </li>
-        </ul>
+          </p>
+        </div>
       </div>
       <div
         v-else-if="
           provider.variants && isHasManyDuration && provider.slug !== 'netflix'
         "
-        class="tn:pl-3 tn:pr-1 md:pl-4 md:pr-3 mb-3 xl:max-w-[800px]"
+        class="tn:px-3 md:px-4 mb-3 xl:max-w-[800px] flex bg-[#7BCAB9] bg-opacity-20 md:gap-[10px] tn:gap-[5px] border-[1px] border-[#7BCAB9] border-opacity-50 rounded-[12px] p-[12px]"
         :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
       >
-        <ul class="list-disc tn:text-xs md:text-sm">
-          <li>Durasi berlangganan dapat dipilih di halaman berikutnya.</li>
-        </ul>
+        <div>
+          <img
+            class="md:w-[18.33px] tn:w-[12.5px]"
+            src="/images/icons/atoms/symbols-info.svg"
+            alt="symbols info"
+          />
+        </div>
+        <div class="list-disc tn:text-xs md:text-sm">
+          Durasi berlangganan dapat dipilih di halaman berikutnya.
+        </div>
       </div>
 
       <div
