@@ -11,8 +11,14 @@
     <div class="pb-2">
       <div
         v-if="provider.variants && isHasPo"
-        class="tn:px-3 tn:mb-5 md:px-4 md:mb-8 xl:max-w-auto flex bg-[#7BCAB9] bg-opacity-20 md:gap-[10px] tn:gap-[5px] border-[1px] border-[#7BCAB9] border-opacity-50 rounded-[12px] p-[12px]"
-        :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
+        class="tn:px-3 tn:mb-3 md:px-4 md:mb-5 flex bg-[#7BCAB9] bg-opacity-20 md:gap-[10px] tn:gap-[5px] border-[1px] border-[#7BCAB9] border-opacity-50 rounded-[12px] p-[12px]"
+        :class="`${
+          provider.variants.length === 1
+            ? 'tn:w-full xl:w-[380px]'
+            : provider.variants.length === 2
+            ? 'xl:w-[783px]'
+            : 'xl:w-[1185px]'
+        }`"
       >
         <div>
           <img
@@ -22,7 +28,7 @@
           />
         </div>
         <div
-          class="list-disc tn:text-xs md:text-sm md:pr-10 w-[100%] tn:pr-2 space-y-[8px]"
+          class="tn:text-xs md:text-sm md:pr-10 w-[100%] tn:pr-2 space-y-[8px]"
         >
           <p>
             Dengan memilih paket Pre-order artinya kamu menunggu grup penuh.
@@ -46,8 +52,14 @@
         v-else-if="
           provider.variants && isHasManyDuration && provider.slug !== 'netflix'
         "
-        class="tn:px-3 md:px-4 mb-3 xl:max-w-[800px] flex bg-[#7BCAB9] bg-opacity-20 md:gap-[10px] tn:gap-[5px] border-[1px] border-[#7BCAB9] border-opacity-50 rounded-[12px] p-[12px]"
-        :class="{ 'xl:w-[416px]': provider.variants.length === 1 }"
+        class="tn:px-3 md:px-4 tn:mb-3 md:mb-5 xl:max-w-[800px] flex bg-[#7BCAB9] bg-opacity-20 md:gap-[10px] tn:gap-[5px] border-[1px] border-[#7BCAB9] border-opacity-50 rounded-[12px] p-[12px]"
+        :class="`${
+          provider.variants.length === 1
+            ? 'tn:w-full xl:w-[380px]'
+            : provider.variants.length === 2
+            ? 'xl:w-[783px]'
+            : 'xl:w-[1185px]'
+        }`"
       >
         <div>
           <img
@@ -56,7 +68,7 @@
             alt="symbols info"
           />
         </div>
-        <div class="list-disc tn:text-xs md:text-sm">
+        <div class="tn:text-xs md:text-sm">
           Durasi berlangganan dapat dipilih di halaman berikutnya.
         </div>
       </div>
