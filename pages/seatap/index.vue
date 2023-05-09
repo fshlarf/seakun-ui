@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Navbar from '~/components/mollecules/NavbarBlank.vue';
-import Header from './views/Header';
+import Navbar from './Navbar';
+import Header from './HeaderSection';
 
 export default {
   components: {
