@@ -7,7 +7,7 @@
       alt="logo seakun"
       class="mr-[19px]"
     />
-    <span class="text-[#8DCABE] text-2xl">{{ label }}</span>
+    <span class="tn:hidden lg:block text-[#8DCABE] text-2xl">{{ label }}</span>
   </div>
 </template>
 
