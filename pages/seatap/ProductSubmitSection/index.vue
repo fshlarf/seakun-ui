@@ -1,7 +1,7 @@
 <template>
   <div
     id="bg"
-    class="lg:container lg:py-[58px] lg:px-[139px] tn:py-[96px] tn:px-[44px] bg-center bg-auto"
+    class="lg:container lg:py-[58px] lg:px-[139px] tn:py-[96px] tn:px-[44px]"
   >
     <div
       id="backdrop"
@@ -25,12 +25,17 @@
 <style scoped>
 #bg {
   background-image: url('/images/seatap/bg-order-section.png');
-  /* background-size: full;
-  background-position: center; */
 }
 #backdrop {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(15px);
   border-radius: 20px;
+}
+
+@media (max-width: 500px) {
+  #bg {
+    background-position: 660px 0px;
+    background-size: cover;
+  }
 }
 </style>
