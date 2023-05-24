@@ -17,7 +17,7 @@
           yang praktis, legal, aman dan murah
         </p>
         <div class="flex space-x-2 xl:space-x-3 my-3">
-          <a href="https://instagram.com/official.seakun" target="_blank"
+          <a href="https://instagram.com/seakun.id" target="_blank"
             ><img src="/images/footer/instagram.svg" alt="instagram icon"
           /></a>
           <a href="https://twitter.com/seakun_id" target="_blank"
