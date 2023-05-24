@@ -1,12 +1,14 @@
 <template>
-  <div id="navbar-sequrban" class="w-full fixed z-40 tn:py-3 lg:py-0 bg-none">
+  <div id="navbar-sequrban" class="w-full fixed z-40 tn:py-2 lg:py-0 bg-top">
     <div
       v-if="open"
       class="opacity-20 fixed inset-0 z-90 bg-black"
       @click="open = false"
     ></div>
     <div class="static z-0 w-full text-gray-700">
-      <div class="container lg:flex lg:justify-between lg:items-center">
+      <div
+        class="container-sequrban lg:flex lg:justify-between lg:items-center"
+      >
         <nuxt-link to="/">
           <div @click="scrollToTop()">
             <img
@@ -17,7 +19,7 @@
           </div>
         </nuxt-link>
         <div
-          class="absolute tn:top-1 tn:right-1 tn:py-4 tn:px-4 md:px-4 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col tn:w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
+          class="absolute tn:top-1 tn:right-1 tn:py-3 tn:px-4 md:px-4 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col tn:w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
           :class="{ shadow: open, 'bg-white': open }"
         >
           <div class="items-center">
@@ -53,7 +55,7 @@
             :key="id"
           >
             <p
-              class="cursor-pointer text-right my-3 tn:text-sm md:text-[14px] lg:text-base font-semibold md:font-bold text-primary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12"
+              class="cursor-pointer text-right my-3 tn:text-sm md:text-[14px] lg:text-base font-semibold md:font-bold text-primary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-[72px]"
               href="#"
               @click="scrollToSection(navbar)"
             >
@@ -116,11 +118,11 @@ export default {
         document.body.scrollTop >= 50 ||
         document.documentElement.scrollTop >= 50
       ) {
-        myNav.classList.add('bg-nav');
-        myNav.classList.remove('bg-none');
+        myNav.classList.add('bg-below');
+        myNav.classList.remove('bg-top');
       } else {
-        myNav.classList.add('bg-none');
-        myNav.classList.remove('bg-nav');
+        myNav.classList.add('bg-top');
+        myNav.classList.remove('bg-below');
       }
     },
     scrollToTop() {
@@ -131,38 +133,43 @@ export default {
       this.open = false;
     },
     scrollToSection(menu) {
-      const section = document.getElementById(menu.tag);
-      section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
+      this.scrollToElementWithOffset(menu.tag, 25);
       this.open = false;
+    },
+    scrollToElementWithOffset(elementId, offset) {
+      var element = document.getElementById(elementId);
+      var elementPosition = element.getBoundingClientRect().top;
+      var offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     },
   },
 };
 </script>
 
 <style>
-.bg-nav {
+.bg-below {
   background-color: #ffffff !important;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
   transition: 1s all ease;
 }
-.bg-none {
+.bg-top {
   background-color: transparent !important;
   box-shadow: none !important;
   transition: 1s all ease;
 }
 @media (min-width: 800px) {
-  .bg-nav {
+  .bg-below {
     background-color: #ffffff !important;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
     transition: 1s all ease;
   }
-  .bg-none {
+  .bg-top {
     background-color: transparent !important;
     box-shadow: none !important;
     padding-top: 10px !important;

@@ -1,9 +1,9 @@
 <template>
-  <div class="tn:px-4 md:container tn:pt-20 lg:pt-28">
+  <div class="container-sequrban tn:pt-20 lg:pt-28">
     <div
       class="rounded-[16px] w-full bg-gradient-sequrban tn:px-[40px] lg:px-[66px] tn:py-[24px] lg:py-[42px] grid md:grid-cols-2 tn:gap-4 lg:gap-8 items-center"
     >
-      <div class="tn:order-2 md:order-1">
+      <div class="tn:order-2 md:order-1 xl:w-[478px]">
         <h1
           class="tn:px-4 lg:px-0 text-[#15382F] tn:text-center lg:text-left tn:text-[26px] lg:text-[48px] font-bold"
         >
@@ -40,7 +40,7 @@
           >
         </div>
       </div>
-      <div class="tn:order-1 md:order-2">
+      <div class="tn:order-1 md:order-2 flex tn:justify-center">
         <img
           class="!w-[460px]"
           src="/images/sequrban/banner-main.png"

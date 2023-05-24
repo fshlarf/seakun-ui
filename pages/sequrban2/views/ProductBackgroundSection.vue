@@ -1,7 +1,7 @@
 <template>
   <div
     id="product-background-sequrban"
-    class="tn:mt-12 lg:mt-20 grid lg:grid-cols-2 tn:gap-6 md:gap-8 items-center tn:px-4 md:container"
+    class="tn:pt-12 lg:pt-20 grid lg:grid-cols-2 tn:gap-6 md:gap-8 items-center container-sequrban"
   >
     <div>
       <img
@@ -14,7 +14,7 @@
       class="bg-opacity rounded-[18px] tn:px-[16px] lg:px-[34px] tn:py-[12px] lg:py-[32px] tn:text-[12px] md:text-base"
     >
       <h2
-        class="tn:text-[20px] lg:text-[32px] font-bold tn:w-[231px] md:w-full"
+        class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold lg:font-bold tn:w-[231px] md:w-full"
       >
         <span class="text-[#00BA88]">Latar Belakang</span> Program Patungan
         Qurban
