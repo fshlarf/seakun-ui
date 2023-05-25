@@ -36,6 +36,7 @@
           <Button
             add-class="w-full tn:text-[12px] lg:!text-[24px] font-bold !px-5 tn:!py-3 lg:!py-2"
             variant="third"
+            @click="scrollToSection"
             >Lihat Layanan</Button
           >
         </div>
@@ -57,6 +58,22 @@ import Button from '~/components/atoms/Button.vue';
 export default {
   components: {
     Button,
+  },
+  methods: {
+    scrollToSection() {
+      this.scrollToElementWithOffset('product-detail-sequrban', 25);
+      this.open = false;
+    },
+    scrollToElementWithOffset(elementId, offset) {
+      var element = document.getElementById(elementId);
+      var elementPosition = element.getBoundingClientRect().top;
+      var offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    },
   },
 };
 </script>
