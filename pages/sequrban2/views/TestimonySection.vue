@@ -38,7 +38,7 @@
 
     <div
       id="video-container"
-      class="tn:space-y-3 md:space-y-0 md:flex md:items-center md:space-x-6 md:overflow-x-auto md:overscroll-x-contain md:hide-scrollbar video-container tn:mt-4 md:mt-8"
+      class="tn:space-y-3 md:space-y-0 md:flex md:items-center md:space-x-6 md:overflow-x-auto md:overscroll-x-contain hide-scrollbar video-container tn:mt-4 md:mt-8"
     >
       <div
         v-for="(video, id) in testimonyVideos"
@@ -95,19 +95,10 @@ export default {
 .bg-chevron-green {
   background: rgba(0, 186, 136, 0.1);
 }
-/* .video-container {
-  margin-left: auto;
-  margin-right: 0;
-} */
 #video-container {
   scroll-behavior: smooth;
 }
 
-/* @media (min-width: 0px) {
-  .video-container {
-    width: calc(100% - ((100% - 328px) / 2));
-  }
-} */
 @media (min-width: 768px) {
   .video-container {
     width: calc(100% - ((100% - 700px) / 2));

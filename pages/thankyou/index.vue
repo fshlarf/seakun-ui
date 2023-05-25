@@ -1,27 +1,42 @@
 <template>
   <div class="thankyou max-w-2xl w-full mx-auto md:pt-4 tn:-mb-4 md:mb-0">
-    <img
+    <!-- <img
       class="w-full tn:hidden md:block cursor-pointer"
       src="/images/ramadan-gift/thankyou2.webp"
       alt="thr banner"
       @click="toThrPage"
-    />
+    /> -->
     <div
       class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full tn:pt-3 md:mt-4"
     >
-      <img
+      <!-- <img
         class="w-full md:hidden tn:mb-6 cursor-pointer"
         src="/images/ramadan-gift/thankyou-mobile.webp"
         alt="thr banner"
         @click="toThrPage"
-      />
-      <img
-        class="w-6/12 mx-auto"
-        src="/images/thank-you-new.png"
-        alt="payment confirmation success"
-      />
+      /> -->
+      <template v-if="!isLoading">
+        <template
+          v-if="
+            orderData.length > 0 && orderData[0].provider.slug === 'sequrban'
+          "
+        >
+          <img
+            class="w-6/12 mx-auto"
+            src="/images/sequrban/thankyou.png"
+            alt="pembayaran sukses"
+          />
+        </template>
+        <template v-else>
+          <img
+            class="w-6/12 mx-auto"
+            src="/images/thank-you-new.png"
+            alt="pembayaran sukses"
+          />
+        </template>
+      </template>
       <div class="text-center tn:px-4 md:px-12">
-        <h3 class="font-bold text-3xl mt-4 text-center">Thankyou!</h3>
+        <h3 class="font-bold text-3xl mt-4 text-center">Terima Kasih!</h3>
         <p class="text-center md:text-lg mt-4 text-gray-500">
           Konfirmasi pembayaranmu telah berhasil. Admin akan segera menghubungi
           untuk memberikan detail pesananmu.
@@ -30,12 +45,17 @@
 
       <ProductHighLightLoading v-if="isLoading" />
       <div v-else v-for="(order, index) in orderData" :key="index">
-        <OrderCard
-          :orderData="orderData"
-          :order="order"
-          :index="index"
-          :expiredAt="true"
-        />
+        <template v-if="order.provider.slug === 'sequrban'">
+          <SequrbanOrderCard :sequrban="order" />
+        </template>
+        <template v-else>
+          <OrderCard
+            :orderData="orderData"
+            :order="order"
+            :index="index"
+            :expiredAt="true"
+          />
+        </template>
       </div>
 
       <p class="tn:my-1 md:my-2 text-center tn:mt-8 md:mt-10 text-gray-500">
@@ -139,9 +159,11 @@ import CardShimmer from '~/components/mollecules/CardShimmer';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 import OrderCard from '~/components/mollecules/OrderCard.vue';
+import SequrbanOrderCard from '~/components/mollecules/SequrbanOrderCard.vue';
 import OrderService from '~/services/OrderServices.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
+
 export default {
   name: 'thankyou-page',
   layout: 'new',
@@ -178,6 +200,7 @@ export default {
     CardShimmerVertical,
     ProductHighLightLoading,
     OrderCard,
+    SequrbanOrderCard,
   },
   mounted() {
     this.OrderService = new OrderService(this);
@@ -186,9 +209,9 @@ export default {
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
-    toThrPage() {
-      this.$router.push('/thr');
-    },
+    // toThrPage() {
+    //   this.$router.push('/thr');
+    // },
     setNameBank(bank) {
       switch (bank) {
         case 'digibank / dbs':

@@ -19,6 +19,7 @@
           variant="third"
           class="tn:mt-4"
           add-class="tn:!text-[16px] md:!text-[20px] !font-bold tn:!px-4 md:!px-6 tn:!py-2 md:!py-3"
+          @click="$emit('onClickOrder')"
           >Daftar Sekarang</Button
         >
       </div>

@@ -4,11 +4,11 @@
     <HeaderSection />
     <ProductBackgroundSection />
     <QuoteSection />
-    <ProductDetailSection />
+    <ProductDetailSection @onClickOrder="onClickOrder" />
     <PricingSection />
     <OrderFlowSection />
     <DocumentationSection />
-    <CtaBannerSection />
+    <CtaBannerSection @onClickOrder="onClickOrder" />
     <TestimonySection />
     <FaqSection />
     <Footer />
@@ -28,6 +28,7 @@ import CtaBannerSection from './views/CtaBannerSection.vue';
 import TestimonySection from './views/TestimonySection.vue';
 import FaqSection from './views/FaqSection.vue';
 import Footer from '~/components/mollecules/Footer.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -43,6 +44,35 @@ export default {
     TestimonySection,
     FaqSection,
     Footer,
+  },
+  data() {
+    return {
+      sequrbanProvider: {},
+    };
+  },
+  computed: {
+    ...mapGetters({
+      providerList: 'getProviders',
+      providerSequrban: 'getProviderSequrban',
+    }),
+  },
+  mounted() {
+    this.checkProvider();
+  },
+  methods: {
+    ...mapActions({
+      fetchProvider: 'fetchProvider',
+    }),
+    async checkProvider() {
+      if (this.providerList.list.length === 0) {
+        await this.fetchProvider('youtube');
+      }
+    },
+    onClickOrder() {
+      this.$router.push(
+        `/order?provider=${this.providerSequrban.slug}&variant_id=${this.providerSequrban.variants[0].uid}&package_id=${this.providerSequrban.variants[0].packageUid}`
+      );
+    },
   },
 };
 </script>

@@ -6,6 +6,7 @@ import { providerList } from '../constants/price-scheme';
 import userHostProviders from '../constants/user-host-flow.json';
 
 export const state = () => ({
+  dataProviderSequrban: {},
   dataProvider: {
     list: [],
     loading: true,
@@ -95,6 +96,9 @@ export const getters = {
   },
   getProviders(state) {
     return state.dataProvider;
+  },
+  getProviderSequrban(state) {
+    return state.dataProviderSequrban;
   },
   getFilterGroup(state) {
     return state.filterGroup;
@@ -191,6 +195,9 @@ export const mutations = {
       ...state.dataProvider,
       list: data,
     };
+  },
+  SET_DATA_PROVIDER_SEQURBAN(state, data) {
+    state.dataProviderSequrban = data;
   },
   SET_LOADING_GROUP(state, loading) {
     state.dataGroup = {
@@ -356,9 +363,16 @@ export const actions = {
       if (fetchProviderList.data) {
         const { data } = fetchProviderList.data;
         const providers = data.filter((provider) => {
-          return provider.slug !== 'vidio';
+          const excludeProviders = ['vidio', 'sequrban'];
+          return !excludeProviders.includes(provider.slug);
+        });
+        const sequrban = data.find((provider) => {
+          return provider.slug === 'sequrban';
         });
         commit('SET_DATA_PROVIDERS', providers);
+        commit('SET_DATA_PROVIDER_SEQURBAN', sequrban);
+        console.log('get data sequrban');
+        console.log(state.dataProviderSequrban);
         commit('SET_DATA_PROVIDERS_ACTIVE', providers);
         if (providerSlug) {
           const selectedProvider = data.find((provider) => {

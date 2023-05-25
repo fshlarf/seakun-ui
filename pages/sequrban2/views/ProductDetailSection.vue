@@ -94,6 +94,7 @@
         variant="third"
         add-class="tn:font-semibold lg:font-bold tn:!text-[16px] lg:!text-[20px] tn:!px-6"
         class="tn:mt-4 lg:mt-6 xl:mt-10 tn:w-full md:w-1/2 lg:w-full xl:!max-w-max"
+        @click="$emit('onClickOrder')"
         >Daftar Sekarang</Button
       >
     </div>
