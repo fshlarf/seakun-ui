@@ -1,41 +1,84 @@
 <template>
-  <div>
-    <NavbarBlank />
-    <SequrbanHeaderSection />
-    <SequrbanIntroductionSection />
-    <!-- <SequrbanCashbackSection /> -->
-    <SequrbanOrderFlowSection />
-    <SequrbanProductSection />
-    <!-- <SequrbanUserGroupSection /> -->
-    <SequrbanQnaSection />
+  <div id="sequrban-page">
+    <Navbar />
+    <HeaderSection />
+    <ProductBackgroundSection />
+    <QuoteSection />
+    <ProductDetailSection @onClickOrder="onClickOrder" />
+    <PricingSection />
+    <OrderFlowSection />
+    <DocumentationSection />
+    <CtaBannerSection @onClickOrder="onClickOrder" />
+    <TestimonySection />
+    <FaqSection />
     <Footer />
   </div>
 </template>
 
 <script>
-import NavbarBlank from '~/components/mollecules/NavbarBlank';
-import SequrbanHeaderSection from './views/SequrbanHeaderSection';
-import SequrbanIntroductionSection from './views/SequrbanIntroductionSection';
-import SequrbanCashbackSection from './views/SequrbanCashbackSection';
-import SequrbanProductSection from './views/SequrbanProductSection';
-import SequrbanOrderFlowSection from './views/SequrbanOrderFlowSection';
-import SequrbanUserGroupSection from './views/SequrbanUserGroupSection';
-import SequrbanQnaSection from './views/SequrbanQnaSection';
-import Footer from '~/components/mollecules/Footer';
+import Navbar from './views/Navbar.vue';
+import HeaderSection from './views/HeaderSection.vue';
+import ProductBackgroundSection from './views/ProductBackgroundSection.vue';
+import QuoteSection from './views/QuoteSection.vue';
+import ProductDetailSection from './views/ProductDetailSection.vue';
+import PricingSection from './views/PricingSection.vue';
+import OrderFlowSection from './views/OrderFlowSection.vue';
+import DocumentationSection from './views/DocumentationSection.vue';
+import CtaBannerSection from './views/CtaBannerSection.vue';
+import TestimonySection from './views/TestimonySection.vue';
+import FaqSection from './views/FaqSection.vue';
+import Footer from '~/components/mollecules/Footer.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
-    NavbarBlank,
-    SequrbanHeaderSection,
-    SequrbanIntroductionSection,
-    SequrbanCashbackSection,
-    SequrbanProductSection,
-    SequrbanOrderFlowSection,
-    SequrbanUserGroupSection,
-    SequrbanQnaSection,
+    Navbar,
+    HeaderSection,
+    ProductBackgroundSection,
+    QuoteSection,
+    ProductDetailSection,
+    PricingSection,
+    OrderFlowSection,
+    DocumentationSection,
+    CtaBannerSection,
+    TestimonySection,
+    FaqSection,
     Footer,
+  },
+  data() {
+    return {
+      sequrbanProvider: {},
+    };
+  },
+  computed: {
+    ...mapGetters({
+      providerList: 'getProviders',
+      providerSequrban: 'getProviderSequrban',
+    }),
+  },
+  mounted() {
+    this.checkProvider();
+  },
+  methods: {
+    ...mapActions({
+      fetchProvider: 'fetchProvider',
+    }),
+    async checkProvider() {
+      if (this.providerList.list.length === 0) {
+        await this.fetchProvider('youtube');
+      }
+    },
+    onClickOrder() {
+      this.$router.push(
+        `/order?provider=${this.providerSequrban.slug}&variant_id=${this.providerSequrban.variants[0].uid}&package_id=${this.providerSequrban.variants[0].packageUid}`
+      );
+    },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+#sequrban-page {
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+</style>
