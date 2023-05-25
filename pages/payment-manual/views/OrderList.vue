@@ -2,8 +2,8 @@
   <div>
     <ProductHighLightLoading v-if="isLoading" />
     <div v-else v-for="(order, index) in orderData" :key="index">
-      <template v-if="order.provider.slug === 'sequrban'">
-        <SequrbanOrderCard class="tn:!mt-6" :sequrban="order" />
+      <template v-if="order.provider.slug === 'sekurban'">
+        <SekurbanOrderCard class="tn:!mt-6" :sekurban="order" />
       </template>
       <template v-else>
         <OrderCard
@@ -21,14 +21,14 @@
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 import OrderCard from '~/components/mollecules/OrderCard.vue';
-import SequrbanOrderCard from '~/components/mollecules/SequrbanOrderCard.vue';
+import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
 
 export default {
   name: 'OrderList',
   components: {
     ProductHighLightLoading,
     OrderCard,
-    SequrbanOrderCard,
+    SekurbanOrderCard,
   },
   props: {
     orderData: {

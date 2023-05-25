@@ -6,17 +6,17 @@
       <div class="w-[95px] h-[81px] rounded-[8px] overflow-hidden">
         <img
           class="min-w-full min-h-full object-cover object-center"
-          src="/images/sequrban/cow/cow-1.jpg"
-          alt="product sequrban"
+          src="/images/sekurban/cow/cow-1.jpg"
+          alt="product sekurban"
         />
       </div>
       <div class="space-y-1">
         <p class="md:text-base tn:text-sm font-bold">
-          Sequrban (Seakun x Kitabisa)
+          Sekurban (Seakun x Kitabisa)
         </p>
-        <p class="md:text-base tn:text-sm">Sapi Jawa</p>
+        <p class="md:text-base tn:text-sm">Sapi Kupang / Bali</p>
         <p class="md:text-base tn:text-sm">
-          {{ currencyFormat(sequrban.provider.package.variant.grandTotal) }}
+          {{ currencyFormat(sekurban.provider.package.variant.grandTotal) }}
         </p>
       </div>
     </div>
@@ -24,9 +24,9 @@
     <div
       class="flex justify-between pt-3 border-t border-gray-100 md:text-base tn:text-sm"
     >
-      <div class="text-[#363636] opacity-50">Biaya Qurban</div>
+      <div class="text-[#363636] opacity-50">Biaya Kurban</div>
       <div class="font-bold">
-        {{ currencyFormat(sequrban.provider.package.variant.grandTotal) }}
+        {{ currencyFormat(sekurban.provider.package.variant.grandTotal) }}
       </div>
     </div>
   </div>
@@ -36,9 +36,9 @@
 import { currencyFormat } from '~/helpers/word-transformation.js';
 
 export default {
-  name: 'SequrbanOrderCard',
+  name: 'SekurbanOrderCard',
   props: {
-    sequrban: {
+    sekurban: {
       type: Object,
       default: () => {},
     },

@@ -2,10 +2,10 @@
   <div class="max-w-2xl w-full mx-auto pt-4 px-4">
     <div class="">
       <h2
-        v-if="providerSlug === 'sequrban'"
+        v-if="providerSlug === 'sekurban'"
         class="md:text-2xl tn:text-lg font-bold text-secondary"
       >
-        Daftar Peserta Qurban
+        Daftar Peserta Kurban
       </h2>
       <h2 v-else class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
       <p class="md:text-lg tn:text-base tn:mt-1 md:mt-3">
@@ -17,7 +17,7 @@
     >
       <p class="md:text-xl tn:text-lg font-bold">Produk yang dipesan</p>
       <p
-        v-if="!providerList.loading && providerSlug !== 'sequrban'"
+        v-if="!providerList.loading && providerSlug !== 'sekurban'"
         class="md:text-sm tn:text-base text-green-seakun cursor-pointer"
         @click="onClickChangePacket"
       >
@@ -29,15 +29,15 @@
         v-if="dataListVariant.loading"
         class="tn:mt-3 md:mt-4"
       />
-      <SequrbanHighlightCard
-        v-else-if="providerSlug === 'sequrban' && !providerList.loading"
+      <SekurbanHighlightCard
+        v-else-if="providerSlug === 'sekurban' && !providerList.loading"
       />
       <VariantCard
         v-else
         :data-variant="dataCardVariant"
         :is-loading="dataListVariant.loading"
       />
-      <div v-if="providerSlug !== 'sequrban'" class="mt-4">
+      <div v-if="providerSlug !== 'sekurban'" class="mt-4">
         <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
         <ButtonDrop
           :btnText="dataCardVariant.buttonText"
@@ -187,7 +187,7 @@ import VariantCard from './views/VariantCard.vue';
 import { mapGetters, mapActions } from 'vuex';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
-import SequrbanHighlightCard from './views/SequrbanHighlightCard.vue';
+import SekurbanHighlightCard from './views/SekurbanHighlightCard.vue';
 import moment from 'moment';
 
 export default {
@@ -209,7 +209,7 @@ export default {
     VariantCard,
     CheckedBox,
     UncheckBox,
-    SequrbanHighlightCard,
+    SekurbanHighlightCard,
   },
   data: () => ({
     email: '',
@@ -255,7 +255,7 @@ export default {
   computed: {
     ...mapGetters({
       providerList: 'getProviders',
-      providerSequrban: 'getProviderSequrban',
+      providerSekurban: 'getProviderSekurban',
       selectedProvider: 'getSelectedProvider',
       dataListVariant: 'getListVariant',
       dataCardVariant: 'getDataCardVariant',
@@ -469,12 +469,12 @@ export default {
     },
     async onSubmitOrder() {
       let payload = {};
-      if (this.providerSlug === 'sequrban') {
+      if (this.providerSlug === 'sekurban') {
         payload = {
           name: capitalizeFirstLetter(this.userName),
           email: this.email,
           phoneNumber: `${this.codePhone}${this.phoneNumber}`,
-          packageVariantUid: this.providerSequrban.variants[0].uid,
+          packageVariantUid: this.providerSekurban.variants[0].uid,
           ispreorder: false,
           userhost: false,
           voucherUid: '',

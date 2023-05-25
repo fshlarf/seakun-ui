@@ -1,11 +1,11 @@
 <template>
-  <div id="order-flow-sequrban" class="tn:pt-12 lg:pt-20">
-    <div class="w-full tn:py-[24px] lg:py-[42px] bg-flow-sequrban">
-      <div class="container-sequrban">
+  <div id="order-flow-sekurban" class="tn:pt-12 lg:pt-20">
+    <div class="w-full tn:py-[24px] lg:py-[42px] bg-flow-sekurban">
+      <div class="container-sekurban">
         <h1
           class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold text-center"
         >
-          Flow Program Qurban
+          Flow Program Kurban
         </h1>
         <div
           class="flex flex-wrap justify-center items-start tn:gap-3 md:gap-14 tn:mt-6 lg:mt-12"
@@ -46,35 +46,35 @@ export default {
     return {
       orderFlow: [
         {
-          title: 'Daftar Peserta Qurban',
+          title: 'Daftar Peserta Kurban',
           desc: 'Peserta melakukan pendaftaran secara online',
-          img: '/images/sequrban/order flow/step-1.png',
+          img: '/images/sekurban/order flow/step-1.png',
         },
         {
           title: 'Pembayaran',
-          desc: 'Peserta qurban melakukan pembayaran',
-          img: '/images/sequrban/order flow/step-2.png',
+          desc: 'Peserta kurban melakukan pembayaran',
+          img: '/images/sekurban/order flow/step-2.png',
         },
         {
           title: 'Kirim Bukti Transfer',
-          desc: 'Peserta qurban mengirim bukti transfer',
-          img: '/images/sequrban/order flow/step-3.png',
+          desc: 'Peserta kurban mengirim bukti transfer',
+          img: '/images/sekurban/order flow/step-3.png',
         },
         {
-          title: 'Qurban Diproses',
-          desc: 'Qurban diproses pada hari-H Idul Adha',
-          img: '/images/sequrban/order flow/step-4.png',
+          title: 'Kurban Diproses',
+          desc: 'Kurban diproses pada hari-H Idul Adha',
+          img: '/images/sekurban/order flow/step-4.png',
         },
         {
-          title: 'Pembagian Daging Qurban',
-          desc: 'Daging qurban didistribusikan kepada yang berhak menerima.',
-          img: '/images/sequrban/order flow/step-5.png',
+          title: 'Pembagian Daging Kurban',
+          desc: 'Daging kurban didistribusikan kepada yang berhak menerima.',
+          img: '/images/sekurban/order flow/step-5.png',
         },
         {
           title: 'Dokumentasi & Sertifikat',
           desc:
-            'Peserta qurban menerima dokumantasi proses qurban dan sertifikat qurban.',
-          img: '/images/sequrban/order flow/step-6.png',
+            'Peserta kurban menerima dokumantasi proses kurban dan sertifikat kurban.',
+          img: '/images/sekurban/order flow/step-6.png',
         },
       ],
     };
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style>
-.bg-flow-sequrban {
+.bg-flow-sekurban {
   background: rgba(238, 255, 252, 0.7);
 }
 </style>

@@ -2,10 +2,10 @@
   <div class="tn:pt-12 lg:pt-20">
     <div class="bg-quotes tn:py-[40px] lg:py-[56px] text-center text-white">
       <div
-        class="container-sequrban xl:flex xl:justify-center xl:items-center xl:space-x-12"
+        class="container-sekurban xl:flex xl:justify-center xl:items-center xl:space-x-12"
       >
         <div class="tn:hidden xl:block">
-          <img src="/images/sequrban/open-tick.png" alt="opening quotes" />
+          <img src="/images/sekurban/open-tick.png" alt="opening quotes" />
         </div>
         <div
           class="tn:mx-auto tn:w-[316px] md:w-[560px] lg:w-[700px] xl:w-[990px]"
@@ -23,7 +23,7 @@
           </p>
         </div>
         <div class="tn:hidden xl:block">
-          <img src="/images/sequrban/close-tick.png" alt="closing quotes" />
+          <img src="/images/sekurban/close-tick.png" alt="closing quotes" />
         </div>
       </div>
     </div>

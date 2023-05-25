@@ -329,7 +329,6 @@ export default {
     this.MasterService = new MasterService(this);
     this.PaymentService = new PaymentService(this);
     const {
-      provider,
       order_uid,
       customer_uid,
       additionalOrder,
@@ -340,8 +339,6 @@ export default {
     }
     this.getSeakunPayment();
     this.getSeakunPaymentFrom();
-    // if(provider == `sequrban`)
-    // this.getDataDetailPacket(provider);
   },
   methods: {
     showPaymentList(type) {
@@ -475,19 +472,6 @@ export default {
       }
       this.isShowLoading = false;
     },
-    // getDataDetailPacket(provider) {
-    //   axios
-    //     .get(
-    //       `https://seakun-packet-api-v2.herokuapp.com/${provider}/${this.packet_id}`
-    //     )
-    //     .then((res) => {
-    //       this.dataDetailPacket = res.data;
-    //       provider === 'sequrban'
-    //         ? (this.packet = this.dataDetailPacket.packageCode)
-    //         : (this.packet = this.dataDetailPacket.name);
-    //     })
-    //     .catch((err) => console.log(err));
-    // },
     validateInput(input) {
       const {
         nominal,
@@ -619,13 +603,13 @@ export default {
     clickSubmit() {
       if (this.validateInput()) {
         if (this.provider) {
-          this.submitConfirmationSequrban();
+          this.submitConfirmationSekurban();
         } else {
           this.submitConfirmationDigital();
         }
       }
     },
-    submitConfirmationSequrban() {
+    submitConfirmationSekurban() {
       this.isLoadingSubmit = true;
 
       const formData = new FormData();
@@ -652,7 +636,7 @@ export default {
         )
 
         .then((res) => {
-          if (this.provider.toLowerCase() === 'sequrban') {
+          if (this.provider.toLowerCase() === 'sekurban') {
             this.executeApiMailConfirmPayment();
           } else {
             this.toThankyouPage();

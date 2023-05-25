@@ -74,7 +74,7 @@ module.exports = {
             paddingRight: '10rem',
           },
         },
-        '.container-sequrban': {
+        '.container-sekurban': {
           width: '100%',
           marginLeft: 'auto',
           marginRight: 'auto',
