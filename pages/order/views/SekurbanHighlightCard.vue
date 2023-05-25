@@ -4,17 +4,17 @@
       <div class="w-[95px] h-[81px] rounded-[8px] overflow-hidden">
         <img
           class="min-w-full min-h-full object-cover object-center"
-          src="/images/sequrban/cow/cow-1.jpg"
-          alt="product sequrban"
+          src="/images/sekurban/cow/cow-1.jpg"
+          alt="product sekurban"
         />
       </div>
       <div class="space-y-1">
         <p class="md:text-lg tn:text-sm font-bold">
-          Sequrban (Seakun x Kitabisa)
+          Sekurban (Seakun x Kitabisa)
         </p>
-        <p class="md:text-lg tn:text-sm">Sapi Jawa</p>
+        <p class="md:text-lg tn:text-sm">Sapi Kupang / Bali</p>
         <p class="md:text-lg tn:text-sm">
-          {{ currencyFormat(sequrban.variants[0].grandTotal) }}
+          {{ currencyFormat(sekurban.variants[0].grandTotal) }}
         </p>
       </div>
     </div>
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      sequrban: 'getProviderSequrban',
+      sekurban: 'getProviderSekurban',
     }),
   },
   data: () => ({

@@ -1,12 +1,12 @@
 <template>
   <div
-    id="product-background-sequrban"
-    class="tn:pt-12 lg:pt-20 grid lg:grid-cols-2 tn:gap-6 md:gap-8 items-center container-sequrban"
+    id="product-background-sekurban"
+    class="tn:pt-12 lg:pt-20 grid lg:grid-cols-2 tn:gap-6 md:gap-8 items-center container-sekurban"
   >
     <div>
       <img
         class="tn:w-[250px] md:w-[340px] lg:w-[586px] tn:mx-auto"
-        src="/images/sequrban/product-bg.png"
+        src="/images/sekurban/product-bg.png"
         alt="latar belakang"
       />
     </div>
@@ -17,7 +17,7 @@
         class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold lg:font-bold tn:w-[231px] md:w-full"
       >
         <span class="text-[#00BA88]">Latar Belakang</span> Program Patungan
-        Qurban
+        Kurban
       </h2>
       <p class="tn:mt-2 lg:mt-3">
         Seakun dan Kitabisa berkolaborasi dalam rangka membantu sesama dalam
@@ -33,7 +33,8 @@
           1
         </div>
         <div class="w-[90%]">
-          Mempermudah umat Islam yang ingin berkurban meskipun minim biaya
+          Mempermudah umat Islam yang ingin berkurban dengan memberikan biaya
+          kurban yang murah dan terjangkau
         </div>
       </div>
       <div class="flex items-start space-x-2 mt-1">
@@ -43,7 +44,8 @@
           2
         </div>
         <div class="w-[90%]">
-          Berbagi kebahagiaan untuk dapat merasakan indahnya berkurban
+          Membantu anak muda di Indonesia dalam rangka belajar untuk menunaikan
+          ibadah kurban
         </div>
       </div>
       <div class="flex items-start space-x-2 mt-1">
@@ -53,7 +55,7 @@
           3
         </div>
         <div class="w-[90%]">
-          Berbagi kebahagiaan untuk dapat merasakan indahnya berkurban
+          Berbagi kebahagiaan untuk dapat merasakan indahnya berkurban ke sesama
         </div>
       </div>
     </div>

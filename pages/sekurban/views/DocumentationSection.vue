@@ -1,14 +1,14 @@
 <template>
   <div class="!overflow-visible tn:pt-12 lg:pt-20">
-    <div class="container-sequrban md:flex md:justify-between md:items-center">
+    <div class="container-sekurban md:flex md:justify-between md:items-center">
       <div>
         <h1
           class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold"
         >
-          Dokumentasi Proses Qurban
+          Dokumentasi Proses Kurban
         </h1>
         <p class="tn:text-[12px] md:text-[16px] lg:text-[24px]">
-          Berikut ini beberapa dokumentasi saat qurban diproses.
+          Berikut ini beberapa dokumentasi saat kurban diproses.
         </p>
       </div>
 
@@ -46,8 +46,8 @@
         class="tn:w-[191px] tn:h-[136px] md:w-[323px] md:h-[285px] tn:rounded-[6px] md:rounded-[15px] overflow-hidden flex-none"
       >
         <img
-          :src="`/images/sequrban/documentation/photo-${id}.jpg`"
-          alt="dokumentasi qurban"
+          :src="`/images/sekurban/documentation/photo-${id}.jpg`"
+          alt="dokumentasi kurban"
           class="min-w-full min-h-full object-cover object-center"
         />
       </div>

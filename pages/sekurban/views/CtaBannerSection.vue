@@ -1,7 +1,7 @@
 <template>
   <div class="tn:pt-12 lg:pt-20">
     <div
-      class="container-sequrban tn:py-[30px] tn:px-[36px] md:py-[26px] lg:px-[50px] flex tn:flex-col md:flex-row md:justify-between items-center cta-gradient tn:rounded-[15px] md:rounded-[25px]"
+      class="container-sekurban tn:py-[30px] tn:px-[36px] md:py-[26px] lg:px-[50px] flex tn:flex-col md:flex-row md:justify-between items-center cta-gradient tn:rounded-[15px] md:rounded-[25px]"
     >
       <div
         class="tn:w-full md:w-[300px] lg:w-[370px] xl:w-[433px] tn:order-2 md:order-1 tn:text-center md:text-left tn:mt-3 md:mt-0"
@@ -27,7 +27,7 @@
       <div
         class="tn:mx-auto md:mx-0 tn:w-[258px] md:w-[300px] lg:w-[370px] xl:w-[430px] tn:order-1 md:order-2"
       >
-        <img src="/images/sequrban/cta.png" alt="daftar sekarang" />
+        <img src="/images/sekurban/cta.png" alt="daftar sekarang" />
       </div>
     </div>
   </div>

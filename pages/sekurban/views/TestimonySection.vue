@@ -1,14 +1,17 @@
 <template>
-  <div id="testimony-sequrban" class="!overflow-visible tn:pt-12 lg:pt-20">
-    <div class="container-sequrban md:flex md:justify-between md:items-center">
+  <div id="testimony-sekurban" class="!overflow-visible tn:pt-12 lg:pt-20">
+    <div class="container-sekurban md:flex md:justify-between md:items-center">
       <div>
         <h1
           class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold"
         >
-          Testimoni Qurban
+          Testimoni Kurban
         </h1>
-        <p class="tn:text-[12px] md:text-[16px] lg:text-[24px]">
-          Lorem ipsum dolor sit amet. Consectetur adipiscing elit.
+        <p
+          class="tn:text-[12px] md:text-[16px] lg:text-[24px] xl:mt-2 xl:w-[900px]"
+        >
+          Berikut ini merupakan beberapa testimoni dari mereka yang mengikuti
+          program ini beberapa tahun lalu.
         </p>
       </div>
 

@@ -18,12 +18,12 @@
       <template v-if="!isLoading">
         <template
           v-if="
-            orderData.length > 0 && orderData[0].provider.slug === 'sequrban'
+            orderData.length > 0 && orderData[0].provider.slug === 'sekurban'
           "
         >
           <img
             class="w-6/12 mx-auto"
-            src="/images/sequrban/thankyou.png"
+            src="/images/sekurban/thankyou.png"
             alt="pembayaran sukses"
           />
         </template>
@@ -35,9 +35,21 @@
           />
         </template>
       </template>
-      <div class="text-center tn:px-4 md:px-12">
-        <h3 class="font-bold text-3xl mt-4 text-center">Terima Kasih!</h3>
-        <p class="text-center md:text-lg mt-4 text-gray-500">
+      <div v-if="!isLoading" class="text-center tn:px-4 md:px-12 tn:mb-4">
+        <h3 class="font-bold text-3xl tn:mt-4 text-center">Terima Kasih!</h3>
+        <p
+          v-if="
+            orderData.length > 0 && orderData[0].provider.slug === 'sekurban'
+          "
+          class="text-center md:text-lg tn:mt-2 text-gray-500"
+        >
+          Konfirmasi pembayaranmu telah berhasil. Terimakasih sudah mengikuti
+          <span class="font-bold"
+            >Program Patungan Kurban Seakun x Kitabisa</span
+          >. Untuk informasi tentang jadwal pelaksanaan proses kurban, akan
+          diinformasikan mendekati hari H (Idul Adha).
+        </p>
+        <p v-else class="text-center md:text-lg tn:mt-4 text-gray-500">
           Konfirmasi pembayaranmu telah berhasil. Admin akan segera menghubungi
           untuk memberikan detail pesananmu.
         </p>
@@ -45,8 +57,8 @@
 
       <ProductHighLightLoading v-if="isLoading" />
       <div v-else v-for="(order, index) in orderData" :key="index">
-        <template v-if="order.provider.slug === 'sequrban'">
-          <SequrbanOrderCard :sequrban="order" />
+        <template v-if="order.provider.slug === 'sekurban'">
+          <SekurbanOrderCard :sekurban="order" />
         </template>
         <template v-else>
           <OrderCard
@@ -69,7 +81,7 @@
 
       <div
         v-if="!isLoading"
-        class="detail-order rounded-2xl shadow-md bg-white tn:px-4 md:px-8 md:mx-8 mt-8 py-4"
+        class="detail-order rounded-2xl shadow-md bg-white tn:px-4 md:px-8 md:mx-8 tn:my-8 tn:py-4"
       >
         <div class="border-b-2 border-gray-200 tn:pb-1 md:pb-3 tn:mt-3 md:mt-4">
           <p class="text-lg text-gray-400">Metode Pembayaran</p>
@@ -130,12 +142,14 @@
         </div>
       </div>
 
-      <div v-else class="tn:px-4 md:px-8 md:mx-8 mt-8 py-4">
+      <div v-else class="tn:px-4 md:px-8 md:mx-8 tn:mt-8 tn:py-4">
         <CardShimmerVertical />
       </div>
 
-      <div class="">
-        <p class="tn:text-center md:text-left md:text-lg mt-8 text-gray-500">
+      <div
+        v-if="orderData.length > 0 && orderData[0].provider.slug !== 'sekurban'"
+      >
+        <p class="tn:text-center md:text-left md:text-lg text-gray-500">
           Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
           Whatsapp di nomor
           <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
@@ -145,7 +159,7 @@
         </p>
       </div>
       <Button
-        class="w-full bg-green-seakun text-white mt-3 py-2"
+        class="w-full bg-green-seakun text-white tn:mt-3 tn:py-3"
         label="Kembali ke beranda"
         @click="toHomePage()"
       />
@@ -159,7 +173,7 @@ import CardShimmer from '~/components/mollecules/CardShimmer';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 import OrderCard from '~/components/mollecules/OrderCard.vue';
-import SequrbanOrderCard from '~/components/mollecules/SequrbanOrderCard.vue';
+import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
 import OrderService from '~/services/OrderServices.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
@@ -200,7 +214,7 @@ export default {
     CardShimmerVertical,
     ProductHighLightLoading,
     OrderCard,
-    SequrbanOrderCard,
+    SekurbanOrderCard,
   },
   mounted() {
     this.OrderService = new OrderService(this);

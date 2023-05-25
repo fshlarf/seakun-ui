@@ -1,5 +1,5 @@
 <template>
-  <div id="navbar-sequrban" class="w-full fixed z-40 tn:py-2 lg:py-0 bg-top">
+  <div id="navbar-sekurban" class="w-full fixed z-40 tn:py-2 lg:py-0 bg-top">
     <div
       v-if="open"
       class="opacity-20 fixed inset-0 z-90 bg-black"
@@ -7,7 +7,7 @@
     ></div>
     <div class="static z-0 w-full text-gray-700">
       <div
-        class="container-sequrban lg:flex lg:justify-between lg:items-center"
+        class="container-sekurban lg:flex lg:justify-between lg:items-center"
       >
         <nuxt-link to="/">
           <div @click="scrollToTop()">
@@ -78,27 +78,27 @@ export default {
         {
           id: 1,
           label: 'Latar Belakang',
-          tag: 'product-background-sequrban',
+          tag: 'product-background-sekurban',
         },
         {
           id: 2,
           label: 'Detail Sapi',
-          tag: 'product-detail-sequrban',
+          tag: 'product-detail-sekurban',
         },
         {
           id: 3,
           label: 'Rincian Biaya',
-          tag: 'pricing-sequrban',
+          tag: 'pricing-sekurban',
         },
         {
           id: 4,
           label: 'Flow Program',
-          tag: 'order-flow-sequrban',
+          tag: 'order-flow-sekurban',
         },
         {
           id: 5,
           label: 'Testimoni',
-          tag: 'testimony-sequrban',
+          tag: 'testimony-sekurban',
         },
       ],
     };
@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     handleScrollEffect() {
-      const myNav = document.getElementById('navbar-sequrban');
+      const myNav = document.getElementById('navbar-sekurban');
       if (
         document.body.scrollTop >= 50 ||
         document.documentElement.scrollTop >= 50

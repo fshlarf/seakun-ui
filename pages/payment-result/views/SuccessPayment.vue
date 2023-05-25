@@ -17,11 +17,11 @@
       /> -->
       <!-- <template v-if="!isLoading"> -->
       <template
-        v-if="dataOrder.length > 0 && dataOrder[0].provider.slug === 'sequrban'"
+        v-if="dataOrder.length > 0 && dataOrder[0].provider.slug === 'sekurban'"
       >
         <img
           class="w-6/12 mx-auto"
-          src="/images/sequrban/thankyou.png"
+          src="/images/sekurban/thankyou.png"
           alt="pembayaran sukses"
         />
       </template>
@@ -46,8 +46,8 @@
         <div>
           <p class="font-bold text-lg">Detail Pesanan</p>
           <div v-for="(detailOrder, id) in dataOrder" :key="id">
-            <template v-if="detailOrder.provider.slug === 'sequrban'">
-              <SequrbanOrderCard :sequrban="detailOrder" />
+            <template v-if="detailOrder.provider.slug === 'sekurban'">
+              <SekurbanOrderCard :sekurban="detailOrder" />
             </template>
             <template v-else>
               <OrderCard :order="detailOrder" />
@@ -86,7 +86,7 @@
 <script>
 import Button from '~/components/atoms/Button';
 import OrderCard from './OrderCard.vue';
-import SequrbanOrderCard from '~/components/mollecules/SequrbanOrderCard.vue';
+import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
 
@@ -112,7 +112,7 @@ export default {
   components: {
     Button,
     OrderCard,
-    SequrbanOrderCard,
+    SekurbanOrderCard,
   },
   methods: {
     toHomePage() {

@@ -1,5 +1,5 @@
 <template>
-  <div id="sequrban-page">
+  <div id="sekurban-page">
     <Navbar />
     <HeaderSection />
     <ProductBackgroundSection />
@@ -47,13 +47,13 @@ export default {
   },
   data() {
     return {
-      sequrbanProvider: {},
+      sekurbanProvider: {},
     };
   },
   computed: {
     ...mapGetters({
       providerList: 'getProviders',
-      providerSequrban: 'getProviderSequrban',
+      providerSekurban: 'getProviderSekurban',
     }),
   },
   mounted() {
@@ -70,7 +70,7 @@ export default {
     },
     onClickOrder() {
       this.$router.push(
-        `/order?provider=${this.providerSequrban.slug}&variant_id=${this.providerSequrban.variants[0].uid}&package_id=${this.providerSequrban.variants[0].packageUid}`
+        `/order?provider=${this.providerSekurban.slug}&variant_id=${this.providerSekurban.variants[0].uid}&package_id=${this.providerSekurban.variants[0].packageUid}`
       );
     },
   },
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style>
-#sequrban-page {
+#sekurban-page {
   font-family: 'Nunito Sans', sans-serif !important;
 }
 </style>

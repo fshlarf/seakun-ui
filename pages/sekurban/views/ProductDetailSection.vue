@@ -1,7 +1,7 @@
 <template>
   <div
-    id="product-detail-sequrban"
-    class="container-sequrban tn:pt-12 lg:pt-20 xl:flex xl:justify-between items-center"
+    id="product-detail-sekurban"
+    class="container-sekurban tn:pt-12 lg:pt-20 xl:flex xl:justify-between items-center"
   >
     <div
       class="cow-gallery tn:w-full mx-auto lg:w-[700px] xl:w-[528px] overflow-hidden rounded-[15px] relative"
@@ -48,7 +48,7 @@
       </div> -->
       <div>
         <img
-          :src="`/images/sequrban/cow/cow-${activeSlider}.jpg`"
+          :src="`/images/sekurban/cow/cow-${activeSlider}.jpg`"
           alt="foto sapi"
         />
       </div>
@@ -63,9 +63,8 @@
           Detail Sapi
         </h2>
         <p class="tn:text-[12px] md:text-[16px] lg:text-[18px] tn:mt-1 lg:mt-3">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat sunt nostrud amet.
+          Berikut ini merupakan detail hewan sapi yang akan menjadi hewan kurban
+          pada Program Patungan Kurban yang diadakan oleh Seakun dan Kitabisa.
         </p>
       </div>
       <div class="flex items-center tn:space-x-2 md:space-x-3 tn:mt-3 xl:mt-6">
@@ -114,44 +113,44 @@ export default {
       activeSlider: 1,
       cowInformations: [
         {
-          icon: '/images/sequrban/icons/cow.svg',
+          icon: '/images/sekurban/icons/cow.svg',
           label: 'Jenis sapi',
-          data: 'Sapi Jantan (Jawa)',
+          data: 'Sapi Kupang / Bali',
         },
         {
-          icon: '/images/sequrban/icons/mass.svg',
+          icon: '/images/sekurban/icons/mass.svg',
           label: 'Bobot sapi',
-          data: '-+ 200kg',
+          data: '200+ kg',
         },
         {
-          icon: '/images/sequrban/icons/age.svg',
+          icon: '/images/sekurban/icons/age.svg',
           label: 'Umur sapi',
           data: 'Cukup Umur',
         },
         {
-          icon: '/images/sequrban/icons/health.svg',
+          icon: '/images/sekurban/icons/health.svg',
           label: 'Kondisi sapi',
           data: 'Sehat & Bebas PMK',
         },
       ],
       cowImages: [
         {
-          img: '/images/sequrban/cow/cow-1.jpg',
+          img: '/images/sekurban/cow/cow-1.jpg',
         },
         {
-          img: '/images/sequrban/cow/cow-2.jpg',
+          img: '/images/sekurban/cow/cow-2.jpg',
         },
         {
-          img: '/images/sequrban/cow/cow-3.jpg',
+          img: '/images/sekurban/cow/cow-3.jpg',
         },
         {
-          img: '/images/sequrban/cow/cow-4.jpg',
+          img: '/images/sekurban/cow/cow-4.jpg',
         },
         {
-          img: '/images/sequrban/cow/cow-5.jpg',
+          img: '/images/sekurban/cow/cow-5.jpg',
         },
         {
-          img: '/images/sequrban/cow/cow-6.jpg',
+          img: '/images/sekurban/cow/cow-6.jpg',
         },
       ],
     };
