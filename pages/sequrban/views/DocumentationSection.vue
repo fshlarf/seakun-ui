@@ -46,7 +46,7 @@
         class="tn:w-[191px] tn:h-[136px] md:w-[323px] md:h-[285px] tn:rounded-[6px] md:rounded-[15px] overflow-hidden flex-none"
       >
         <img
-          :src="`/images/sequrban/documentation/doc-${id}.jpg`"
+          :src="`/images/sequrban/documentation/photo-${id}.jpg`"
           alt="dokumentasi qurban"
           class="min-w-full min-h-full object-cover object-center"
         />
