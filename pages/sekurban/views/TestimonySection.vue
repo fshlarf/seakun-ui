@@ -5,7 +5,7 @@
         <h1
           class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold"
         >
-          Testimoni Kurban
+          Testimoni Qurban
         </h1>
         <p
           class="tn:text-[12px] md:text-[16px] lg:text-[24px] xl:mt-2 xl:w-[900px]"

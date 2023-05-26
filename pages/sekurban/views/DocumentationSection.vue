@@ -5,10 +5,10 @@
         <h1
           class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold"
         >
-          Dokumentasi Proses Kurban
+          Dokumentasi Proses Qurban
         </h1>
         <p class="tn:text-[12px] md:text-[16px] lg:text-[24px]">
-          Berikut ini beberapa dokumentasi saat kurban diproses.
+          Berikut ini beberapa dokumentasi saat qurban diproses.
         </p>
       </div>
 

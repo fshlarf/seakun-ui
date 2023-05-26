@@ -7,7 +7,7 @@
         <h1
           class="tn:px-4 lg:px-0 text-[#15382F] tn:text-center lg:text-left tn:text-[26px] lg:text-[48px] font-bold"
         >
-          Patungan Kurban Sapi Bersama
+          Patungan Qurban Sapi Bersama
         </h1>
         <div
           class="flex items-center tn:justify-center lg:justify-start tn:space-x-2 lg:space-x-4 tn:mt-2 lg:mt-3"
@@ -30,7 +30,7 @@
           class="text-white lg:font-bold tn:text-[12px] tn:leading-[20px] lg:text-[18px] tn:mt-2 lg:mt-3 tn:text-center lg:text-left"
         >
           Kini Seakun berkolaborasi dengan Kitabisa dalam rangka membantu sesama
-          untuk menunaikan ibadah kurban.
+          untuk menunaikan ibadah qurban.
         </p>
         <div class="tn:mt-4 lg:mt-8 tn:w-full lg:w-[240px] tn:px-3 lg:px-0">
           <Button

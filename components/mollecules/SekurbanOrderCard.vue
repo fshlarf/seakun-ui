@@ -12,7 +12,7 @@
       </div>
       <div class="space-y-1">
         <p class="md:text-base tn:text-sm font-bold">
-          Sekurban (Seakun x Kitabisa)
+          Sequrban (Seakun x Kitabisa)
         </p>
         <p class="md:text-base tn:text-sm">Sapi Kupang / Bali</p>
         <p class="md:text-base tn:text-sm">
@@ -24,7 +24,7 @@
     <div
       class="flex justify-between pt-3 border-t border-gray-100 md:text-base tn:text-sm"
     >
-      <div class="text-[#363636] opacity-50">Biaya Kurban</div>
+      <div class="text-[#363636] opacity-50">Biaya Qurban</div>
       <div class="font-bold">
         {{ currencyFormat(sekurban.provider.package.variant.grandTotal) }}
       </div>
