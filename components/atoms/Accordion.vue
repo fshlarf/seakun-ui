@@ -54,20 +54,22 @@
             </svg>
           </div>
         </div>
-        <div
-          v-show="isShowAnswer"
-          class="tn:px-6 xl:px-10 tn:py-4 md:py-6 bg-primary text-white rounded-b-[8px] tn:text-sm"
-          :class="{ accordion: isShowAnswer }"
-        >
-          <div v-if="answer.list">
-            <ol class="list-decimal list-outside">
-              <li v-for="(list, id) in answer.answer" :key="id">
-                {{ list }}
-              </li>
-            </ol>
+        <Transition>
+          <div
+            v-show="isShowAnswer"
+            class="tn:px-6 xl:px-10 tn:py-4 md:py-6 bg-primary text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200"
+            :class="{ accordion: isShowAnswer }"
+          >
+            <div v-if="answer.list">
+              <ol class="list-decimal list-outside">
+                <li v-for="(list, id) in answer.answer" :key="id">
+                  {{ list }}
+                </li>
+              </ol>
+            </div>
+            <div v-else v-html="answer.answer"></div>
           </div>
-          <div v-else v-html="answer.answer"></div>
-        </div>
+        </Transition>
       </div>
     </div>
   </div>
@@ -100,5 +102,17 @@ export default {
 <style lang="scss" scoped>
 .accordion {
   border: 1px solid #86d0c1;
+}
+.v-enter-active {
+  transition: opacity 0.5s ease;
+}
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+.v-enter {
+  opacity: 0;
+}
+.v-leave {
+  opacity: 0;
 }
 </style>

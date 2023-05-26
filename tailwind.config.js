@@ -74,6 +74,26 @@ module.exports = {
             paddingRight: '10rem',
           },
         },
+        '.container-sekurban': {
+          width: '100%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          '@screen tn': {
+            maxWidth: '328px',
+          },
+          '@screen sm': {
+            maxWidth: '640px',
+          },
+          '@screen md': {
+            maxWidth: '700px',
+          },
+          '@screen lg': {
+            maxWidth: '960px',
+          },
+          '@screen xl': {
+            maxWidth: '1240px',
+          },
+        },
       });
     },
   ],

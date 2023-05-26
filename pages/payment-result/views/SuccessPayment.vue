@@ -1,25 +1,37 @@
 <template>
   <div class="thankyou max-w-2xl w-full mx-auto md:pt-4 tn:-mb-4 md:mb-0">
-    <img
+    <!-- <img
       class="w-full tn:hidden md:block cursor-pointer"
       src="/images/ramadan-gift/thankyou2.webp"
       alt="thr banner"
       @click="toThrPage"
-    />
+    /> -->
     <div
       class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full tn:pt-3 md:mt-4"
     >
-      <img
+      <!-- <img
         class="w-full md:hidden tn:mb-6 cursor-pointer"
         src="/images/ramadan-gift/thankyou-mobile.webp"
         alt="thr banner"
         @click="toThrPage"
-      />
-      <img
-        class="w-1/3 mx-auto"
-        src="/images/thank-you-new.png"
-        alt="payment success"
-      />
+      /> -->
+      <!-- <template v-if="!isLoading"> -->
+      <template
+        v-if="dataOrder.length > 0 && dataOrder[0].provider.slug === 'sekurban'"
+      >
+        <img
+          class="w-6/12 mx-auto"
+          src="/images/sekurban/thankyou.png"
+          alt="pembayaran sukses"
+        />
+      </template>
+      <template v-else>
+        <img
+          class="w-6/12 mx-auto"
+          src="/images/thank-you-new.png"
+          alt="pembayaran sukses"
+        />
+      </template>
       <div class="text-center tn:px-4 md:px-12">
         <h3 class="font-bold text-3xl mt-4 text-center">Terima Kasih!</h3>
         <p class="text-center md:text-lg mt-4 text-gray-500">
@@ -33,11 +45,14 @@
       >
         <div>
           <p class="font-bold text-lg">Detail Pesanan</p>
-          <OrderCard
-            v-for="(detailOrder, id) in dataOrder"
-            :key="id"
-            :order="detailOrder"
-          />
+          <div v-for="(detailOrder, id) in dataOrder" :key="id">
+            <template v-if="detailOrder.provider.slug === 'sekurban'">
+              <SekurbanOrderCard :sekurban="detailOrder" />
+            </template>
+            <template v-else>
+              <OrderCard :order="detailOrder" />
+            </template>
+          </div>
         </div>
         <div class="mt-4 md:space-y-1">
           <div class="text-center">
@@ -71,8 +86,10 @@
 <script>
 import Button from '~/components/atoms/Button';
 import OrderCard from './OrderCard.vue';
+import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
+
 export default {
   name: 'thankyou-page',
   layout: 'new',
@@ -95,14 +112,15 @@ export default {
   components: {
     Button,
     OrderCard,
+    SekurbanOrderCard,
   },
   methods: {
     toHomePage() {
       this.$router.push('/');
     },
-    toThrPage() {
-      this.$router.push('/thr');
-    },
+    // toThrPage() {
+    //   this.$router.push('/thr');
+    // },
   },
 };
 </script>

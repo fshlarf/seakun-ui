@@ -1,7 +1,13 @@
 <template>
   <div class="max-w-2xl w-full mx-auto pt-4 px-4">
     <div class="">
-      <h2 class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
+      <h2
+        v-if="providerSlug === 'sekurban'"
+        class="md:text-2xl tn:text-lg font-bold text-secondary"
+      >
+        Daftar Peserta Kurban
+      </h2>
+      <h2 v-else class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
       <p class="md:text-lg tn:text-base tn:mt-1 md:mt-3">
         Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
       </p>
@@ -11,7 +17,7 @@
     >
       <p class="md:text-xl tn:text-lg font-bold">Produk yang dipesan</p>
       <p
-        v-if="!providerList.loading"
+        v-if="!providerList.loading && providerSlug !== 'sekurban'"
         class="md:text-sm tn:text-base text-green-seakun cursor-pointer"
         @click="onClickChangePacket"
       >
@@ -23,12 +29,15 @@
         v-if="dataListVariant.loading"
         class="tn:mt-3 md:mt-4"
       />
+      <SekurbanHighlightCard
+        v-else-if="providerSlug === 'sekurban' && !providerList.loading"
+      />
       <VariantCard
         v-else
         :data-variant="dataCardVariant"
         :is-loading="dataListVariant.loading"
       />
-      <div class="mt-4">
+      <div v-if="providerSlug !== 'sekurban'" class="mt-4">
         <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
         <ButtonDrop
           :btnText="dataCardVariant.buttonText"
@@ -178,6 +187,7 @@ import VariantCard from './views/VariantCard.vue';
 import { mapGetters, mapActions } from 'vuex';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
+import SekurbanHighlightCard from './views/SekurbanHighlightCard.vue';
 import moment from 'moment';
 
 export default {
@@ -199,6 +209,7 @@ export default {
     VariantCard,
     CheckedBox,
     UncheckBox,
+    SekurbanHighlightCard,
   },
   data: () => ({
     email: '',
@@ -234,6 +245,7 @@ export default {
     },
     providerRules: '',
     referralCode: null,
+    providerSlug: '',
   }),
   watch: {
     codeNumber() {
@@ -243,6 +255,7 @@ export default {
   computed: {
     ...mapGetters({
       providerList: 'getProviders',
+      providerSekurban: 'getProviderSekurban',
       selectedProvider: 'getSelectedProvider',
       dataListVariant: 'getListVariant',
       dataCardVariant: 'getDataCardVariant',
@@ -287,6 +300,7 @@ export default {
       this.setProviderRules(provider);
       this.getListVariants(package_id);
     }
+    this.providerSlug = provider;
     this.setFieldValueFromLocalStorage();
   },
   methods: {
@@ -454,16 +468,30 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     async onSubmitOrder() {
-      let payload = {
-        name: capitalizeFirstLetter(this.userName),
-        email: this.email,
-        phoneNumber: `${this.codePhone}${this.phoneNumber}`,
-        packageVariantUid: this.selectedParam.variantUid,
-        ispreorder: this.dataCardVariant.isPo === 1,
-        userhost: this.dataCardVariant.isHost === 1,
-        voucherUid: '',
-        referralCode: this.referralCode ? this.referralCode : null,
-      };
+      let payload = {};
+      if (this.providerSlug === 'sekurban') {
+        payload = {
+          name: capitalizeFirstLetter(this.userName),
+          email: this.email,
+          phoneNumber: `${this.codePhone}${this.phoneNumber}`,
+          packageVariantUid: this.providerSekurban.variants[0].uid,
+          ispreorder: false,
+          userhost: false,
+          voucherUid: '',
+          referralCode: this.referralCode ? this.referralCode : null,
+        };
+      } else {
+        payload = {
+          name: capitalizeFirstLetter(this.userName),
+          email: this.email,
+          phoneNumber: `${this.codePhone}${this.phoneNumber}`,
+          packageVariantUid: this.selectedParam.variantUid,
+          ispreorder: this.dataCardVariant.isPo === 1,
+          userhost: this.dataCardVariant.isHost === 1,
+          voucherUid: '',
+          referralCode: this.referralCode ? this.referralCode : null,
+        };
+      }
       this.createOrder(payload);
     },
     redirectPage(payload) {

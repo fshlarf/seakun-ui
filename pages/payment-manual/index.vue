@@ -9,7 +9,7 @@
         :paymentSeakunList="paymentSeakunList.data"
         :paymentSeakunListLoading="paymentSeakunList.loading"
         :total-payment-digital="totalPayment"
-        :detail-payment-sequrban="detailPaymentSequrban"
+        :detail-payment-sekurban="detailPaymentSekurban"
       />
       <div class="tn:text-sm md:text-base md:mx-4 tn:mt-4 md:mt-8">
         <p class="tn:mb-2 md:mb-4">
@@ -35,7 +35,7 @@
           class="w-full bg-green-seakun text-white py-2"
           label="Konfirmasi Pembayaran"
           :disabled="isLoadingPayment"
-          @click="onClickConfirm('sequrban')"
+          @click="onClickConfirm('sekurban')"
         />
         <Button
           v-else
@@ -94,7 +94,7 @@ export default {
       vouchersData: [],
       isLoadingPayment: false,
       orderData: [],
-      detailPaymentSequrban: {},
+      detailPaymentSekurban: {},
       activeSeakunPayment: ['Jenius', 'BCA', 'Mandiri'],
       paymentSeakunList: {
         data: [],
@@ -131,8 +131,8 @@ export default {
       this.getdataCustomer(order_uid, customer_uid);
       this.getDataOrderDigital(order_uid);
     }
-    if (provider === 'sequrban') {
-      this.getPaymentSequrban();
+    if (provider === 'sekurban') {
+      this.getPaymentSekurban();
     }
     this.getVouchersData();
   },
@@ -254,15 +254,15 @@ export default {
       }
       this.isLoadingPayment = false;
     },
-    getPaymentSequrban() {
+    getPaymentSekurban() {
       const { packet_id, voucher } = this.$router.history.current.query;
       this.isLoadingPayment = true;
       axios
-        .get(`https://seakun-packet-api-v2.herokuapp.com/sequrban/${packet_id}`)
+        .get(`https://seakun-packet-api-v2.herokuapp.com/sekurban/${packet_id}`)
         .then((res) => {
           const { data, status } = res;
           if (status === 200) {
-            this.detailPaymentSequrban = data;
+            this.detailPaymentSekurban = data;
             this.isLoadingPayment = false;
             this.packet = data.name;
             this.packetId = data.id;
@@ -321,7 +321,7 @@ export default {
         : (this.total = dataPacket.grandTotal);
     },
     onClickConfirm(productType) {
-      if (productType === 'sequrban') {
+      if (productType === 'sekurban') {
         const {
           provider,
           packet_id,
@@ -332,7 +332,7 @@ export default {
         this.$router.push(
           `/payment-confirmation?provider=${provider}&packet_id=${packet_id}&email=${email}&whatsapp=${whatsapp}&holder=${
             holder ? holder : ''
-          }&nominal=${this.detailPaymentSequrban.downPayment}`
+          }&nominal=${this.detailPaymentSekurban.downPayment}`
         );
       } else if (productType === 'digital') {
         this.$router.push(
