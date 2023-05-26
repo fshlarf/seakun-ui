@@ -17,7 +17,7 @@
           <p class="tn:text-[12px] md:text-base lg:text-[20px] tn:mt-3 lg:mt-6">
             “Kami pernah bepergian bersama Rasulullah SAW, kebetulan di tengah
             perjalanan hari raya Idul Adha (yaumun nahr) datang. Akhirnya, kami
-            patungan membeli sapi sebanyak tujuh orang untuk dikurbankan.“
+            patungan membeli sapi sebanyak tujuh orang untuk diqurbankan.“
             <br />
             (HR Al-Hakim)
           </p>

@@ -9,10 +9,10 @@
         <h1
           class="tn:text-[20px] md:text-[26px] lg:text-[30px] tn:font-semibold md:font-bold"
         >
-          Ayo Lengkapi Ibadahmu dengan berkurban!
+          Ayo Lengkapi Ibadahmu dengan berqurban!
         </h1>
         <p class="tn:text-[12px] md:text-[16px] lg:text-[18px] tn:mt-2">
-          Jadilah bagian dari kebaikan ini dan mari berkurban bersama-sama untuk
+          Jadilah bagian dari kebaikan ini dan mari berqurban bersama-sama untuk
           mendapat keberkahan-Nya.
         </p>
         <Button

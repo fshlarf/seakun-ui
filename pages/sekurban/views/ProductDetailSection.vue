@@ -63,8 +63,8 @@
           Detail Sapi
         </h2>
         <p class="tn:text-[12px] md:text-[16px] lg:text-[18px] tn:mt-1 lg:mt-3">
-          Berikut ini merupakan detail hewan sapi yang akan menjadi hewan kurban
-          pada Program Patungan Kurban yang diadakan oleh Seakun dan Kitabisa.
+          Berikut ini merupakan detail hewan sapi yang akan menjadi hewan qurban
+          pada Program Patungan Qurban yang diadakan oleh Seakun dan Kitabisa.
         </p>
       </div>
       <div class="flex items-center tn:space-x-2 md:space-x-3 tn:mt-3 xl:mt-6">

@@ -10,7 +10,7 @@
       </div>
       <div class="space-y-1">
         <p class="md:text-lg tn:text-sm font-bold">
-          Sekurban (Seakun x Kitabisa)
+          Sequrban (Seakun x Kitabisa)
         </p>
         <p class="md:text-lg tn:text-sm">Sapi Kupang / Bali</p>
         <p class="md:text-lg tn:text-sm">

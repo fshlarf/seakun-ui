@@ -32,16 +32,29 @@
           alt="pembayaran sukses"
         />
       </template>
-      <div class="text-center tn:px-4 md:px-12">
-        <h3 class="font-bold text-3xl mt-4 text-center">Terima Kasih!</h3>
-        <p class="text-center md:text-lg mt-4 text-gray-500">
-          Selamat, pembayaran kamu berhasil dikonfirmasi. pesanan kamu akan
-          segera diproses oleh admin Seakun.
+
+      <div class="text-center tn:px-4 md:px-12 tn:mb-4">
+        <h3 class="font-bold text-3xl tn:mt-4 text-center">Terima Kasih!</h3>
+        <p
+          v-if="
+            dataOrder.length > 0 && dataOrder[0].provider.slug === 'sekurban'
+          "
+          class="text-center md:text-lg tn:mt-2 text-gray-500"
+        >
+          Konfirmasi pembayaranmu telah berhasil. Terimakasih sudah mengikuti
+          <span class="font-bold"
+            >Program Patungan Qurban Seakun x Kitabisa</span
+          >. Untuk informasi tentang jadwal pelaksanaan proses qurban, akan
+          diinformasikan mendekati hari H (Idul Adha).
+        </p>
+        <p v-else class="text-center md:text-lg tn:mt-4 text-gray-500">
+          Konfirmasi pembayaranmu telah berhasil. Admin akan segera menghubungi
+          untuk memberikan detail pesananmu.
         </p>
       </div>
 
       <div
-        class="tn:px-4 md:px-6 tn:py-4 md:py-8 mt-2 bg-gray-50 shadow-md tn:rounded-xl md:rounded-3xl"
+        class="tn:px-4 md:px-6 tn:py-4 md:py-8 mt-2 tn:mb-4 md:mb-6 lg:mb-8 bg-gray-50 shadow-md tn:rounded-xl md:rounded-3xl"
       >
         <div>
           <p class="font-bold text-lg">Detail Pesanan</p>
@@ -62,7 +75,9 @@
         </div>
       </div>
 
-      <div>
+      <div
+        v-if="orderData.length > 0 && dataOrder[0].provider.slug !== 'sekurban'"
+      >
         <p class="tn:mt-4 md:mt-6 lg:mt-8">
           Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
           pesanan kamu belum diproses, harap hubungi admin via whatsapp
@@ -74,6 +89,7 @@
           >.
         </p>
       </div>
+
       <Button
         class="w-full bg-green-seakun text-white tn:mt-5 md:mt-6 py-[12px] rounded-2xl"
         label="Kembali ke beranda"

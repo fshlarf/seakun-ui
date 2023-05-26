@@ -17,13 +17,13 @@
         class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold lg:font-bold tn:w-[231px] md:w-full"
       >
         <span class="text-[#00BA88]">Latar Belakang</span> Program Patungan
-        Kurban
+        Qurban
       </h2>
       <p class="tn:mt-2 lg:mt-3">
         Seakun dan Kitabisa berkolaborasi dalam rangka membantu sesama dalam
-        menunaikan ibadah kurban. Sebagaimana kurban merupakan salah satu ibadah
+        menunaikan ibadah qurban. Sebagaimana qurban merupakan salah satu ibadah
         penting dalam agama Islam. Namun, tidak semua orang mampu untuk
-        melaksanakan ibadah kurban secara mandiri karena keterbatasan finansial.
+        melaksanakan ibadah qurban secara mandiri karena keterbatasan finansial.
       </p>
       <p class="mt-2">Untuk itu, Seakun dan Kitabisa memiliki misi dalam:</p>
       <div class="flex items-start space-x-2 mt-1">
@@ -33,8 +33,8 @@
           1
         </div>
         <div class="w-[90%]">
-          Mempermudah umat Islam yang ingin berkurban dengan memberikan biaya
-          kurban yang murah dan terjangkau
+          Mempermudah umat Islam yang ingin berqurban dengan memberikan biaya
+          qurban yang murah dan terjangkau
         </div>
       </div>
       <div class="flex items-start space-x-2 mt-1">
@@ -45,7 +45,7 @@
         </div>
         <div class="w-[90%]">
           Membantu anak muda di Indonesia dalam rangka belajar untuk menunaikan
-          ibadah kurban
+          ibadah qurban
         </div>
       </div>
       <div class="flex items-start space-x-2 mt-1">
@@ -55,7 +55,7 @@
           3
         </div>
         <div class="w-[90%]">
-          Berbagi kebahagiaan untuk dapat merasakan indahnya berkurban ke sesama
+          Berbagi kebahagiaan untuk dapat merasakan indahnya berqurban ke sesama
         </div>
       </div>
     </div>
