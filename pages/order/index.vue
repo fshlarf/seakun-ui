@@ -5,7 +5,7 @@
         v-if="providerSlug === 'sekurban'"
         class="md:text-2xl tn:text-lg font-bold text-secondary"
       >
-        Daftar Peserta Kurban
+        Daftar Peserta Qurban
       </h2>
       <h2 v-else class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
       <p class="md:text-lg tn:text-base tn:mt-1 md:mt-3">

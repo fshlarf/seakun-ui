@@ -16,6 +16,7 @@
     <PartnershipBanner />
     <Footer />
     <SeakunHelpFloatingButton />
+    <ModalSekurbanBanner />
   </div>
 </template>
 
@@ -36,6 +37,7 @@ import PartnershipBanner from '~/components/organisms/PartnershipBanner';
 import Footer from '~/components/mollecules/Footer';
 import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
 import SeakunHelpFloatingButton from '~/components/mollecules/SeakunHelpFloatingButton';
+import ModalSekurbanBanner from '~/components/mollecules/ModalSekurbanBanner';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
 
@@ -57,6 +59,7 @@ export default {
     Footer,
     SeakunHelpBanner,
     SeakunHelpFloatingButton,
+    ModalSekurbanBanner,
   },
   computed: {
     ...mapGetters({

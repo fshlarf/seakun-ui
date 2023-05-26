@@ -94,6 +94,29 @@
               >Program Sekeranjang</nuxt-link
             >
           </li>
+          <li class="relative max-w-max">
+            <nuxt-link class="hover:no-underline" to="/sekurban"
+              >Sequrban</nuxt-link
+            >
+            <img
+              class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-1 w-[9px]"
+              :class="`${showSpark1 ? 'opacity-100' : 'opacity-20'}`"
+              src="/images/icons/atoms/spark.svg"
+              alt="spark"
+            />
+            <img
+              class="transition-opacity ease-in-out delay-50 duration-500 absolute bottom-1 -right-2 w-[8px]"
+              :class="`${showSpark2 ? '!opacity-100' : '!opacity-20'}`"
+              src="/images/icons/atoms/spark.svg"
+              alt="spark"
+            />
+            <img
+              class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-4 w-[12px]"
+              :class="`${showSpark3 ? '!opacity-100' : '!opacity-20'}`"
+              src="/images/icons/atoms/spark.svg"
+              alt="spark"
+            />
+          </li>
         </ul>
       </div>
       <div class="tn:my-4 lg:mt-0">
@@ -135,7 +158,21 @@ export default {
   data() {
     return {
       isHiring: false,
+      showSpark1: false,
+      showSpark2: false,
+      showSpark3: false,
     };
+  },
+  mounted() {
+    setInterval(() => {
+      this.showSpark1 = !this.showSpark1;
+    }, 700);
+    setInterval(() => {
+      this.showSpark2 = !this.showSpark2;
+    }, 800);
+    setInterval(() => {
+      this.showSpark3 = !this.showSpark3;
+    }, 900);
   },
   methods: {
     scrollTo(id) {

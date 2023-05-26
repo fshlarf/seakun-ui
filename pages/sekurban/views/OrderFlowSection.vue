@@ -5,7 +5,7 @@
         <h1
           class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold text-center"
         >
-          Flow Program Kurban
+          Flow Program Qurban
         </h1>
         <div
           class="flex flex-wrap justify-center items-start tn:gap-3 md:gap-14 tn:mt-6 lg:mt-12"
@@ -46,34 +46,34 @@ export default {
     return {
       orderFlow: [
         {
-          title: 'Daftar Peserta Kurban',
+          title: 'Daftar Peserta Qurban',
           desc: 'Peserta melakukan pendaftaran secara online',
           img: '/images/sekurban/order flow/step-1.png',
         },
         {
           title: 'Pembayaran',
-          desc: 'Peserta kurban melakukan pembayaran',
+          desc: 'Peserta qurban melakukan pembayaran',
           img: '/images/sekurban/order flow/step-2.png',
         },
         {
           title: 'Kirim Bukti Transfer',
-          desc: 'Peserta kurban mengirim bukti transfer',
+          desc: 'Peserta qurban mengirim bukti transfer',
           img: '/images/sekurban/order flow/step-3.png',
         },
         {
-          title: 'Kurban Diproses',
-          desc: 'Kurban diproses pada hari-H Idul Adha',
+          title: 'Qurban Diproses',
+          desc: 'Qurban diproses pada hari-H Idul Adha',
           img: '/images/sekurban/order flow/step-4.png',
         },
         {
-          title: 'Pembagian Daging Kurban',
-          desc: 'Daging kurban didistribusikan kepada yang berhak menerima.',
+          title: 'Pembagian Daging Qurban',
+          desc: 'Daging qurban didistribusikan kepada yang berhak menerima.',
           img: '/images/sekurban/order flow/step-5.png',
         },
         {
           title: 'Dokumentasi & Sertifikat',
           desc:
-            'Peserta kurban menerima dokumantasi proses kurban dan sertifikat kurban.',
+            'Peserta qurban menerima dokumantasi proses qurban dan sertifikat qurban.',
           img: '/images/sekurban/order flow/step-6.png',
         },
       ],

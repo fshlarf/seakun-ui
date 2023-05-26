@@ -59,7 +59,7 @@
         class="bg-[#00BA88] tn:px-[10px] lg:px-[22px] py-[8px] tn:rounded-[8px] lg:rounded-[12px] tn:text-[12px] lg:text-[18px] text-white tn:mt-4 lg:mt-6"
       >
         Dengan biaya sebesar <b>Rp1.790.000</b> kamu sudah bisa menunaikan
-        ibadah kurban melalui Seakun dan Kitabisa.
+        ibadah qurban melalui Seakun dan Kitabisa.
       </div>
     </div>
     <div

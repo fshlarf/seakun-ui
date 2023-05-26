@@ -45,8 +45,8 @@
         >
           Konfirmasi pembayaranmu telah berhasil. Terimakasih sudah mengikuti
           <span class="font-bold"
-            >Program Patungan Kurban Seakun x Kitabisa</span
-          >. Untuk informasi tentang jadwal pelaksanaan proses kurban, akan
+            >Program Patungan Qurban Seakun x Kitabisa</span
+          >. Untuk informasi tentang jadwal pelaksanaan proses qurban, akan
           diinformasikan mendekati hari H (Idul Adha).
         </p>
         <p v-else class="text-center md:text-lg tn:mt-4 text-gray-500">

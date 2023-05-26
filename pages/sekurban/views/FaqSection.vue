@@ -32,47 +32,47 @@ export default {
         {
           id: 1,
           question:
-            'Bagaimana flow dalam mengikuti program Patungan Kurban ini?',
+            'Bagaimana flow dalam mengikuti program Patungan Qurban ini?',
           answer:
-            'Detail flow dapat dilihat di link berikut <a class="underline text-secondary font-semibold" href="#order-flow-sekurban">flow Program Patungan Kurban</a>',
+            'Detail flow dapat dilihat di link berikut <a class="underline text-secondary font-semibold" href="#order-flow-sekurban">flow Program Patungan Qurban</a>',
           isShow: false,
         },
         {
           id: 2,
-          question: 'Apakah harus menunggu peserta kurban lain?',
+          question: 'Apakah harus menunggu peserta qurban lain?',
           answer:
-            'Tidak, kamu bisa langsung melakukan pembayaran dan setelah itu resmi terdaftar sebagai peserta kurban dalam program ini',
+            'Tidak, kamu bisa langsung melakukan pembayaran dan setelah itu resmi terdaftar sebagai peserta qurban dalam program ini',
           isShow: false,
         },
         {
           id: 3,
           question:
-            'Jika dalam 1 grup Patungan Kurban sapi belum terisi full sampai hari H, apakah biaya akan di refund?',
+            'Jika dalam 1 grup Patungan Qurban sapi belum terisi full sampai hari H, apakah biaya akan di refund?',
           answer:
-            'Tidak, apabila grup belum full sampai mendekati hari H, maka jenis hewan kurban akan diganti menjadi kurban kambing',
+            'Tidak, apabila grup belum full sampai mendekati hari H, maka jenis hewan qurban akan diganti menjadi qurban kambing',
           isShow: false,
         },
         {
           id: 4,
           question:
-            'Apa yang saya dapatkan jika mengikuti Program Patungan Kurban ini?',
+            'Apa yang saya dapatkan jika mengikuti Program Patungan Qurban ini?',
           answer:
-            'Kamu mendapatkan sertifikat telah mengikuti program ini, mendapatkan dokumentasi seluruh proses kurban dan Insya Allah akan mendapatkan pahala yang sangat besar dari Allah SWT',
+            'Kamu mendapatkan sertifikat telah mengikuti program ini, mendapatkan dokumentasi seluruh proses qurban dan Insya Allah akan mendapatkan pahala yang sangat besar dari Allah SWT',
           isShow: false,
         },
         {
           id: 5,
           question:
-            'Apakah saya akan mendapatkan jatah daging dari hewan yang dikurbankan jika mengikuti program ini?',
+            'Apakah saya akan mendapatkan jatah daging dari hewan yang diqurbankan jika mengikuti program ini?',
           answer:
-            'Tidak, untuk memudahkan proses kurban, jatah daging akan ikut disedekahkan kepada mereka yang berhak menerima kurban',
+            'Tidak, untuk memudahkan proses qurban, jatah daging akan ikut disedekahkan kepada mereka yang berhak menerima qurban',
           isShow: false,
         },
         {
           id: 6,
-          question: 'Jenis sapi apa yang akan dikurbankan?',
+          question: 'Jenis sapi apa yang akan diqurbankan?',
           answer:
-            'Untuk detail sapi yang akan dikurbankan pada program ini bisa dilihat pada link <a class="underline text-secondary font-semibold" href="#product-detail-sekurban">detail hewan kurban</a>',
+            'Untuk detail sapi yang akan diqurbankan pada program ini bisa dilihat pada link <a class="underline text-secondary font-semibold" href="#product-detail-sekurban">detail hewan qurban</a>',
           isShow: false,
         },
       ],
