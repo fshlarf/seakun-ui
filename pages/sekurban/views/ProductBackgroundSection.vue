@@ -24,8 +24,8 @@
         menunaikan ibadah qurban. Sebagaimana qurban merupakan salah satu ibadah
         penting dalam agama Islam. Namun, tidak semua orang mampu untuk
         melaksanakan ibadah qurban secara mandiri karena keterbatasan finansial.
+        Untuk itu, Seakun dan Kitabisa memiliki misi dalam:
       </p>
-      <p class="mt-2">Untuk itu, Seakun dan Kitabisa memiliki misi dalam:</p>
       <div class="flex items-start space-x-2 mt-1">
         <div
           class="w-[24px] h-[24px] rounded-full flex justify-center items-center bg-[#00BA88] text-[14px] text-white"
