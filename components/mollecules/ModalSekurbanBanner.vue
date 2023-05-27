@@ -5,7 +5,7 @@
   >
     <!-- dark backdrop layer -->
     <div
-      class="z-[920] overflow-auto left-0 top-0 bottom-0 right-0 w-full h-screen fixed bg-black opacity-80"
+      class="z-[920] overflow-auto left-0 top-0 bottom-0 right-0 w-full h-screen fixed bg-black opacity-30"
       @click="onClose"
     ></div>
     <!-- dark backdrop layer -->
