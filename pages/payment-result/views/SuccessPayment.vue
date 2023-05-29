@@ -76,7 +76,7 @@
       </div>
 
       <div
-        v-if="orderData.length > 0 && dataOrder[0].provider.slug !== 'sekurban'"
+        v-if="dataOrder.length > 0 && dataOrder[0].provider.slug !== 'sekurban'"
       >
         <p class="tn:mt-4 md:mt-6 lg:mt-8">
           Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
