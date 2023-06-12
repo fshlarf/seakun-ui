@@ -6,6 +6,12 @@
       alt="thr banner"
       @click="toThrPage"
     /> -->
+    <img
+      @click="toSekurbanPage"
+      src="/images/thankyou/sekurban-banner.png"
+      alt="sequrban banner"
+      class="rounded-[20px] cursor-pointer"
+    />
     <div
       class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full tn:pt-3 md:mt-4"
     >
@@ -133,6 +139,9 @@ export default {
   methods: {
     toHomePage() {
       this.$router.push('/');
+    },
+    toSekurbanPage() {
+      this.$router.push('/sekurban');
     },
     // toThrPage() {
     //   this.$router.push('/thr');
