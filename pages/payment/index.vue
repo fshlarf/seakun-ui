@@ -1,59 +1,75 @@
 <template>
   <div>
-    <div class="p-2 bg-checkout mt-[-3px]">
-      <p class="text-base text-[#417465] font-bold text-center">
+    <div class="tn:py-[11px] tn:px-[50px] md:py-[13px] bg-checkout mt-[-3px]">
+      <p
+        class="md:text-base tn:text-xs text-[#417465] md:font-bold text-center"
+      >
         Ini halaman terakhir dari proses orderanmu. Pastikan semua sudah benar,
         ya. :)
       </p>
     </div>
-    <div class="max-w-2xl w-full mx-auto pt-5 px-4">
-      <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
-      <OrderList
-        :isLoading="isLoadingPayment"
-        @changeDuration="getDetailVariant"
-        :orderData="orderData"
-        @onChecked="onCheckedOrder"
-      />
-      <div class="tn:mt-4 space-y-3">
-        <WarningPriceChange
-          v-for="(provider, id) in updatedProviderList"
-          :key="id"
-          :provider="provider"
-          @click="onClickPriceScheme"
+    <div
+      class="box-payment lg:max-w-[850px] md:max-w-2xl mx-auto md:py-[48px] md:px-[50px] tn:px-4 tn:py-5 md:my-[76px] md:rounded-[20px]"
+    >
+      <!-- <div v-if="provider === 'sekurban'">
+        <h1 class="md:text-[26px] font-bold">Pembayaran Qurban</h1>
+        <p class="md:text-base opacity-80">
+          Silahkan lakukan pembayaran ke rekening yang tersedia
+        </p>
+        <hr class="mt-4 mb-8" />
+      </div> -->
+      <div class="">
+        <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
+        <OrderList
+          :isLoading="isLoadingPayment"
+          @changeDuration="getDetailVariant"
+          :orderData="orderData"
+          @onChecked="onCheckedOrder"
         />
+        <div class="tn:mt-4 space-y-3">
+          <WarningPriceChange
+            v-for="(provider, id) in updatedProviderList"
+            :key="id"
+            :provider="provider"
+            @click="onClickPriceScheme"
+          />
+        </div>
+        <PaymentDetail
+          :chosed-method="chosedMethod"
+          :is-loading="isLoadingPayment"
+          :payment-total="totalPayment"
+          @onClickPayment="clickPayment"
+          @onClickMethod="onClickMethod"
+        />
+        <!-- <Button
+          label="Bayar"
+          class="w-full bg-green-seakun text-base text-white font-bold py-2 my-5"
+          @click="OpenCloseModalPayment"
+          :isLoading="isLoadingPaymentButton"
+        /> -->
       </div>
-      <PaymentDetail
-        :isLoading="isLoadingPayment"
-        :paymentTotal="totalPayment"
+      <Snackbar ref="snackbar" />
+      <ModalDuration
+        :orderData="pickedOrder"
+        :durationData="dataVariants"
+        :showModal="isShowModalDuration"
+        @onClose="OpenCloseModalDuration"
+        @pickDuration="pickDuration"
+        :isLoading="isLoadingVariant"
       />
-      <Button
-        label="Bayar"
-        class="w-full bg-green-seakun text-base text-white font-bold py-2 my-5"
-        @click="OpenCloseModalPayment"
-        :isLoading="isLoadingPaymentButton"
+      <!-- <ModalPayment
+        :onClickOtomatis="createInvoice"
+        :onClickManual="manualPayment"
+        :showModal="isShowModalPayment"
+        @onClose="OpenCloseModalPayment"
+      /> -->
+      <ModalPriceScheme
+        :show-modal="showModalScheme"
+        :data-scheme="dataDetailProvider"
+        @closeModal="closeModalScheme"
+        @toSchemePage="toSchemePage"
       />
     </div>
-    <Snackbar ref="snackbar" />
-    <ModalDuration
-      :orderData="pickedOrder"
-      :durationData="dataVariants"
-      :showModal="isShowModalDuration"
-      @onClose="OpenCloseModalDuration"
-      @pickDuration="pickDuration"
-      :isLoading="isLoadingVariant"
-    />
-    <ModalPayment
-      :onClickOtomatis="createInvoice"
-      :onClickManual="manualPayment"
-      :showModal="isShowModalPayment"
-      @onClose="OpenCloseModalPayment"
-    />
-    <ModalPriceScheme
-      :show-modal="showModalScheme"
-      :data-scheme="dataDetailProvider"
-      @closeModal="closeModalScheme"
-      @toSchemePage="toSchemePage"
-    />
   </div>
 </template>
 
@@ -95,6 +111,7 @@ export default {
     return {
       providerList,
       priceChangeList,
+      chosedMethod: 0,
       OrderService,
       MasterService,
       PaymentService,
@@ -109,6 +126,7 @@ export default {
       customerUid: '',
       type: 0,
       provider: '',
+      providerSlug: '',
       isLoadingPayment: false,
       isLoadingVariant: false,
       isLoadingPaymentButton: false,
@@ -186,6 +204,9 @@ export default {
     toSchemePage() {
       this.$router.push('/info/scheme-of-price');
     },
+    onClickMethod(method) {
+      this.chosedMethod = method;
+    },
     async getPaymentDigital(orderUid, customerUid) {
       const { OrderService } = this;
       this.isLoadingPayment = true;
@@ -243,6 +264,7 @@ export default {
             }
           } else {
             this.orderData = newOrder;
+            console.log(this.orderData);
             this.totalPayment = rest.provider.package.variant.grandTotal;
           }
         } else {
@@ -265,6 +287,7 @@ export default {
         }
         console.log(error);
       }
+
       this.isLoadingPayment = false;
     },
     async onCheckedOrder(order, index) {
@@ -359,6 +382,13 @@ export default {
         },
       });
     },
+    clickPayment(paymentMethod) {
+      if (paymentMethod === 1) {
+        this.createInvoice();
+      } else if (paymentMethod === 2) {
+        this.manualPayment();
+      }
+    },
     async getDetailVariant(data) {
       this.OpenCloseModalDuration();
       this.isLoadingVariant = true;
@@ -410,3 +440,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.box-payment {
+  background: #ffffff;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+}
+</style>

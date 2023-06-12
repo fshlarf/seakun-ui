@@ -1,16 +1,21 @@
 <template>
   <Modal :is-show="showModal" @onClose="onClose" size="xl:w-2/6">
     <template v-slot:header>
-      <div class="font-bold text-lg">Ubah Durasi Berlangganan</div>
+      <div class="font-bold md:text-[26px] tn:text-sm">
+        Ubah Durasi Berlangganan
+      </div>
     </template>
-    <div class="flex items-center space-x-2 mb-8">
+    <div class="flex items-center justify-between bg-[#F8F9FC] rounded-lg">
       <img
         :src="`/images/product/brand/${orderData.packageName}.png`"
         alt="provider brand"
-        class="w-20 h-auto"
+        class="w-20 h-auto m-3"
       />
-      <p class="text-base font-bold ml-2">{{ orderData.orderNumber }}</p>
+      <p class="md:text-base tn:text-xs font-bold mr-[15px]">
+        {{ orderData.orderNumber }}
+      </p>
     </div>
+    <hr class="my-6 border-[1px] border-[#8DCABE] border-opacity-20" />
     <div v-if="isLoading">
       <div
         class="border rounded-xl py-3 px-6 mb-2 cursor-pointer"
@@ -32,10 +37,13 @@
         class="border-2 rounded-xl py-3 px-6 mb-2 cursor-pointer"
         @click="$emit('pickDuration', item)"
       >
-        <p v-if="item.duration === 12" class="text-lg font-normal">
+        <p
+          v-if="item.duration === 12"
+          class="md:text-lg tn:text-sm font-normal"
+        >
           1 Tahun ({{ currencyFormat(item.grandTotal) }})
         </p>
-        <p v-else class="text-lg font-normal">
+        <p v-else class="md:text-lg tn:text-sm font-normal">
           {{ item.duration }} Bulan ({{ currencyFormat(item.grandTotal) }})
         </p>
       </div>

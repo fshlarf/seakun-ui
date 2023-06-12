@@ -2,6 +2,11 @@
   <div>
     <ProductHighLightLoading v-if="isLoading" />
     <div v-else v-for="(order, index) in orderData" :key="index">
+      <p
+        class="md:text-lg tn:text-sm font-bold md:mt-8 tn:mt-5 tn:mb-3 md:mb-5"
+      >
+        Detail Pesanan
+      </p>
       <template v-if="order.provider.slug === 'sekurban'">
         <SekurbanOrderCard class="tn:!mt-6" :sekurban="order" />
       </template>

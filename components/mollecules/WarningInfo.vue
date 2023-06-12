@@ -1,7 +1,9 @@
 <template>
-  <div :class="`bg-red-100 rounded-xl p-3`">
-    <div class="flex justify-center gap-3 items-center">
-      <div class="">
+  <div
+    :class="`bg-red-100 rounded-xl p-3 border-[#FE4752] border-opacity-20 border-[1px]`"
+  >
+    <div class="flex justify-center gap-3">
+      <div class="md:w-auto tn:w-4">
         <svg
           width="24"
           height="24"
@@ -42,5 +44,8 @@ export default {
 }
 .alert-text {
   color: #ffc801;
+}
+body {
+  font-family: 'DM Sans', sans-serif !important;
 }
 </style>

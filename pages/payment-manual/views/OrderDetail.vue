@@ -1,19 +1,43 @@
 <template>
   <div>
     <div
-      class="flex-1 flex-column p-3 rounded border-l-4 border-green-seakun bg-white"
+      class="flex-1 flex-column md:pl-6 md:py-5 tn:pl-4 tn:py-3 rounded-lg border-l-4 border-green-seakun bg-[#F4FDFA] bg-opacity-50"
     >
-      <p class="text-lg font-bold">Detail Pemesan</p>
-      <div class="my-3 border-b border-[#E5E5E5]" />
+      <p class="text-xl font-bold">Detail Pemesan</p>
+      <div
+        class="md:my-4 tn:my-2 border-b border-[#8DCABE] border-opacity-20"
+      />
       <div v-if="isLoading">
         <p class="shimmer w-5/12"></p>
         <p class="shimmer w-9/12 my-2"></p>
         <p class="shimmer w-8/12"></p>
       </div>
       <div v-else>
-        <p class="text-base font-bold">{{ orderDetail.name }}</p>
-        <p class="my-2 text-base font-normal">{{ orderDetail.phone }}</p>
-        <p class="text-base font-normal">{{ orderDetail.email }}</p>
+        <div class="flex gap-2 items-center">
+          <img
+            src="/images/product/brand/order/icon/user.svg"
+            alt="icon-user"
+          />
+          <p class="text-base font-bold">{{ orderDetail.name }}</p>
+        </div>
+        <div class="flex gap-2 items-center">
+          <img
+            src="/images/product/brand/order/icon/phone.svg"
+            alt="icon-phone"
+          />
+
+          <p class="my-2 text-base font-normal">
+            {{ orderDetail.phone }}
+          </p>
+        </div>
+        <div class="flex gap-2 items-center">
+          <img
+            src="/images/product/brand/order/icon/email.svg"
+            alt="icon-email"
+          />
+
+          <p class="text-base font-normal">{{ orderDetail.email }}</p>
+        </div>
       </div>
     </div>
   </div>

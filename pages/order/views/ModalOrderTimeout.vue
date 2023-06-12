@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     message() {
-      return `Halo admin, saya terkendala dalam memesan melalui web seakun. Mohon dibantu ya. \nPaket: ${this.dataOrder.package} \nNama: ${this.dataOrder.fullName} \nEmail: ${this.dataOrder.email} \nNo whatsapp: ${this.dataOrder.phoneNumber}`;
+      return `Halo admin, saya terkendala dalam memesan melalui web seakun. Mohon dibantu ya. \nPaket: ${this.dataOrder.provider} - ${this.dataOrder.package} \nNama: ${this.dataOrder.fullName} \nEmail: ${this.dataOrder.email} \nNo whatsapp: ${this.dataOrder.phoneNumber}`;
     },
   },
   methods: {

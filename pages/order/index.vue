@@ -1,30 +1,80 @@
 <template>
-  <div class="max-w-2xl w-full mx-auto pt-4 px-4">
+  <div
+    id="page-order"
+    class="lg:max-w-[850px] md:max-w-2xl md:mx-auto md:py-[46px] md:px-[50px] md:rounded-[20px] tn:w-full tn:px-[16px] tn:py-[35px] md:my-32"
+  >
     <div class="">
+      <div
+        v-if="providerSlug === 'sekurban'"
+        role="button"
+        @click="toHomePage()"
+        class="mb-8 md:block tn:hidden"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 16L0 8L8 0L9.425 1.4L3.825 7H16V9H3.825L9.425 14.6L8 16Z"
+            fill="#A0A3BD"
+          />
+        </svg>
+      </div>
       <h2
         v-if="providerSlug === 'sekurban'"
-        class="md:text-2xl tn:text-lg font-bold text-secondary"
+        class="md:text-[26px] tn:text-base font-bold"
       >
-        Daftar Peserta Kurban
+        Daftar Peserta Qurban
       </h2>
-      <h2 v-else class="md:text-2xl tn:text-lg font-bold">Pesanan</h2>
-      <p class="md:text-lg tn:text-base tn:mt-1 md:mt-3">
+      <h2
+        v-else
+        class="md:text-[26px] tn:text-base font-bold md:text-[#363636] tn:text-[#417465]"
+      >
+        Pesanan
+      </h2>
+      <p
+        class="md:text-base tn:text-xs tn:mb-[2px] md:mb-4 text-[#2D2D2D] text-opacity-80"
+      >
         Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
       </p>
+      <hr
+        v-if="providerSlug === 'sekurban'"
+        class="mt-4 md:border-[#EFEFEF] md:block tn:hidden"
+      />
     </div>
-    <div
-      class="flex justify-between items-center tn:mt-4 md:mt-8 tn:mb-2 md:mb-4"
-    >
-      <p class="md:text-xl tn:text-lg font-bold">Produk yang dipesan</p>
+    <div class="flex justify-between items-center">
+      <p
+        v-if="providerSlug === 'sekurban'"
+        class="md:text-xl tn:text-xs font-bold md:mt-[36px] md:mb-3 tn:mt-5 tn:mb-2"
+      >
+        Produk yang dipesan
+      </p>
+
+      <p
+        v-else
+        class="md:text-xl tn:text-sm text-[#2D2D2D] font-bold tn:mt-[20px] md:mt-[43px] md:mb-[27.5px] tn:mb-3"
+      >
+        Detail Pesanan
+      </p>
       <p
         v-if="!providerList.loading && providerSlug !== 'sekurban'"
-        class="md:text-sm tn:text-base text-green-seakun cursor-pointer"
+        class="sm:text-sm sm:block hidden text-green-seakun cursor-pointer"
         @click="onClickChangePacket"
       >
         Ubah Paket
       </p>
     </div>
-    <div>
+    <div class="relative">
+      <p
+        v-if="!providerList.loading && providerSlug !== 'sekurban'"
+        class="absolute top-[158px] right-[18px] z-10 text-xs sm:hidden text-white bg-[#8DCABE] p-2 rounded cursor-pointer"
+        @click="onClickChangePacket"
+      >
+        Ubah Durasi
+      </p>
       <ProductHighLightLoading
         v-if="dataListVariant.loading"
         class="tn:mt-3 md:mt-4"
@@ -37,8 +87,8 @@
         :data-variant="dataCardVariant"
         :is-loading="dataListVariant.loading"
       />
-      <div v-if="providerSlug !== 'sekurban'" class="mt-4">
-        <p class="pb-1 tn:text-sm">Pilih Masa Berlangganan</p>
+      <div v-if="providerSlug !== 'sekurban'" class="md:mt-9 tn:mt-[20px]">
+        <p class="pb-2 tn:text-sm">Pilih Masa Berlangganan</p>
         <ButtonDrop
           :btnText="dataCardVariant.buttonText"
           :disabled="dataListVariant.list && dataListVariant.list.length <= 0"
@@ -53,94 +103,122 @@
         </div>
       </div>
     </div>
-    <div v-if="providerRules" class="pt-4">
+    <div v-if="providerRules" class="md:pt-9 tn:pt-[20px]">
       <WarningInfo class="w-full" :text="providerRules" />
     </div>
-    <div class="mt-6 pt-2">
-      <h2 class="md:text-xl tn:text-lg font-bold">Informasi Pengguna</h2>
-    </div>
-    <div class="order-form">
-      <InputForm
-        label="Nama lengkap"
-        placeholder="Masukkan nama"
-        class="tn:mt-2 md:mt-4"
-        v-model="userName"
-        id="name"
-        @change="setLocalStorage('name')"
-        @keyup="validationForm('fullname')"
-        :error="errorForm.name"
-      />
-      <InputForm
-        label="Email"
-        class="mt-4"
-        placeholder="Masukkan email"
-        :error="errorForm.email"
-        v-model="email"
-        id="email"
-        @change="setLocalStorage('email')"
-        @keyup="validationForm('userEmail')"
-      />
-      <div class="mt-4">
-        <p class="pb-1 tn:text-sm">
-          Nomor whatsapp (Pastikan nomor sudah benar dan aktif)
-        </p>
-        <div class="grid grid-cols-8 gap-2 items-center">
-          <div class="col-span-2">
-            <ButtonDrop
-              :btnText="codeNumber"
-              @click="isShowCodeNumber = !isShowCodeNumber"
-            />
-          </div>
-          <div class="col-span-6">
-            <InputForm
-              placeholder="Masukkan nomor whatsapp"
-              v-model="phoneNumber"
-              :error="errorForm.phoneNumber"
-              id="phone"
-              @change="setLocalStorage('phone')"
-              @keyup="validationForm('userPhone')"
-            />
-          </div>
-        </div>
-        <div class="w-9/12 mt-1">
-          <DropdownCodeNumber
-            :dataList="internationalPhoneNumbers"
-            :show="isShowCodeNumber"
-            @onClikcItem="onClickItemCodeNumber"
-          />
-        </div>
+    <div
+      class="md:bg-white tn:rounded-[10px] tn:px-[6px] md:px-0 md:mt-[36px] tn:mt-[20px]"
+      :class="`${
+        providerSlug !== 'sekurban'
+          ? 'tn:bg-[#EEF3FC] tn:bg-opacity-80'
+          : 'tn:bg-white'
+      }`"
+    >
+      <div v-if="providerSlug !== 'sekurban'" class="md:mt-9 tn:mt-3 mb-[20px]">
+        <h2 class="md:text-xl tn:text-lg font-bold tn:pt-[12px] md:pt-0">
+          Informasi Pengguna
+        </h2>
       </div>
-
-      <div class="flex items-center space-x-2 tn:mt-3 tn:mt-6">
-        <div class="cursor-pointer w-[24px]" @click="isAgreeTos = !isAgreeTos">
-          <CheckedBox v-if="isAgreeTos" />
-          <UncheckBox v-else />
+      <div class="order-form">
+        <InputForm
+          label="Nama lengkap"
+          placeholder="Masukkan nama"
+          v-model="userName"
+          id="name"
+          @change="setLocalStorage('name')"
+          @keyup="validationForm('fullname')"
+          :error="errorForm.name"
+        />
+        <InputForm
+          label="Email"
+          class="mt-[20px]"
+          placeholder="Masukkan email"
+          :error="errorForm.email"
+          v-model="email"
+          id="email"
+          @change="setLocalStorage('email')"
+          @keyup="validationForm('userEmail')"
+        />
+        <div class="mt-4">
+          <p class="pb-1 tn:text-sm">
+            Nomor whatsapp (Pastikan nomor sudah benar dan aktif)
+          </p>
+          <div class="flex gap-3 items-center">
+            <div class="md:w-[93px] tn:w-[115px]">
+              <ButtonDrop
+                :btnText="codeNumber"
+                @click="isShowCodeNumber = !isShowCodeNumber"
+              />
+            </div>
+            <div class="w-full">
+              <InputForm
+                placeholder="Masukkan nomor whatsapp"
+                v-model="phoneNumber"
+                :error="errorForm.phoneNumber"
+                id="phone"
+                @change="setLocalStorage('phone')"
+                @keyup="validationForm('userPhone')"
+              />
+            </div>
+          </div>
+          <div class="w-9/12 mt-1">
+            <DropdownCodeNumber
+              :dataList="internationalPhoneNumbers"
+              :show="isShowCodeNumber"
+              @onClikcItem="onClickItemCodeNumber"
+            />
+          </div>
         </div>
-        <p class="tn:text-sm md:text-base">
-          Menyetujui
-          <a class="text-green-seakun ml-0" href="/terms-of-use" target="_blank"
-            >aturan</a
+
+        <div class="flex items-center space-x-2 md:mt-9 tn:mt-[25px]">
+          <div
+            class="cursor-pointer w-[24px]"
+            @click="isAgreeTos = !isAgreeTos"
           >
-          yang dibuat oleh Seakun.id
-        </p>
+            <CheckedBox v-if="isAgreeTos" />
+            <UncheckBox v-else />
+          </div>
+          <p class="tn:text-sm md:text-base">
+            Menyetujui
+            <a
+              class="text-green-seakun ml-0"
+              href="/terms-of-use"
+              target="_blank"
+              >aturan</a
+            >
+            yang dibuat oleh Seakun.id
+          </p>
+        </div>
+        <hr
+          v-if="providerSlug === 'sekurban'"
+          class="my-9 border-[#EFEFEF] tn:hidden md:block"
+        />
+        <Button
+          v-if="providerSlug === 'sekurban'"
+          :disabled="!isAgreeTos"
+          @click="onClickConfirmData"
+          class="w-full bg-green-seakun text-white py-3 tn:mb-4 md:mb-0 tn:mt-5 md:mt-0"
+          label="Lanjutkan"
+          :is-loading="isLoadingCreateOrder"
+        />
+        <Button
+          v-else
+          :disabled="!isAgreeTos"
+          @click="onClickConfirmData"
+          class="w-full bg-green-seakun text-white py-3 tn:mt-3 tn:mb-4 md:mb-0 md:mt-9"
+          label="Konfirmasi pesanan"
+          :is-loading="isLoadingCreateOrder"
+        />
+
+        <ModalPackages
+          :is-show="isShowModalPackages"
+          :provider="selectedProvider"
+          :slug="selectedProvider.slug"
+          :is-loading="dataListVariant.loading"
+          @onClose="onCloseModalPackages"
+          @choosePacket="selectVariant"
+        />
       </div>
-
-      <Button
-        :disabled="!isAgreeTos"
-        @click="onClickConfirmData"
-        class="w-full bg-green-seakun text-white py-3 tn:mt-3 md:mt-4"
-        label="Konfirmasi pesanan"
-        :is-loading="isLoadingCreateOrder"
-      />
-
-      <ModalPackages
-        :is-show="isShowModalPackages"
-        :provider="selectedProvider"
-        :slug="selectedProvider.slug"
-        :is-loading="dataListVariant.loading"
-        @onClose="onCloseModalPackages"
-        @choosePacket="selectVariant"
-      />
     </div>
 
     <ModalDataConfirmation
@@ -314,6 +392,9 @@ export default {
       setModalOrderTimeout: 'setModalOrderTimeout',
       createOrder: 'createOrder',
     }),
+    toHomePage() {
+      this.$router.push('/sekurban');
+    },
     setProviderRules(provider) {
       if (provider === 'spotify') {
         this.providerRules =
@@ -627,5 +708,13 @@ export default {
       fill: rgba(107, 114, 128, var(--tw-text-opacity));
     }
   }
+}
+#page-order {
+  background: #ffff;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'DM Sans', sans-serif !important;
+}
+body {
+  background: rgba(239, 239, 239, 0.1);
 }
 </style>

@@ -55,6 +55,7 @@ export const state = () => ({
   },
   dataCardVariant: {
     providerSlug: '',
+    providerName: '',
     packageName: '',
     packageDetail: '',
     grandTotal: '',
@@ -64,6 +65,7 @@ export const state = () => ({
     isHost: 0,
   },
   dataHelperOrder: {
+    provider: '',
     package: '',
     fullName: '',
     email: '',
@@ -250,7 +252,7 @@ export const mutations = {
     state.dataHelperOrder = {
       ...state.dataHelperOrder,
       provider: data.provider,
-      variant: data.variant,
+      package: data.package,
       fullName: data.fullName,
       email: data.email,
       phoneNumber: data.phoneNumber,
@@ -465,7 +467,8 @@ export const actions = {
         const dataCard = {
           ...state.dataCardVariant,
           providerSlug: state.selectedParam.providerSlug,
-          packageName: `${selectedVariant.providerName} - ${selectedVariant.packageName}`,
+          providerName: selectedVariant.providerName,
+          packageName: selectedVariant.packageName,
           packageDetail: `${
             selectedVariant.duration === 12
               ? `${totalRupiah} / 1 tahun`
@@ -520,6 +523,7 @@ export const actions = {
       }
       if (error.message.includes('20000ms')) {
         const dataHelpOrder = {
+          provider: state.dataCardVariant.providerName,
           package: state.dataCardVariant.packageName,
           fullName: params.name,
           email: params.email,

@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="payment-method__options grid grid-cols-2 tn:gap-3 md:gap-4 px-4 py-6"
-  >
+  <div class="payment-method__options grid grid-cols-2 tn:gap-3 md:gap-4 py-6">
     <CardShimmer />
     <CardShimmer />
   </div>

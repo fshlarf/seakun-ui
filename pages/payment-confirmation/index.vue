@@ -1,40 +1,47 @@
 <template>
-  <div
-    class="container tn:bg-white md:bg-transparent w-full mx-auto md:pt-4 tn:-mb-12 md:mb-0"
-  >
+  <div class="md:py-[91px]">
     <div
-      class="wrapper-form w-full bg-white mx-auto xl:max-w-2xl md:rounded-3xl md:shadow-xl py-4 tn:px-3 md:px-5"
+      class="box-shadow lg:max-w-[850px] md:max-w-2xl w-full mx-auto md:px-[50px] tn:px-4 md:py-[34px] tn:py-[27px] md:rounded-[20px]"
     >
       <div class="header-confirmation">
-        <h3 class="font-bold text-2xl">Konfirmasi & Upload Bukti Pembayaran</h3>
-        <p class="my-2 text-sm">
+        <h3
+          class="font-bold md:text-[26px] tn:text-base md:text-[#363636] tn:text-[#417465]"
+        >
+          Konfirmasi & Upload Bukti Pembayaran
+        </h3>
+        <p
+          class="md:mt-4 tn:mt-[2px] md:text-base tn:text-[10px] text-[#2D2D2D] opacity-80"
+        >
           Silakan isi terlebih dahulu sebelum melakukan pemesanan
         </p>
         <div
           v-if="orderNumber"
-          class="order-code bg-green-seakun-secondary w-full rounded-lg mt-2 px-4 pt-3 pb-1"
+          class="order-code bg-green-seakun-secondary w-full rounded-[10px] md:mt-9 tn:mt-6 tn:px-3 md:px-6 pt-[18px] pb-[13px]"
         >
           <div
             v-for="(item, index) in orderData"
             :key="index"
             class="flex justify-between"
           >
-            <p v-if="orderData.length > 1" class="order-code__label mb-2">
+            <p v-if="orderData.length > 1" class="order-code__label">
               Kode pemesanan {{ index + 1 }}
             </p>
-            <p v-else class="order-code__label mb-2">Kode pemesanan</p>
-            <p class="order-code__code text-green-seakun-dark font-bold">
+            <p v-else class="order-code__label tn:text-xs md:text-base">
+              Kode pemesanan
+            </p>
+            <p
+              class="order-code__code text-green-seakun-dark tn:text-xs md:text-base font-bold"
+            >
               {{ item.orderNumber }}
             </p>
           </div>
         </div>
       </div>
-      <div class="form-confirmation mt-7">
+      <div class="form-confirmation tn:mt-6 md:mt-9">
         <div>
-          <div class="mt-4">
+          <div class="">
             <InputForm
               label="Sumber Transfer (Bank / Ewallet)"
-              class="mt-4"
               placeholder="Pilih bank yang kamu gunakan"
               v-model="bankCustomer"
               :value="bankCustomer"
@@ -73,8 +80,8 @@
           />
         </div>
 
-        <div class="mt-4">
-          <p class="pb-1 tn:text-sm">Tujuan Pembayaran</p>
+        <div class="tn:mt-5 md:mt-4">
+          <p class="pb-2 tn:text-sm">Tujuan Pembayaran</p>
           <ButtonDrop
             :btnText="bankSeakun"
             @click="showPaymentList('bankDirection')"
@@ -94,12 +101,12 @@
           </div>
         </div>
 
-        <div class="my-4">
+        <div class="tn:mt-5 md:mt-4">
           <InputForm
             label="Nominal Pembayaran"
             v-model="nominal"
             :value="nominal"
-            class="text-grey-400 mt-4"
+            class="text-grey-400"
             @keyup="validateInput('nominal')"
             :error="errorForm.nominal"
           />
@@ -107,12 +114,13 @@
 
         <InputForm
           label="Nama Pemilik Rekening"
+          class="tn:mt-5 md:mt-4"
           placeholder="Masukan Nama Pemilik Rekening"
           v-model="userName"
           @keyup="validateInput('userName')"
           :error="errorForm.userName"
         />
-        <div class="my-4">
+        <div class="tn:mt-5 md:mt-4">
           <p class="text-sm mb-2">Tanggal Pembayaran</p>
           <DatePicker
             class="datepicker"
@@ -131,6 +139,7 @@
 
         <UploadPayment
           v-model="photoUrl"
+          class="tn:mt-5 md:mt-4"
           label="Upload Pembayaran"
           name="paymetNote"
           id="payment-img"
@@ -176,8 +185,8 @@
         </div>
 
         <Button
-          class="w-full bg-green-seakun text-white py-2 mb-2"
-          label="Konfirmasi"
+          class="w-full bg-green-seakun text-white mb-2 md:mt-8"
+          label="Simpan"
           :is-loading="isLoadingSubmit"
           @click="clickSubmit"
         />
@@ -768,5 +777,10 @@ export default {
 
 .block {
   display: block !important;
+}
+
+.box-shadow {
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'DM Sans', sans-serif !important;
 }
 </style>

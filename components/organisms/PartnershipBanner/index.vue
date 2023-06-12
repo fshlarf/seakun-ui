@@ -1,5 +1,5 @@
 <template>
-  <div class="tn:py-[24px] md:py-[33px] bg-[#E9FAF5] -mb-12">
+  <div class="tn:py-[24px] md:py-[33px] bg-[#E9FAF5]">
     <div
       class="tn:px-6 md:container md:flex md:justify-between md:items-center"
     >

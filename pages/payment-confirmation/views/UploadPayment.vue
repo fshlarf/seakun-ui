@@ -1,7 +1,7 @@
 <template>
-  <div class="mb-4">
-    <div>
-      <p>{{ label }}</p>
+  <div class="">
+    <div class="tn:mb-[11px] md:mb-2">
+      <p class="tn:text-base">{{ label }}</p>
     </div>
     <!-- <label v-if="label" class="block text-gray-700 text-sm mb-2" :for="name">
         {{label}}
@@ -17,10 +17,10 @@
       hidden
     />
     <label
-      class="label-upload w-full py-3 px-4 text-center text-gray-500"
+      class="label-upload w-full py-3 px-[13px] text-center text-[#A0A3BD]"
       :for="name"
-    >
-      <span><UploadIcon /></span> Bukti Pembayaran
+      ><UploadIcon />
+      <span class="tn:text-xs">Unggah bukti pembayaran</span>
     </label>
 
     <p v-if="error.isError" class="text-red-500 text-xs italic">
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import UploadIcon from '~/assets/images/icon/upload.svg?inline';
+import UploadIcon from '~/assets/images/icon/upload-new.svg?inline';
 
 export default {
   name: 'Input',
@@ -81,7 +81,6 @@ export default {
 <style lang="scss" scoped>
 .form-content {
   svg {
-    width: 16px;
     height: auto;
     fill: #a0a3bd;
   }
@@ -96,13 +95,11 @@ export default {
   font-family: sans-serif;
   border-radius: 0.3rem;
   cursor: pointer;
-  margin-top: 1rem;
   border: 1px #a0a3bd dashed;
 
   svg {
     fill: #a0a3bd;
     display: inline-block;
-    width: 18px;
     height: auto;
     margin-right: 12px;
   }
