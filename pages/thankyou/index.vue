@@ -1,24 +1,26 @@
 <template>
-  <div
-    class="thankyou max-w-2xl w-full mx-auto md:pt-12 tn:pt-[21px] tn:-mb-4 md:mb-0"
-  >
+  <div class="thankyou max-w-2xl w-full mx-auto md:pt-12 tn:-mb-4 md:mb-0">
     <!-- <img
       class="w-full tn:hidden md:block cursor-pointer"
       src="/images/ramadan-gift/thankyou2.webp"
       alt="thr banner"
       @click="toThrPage"
     /> -->
-    <div class="tn:px-4 md:px-0">
+    <img
+      @click="toSekurbanPage"
+      src="/images/thankyou/sequrban-banner-website.png"
+      alt="sequrban banner"
+      class="cursor-pointer tn:hidden md:block"
+    />
+    <div
+      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full tn:pt-[21px] md:pt-7 md:mt-7"
+    >
       <img
         @click="toSekurbanPage"
-        src="/images/thankyou/sekurban-banner.png"
+        src="/images/thankyou/sequrban-banner-mobile.png"
         alt="sequrban banner"
-        class="rounded-[20px] cursor-pointer"
+        class="cursor-pointer md:hidden w-full mb-7"
       />
-    </div>
-    <div
-      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full tn:pt-7 md:mt-7"
-    >
       <!-- <img
         class="w-full md:hidden tn:mb-6 cursor-pointer"
         src="/images/ramadan-gift/thankyou-mobile.webp"
