@@ -1,5 +1,7 @@
 <template>
-  <div class="thankyou max-w-2xl w-full mx-auto md:pt-12 tn:-mb-4 md:mb-0">
+  <div
+    class="thankyou max-w-2xl w-full mx-auto tn:pt-6 md:pt-12 tn:-mb-4 md:mb-0"
+  >
     <!-- <img
       class="w-full tn:hidden md:block cursor-pointer"
       src="/images/ramadan-gift/thankyou2.webp"
@@ -13,7 +15,7 @@
       class="cursor-pointer tn:hidden md:block"
     />
     <div
-      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full tn:pt-[21px] md:pt-7 md:mt-7"
+      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full md:pt-7 md:mt-7"
     >
       <img
         @click="toSekurbanPage"
@@ -82,17 +84,13 @@
         </template>
       </div>
 
-      <div
-        class="bg-[#E9FAF5] bg-opacity-50 md:mt-9 md:py-[21px] border-[1px] border-[#8DCABE] border-opacity-10 rounded-[10px]"
-      >
-        <p class="text-center md:text-base font-bold text-[#000000]">
-          Total transfer
+      <p class="tn:my-1 md:my-2 text-center tn:mt-8 md:mt-10 text-gray-500">
+        Total transfer
+      </p>
+      <div class="text-center">
+        <p class="tn:text-2xl md:text-3xl font-semibold">
+          {{ currencyFormat(dataDetailOrder.transferAmount) }}
         </p>
-        <div class="text-center">
-          <p class="tn:text-2xl md:text-3xl font-semibold">
-            {{ currencyFormat(dataDetailOrder.transferAmount) }}
-          </p>
-        </div>
       </div>
 
       <div

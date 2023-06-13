@@ -1,5 +1,7 @@
 <template>
-  <div class="thankyou max-w-2xl w-full mx-auto md:pt-4 tn:-mb-4 md:mb-0">
+  <div
+    class="thankyou max-w-2xl w-full mx-auto tn:pt-6 md:pt-12 tn:-mb-4 md:mb-0"
+  >
     <!-- <img
       class="w-full tn:hidden md:block cursor-pointer"
       src="/images/ramadan-gift/thankyou2.webp"
@@ -13,7 +15,7 @@
       class="cursor-pointer tn:hidden md:block"
     />
     <div
-      class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full tn:pt-3 md:mt-4"
+      class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full md:mt-4"
     >
       <img
         @click="toSekurbanPage"
