@@ -1,14 +1,28 @@
 <template>
-  <div class="thankyou max-w-2xl w-full mx-auto md:pt-4 tn:-mb-4 md:mb-0">
+  <div
+    class="thankyou max-w-2xl w-full mx-auto tn:pt-6 md:pt-12 tn:-mb-4 md:mb-0"
+  >
     <!-- <img
       class="w-full tn:hidden md:block cursor-pointer"
       src="/images/ramadan-gift/thankyou2.webp"
       alt="thr banner"
       @click="toThrPage"
     /> -->
+    <img
+      @click="toSekurbanPage"
+      src="/images/thankyou/sequrban-banner-website.png"
+      alt="sequrban banner"
+      class="cursor-pointer tn:hidden md:block"
+    />
     <div
-      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full tn:pt-3 md:mt-4"
+      class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full md:pt-7 md:mt-7"
     >
+      <img
+        @click="toSekurbanPage"
+        src="/images/thankyou/sequrban-banner-mobile.png"
+        alt="sequrban banner"
+        class="cursor-pointer md:hidden w-full mb-7"
+      />
       <!-- <img
         class="w-full md:hidden tn:mb-6 cursor-pointer"
         src="/images/ramadan-gift/thankyou-mobile.webp"
@@ -155,7 +169,6 @@
           <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
             >+6282124852232</a
           >
-          jika pesanan kamu belum diproses di batas waktu proses pesanan.
         </p>
       </div>
       <Button
@@ -226,6 +239,9 @@ export default {
     // toThrPage() {
     //   this.$router.push('/thr');
     // },
+    toSekurbanPage() {
+      this.$router.push('/sekurban');
+    },
     setNameBank(bank) {
       switch (bank) {
         case 'digibank / dbs':
