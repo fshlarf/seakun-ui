@@ -6,9 +6,21 @@
       alt="thr banner"
       @click="toThrPage"
     /> -->
+    <img
+      @click="toSekurbanPage"
+      src="/images/thankyou/sequrban-banner-website.png"
+      alt="sequrban banner"
+      class="cursor-pointer tn:hidden md:block"
+    />
     <div
       class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full tn:pt-3 md:mt-4"
     >
+      <img
+        @click="toSekurbanPage"
+        src="/images/thankyou/sequrban-banner-mobile.png"
+        alt="sequrban banner"
+        class="cursor-pointer md:hidden w-full mb-7"
+      />
       <!-- <img
         class="w-full md:hidden tn:mb-6 cursor-pointer"
         src="/images/ramadan-gift/thankyou-mobile.webp"
@@ -133,6 +145,9 @@ export default {
   methods: {
     toHomePage() {
       this.$router.push('/');
+    },
+    toSekurbanPage() {
+      this.$router.push('/sekurban');
     },
     // toThrPage() {
     //   this.$router.push('/thr');
