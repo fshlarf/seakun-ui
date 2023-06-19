@@ -20,7 +20,7 @@
     <div class="md:mt-9 tn:mt-5">
       <p class="md:text-xl tn:text-xs font-bold">Pilih Tipe Pembayaran</p>
       <div
-        class="grid grid-cols-2 gap-[24px] md:mt-4 tn:mt-2 w-auto sm:h-[172px] tn:h-20"
+        class="grid grid-cols-2 gap-[24px] md:mt-4 tn:mt-2 w-auto sm:h-[172px] tn:h-20 cursor-pointer"
       >
         <div
           @click="onClickMethod(1)"

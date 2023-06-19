@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:pt-10 w-full">
+  <div class="md:py-[91px]">
     <div
       class="tn:w-full lg:w-[780px] mx-auto md:px-[75px] lg:pb-20 lg:rounded-3xl lg:shadow-2xl"
     >
@@ -103,6 +103,7 @@
 import OrderCard from '../views/order-card';
 import Button from '~/components/atoms/Button';
 import { mapGetters, mapActions } from 'vuex';
+import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 
 export default {
   name: 'PreOrderPage',
@@ -110,6 +111,7 @@ export default {
   components: {
     OrderCard,
     Button,
+    ProductHighLightLoading,
   },
   computed: {
     ...mapGetters({

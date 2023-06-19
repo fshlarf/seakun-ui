@@ -1,14 +1,14 @@
 <template>
   <div
     id="page-order"
-    class="lg:max-w-[850px] md:max-w-2xl md:mx-auto md:py-[46px] md:px-[50px] md:rounded-[20px] tn:w-full tn:px-[16px] tn:py-[35px] md:my-32"
+    class="lg:max-w-[850px] md:max-w-2xl md:mx-auto md:pl-[50px] md:pr-[50px] md:rounded-[20px] tn:w-full tn:pl-[16px] tn:pr-[14px] md:my-32 tn:pb-5 md:pb-0"
   >
     <div class="">
       <div
         v-if="providerSlug === 'sekurban'"
         role="button"
         @click="toHomePage()"
-        class="mb-8 md:block tn:hidden"
+        class="mb-8 md:pt-[29px] md:block tn:hidden"
       >
         <svg
           width="16"
@@ -23,49 +23,52 @@
           />
         </svg>
       </div>
-      <h2
-        v-if="providerSlug === 'sekurban'"
-        class="md:text-[26px] tn:text-base font-bold"
-      >
-        Daftar Peserta Qurban
-      </h2>
-      <h2
-        v-else
-        class="md:text-[26px] tn:text-base font-bold md:text-[#363636] tn:text-[#417465]"
-      >
-        Pesanan
-      </h2>
-      <p
-        class="md:text-base tn:text-xs tn:mb-[2px] md:mb-4 text-[#2D2D2D] text-opacity-80"
-      >
-        Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
-      </p>
+      <div v-if="providerSlug === 'sekurban'">
+        <h2
+          class="md:text-[26px] tn:pt-5 md:pt-0 tn:text-base md:pb-1 font-bold text-black"
+        >
+          Daftar Peserta Qurban
+        </h2>
+        <p class="md:text-base tn:text-[10px] text-[#2D2D2D] text-opacity-80">
+          Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
+        </p>
+      </div>
+      <div v-else>
+        <h2
+          class="md:text-[26px] tn:text-base md:pt-[46px] md:pb-4 tn:pt-[35px] font-bold md:text-[#363636] tn:text-[#417465]"
+        >
+          Pesanan
+        </h2>
+        <p class="md:text-base tn:text-xs text-[#2D2D2D] text-opacity-80">
+          Silahkan isi terlebih dahulu sebelum melakukan pemesanan.
+        </p>
+      </div>
       <hr
         v-if="providerSlug === 'sekurban'"
         class="mt-4 md:border-[#EFEFEF] md:block tn:hidden"
       />
     </div>
-    <div class="flex justify-between items-center">
-      <p
+    <div class="">
+      <div
         v-if="providerSlug === 'sekurban'"
-        class="md:text-xl tn:text-xs font-bold md:mt-[36px] md:mb-3 tn:mt-5 tn:mb-2"
+        class="md:text-xl tn:text-xs font-bold md:mt-[32px] md:mb-3 tn:mt-5 tn:mb-2"
       >
         Produk yang dipesan
-      </p>
-
-      <p
+      </div>
+      <div
         v-else
-        class="md:text-xl tn:text-sm text-[#2D2D2D] font-bold tn:mt-[20px] md:mt-[43px] md:mb-[27.5px] tn:mb-3"
+        class="flex justify-between items-center tn:mt-[20px] md:mt-[43.5px] md:mb-[27.5px] tn:mb-3"
       >
-        Detail Pesanan
-      </p>
-      <p
-        v-if="!providerList.loading && providerSlug !== 'sekurban'"
-        class="sm:text-sm sm:block hidden text-green-seakun cursor-pointer"
-        @click="onClickChangePacket"
-      >
-        Ubah Paket
-      </p>
+        <p class="md:text-xl tn:text-sm text-[#2D2D2D] font-bold">
+          Detail Pesanan
+        </p>
+        <p
+          class="sm:text-sm sm:block hidden text-green-seakun cursor-pointer md:pr-4"
+          @click="onClickChangePacket"
+        >
+          Ubah Paket
+        </p>
+      </div>
     </div>
     <div class="relative">
       <p
@@ -107,22 +110,20 @@
       <WarningInfo class="w-full" :text="providerRules" />
     </div>
     <div
-      class="md:bg-white tn:rounded-[10px] tn:px-[6px] md:px-0 md:mt-[36px] tn:mt-[20px]"
+      class="md:bg-white md:border-none tn:rounded-[10px] tn:px-[6px] md:px-0 md:mt-[36px] tn:mt-[20px]"
       :class="`${
         providerSlug !== 'sekurban'
-          ? 'tn:bg-[#EEF3FC] tn:bg-opacity-80'
-          : 'tn:bg-white'
+          ? 'tn:bg-[#F5F8FD] tn:border-[1px] tn:border-[#EEF3FC]'
+          : 'tn:bg-white tn:border-none'
       }`"
     >
       <div v-if="providerSlug !== 'sekurban'" class="md:mt-9 tn:mt-3 mb-[20px]">
-        <h2 class="md:text-xl tn:text-lg font-bold tn:pt-[12px] md:pt-0">
-          Informasi Pengguna
-        </h2>
+        <h2 class="md:text-xl tn:text-lg font-bold">Informasi Pengguna</h2>
       </div>
       <div class="order-form">
         <InputForm
           label="Nama lengkap"
-          placeholder="Masukkan nama"
+          placeholder="Tulis namamu di sini"
           v-model="userName"
           id="name"
           @change="setLocalStorage('name')"
@@ -132,7 +133,7 @@
         <InputForm
           label="Email"
           class="mt-[20px]"
-          placeholder="Masukkan email"
+          placeholder="Tulis alamat email"
           :error="errorForm.email"
           v-model="email"
           id="email"
@@ -152,7 +153,7 @@
             </div>
             <div class="w-full">
               <InputForm
-                placeholder="Masukkan nomor whatsapp"
+                placeholder="Masukkan nomor teleponmu"
                 v-model="phoneNumber"
                 :error="errorForm.phoneNumber"
                 id="phone"
@@ -171,14 +172,20 @@
         </div>
 
         <div class="flex items-center space-x-2 md:mt-9 tn:mt-[25px]">
-          <div
-            class="cursor-pointer w-[24px]"
-            @click="isAgreeTos = !isAgreeTos"
-          >
-            <CheckedBox v-if="isAgreeTos" />
-            <UncheckBox v-else />
+          <div class="cursor-pointer w-auto" @click="isAgreeTos = !isAgreeTos">
+            <CheckedBox v-if="isAgreeTos" class="md:w-full tn:w-4" />
+            <UncheckBox v-else class="md:w-full tn:w-4" />
           </div>
-          <p class="tn:text-sm md:text-base">
+          <p v-if="providerSlug === 'sekurban'" class="tn:text-xs md:text-base">
+            Menyetujui aturan yang dibuat Seakun
+            <a
+              class="text-green-seakun ml-0"
+              href="/terms-of-use"
+              target="_blank"
+              >lihat detail</a
+            >
+          </p>
+          <p v-else class="tn:text-xs md:text-base">
             Menyetujui
             <a
               class="text-green-seakun ml-0"
@@ -197,7 +204,7 @@
           v-if="providerSlug === 'sekurban'"
           :disabled="!isAgreeTos"
           @click="onClickConfirmData"
-          class="w-full bg-green-seakun text-white py-3 tn:mb-4 md:mb-0 tn:mt-5 md:mt-0"
+          class="w-full bg-green-seakun text-white py-3 md:mb-[29px] tn:mt-5 md:mt-0"
           label="Lanjutkan"
           :is-loading="isLoadingCreateOrder"
         />
@@ -205,7 +212,7 @@
           v-else
           :disabled="!isAgreeTos"
           @click="onClickConfirmData"
-          class="w-full bg-green-seakun text-white py-3 tn:mt-3 tn:mb-4 md:mb-0 md:mt-9"
+          class="w-full bg-green-seakun text-white py-3 tn:mt-3 tn:mb-4 md:mb-[46px] md:mt-9"
           label="Konfirmasi pesanan"
           :is-loading="isLoadingCreateOrder"
         />

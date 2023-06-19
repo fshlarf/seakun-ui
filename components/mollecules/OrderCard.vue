@@ -1,14 +1,12 @@
 <template>
   <div
-    class="order-card border-[1px] md:mt-5 border-green-s bg-white rounded-xl"
+    class="order-card border-[1px] md:mt-5 tn:mt-3 border-green-s bg-white rounded-xl"
     :class="`${order.checked ? 'tn:border-primary' : 'tn:border-gray-400'}`"
   >
     <div v-if="orderData.length > 1 && checkedBox" class="relative">
       <svg
-        width="92"
-        height="52"
         viewBox="0 0 92 52"
-        class="absolute top-0 left-0 z-10"
+        class="absolute top-0 left-0 z-0 md:w-[92px] tn:w-10 h-auto"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -20,21 +18,34 @@
       </svg>
       <img
         src="/images/product/brand/order/icon/particle-card.svg"
-        alt="icon-email"
-        class="absolute top-2 right-1"
+        alt="particle card"
+        class="absolute top-2 right-1 z-0 tn:hidden md:block"
       />
-      <div class="flex justify-between bg-[#D9D9D9] rounded-t-[10px] px-[29px]">
-        <div class="flex gap-6">
-          <div @click="onChecked(order)" class="md:mt-7 md:mb-[29.5px]">
+      <img
+        src="/images/product/brand/order/icon/particle-card-mobile.svg"
+        alt="particle card"
+        class="absolute top-[10px] right-1 z-0 md:hidden"
+      />
+      <div
+        class="flex justify-between bg-[#8DCABE] bg-opacity-5 rounded-t-[10px] md:pl-[32px] md:pr-[27px] tn:pl-4 tn:pr-[17px]"
+      >
+        <div class="flex md:gap-6 tn:gap-3">
+          <div
+            @click="onChecked(order)"
+            class="md:mt-7 tn:mt-[15px] md:mb-[29.5px] tn:mb-[15px] z-20"
+          >
             <CheckedBox v-if="order.checked && !order.disable" />
             <DisableCheckbox v-else-if="order.disable" />
             <UncheckBox v-else />
           </div>
-          <div class="md:mt-7 md:mb-[29.5px] text-[#8DCABE] font-semibold">
+          <div
+            class="md:mt-7 tn:mt-[17px] md:mb-[29.5px] tn:mb-[17px] font-semibold"
+            :class="`${order.checked ? 'text-[#4BAC99]' : 'text-[#2D2D2D]'}`"
+          >
             {{ order.orderNumber }}
           </div>
         </div>
-        <div class="md:mt-[19.5px]">
+        <div class="md:mt-[19.5px] tn:mt-[11px] z-10">
           <Button
             v-if="buttonChangeDuration"
             label="Ubah Durasi"
@@ -44,9 +55,36 @@
           />
         </div>
       </div>
-      <div class="flex justify-between items-center px-[29px] md:mt-[17px]">
+      <div
+        class="relative flex justify-between items-center md:px-[29px] md:mt-[17px] tn:px-[17px] tn:mt-[14px]"
+      >
         <div>
-          <div class="flex gap-2 items-center">
+          <div
+            @click="clickInfo()"
+            class="flex gap-[9px] pl-[2px] tn:pt-[6px] md:pt-0 items-center"
+            :class="{
+              'accordion border-[#00B5D4] border-opacity-20 tn:border-[1px] tn:border-b-0 md:border-none': showInfo,
+            }"
+          >
+            <img
+              src="/images/product/brand/order/icon/info.svg"
+              alt="icon-info"
+              class="cursor-pointer w-4 md:hidden"
+            />
+            <p class="text-xs text-[#00B5D4] md:hidden">Detail Info</p>
+          </div>
+          <div
+            v-show="showInfo"
+            class="bg-[#00B5D4] md:ml-[251px] md:absolute md:top-0 right-[26px] md:mb-3 tn:mb-2 md:py-[6px] tn:px-2 md:pl-[7px] md:pr-9 tn:py-[5px] bg-opacity-20 border-[#00B5D4] border-opacity-20 border-[1px] tn:border-t-0 md:rounded-t-lg rounded-b-lg"
+          >
+            <p class="md:text-right md:text-xs tn:text-[10px] text-[#00B5D4]">
+              Jika kamu melakukan pesanan untuk orang lain, maka email ini
+              adalah email yang berbeda dengan data detail pemesan diatas. Kamu
+              bisa melakukan banyak order buat teman-teman kamu, dan juga bisa
+              melakukan pembayaran buat mereka sekaligus.
+            </p>
+          </div>
+          <div class="flex gap-2 items-center md:mt-0 tn:mt-[5px]">
             <img
               src="/images/product/brand/order/icon/email.svg"
               alt="icon-email"
@@ -55,7 +93,7 @@
               {{ order.customerEmail }}
             </p>
           </div>
-          <div class="flex gap-2 items-center md:mt-1">
+          <div class="flex gap-2 items-center md:mt-1 tn:mt-[5px]">
             <img
               src="/images/product/brand/order/icon/phone.svg"
               alt="icon-phone"
@@ -65,21 +103,18 @@
             </p>
           </div>
         </div>
-        <svg
-          width="20"
-          height="21"
-          viewBox="0 0 20 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10 15.877C10.2833 15.877 10.521 15.781 10.713 15.589C10.905 15.397 11.0007 15.1596 11 14.877V10.877C11 10.5936 10.904 10.356 10.712 10.164C10.52 9.97195 10.2827 9.87629 10 9.87695C9.71667 9.87695 9.479 9.97295 9.287 10.165C9.095 10.357 8.99933 10.5943 9 10.877V14.877C9 15.1603 9.096 15.398 9.288 15.59C9.48 15.782 9.71733 15.8776 10 15.877ZM10 7.87695C10.2833 7.87695 10.521 7.78095 10.713 7.58895C10.905 7.39695 11.0007 7.15962 11 6.87695C11 6.59362 10.904 6.35595 10.712 6.16395C10.52 5.97195 10.2827 5.87629 10 5.87695C9.71667 5.87695 9.479 5.97295 9.287 6.16495C9.095 6.35695 8.99933 6.59429 9 6.87695C9 7.16029 9.096 7.39795 9.288 7.58995C9.48 7.78195 9.71733 7.87762 10 7.87695ZM10 20.877C8.61667 20.877 7.31667 20.6143 6.1 20.089C4.88333 19.5636 3.825 18.8513 2.925 17.952C2.025 17.052 1.31267 15.9936 0.788 14.777C0.263333 13.5603 0.000666667 12.2603 0 10.877C0 9.49362 0.262667 8.19362 0.788 6.97695C1.31333 5.76029 2.02567 4.70195 2.925 3.80195C3.825 2.90195 4.88333 2.18962 6.1 1.66495C7.31667 1.14029 8.61667 0.87762 10 0.876953C11.3833 0.876953 12.6833 1.13962 13.9 1.66495C15.1167 2.19029 16.175 2.90262 17.075 3.80195C17.975 4.70195 18.6877 5.76029 19.213 6.97695C19.7383 8.19362 20.0007 9.49362 20 10.877C20 12.2603 19.7373 13.5603 19.212 14.777C18.6867 15.9936 17.9743 17.052 17.075 17.952C16.175 18.852 15.1167 19.5646 13.9 20.09C12.6833 20.6153 11.3833 20.8776 10 20.877ZM10 18.877C12.2333 18.877 14.125 18.102 15.675 16.552C17.225 15.002 18 13.1103 18 10.877C18 8.64362 17.225 6.75195 15.675 5.20195C14.125 3.65195 12.2333 2.87695 10 2.87695C7.76667 2.87695 5.875 3.65195 4.325 5.20195C2.775 6.75195 2 8.64362 2 10.877C2 13.1103 2.775 15.002 4.325 16.552C5.875 18.102 7.76667 18.877 10 18.877Z"
-            fill="#00B5D4"
-          />
-        </svg>
+        <img
+          @click="clickInfo()"
+          src="/images/product/brand/order/icon/info.svg"
+          alt="icon-info"
+          class="absolute top-[6px] right-9 z-10 cursor-pointer tn:hidden md:block"
+        />
       </div>
-      <hr class="md:my-[21px] border-[#8DCABE ] md:mx-[21.5px] tn:mx-[17px]" />
-      <div class="flex justify-between px-[29px]">
+      <hr
+        class="md:my-[21px] tn:my-3 border-[#8DCABE ] md:mx-[28px] tn:mx-[17px]"
+        :class="{ 'lg:mt-8 md:mt-20': showInfo }"
+      />
+      <div class="flex justify-between md:px-[29px] tn:px-[17px]">
         <div>
           <div class="flex gap-[9px] items-center">
             <img
@@ -90,35 +125,35 @@
               {{ order.provider.name }}
             </p>
           </div>
-          <div class="flex gap-[9px] items-center md:mt-2">
+          <div class="flex gap-[9px] items-center md:mt-2 tn:mt-[5px]">
             <img
               src="/images/product/brand/order/icon/provider-duration.svg"
               alt="icon-duration"
             />
             <p
               v-if="order.provider.package.variant.duration === 12"
-              class="tn:text-sm md:text-base font-normal mt-1 opacity-80"
+              class="tn:text-xs md:text-base font-normal mt-1 opacity-80"
             >
               {{ formatMoneyRupiah(order.provider.package.variant.grandTotal) }}
               / (1 Tahun)
             </p>
             <p
               v-else
-              class="tn:text-sm md:text-base font-normal mt-1 opacity-80"
+              class="tn:text-xs md:text-base font-normal mt-1 opacity-80"
             >
               {{ formatMoneyRupiah(order.provider.package.variant.grandTotal) }}
               / ({{ order.provider.package.variant.duration }}
               Bulan)
             </p>
           </div>
-          <div class="flex gap-[9px] items-center md:mt-2">
+          <div class="flex gap-[9px] items-center md:mt-2 tn:mt-[5px]">
             <img
               src="/images/product/brand/order/icon/warning.svg"
               alt="icon-warning"
             />
             <p
               v-if="!expiredAt && order.expiredAt"
-              class="tn:text-sm md:text-base font-normal text-[#FE4752]"
+              class="tn:text-xs md:text-base font-normal text-[#FE4752]"
             >
               Expired: {{ moment.unix(order.expiredAt).format('DD MMM YYYY') }}
             </p>
@@ -128,7 +163,7 @@
           <img
             alt="image-product"
             :src="`/images/product/brand/order/${order.provider.slug}.png`"
-            class="tn:w-full sm:w-[164px] tn:h-[105px] sm:h-[94px]"
+            class="tn:w-[120px] md:w-[164px]"
           />
         </div>
       </div>
@@ -189,7 +224,7 @@
       </div>
     </div>
     <div
-      class="tn:mt-2 md:mt-5 md:mb-3 tn:mb-2 border-b border-[#E5E5E5] md:mx-[21.5px] tn:mx-[17px]"
+      class="tn:mt-[9px] md:mt-5 mb-3 border-b border-[#E5E5E5] md:mx-[21.5px] tn:mx-[17px]"
     />
     <div
       class="flex justify-between items-center md:mx-[21.5px] tn:mx-[17px] tn:mb-[14.5px]"
@@ -269,6 +304,7 @@ export default {
   data() {
     return {
       moment,
+      showInfo: false,
     };
   },
   props: {
@@ -305,6 +341,9 @@ export default {
     changeDuration() {
       this.$emit('changeDuration');
     },
+    clickInfo() {
+      this.showInfo = !this.showInfo;
+    },
   },
 };
 </script>
@@ -312,5 +351,12 @@ export default {
 <style>
 .order-card {
   font-family: 'DM Sans', sans-serif !important;
+}
+.accordion {
+  background: rgba(0, 181, 212, 0.2);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 0px;
+  padding-left: 8px;
 }
 </style>

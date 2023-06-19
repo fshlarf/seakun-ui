@@ -3,7 +3,7 @@
     <div
       class="flex-1 flex-column md:pl-6 md:py-5 tn:pl-4 tn:py-3 rounded-lg border-l-4 border-green-seakun bg-[#F4FDFA] bg-opacity-50"
     >
-      <p class="text-xl font-bold">Detail Pemesan</p>
+      <p class="md:text-xl tn:text-xs font-bold">Detail Pemesan</p>
       <div
         class="md:my-4 tn:my-2 border-b border-[#8DCABE] border-opacity-20"
       />
@@ -18,7 +18,9 @@
             src="/images/product/brand/order/icon/user.svg"
             alt="icon-user"
           />
-          <p class="text-base font-bold">{{ orderDetail.name }}</p>
+          <p class="md:text-base tn:text-xs font-bold">
+            {{ orderDetail.name }}
+          </p>
         </div>
         <div class="flex gap-2 items-center">
           <img
@@ -26,7 +28,7 @@
             alt="icon-phone"
           />
 
-          <p class="my-2 text-base font-normal">
+          <p class="my-2 md:text-base tn:text-xs font-normal">
             {{ orderDetail.phone }}
           </p>
         </div>
@@ -36,7 +38,9 @@
             alt="icon-email"
           />
 
-          <p class="text-base font-normal">{{ orderDetail.email }}</p>
+          <p class="md:text-base tn:text-xs font-normal">
+            {{ orderDetail.email }}
+          </p>
         </div>
       </div>
     </div>

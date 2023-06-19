@@ -69,6 +69,46 @@
           </p>
         </div>
 
+        <div
+          v-if="
+            orderData.length > 1 && orderData[0].provider.slug !== 'sekurban'
+          "
+          class="flex-1 flex-column md:mb-9 tn:mb-6 p-3 rounded-lg border-l-4 border-green-seakun bg-[#F4FDFA] bg-opacity-50"
+        >
+          <p class="md:text-xl tn:text-xs font-bold">Detail Pemesan</p>
+          <div
+            class="md:my-4 tn:my-[9px] border-b border-[#8DCABE] border-opacity-20"
+          />
+          <div class="flex gap-2 items-center">
+            <img
+              src="/images/product/brand/order/icon/user.svg"
+              alt="icon-user"
+            />
+            <p class="md:text-base tn:text-xs font-bold">
+              {{ orderData[1].customerName }}
+            </p>
+          </div>
+          <div class="flex gap-2 items-center my-2">
+            <img
+              src="/images/product/brand/order/icon/phone.svg"
+              alt="icon-phone"
+            />
+
+            <p class="md:text-base tn:text-xs font-normal">
+              +{{ orderData[0].customerPhone }}
+            </p>
+          </div>
+          <div class="flex gap-2 items-center">
+            <img
+              src="/images/product/brand/order/icon/email.svg"
+              alt="icon-email"
+            />
+
+            <p class="md:text-base tn:text-xs font-normal">
+              {{ orderData[1].customerEmail }}
+            </p>
+          </div>
+        </div>
         <ProductHighLightLoading v-if="isLoading" />
         <div v-else v-for="(order, index) in orderData" :key="index">
           <template v-if="order.provider.slug === 'sekurban'">
@@ -87,9 +127,13 @@
         <div
           class="bg-[#E9FAF5] bg-opacity-50 py-[21px] md:mt-9 tn:mt-6 rounded-[10px]"
         >
-          <p class="mb-3 text-center font-semibold text-base">Total transfer</p>
+          <p
+            class="md:pb-3 tn:pb-1 text-center font-semibold md:text-base tn:text-xs"
+          >
+            Total transfer
+          </p>
           <div class="text-center text-[#8DCABE]">
-            <p class="tn:text-2xl md:text-[32px] font-semibold">
+            <p class="tn:text-base md:text-[32px] font-semibold">
               {{ currencyFormat(dataDetailOrder.transferAmount) }}
             </p>
           </div>
@@ -99,28 +143,27 @@
           v-if="!isLoading"
           class="detail-order rounded-[10px] bg-[#FCFFFE] tn:px-4 md:px-8 tn:py-3 md:py-[25px] md:mt-9 tn:mt-6"
         >
-          <div class="border-[1px] border-[#F4FDFA] tn:pb-1 md:pb-3">
-            <p class="md:text-base tn:text-xs text-gray-400">
+          <div
+            class="relative border-b-[1px] border-[#E5E5E5] border-opacity-50 tn:pb-3"
+          >
+            <p class="md:text-base tn:text-xs text-gray-400 tn:pb-2">
               Metode Pembayaran
             </p>
             <div
               v-if="dataDetailOrder.paymentBankFrom === 'lainnya'"
-              class="md:mt-2"
+              class="md:mt-0"
             >
               <p class="font-bold md:text-base tn:text-xs">
                 Bank Transfer Manual
               </p>
             </div>
-            <div
-              v-else
-              class="tn:grid tn:grid-cols-5 tn:justify-between tn:items-center md:mt-2 relative"
-            >
-              <p class="font-bold md:text-base tn:text-xs tn:col-span-3">
+            <div v-else class="tn:flex tn:justify-between tn:items-center">
+              <p class="font-bold md:text-base tn:text-xs">
                 Bank Transfer Manual
               </p>
               <img
                 v-if="dataDetailOrder.paymentBankFrom"
-                class="tn:col-span-2 absolute bottom-0 right-0 tn:w-1/3 tn:h-auto md:w-auto md:h-16"
+                class="absolute bottom-0 right-0 tn:w-1/3 tn:h-auto sm:w-auto sm:h-16"
                 @onerror="onErrorImageBank()"
                 :src="`images/payment/${setNameBank(
                   dataDetailOrder.paymentBankFrom
@@ -129,25 +172,25 @@
             </div>
           </div>
 
-          <div class="tn:mt-4 md:mt-5">
+          <div class="tn:mt-3 md:mt-5">
             <p class="md:text-base tn:text-xs text-gray-400">Nama Rekening</p>
-            <p class="font-bold text-lg md:mt-2">
+            <p class="font-bold md:text-base tn:text-xs mt-2">
               {{ dataDetailOrder.paymentHolder }}
             </p>
           </div>
 
-          <div class="tn:mt-3 md:mt-4">
+          <div class="tn:mt-[9px] md:mt-[13px]">
             <p class="md:text-base tn:text-xs text-gray-400">Bank Tujuan</p>
             <div
-              class="tn:grid tn:grid-cols-5 tn:justify-between tn:items-center md:mt-2 relative"
+              class="tn:flex tn:justify-between tn:items-center mt-2 relative"
             >
-              <p class="font-bold md:text-base tn:text-xs tn:col-span-3">
+              <p class="font-bold md:text-base tn:text-xs">
                 {{ dataDetailOrder.destinationBank }} a.n
                 {{ dataDetailOrder.destinationHolderName }}
               </p>
               <img
                 v-if="dataDetailOrder.paymentBankTo"
-                class="tn:col-span-2 absolute bottom-0 right-0 tn:w-1/3 tn:h-auto md:w-auto md:h-16"
+                class="absolute bottom-0 right-0 tn:w-1/3 tn:h-auto sm:w-auto sm:h-16"
                 @onerror="onErrorImageBank()"
                 :src="`images/payment/${setNameBank(
                   dataDetailOrder.paymentBankTo
@@ -156,11 +199,11 @@
             </div>
           </div>
 
-          <div class="tn:mt-3 md:mt-4">
+          <div class="tn:mt-[9px] md:mt-[13px]">
             <p class="md:text-base tn:text-xs text-gray-400">
               Tanggal Pembayaran
             </p>
-            <p class="font-bold md:text-base tn:text-xs md:mt-2">
+            <p class="font-bold md:text-base tn:text-xs mt-2">
               {{ dataDetailOrder.paymentDate }}
             </p>
           </div>
@@ -230,6 +273,7 @@ import CardShimmer from '~/components/mollecules/CardShimmer';
 import CardShimmerVertical from '~/components/mollecules/CardShimmerVertical';
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 import OrderCard from './views/OrderCard.vue';
+// import OrderCard from '~/components/mollecules/OrderCard.vue';
 import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
 import OrderService from '~/services/OrderServices.js';
 import { currencyFormat } from '~/helpers/word-transformation.js';

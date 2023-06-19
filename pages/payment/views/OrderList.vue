@@ -7,7 +7,7 @@
       </p>
       <div
         v-if="orderData.length > 1"
-        class="flex gap-[13px] tn:text-xs md:text-sm bg-[#FFC801] bg-opacity-10 rounded-[10px] md:mt-5 md:py-[16px] md:pl-[17px] md:pr-[30px] tn:py-[11px] tn:pl-[11px] tn:pr-[11px]"
+        class="flex md:gap-[13px] tn:gap-[9.5px] bg-[#FFC801] bg-opacity-10 rounded-[10px] md:mt-5 md:py-[16px] md:pl-[17px] md:pr-[30px] tn:mt-3 tn:py-2 tn:pl-[9.5px] tn:pr-[14px]"
       >
         <div class="md:mt-1">
           <svg
@@ -24,7 +24,7 @@
           </svg>
         </div>
         <div>
-          <p class="text-base font-normal">
+          <p class="tn:text-xs md:text-base font-normal">
             Sekali bayar untuk banyak pesanan. Pilih pesanan yang lain yang
             ingin kamu perpanjang masa berlangganannya.
             <span class="font-bold">Total bayar</span> adalah biaya total untuk

@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:pt-10 w-full">
+  <div class="md:py-[91px]">
     <div
       class="tn:w-full lg:w-[780px] mx-auto md:px-[75px] lg:pb-20 lg:rounded-3xl lg:shadow-2xl"
     >
@@ -50,7 +50,7 @@
           </p>
         </div>
 
-        <div class="w-full tn:mt-8 md:mt-12 md:px-16">
+        <div class="w-full tn:my-8 md:my-12 md:px-16">
           <Button
             class="w-full bg-green-seakun text-white py-3"
             label="Konfirmasi ikut pre-order"

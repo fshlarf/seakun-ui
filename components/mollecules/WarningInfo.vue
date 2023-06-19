@@ -2,11 +2,10 @@
   <div
     :class="`bg-red-100 rounded-xl p-3 border-[#FE4752] border-opacity-20 border-[1px]`"
   >
-    <div class="flex justify-center gap-3">
+    <div class="flex justify-center md:gap-3 tn:gap-[9px]">
       <div class="md:w-auto tn:w-4">
         <svg
-          width="24"
-          height="24"
+          class="md:w-6 tn:w-4"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +19,7 @@
         </svg>
       </div>
       <div>
-        <p class="tn:text-sm md:text-base text-red-500" v-html="text"></p>
+        <p class="tn:text-xs md:text-base text-red-500" v-html="text"></p>
       </div>
     </div>
   </div>

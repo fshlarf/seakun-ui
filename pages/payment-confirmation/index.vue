@@ -185,7 +185,7 @@
         </div>
 
         <Button
-          class="w-full bg-green-seakun text-white mb-2 md:mt-8"
+          class="w-full bg-green-seakun text-white mb-2 md:mt-8 tn:mt-5"
           label="Simpan"
           :is-loading="isLoadingSubmit"
           @click="clickSubmit"
