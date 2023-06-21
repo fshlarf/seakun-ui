@@ -98,18 +98,16 @@
 
       <!-- <SetitipBanner /> -->
 
-      <div id="product-ondemand" class="pt-5 md:my-8">
-        <h1
-          class="tn:text-xl md:text-[30px] xl:text-[36px] font-bold my-2 md:my-4"
-        >
+      <div id="product-ondemand" class="pt-5 md:mt-8 md:py-4">
+        <h1 class="tn:text-xl md:text-[30px] xl:text-[36px] font-bold">
           Layanan Non Digital
         </h1>
       </div>
 
-      <div class="tn:mt-4">
+      <div class="tn:mt-7">
         <div
           v-if="!dataProviderListActive.loading"
-          class="w-full h-full grid xl:grid-cols-4 grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 px-0 justify-center place-items-stretch items-stretch"
+          class="w-full h-full grid xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-4 tn:grid-cols-3 tn:gap-3 md:gap-4 lg:gap-8 px-0 justify-center place-items-stretch items-stretch"
         >
           <div class="" v-for="(product, id) in dataProductOnDemand" :key="id">
             <ProductCard
@@ -127,8 +125,10 @@
         </div>
         <div
           v-else
-          class="grid tn:gap-3 md:gap-4 xl:gap-5 tn:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          class="grid tn:gap-3 md:gap-4 tn:grid-cols-3 md:grid-cols-6"
         >
+          <CardShimmerVertical />
+          <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
@@ -193,70 +193,102 @@ export default {
       dataProductOnDemand: [
         {
           id: 1,
-          name: 'Sekeranjang',
-          slug: 'sekeranjang',
-          img: '/images/product/on demand/sekeranjang.png',
+          name: 'Sekurban',
+          slug: 'sekurban',
+          img: '/images/product/on demand/new/sekurban.png',
           isActive: true,
-          preview:
-            'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
+          // preview:
+          //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
         },
         {
           id: 2,
           name: 'Sefitnes',
           slug: 'sefitnes',
-          img: '/images/product/on demand/sefitnes.png',
+          img: '/images/product/on demand/new/sefitnes.png',
           isActive: false,
-          preview:
-            'Cari teman patungan berlangganan gym, fitness dan fasilitas olahraga untuk mendapatakan potongan harga.',
+          // preview:
+          //   'Cari teman patungan berlangganan gym, fitness dan fasilitas olahraga untuk mendapatakan potongan harga.',
         },
         {
           id: 3,
           name: 'Seatap',
           slug: 'seatap',
-          img: '/images/product/on demand/seatap.png',
+          img: '/images/product/on demand/new/seatap.png',
           isActive: false,
-          preview:
-            'Cari teman patungan untuk sewa rumah, kostan atau apartemen.',
+          // preview:
+          //   'Cari teman patungan untuk sewa rumah, kostan atau apartemen.',
         },
         {
           id: 4,
           name: 'Sekelas',
           slug: 'sekelas',
-          img: '/images/product/on demand/sekelas.png',
+          img: '/images/product/on demand/new/sekelas.png',
           isActive: false,
-          preview:
-            'Cari teman patungan untuk beli dan berlangganan kelas online atau offline.',
+          // preview:
+          //   'Cari teman patungan untuk beli dan berlangganan kelas online atau offline.',
         },
         {
           id: 5,
-          name: 'Segame',
-          slug: 'segame',
-          img: '/images/product/on demand/segame.png',
+          name: 'Sekatering',
+          slug: 'sekatering',
+          img: '/images/product/on demand/new/sekatering.png',
           isActive: false,
-          preview:
-            'Cari teman patungan, langganan dan main bareng futsal, sepakbola, tenis, badminton dll.',
+          // preview: 'Cari teman patungan berlangganan katering terdekat.',
         },
         {
           id: 6,
-          name: 'Sekatering',
-          slug: 'sekatering',
-          img: '/images/product/on demand/sekatering.png',
+          name: 'Sekantor',
+          slug: 'sekantor',
+          img: '/images/product/on demand/new/sekantor.png',
           isActive: false,
-          preview: 'Cari teman patungan berlangganan katering terdekat.',
+          // preview: 'Cari teman patungan berlangganan katering terdekat.',
         },
         {
           id: 7,
+          name: 'Sekeranjang',
+          slug: 'sekeranjang',
+          img: '/images/product/on demand/new/sekeranjang.png',
+          isActive: true,
+          // preview:
+          //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
+        },
+        {
+          id: 5,
+          name: 'Semabar',
+          slug: 'semabar',
+          img: '/images/product/on demand/new/semabar.png',
+          isActive: false,
+          preview: '(Main Bareng)',
+        },
+        {
+          id: 9,
           name: 'Sejalan',
           slug: 'sejalan',
-          img: '/images/product/on demand/sejalan.png',
+          img: '/images/product/on demand/new/sejalan.png',
           isActive: false,
-          preview: 'Berlangganan bersama ojek online terpercaya.',
+          // preview: 'Berlangganan bersama ojek online terpercaya.',
+        },
+        {
+          id: 10,
+          name: 'Seumrah',
+          slug: 'seumrah',
+          img: '/images/product/on demand/new/seumrah.png',
+          isActive: false,
+          // preview: 'Berlangganan bersama ojek online terpercaya.',
+        },
+        {
+          id: 11,
+          name: 'Setrip',
+          slug: 'setrip',
+          img: '/images/product/on demand/new/setrip.png',
+          isActive: false,
+          // preview: 'Berlangganan bersama ojek online terpercaya.',
         },
       ],
       dataProposeProvider: {
-        name: 'Oops!',
-        preview: 'Layanan kamu belum ada di Seakun?',
-        img: '/images/product/propose.svg',
+        name: 'Layananmu',
+        preview: 'belum terdaftar?',
+        img: '/images/product/propose-new.svg',
       },
       isShowModalPackages: false,
       choosedProvider: {},
