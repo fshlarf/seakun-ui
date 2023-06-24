@@ -1,31 +1,34 @@
 <template>
   <div
-    class="w-full h-full border-none max-w-sm bg-white shadow-xl rounded-[8px] text-gray-900 md:pb-3 relative z-0"
+    class="w-full h-full border-none max-w-[166px] bg-[#8DCABE] text-[#8DCABE] bg-opacity-5 rounded-2xl relative z-0"
   >
-    <div class="text-center relative z-0">
-      <div class="md:px-2 md:mb-10 lg:mb-12 xl:mb-14">
+    <div class="text-center md:pt-[26px] tn:pt-4">
+      <div class="md:px-[10.5px] tn:px-[6px]">
         <img
           :src="`${propose.img}`"
           alt="propose your business"
-          class="w-5/6 mx-auto"
+          class="mx-auto mb-2 tn:h-9 tn:w-[45px] md:w-auto"
         />
-        <h1 class="md:text-xl font-bold">
-          {{ propose.name }}
+        <h1 class="md:text-lg tn:text-xs">
+          {{ propose.name }} <br />
+          <span> {{ propose.preview }} </span>
         </h1>
-        <p class="text-xs md:text-base font-semibold md:font-normal">
+        <!-- <p class="text-xs md:text-base font-semibold md:font-normal">
           {{ propose.preview }}
-        </p>
+        </p> -->
       </div>
-    </div>
-
-    <div class="w-full absolute z-10 bottom-0 left-0 tn:p-2 md:p-4">
-      <nuxt-link class="w-full" to="/vote">
-        <Button
-          variant="secondary"
-          label="Ajukan permintaan"
-          class="w-full h-full md:!py-3 font-bold text-sm md:text-base"
-        />
-      </nuxt-link>
+      <div class="md:mt-4 mt-[11px] md:mb-[25px] tn:mb-3">
+        <nuxt-link to="/vote">
+          <Button
+            label="Ajukan layanan"
+            class="text-base text-[#8DCABE] mx-auto border-[1px] border-[#8DCABE] md:block tn:hidden"
+          />
+          <Button
+            label="Ajukan"
+            class="text-sm text-[#8DCABE] border-[1px] border-[#8DCABE] md:hidden px-[15px]"
+          />
+        </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
