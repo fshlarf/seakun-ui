@@ -127,11 +127,11 @@ export default {
           label: 'Laporan Kendala',
           tag: 'helpCenter',
         },
-        {
-          id: 7,
-          label: 'Sequrban',
-          tag: 'sekurban',
-        },
+        // {
+        //   id: 7,
+        //   label: 'Sequrban',
+        //   tag: 'sekurban',
+        // },
       ],
     };
   },
@@ -142,15 +142,15 @@ export default {
     window.onscroll = () => {
       this.handleScrollEffect();
     };
-    setInterval(() => {
-      this.showSpark1 = !this.showSpark1;
-    }, 700);
-    setInterval(() => {
-      this.showSpark2 = !this.showSpark2;
-    }, 800);
-    setInterval(() => {
-      this.showSpark3 = !this.showSpark3;
-    }, 900);
+    // setInterval(() => {
+    //   this.showSpark1 = !this.showSpark1;
+    // }, 700);
+    // setInterval(() => {
+    //   this.showSpark2 = !this.showSpark2;
+    // }, 800);
+    // setInterval(() => {
+    //   this.showSpark3 = !this.showSpark3;
+    // }, 900);
   },
   methods: {
     handleScrollEffect() {
@@ -173,52 +173,6 @@ export default {
       });
       this.open = false;
     },
-    // scrollToSection(id) {
-    //   if (id === 0) {
-    //     window.scrollTo({
-    //       top: 0,
-    //       behavior: 'smooth',
-    //     });
-    //   } else if (id === 1) {
-    //     const providerSection = document.getElementById('provider');
-    //     providerSection.scrollIntoView({
-    //       behavior: 'smooth',
-    //       block: 'start',
-    //       inline: 'nearest',
-    //     });
-    //   } else if (id === 2) {
-    //     const penggunaSection = document.getElementById('pengguna');
-    //     penggunaSection.scrollIntoView({
-    //       behavior: 'smooth',
-    //       block: 'start',
-    //       inline: 'nearest',
-    //     });
-    //   } else if (id === 3) {
-    //     const orderFlowSection = document.getElementById('orderFlow');
-    //     orderFlowSection.scrollIntoView({
-    //       behavior: 'smooth',
-    //       block: 'start',
-    //       inline: 'nearest',
-    //     });
-    //   } else if (id === 4) {
-    //     const testimonySection = document.getElementById('testimony');
-    //     testimonySection.scrollIntoView({
-    //       behavior: 'smooth',
-    //       block: 'start',
-    //       inline: 'nearest',
-    //     });
-    //   } else if (id === 5) {
-    //     const qnaSection = document.getElementById('qna');
-    //     qnaSection.scrollIntoView({
-    //       behavior: 'smooth',
-    //       block: 'start',
-    //       inline: 'nearest',
-    //     });
-    //   } else if (id === 6) {
-    //     window.open('https://forms.gle/t1AbaxnjEtJr8NAPA', '_blank');
-    //   }
-    //   this.open = false;
-    // },
     scrollToSection(menu) {
       if (menu.tag === 'helpCenter') {
         window.open('https://forms.gle/t1AbaxnjEtJr8NAPA', '_blank');
