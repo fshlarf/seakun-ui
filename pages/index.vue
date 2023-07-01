@@ -16,7 +16,7 @@
     <PartnershipBanner />
     <Footer />
     <SeakunHelpFloatingButton />
-    <ModalSekurbanBanner />
+    <!-- <ModalSekurbanBanner /> -->
   </div>
 </template>
 

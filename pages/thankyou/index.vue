@@ -8,21 +8,21 @@
       alt="thr banner"
       @click="toThrPage"
     /> -->
-    <img
+    <!-- <img
       @click="toSekurbanPage"
       src="/images/thankyou/sequrban-banner-website.png"
       alt="sequrban banner"
       class="cursor-pointer tn:hidden md:block"
-    />
+    /> -->
     <div
       class="thankyou-container md:rounded-3xl md:shadow-md tn:px-3 md:px-8 md:py-8 w-full md:pt-7 md:mt-7"
     >
-      <img
+      <!-- <img
         @click="toSekurbanPage"
         src="/images/thankyou/sequrban-banner-mobile.png"
         alt="sequrban banner"
         class="cursor-pointer md:hidden w-full mb-7"
-      />
+      /> -->
       <!-- <img
         class="w-full md:hidden tn:mb-6 cursor-pointer"
         src="/images/ramadan-gift/thankyou-mobile.webp"
