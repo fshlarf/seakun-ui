@@ -25,7 +25,7 @@ RUN apk update && \
                        nasm \
                        libtool \
                        yarn --repository="http://dl-cdn.alpinelinux.org/alpine/edge/community" \
-                       nodejs=14.18.1-r0 --repository=https://dl-cdn.alpinelinux.org/alpine/v3.13/main \
+                       nodejs=14.20.1-r0 --repository=https://dl-cdn.alpinelinux.org/alpine/v3.13/main \
                       #  nodejs --repository="http://dl-cdn.alpinelinux.org/alpine/edge/community" \
                        tzdata \
                        python3 \
