@@ -170,7 +170,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxtjs/tailwindcss'],
+  buildModules: ['@nuxt/postcss8'],
   /*
    ** Nuxt.js modules
    */
@@ -200,5 +200,11 @@ export default {
    */
   build: {
     plugins: definePlugin(),
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
   },
 };

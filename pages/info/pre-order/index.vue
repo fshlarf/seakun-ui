@@ -2,7 +2,7 @@
   <div>
     <div class="bg-pre-order">
       <div
-        class="tn:px-[20px] md:container tn:py-[20px] md:py-[40px] xl:py-[100px]"
+        class="tn:px-[20px] md:!container tn:py-[20px] md:py-[40px] xl:py-[100px]"
       >
         <div class="bg-white rounded-[8px] tn:p-[25px] md:p-[50px] xl:p-[70px]">
           <h1 class="tn:text-[24px] lg:text-[42px] font-bold text-center">

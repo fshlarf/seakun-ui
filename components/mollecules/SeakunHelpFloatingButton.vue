@@ -18,13 +18,13 @@
       >
         <i class="fa-solid fa-times fa-xs"></i>
       </div>
-      <a target="_blank" href="https://forms.gle/t1AbaxnjEtJr8NAPA">
+      <div role="button" @click="$emit('click')">
         <img
           class="tn:w-[110px] md:w-[150px] xl:!w-[200px]"
           src="/images/seakun-help.svg"
           alt="seakun help"
         />
-      </a>
+      </div>
     </div>
   </div>
 </template>
