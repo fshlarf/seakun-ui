@@ -1,18 +1,26 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  mode: 'jit',
-  purge: {
-    content: [
-      './components/**/*.{vue,js}',
-      './layouts/**/*.vue',
-      './pages/**/*.vue',
-      './plugins/**/*.{js,ts}',
-      './nuxt.config.{js,ts}',
-    ],
-    safelist: ['bg-red-400', 'bg-red-500'],
-  },
+  // mode: 'jit',
+  // purge: {
+  //   content: [
+  //     './components/**/*.{vue,js}',
+  //     './layouts/**/*.vue',
+  //     './pages/**/*.vue',
+  //     './plugins/**/*.{js,ts}',
+  //     './nuxt.config.{js,ts}',
+  //   ],
+  //   safelist: ['bg-red-400', 'bg-red-500'],
+  // },
+  content: [
+    './components/**/*.{vue,js}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
@@ -42,7 +50,7 @@ module.exports = {
     container: false,
   },
   plugins: [
-    function ({ addComponents }) {
+    plugin(function ({ addComponents }) {
       addComponents({
         '.container': {
           width: '100%',
@@ -95,6 +103,6 @@ module.exports = {
           },
         },
       });
-    },
+    }),
   ],
 };

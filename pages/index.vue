@@ -15,8 +15,12 @@
     <WarningOrder />
     <PartnershipBanner />
     <Footer />
-    <SeakunHelpFloatingButton />
+    <SeakunHelpFloatingButton @click="onClickFloatingButton" />
     <!-- <ModalSekurbanBanner /> -->
+    <ModalSeakunHelp
+      :show-modal="isShowModalSeakunHelp"
+      @closeModal="onCloseModalSeakunHelp"
+    />
   </div>
 </template>
 
@@ -38,6 +42,7 @@ import Footer from '~/components/mollecules/Footer';
 import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
 import SeakunHelpFloatingButton from '~/components/mollecules/SeakunHelpFloatingButton';
 import ModalSekurbanBanner from '~/components/mollecules/ModalSekurbanBanner';
+import ModalSeakunHelp from '~/components/mollecules/ModalSeakunHelp';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
 
@@ -60,6 +65,12 @@ export default {
     SeakunHelpBanner,
     SeakunHelpFloatingButton,
     ModalSekurbanBanner,
+    ModalSeakunHelp,
+  },
+  data() {
+    return {
+      isShowModalSeakunHelp: false,
+    };
   },
   computed: {
     ...mapGetters({
@@ -124,6 +135,12 @@ export default {
         };
         localStorage.setItem('referral_code', JSON.stringify(dataReferral));
       }
+    },
+    onCloseModalSeakunHelp() {
+      this.isShowModalSeakunHelp = false;
+    },
+    onClickFloatingButton() {
+      this.isShowModalSeakunHelp = true;
     },
   },
 };
