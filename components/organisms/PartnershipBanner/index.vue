@@ -1,7 +1,7 @@
 <template>
   <div class="tn:py-[24px] md:py-[33px] bg-[#E9FAF5] -mb-12">
     <div
-      class="tn:px-6 md:container md:flex md:justify-between md:items-center"
+      class="tn:px-6 md:!container md:flex md:justify-between md:items-center"
     >
       <p
         class="md:w-[350px] tn:text-[20px] md:text-[30px] xl:text-[36px] font-bold tn:text-center md:text-left"

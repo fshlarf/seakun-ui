@@ -1,7 +1,7 @@
 <template>
   <div id="ramadan-gift" class="">
     <div
-      class="tn:bg-primary md:bg-white md:container md:w-3/4 md:mx-auto tn:pt-8 lg:pt-14 tn:px-2"
+      class="tn:bg-primary md:bg-white md:!container md:w-3/4 md:mx-auto tn:pt-8 lg:pt-14 tn:px-2"
     >
       <img
         src="/images/ramadan-gift/banner.webp"
@@ -13,7 +13,7 @@
       class="md:mt-12 bg-[#8DCABE] relative tn:pb-[48px] tn:pt-[20px] md:pt-[48px]"
     >
       <div
-        class="tn:px-[30px] md:container lg:flex lg:justify-between items-center"
+        class="tn:px-[30px] md:!container lg:flex lg:justify-between items-center"
       >
         <div class="text-white lg:w-[588px] tn:text-center lg:text-left">
           <h2 class="text-[16px] lg:text-[28px] font-bold">Donatur THR</h2>
@@ -74,7 +74,7 @@
       <!-- desktop view -->
       <div
         v-if="!isLoadingDataDonation"
-        class="tn:hidden xl:block xl:container"
+        class="tn:hidden xl:block xl:!container"
       >
         <div
           class="relative xl:mt-12 xl:w-full xl:grid xl:grid-cols-4 items-start gap-4"
@@ -106,7 +106,7 @@
       </div>
       <div
         v-if="isLoadingDataDonation"
-        class="tn:hidden xl:block w-full xl:mt-12 xl:container"
+        class="tn:hidden xl:block w-full xl:mt-12 xl:!container"
       >
         <div class="w-full xl:grid xl:grid-cols-4 items-center gap-4">
           <DonaturCardLoading />
@@ -142,7 +142,7 @@
       </div>
     </div>
     <div
-      class="tn:px-[30px] md:container tn:mt-12 grid lg:grid-cols-2 tn:gap-4 lg:gap-8 text-justify items-start"
+      class="tn:px-[30px] md:!container tn:mt-12 grid lg:grid-cols-2 tn:gap-4 lg:gap-8 text-justify items-start"
     >
       <div
         class="rounded-xl tn:px-[15px] md:px-[20px] lg:px-[30px] tn:py-[12px] md:py-[15px] lg:py-[20px] tn:text-sm text-gray-600 bg-[#F4F9F8]"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="md:container tn:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 xl:gap-8 tn:pt-20"
+    class="md:!container tn:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6 xl:gap-8 tn:pt-20"
   >
     <div>
       <h2

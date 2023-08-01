@@ -31,7 +31,7 @@
               :provider="provider"
               :is-loading="dataGroupList.loading"
               :data-group="dataGroupList.list"
-              class="tn:mt-2 h-full flex-none cursor-pointer"
+              class="tn:mt-2 flex-none cursor-pointer"
               :class="{
                 'high-light ': provider.slug === highlight,
               }"
@@ -75,7 +75,7 @@
               v-for="(group, id) in dataGroupList.list"
               :key="id"
               :group="group"
-              class="my-2 w-full h-full flex-none"
+              class="my-2 h-full flex-none"
               @click-order="onClickOrder"
             />
             <ButtonChevron

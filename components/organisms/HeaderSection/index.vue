@@ -4,7 +4,7 @@
       class="absolute top-0 left-0 z-0 w-full tn:h-[411px] xl:h-[520px] bg-header"
     ></div>
     <div
-      class="tn:px-[24px] md:container tn:pt-20 md:pt-28 lg:pt-36 relative z-20"
+      class="tn:px-[24px] md:!container tn:pt-20 md:pt-28 lg:pt-36 relative z-20"
     >
       <div
         class="w-full rounded-2xl bg-banner flex tn:flex-col md:flex-row md:justify-between md:items-end tn:py-8 md:p-0"
