@@ -1,49 +1,67 @@
 <template>
   <Modal :is-show="showModal" @onClose="closeModal">
-    <div class="md:w-[310px]">
-      <img
-        class="mx-auto tn:w-[165px] md:w-[188px]"
-        src="/images/modal-seakun-help.svg"
-        alt="seakun help"
-      />
-
-      <div
-        class="tn:mt-[12px] md:mt-[20px] tn:space-y-[10px] md:space-y-[12px]"
-      >
+    <div class="">
+      <h1 class="font-bold">Pengaduan Layanan</h1>
+      <div class="flex justify-center items-center gap-4 mt-[16px] pb-[4px]">
         <div
-          class="rounded-[8px] border-[#8DCABE] border-[2px] overflow-hidden w-[306px] flex items-center gap-[12px] gradient"
-          role="button"
+          class="rounded-[10px] bg-white w-[140px] h-[132px] shadow-sm flex justify-center items-center cursor-pointer"
           @click="toSeakunHelp"
         >
-          <img
-            class="w-[80px]"
-            src="/images/to-seakun-help.svg"
-            alt="to seakun help"
-          />
-          <div class="w-[211px]">
-            <p class="text-[14px] font-medium text-[#4BAC99]">Seakun Help</p>
-            <p class="text-[#4BAC99] text-[12px] w-[203px]">
-              Laporan kendala apapun pada layanan Seakun
-            </p>
+          <div class="">
+            <img
+              class="mx-auto"
+              src="/images/seakun-help/help.svg"
+              alt="report"
+            />
+            <div class="flex justify-center items-center gap-1 mt-[10px]">
+              <p class="text-[12px]">Laporan Kendala</p>
+              <div class="relative">
+                <DarkTooltip
+                  :is-show="isShowTooltipHelp"
+                  position="center"
+                  message="Laporan kendala apapun pada layanan Seakun"
+                />
+                <img
+                  @mouseenter="isShowTooltipHelp = true"
+                  @mouseleave="isShowTooltipHelp = false"
+                  @click="onClickTooltip('help')"
+                  class="w-[14px] h-[14px] cursor-pointer"
+                  src="/images/icons/atoms/question-gray.svg"
+                  alt="info"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         <div
-          class="rounded-[8px] border-[#8DCABE] border-[2px] overflow-hidden w-[306px] flex items-center gap-[12px] gradient"
-          role="button"
+          class="rounded-[10px] bg-white w-[140px] h-[132px] shadow-sm flex justify-center items-center cursor-pointer"
           @click="toAppointment"
         >
-          <img
-            class="w-[80px]"
-            src="/images/to-appointment.svg"
-            alt="to seakun help"
-          />
-          <div class="w-[211px]">
-            <p class="text-[14px] font-medium text-[#4BAC99]">Janjian Login</p>
-            <p class="text-[#4BAC99] text-[12px] w-[203px]">
-              Janjian Login Disney, Netflix (device TV), Prime Video, Medium,
-              dll
-            </p>
+          <div class="">
+            <img
+              class="mx-auto"
+              src="/images/seakun-help/appointment.svg"
+              alt="appointment"
+            />
+            <div class="flex justify-center items-center gap-1 mt-[10px]">
+              <p class="text-[12px]">Janjian Login</p>
+              <div class="relative">
+                <DarkTooltip
+                  :is-show="isShowTooltipAppointment"
+                  position="right"
+                  message="Janjian Login Disney, Netflix (device TV), Prime Video, Medium, dll"
+                />
+                <img
+                  @mouseenter="isShowTooltipAppointment = true"
+                  @mouseleave="isShowTooltipAppointment = false"
+                  @click="onClickTooltip('appointment')"
+                  class="w-[14px] h-[14px] cursor-pointer"
+                  src="/images/icons/atoms/question-gray.svg"
+                  alt="info"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,11 +74,13 @@ import Modal from '~/components/atoms/ModalSecondary.vue';
 import IconQuestionMark from '~/components/icons/QuestionMark.vue';
 import IconAppointment from '~/components/icons/Appointment.vue';
 import IconInfo from '~/components/icons/Info.vue';
+import DarkTooltip from '~/components/atoms/DarkTooltip.vue';
 
 export default {
   data() {
     return {
-      isHovered: false,
+      isShowTooltipHelp: false,
+      isShowTooltipAppointment: false,
     };
   },
   props: {
@@ -78,6 +98,7 @@ export default {
     IconQuestionMark,
     IconAppointment,
     IconInfo,
+    DarkTooltip,
   },
   methods: {
     closeModal() {
@@ -88,6 +109,15 @@ export default {
     },
     toAppointment() {
       window.location.href = 'https://bit.ly/JanjianLogin';
+    },
+    onClickTooltip(tooltip) {
+      if (window.innerWidth <= 1024) {
+        if (tooltip == 'help') {
+          this.isShowTooltipHelp = !this.isShowTooltipHelp;
+        } else if (tooltip == 'appointment') {
+          this.isShowTooltipAppointment = !this.isShowTooltipAppointment;
+        }
+      }
     },
   },
 };

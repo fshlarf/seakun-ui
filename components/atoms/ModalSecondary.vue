@@ -3,11 +3,11 @@
     <div
       v-if="isShow"
       tabindex="0"
-      class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed"
+      class="z-40 left-0 top-0 bottom-0 right-0 w-full h-full fixed"
     >
       <div class="z-50 relative mx-auto my-0 w-full">
         <div
-          class="modal-popup bg-white tn:p-3 md:px-6 xl:px-8 md:py-4 xl:py-6 rounded-2xl shadow-lg border flex flex-col"
+          class="modal-popup bg-white tn:p-3 md:px-4 md:py-4 rounded-2xl shadow-lg border flex flex-col !min-w-[340px]"
         >
           <div
             class="h-[28px] w-[28px] absolute -right-[10px] -top-[10px] flex items-center justify-center rounded-full bg-black/60"
@@ -17,7 +17,7 @@
             <img class="" src="/images/icons/atoms/close.svg" alt="close" />
           </div>
           <div
-            class="scroll-bar tn:px-3 tn:py-0 md:px-6 overflow-y-auto overscroll-auto"
+            class="scroll-bar tn:py-0 overflow-y-auto overflow-x-visible overscroll-y-auto"
           >
             <div v-if="!isLoading">
               <slot />
@@ -40,6 +40,7 @@
 
 <script>
 import CardShimmer from '~/components/mollecules/CardShimmer.vue';
+
 export default {
   name: 'ModalSecondary',
   props: {
@@ -68,7 +69,7 @@ export default {
 </script>
 
 <style>
-.modal-popup {
+.modal-popup overflow-visible {
   position: fixed;
   top: 50%;
   left: 50%;
