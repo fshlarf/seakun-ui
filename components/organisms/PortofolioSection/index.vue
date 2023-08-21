@@ -47,12 +47,12 @@ export default {
       portofolio: [
         {
           name: 'Pengguna',
-          counter: '38.000+',
+          counter: '49.000+',
           icon: 'user',
         },
         {
           name: 'Transaksi',
-          counter: '210.000+',
+          counter: '270.000+',
           icon: 'transaction',
         },
         {
