@@ -48,12 +48,12 @@
 
           <nav
             :class="{ flex: open, hidden: !open }"
-            class="tn:flex-col tn:pr-4 md:pr-4 lg:pr-0 tn:mt-2 md:p-0 lg:mt-0 tn:hidden lg:flex lg:justify-end lg:flex-row"
+            class="tn:flex-col tn:pr-4 md:pr-4 lg:pr-0 tn:mt-2 md:p-0 lg:mt-0 lg:flex lg:justify-end lg:flex-row"
             v-for="(navbar, id) in navbarLink"
             :key="id"
           >
             <div
-              class="cursor-pointer text-right my-3 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12 relative"
+              class="cursor-pointer tn:text-right tn:my-3 lg:my-4 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12 relative"
               @click="scrollToSection(navbar)"
             >
               <p>
