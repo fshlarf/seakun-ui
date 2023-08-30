@@ -230,13 +230,13 @@ export default {
         page: 1,
         limit: 4,
         isDisplayed: 1,
-        donationType: 'ramadan',
+        donationType: 'general',
       },
       paramDonationListMobile: {
         page: 1,
         limit: 4,
         isDisplayed: 1,
-        donationType: 'ramadan',
+        donationType: 'general',
       },
       donaturList: {
         list: [],
