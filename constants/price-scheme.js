@@ -465,7 +465,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Canva Teams',
-        value: 'Rp124.000',
+        value: 'Rp190.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -473,7 +473,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp124.000 ÷ 4 = Rp31.000',
+        value: 'Rp190.000 ÷ 4 = Rp47.500',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -481,7 +481,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp37.500',
+        value: 'Rp54.000',
         is_total: true,
       },
     ],
@@ -509,7 +509,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Canva Teams',
-        value: 'Rp1.240.000',
+        value: 'Rp1.900.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -517,15 +517,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.240.000 ÷ 4 = Rp310.000',
+        value: 'Rp1.900.000 ÷ 4 = Rp475.000',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp75.000',
+        value: 'Rp70.000',
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp385.000',
+        value: 'Rp545.000',
         is_total: true,
       },
     ],

@@ -1,14 +1,14 @@
 export const priceChangeList = [
-  // {
-  //   name: 'HBO Go',
-  //   slug: 'hbo-go',
-  //   message: 'penambahan pajak 11%',
-  // },
-  // {
-  //   name: 'Canva',
-  //   slug: 'canva',
-  //   message: 'Provider Canva memperbarui harga berlangganannya',
-  // },
+  {
+    name: 'HBO Go',
+    slug: 'hbo-go',
+    message: 'Provider Hbo Go memperbarui harga berlangganannya',
+  },
+  {
+    name: 'Canva',
+    slug: 'canva',
+    message: 'Provider Canva memperbarui harga berlangganannya',
+  },
   // {
   //   name: 'Nord VPN',
   //   slug: 'nord-vpn',

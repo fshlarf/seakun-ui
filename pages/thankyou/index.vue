@@ -2,12 +2,12 @@
   <div
     class="thankyou max-w-2xl w-full mx-auto tn:pt-6 md:pt-12 tn:-mb-4 md:mb-0"
   >
-    <!-- <img
-      class="w-full tn:hidden md:block cursor-pointer"
-      src="/images/ramadan-gift/thankyou2.webp"
+    <img
+      class="w-full tn:hidden md:block cursor-pointer -mt-12"
+      src="/images/general-gift/thankyou.png"
       alt="thr banner"
-      @click="toThrPage"
-    /> -->
+      @click="toTipPage"
+    />
     <!-- <img
       @click="toSekurbanPage"
       src="/images/thankyou/sequrban-banner-website.png"
@@ -23,12 +23,12 @@
         alt="sequrban banner"
         class="cursor-pointer md:hidden w-full mb-7"
       /> -->
-      <!-- <img
+      <img
         class="w-full md:hidden tn:mb-6 cursor-pointer"
-        src="/images/ramadan-gift/thankyou-mobile.webp"
+        src="/images/general-gift/thankyou-mobile.png"
         alt="thr banner"
-        @click="toThrPage"
-      /> -->
+        @click="toTipPage"
+      />
       <template v-if="!isLoading">
         <template
           v-if="
@@ -236,9 +236,9 @@ export default {
     this.getDetailOrder(order_uid, customer_uid);
   },
   methods: {
-    // toThrPage() {
-    //   this.$router.push('/thr');
-    // },
+    toTipPage() {
+      this.$router.push('/tip');
+    },
     toSekurbanPage() {
       this.$router.push('/sekurban');
     },
