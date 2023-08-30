@@ -447,7 +447,7 @@ export const providerList = [
     slug: 'canva',
     title: 'Harga Paket Canva Teams (1 Bulan)',
     img: '/images/product/brand/canva.png',
-    screenshot: '/images/price scheme/canva-month.png',
+    screenshot: '/images/price scheme/canva.png',
     desc: 'Canva Paket Premium 1 Bulan',
     member: 4,
     schemes: [
@@ -491,7 +491,7 @@ export const providerList = [
     slug: 'canva',
     title: 'Harga Paket Canva Teams (1 Tahun)',
     img: '/images/product/brand/canva.png',
-    screenshot: '/images/price scheme/canva-year.png',
+    screenshot: '/images/price scheme/canva.png',
     desc: 'Canva Paket Premium 1 Tahun',
     member: 4,
     schemes: [
@@ -1398,7 +1398,7 @@ export const providerList = [
     slug: 'hbo-go',
     title: 'Harga Paket Premium',
     img: '/images/product/brand/hbo-go.png',
-    screenshot: '/images/price scheme/hbo-go.png',
+    screenshot: '/images/price scheme/hbo-month.png',
     desc: 'Paket HBO Go Premium 1 bulan',
     member: 2,
     schemes: [
@@ -1445,54 +1445,7 @@ export const providerList = [
     slug: 'hbo-go',
     title: 'Harga Paket Premium',
     img: '/images/product/brand/hbo-go.png',
-    screenshot: '/images/price scheme/hbo-go.png',
-    desc: 'Paket HBO Go Premium 3 bulan',
-    member: 2,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di HBO Go',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 2 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
-    ],
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
-        is_total: true,
-      },
-      {
-        title: 'Harga Paket Premium Hbo Go 3 Bulan',
-        value: 'Rp119.000',
-      },
-      {
-        title: 'Harga setelah dikenakan pajak 11%',
-        value: 'Rp132.090',
-      },
-      {
-        title: 'Jumlah Member Dalam 1 Grup',
-        value: '2',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp132.090 ÷ 2 = Rp66.045',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp19.955',
-      },
-      {
-        title: 'Harga Paket 3 Bulan',
-        value: 'Rp86.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'HBO Go',
-    slug: 'hbo-go',
-    title: 'Harga Paket Premium',
-    img: '/images/product/brand/hbo-go.png',
-    screenshot: '/images/price scheme/hbo-go.png',
+    screenshot: '/images/price scheme/hbo-year.png',
     desc: 'Paket HBO Go Premium 1 tahun',
     member: 2,
     schemes: [
