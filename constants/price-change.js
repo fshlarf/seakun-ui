@@ -9,6 +9,11 @@ export const priceChangeList = [
     slug: 'canva',
     message: 'Provider Canva memperbarui harga berlangganannya',
   },
+  {
+    name: 'Disney+ Hotstar',
+    slug: 'disney-hotstar',
+    message: 'Provider Disney+ Hotstar memperbarui harga berlangganannya',
+  },
   // {
   //   name: 'Nord VPN',
   //   slug: 'nord-vpn',
