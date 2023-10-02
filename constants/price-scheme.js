@@ -537,13 +537,13 @@ export const providerList = [
     img: '/images/product/brand/disney-hotstar.png',
     screenshot: '/images/price scheme/disney-hotstar-year.png',
     desc: 'Disney+ Hotstar Paket Premium User Host 1 Tahun',
-    member: 2,
+    member: 3,
     schemes: [
       'User melakukan pendaftaran ke Disney+ menggunakan nomor pribadi',
-      'User subscribe Plan Yearly seharga Rp199.000 menggunakan payment pribadi',
-      'Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi Disney+',
-      'Admin akan mengirimkan penggantian dana sebesar 49.500',
+      'Admin login pada akun Disney user host dan subscribe Plan Yearly seharga Rp799.000 menggunakan payment Seakun',
+      'Setelah Admin berhasil melakukan purchase & set up, menginfokan user host untuk melakukan pembayaran di Seakun sebesar Rp266.333',
       'User dapat menikmati fitur Premium selama 1 tahun sebagai user host',
+      'Berkomitmen merespon chat dan membantu user reguler untuk login pada Disney+',
     ],
     informations: [
       {
@@ -553,15 +553,15 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Disney+ Hotstar',
-        value: 'Rp199.000',
+        value: 'Rp799.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
-        value: '2',
+        value: '3',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp199.000 ÷ 2 = Rp99.500',
+        value: 'Rp799.000 ÷ 3 = Rp266.333',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -569,7 +569,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Tahunan',
-        value: 'Rp99.500',
+        value: 'Rp266.333',
         is_total: true,
       },
     ],
@@ -581,12 +581,12 @@ export const providerList = [
     img: '/images/product/brand/disney-hotstar.png',
     screenshot: '/images/price scheme/disney-hotstar-year.png',
     desc: 'Disney+ Hotstar Paket Premium Reguler 1 Tahun',
-    member: 2,
+    member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Disney+ Hotstar',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 2 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun ',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     informations: [
       {
@@ -596,23 +596,23 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Disney+ Hotstar',
-        value: 'Rp199.000',
+        value: 'Rp799.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
-        value: '2',
+        value: '3',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp199.000 ÷ 2 = Rp99.500',
+        value: 'Rp799.000 ÷ 3 = Rp266.333',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp20.500',
+        value: 'Rp29.667',
       },
       {
         title: 'Harga Paket Tahunan',
-        value: 'Rp120.000',
+        value: 'Rp296.000',
         is_total: true,
       },
     ],
