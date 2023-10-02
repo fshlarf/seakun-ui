@@ -43,10 +43,11 @@
     "name": "Disney+ Hotstar",
     "slug": "disney-hotstar",
     "flow": [
-      "Host melakukan pendaftaran ke Disney menggunakan nomor pribadi",
-      "Host subscribe Plan Yearly seharga Rp199.000 menggunakan payment pribadi",
-      "Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi pada Disney",
-      "Admin akan mengirimkan penggantian dana sebesar 49.000"
+      "Host melakukan pendaftaran ke Disney+ menggunakan nomor pribadi",
+      "Admin login pada akun Disney user host dan subscribe Plan Yearly seharga Rp799.000 menggunakan payment Seakun",
+      "Setelah Admin berhasil melakukan purchase & set up, menginfokan user host untuk melakukan pembayaran di Seakun sebesar Rp266.333",
+      "User dapat menikmati fitur Premium selama 1 tahun sebagai user host",
+      "Berkomitmen merespon chat dan membantu user reguler untuk login pada Disney+"
     ]
   },
   {
