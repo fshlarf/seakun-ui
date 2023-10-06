@@ -220,10 +220,10 @@
 
       <ul class="list-outside pl-8 list-decimal">
         <li>
-          Dilarang untuk menyebarkan informasi akun dan/atau informasi berupa
-          link invitation dan/atau informasi berupa alamat User Host yang
-          diberikan oleh Seakun.id kepada Anda jika anda menggunakan layanan di
-          Platform Seakun.id.
+          Dilarang untuk menyebarkan informasi apapun terkait akun, seperti link
+          invitation dan/atau alamat User Host yang diberikan oleh Seakun untuk
+          tujuan apapun, termasuk upaya komersialisasi produk yang terkait
+          dengan Seakun.
         </li>
         <li>
           Dilarang mengubah informasi akun yang telah diberikan kepada Anda,
