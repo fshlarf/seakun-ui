@@ -21,6 +21,16 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
+    <ModalBase
+      :is-show="isShowModalWar1010"
+      @onClose="isShowModalWar1010 = false"
+    >
+      <img
+        class="w-full max-w-[500px]"
+        src="/images/promo/war1010.jpg"
+        alt="war1010"
+      />
+    </ModalBase>
   </div>
 </template>
 
@@ -43,6 +53,7 @@ import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
 import SeakunHelpFloatingButton from '~/components/mollecules/SeakunHelpFloatingButton';
 import ModalSekurbanBanner from '~/components/mollecules/ModalSekurbanBanner';
 import ModalSeakunHelp from '~/components/mollecules/ModalSeakunHelp';
+import ModalBase from '~/components/atoms/ModalBase';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
 
@@ -66,10 +77,12 @@ export default {
     SeakunHelpFloatingButton,
     ModalSekurbanBanner,
     ModalSeakunHelp,
+    ModalBase,
   },
   data() {
     return {
       isShowModalSeakunHelp: false,
+      isShowModalWar1010: true,
     };
   },
   computed: {
