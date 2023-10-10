@@ -21,7 +21,7 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
-    <ModalBase
+    <!-- <ModalBase
       :is-show="isShowModalWar1010"
       @onClose="isShowModalWar1010 = false"
     >
@@ -30,7 +30,7 @@
         src="/images/promo/war1010.jpg"
         alt="war1010"
       />
-    </ModalBase>
+    </ModalBase> -->
   </div>
 </template>
 
