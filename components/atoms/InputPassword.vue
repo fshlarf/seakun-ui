@@ -10,18 +10,41 @@
     </label>
     <div class="form-content relative z-0">
       <input
-        class="relative z-0 appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="relative z-0 appearance-none border rounded-lg w-full py-3 pl-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
         :class="{ 'border-danger': error.isError }"
-        :type="type"
+        :type="isShow ? 'text' : 'password'"
         :name="name"
         v-bind="$attrs"
         v-on="$listeners"
-        :value="value"
         :placeholder="placeholder"
         @input="$emit('update', $event.target.value)"
+        v-model="password"
       />
-      <div class="icon-left">
-        <slot name="iconLeft"> </slot>
+      <!-- <input
+        v-else
+        class="relative z-0 appearance-none border rounded-lg w-full py-3 pl-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline pr-10"
+        :class="{ 'border-danger': error.isError }"
+        type="password"
+        :name="name"
+        v-bind="$attrs"
+        v-on="$listeners"
+        :placeholder="placeholder"
+        v-model="password"
+        @input="$emit('update', $event.target.value)"
+      /> -->
+      <div
+        class="absolute top-1/2 -translate-y-1/2 right-4 cursor-pointer"
+        @click="isShow = !isShow"
+      >
+        <img
+          :src="[
+            isShow
+              ? '/images/icons/atoms/eye-close-up.svg'
+              : '/images/icons/atoms/eye-slash.svg',
+          ]"
+          alt="hide"
+          class="w-6 h-6"
+        />
       </div>
     </div>
 
@@ -70,9 +93,11 @@ export default {
       default: '',
     },
   },
-  model: {
-    prop: 'value',
-    event: 'update',
+  data() {
+    return {
+      isShow: false,
+      password: null,
+    };
   },
 };
 </script>
@@ -83,11 +108,6 @@ export default {
     width: 16px;
     height: auto;
     fill: #a0a3bd;
-  }
-  .icon-left {
-    position: absolute;
-    right: 0.75rem;
-    top: 1.25rem;
   }
 }
 </style>
