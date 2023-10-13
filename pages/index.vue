@@ -21,16 +21,18 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
-    <!-- <ModalBase
-      :is-show="isShowModalWar1010"
-      @onClose="isShowModalWar1010 = false"
-    >
+    <ModalBase :is-show="isShowModalBase" @onClose="isShowModalBase = false">
       <img
-        class="w-full max-w-[500px]"
-        src="/images/promo/war1010.jpg"
-        alt="war1010"
+        class="hidden xl:block xl:max-w-[900px]"
+        src="/images/promo/bonus-yt.png"
+        alt="bonus youtube"
       />
-    </ModalBase> -->
+      <img
+        class="w-full xl:hidden"
+        src="/images/promo/bonus-yt-mobile.png"
+        alt="bonus youtube"
+      />
+    </ModalBase>
   </div>
 </template>
 
@@ -82,7 +84,7 @@ export default {
   data() {
     return {
       isShowModalSeakunHelp: false,
-      isShowModalWar1010: true,
+      isShowModalBase: true,
     };
   },
   computed: {
