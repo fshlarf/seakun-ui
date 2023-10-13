@@ -13,6 +13,7 @@
         ></div>
         <section
           v-for="(menu, id) in menus"
+          :key="id"
           class="cursor-pointer"
           @click="handleTab(menu.name)"
         >

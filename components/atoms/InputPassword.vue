@@ -18,7 +18,6 @@
         v-on="$listeners"
         :placeholder="placeholder"
         @input="$emit('update', $event.target.value)"
-        v-model="password"
       />
       <!-- <input
         v-else
@@ -56,7 +55,7 @@
 
 <script>
 export default {
-  name: 'Input',
+  name: 'InputPassword',
   props: {
     value: {
       type: String | Number,
@@ -92,6 +91,10 @@ export default {
       type: String,
       default: '',
     },
+  },
+  model: {
+    prop: 'value',
+    event: 'update',
   },
   data() {
     return {

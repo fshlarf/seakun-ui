@@ -92,6 +92,9 @@ import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
 import Checkbox from '~/components/atoms/Checkbox.vue';
+import { setToken, setUid, setUsername } from '~/helpers/tokenAuth';
+import AuthService from '~/services/AuthServices.js';
+
 export default {
   components: {
     Input,
@@ -101,19 +104,55 @@ export default {
   },
   data() {
     return {
+      AuthService,
       isCheked: false,
+      email: '',
+      password: '',
+      isLoading: false,
+      error: {},
     };
+  },
+  mounted() {
+    this.AuthService = new AuthService(this);
   },
   methods: {
     getValCheckbox(val) {
       this.isCheked = val;
     },
-    submit() {
-      console.log(this.isCheked);
+    onSubmit() {
+      this.login();
+    },
+    async login() {
+      this.isLoading = true;
+      try {
+        const fetchLogin = await this.AuthService.login(
+          this.email,
+          this.password
+        );
+        const {
+          accessToken,
+          refreshToken,
+          exp,
+          uid,
+          username,
+        } = fetchLogin.data.data;
+        setToken(this, { accessToken, refreshToken, exp });
+        setUid(this, uid);
+        setUsername(this, username);
+        this.$router.push({ path: '/' });
+      } catch (error) {
+        console.log(error);
+        this.error = {
+          value: true,
+          message: 'Error occured, Please try again later',
+        };
+      }
+      this.isLoading = false;
     },
   },
 };
 </script>
+
 <style lang="scss" scoped>
 .dm-sans {
   font-family: 'DM Sans', sans-serif;

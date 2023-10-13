@@ -1,5 +1,5 @@
 import { API_MASTER_URL } from '~/constants/api.constants.js';
-import httpRequest from '~/helpers/httpRequest.js';
+import { httpRequest, httpRequestAuth } from '~/helpers/httpRequest.js';
 
 class SekeranjangService {
   constructor(ctx) {
