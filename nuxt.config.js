@@ -178,6 +178,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/svg',
+    'cookie-universal-nuxt',
     [
       'nuxt-facebook-pixel-module',
       {

@@ -211,6 +211,13 @@ button[disabled]:hover {
   object-position: center;
 }
 
+.object-cover-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
 .one-line {
   display: -webkit-box;
   -webkit-line-clamp: 1;

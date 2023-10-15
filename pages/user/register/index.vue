@@ -1,11 +1,14 @@
 <template>
-  <div class="w-full min-h-screen h-full hero-register">
+  <div
+    class="w-full min-h-screen h-full"
+    :class="`${isRegisterSuccess ? 'bg-white' : 'hero-register'}`"
+  >
     <main
       class="px-4 sm:px-[1rem] md:px-[2rem] xl:px-0 pb-4 xl:pb-0 xl:!flex xl:grid-cols-none xl:justify-between"
     >
-      <div id="bg-register" class="hidden xl:block h-screen w-max">
+      <div id="bg-register" class="hidden xl:block h-screen xl:w-[47%]">
         <img
-          class="h-full"
+          class="object-cover-top"
           src="/images/background/bg-register.png"
           alt="daftar"
         />
@@ -18,7 +21,7 @@
       <div
         class="xl:bg-white relative xl:mt-0 rounded-[12px] xl:rounded-none xl:w-[53%] xl:h-screen xl:flex xl:items-center xl:justify-center"
       >
-        <div class="xl:w-[518px]">
+        <div v-if="!isRegisterSuccess" class="xl:w-[518px]">
           <img
             src="/images/background/right-register.png"
             alt="ilustration"
@@ -29,9 +32,9 @@
             class="w-full rounded-xl lg:rounded-none bg-white sm:max-w-[478px] mx-auto p-1 lg:p-5 mt-3 lg:mt-[60px]"
           >
             <img
-              src="/images/illustration/register-mobile.png"
-              alt="login"
-              class="w-full object-contain lg:hidden"
+              src="/images/background/bg-register-mobile.png"
+              alt="register"
+              class="w-full object-contain lg:hidden rounded-lg"
             />
             <div class="px-3 lg:px-0 mt-3 lg:mt-0">
               <h1 class="text-[26px] font-bold text-[#49A794]">
@@ -94,6 +97,7 @@
               <Button
                 @click="onClickRegister"
                 add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-base font-bold mt-8 lg:mt-11 dm-sans"
+                :is-loading="isLoading"
                 >Daftar</Button
               >
               <p
@@ -109,6 +113,36 @@
             </div>
           </form>
         </div>
+        <div v-else class="xl:w-[518px] mt-20 xl:mt-0">
+          <img
+            class="mx-auto"
+            src="/images/register/success.svg"
+            alt="pendaftaran berhasil"
+          />
+          <h2
+            class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+          >
+            Registrasi Berhasil
+          </h2>
+          <p class="text-[14px] lg:text-base text-center mt-[4px]">
+            Silakan cek email kamu untuk melakukan verifikasi.
+          </p>
+          <div class="flex space-x-3 items-center justify-center mt-[8px]">
+            <p class="text-center dm-sans text-sm text-slate-500">
+              Tidak menemukan email?
+              <span
+                v-if="isResendEmailActive"
+                class="text-[#08A081] cursor-pointer underline"
+                @click="resendVerificationEmail"
+                >Kirim ulang email</span
+              >
+              <span v-else-if="!isLoadingResendEmail">{{
+                resendEmailCounter
+              }}</span>
+            </p>
+            <Spinner v-if="isLoadingResendEmail" />
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -117,10 +151,10 @@
 <script>
 import UserService from '~/services/UserServices';
 import Button from '../../../components/atoms/Button.vue';
+import Spinner from '../../../components/atoms/Spinner.vue';
 import Input from '../../../components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import {
-  currencyFormat,
   capitalizeFirstLetter,
   formatPhoneNumber,
 } from '~/helpers/word-transformation.js';
@@ -130,6 +164,7 @@ export default {
     Input,
     Button,
     InputPassword,
+    Spinner,
   },
   data() {
     return {
@@ -162,6 +197,12 @@ export default {
           message: '',
         },
       },
+      isRegisterSuccess: false,
+      registerData: {},
+      isLoading: false,
+      resendEmailCounter: 0,
+      isResendEmailActive: true,
+      isLoadingResendEmail: false,
     };
   },
   mounted() {
@@ -222,7 +263,6 @@ export default {
       }
 
       if (input === 'name' || !input) {
-        console.log(name);
         if (name === '') {
           errorTemp.name = {
             isError: true,
@@ -240,14 +280,12 @@ export default {
 
       if (input === 'phone' || !input) {
         if (phoneNumber === '') {
-          console.log('phone empty');
           errorTemp.phone = {
             isError: true,
             message: 'Nomor whatsapp harus diisi',
           };
           isValid = false;
         } else if (!phoneNumber.match(idnPhoneFormat)) {
-          console.log('phone format incorrect');
           errorTemp.phone = {
             isError: true,
             message: 'Format nomor whatsapp salah',
@@ -257,9 +295,7 @@ export default {
       }
 
       if (input === 'password' || !input) {
-        console.log(password);
         if (password === '') {
-          console.log('empty');
           errorTemp.password = {
             isError: true,
             message: 'Password harus diisi',
@@ -270,14 +306,12 @@ export default {
 
       if (input === 'retypePassword' || !input) {
         if (retypePassword === '') {
-          console.log('emptyt retype');
           errorTemp.retypePassword = {
             isError: true,
             message: 'Password harus diisi',
           };
           isValid = false;
         } else if (password !== retypePassword) {
-          console.log('unmatch');
           errorTemp.retypePassword = {
             isError: true,
             message: 'Password harus sama',
@@ -290,6 +324,7 @@ export default {
       return isValid;
     },
     async submit() {
+      this.isLoading = true;
       const payload = {
         name: capitalizeFirstLetter(this.name),
         email: this.email,
@@ -300,13 +335,45 @@ export default {
         const { UserService } = this;
         const fetchRegister = await UserService.register(payload);
         if (fetchRegister.data) {
-          console.log(fetchRegister.data);
+          const data = fetchRegister.data.meta.message;
+          this.registerData = data;
+          this.isRegisterSuccess = true;
         } else {
           throw new Error(fetchRegister);
         }
       } catch (error) {
         console.log(error);
       }
+      this.isLoading = false;
+    },
+    async resendVerificationEmail() {
+      this.isResendEmailActive = false;
+      this.isLoadingResendEmail = true;
+      const { UserService } = this;
+      const { email } = this.registerData;
+      try {
+        const fetchResendEmail = await UserService.resendVerificationEmail(
+          email
+        );
+        if (fetchResendEmail.data) {
+          this.resendEmailCounter = 15;
+          this.isLoadingResendEmail = false;
+          await this.RunCountdown();
+        }
+      } catch (error) {
+        this.isLoadingResendEmail = false;
+        console.log(error);
+      }
+    },
+    async RunCountdown() {
+      const countdownInterval = setInterval(() => {
+        if (this.resendEmailCounter > 0) {
+          this.resendEmailCounter--;
+        } else {
+          clearInterval(countdownInterval);
+          this.isResendEmailActive = true;
+        }
+      }, 1000);
     },
   },
 };
@@ -320,6 +387,18 @@ export default {
 @media only screen and (max-width: 1024px) {
   .hero-register {
     background-color: #c7f5ec;
+    position: relative;
+  }
+  .hero-register::before {
+    content: '';
+    background-image: url('/images/background/bg-layer-mobile.png');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.3;
   }
 }
 @media only screen and (min-width: 1024px) {

@@ -1,10 +1,11 @@
 import { API_AUTH_URL } from '~/constants/api.constants';
-import { httpRequestAuth } from '~/helpers/httpRequest';
+import { httpRequestAuth, httpRequest } from '~/helpers/httpRequest';
 
 class AuthService {
   constructor(ctx) {
     this.ctx = ctx;
-    this.serviceApi = httpRequestAuth(ctx, API_AUTH_URL).serviceApi;
+    this.serviceApi = httpRequest(ctx, API_AUTH_URL).serviceApi;
+    this.serviceApiAuth = httpRequestAuth(ctx, API_AUTH_URL).serviceApi;
   }
 
   login(email, password) {

@@ -22,37 +22,41 @@
     </section>
     <form action="submit" class="mt-6 space-y-3 md:space-y-4 lg:space-y-6">
       <Input
+        v-model="name"
         label="Nama Lengkap"
         class-label="!text-sm md:!text-xs !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
       />
       <Input
+        v-model="phoneNumber"
         label="No Whatsapp"
         class-label="!text-sm md:!text-xs  !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
       />
       <Input
+        v-model="email"
         label="Email"
         class-label="!text-sm md:!text-xs !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
       />
       <div>
-        <InputPassword
-          label="Password"
-          class-label="!text-sm md:!text-xs  !text-gray-secondary"
-          class-name="!text-sm md:!text-base !text-gray-secondary"
-        />
         <nuxt-link to="/user/profile/reset-password">
           <p class="text-sm md:text-base text-[#3299DB] mt-3 text-right">
             Reset Password?
           </p>
         </nuxt-link>
       </div>
-      <div class="text-right">
+      <div class="">
         <Button
           class="!text-sm md:!text-base border-2 border-green-primary bg-green-primary w-full md:w-[166px] h-[40px] md:h-[46px] text-white"
         >
           Simpan
+        </Button>
+        <Button
+          @click="$emit('onClickCancel')"
+          class="!text-sm md:!text-base border-2 border-green-primary w-full md:w-[166px] h-[40px] md:h-[46px] text-green-primary mt-3"
+        >
+          Batal
         </Button>
       </div>
     </form>
@@ -63,11 +67,44 @@
 import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
+
 export default {
   components: {
     Input,
     Button,
     InputPassword,
+  },
+  props: {
+    profile: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  data() {
+    return {
+      name: '',
+      email: '',
+      phoneNumber: '',
+    };
+  },
+  watch: {
+    profile(val) {
+      if (val) {
+        this.getProfileData(val);
+      }
+    },
+  },
+  mounted() {
+    this.getProfileData(this.profile);
+  },
+  methods: {
+    getProfileData(profile) {
+      if (profile) {
+        this.name = profile.name;
+        this.email = profile.email;
+        this.phoneNumber = profile.phoneNumber;
+      }
+    },
   },
 };
 </script>

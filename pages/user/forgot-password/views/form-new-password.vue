@@ -24,9 +24,10 @@
             Buat Password Baru
           </h1>
           <p class="text-sm lg:text-base text-gray-secondary dm-sans">
-            Password barumu harus berbeda dengan password sebelumnya..
+            Password baru kamu harus berbeda dengan password sebelumnya..
           </p>
           <InputPassword
+            v-model="password"
             id="password"
             label="Password"
             class-label="!text-sm lg:!text-base"
@@ -34,6 +35,7 @@
             class="mt-5 lg:mt-8 !text-sm !lg:text-base"
           />
           <InputPassword
+            v-model="retypePassword"
             id="confirm-password"
             label="Konfirmasi Password"
             class-label="!text-sm lg:!text-base"
@@ -41,7 +43,7 @@
             class="mt-4 lg:mt-8 !text-sm !lg:text-base"
           />
           <Button
-            type="submit"
+            @click="onClickUpdate"
             add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-8 dm-sans "
             >Kirim</Button
           >

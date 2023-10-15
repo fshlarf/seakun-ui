@@ -18,17 +18,13 @@
             <p>Nama Lengkap</p>
             <p>No Whatsapp</p>
             <p>Email</p>
-            <p>Password</p>
           </div>
           <div
-            v-for="(profile, id) in dataProfile"
-            :key="id"
             class="text-gray-secondary space-y-2 md:space-y-3 max-w-[200px] truncate"
           >
             <p class="truncate">{{ profile.name }}</p>
             <p class="truncate">{{ profile.phoneNumber }}</p>
             <p class="truncate">{{ profile.email }}</p>
-            <p class="truncate">{{ maskPassword(profile.password) }}</p>
           </div>
         </section>
       </div>
@@ -55,21 +51,10 @@ export default {
   components: {
     Button,
   },
-  data() {
-    return {
-      dataProfile: [
-        {
-          name: 'Wade Wilson',
-          phoneNumber: '083812345678',
-          email: 'wadewilson@gmail.com',
-          password: 'wade123',
-        },
-      ],
-    };
-  },
-  methods: {
-    maskPassword(text) {
-      return '●'.repeat(text.length);
+  props: {
+    profile: {
+      type: Object,
+      default: () => {},
     },
   },
 };

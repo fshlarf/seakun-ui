@@ -142,6 +142,15 @@ export default {
     window.onscroll = () => {
       this.handleScrollEffect();
     };
+    const username = this.$cookies.get('username');
+    if (username) {
+      const profileMenu = {
+        id: 7,
+        label: 'Profil',
+        tag: 'profile',
+      };
+      this.navbarLink.push(profileMenu);
+    }
     // setInterval(() => {
     //   this.showSpark1 = !this.showSpark1;
     // }, 700);
@@ -178,6 +187,8 @@ export default {
         window.open('https://forms.gle/t1AbaxnjEtJr8NAPA', '_blank');
       } else if (menu.tag === 'sekurban') {
         this.$router.push('/sekurban');
+      } else if (menu.tag === 'profile') {
+        this.$router.push('/user/profile');
       } else {
         this.scrollToElementWithOffset(menu.tag, 25);
         this.open = false;

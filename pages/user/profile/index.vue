@@ -12,7 +12,7 @@
           alt="background"
           class="absolute top-0 right-0 lg:hidden"
         />
-        <div
+        <!-- <div
           class="border-[1px] rounded-xl lg:border-none grid grid-cols-2 sm:grid-cols-4 gap-2 lg:flex items-center h-full w-full pr-10 sm:pr-0 p-4 lg:p-6 gap-y-5 lg:gap-14 xl:gap-20 lg:text-sm text-xs whitespace-nowrap"
         >
           <section class="text-green-seakun-secondary-dark">
@@ -69,18 +69,22 @@
                   alt="star"
                   class="w-[22px] h-[21px]"
                 />
-                <p class="text-xs">Sebesti</p>
+                <p class="text-xs">Sebestie</p>
               </div>
             </div>
           </section>
-        </div>
+        </div> -->
       </header>
       <div class="mt-6">
-        <CardProfile @clickEditButton="isEdit = true" />
+        <CardProfile :profile="customerData" @clickEditButton="isEdit = true" />
       </div>
     </template>
     <template v-else>
-      <EditProfile @clickArrow="isEdit = false" />
+      <EditProfile
+        :profile="customerData"
+        @clickArrow="isEdit = false"
+        @onClickCancel="isEdit = false"
+      />
     </template>
   </div>
 </template>
@@ -88,16 +92,41 @@
 <script>
 import CardProfile from './views/card-profile.vue';
 import EditProfile from './views/edit-profile.vue';
+import CustomerService from '~/services/CustomerServices';
+
 export default {
   layout: 'profile',
+  middleware: 'authorize',
   components: {
     CardProfile,
     EditProfile,
   },
   data() {
     return {
+      CustomerService,
       isEdit: false,
+      customerData: {},
+      isLoading: true,
     };
+  },
+  mounted() {
+    this.CustomerService = new CustomerService(this);
+    this.getCustomerDetail();
+  },
+  methods: {
+    async getCustomerDetail() {
+      this.isLoading = true;
+      const { CustomerService } = this;
+      try {
+        const fetchCustomer = await CustomerService.getCustomerByUid();
+        if (fetchCustomer.data) {
+          this.customerData = fetchCustomer.data.data;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoading = false;
+    },
   },
 };
 </script>

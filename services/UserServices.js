@@ -16,8 +16,22 @@ class UserService {
     });
   }
 
-  logout() {
-    return this.serviceApi.get('/customer/sign/out');
+  resendVerificationEmail(email) {
+    return this.serviceApi.post('/customer/email/verification', { email });
+  }
+
+  verifyEmailToken(token, userUid) {
+    return this.serviceApi.post('/customer/verify', { token, userUid });
+  }
+
+  sendForgotPasswordEmail(email) {
+    return this.serviceApi.post('/customer/email/forget-password', { email });
+  }
+
+  updateForgettedPassword(param) {
+    return this.serviceApi.patch('/customer/verify/forget-password', {
+      ...param,
+    });
   }
 }
 
