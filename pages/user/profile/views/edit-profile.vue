@@ -4,7 +4,7 @@
     style="box-shadow: 0px 2px 10px 0px rgba(158, 161, 182, 0.1)"
   >
     <section
-      class="md:flex items-center gap-2 cursor-pointer hidden"
+      class="md:flex items-center gap-2 cursor-pointer hidden max-w-max"
       @click="$emit('clickArrow')"
     >
       <img src="/images/icons/atoms/arrow-back.svg" alt="back" />

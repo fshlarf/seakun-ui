@@ -1,11 +1,13 @@
 <template>
   <div>
     <template v-if="!isEdit">
-      <header class="wrapper-header w-full relative mt-6 md:mt-0 rounded-xl">
+      <header
+        class="wrapper-header w-full relative mt-6 md:mt-0 rounded-xl z-0"
+      >
         <img
           src="/images/profile-page/mask-header-transaction.png"
           alt="background"
-          class="hidden lg:block absolute top-0 right-0"
+          class="hidden lg:block absolute top-0 right-0 z-10"
         />
         <img
           src="/images/profile-page/mask-header-transaction-mobile.png"

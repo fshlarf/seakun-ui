@@ -28,12 +28,12 @@
           </div>
         </section>
       </div>
-      <section
-        class="cursor-pointer hidden md:block"
+      <div
+        class="cursor-pointer hidden md:block relative z-20"
         @click="$emit('clickEditButton')"
       >
         <img src="/images/profile-page/icon-edit.svg" alt="edit" />
-      </section>
+      </div>
     </main>
     <div class="text-center mt-8 md:hidden">
       <Button

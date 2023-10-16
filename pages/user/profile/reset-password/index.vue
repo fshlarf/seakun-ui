@@ -5,9 +5,12 @@
       class="bg-white p-4 md:p-5 lg:p-6 rounded-xl space-y-5 md:space-y-6 text-gray-secondary mt-6 md:mt-0"
       style="box-shadow: 0px 2px 10px 0px rgba(158, 161, 182, 0.1)"
     >
-      <nuxt-link to="/user/profile" class="md:flex items-center gap-2 hidden">
+      <nuxt-link
+        to="/user/profile"
+        class="md:flex items-center gap-2 hidden max-w-max"
+      >
         <img src="/images/icons/atoms/arrow-back.svg" alt="back" />
-        <p class="text-xs">Kembali</p>
+        <p class="text-sm">Kembali</p>
       </nuxt-link>
       <div>
         <h3 class="text-sm md:text-base lg:text-[20px] font-bold -mt-5 md:mt-0">
