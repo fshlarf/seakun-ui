@@ -132,7 +132,6 @@ export default {
       if (oldVal !== newVal) {
         this.activePage = this.$route.path.split('/').pop();
       }
-      console.log(this.activeSecondSlug);
     },
   },
   mounted() {

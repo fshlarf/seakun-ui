@@ -105,17 +105,7 @@ export default {
     // If the user is not authenticated
     const accesToken = app.$cookies.get('ATS');
     const refreshToken = app.$cookies.get('RTS');
-    const uid = app.$cookies.get('uid');
-    const username = app.$cookies.get('username');
     if (accesToken && refreshToken) {
-      console.log('accesToken');
-      console.log(accesToken);
-      console.log('refreshToken');
-      console.log(refreshToken);
-      console.log('uid');
-      console.log(uid);
-      console.log('username');
-      console.log(username);
       // return redirect('/dashboard')
     }
   },

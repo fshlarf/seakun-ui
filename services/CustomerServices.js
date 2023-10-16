@@ -11,6 +11,10 @@ class CustomerService {
   getCustomerByUid() {
     return this.serviceApiAuth.get('/customer');
   }
+
+  updateCustomer(params) {
+    return this.serviceApiAuth.patch('/customer', { ...params });
+  }
 }
 
 export default CustomerService;

@@ -145,6 +145,8 @@
         </div>
       </div>
     </main>
+
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -154,6 +156,7 @@ import Button from '../../../components/atoms/Button.vue';
 import Spinner from '../../../components/atoms/Spinner.vue';
 import Input from '../../../components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 import {
   capitalizeFirstLetter,
   formatPhoneNumber,
@@ -165,6 +168,7 @@ export default {
     Button,
     InputPassword,
     Spinner,
+    Snackbar,
   },
   data() {
     return {
@@ -363,6 +367,12 @@ export default {
       } catch (error) {
         this.isLoadingResendEmail = false;
         console.log(error);
+        this.$refs.snackbar.showSnackbar({
+          message: `Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin`,
+          className: '',
+          color: 'bg-red-400',
+          duration: 4000,
+        });
       }
     },
     async RunCountdown() {

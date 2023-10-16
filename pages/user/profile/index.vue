@@ -75,17 +75,21 @@
           </section>
         </div> -->
       </header>
-      <div class="mt-6">
+      <div class="">
         <CardProfile :profile="customerData" @clickEditButton="isEdit = true" />
       </div>
     </template>
     <template v-else>
       <EditProfile
         :profile="customerData"
+        :is-loading="isLoading"
         @clickArrow="isEdit = false"
         @onClickCancel="isEdit = false"
+        @onUpdateProfile="updateProfile"
       />
     </template>
+
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -93,6 +97,7 @@
 import CardProfile from './views/card-profile.vue';
 import EditProfile from './views/edit-profile.vue';
 import CustomerService from '~/services/CustomerServices';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
   layout: 'profile',
@@ -100,6 +105,7 @@ export default {
   components: {
     CardProfile,
     EditProfile,
+    Snackbar,
   },
   data() {
     return {
@@ -124,6 +130,34 @@ export default {
         }
       } catch (error) {
         console.log(error);
+      }
+      this.isLoading = false;
+    },
+    async updateProfile(payload) {
+      const { CustomerService } = this;
+      this.isLoading = true;
+      try {
+        const fetchUpdateProfile = await CustomerService.updateCustomer(
+          payload
+        );
+        if (fetchUpdateProfile.data) {
+          this.getCustomerDetail();
+          this.$refs.snackbar.showSnackbar({
+            message: `Data profil berhasil diedit`,
+            className: '',
+            color: 'bg-green-400',
+            duration: 3000,
+          });
+          this.isEdit = false;
+        }
+      } catch (error) {
+        console.log(error);
+        this.$refs.snackbar.showSnackbar({
+          message: `Gagal mengedit data profil. Coba beberapa saat lagi atau hubungi admin`,
+          className: '',
+          color: 'bg-red-400',
+          duration: 4000,
+        });
       }
       this.isLoading = false;
     },

@@ -568,7 +568,6 @@ export default {
     },
     clickSubmit() {
       this.validationForm();
-      console.log(this.validationForm());
       if (this.validationForm()) {
         this.isShowModalConfirmation = true;
       }
