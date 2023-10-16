@@ -38,6 +38,8 @@
             name="email"
             placeholder="Masukkan email"
             class-name="text-sm lg:text-base "
+            @keyup="validationForm('email')"
+            :error="errorForm.email"
           />
 
           <InputPassword
@@ -46,6 +48,8 @@
             class-label="text-gray-secondary !text-sm !lg:text-base dm-sans mt-4 block"
             class-name="text-sm lg:text-base "
             placeholder="Masukkan password kamu disini"
+            @keyup="validationForm('password')"
+            :error="errorForm.password"
           />
           <div
             class="mt-5 lg:mt-4 flex justify-between items-center dm-sans text-sm lg:text-base"
@@ -65,7 +69,7 @@
             </p>
           </div>
           <Button
-            @click="login"
+            @click="onClickLogin"
             :is-loading="isLoading"
             add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-base font-bold mt-7 lg:mt-11 dm-sans"
             >Login</Button
@@ -76,13 +80,15 @@
             Belum punya akun?
             <span
               class="text-[#08A081] cursor-pointer"
-              @click="$router.push('/user/register')"
+              @click="$router.push('/register')"
               >Daftar</span
             >
           </p>
         </form>
       </div>
     </main>
+
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -91,6 +97,7 @@ import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
 import Checkbox from '~/components/atoms/Checkbox.vue';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 import { setToken, setUid, setUsername } from '~/helpers/tokenAuth';
 import AuthService from '~/services/AuthServices';
 
@@ -100,13 +107,14 @@ export default {
     InputPassword,
     Button,
     Checkbox,
+    Snackbar,
   },
   middleware({ app, store, redirect }) {
-    // If the user is not authenticated
+    // If the user is already authenticated
     const accesToken = app.$cookies.get('ATS');
     const refreshToken = app.$cookies.get('RTS');
     if (accesToken && refreshToken) {
-      // return redirect('/dashboard')
+      return redirect('/');
     }
   },
   data() {
@@ -116,7 +124,16 @@ export default {
       email: '',
       password: '',
       isLoading: false,
-      error: {},
+      errorForm: {
+        email: {
+          isError: false,
+          message: '',
+        },
+        password: {
+          isError: false,
+          message: '',
+        },
+      },
     };
   },
   mounted() {
@@ -134,6 +151,58 @@ export default {
     },
     getValCheckbox(val) {
       this.isRememberMe = val;
+    },
+    onClickLogin() {
+      if (this.validationForm()) {
+        this.login();
+      }
+    },
+    validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    },
+    validationForm(input) {
+      const { email, password } = this;
+      let isValid = true;
+      let errorTemp = {
+        email: {
+          isError: false,
+          message: '',
+        },
+        password: {
+          isError: false,
+          message: '',
+        },
+      };
+
+      if (input === 'email' || !input) {
+        if (email === '') {
+          errorTemp.email = {
+            isError: true,
+            message: 'Email harus diisi',
+          };
+          isValid = false;
+        } else if (!this.validateEmail(email)) {
+          errorTemp.email = {
+            isError: true,
+            message: 'Format email salah. cth: john@mail.com',
+          };
+          isValid = false;
+        }
+      }
+
+      if (input === 'password' || !input) {
+        if (password === '') {
+          errorTemp.password = {
+            isError: true,
+            message: 'Password harus diisi',
+          };
+          isValid = false;
+        }
+      }
+
+      this.errorForm = { ...errorTemp };
+      return isValid;
     },
     async login() {
       this.isLoading = true;
@@ -160,10 +229,21 @@ export default {
         this.$router.push({ path: '/' });
       } catch (error) {
         console.log(error);
-        this.error = {
-          value: true,
-          message: 'Error occured, Please try again later',
-        };
+        if (error.response.status === 401) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Email atau password salah`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else if (error.response.status === 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Email tidak ditemukan`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        }
       }
       this.isLoading = false;
     },

@@ -5,6 +5,6 @@ export default function ({ app, store, redirect }) {
   if (!accesToken || !refreshToken) {
     // guard wich  one that is not exist
     app.$cookies.removeAll();
-    return redirect('/user/login');
+    return redirect('/login');
   }
 }
