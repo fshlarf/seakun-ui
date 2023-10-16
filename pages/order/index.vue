@@ -111,7 +111,7 @@
         </div>
       </div>
 
-      <div class="flex items-center space-x-2 tn:mt-3 tn:mt-6">
+      <div class="flex items-center space-x-2 tn:mt-6">
         <div class="cursor-pointer w-[24px]" @click="isAgreeTos = !isAgreeTos">
           <CheckedBox v-if="isAgreeTos" />
           <UncheckBox v-else />

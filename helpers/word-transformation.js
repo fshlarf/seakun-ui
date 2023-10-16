@@ -23,3 +23,21 @@ export function fullDate() {
   const yyyy = today.getFullYear();
   return (today = dd + '/' + mm + '/' + yyyy);
 }
+
+export function maskName(name) {
+  if (name.length === 2) {
+    return name[0] + '*';
+  } else if (name.length <= 2) {
+    return name;
+  } else {
+    const masked = name[0] + '*'.repeat(name.length - 2) + name.slice(-1);
+    return masked;
+  }
+}
+
+export function formatPhoneNumber(input) {
+  if (input.startsWith('0')) {
+    return '62' + input.slice(1);
+  }
+  return input;
+}

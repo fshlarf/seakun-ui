@@ -91,12 +91,12 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/images/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href:
-          'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css',
-      },
+      // {
+      //   rel: 'stylesheet',
+      //   type: 'text/css',
+      //   href:
+      //     'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css',
+      // },
       {
         rel: 'stylesheet',
         href:
@@ -178,6 +178,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/svg',
+    'cookie-universal-nuxt',
     [
       'nuxt-facebook-pixel-module',
       {

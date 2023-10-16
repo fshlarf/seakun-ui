@@ -202,7 +202,6 @@ export default {
               activePayment.push(element);
             }
           });
-          console.log(activePayment);
           this.paymentSeakunList = {
             loading: false,
             data: activePayment,

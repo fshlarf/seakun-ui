@@ -1,6 +1,11 @@
 <template>
   <div :class="className">
-    <label v-if="label" class="block text-gray-700 text-sm mb-2" :for="name">
+    <label
+      v-if="label"
+      class="block text-gray-700 text-sm mb-2"
+      :class="classLabel"
+      :for="name"
+    >
       {{ label }}
     </label>
     <div class="form-content relative z-0">
@@ -57,6 +62,10 @@ export default {
       default: 'text',
     },
     className: {
+      type: String,
+      default: '',
+    },
+    classLabel: {
       type: String,
       default: '',
     },
