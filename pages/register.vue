@@ -106,7 +106,7 @@
                 Sudah punya akun?
                 <span
                   class="text-[#08A081] cursor-pointer"
-                  @click="$router.push('/user/login')"
+                  @click="$router.push('/login')"
                   >Login</span
                 >
               </p>
@@ -152,9 +152,9 @@
 
 <script>
 import UserService from '~/services/UserServices';
-import Button from '../../../components/atoms/Button.vue';
-import Spinner from '../../../components/atoms/Spinner.vue';
-import Input from '../../../components/atoms/Input.vue';
+import Button from '~/components/atoms/Button.vue';
+import Spinner from '~/components/atoms/Spinner.vue';
+import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import {
@@ -208,6 +208,14 @@ export default {
       isResendEmailActive: true,
       isLoadingResendEmail: false,
     };
+  },
+  middleware({ app, store, redirect }) {
+    // If the user is already authenticated
+    const accesToken = app.$cookies.get('ATS');
+    const refreshToken = app.$cookies.get('RTS');
+    if (accesToken && refreshToken) {
+      return redirect('/');
+    }
   },
   mounted() {
     this.UserService = new UserService(this);
@@ -347,6 +355,21 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        if (error.response.status === 400) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Email sudah terdaftar. Silakan login atau reset password di halaman login jika kamu lupa password`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else {
+          this.$refs.snackbar.showSnackbar({
+            message: `Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        }
       }
       this.isLoading = false;
     },

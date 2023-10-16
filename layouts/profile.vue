@@ -5,18 +5,19 @@
     <div class="container-dashboard-user">
       <nav class="flex items-center justify-between h-[63px]">
         <img
+          @click="toHomePage"
           src="/images/brand-seakun/seakun-green.svg"
           alt="seakun"
-          class="w-[120px] h-[29px] hidden md:block"
+          class="w-[120px] h-[29px] hidden md:block cursor-pointer"
         />
         <img
-          @click="$router.push('/')"
+          @click="toHomePage"
           src="/images/icons/atoms/arrow-bold.svg"
           alt="back"
-          class="w-6 h-6 md:hidden"
+          class="w-6 h-6 md:hidden cursor-pointer"
         />
         <div class="w-[42px] h-[42px]">
-          <img src="/images/profile-page/dummy-profile.png" alt="profile" />
+          <img src="/images/profile-page/avatar/man-1.svg" alt="profile" />
         </div>
       </nav>
       <div
@@ -136,6 +137,11 @@ export default {
   },
   mounted() {
     this.activePage = this.$route.path.split('/').pop();
+  },
+  methods: {
+    toHomePage() {
+      this.$router.push('/');
+    },
   },
 };
 </script>

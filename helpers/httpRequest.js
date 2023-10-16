@@ -111,7 +111,7 @@ export const httpRequestAuth = function (context, url) {
         return axios(config);
       } else {
         removeToken(context);
-        window.location.replace('/user/login');
+        window.location.replace('/login');
       }
     }
 

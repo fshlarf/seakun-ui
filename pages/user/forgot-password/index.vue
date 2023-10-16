@@ -18,7 +18,7 @@
       <div class="w-full pt-8 lg:pt-0">
         <div class="w-full sm:max-w-[478px] mx-auto">
           <div class="w-full mx-auto lg:hidden">
-            <nuxt-link to="/user/login">
+            <nuxt-link to="/login">
               <img src="/images/icons/atoms/arrow-bold.svg" alt="back" />
             </nuxt-link>
           </div>
@@ -62,12 +62,6 @@
                   :is-loading="isLoadingSendEmail"
                   >Kirim</Button
                 >
-                <div
-                  v-if="errorSendEmail.isError"
-                  class="mt-5 text-center text-red-500"
-                >
-                  {{ errorSendEmail.message }}
-                </div>
               </div>
             </div>
             <div v-else class="mx-auto lg:mt-[148px]">
@@ -104,6 +98,8 @@
         </div>
       </div>
     </div>
+
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -115,6 +111,7 @@ import FormVerification from './views/form-verification.vue';
 import FormNewPassword from './views/form-new-password.vue';
 import ModalSuccsess from './views/modal-succsess.vue';
 import Spinner from '~/components/atoms/Spinner.vue';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 import UserService from '~/services/UserServices';
 
 export default {
@@ -126,6 +123,7 @@ export default {
     FormNewPassword,
     ModalSuccsess,
     Spinner,
+    Snackbar,
   },
   data() {
     return {
@@ -136,10 +134,6 @@ export default {
       isResendEmailActive: false,
       isEmailSent: false,
       errorEmail: {
-        isError: false,
-        message: '',
-      },
-      errorSendEmail: {
         isError: false,
         message: '',
       },
@@ -183,10 +177,6 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     async sendForgotPasswordEmail() {
-      this.errorSendEmail = {
-        isError: false,
-        message: '',
-      };
       const { UserService } = this;
       this.isLoadingSendEmail = true;
       try {
@@ -197,16 +187,18 @@ export default {
           this.isEmailSent = true;
           this.resendEmailCounter = 15;
           this.isLoadingSendEmail = false;
+          this.isResendEmailActive = false;
           await this.RunCountdown();
         }
       } catch (error) {
         console.log(error);
-        this.errorSendEmail = {
-          isError: true,
-          message:
-            'Gagal mengirim email. Pastikan kamu menginput email yang sama dengan email registrasi.',
-        };
         this.isLoadingSendEmail = false;
+        this.$refs.snackbar.showSnackbar({
+          message: `Gagal mengirim email. Pastikan kamu menginput email yang sama dengan email registrasi.`,
+          className: '',
+          color: 'bg-red-400',
+          duration: 4000,
+        });
       }
     },
     async RunCountdown() {

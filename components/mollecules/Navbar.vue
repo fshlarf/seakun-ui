@@ -56,7 +56,15 @@
               class="cursor-pointer tn:text-right tn:my-3 lg:my-4 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12 relative"
               @click="scrollToSection(navbar)"
             >
-              <p>
+              <div v-if="navbar.tag === 'profile'">
+                <img
+                  src="/images/profile-page/avatar/man-1.svg"
+                  alt="profile"
+                  class="rounded-full w-[42px] h-[42px] hidden lg:block"
+                />
+                <p class="lg:hidden">{{ navbar.label }}</p>
+              </div>
+              <p v-else>
                 {{ navbar.label }}
               </p>
               <template v-if="navbar.tag === 'sekurban'">

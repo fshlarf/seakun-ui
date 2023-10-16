@@ -258,7 +258,7 @@ export default {
       this.isLoading = false;
     },
     toLoginPage() {
-      this.$router.push('/user/login');
+      this.$router.push('/login');
     },
   },
 };

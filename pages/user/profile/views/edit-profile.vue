@@ -15,7 +15,7 @@
         Edit Profile
       </h1>
       <img
-        src="/images/profile-page/dummy-profile.png"
+        src="/images/profile-page/avatar/man-1.svg"
         alt="profile"
         class="w-[78px] h-[78px] rounded-full md:mt-6 mx-auto md:mx-0"
       />
