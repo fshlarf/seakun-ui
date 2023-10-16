@@ -176,12 +176,35 @@ export default {
         }
       } catch (error) {
         console.log(error);
-        this.$refs.snackbar.showSnackbar({
-          message: `Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
-        });
+        if (error.response.status === 400) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Gagal mengubah password. Pastikan password berbeda dengan password sebelumnya`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else if (error.response.status === 401) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Token tidak valid atau sudah digunakan untuk mengubah password`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else if (error.response.status === 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `User tidak ditemukan`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else {
+          this.$refs.snackbar.showSnackbar({
+            message: `Terjadi kesalahan. Silakan coba beberapa saat lagi atau hubungi admin`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        }
       }
       this.isLoading = false;
     },

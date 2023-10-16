@@ -362,6 +362,12 @@ export default {
         if (fetchResendEmail.data) {
           this.resendEmailCounter = 15;
           this.isLoadingResendEmail = false;
+          this.$refs.snackbar.showSnackbar({
+            message: `Email berhasil dikirim. Silakan cek email kamu`,
+            className: '',
+            color: 'bg-green-400',
+            duration: 3000,
+          });
           await this.RunCountdown();
         }
       } catch (error) {

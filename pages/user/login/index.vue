@@ -30,13 +30,13 @@
           <label
             for="email"
             class="text-gray-secondary !text-sm !lg:text-base dm-sans pb-2 block"
-            >Email/No. Whatsapp</label
+            >Email</label
           >
           <Input
             v-model="email"
             id="email"
             name="email"
-            placeholder="Masukkan email/no. whatsapp "
+            placeholder="Masukkan email"
             class-name="text-sm lg:text-base "
           />
 
@@ -133,12 +133,7 @@ export default {
       }
     },
     getValCheckbox(val) {
-      console.log('val');
-      console.log(val);
       this.isRememberMe = val;
-    },
-    onSubmit() {
-      this.login();
     },
     async login() {
       this.isLoading = true;

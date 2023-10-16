@@ -98,6 +98,8 @@
         </div>
       </div>
     </div>
+
+    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -109,6 +111,7 @@ import FormVerification from './views/form-verification.vue';
 import FormNewPassword from './views/form-new-password.vue';
 import ModalSuccsess from './views/modal-succsess.vue';
 import Spinner from '~/components/atoms/Spinner.vue';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
 import UserService from '~/services/UserServices';
 
 export default {
@@ -120,6 +123,7 @@ export default {
     FormNewPassword,
     ModalSuccsess,
     Spinner,
+    Snackbar,
   },
   data() {
     return {
@@ -218,6 +222,38 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        if (error.response.status === 400) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Gagal mengubah password. Pastikan password berbeda dengan password sebelumnya`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else if (
+          error.response.status === 403 ||
+          error.response.status === 401
+        ) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Token tidak valid atau sudah digunakan untuk mengubah password`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else if (error.response.status === 404) {
+          this.$refs.snackbar.showSnackbar({
+            message: `Token atau user tidak ditemukan`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        } else {
+          this.$refs.snackbar.showSnackbar({
+            message: `Terjadi kesalahan. Silakan coba beberapa saat lagi atau hubungi admin`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        }
       }
       this.isLoading = false;
     },
