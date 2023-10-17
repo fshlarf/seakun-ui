@@ -109,14 +109,6 @@ export default {
     Checkbox,
     Snackbar,
   },
-  middleware({ app, store, redirect }) {
-    // If the user is already authenticated
-    const accesToken = app.$cookies.get('ATS');
-    const refreshToken = app.$cookies.get('RTS');
-    if (accesToken && refreshToken) {
-      return redirect('/');
-    }
-  },
   data() {
     return {
       AuthService,
@@ -137,10 +129,19 @@ export default {
     };
   },
   mounted() {
+    this.checkAuth();
     this.checkLoginDataInLocalStorage();
     this.AuthService = new AuthService(this);
   },
   methods: {
+    checkAuth() {
+      const accesToken = this.$cookies.get('ATS');
+      const refreshToken = this.$cookies.get('RTS');
+
+      if (accesToken && refreshToken) {
+        this.$router.push('/');
+      }
+    },
     checkLoginDataInLocalStorage() {
       const savedLoginData = JSON.parse(localStorage.getItem('login_data'));
       if (savedLoginData) {

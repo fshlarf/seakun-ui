@@ -81,6 +81,7 @@ export default {
     ModalSeakunHelp,
     ModalBase,
   },
+  middleware: 'authorize',
   data() {
     return {
       isShowModalSeakunHelp: false,
