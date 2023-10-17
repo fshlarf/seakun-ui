@@ -16,7 +16,7 @@ class AuthService {
   }
 
   logout() {
-    return this.serviceApi.get('/customer/sign/out');
+    return this.serviceApiAuth.get('/customer/sign/out');
   }
 }
 

@@ -16,9 +16,7 @@
           alt="back"
           class="w-6 h-6 md:hidden cursor-pointer"
         />
-        <div class="w-[42px] h-[42px]">
-          <img src="/images/profile-page/avatar/man-1.svg" alt="profile" />
-        </div>
+        <ProfileOptions class="relative z-40" @onClickLogout="logout" />
       </nav>
       <div
         class="mt-[30px] md:mt-[42px] lg:mt-[52px] md:flex gap-5 xl:gap-[28px]"
@@ -101,14 +99,26 @@
         </main>
       </div>
     </div>
+
+    <Snackbar ref="snackbar" />
   </main>
 </template>
 
 <script>
+import AuthService from '~/services/AuthServices';
+import ProfileOptions from '~/components/mollecules/ProfileOptions';
+import Snackbar from '~/components/mollecules/Snackbar.vue';
+
 export default {
   name: 'profile',
+  components: {
+    ProfileOptions,
+    Snackbar,
+  },
   data() {
     return {
+      AuthService,
+      isLoading: false,
       activePage: '',
       menus: [
         {
@@ -136,11 +146,37 @@ export default {
     },
   },
   mounted() {
+    this.AuthService = new AuthService(this);
     this.activePage = this.$route.path.split('/').pop();
   },
   methods: {
     toHomePage() {
       this.$router.push('/');
+    },
+    async logout() {
+      this.isLoading = true;
+      const { AuthService } = this;
+      try {
+        const fetchLogout = await AuthService.logout();
+        if (fetchLogout.data) {
+          const dataLogout = fetchLogout.data;
+          if (dataLogout.meta.status === 200) {
+            this.$cookies.removeAll();
+            this.$router.push({ path: '/login' });
+          }
+        } else {
+          throw new Error(fetchLogout);
+        }
+      } catch (error) {
+        console.log(error);
+        this.$refs.snackbar.showSnackbar({
+          message: `Terjadi kesalahan. Silakan coba beberapa saat lagi`,
+          className: '',
+          color: 'bg-red-400',
+          duration: 4000,
+        });
+      }
+      this.isLoading = false;
     },
   },
 };

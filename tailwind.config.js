@@ -31,10 +31,10 @@ module.exports = {
     extend: {
       colors: {
         main: '#2D2D2D',
-        primary: '#8DCABE',
+        primary: '#08A081',
         secondary: '#417465',
         'dark-green': '#2A5446',
-        'green-seakun': '#8DCABE',
+        'green-seakun': '#08A081',
         'green-seakun-secondary': '#F4F9F8',
         'green-seakun-dark': '#52AF9C',
         'green-seakun-secondary-dark': '#00BA88',
