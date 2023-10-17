@@ -14,7 +14,7 @@
         />
       </div>
       <div class="w-full sm:max-w-[478px] mx-auto xl:hidden pt-8">
-        <nuxt-link to="/">
+        <nuxt-link to="/login">
           <img src="/images/icons/atoms/arrow-bold.svg" alt="back" />
         </nuxt-link>
       </div>
@@ -38,10 +38,10 @@
             />
             <div class="px-3 lg:px-0 mt-3 lg:mt-0">
               <h1 class="text-[26px] font-bold text-[#49A794]">
-                Buat Akun Disini
+                Buat Akun di Sini
               </h1>
               <p class="text-base text-gray-secondary dm-sans pt-1 lg:pt-0">
-                Silakan buat akun Kamu disini.
+                Silakan buat akun kamu di sini
               </p>
             </div>
             <div class="space-y-3 lg:space-y-4 mt-3 lg:mt-8 px-3 lg:px-0">
@@ -50,7 +50,7 @@
                 label="Nama Lengkap"
                 id="name"
                 name="name"
-                placeholder="Masukkan nama kamu disini"
+                placeholder="Masukkan nama kamu di sini"
                 class-name="text-sm lg:text-base "
                 class-label="text-gray-secondary !text-sm !lg:text-base"
                 @keyup="validationForm('name')"
@@ -59,7 +59,7 @@
               <Input
                 v-model="email"
                 label="Email"
-                placeholder="Masukkan email kamu disini"
+                placeholder="Masukkan email kamu di sini"
                 class-name="text-sm lg:text-base "
                 class-label="text-gray-secondary !text-sm !lg:text-base"
                 @keyup="validationForm('email')"
@@ -77,7 +77,7 @@
               <InputPassword
                 v-model="password"
                 label=" Password"
-                placeholder="Masukkan  password kamu disini"
+                placeholder="Masukkan password kamu di sini"
                 class-name="text-sm lg:text-base "
                 class-label="text-gray-secondary !text-sm !lg:text-base"
                 @keyup="validationForm('password')"
@@ -87,7 +87,7 @@
                 v-model="retypePassword"
                 label="Konfirmasi Password"
                 class-name="text-sm lg:text-base "
-                placeholder="Ketik ulang password kamu disini"
+                placeholder="Ketik ulang password kamu di sini"
                 class-label="text-gray-secondary !text-sm !lg:text-base dm-sans"
                 @keyup="validationForm('retypePassword')"
                 :error="errorForm.retypePassword"
@@ -125,7 +125,7 @@
             Registrasi Berhasil
           </h2>
           <p class="text-[14px] lg:text-base text-center mt-[4px]">
-            Silakan cek email kamu untuk melakukan verifikasi.
+            Silakan cek email kamu untuk melakukan verifikasi
           </p>
           <div class="flex space-x-3 items-center justify-center mt-[8px]">
             <p class="text-center dm-sans text-sm text-slate-500">
@@ -209,18 +209,19 @@ export default {
       isLoadingResendEmail: false,
     };
   },
-  middleware({ app, store, redirect }) {
-    // If the user is already authenticated
-    const accesToken = app.$cookies.get('ATS');
-    const refreshToken = app.$cookies.get('RTS');
-    if (accesToken && refreshToken) {
-      return redirect('/');
-    }
-  },
   mounted() {
+    this.checkAuth();
     this.UserService = new UserService(this);
   },
   methods: {
+    checkAuth() {
+      const accesToken = this.$cookies.get('ATS');
+      const refreshToken = this.$cookies.get('RTS');
+
+      if (accesToken && refreshToken) {
+        this.$router.push('/');
+      }
+    },
     onClickRegister() {
       if (this.validationForm()) {
         this.submit();
