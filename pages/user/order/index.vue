@@ -56,6 +56,9 @@
 <script>
 import Card from './views/card-order.vue';
 import SelectWithCheck from '../../../components/atoms/SelectWithCheck.vue';
+import OrderService from '~/services/OrderServices';
+import MasterService from '~/services/MasterServices';
+
 export default {
   layout: 'profile',
   components: {
@@ -64,6 +67,8 @@ export default {
   },
   data() {
     return {
+      OrderService,
+      MasterService,
       isOpen: false,
       activeTab: 'Semua',
       menus: [
@@ -126,11 +131,56 @@ export default {
           name: 'Refund',
         },
       ],
+      paramGetOrder: {
+        page: 1,
+        limit: 5,
+        status: '',
+      },
+      isLoading: true,
+      orderList: [],
+      orderStatusList: [],
     };
   },
+  mounted() {
+    this.OrderService = new OrderService(this);
+    this.MasterService = new MasterService(this);
+    this.getInitialData();
+  },
   methods: {
+    async getInitialData() {
+      await this.getOrderStatusRef();
+      this.getCustomerOrders();
+    },
     handleTab(slug) {
       this.activeTab = slug;
+    },
+    async getCustomerOrders() {
+      this.isLoading = true;
+      const { OrderService, paramGetOrder } = this;
+      try {
+        const fetchGetOrders = await OrderService.getCustomerOrders(
+          paramGetOrder
+        );
+        if (fetchGetOrders.data) {
+          console.log(fetchGetOrders.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoading = false;
+    },
+    async getOrderStatusRef() {
+      this.isLoading = true;
+      const { MasterService } = this;
+      try {
+        const fetchGetOrderStatus = await MasterService.getReferentialOrderStatus();
+        if (fetchGetOrderStatus.data) {
+          console.log(fetchGetOrderStatus.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoading = false;
     },
   },
 };
