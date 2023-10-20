@@ -98,7 +98,13 @@ import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
 import Checkbox from '~/components/atoms/Checkbox.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
-import { setToken, setUid, setUsername } from '~/helpers/tokenAuth';
+import {
+  setToken,
+  setUid,
+  setUsername,
+  setCustomerUid,
+  setAvatar,
+} from '~/helpers/tokenAuth';
 import AuthService from '~/services/AuthServices';
 
 export default {
@@ -218,10 +224,15 @@ export default {
           exp,
           uid,
           username,
+          customerUid,
+          avatar,
         } = fetchLogin.data.data;
         setToken(this, { accessToken, refreshToken, exp });
         setUid(this, uid);
         setUsername(this, username);
+        setCustomerUid(this, customerUid);
+        setAvatar(this, avatar);
+        console.log(fetchLogin.data.data);
         if (this.isRememberMe) {
           this.setLocalStorageLoginData();
         } else {

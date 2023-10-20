@@ -58,7 +58,7 @@
             >
               <div v-if="navbar.tag === 'profile'">
                 <img
-                  src="/images/profile-page/avatar/man-1.svg"
+                  :src="`/images/profile-page/avatar/${avatar}.svg`"
                   alt="profile"
                   class="rounded-full w-[42px] h-[42px] hidden lg:block"
                 />
@@ -145,6 +145,12 @@ export default {
   },
   components: {
     Logo,
+  },
+  computed: {
+    avatar() {
+      const av = this.$cookies.get('avatar');
+      return av ? av : 'man-1';
+    },
   },
   mounted() {
     window.onscroll = () => {

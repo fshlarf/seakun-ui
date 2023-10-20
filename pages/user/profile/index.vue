@@ -100,6 +100,7 @@ import CardProfile from './views/card-profile.vue';
 import EditProfile from './views/edit-profile.vue';
 import CustomerService from '~/services/CustomerServices';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
+import { setAvatar } from '~/helpers/tokenAuth';
 
 export default {
   layout: 'profile',
@@ -143,13 +144,14 @@ export default {
           payload
         );
         if (fetchUpdateProfile.data) {
-          this.getCustomerDetail();
           this.$refs.snackbar.showSnackbar({
             message: `Data profil berhasil diedit`,
             className: '',
             color: 'bg-green-400',
             duration: 3000,
           });
+          await this.getCustomerDetail();
+          setAvatar(this, customerData.avatar);
           this.isEdit = false;
         }
       } catch (error) {

@@ -6,7 +6,7 @@
       <div class="md:flex gap-6">
         <section>
           <img
-            src="/images/profile-page/avatar/man-1.svg"
+            :src="`/images/profile-page/avatar/${profile.avatar}.svg`"
             alt="profile"
             class="rounded-full w-[58px] h-[58px] lg:w-[78px] lg:h-[78px]"
           />

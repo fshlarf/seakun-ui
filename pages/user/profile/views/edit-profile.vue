@@ -15,7 +15,7 @@
         Edit Profile
       </h1>
       <img
-        src="/images/profile-page/avatar/man-1.svg"
+        :src="`/images/profile-page/avatar/${avatar}.svg`"
         alt="profile"
         class="w-[78px] h-[78px] rounded-full md:mt-6 mx-auto md:mx-0"
       />
@@ -114,6 +114,7 @@ export default {
           message: '',
         },
       },
+      avatar: '',
     };
   },
   watch: {
@@ -132,6 +133,7 @@ export default {
         this.name = profile.name;
         this.email = profile.email;
         this.phoneNumber = profile.phoneNumber;
+        this.avatar = profile.avatar;
       }
     },
     onClickUpdateProfile() {

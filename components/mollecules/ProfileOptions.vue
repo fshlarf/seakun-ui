@@ -1,7 +1,7 @@
 <template>
   <div>
     <div @click="isShow = !isShow" role="button" class="w-[42px] h-[42px]">
-      <img src="/images/profile-page/avatar/man-1.svg" alt="profile" />
+      <img :src="`/images/profile-page/avatar/${avatar}.svg`" alt="profile" />
     </div>
     <div class="relative z-0 w-0 h-0">
       <div
@@ -28,6 +28,12 @@ export default {
     return {
       isShow: false,
     };
+  },
+  computed: {
+    avatar() {
+      const av = this.$cookies.get('avatar');
+      return av ? av : 'man-1';
+    },
   },
 };
 </script>
