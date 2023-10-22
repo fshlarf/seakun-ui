@@ -10,15 +10,44 @@
       <img src="/images/icons/atoms/arrow-back.svg" alt="back" />
       <p class="text-xs text-gray-secondary">Kembali</p>
     </section>
-    <section class="md:mt-6">
-      <h1 class="text-[20px] text-gray-secondary font-bold hidden md:block">
-        Edit Profile
-      </h1>
+    <h1 class="text-[20px] text-gray-secondary font-bold hidden md:block mt-6">
+      Edit Profile
+    </h1>
+    <section
+      class="md:mt-6 flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
+    >
+      <!-- :src="`/images/profile-page/avatar/${avatar}.svg`" -->
       <img
-        :src="`/images/profile-page/avatar/${avatar}.svg`"
+        :src="`/images/profile-page/avatar/${dummyAva}.svg`"
         alt="profile"
-        class="w-[78px] h-[78px] rounded-full md:mt-6 mx-auto md:mx-0"
+        class="w-[78px] h-[78px] rounded-full mx-auto md:mx-0"
       />
+      <div>
+        <div v-if="!isChangeAvatar">
+          <Button
+            @click="isChangeAvatar = !isChangeAvatar"
+            class="text-xs lg:text-sm text-green-primary border border-green-primary rounded-[6px] px-2 py-1 lg:px-6 lg:py-1.5"
+            >Ganti Avatar</Button
+          >
+        </div>
+        <div v-else class="flex items-center gap-2 lg:gap-3">
+          <div
+            v-for="(avatar, id) in avatars"
+            :key="id"
+            @click="selectAvatar(avatar.name)"
+          >
+            <img
+              :src="`/images/profile-page/avatar/${avatar.name}.svg`"
+              :alt="avatar.name"
+              class="w-[35px] h-[35px] lg:w-[50px] lg:h-[50px] cursor-pointer"
+              :class="{
+                'rounded-full border-2 border-[#08A081]':
+                  avatar.name === dummyAva,
+              }"
+            />
+          </div>
+        </div>
+      </div>
     </section>
     <form action="submit" class="mt-6 space-y-3 md:space-y-4 lg:space-y-6">
       <Input
@@ -30,7 +59,58 @@
         :error="errorForm.name"
       />
       <Input
+        v-model="dateOfBirth"
+        type="date"
+        label="Tanggal Lahir"
+        class-label="!text-sm md:!text-xs !text-gray-secondary"
+        class-name="!text-sm md:!text-base !text-gray-secondary"
+        @keyup="validateForm('dateOfBirth')"
+      />
+      <div>
+        <p class="!text-sm md:!text-xs !text-gray-secondary">Jenis Kelamin</p>
+        <div class="flex items-center gap-7 mt-5">
+          <section
+            v-for="(option, id) in gender"
+            :key="id"
+            class="flex items-center gap-2 cursor-pointer"
+            @click="handleSelectGender(option.value)"
+          >
+            <img
+              :src="[
+                selectedGender == option.value
+                  ? '/images/icons/atoms/radio-button-active.svg'
+                  : '/images/icons/atoms/radio-button.svg',
+              ]"
+              alt="radio"
+            />
+            <p class="text-main text-sm lg:text-base">{{ option.value }}</p>
+          </section>
+        </div>
+      </div>
+      <TextArea
+        v-model="address"
+        class-area="!resize-none"
+        label="Alamat"
+        class-label="!text-sm md:!text-xs !text-gray-secondary"
+      />
+      <TextArea
+        v-model="domicile"
+        class-area="!resize-none"
+        label="Domisili"
+        class-label="!text-sm md:!text-xs !text-gray-secondary"
+      />
+      <Input
+        v-model="email"
+        class-input="bg-[#A0A3BD26]"
+        label="Email"
+        class-label="!text-sm md:!text-xs !text-gray-secondary"
+        class-name="!text-sm md:!text-base !text-gray-secondary"
+        @keyup="validateForm('email')"
+        :error="errorForm.email"
+      />
+      <Input
         v-model="phoneNumber"
+        class-input="bg-[#A0A3BD26]"
         label="No Whatsapp"
         class-label="!text-sm md:!text-xs  !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
@@ -38,13 +118,14 @@
         :error="errorForm.phoneNumber"
       />
       <Input
-        v-model="email"
-        label="Email"
-        class-label="!text-sm md:!text-xs !text-gray-secondary"
+        v-model="password"
+        type="password"
+        class-input="bg-[#A0A3BD26]"
+        label="Password"
+        class-label="!text-sm md:!text-xs  !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
-        @keyup="validateForm('email')"
-        :error="errorForm.email"
       />
+
       <div>
         <nuxt-link to="/user/profile/reset-password">
           <p class="text-sm md:text-base text-[#3299DB] mt-3 text-right">
@@ -52,7 +133,7 @@
           </p>
         </nuxt-link>
       </div>
-      <div class="">
+      <div class="text-right">
         <Button
           @click="onClickUpdateProfile"
           :disabled="!isUpdate"
@@ -61,13 +142,13 @@
         >
           Simpan
         </Button>
-        <Button
+        <!-- <Button
           @click="$emit('onClickCancel')"
           :disabled="isLoading"
           class="!text-sm md:!text-base border-2 border-green-primary w-full md:w-[166px] h-[40px] md:h-[46px] text-green-primary mt-3"
         >
           Batal
-        </Button>
+        </Button> -->
       </div>
     </form>
   </div>
@@ -77,12 +158,14 @@
 import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
+import TextArea from '~/components/atoms/TextArea.vue';
 
 export default {
   components: {
     Input,
     Button,
     InputPassword,
+    TextArea,
   },
   props: {
     profile: {
@@ -96,9 +179,23 @@ export default {
   },
   data() {
     return {
+      isChangeAvatar: false,
       name: '',
+      dateOfBirth: '',
       email: '',
       phoneNumber: '',
+      gender: [
+        {
+          value: 'Laki-laki',
+        },
+        {
+          value: 'Perempuan',
+        },
+      ],
+      selectedGender: '',
+      password: '',
+      address: '',
+      domicile: '',
       isUpdate: false,
       errorForm: {
         name: {
@@ -114,7 +211,28 @@ export default {
           message: '',
         },
       },
-      avatar: '',
+      avatar: 'man-1',
+      dummyAva: 'man-1',
+      avatars: [
+        {
+          name: 'man-1',
+        },
+        {
+          name: 'man-2',
+        },
+        {
+          name: 'man-3',
+        },
+        {
+          name: 'woman-1',
+        },
+        {
+          name: 'woman-2',
+        },
+        {
+          name: 'woman-3',
+        },
+      ],
     };
   },
   watch: {
@@ -146,6 +264,12 @@ export default {
         };
         this.$emit('onUpdateProfile', payload);
       }
+    },
+    handleSelectGender(val) {
+      this.selectedGender = val;
+    },
+    selectAvatar(val) {
+      this.dummyAva = val;
     },
     validateEmail(email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
