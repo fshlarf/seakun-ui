@@ -9,7 +9,7 @@
         </div>
       </section>
       <div
-        class="mt-4 lg:mt-0 relative lg:fixed z-40 lg:top-[110px] lg:left-1/2 lg:-translate-x-1/2 bg-white p-1 lg:p-5 rounded-[15px] mx-auto w-full sm:max-w-[478px]"
+        class="mt-4 lg:mt-0 relative lg:fixed z-40 lg:top-[110px] lg:left-1/2 lg:-translate-x-1/2 bg-white pb-5 p-1 lg:p-5 lg:pb-8 rounded-[15px] mx-auto w-full sm:max-w-[478px]"
       >
         <img
           src="/images/background/bg-register-mobile.png"
@@ -22,11 +22,16 @@
           Selamat Datang
         </h1>
         <p
-          class="text-gray-secondary dm-sans pt-1 lg:pt-0 pl-3 lg:pl-0 text-sm lg:text-base"
+          class="text-sm lg:text-base text-[#474747] dm-sans pt-1 lg:pt-0 pl-3 mt-1"
         >
-          Silahkan masuk ke akun kamu.
+          Belum punya akun?
+          <span
+            @click="$router.push('/register')"
+            class="cursor-pointer text-green-primary hover:opacity-70 underline underline-offset-2"
+            >Daftar</span
+          >
         </p>
-        <form class="mt-5 lg:mt-8 px-3" @submit.prevent="submit">
+        <form class="mt-5 lg:mt-6 px-3" @submit.prevent="submit">
           <label
             for="email"
             class="text-gray-secondary !text-sm !lg:text-base dm-sans pb-2 block"
@@ -71,20 +76,27 @@
           <Button
             @click="onClickLogin"
             :is-loading="isLoading"
-            add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-base font-bold mt-7 lg:mt-11 dm-sans"
+            add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-9 dm-sans"
             >Login</Button
           >
-          <p
-            class="py-5 lg:pb-0 lg:pt-8 text-center dm-sans text-sm lg:text-base text-gray-secondary"
-          >
-            Belum punya akun?
-            <span
-              class="text-[#08A081] cursor-pointer"
-              @click="$router.push('/register')"
-              >Daftar</span
-            >
-          </p>
         </form>
+        <!-- <section class="px-3 mt-4 space-y-4 lg:space-y-6">
+          <div class="text-center h-max relative">
+            <div class="dividing-line text-[#B3B0C8]">
+              <p class="bg-white w-max mx-auto relative px-2 z-30">atau</p>
+            </div>
+          </div>
+          <div class="border rounded-lg py-2 cursor-pointer">
+            <section class="w-full flex justify-center items-center gap-2">
+              <img
+                src="/images/icons/icon-google.svg"
+                alt="google"
+                class="w-7 h-7"
+              />
+              <p class="text-sm lg:text-base">Lanjutkan dengan Google</p>
+            </section>
+          </div>
+        </section> -->
       </div>
     </main>
 
@@ -98,8 +110,15 @@ import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
 import Checkbox from '~/components/atoms/Checkbox.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
-import { setToken, setUid, setUsername } from '~/helpers/tokenAuth';
+import {
+  setToken,
+  setUid,
+  setUsername,
+  setCustomerUid,
+  setAvatar,
+} from '~/helpers/tokenAuth';
 import AuthService from '~/services/AuthServices';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
@@ -134,6 +153,9 @@ export default {
     this.AuthService = new AuthService(this);
   },
   methods: {
+    ...mapActions({
+      setUserAvatar: 'setUserAvatar',
+    }),
     checkAuth() {
       const accesToken = this.$cookies.get('ATS');
       const refreshToken = this.$cookies.get('RTS');
@@ -218,10 +240,15 @@ export default {
           exp,
           uid,
           username,
+          customerUid,
+          avatar,
         } = fetchLogin.data.data;
         setToken(this, { accessToken, refreshToken, exp });
         setUid(this, uid);
         setUsername(this, username);
+        setCustomerUid(this, customerUid);
+        setAvatar(this, avatar);
+        this.setUserAvatar(avatar);
         if (this.isRememberMe) {
           this.setLocalStorageLoginData();
         } else {
@@ -289,5 +316,16 @@ export default {
     background-image: url('/images/background/bg-login.png');
     background-size: cover;
   }
+}
+.dividing-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  background-color: #b3b0c859;
+  height: 1px;
 }
 </style>

@@ -6,6 +6,7 @@ import { providerList } from '../constants/price-scheme';
 import userHostProviders from '../constants/user-host-flow.json';
 
 export const state = () => ({
+  avatar: '',
   dataProviderSekurban: {},
   dataProvider: {
     list: [],
@@ -85,6 +86,9 @@ export const state = () => ({
 });
 
 export const getters = {
+  getAvatar(state) {
+    return state.avatar;
+  },
   getFilterProviderActive(state) {
     return state.filterProviderActive;
   },
@@ -145,6 +149,9 @@ export const getters = {
 };
 
 export const mutations = {
+  SET_AVATAR(state, avatar) {
+    state.avatar = avatar;
+  },
   SET_INITIAL_PROVIDER_UID(state, uid) {
     state.filterGroup = {
       ...state.filterGroup,
@@ -302,6 +309,9 @@ export const mutations = {
 };
 
 export const actions = {
+  setUserAvatar({ commit }, data) {
+    commit('SET_AVATAR', data);
+  },
   applyFilterProvider({ dispatch, commit }, data) {
     commit('SET_FILTER_PROVIDER_ACTIVE', data);
     dispatch('fetchProviderActive');

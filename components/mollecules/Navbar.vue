@@ -58,7 +58,7 @@
             >
               <div v-if="navbar.tag === 'profile'">
                 <img
-                  src="/images/profile-page/avatar/man-1.svg"
+                  :src="`/images/profile-page/avatar/${avatar}.svg`"
                   alt="profile"
                   class="rounded-full w-[42px] h-[42px] hidden lg:block"
                 />
@@ -97,6 +97,8 @@
 
 <script>
 import Logo from '~/components/atoms/Logo.vue';
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -146,12 +148,22 @@ export default {
   components: {
     Logo,
   },
+  computed: {
+    ...mapGetters({
+      avatar: 'getAvatar',
+    }),
+  },
   mounted() {
     window.onscroll = () => {
       this.handleScrollEffect();
     };
     const username = this.$cookies.get('username');
     if (username) {
+      if (!this.avatar) {
+        const ava = this.$cookies.get(avatar);
+        const newAva = ava ? ava : 'man-1';
+        this.setUserAvatar(newAva);
+      }
       const profileMenu = {
         id: 7,
         label: 'Profil',
@@ -170,6 +182,9 @@ export default {
     // }, 900);
   },
   methods: {
+    ...mapActions({
+      setUserAvatar: 'setUserAvatar',
+    }),
     handleScrollEffect() {
       const myNav = document.getElementById('navbar');
       if (

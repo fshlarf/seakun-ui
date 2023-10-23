@@ -108,9 +108,11 @@
 import AuthService from '~/services/AuthServices';
 import ProfileOptions from '~/components/mollecules/ProfileOptions';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'profile',
+  middleware: 'authorize',
   components: {
     ProfileOptions,
     Snackbar,
@@ -145,11 +147,24 @@ export default {
       }
     },
   },
+  computed: {
+    ...mapGetters({
+      avatar: 'getAvatar',
+    }),
+  },
   mounted() {
+    if (!this.avatar) {
+      const ava = this.$cookies.get('avatar');
+      const newAva = ava ? ava : 'man-1';
+      this.setUserAvatar(newAva);
+    }
     this.AuthService = new AuthService(this);
     this.activePage = this.$route.path.split('/').pop();
   },
   methods: {
+    ...mapActions({
+      setUserAvatar: 'setUserAvatar',
+    }),
     toHomePage() {
       this.$router.push('/');
     },

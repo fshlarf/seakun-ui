@@ -22,29 +22,30 @@
         :class="[addClass && addClass.option ? addClass.option : '']"
         style="box-shadow: 0px 1px 2px 0px rgba(97, 128, 168, 0.25)"
       >
-        <section
-          v-if="option"
-          v-for="(opt, id) in option"
-          :key="id"
-          class="flex justify-between"
-          @click="handleClickOption(opt.name), (isOpen = !isOpen)"
-        >
-          <p
-            class="text-xs font-medium min-w-[158px]"
-            :class="
-              selectedOption == opt.name
-                ? 'text-green-primary'
-                : 'text-[#66738F]'
-            "
+        <div v-if="option">
+          <section
+            v-for="(opt, id) in option"
+            :key="id"
+            class="flex justify-between"
+            @click="handleClickOption(opt.name), (isOpen = !isOpen)"
           >
-            {{ opt.name }}
-          </p>
-          <img
-            src="/images/icons/atoms/checked-green.svg"
-            alt="cheked"
-            v-if="selectedOption == opt.name"
-          />
-        </section>
+            <p
+              class="text-xs font-medium min-w-[158px]"
+              :class="
+                selectedOption == opt.name
+                  ? 'text-green-primary'
+                  : 'text-[#66738F]'
+              "
+            >
+              {{ opt.name }}
+            </p>
+            <img
+              src="/images/icons/atoms/checked-green.svg"
+              alt="cheked"
+              v-if="selectedOption == opt.name"
+            />
+          </section>
+        </div>
       </div>
     </div>
   </div>

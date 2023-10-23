@@ -5,6 +5,11 @@ class OrderService {
   constructor(ctx) {
     this.ctx = ctx;
     this.serviceApi = httpRequest(ctx, API_ORDER_URL).serviceApi;
+    this.serviceApiAuth = httpRequestAuth(ctx, API_ORDER_URL).serviceApi;
+  }
+
+  getCustomerOrders(params) {
+    return this.serviceApiAuth.get('/customer', { params });
   }
 
   getDetailOrder(orderUid, customerUid) {

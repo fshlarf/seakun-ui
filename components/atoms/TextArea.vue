@@ -1,12 +1,17 @@
 <template>
   <div :class="className">
-    <label v-if="label" class="block text-gray-700 text-sm mb-2" :for="name">
+    <label
+      v-if="label"
+      :class="classLabel"
+      class="block text-gray-700 text-sm mb-2"
+      :for="name"
+    >
       {{ label }}
     </label>
     <div class="form-content relative z-0">
       <textarea
         class="relative z-0 appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        :class="{ 'border-danger': error.isError }"
+        :class="({ 'border-danger': error.isError }, classArea)"
         :type="type"
         :name="name"
         :rows="rows"
@@ -31,6 +36,14 @@
 export default {
   name: 'TextArea',
   props: {
+    classLabel: {
+      type: String,
+      default: '',
+    },
+    classArea: {
+      type: String,
+      default: '',
+    },
     value: {
       type: String | Number,
     },

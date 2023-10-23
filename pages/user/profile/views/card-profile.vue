@@ -4,9 +4,14 @@
   >
     <main class="flex justify-between">
       <div class="md:flex gap-6">
-        <section>
+        <section v-if="isLoading">
+          <div
+            class="shimmer !rounded-full w-[58px] h-[58px] lg:w-[78px] lg:h-[78px]"
+          ></div>
+        </section>
+        <section v-else>
           <img
-            src="/images/profile-page/avatar/man-1.svg"
+            :src="`/images/profile-page/avatar/${profile.avatar}.svg`"
             alt="profile"
             class="rounded-full w-[58px] h-[58px] lg:w-[78px] lg:h-[78px]"
           />
@@ -18,13 +23,64 @@
             <p>Nama Lengkap</p>
             <p>No Whatsapp</p>
             <p>Email</p>
+            <p>Tanggal Lahir</p>
+            <p>Jenis Kelamin</p>
+            <p>Alamat</p>
+            <p>Domisili</p>
           </div>
           <div
+            v-if="isLoading"
+            class="block space-y-2 md:space-y-3 mt-1 lg:mt-0"
+          >
+            <p class="block shimmer h-3 lg:h-[15px] w-[150px]"></p>
+            <br />
+            <p class="block shimmer h-3 lg:h-[15px] w-[200px]"></p>
+            <br />
+            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
+            <br />
+            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
+            <br />
+            <p class="block shimmer h-3 lg:h-[15px] w-[150px]"></p>
+            <br />
+            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
+            <br />
+            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
+          </div>
+          <div
+            v-else
             class="text-gray-secondary space-y-2 md:space-y-3 max-w-[200px] truncate"
           >
             <p class="truncate">{{ profile.name }}</p>
             <p class="truncate">{{ profile.phoneNumber }}</p>
             <p class="truncate">{{ profile.email }}</p>
+            <p class="truncate">
+              {{
+                profile.customerDetail && profile.customerDetail.birthDate
+                  ? unixToIndonesianDate(profile.customerDetail.birthDate)
+                  : '-'
+              }}
+            </p>
+            <p class="truncate">
+              {{
+                profile.customerDetail && profile.customerDetail.gender
+                  ? convertGender(profile.customerDetail.gender)
+                  : '-'
+              }}
+            </p>
+            <p class="truncate">
+              {{
+                profile.customerDetail && profile.customerDetail.address
+                  ? profile.customerDetail.address
+                  : '-'
+              }}
+            </p>
+            <p class="truncate">
+              {{
+                profile.customerDetail && profile.customerDetail.domicile
+                  ? profile.customerDetail.domicile
+                  : '-'
+              }}
+            </p>
           </div>
         </section>
       </div>
@@ -47,6 +103,8 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
+import { unixToIndonesianDate } from '~/helpers/word-transformation';
+
 export default {
   components: {
     Button,
@@ -56,6 +114,21 @@ export default {
       type: Object,
       default: () => {},
     },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  methods: {
+    convertGender(gender) {
+      switch (gender) {
+        case 'male':
+          return 'Laki-laki';
+        case 'female':
+          return 'Perempuan';
+      }
+    },
+    unixToIndonesianDate,
   },
 };
 </script>

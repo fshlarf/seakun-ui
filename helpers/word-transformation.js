@@ -41,3 +41,43 @@ export function formatPhoneNumber(input) {
   }
   return input;
 }
+
+export function toUnixTimestamp(isoDate) {
+  const dateObject = new Date(isoDate);
+  return Math.floor(dateObject.getTime() / 1000);
+}
+
+export function unixToIsoDate(unix) {
+  const dateObject = new Date(unix * 1000); // Convert seconds to milliseconds
+
+  const year = dateObject.getFullYear();
+  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Month is zero-indexed
+  const day = String(dateObject.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
+export function unixToIndonesianDate(unixTimestamp) {
+  const months = [
+    'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember',
+  ];
+
+  const dateObject = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds
+
+  const day = dateObject.getDate();
+  const month = months[dateObject.getMonth()];
+  const year = dateObject.getFullYear();
+
+  return `${day} ${month} ${year}`;
+}

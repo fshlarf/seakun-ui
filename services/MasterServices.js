@@ -5,6 +5,11 @@ class MasterService {
   constructor(ctx) {
     this.ctx = ctx;
     this.serviceApi = httpRequest(ctx, API_MASTER_URL).serviceApi;
+    this.serviceApiAuth = httpRequestAuth(ctx, API_MASTER_URL).serviceApi;
+  }
+
+  getReferentialOrderStatus() {
+    return this.serviceApiAuth.get('/customer/referential/order-status');
   }
 
   getProvider(params) {
