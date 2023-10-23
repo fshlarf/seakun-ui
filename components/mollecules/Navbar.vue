@@ -97,6 +97,8 @@
 
 <script>
 import Logo from '~/components/atoms/Logo.vue';
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -147,10 +149,9 @@ export default {
     Logo,
   },
   computed: {
-    avatar() {
-      const av = this.$cookies.get('avatar');
-      return av ? av : 'man-1';
-    },
+    ...mapGetters({
+      avatar: 'getAvatar',
+    }),
   },
   mounted() {
     window.onscroll = () => {
@@ -158,6 +159,11 @@ export default {
     };
     const username = this.$cookies.get('username');
     if (username) {
+      if (!this.avatar) {
+        const ava = this.$cookies.get(avatar);
+        const newAva = ava ? ava : 'man-1';
+        this.setUserAvatar(newAva);
+      }
       const profileMenu = {
         id: 7,
         label: 'Profil',
@@ -176,6 +182,9 @@ export default {
     // }, 900);
   },
   methods: {
+    ...mapActions({
+      setUserAvatar: 'setUserAvatar',
+    }),
     handleScrollEffect() {
       const myNav = document.getElementById('navbar');
       if (

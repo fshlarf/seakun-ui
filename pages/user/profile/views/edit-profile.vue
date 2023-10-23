@@ -18,7 +18,7 @@
     >
       <!-- :src="`/images/profile-page/avatar/${avatar}.svg`" -->
       <img
-        :src="`/images/profile-page/avatar/${dummyAva}.svg`"
+        :src="`/images/profile-page/avatar/${avatar}.svg`"
         alt="profile"
         class="w-[78px] h-[78px] rounded-full mx-auto md:mx-0"
       />
@@ -32,18 +32,19 @@
         </div>
         <div v-else class="flex items-center gap-2 lg:gap-3">
           <div
-            v-for="(avatar, id) in avatars"
+            v-for="(ava, id) in avatars"
             :key="id"
-            @click="selectAvatar(avatar.name)"
+            @click="selectAvatar(ava.name), validateForm"
           >
             <img
-              :src="`/images/profile-page/avatar/${avatar.name}.svg`"
-              :alt="avatar.name"
+              :src="`/images/profile-page/avatar/${ava.name}.svg`"
+              :alt="ava.name"
               class="w-[35px] h-[35px] lg:w-[50px] lg:h-[50px] cursor-pointer"
-              :class="{
-                'rounded-full border-2 border-[#08A081]':
-                  avatar.name === dummyAva,
-              }"
+              :class="`${
+                ava.name == avatar
+                  ? 'rounded-full border-2 border-[#08A081]'
+                  : ''
+              }`"
             />
           </div>
         </div>
@@ -59,31 +60,31 @@
         :error="errorForm.name"
       />
       <Input
-        v-model="dateOfBirth"
+        v-model="birthDate"
         type="date"
         label="Tanggal Lahir"
         class-label="!text-sm md:!text-xs !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
-        @keyup="validateForm('dateOfBirth')"
+        @change="validateForm"
       />
       <div>
         <p class="!text-sm md:!text-xs !text-gray-secondary">Jenis Kelamin</p>
         <div class="flex items-center gap-7 mt-5">
           <section
-            v-for="(option, id) in gender"
+            v-for="(option, id) in genders"
             :key="id"
             class="flex items-center gap-2 cursor-pointer"
             @click="handleSelectGender(option.value)"
           >
             <img
               :src="[
-                selectedGender == option.value
+                gender == option.value
                   ? '/images/icons/atoms/radio-button-active.svg'
                   : '/images/icons/atoms/radio-button.svg',
               ]"
               alt="radio"
             />
-            <p class="text-main text-sm lg:text-base">{{ option.value }}</p>
+            <p class="text-main text-sm lg:text-base">{{ option.name }}</p>
           </section>
         </div>
       </div>
@@ -92,12 +93,14 @@
         class-area="!resize-none"
         label="Alamat"
         class-label="!text-sm md:!text-xs !text-gray-secondary"
+        @keyup="validateForm"
       />
       <TextArea
         v-model="domicile"
         class-area="!resize-none"
         label="Domisili"
         class-label="!text-sm md:!text-xs !text-gray-secondary"
+        @keyup="validateForm"
       />
       <Input
         v-model="email"
@@ -105,7 +108,7 @@
         label="Email"
         class-label="!text-sm md:!text-xs !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
-        @keyup="validateForm('email')"
+        disabled
         :error="errorForm.email"
       />
       <Input
@@ -114,16 +117,8 @@
         label="No Whatsapp"
         class-label="!text-sm md:!text-xs  !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
-        @keyup="validateForm('phoneNumber')"
-        :error="errorForm.phoneNumber"
-      />
-      <Input
-        v-model="password"
-        type="password"
-        class-input="bg-[#A0A3BD26]"
-        label="Password"
-        class-label="!text-sm md:!text-xs  !text-gray-secondary"
-        class-name="!text-sm md:!text-base !text-gray-secondary"
+        disabled
+        :error="errorForm.phone"
       />
 
       <div>
@@ -159,6 +154,7 @@ import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
 import TextArea from '~/components/atoms/TextArea.vue';
+import { toUnixTimestamp, unixToIsoDate } from '~/helpers/word-transformation';
 
 export default {
   components: {
@@ -181,18 +177,20 @@ export default {
     return {
       isChangeAvatar: false,
       name: '',
-      dateOfBirth: '',
+      birthDate: '',
       email: '',
       phoneNumber: '',
-      gender: [
+      genders: [
         {
-          value: 'Laki-laki',
+          name: 'Laki-laki',
+          value: 'male',
         },
         {
-          value: 'Perempuan',
+          name: 'Perempuan',
+          value: 'female',
         },
       ],
-      selectedGender: '',
+      gender: 'male',
       password: '',
       address: '',
       domicile: '',
@@ -212,7 +210,6 @@ export default {
         },
       },
       avatar: 'man-1',
-      dummyAva: 'man-1',
       avatars: [
         {
           name: 'man-1',
@@ -252,31 +249,64 @@ export default {
         this.email = profile.email;
         this.phoneNumber = profile.phoneNumber;
         this.avatar = profile.avatar;
+        this.address = profile.customerDetail?.address;
+        this.gender = profile.customerDetail?.gender;
+        this.domicile = profile.customerDetail?.domicile;
+        this.birthDate = profile.customerDetail?.birthDate
+          ? this.unixToIsoDate(profile.customerDetail.birthDate)
+          : '';
       }
     },
     onClickUpdateProfile() {
       if (this.validateForm()) {
-        const { name, email, phoneNumber } = this;
+        const {
+          name,
+          email,
+          phoneNumber,
+          birthDate,
+          domicile,
+          address,
+          avatar,
+          gender,
+        } = this;
+
         const payload = {
           name,
           email,
           phoneNumber,
+          birthDate: birthDate ? this.toUnixTimestamp(birthDate) : null,
+          avatar,
+          domicile,
+          address,
+          gender,
         };
         this.$emit('onUpdateProfile', payload);
       }
     },
     handleSelectGender(val) {
-      this.selectedGender = val;
+      this.gender = val;
+      this.validateForm();
     },
     selectAvatar(val) {
-      this.dummyAva = val;
+      this.avatar = val;
+      this.isChangeAvatar = !this.isChangeAvatar;
+      this.validateForm();
     },
     validateEmail(email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
     },
     validateForm(input) {
-      const { name, email, phoneNumber } = this;
+      const {
+        name,
+        email,
+        phoneNumber,
+        address,
+        domicile,
+        birthDate,
+        gender,
+        avatar,
+      } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
       const idnPhoneFormat = /^[0-9]+$/;
       let isValid = true;
@@ -345,14 +375,19 @@ export default {
 
       if (
         name !== this.profile.name ||
-        email !== this.profile.email ||
-        phoneNumber !== this.profile.phoneNumber
+        avatar !== this.profile.avatar ||
+        address !== this.profile.customerDetail?.address ||
+        birthDate !== this.profile.customerDetail?.birthDate ||
+        domicile !== this.profile.customerDetail?.domicile ||
+        gender !== this.profile.customerDetail?.gender
       ) {
         this.isUpdate = true;
       }
       this.errorForm = { ...errorTemp };
       return isValid;
     },
+    toUnixTimestamp,
+    unixToIsoDate,
   },
 };
 </script>

@@ -76,9 +76,9 @@
                     @click="isShowModalCountry = true"
                   >
                     <img
-                      :src="`/images/flag/${selectedCountry.name.toLowerCase()}.svg`"
+                      :src="`/images/flags/${selectedCountry.slug}.png`"
                       :alt="selectedCountry.name"
-                      class="w-[26px] h-5 border border-[#E7E7E7]"
+                      class="w-[26px] h-4.5 lg:h-5 border border-[#E7E7E7]"
                     />
                     <img
                       src="/images/icons/atoms/up-triangle.svg"
@@ -92,7 +92,9 @@
                       class="absolute left-3 top-1/2 -translate-y-1/2 z-10 text-[#A0A3BD]"
                     >
                       <div class="relative">
-                        <p>{{ selectedCountry.code }}</p>
+                        <p class="text-sm lg:text-base">
+                          {{ selectedCountry.dialCode }}
+                        </p>
                         <div
                           class="absolute w-[1px] bg-[#C5C7DB80] h-full top-1/2 -translate-y-1/2 -right-2 ml-4"
                         ></div>
@@ -101,9 +103,11 @@
                     <Input
                       v-model="phoneNumber"
                       :class-input="[
-                        selectedCountry.code.length > 3
+                        selectedCountry.dialCode.length <= 3
+                          ? 'pl-[52px]'
+                          : selectedCountry.dialCode.length == 4
                           ? 'pl-[62px]'
-                          : 'pl-[52px]',
+                          : 'pl-[72px]',
                         'relative',
                       ]"
                       :placeholder="placeholderVal"
@@ -147,11 +151,12 @@
                   @click="onClickRegister"
                   add-class="text-sm lg:text-base bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-base font-bold mt-4 lg:mt-7 dm-sans"
                   :is-loading="isLoading"
+                  :disabled="!isAgreeWithTerms"
                   >Daftar</Button
                 >
               </div>
             </form>
-            <section class="px-3 mt-4 space-y-4 lg:space-y-6">
+            <!-- <section class="px-3 mt-4 space-y-4 lg:space-y-6">
               <div class="text-center h-max relative">
                 <div class="dividing-line text-[#B3B0C8]">
                   <p class="bg-white w-max mx-auto relative px-2 z-30">atau</p>
@@ -167,7 +172,7 @@
                   <p class="text-sm lg:text-base">Lanjutkan dengan Google</p>
                 </section>
               </div>
-            </section>
+            </section> -->
           </div>
         </div>
         <div v-else class="xl:w-[518px] mt-20 xl:mt-0">
@@ -205,7 +210,8 @@
     <ModalCountry
       v-if="isShowModalCountry"
       @clickOption="getCountryOption"
-      :selected="selectedCountry.name"
+      :country-list="internationalPhoneNumbers"
+      :selected="selectedCountry"
     />
     <Snackbar ref="snackbar" />
   </div>
@@ -224,6 +230,7 @@ import {
   capitalizeFirstLetter,
   formatPhoneNumber,
 } from '~/helpers/word-transformation.js';
+import { internationalPhoneNumbers } from '~/constants/code-phone';
 
 export default {
   components: {
@@ -238,6 +245,7 @@ export default {
   data() {
     return {
       UserService,
+      internationalPhoneNumbers,
       formWidth: 'lg:w-[60%]',
       isShowModalCountry: false,
       name: '',
@@ -246,10 +254,7 @@ export default {
       password: '',
       retypePassword: '',
       placeholderVal: '',
-      selectedCountry: {
-        name: 'Indonesia',
-        code: '+62',
-      },
+      selectedCountry: internationalPhoneNumbers[0],
       isAgreeWithTerms: false,
       errorForm: {
         email: {
@@ -282,7 +287,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.widthPlaceholder);
     this.checkAuth();
     this.UserService = new UserService(this);
     if (window.innerWidth >= 768) {
@@ -310,7 +314,8 @@ export default {
     validationForm(input) {
       const { email, name, phoneNumber, password, retypePassword } = this;
       const nameFormat = /^[A-Za-z][A-Za-z\s]*$/;
-      const idnPhoneFormat = /^[0-9]+$/;
+      const idnPhoneFormat = /^[8][0-9]*$/;
+      const globalPhoneFormat = /^[0-9]*$/;
       let isValid = true;
       let errorTemp = {
         email: {
@@ -374,10 +379,22 @@ export default {
             message: 'Nomor whatsapp harus diisi',
           };
           isValid = false;
-        } else if (!phoneNumber.match(idnPhoneFormat)) {
+        } else if (
+          this.selectedCountry.dialCode == '+62' &&
+          !phoneNumber.match(idnPhoneFormat)
+        ) {
           errorTemp.phone = {
             isError: true,
-            message: 'Format nomor whatsapp salah',
+            message: 'Format nomor whatsapp salah. cth: 8123456789',
+          };
+          isValid = false;
+        } else if (
+          this.selectedCountry.dialCode != '+62' &&
+          !phoneNumber.match(globalPhoneFormat)
+        ) {
+          errorTemp.phone = {
+            isError: true,
+            message: 'Format nomor whatsapp salah. cth: 8123456789',
           };
           isValid = false;
         }
@@ -414,10 +431,11 @@ export default {
     },
     async submit() {
       this.isLoading = true;
+      const countryCode = this.selectedCountry.dialCode.slice(1);
       const payload = {
         name: capitalizeFirstLetter(this.name),
         email: this.email,
-        phoneNumber: formatPhoneNumber(this.phoneNumber),
+        phoneNumber: countryCode + this.phoneNumber,
         password: this.password,
       };
       try {

@@ -9,7 +9,7 @@
         </div>
       </section>
       <div
-        class="mt-4 lg:mt-0 relative lg:fixed z-40 lg:top-[110px] lg:left-1/2 lg:-translate-x-1/2 bg-white pb-5 p-1 lg:p-5 rounded-[15px] mx-auto w-full sm:max-w-[478px]"
+        class="mt-4 lg:mt-0 relative lg:fixed z-40 lg:top-[110px] lg:left-1/2 lg:-translate-x-1/2 bg-white pb-5 p-1 lg:p-5 lg:pb-8 rounded-[15px] mx-auto w-full sm:max-w-[478px]"
       >
         <img
           src="/images/background/bg-register-mobile.png"
@@ -22,7 +22,7 @@
           Selamat Datang
         </h1>
         <p
-          class="text-sm lg:text-base text-[#474747] dm-sans pt-1 lg:pt-0 pl-3"
+          class="text-sm lg:text-base text-[#474747] dm-sans pt-1 lg:pt-0 pl-3 mt-1"
         >
           Belum punya akun?
           <span
@@ -31,7 +31,7 @@
             >Daftar</span
           >
         </p>
-        <form class="mt-5 lg:mt-8 px-3" @submit.prevent="submit">
+        <form class="mt-5 lg:mt-6 px-3" @submit.prevent="submit">
           <label
             for="email"
             class="text-gray-secondary !text-sm !lg:text-base dm-sans pb-2 block"
@@ -76,11 +76,11 @@
           <Button
             @click="onClickLogin"
             :is-loading="isLoading"
-            add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-11 dm-sans"
+            add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-9 dm-sans"
             >Login</Button
           >
         </form>
-        <section class="px-3 mt-4 space-y-4 lg:space-y-6">
+        <!-- <section class="px-3 mt-4 space-y-4 lg:space-y-6">
           <div class="text-center h-max relative">
             <div class="dividing-line text-[#B3B0C8]">
               <p class="bg-white w-max mx-auto relative px-2 z-30">atau</p>
@@ -96,7 +96,7 @@
               <p class="text-sm lg:text-base">Lanjutkan dengan Google</p>
             </section>
           </div>
-        </section>
+        </section> -->
       </div>
     </main>
 
@@ -118,6 +118,7 @@ import {
   setAvatar,
 } from '~/helpers/tokenAuth';
 import AuthService from '~/services/AuthServices';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
@@ -152,6 +153,9 @@ export default {
     this.AuthService = new AuthService(this);
   },
   methods: {
+    ...mapActions({
+      setUserAvatar: 'setUserAvatar',
+    }),
     checkAuth() {
       const accesToken = this.$cookies.get('ATS');
       const refreshToken = this.$cookies.get('RTS');
@@ -244,7 +248,7 @@ export default {
         setUsername(this, username);
         setCustomerUid(this, customerUid);
         setAvatar(this, avatar);
-        console.log(fetchLogin.data.data);
+        this.setUserAvatar(avatar);
         if (this.isRememberMe) {
           this.setLocalStorageLoginData();
         } else {

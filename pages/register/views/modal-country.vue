@@ -1,27 +1,28 @@
 <template>
   <div class="fixed right-0 left-0 top-0 bottom-0 bg-black/50 z-50">
     <div
-      class="absolute top-[11px] lg:top-[120px] bg-white lg:p-5 w-full max-w-[500px] left-1/2 -translate-x-1/2 rounded-[10px] z-40"
+      class="absolute top-[80px] lg:top-[120px] bg-white p-3 lg:p-5 w-[95%] max-w-[500px] left-1/2 -translate-x-1/2 rounded-[10px] z-40"
     >
-      <div class="space-y-4">
+      <div class="space-y-4 max-h-[600px] overflow-y-auto hide-scrollbar">
         <section
-          v-for="(country, id) in dataCountry"
+          v-for="(country, id) in countryList"
           :key="id"
           class="flex justify-between items-center cursor-pointer"
-          @click="$emit('clickOption', country.value)"
+          @click="$emit('clickOption', country)"
         >
           <div class="flex items-center gap-3">
             <img
-              :src="`/images/flag/${country.image}`"
-              :alt="country.value.name"
+              class="w-[26px] h-5"
+              :src="`/images/flags/${country.slug}.png`"
+              :alt="country.name"
             />
             <p class="text-main hover:opacity-70">
-              {{ `${country.value.name} (${country.value.code})` }}
+              {{ `${country.name} (${country.dialCode})` }}
             </p>
           </div>
           <img
             :src="[
-              activeOption == country.value.name
+              activeOption.slug == country.slug
                 ? '/images/icons/atoms/radio-button-active.svg'
                 : '/images/icons/atoms/radio-button.svg',
             ]"
@@ -34,15 +35,22 @@
 </template>
 
 <script>
+import { internationalPhoneNumbers } from '~/constants/code-phone';
+
 export default {
   props: {
     selected: {
-      typeof: String,
-      default: '',
+      typeof: Object,
+      default: () => {},
+    },
+    countryList: {
+      typeof: Array,
+      default: () => [],
     },
   },
   data() {
     return {
+      internationalPhoneNumbers,
       dataCountry: [
         {
           value: {

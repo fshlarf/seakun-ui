@@ -15,6 +15,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/svg": "^0.1.12",
     "autoprefixer": "^10.2.6",
+    "colorthief": "^2.4.0",
     "cookie-universal-nuxt": "^2.2.2",
     "js-cookie": "^3.0.5",
     "moment": "^2.29.1",

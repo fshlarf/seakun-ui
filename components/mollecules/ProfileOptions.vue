@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -30,10 +32,9 @@ export default {
     };
   },
   computed: {
-    avatar() {
-      const av = this.$cookies.get('avatar');
-      return av ? av : 'man-1';
-    },
+    ...mapGetters({
+      avatar: 'getAvatar',
+    }),
   },
 };
 </script>
