@@ -111,7 +111,7 @@ export default {
       menus: [],
       paramGetOrder: {
         page: 1,
-        limit: 5,
+        limit: 50,
         status: '',
       },
       isLoading: true,
