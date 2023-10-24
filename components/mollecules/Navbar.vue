@@ -89,7 +89,7 @@
               </template>
             </div>
           </nav>
-          <div v-if="!$cookies.get('username')">
+          <div v-if="!isLoggedin">
             <nuxt-link
               :class="{ flex: open, hidden: !open }"
               to="/login"
@@ -119,6 +119,7 @@ export default {
       showSpark2: false,
       showSpark3: false,
       open: false,
+      isLoggedin: true,
       navbarLink: [
         {
           id: 1,
@@ -183,6 +184,9 @@ export default {
         tag: 'profile',
       };
       this.navbarLink.push(profileMenu);
+      this.isLoggedin = true;
+    } else {
+      this.isLoggedin = false;
     }
     // setInterval(() => {
     //   this.showSpark1 = !this.showSpark1;
