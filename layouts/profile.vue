@@ -155,7 +155,7 @@ export default {
   mounted() {
     if (!this.avatar) {
       const ava = this.$cookies.get('avatar');
-      const newAva = ava ? ava : 'man-1';
+      const newAva = ava ? ava : 'default';
       this.setUserAvatar(newAva);
     }
     this.AuthService = new AuthService(this);

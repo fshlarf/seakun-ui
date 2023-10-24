@@ -18,6 +18,7 @@
         v-on="$listeners"
         :placeholder="placeholder"
         @input="$emit('update', $event.target.value)"
+        @keyup.enter="$emit('pressEnter')"
       />
       <!-- <input
         v-else

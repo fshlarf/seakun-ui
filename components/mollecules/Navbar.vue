@@ -60,7 +60,7 @@
                 <img
                   :src="`/images/profile-page/avatar/${avatar}.svg`"
                   alt="profile"
-                  class="rounded-full w-[42px] h-[42px] hidden lg:block"
+                  class="rounded-full w-[42px] h-[42px] hidden lg:block border border-[#D8EDEE]"
                 />
                 <p class="lg:hidden">{{ navbar.label }}</p>
               </div>
@@ -89,6 +89,19 @@
               </template>
             </div>
           </nav>
+          <div v-if="!$cookies.get('username')">
+            <nuxt-link
+              :class="{ flex: open, hidden: !open }"
+              to="/login"
+              class="h-[42px] justify-center items-center rounded-[8px] text-white font-bold text-sm lg:text-base bg-primary w-full mt-3"
+              >Login</nuxt-link
+            >
+            <nuxt-link
+              to="/login"
+              class="w-[112px] h-[42px] hidden lg:flex justify-center items-center rounded-[8px] text-white font-bold text-sm lg:text-base bg-primary lg:ml-10"
+              >Login</nuxt-link
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -160,8 +173,8 @@ export default {
     const username = this.$cookies.get('username');
     if (username) {
       if (!this.avatar) {
-        const ava = this.$cookies.get(avatar);
-        const newAva = ava ? ava : 'man-1';
+        const ava = this.$cookies.get('avatar');
+        const newAva = ava ? ava : 'default';
         this.setUserAvatar(newAva);
       }
       const profileMenu = {

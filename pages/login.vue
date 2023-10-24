@@ -54,6 +54,7 @@
             class-name="text-sm lg:text-base "
             placeholder="Masukkan password kamu disini"
             @keyup="validationForm('password')"
+            @pressEnter="onClickLogin"
             :error="errorForm.password"
           />
           <div

@@ -19,6 +19,7 @@
         :value="value"
         :placeholder="placeholder"
         @input="$emit('update', $event.target.value)"
+        @keyup.enter="$emit('pressEnter')"
       />
       <div class="icon-left">
         <slot name="iconLeft"> </slot>

@@ -16,11 +16,10 @@
     <section
       class="md:mt-6 flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
     >
-      <!-- :src="`/images/profile-page/avatar/${avatar}.svg`" -->
       <img
-        :src="`/images/profile-page/avatar/${avatar}.svg`"
+        :src="`/images/profile-page/avatar/${avatar ? avatar : 'default'}.svg`"
         alt="profile"
-        class="w-[78px] h-[78px] rounded-full mx-auto md:mx-0"
+        class="w-[78px] h-[78px] rounded-full mx-auto md:mx-0 border"
       />
       <div>
         <div v-if="!isChangeAvatar">
@@ -39,11 +38,9 @@
             <img
               :src="`/images/profile-page/avatar/${ava.name}.svg`"
               :alt="ava.name"
-              class="w-[35px] h-[35px] lg:w-[50px] lg:h-[50px] cursor-pointer"
+              class="w-[35px] h-[35px] lg:w-[50px] lg:h-[50px] cursor-pointer rounded-full"
               :class="`${
-                ava.name == avatar
-                  ? 'rounded-full border-2 border-[#08A081]'
-                  : ''
+                ava.name == avatar ? 'border-2 border-[#08A081]' : ''
               }`"
             />
           </div>
@@ -209,7 +206,7 @@ export default {
           message: '',
         },
       },
-      avatar: 'man-1',
+      avatar: 'default',
       avatars: [
         {
           name: 'man-1',
