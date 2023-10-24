@@ -74,7 +74,6 @@
         v-if="order.packageVariant.providerSlug !== 'sekurban'"
         ref="bgProvider"
         class="border-[1px] p-3 rounded-[6px] cursor-pointer w-[118px] h-[47px] flex justify-center items-center"
-        @click="$router.push('/user/order/details')"
       >
         <img
           ref="image"
