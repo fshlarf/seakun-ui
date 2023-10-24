@@ -11,9 +11,11 @@
         </section>
         <section v-else>
           <img
-            :src="`/images/profile-page/avatar/${profile.avatar}.svg`"
+            :src="`/images/profile-page/avatar/${
+              profile.avatar ? profile.avatar : 'default'
+            }.svg`"
             alt="profile"
-            class="rounded-full w-[58px] h-[58px] lg:w-[78px] lg:h-[78px]"
+            class="rounded-full w-[58px] h-[58px] lg:w-[78px] lg:h-[78px] border"
           />
         </section>
         <section
@@ -30,21 +32,15 @@
           </div>
           <div
             v-if="isLoading"
-            class="block space-y-2 md:space-y-3 mt-1 lg:mt-0"
+            class="!block space-y-3 lg:space-y-4 mt-1 lg:mt-1 truncate"
           >
-            <p class="block shimmer h-3 lg:h-[15px] w-[150px]"></p>
-            <br />
-            <p class="block shimmer h-3 lg:h-[15px] w-[200px]"></p>
-            <br />
-            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
-            <br />
-            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
-            <br />
-            <p class="block shimmer h-3 lg:h-[15px] w-[150px]"></p>
-            <br />
-            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
-            <br />
-            <p class="block shimmer h-3 lg:h-[15px] w-[100px]"></p>
+            <div class="!block shimmer h-3 lg:h-[16px] w-[150px]"></div>
+            <div class="!block shimmer h-3 lg:h-[16px] w-[200px]"></div>
+            <div class="!block shimmer h-3 lg:h-[16px] w-[100px]"></div>
+            <div class="!block shimmer h-3 lg:h-[16px] w-[100px]"></div>
+            <div class="!block shimmer h-3 lg:h-[16px] w-[150px]"></div>
+            <div class="!block shimmer h-3 lg:h-[16px] w-[100px]"></div>
+            <div class="!block shimmer h-3 lg:h-[16px] w-[100px]"></div>
           </div>
           <div
             v-else
