@@ -37,12 +37,9 @@
       <PaymentMethod
         :method-list="paymentMethods"
         :selected-method="selectedMethod"
+        :is-allow-va="isAllowVa"
         @selectMethod="onSelectPaymentMethod"
       />
-      <!-- <PaymentDetail
-        :isLoading="isLoadingPayment"
-        :paymentTotal="totalPayment"
-      /> -->
 
       <div class="mt-[24px] md:mt-[28px]">
         <h2 class="font-bold text-sm md:text-[20px]">Rincian Pembayaran</h2>
@@ -52,13 +49,13 @@
             <p class="font-medium">{{ currencyFormat(totalPrice) }}</p>
           </div>
           <div class="flex justify-between items-center">
-            <p>Biaya Layanan</p>
+            <p>Biaya Transaksi & Tax</p>
             <p class="font-medium">{{ currencyFormat(serviceFee) }}</p>
           </div>
           <hr class="my-[8px] md:my-[12px]" />
           <div class="flex justify-between items-center">
             <p class="text-sm md:text-[20px] font-bold">Total Bayar</p>
-            <p class="font-bold text-[#00BA88] md:text-[24px]">
+            <p class="font-bold text-[#00BA88] md:text-[20px]">
               {{ currencyFormat(totalPayment) }}
             </p>
           </div>
@@ -190,44 +187,55 @@ export default {
         {
           code: 'QRIS',
           slug: 'qris',
+          isVa: false,
         },
         {
           code: 'OVO',
           slug: 'ovo',
+          isVa: false,
         },
         {
           code: 'DANA',
           slug: 'dana',
+          isVa: false,
         },
         {
           code: 'SHOPEEPAY',
           slug: 'shopeepay',
+          isVa: false,
         },
         {
           code: 'LINKAJA',
           slug: 'linkaja',
+          isVa: false,
         },
         {
           code: 'ALFAMART',
           slug: 'alfamart',
+          isVa: true,
         },
         {
           code: 'BNI',
           slug: 'bni',
+          isVa: true,
         },
         {
           code: 'BRI',
           slug: 'bri',
+          isVa: true,
         },
         {
           code: 'MANDIRI',
           slug: 'mandiri',
+          isVa: true,
         },
         {
           code: 'PERMATA',
           slug: 'permata',
+          isVa: true,
         },
       ],
+      isAllowVa: false,
     };
   },
   // beforeMount() {
@@ -344,6 +352,7 @@ export default {
 
           // calculate service fee
           this.calculateServiceFee();
+          this.checkAllowVa();
         } else {
           throw new Error(fetchPayment);
         }
@@ -383,9 +392,16 @@ export default {
       this.totalPrice = total;
       this.orderData = copyArray;
       this.calculateServiceFee();
+      this.checkAllowVa();
+    },
+    checkAllowVa() {
+      this.isAllowVa = this.orderData.some((el) => {
+        return el.provider.package.variant.duration >= 6;
+      });
     },
     async pickDuration(item) {
       this.OpenCloseModalDuration();
+      this.isLoadingPayment = true;
       const { OrderService } = this;
       const payload = {
         orderUid: this.pickedOrder.orderUid,
