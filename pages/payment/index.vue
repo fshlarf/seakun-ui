@@ -413,6 +413,11 @@ export default {
           payload
         );
         if (fetchChangeVariant.data) {
+          this.selectedMethod = {
+            code: 'QRIS',
+            slug: 'qris',
+          };
+          this.paymentMethod = ['QRIS'];
           await this.getPaymentDigital(this.orderUid, this.customerUid);
         }
       } catch (err) {
