@@ -1,13 +1,25 @@
 <template>
   <div>
-    <div class="p-2 bg-checkout mt-[-3px]">
-      <p class="text-base text-[#417465] font-bold text-center">
-        Ini halaman terakhir dari proses orderanmu. Pastikan semua sudah benar,
-        ya. :)
-      </p>
+    <div class="max-w-[680px] w-full mx-auto pt-5 px-4">
+      <div
+        class="text-[12px] md:text-sm text-[#417465] bg-[#E9FCF8] rounded-[8px] md:font-medium flex items-center gap-[8px] p-[12px] md:px-4 md:py-0"
+      >
+        <img
+          class="w-[50px] md:w-[115px]"
+          src="/images/payment/illustration/cart.svg"
+          alt="payment"
+        />
+        <p>
+          Ini halaman terakhir dari proses orderanmu. Pastikan semua sudah
+          benar, ya. :)
+        </p>
+      </div>
     </div>
-    <div class="max-w-2xl w-full mx-auto pt-5 px-4">
-      <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
+    <div class="max-w-[680px] w-full mx-auto px-4">
+      <CustomerDetail
+        :isLoading="isLoadingPayment"
+        :orderDetail="detailOrder"
+      />
       <OrderList
         :isLoading="isLoadingPayment"
         @changeDuration="getDetailVariant"
@@ -22,14 +34,41 @@
           @click="onClickPriceScheme"
         />
       </div>
-      <PaymentDetail
+      <PaymentMethod
+        :method-list="paymentMethods"
+        :selected-method="selectedMethod"
+        @selectMethod="onSelectPaymentMethod"
+      />
+      <!-- <PaymentDetail
         :isLoading="isLoadingPayment"
         :paymentTotal="totalPayment"
-      />
+      /> -->
+
+      <div class="mt-[24px] md:mt-[28px]">
+        <h2 class="font-bold text-sm md:text-[20px]">Rincian Pembayaran</h2>
+        <div class="mt-2 md:mt-4 text-sm md:text-base">
+          <div class="flex justify-between items-center">
+            <p>Biaya Langganan</p>
+            <p class="font-medium">{{ currencyFormat(totalPrice) }}</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <p>Biaya Layanan</p>
+            <p class="font-medium">{{ currencyFormat(serviceFee) }}</p>
+          </div>
+          <hr class="my-[8px] md:my-[12px]" />
+          <div class="flex justify-between items-center">
+            <p class="text-sm md:text-[20px] font-bold">Total Bayar</p>
+            <p class="font-bold text-[#00BA88] md:text-[24px]">
+              {{ currencyFormat(totalPayment) }}
+            </p>
+          </div>
+        </div>
+      </div>
+
       <Button
         label="Bayar"
-        class="w-full bg-green-seakun text-base text-white font-bold py-2 my-5"
-        @click="OpenCloseModalPayment"
+        class="w-full bg-green-seakun text-base text-white font-bold py-3 my-5"
+        @click="createInvoice"
         :isLoading="isLoadingPaymentButton"
       />
     </div>
@@ -62,8 +101,9 @@ import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import Button from '~/components/atoms/Button';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
-import OrderDetail from './views/OrderDetail.vue';
+import CustomerDetail from './views/OrderDetail.vue';
 import PaymentDetail from './views/PaymentDetail.vue';
+import PaymentMethod from './views/PaymentMethod.vue';
 import OrderList from './views/OrderList.vue';
 import ModalDuration from './views/ModalDuration.vue';
 import ModalPayment from './views/ModalPayment.vue';
@@ -74,6 +114,7 @@ import { providerList } from '../../constants/price-scheme';
 import { priceChangeList } from '../../constants/price-change';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import WarningPriceChange from './views/WarningPriceChange.vue';
+import { currencyFormat } from '~/helpers/word-transformation';
 
 export default {
   name: 'NewPayment',
@@ -82,8 +123,9 @@ export default {
     ButtonDrop,
     DropDownPricesListSubcribe,
     Button,
-    OrderDetail,
+    CustomerDetail,
     PaymentDetail,
+    PaymentMethod,
     Snackbar,
     OrderList,
     ModalDuration,
@@ -114,6 +156,7 @@ export default {
       isLoadingPaymentButton: false,
       orderData: [],
       totalPayment: 0,
+      totalPrice: 0,
       detailOrder: {
         name: '',
         phone: '',
@@ -137,6 +180,54 @@ export default {
         slug: '',
         name: '',
       },
+      serviceFee: 0,
+      paymentMethod: ['QRIS'],
+      selectedMethod: {
+        code: 'QRIS',
+        slug: 'qris',
+      },
+      paymentMethods: [
+        {
+          code: 'QRIS',
+          slug: 'qris',
+        },
+        {
+          code: 'OVO',
+          slug: 'ovo',
+        },
+        {
+          code: 'DANA',
+          slug: 'dana',
+        },
+        {
+          code: 'SHOPEEPAY',
+          slug: 'shopeepay',
+        },
+        {
+          code: 'LINKAJA',
+          slug: 'linkaja',
+        },
+        {
+          code: 'ALFAMART',
+          slug: 'alfamart',
+        },
+        {
+          code: 'BNI',
+          slug: 'bni',
+        },
+        {
+          code: 'BRI',
+          slug: 'bri',
+        },
+        {
+          code: 'MANDIRI',
+          slug: 'mandiri',
+        },
+        {
+          code: 'PERMATA',
+          slug: 'permata',
+        },
+      ],
     };
   },
   // beforeMount() {
@@ -172,6 +263,11 @@ export default {
     }
   },
   methods: {
+    onSelectPaymentMethod(method) {
+      this.selectedMethod = method;
+      this.paymentMethod = [];
+      this.paymentMethod.push(method.code);
+    },
     onClickPriceScheme(provider) {
       this.dataDetailProvider = {
         list: this.providerList,
@@ -230,7 +326,7 @@ export default {
                   total += order[i].provider.package.variant.grandTotal;
                 }
               }
-              this.totalPayment = total;
+              this.totalPrice = total;
             } else {
               this.orderData = orders;
               let total = 0;
@@ -239,12 +335,15 @@ export default {
                   total += orders[i].provider.package.variant.grandTotal;
                 }
               }
-              this.totalPayment = total;
+              this.totalPrice = total;
             }
           } else {
             this.orderData = newOrder;
-            this.totalPayment = rest.provider.package.variant.grandTotal;
+            this.totalPrice = rest.provider.package.variant.grandTotal;
           }
+
+          // calculate service fee
+          this.calculateServiceFee();
         } else {
           throw new Error(fetchPayment);
         }
@@ -267,6 +366,10 @@ export default {
       }
       this.isLoadingPayment = false;
     },
+    calculateServiceFee() {
+      this.serviceFee = this.totalPrice <= 65000 ? 500 : 1000;
+      this.totalPayment = this.totalPrice + this.serviceFee;
+    },
     async onCheckedOrder(order, index) {
       const { orderData } = this;
       const copyArray = [...orderData];
@@ -277,8 +380,9 @@ export default {
           total += copyArray[i].provider.package.variant.grandTotal;
         }
       }
-      this.totalPayment = total;
+      this.totalPrice = total;
       this.orderData = copyArray;
+      this.calculateServiceFee();
     },
     async pickDuration(item) {
       this.OpenCloseModalDuration();
@@ -301,7 +405,6 @@ export default {
     },
     async createInvoice() {
       this.isLoadingPaymentButton = true;
-      this.OpenCloseModalPayment();
       const { PaymentService } = this;
       const orders = this.orderData
         .filter((item) => item.checked)
@@ -312,6 +415,8 @@ export default {
       const payload = {
         customerUid: this.customerUid,
         totalAmount: this.totalPayment,
+        paymentMethod: this.paymentMethod,
+        serviceFee: this.serviceFee,
         order: orders,
       };
       let counter = 0;
@@ -407,6 +512,7 @@ export default {
     OpenCloseModalPayment() {
       this.isShowModalPayment = !this.isShowModalPayment;
     },
+    currencyFormat,
   },
 };
 </script>
