@@ -33,8 +33,8 @@
       <p
         class="text-[#00BA88] text-[12px] md:text-sm max-w-[276px] md:max-w-[620px]"
       >
-        Metode Payment bank dan retail (Alfamart) hanya tersedia untuk pilihan
-        durasi berlangganan minimal 6 bulan
+        Metode pembayaran bank dan retail (Alfamart) hanya tersedia untuk
+        pilihan durasi berlangganan minimal 6 bulan
       </p>
     </div>
   </div>
