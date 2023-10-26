@@ -11,7 +11,7 @@
           <div @click="scrollToTop">
             <img
               class="tn:h-[40px]"
-              src="/images/navbar/brand_seakun.png"
+              src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
             />
           </div>
@@ -20,6 +20,7 @@
           class="absolute tn:top-1 tn:right-1 tn:py-4 tn:px-4 md:px-4 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col tn:w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
           :class="{ shadow: open, 'bg-white': open }"
         >
+          <!-- hamburger icon -->
           <div class="items-center">
             <button
               class="lg:hidden rounded-lg focus:outline-none float-right"
@@ -45,6 +46,7 @@
               </svg>
             </button>
           </div>
+          <!-- hamburger icon -->
 
           <nav
             :class="{ flex: open, hidden: !open }"
@@ -53,7 +55,8 @@
             :key="id"
           >
             <div
-              class="cursor-pointer tn:text-right tn:my-3 lg:my-4 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12 relative"
+              class="cursor-pointer tn:text-right tn:my-3 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12 relative"
+              :class="`${navbar.tag === 'profile' ? 'lg:my-1' : 'lg:my-3'}`"
               @click="scrollToSection(navbar)"
             >
               <div v-if="navbar.tag === 'profile'">
@@ -89,6 +92,8 @@
               </template>
             </div>
           </nav>
+
+          <!-- login button -->
           <div v-if="!isLoggedin">
             <nuxt-link
               :class="{ flex: open, hidden: !open }"
@@ -102,6 +107,7 @@
               >Login</nuxt-link
             >
           </div>
+          <!-- login button -->
         </div>
       </div>
     </div>

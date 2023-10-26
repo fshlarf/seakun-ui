@@ -7,7 +7,7 @@
         <div class="tn:mt-8 tn:mb-6 md:mb-9">
           <img
             class="tn:h-[30px]"
-            src="/images/navbar/brand_seakun.png"
+            src="/images/navbar/brand_seakun.svg"
             alt="tentang seakun"
           />
         </div>

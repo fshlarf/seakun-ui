@@ -81,10 +81,25 @@
             </template>
           </div>
         </div>
-        <div class="mt-4 md:space-y-1">
-          <div class="text-center">
-            <p>Total Pembayaran</p>
-            <p class="font-bold text-xl">{{ currencyFormat(totalTransfer) }}</p>
+        <div class="px-3">
+          <div class="mt-3">
+            <div class="flex justify-between items-center text-sm md:text-base">
+              <p>Biaya Langganan</p>
+              <p class="font-bold">{{ currencyFormat(totalPrice) }}</p>
+            </div>
+            <div class="flex justify-between items-center text-sm md:text-base">
+              <p>Biaya Transfer & Tax</p>
+              <p class="font-bold">{{ currencyFormat(serviceFee) }}</p>
+            </div>
+          </div>
+          <hr class="mt-3" />
+          <div class="mt-4">
+            <div class="flex items-center justify-between">
+              <p>Total Pembayaran</p>
+              <p class="font-bold text-[18px]">
+                {{ currencyFormat(totalTransfer) }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -128,7 +143,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    totalTransfer: {
+    totalPrice: {
       type: Number,
       default: null,
     },
@@ -138,6 +153,18 @@ export default {
       currencyFormat,
       moment,
     };
+  },
+  computed: {
+    totalTransfer() {
+      return this.totalPrice + this.serviceFee;
+    },
+    serviceFee() {
+      let fee = 0;
+      if (this.totalPrice > 0) {
+        fee = this.totalPrice <= 65000 ? 500 : 1000;
+      }
+      return fee;
+    },
   },
   components: {
     Button,
