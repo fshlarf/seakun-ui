@@ -6,7 +6,7 @@
     <SuccessPayment
       v-else-if="result == 'true'"
       :data-order="dataOrders"
-      :total-transfer="totalTransfer"
+      :total-price="totalTransfer"
       @onClick="toHomePage()"
     />
     <FailedPayment v-else />

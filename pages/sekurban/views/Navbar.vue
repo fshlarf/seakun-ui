@@ -13,7 +13,7 @@
           <div @click="scrollToTop()">
             <img
               class="tn:h-[40px]"
-              src="/images/navbar/brand_seakun.png"
+              src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
             />
           </div>

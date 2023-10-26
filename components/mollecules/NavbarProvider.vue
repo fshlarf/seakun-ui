@@ -11,7 +11,7 @@
           <div @click="scrollToTop">
             <img
               class="tn:h-[40px]"
-              src="/images/navbar/brand_seakun.png"
+              src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
             />
           </div>
@@ -115,9 +115,6 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      showSpark1: false,
-      showSpark2: false,
-      showSpark3: false,
       open: false,
       isLoggedin: true,
       navbarLink: [

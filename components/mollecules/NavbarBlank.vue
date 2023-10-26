@@ -9,7 +9,7 @@
       <nuxt-link to="/">
         <img
           class="tn:h-[30px]"
-          src="/images/navbar/brand_seakun.png"
+          src="/images/navbar/brand_seakun.svg"
           alt="brand seakun"
         />
       </nuxt-link>
