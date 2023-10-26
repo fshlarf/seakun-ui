@@ -396,7 +396,7 @@ export default {
     },
     checkAllowVa() {
       this.isAllowVa = this.orderData.some((el) => {
-        return el.provider.package.variant.duration >= 6;
+        return el.checked && el.provider.package.variant.duration >= 6;
       });
     },
     async pickDuration(item) {

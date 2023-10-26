@@ -1,107 +1,70 @@
 <template>
-  <div id="navbar" class="w-full fixed z-40 tn:py-3 lg:py-0 bg-none">
-    <div
-      v-if="open"
-      class="opacity-20 fixed inset-0 z-90 bg-black"
-      @click="open = false"
-    ></div>
+  <div id="navba" class="w-full fixed z-40 tn:py-3 bg-white">
     <div class="static z-0 w-full text-gray-700">
-      <div class="container lg:flex lg:justify-between lg:items-center">
-        <nuxt-link to="/">
-          <div @click="scrollToTop">
+      <div class="md:container lg:flex lg:justify-between lg:items-center">
+        <div
+          class="px-4 border-b md:border-none pb-4 md:pb-0 flex justify-between items-center"
+        >
+          <nuxt-link to="/" class="">
             <img
               class="tn:h-[40px]"
               src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
             />
+          </nuxt-link>
+          <div role="button" class="md:hidden" @click="isOpen = !isOpen">
+            <img
+              v-if="!isOpen"
+              class="w-[22px]"
+              src="/images/icons/atoms/hamburger.svg"
+              alt="menu"
+            />
+            <img
+              v-else
+              class="w-[24px]"
+              src="/images/icons/atoms/close-menu.svg"
+              alt="tutup menu"
+            />
           </div>
-        </nuxt-link>
-        <div
-          class="absolute tn:top-1 tn:right-1 tn:py-4 tn:px-4 md:px-4 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col tn:w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
-          :class="{ shadow: open, 'bg-white': open }"
-        >
-          <div class="items-center">
-            <button
-              class="lg:hidden rounded-lg focus:outline-none float-right"
-              @click="open = !open"
+        </div>
+        <div>
+          <div class="hidden md:flex items-center gap-[24px]">
+            <nuxt-link
+              class="w-full md:w-[120px] h-[36px] md:h-[46px] font-bold flex justify-center items-center border border-primary bg-white text-primary rounded-[4px] md:rounded-[8px]"
+              to="/login"
             >
-              <svg
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                class="w-6 h-6 primary"
-              >
-                <path
-                  v-show="!open"
-                  fill-rule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-                <path
-                  v-show="open"
-                  fill-rule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </button>
+              <p>Masuk</p>
+            </nuxt-link>
+            <nuxt-link
+              class="w-full md:w-[120px] h-[36px] md:h-[46px] font-bold flex justify-center items-center border border-primary bg-primary text-white rounded-[4px] md:rounded-[8px]"
+              to="/register"
+            >
+              <p>Daftar</p>
+            </nuxt-link>
           </div>
-
-          <nav
-            :class="{ flex: open, hidden: !open }"
-            class="tn:flex-col tn:pr-4 md:pr-4 lg:pr-0 tn:mt-2 md:p-0 lg:mt-0 lg:flex lg:justify-end lg:flex-row"
-            v-for="(navbar, id) in navbarLink"
-            :key="id"
+        </div>
+      </div>
+      <div
+        class="md:hidden overflow-hidden transition-all ease-in-out duration-300"
+        :class="`${!isOpen ? 'h-0' : ''}`"
+      >
+        <div class="grid grid-cols-2 items-center gap-3 px-4 mt-5">
+          <nuxt-link
+            class="w-full h-[36px] font-bold flex justify-center items-center border border-primary bg-white text-primary rounded-[4px]"
+            to="/login"
           >
-            <div
-              class="cursor-pointer tn:text-right tn:my-3 lg:my-4 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12 relative"
-              @click="scrollToSection(navbar)"
-            >
-              <div v-if="navbar.tag === 'profile'">
-                <img
-                  :src="`/images/profile-page/avatar/${avatar}.svg`"
-                  alt="profile"
-                  class="rounded-full w-[42px] h-[42px] hidden lg:block border border-[#D8EDEE]"
-                />
-                <p class="lg:hidden">{{ navbar.label }}</p>
-              </div>
-              <p v-else>
-                {{ navbar.label }}
-              </p>
-              <template v-if="navbar.tag === 'sekurban'">
-                <img
-                  class="transition-opacity ease-in-out delay-50 duration-500 absolute -top-1 -right-1 w-[9px]"
-                  :class="`${showSpark1 ? 'opacity-100' : 'opacity-20'}`"
-                  src="/images/icons/atoms/spark.svg"
-                  alt="spark"
-                />
-                <img
-                  class="transition-opacity ease-in-out delay-50 duration-500 absolute bottom-1 -right-2 w-[8px]"
-                  :class="`${showSpark2 ? '!opacity-100' : '!opacity-20'}`"
-                  src="/images/icons/atoms/spark.svg"
-                  alt="spark"
-                />
-                <img
-                  class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-4 w-[12px]"
-                  :class="`${showSpark3 ? '!opacity-100' : '!opacity-20'}`"
-                  src="/images/icons/atoms/spark.svg"
-                  alt="spark"
-                />
-              </template>
-            </div>
-          </nav>
-          <div v-if="!isLoggedin">
-            <nuxt-link
-              :class="{ flex: open, hidden: !open }"
-              to="/login"
-              class="h-[42px] justify-center items-center rounded-[8px] text-white font-bold text-sm lg:text-base bg-primary w-full mt-3"
-              >Login</nuxt-link
-            >
-            <nuxt-link
-              to="/login"
-              class="w-[112px] h-[42px] hidden lg:flex justify-center items-center rounded-[8px] text-white font-bold text-sm lg:text-base bg-primary lg:ml-10"
-              >Login</nuxt-link
-            >
-          </div>
+            <p>Masuk</p>
+          </nuxt-link>
+          <nuxt-link
+            class="w-full h-[36px] font-bold flex justify-center items-center border border-primary bg-primary text-white rounded-[4px]"
+            to="/register"
+          >
+            <p>Daftar</p>
+          </nuxt-link>
+        </div>
+        <div class="my-4 flex items-center gap-1 px-4">
+          <img src="/images/icons/atoms/home.svg" alt="kembali" />
+          <p>Kembali ke Beranda</p>
         </div>
       </div>
     </div>
@@ -115,45 +78,8 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      open: false,
+      isOpen: false,
       isLoggedin: true,
-      navbarLink: [
-        {
-          id: 1,
-          label: 'Layanan',
-          tag: 'provider',
-        },
-        {
-          id: 2,
-          label: 'Pengguna',
-          tag: 'pengguna',
-        },
-        {
-          id: 3,
-          label: 'Cara Pesan',
-          tag: 'orderFlow',
-        },
-        {
-          id: 4,
-          label: 'Testimoni',
-          tag: 'testimony',
-        },
-        {
-          id: 5,
-          label: 'FAQ',
-          tag: 'qna',
-        },
-        {
-          id: 6,
-          label: 'Laporan Kendala',
-          tag: 'helpCenter',
-        },
-        // {
-        //   id: 7,
-        //   label: 'Sequrban',
-        //   tag: 'sekurban',
-        // },
-      ],
     };
   },
   components: {
@@ -185,11 +111,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bg-nav {
   background-color: #ffffff !important;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
-  transition: 1s all ease;
 }
 @media (min-width: 800px) {
   .bg-nav {
@@ -197,7 +122,6 @@ export default {
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
     padding-top: 8px !important;
     padding-bottom: 8px !important;
-    transition: 1s all ease;
   }
 }
 </style>
