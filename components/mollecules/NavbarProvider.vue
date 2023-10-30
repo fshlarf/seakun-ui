@@ -1,71 +1,95 @@
 <template>
-  <div id="navba" class="w-full fixed z-40 tn:py-3 bg-white">
-    <div class="static z-0 w-full text-gray-700">
-      <div class="md:container lg:flex lg:justify-between lg:items-center">
-        <div
-          class="px-4 border-b md:border-none pb-4 md:pb-0 flex justify-between items-center"
-        >
-          <nuxt-link to="/" class="">
-            <img
-              class="tn:h-[40px]"
-              src="/images/navbar/brand_seakun.svg"
-              alt="brand seakun"
-            />
-          </nuxt-link>
-          <div role="button" class="md:hidden" @click="isOpen = !isOpen">
-            <img
-              v-if="!isOpen"
-              class="w-[22px]"
-              src="/images/icons/atoms/hamburger.svg"
-              alt="menu"
-            />
-            <img
-              v-else
-              class="w-[24px]"
-              src="/images/icons/atoms/close-menu.svg"
-              alt="tutup menu"
-            />
-          </div>
-        </div>
-        <div>
-          <div class="hidden md:flex items-center gap-[24px]">
-            <nuxt-link
-              class="w-full md:w-[120px] h-[36px] md:h-[46px] font-bold flex justify-center items-center border border-primary bg-white text-primary rounded-[4px] md:rounded-[8px]"
-              to="/login"
-            >
-              <p>Masuk</p>
-            </nuxt-link>
-            <nuxt-link
-              class="w-full md:w-[120px] h-[36px] md:h-[46px] font-bold flex justify-center items-center border border-primary bg-primary text-white rounded-[4px] md:rounded-[8px]"
-              to="/register"
-            >
-              <p>Daftar</p>
-            </nuxt-link>
-          </div>
+  <div
+    class="w-full h-max md:!h-auto fixed z-40 bg-white shadow-md md:shadow-none"
+  >
+    <div
+      class="md:container bg-white block md:flex md:justify-between md:items-center py-3 border-b md:border-none"
+    >
+      <div
+        class="flex justify-between items-center mx-auto w-[321px] md:w-full"
+      >
+        <nuxt-link to="/" class="">
+          <img
+            class="h-[40px]"
+            src="/images/navbar/brand_seakun.svg"
+            alt="brand seakun"
+          />
+        </nuxt-link>
+        <div role="button" class="md:hidden" @click="isOpen = !isOpen">
+          <img
+            v-if="!isOpen"
+            class="w-[22px]"
+            src="/images/icons/atoms/hamburger.svg"
+            alt="menu"
+          />
+          <img
+            v-else
+            class="w-[24px]"
+            src="/images/icons/atoms/close-menu.svg"
+            alt="tutup menu"
+          />
         </div>
       </div>
-      <div
-        class="md:hidden overflow-hidden transition-all ease-in-out duration-300"
-        :class="`${!isOpen ? 'h-0' : ''}`"
-      >
-        <div class="grid grid-cols-2 items-center gap-3 px-4 mt-5">
+      <div>
+        <div v-if="!isLoggedin" class="hidden md:flex items-center gap-[16px]">
           <nuxt-link
-            class="w-full h-[36px] font-bold flex justify-center items-center border border-primary bg-white text-primary rounded-[4px]"
+            class="w-full md:w-[120px] h-[36px] md:h-[46px] font-bold flex justify-center items-center border border-primary bg-white text-primary rounded-[4px] md:rounded-[8px]"
             to="/login"
           >
             <p>Masuk</p>
           </nuxt-link>
           <nuxt-link
-            class="w-full h-[36px] font-bold flex justify-center items-center border border-primary bg-primary text-white rounded-[4px]"
+            class="w-full md:w-[120px] h-[36px] md:h-[46px] font-bold flex justify-center items-center border border-primary bg-primary text-white rounded-[4px] md:rounded-[8px]"
             to="/register"
           >
             <p>Daftar</p>
           </nuxt-link>
         </div>
-        <div class="my-4 flex items-center gap-1 px-4">
-          <img src="/images/icons/atoms/home.svg" alt="kembali" />
-          <p>Kembali ke Beranda</p>
+        <nuxt-link v-else to="/profile">
+          <img
+            :src="`/images/profile-page/avatar/${avatar}.svg`"
+            alt="profile"
+            class="rounded-full w-[42px] h-[42px] hidden lg:block border border-[#D8EDEE]"
+          />
+        </nuxt-link>
+      </div>
+    </div>
+
+    <div
+      class="md:hidden overflow-hidden transition-all ease-in-out duration-300 shadow-md"
+      :class="`${
+        !isOpen ? 'max-h-0 opacity-0 -mt-20' : 'h-auto opacity-100 mt-0'
+      }`"
+    >
+      <div v-if="!isLoggedin" class="grid grid-cols-2 items-center gap-3 mt-5">
+        <nuxt-link
+          class="w-full h-[36px] font-bold flex justify-center items-center border border-primary bg-white text-primary rounded-[4px]"
+          to="/login"
+        >
+          <p>Masuk</p>
+        </nuxt-link>
+        <nuxt-link
+          class="w-full h-[36px] font-bold flex justify-center items-center border border-primary bg-primary text-white rounded-[4px]"
+          to="/register"
+        >
+          <p>Daftar</p>
+        </nuxt-link>
+      </div>
+      <div v-else class="py-3 border-b">
+        <div class="mx-auto w-[321px] md:w-full flex items-center gap-3">
+          <nuxt-link class="" to="/profile">
+            <img
+              :src="`/images/profile-page/avatar/${avatar}.svg`"
+              alt="profile"
+              class="rounded-full w-[42px] h-[42px] border border-[#D8EDEE]"
+            />
+          </nuxt-link>
+          <p>Profil</p>
         </div>
+      </div>
+      <div class="my-4 flex items-center gap-1 mx-auto w-[321px] md:w-full">
+        <img src="/images/icons/atoms/home.svg" alt="kembali" />
+        <p>Kembali ke Beranda</p>
       </div>
     </div>
   </div>
@@ -111,17 +135,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.bg-nav {
-  background-color: #ffffff !important;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
-}
-@media (min-width: 800px) {
-  .bg-nav {
-    background-color: #ffffff !important;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
-  }
-}
-</style>
+<style></style>

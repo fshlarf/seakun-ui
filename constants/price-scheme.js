@@ -684,7 +684,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Apple One Family',
-        value: 'Rp179.000',
+        value: 'Rp199.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -692,7 +692,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp179.000 ÷ 5 = Rp35.800',
+        value: 'Rp199.000 ÷ 5 = Rp39.800',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -700,7 +700,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp35.800',
+        value: 'Rp39.800',
         is_total: true,
       },
     ],
@@ -727,7 +727,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Apple One Family',
-        value: 'Rp179.000',
+        value: 'Rp199.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -735,15 +735,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp179.000 ÷ 5 = Rp35.800',
+        value: 'Rp199.000 ÷ 5 = Rp39.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.200',
+        value: 'Rp5.700',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp41.000',
+        value: 'Rp45.500',
         is_total: true,
       },
     ],
@@ -1101,7 +1101,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Apple One Premier',
-        value: 'Rp299.000',
+        value: 'Rp319.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -1109,7 +1109,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp299.000 ÷ 5 = Rp59.800',
+        value: 'Rp319.000 ÷ 5 = Rp63.800',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -1117,7 +1117,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp59.800',
+        value: 'Rp63.800',
         is_total: true,
       },
     ],
@@ -1144,7 +1144,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Apple One Premier',
-        value: 'Rp299.000',
+        value: 'Rp319.000',
       },
       {
         title: 'Jumlah member dalam 1 grup',
@@ -1152,15 +1152,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp299.000 ÷ 5 = Rp59.800',
+        value: 'Rp319.000 ÷ 5 = Rp63.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.200',
+        value: 'Rp5.700',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp65.000',
+        value: 'Rp69.500',
         is_total: true,
       },
     ],

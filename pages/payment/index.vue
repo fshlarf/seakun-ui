@@ -74,7 +74,7 @@
       :orderData="pickedOrder"
       :durationData="dataVariants"
       :showModal="isShowModalDuration"
-      @onClose="OpenCloseModalDuration"
+      @onClose="toggleModalDuration"
       @pickDuration="pickDuration"
       :isLoading="isLoadingVariant"
     />
@@ -400,7 +400,7 @@ export default {
       });
     },
     async pickDuration(item) {
-      this.OpenCloseModalDuration();
+      this.toggleModalDuration();
       this.isLoadingPayment = true;
       const { OrderService } = this;
       const payload = {
@@ -486,7 +486,7 @@ export default {
       });
     },
     async getDetailVariant(data) {
-      this.OpenCloseModalDuration();
+      this.toggleModalDuration();
       this.isLoadingVariant = true;
       const { slug } = data.provider;
       const { uid, variant } = data.provider.package;
@@ -527,7 +527,7 @@ export default {
       }
       this.isLoadingVariant = false;
     },
-    OpenCloseModalDuration() {
+    toggleModalDuration() {
       this.isShowModalDuration = !this.isShowModalDuration;
     },
     OpenCloseModalPayment() {
