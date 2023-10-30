@@ -39,16 +39,16 @@ export const priceChangeList = [
   //   slug: 'scribd',
   //   message: 'penambahan pajak 11%',
   // },
-  // {
-  //   name: 'Apple One',
-  //   slug: 'apple-one',
-  //   message: 'kenaikan biaya berlangganan seluruh provider Apple',
-  // },
-  // {
-  //   name: 'Apple One Premier',
-  //   slug: 'apple-one-premier',
-  //   message: 'kenaikan biaya berlangganan seluruh provider Apple',
-  // },
+  {
+    name: 'Apple One',
+    slug: 'apple-one',
+    message: 'kenaikan biaya berlangganan provider Apple One',
+  },
+  {
+    name: 'Apple One Premier',
+    slug: 'apple-one-premier',
+    message: 'kenaikan biaya berlangganan provider Apple One',
+  },
   // {
   //   name: 'Apple Music',
   //   slug: 'apple-music',
