@@ -18,6 +18,12 @@ class MasterService {
     });
   }
 
+  getProviderDetail(params) {
+    return this.serviceApi.get('/customer/provider/detail', {
+      params,
+    });
+  }
+
   getProviderCategory(params) {
     return this.serviceApi.get('/customer/provider/category', {
       params,
