@@ -2,24 +2,38 @@
   <div>
     <NavbarProvider />
     <div
-      class="pt-20 bg-red-20 mx-auto w-[321px] md:w-full md:container dm-sans"
+      class="pt-20 bg-red-20 mx-auto w-[321px] md:w-full md:container dm-sans pb-24"
     >
       <div class="flex items-center gap-2 text-sm">
         <nuxt-link class="text-primary" to="/">Beranda</nuxt-link>
         <p>></p>
         <p>{{ provider.name }}</p>
       </div>
-      <div
-        class="mt-4 rounded-[10px] w-full h-[204px] overflow-hidden border flex justify-center items-center"
-      >
-        <img
-          class="object-contain"
-          :src="priceScheme.screenshot"
-          alt="provider price"
-        />
-      </div>
+      <template v-if="!isLoading">
+        <div
+          v-if="selectedPackage"
+          class="mt-4 rounded-[10px] w-full h-[204px] overflow-hidden border flex justify-center items-center"
+        >
+          <img
+            class="object-contain"
+            :src="priceScheme.screenshot"
+            alt="provider price"
+          />
+        </div>
+        <div
+          v-else
+          class="mt-4 !rounded-[10px] w-full h-[204px] !overflow-hidden border flex justify-center items-center text-sm"
+        >
+          Paket tidak aktif
+        </div>
+      </template>
+      <template v-else>
+        <div
+          class="mt-4 rounded-[10px] w-full h-[204px] overflow-hidden border flex justify-center items-center shimmer"
+        ></div>
+      </template>
 
-      <div class="mt-4 flex justify-between items-center">
+      <div v-if="!isLoading" class="mt-4 flex justify-between items-center">
         <div class="flex items-center gap-1">
           <img
             class="h-[20px]"
@@ -35,8 +49,17 @@
           Preorder
         </div>
       </div>
+      <div v-else class="mt-4 flex items-center gap-2">
+        <div
+          class="shimmer w-[30px] h-[30px] !rounded-full !overflow-hidden"
+        ></div>
+        <div class="shimmer h-4 w-[100px]"></div>
+      </div>
 
-      <div class="mt-[12px] flex justify-between items-center">
+      <div
+        v-if="!isLoading && selectedPackage"
+        class="mt-[12px] flex justify-between items-center"
+      >
         <p class="text-primary font-bold">
           {{
             currencyFormat(
@@ -53,41 +76,56 @@
             bulan</span
           >
         </p>
-        <div class="flex items-center gap-1">
+        <div
+          role="button"
+          @click="isShowPriceScheme = !isShowPriceScheme"
+          class="flex items-center gap-1"
+        >
           <p class="text-[#66738F] text-[12px]">Skema Harga</p>
-          <img src="/images/icons/atoms/chevron-gray.svg" alt="chevron" />
+          <img
+            :class="{ 'rotate-180': isShowPriceScheme }"
+            src="/images/icons/atoms/chevron-gray.svg"
+            alt="chevron"
+          />
         </div>
       </div>
 
       <div
-        class="mt-[12px] rounded-[8px] p-[12px] border border-[#66738F80]/50"
+        class="transition-all ease-in-out duration-200 overflow-hidden"
+        :class="`${
+          !isLoading && selectedPackage && isShowPriceScheme
+            ? 'opacity-100 h-auto mt-[12px]'
+            : 'max-h-0 opacity-0'
+        }`"
       >
-        <p class="text-[#66738F] text-[12px]">Skema Harga</p>
-        <div
-          v-for="(info, id) in priceScheme.informations"
-          :key="id"
-          class="flex items-center justify-between text-xs mt-1"
-          :class="`${
-            id == priceScheme.informations.length - 1 ? 'font-bold' : ''
-          }`"
-        >
-          <p>{{ info.title }}</p>
-          <p>{{ info.value }}</p>
+        <div class="rounded-[8px] p-[12px] border border-[#66738F80]/50">
+          <p class="text-[#66738F] text-[12px]">Skema Harga</p>
+          <div
+            v-for="(info, id) in priceScheme.informations"
+            :key="id"
+            class="flex items-center justify-between text-xs mt-1"
+            :class="`${
+              id == priceScheme.informations.length - 1 ? 'font-bold' : ''
+            }`"
+          >
+            <p>{{ info.title }}</p>
+            <p>{{ info.value }}</p>
+          </div>
         </div>
       </div>
 
       <div class="mt-4">
         <h3 class="text-sm font-medium">Pilih Paket</h3>
-        <div class="mt-[12px] flex items-center gap-[12px]">
-          <!-- <div > -->
+        <div v-if="!isLoading" class="mt-[12px] flex items-center gap-[12px]">
           <div
             v-for="(pkg, id) in packages"
             :key="id"
             class="relative z-0 rounded-[8px] w-[99px] md:w-[233px] md:rounded-[8px] overflow-hidden"
-            :class="{
-              'border-2 border-primary':
-                selectedPackage.packageUid == pkg.packageUid,
-            }"
+            :class="`${
+              selectedPackage && selectedPackage.packageUid == pkg.packageUid
+                ? 'border-2 border-primary'
+                : ''
+            }`"
           >
             <div
               v-if="pkg.active !== 1"
@@ -101,9 +139,9 @@
               @click="onSelectPackage(pkg)"
               class="absolute z-10 bottom-0 left-0 w-full h-[39px] md:h-[71px] px-1 flex justify-center items-center pt-3"
               :class="`${
-                pkg.packageUid !== selectedPackage.packageUid
-                  ? 'cursor-pointer'
-                  : ''
+                selectedPackage && pkg.packageUid === selectedPackage.packageUid
+                  ? ''
+                  : 'cursor-pointer'
               }`"
             >
               <p class="text-[10px] font-bold text-white">
@@ -114,19 +152,26 @@
               @click="onSelectPackage(pkg)"
               class="w-full"
               :class="`${
-                pkg.packageUid !== selectedPackage.packageUid
-                  ? 'cursor-pointer'
-                  : ''
+                selectedPackage && pkg.packageUid === selectedPackage.packageUid
+                  ? ''
+                  : 'cursor-pointer'
               }`"
               :src="`/images/product/${provider.slug}.svg`"
               alt="provider"
             />
           </div>
-          <!-- </div> -->
+        </div>
+        <div v-else class="flex items-center gap-[12px] mt-[12px]">
+          <div
+            class="shimmer !rounded-[8px] w-[99px] h-[80px] md:w-[233px] md:h-[160px] md:rounded-[8px] !overflow-hidden"
+          ></div>
+          <div
+            class="shimmer !rounded-[8px] w-[99px] h-[80px] md:w-[233px] md:h-[160px] md:rounded-[8px] !overflow-hidden"
+          ></div>
         </div>
       </div>
 
-      <div class="mt-4">
+      <div v-if="!isLoading && selectedPackage" class="mt-4">
         <h3 class="text-sm font-medium">Pilih Durasi Berlangganan</h3>
         <div
           v-if="!selectedVariant.uid"
@@ -168,7 +213,7 @@
         </div>
       </div>
 
-      <div class="mt-4">
+      <div v-if="!isLoading && selectedPackage" class="mt-4">
         <h3 class="text-sm font-medium">Benefit</h3>
         <div class="mt-[12px] space-y-[8px]">
           <div
@@ -188,7 +233,7 @@
         </div>
       </div>
 
-      <div class="mt-4">
+      <div v-if="!isLoading && selectedPackage" class="mt-4">
         <div
           class="rounded-t-[10px] bg-[#EFFAF8] overflow-x-auto overscroll-auto hide-scrollbar"
         >
@@ -276,9 +321,29 @@
               :key="id"
               :group="group"
             />
-            <!-- <GroupCard /> -->
           </div>
         </div>
+      </div>
+    </div>
+
+    <div
+      class="fixed z-50 bottom-0 left-0 bg-white p-3 w-full lg:hidden shadowed"
+    >
+      <div class="mx-auto w-[321px] md:w-full">
+        <div
+          v-if="!isLoading && selectedPackage"
+          class="flex justify-between items-center mb-2"
+        >
+          <p class="text-sm font-medium">Total Biaya</p>
+          <p class="text-sm font-bold text-primary">
+            {{ currencyFormat(selectedVariant.grandTotal) }}
+          </p>
+        </div>
+        <Button
+          add-class="w-full text-white bg-primary py-2 text-center font-bold"
+          :disabled="!selectedPackage"
+          >Pesan</Button
+        >
       </div>
     </div>
   </div>
@@ -290,11 +355,13 @@ import { providerList } from '~/constants/price-scheme';
 import { currencyFormat } from '~/helpers/word-transformation';
 import GroupCard from './views/group-card.vue';
 import MasterService from '~/services/MasterServices';
+import Button from '~/components/atoms/Button.vue';
 
 export default {
   components: {
     NavbarProvider,
     GroupCard,
+    Button,
   },
   data() {
     return {
@@ -314,8 +381,8 @@ export default {
       providerGroups: [],
       provider: {},
       packages: [],
-      selectedPackage: {},
-      selectedVariant: {},
+      selectedPackage: null,
+      selectedVariant: null,
       packageVariantUid: '',
       isLoading: true,
       bottomMenus: [
@@ -339,16 +406,14 @@ export default {
       selectedMenu: {},
       information:
         'Paket Patungan pada Gramedia terdapat 3 macam, yaitu Paket Gramedia (Full Premium), Fiksi dan Non Fiksi. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat Preorder.',
-      orderScheme: [
-        'Seakun membuat akun dan membeli PAKET PREMIUM di Gramedia',
-        'Akun dishare HANYA ke 2 member dalam 1 grup',
-      ],
+      orderScheme: [],
       providerRules: [
         'Lorem ipsum dolor sit amet, consectetur',
         'Adipiscing elit, sed do eiusmod tempor incididunt',
         'Lorem ipsum dolor sit amet, consectetur ',
         'Adipiscing elit, sed do eiusmod tempor incididunt',
       ],
+      isShowPriceScheme: false,
     };
   },
   mounted() {
@@ -407,14 +472,15 @@ export default {
             this.priceScheme = this.providerList.find((scheme) => {
               return scheme.desc === this.selectedPackage.variants[0].notes;
             });
-          } else {
-            this.selectedPackage = this.provider.packages[0];
-            this.priceScheme = this.providerList.find((scheme) => {
-              return (
-                scheme.desc === this.provider.packages[0].variants[0].notes
-              );
-            });
           }
+          // else {
+          //   this.selectedPackage = this.provider.packages[0];
+          //   this.priceScheme = this.providerList.find((scheme) => {
+          //     return (
+          //       scheme.desc === this.provider.packages[0].variants[0].notes
+          //     );
+          //   });
+          // }
           console.log(fetchProviderDetail.data);
         }
       } catch (error) {
@@ -449,6 +515,10 @@ export default {
   height: 2px;
   max-width: 0%;
   animation: drawBorder 0.2s ease forwards;
+}
+
+.shadowed {
+  box-shadow: 2px 12px 15px 5px;
 }
 
 @keyframes drawBorder {
