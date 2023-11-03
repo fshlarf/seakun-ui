@@ -68,7 +68,7 @@
                 :data-provider="product"
                 class="tn:w-full tn:h-full"
                 @showPriceScheme="showPriceScheme"
-                @on-click-product="onClickProductDigital"
+                @on-click-product="onClickProvider"
               />
             </div>
           </div>
@@ -418,6 +418,9 @@ export default {
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
+    },
+    onClickProvider(provider) {
+      this.$router.push(`/provider?name=${provider.slug}&id=${provider.uid}`);
     },
     onClickProductDigital(product) {
       this.setSelectedProvider(product);

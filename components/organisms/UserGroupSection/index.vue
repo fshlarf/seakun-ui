@@ -76,7 +76,7 @@
               :key="id"
               :group="group"
               class="my-2 h-full flex-none"
-              @click-order="onClickOrder"
+              @click-order="onClickOrderProvider"
             />
             <ButtonChevron
               v-if="dataGroupList.list && dataGroupList.list.length >= 5"
@@ -211,7 +211,12 @@ export default {
     },
     toCustomerPage() {
       this.$router.push(
-        `/info/customers?provider=${this.filterGroup.providerUid}`
+        `/info/customers?provider=${this.highlight}&id=${this.filterGroup.providerUid}`
+      );
+    },
+    onClickOrderProvider() {
+      this.$router.push(
+        `/provider?name=${this.highlight}&id=${this.providerUid}`
       );
     },
     onClickOrder(provider) {

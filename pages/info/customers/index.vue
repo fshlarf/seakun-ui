@@ -59,6 +59,8 @@ export default {
       MasterService,
       SEAKUN_API,
       customers: [],
+      providerUid: '',
+      providerSlug: '',
       shimmerInitialData: Array(4),
       isLoading: false,
       isLoadingNext: false,
@@ -70,9 +72,11 @@ export default {
   },
   mounted() {
     this.MasterService = new MasterService(this);
-    let provider = this.$route.query.provider;
-    this.getAccountGroups(provider);
-    this.getNextAccountGroup(provider);
+    const { provider, id } = this.$route.query;
+    this.providerUid = id;
+    this.providerSlug = provider;
+    this.getAccountGroups(id);
+    this.getNextAccountGroup(id);
   },
   methods: {
     async getAccountGroups(providerUid) {

@@ -49,7 +49,7 @@
           <img
             :src="`/images/profile-page/avatar/${avatar}.svg`"
             alt="profile"
-            class="rounded-full w-[42px] h-[42px] hidden lg:block border border-[#D8EDEE]"
+            class="rounded-full w-[42px] h-[42px] hidden md:block border border-[#D8EDEE]"
           />
         </nuxt-link>
       </div>
