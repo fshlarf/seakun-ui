@@ -49,7 +49,7 @@
           <img
             :src="`/images/profile-page/avatar/${avatar}.svg`"
             alt="profile"
-            class="rounded-full w-[42px] h-[42px] hidden lg:block border border-[#D8EDEE]"
+            class="rounded-full w-[42px] h-[42px] hidden md:block border border-[#D8EDEE]"
           />
         </nuxt-link>
       </div>
@@ -61,7 +61,10 @@
         !isOpen ? 'max-h-0 opacity-0 -mt-20' : 'h-auto opacity-100 mt-0'
       }`"
     >
-      <div v-if="!isLoggedin" class="grid grid-cols-2 items-center gap-3 mt-5">
+      <div
+        v-if="!isLoggedin"
+        class="grid grid-cols-2 items-center gap-3 mt-5 mx-auto w-[321px]"
+      >
         <nuxt-link
           class="w-full h-[36px] font-bold flex justify-center items-center border border-primary bg-white text-primary rounded-[4px]"
           to="/login"
