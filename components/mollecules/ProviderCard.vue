@@ -156,7 +156,7 @@
           :disabled="!dataProvider.active"
           variant="primary"
           class="w-full tn:mt-2 md:mt-3"
-          add-class="!rounded-[8px] md:py-3"
+          add-class="!rounded-[8px] py-2 md:py-3"
           @click="$emit('on-click-product', dataProvider)"
         />
       </div>
