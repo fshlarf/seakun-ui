@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-max md:!h-auto fixed z-40 bg-white shadow-md md:shadow-none"
+    class="w-full h-max md:!h-auto fixed z-50 bg-white shadow-md md:shadow-none"
   >
     <div
       class="md:container bg-white block md:flex md:justify-between md:items-center py-3 border-b md:border-none"
@@ -15,7 +15,11 @@
             alt="brand seakun"
           />
         </nuxt-link>
-        <div role="button" class="md:hidden" @click="isOpen = !isOpen">
+        <div
+          role="button"
+          class="md:hidden"
+          @click="(isOpen = !isOpen), $emit('toggleMenu', isOpen)"
+        >
           <img
             v-if="!isOpen"
             class="w-[22px]"
@@ -45,7 +49,7 @@
             <p>Daftar</p>
           </nuxt-link>
         </div>
-        <nuxt-link v-else to="/profile">
+        <nuxt-link v-else to="/user/profile">
           <img
             :src="`/images/profile-page/avatar/${avatar}.svg`"
             alt="profile"
@@ -80,7 +84,7 @@
       </div>
       <div v-else class="py-3 border-b">
         <div class="mx-auto w-[321px] md:w-full flex items-center gap-3">
-          <nuxt-link class="" to="/profile">
+          <nuxt-link class="" to="/user/profile">
             <img
               :src="`/images/profile-page/avatar/${avatar}.svg`"
               alt="profile"

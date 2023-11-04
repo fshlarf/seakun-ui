@@ -16,11 +16,11 @@
     </div>
     <hr class="tn:my-2" />
 
-    <div class="flex flex-column space-y-1 tn:mt-4">
+    <div class="flex items-center justify-between tn:mt-4">
       <div class="shimmer block md:h-4 tn:w-1/2 md:w-1/3"></div>
       <div class="shimmer block md:h-4 tn:w-3/4 md:w-1/2"></div>
     </div>
-    <div class="flex flex-column space-y-1 tn:mt-3">
+    <div class="flex items-center justify-between tn:mt-3">
       <div class="shimmer block md:h-4 tn:w-1/2 md:w-1/3"></div>
       <div class="shimmer block md:h-4 tn:w-3/4 md:w-1/2"></div>
     </div>
