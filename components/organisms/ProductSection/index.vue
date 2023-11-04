@@ -125,10 +125,8 @@
         </div>
         <div
           v-else
-          class="grid tn:gap-3 md:gap-4 tn:grid-cols-3 md:grid-cols-6"
+          class="grid tn:gap-3 md:gap-4 tn:grid-cols-3 md:grid-cols-4"
         >
-          <CardShimmerVertical />
-          <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />

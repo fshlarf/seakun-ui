@@ -1,11 +1,15 @@
 <template>
   <div>
-    <NavbarProvider />
+    <NavbarProvider @toggleMenu="onToggleNavbarMenu" />
+    <div
+      v-if="isOpenMenu"
+      class="fixed z-40 top-0 left-0 w-full h-screen bg-black/40"
+    ></div>
     <div
       class="pt-20 bg-red-20 mx-auto w-[321px] md:w-full md:container dm-sans pb-24"
     >
       <div class="flex items-center gap-2 text-sm">
-        <nuxt-link class="text-primary" to="/">Beranda</nuxt-link>
+        <nuxt-link class="text-primary" to="/#provider">Beranda</nuxt-link>
         <p>></p>
         <p>{{ provider.name }}</p>
       </div>
@@ -249,6 +253,33 @@
             >
               <div class="flex items-center gap-[4px] mx-[15px">
                 <div
+                  v-if="additionalInformation"
+                  class="min-w-max pt-[15px] text-primary font-bold text-sm"
+                  :class="`${
+                    informationMenu.value == selectedMenu.value
+                      ? ''
+                      : ' cursor-pointer'
+                  }`"
+                  @click="
+                    informationMenu.value !== selectedMenu.value
+                      ? (selectedMenu = informationMenu)
+                      : (selectedMenu = selectedMenu),
+                      onSelectMenu(informationMenu)
+                  "
+                >
+                  <p class="px-[15px]">
+                    {{ informationMenu.name }}
+                  </p>
+                  <div
+                    class="mt-[10px]"
+                    :class="`${
+                      informationMenu.value == selectedMenu.value
+                        ? 'border-b-2 border-green-seakun-secondary-dark underlined'
+                        : ' cursor-pointer'
+                    }`"
+                  ></div>
+                </div>
+                <div
                   v-for="(menu, id) in bottomMenus"
                   :key="id"
                   class="min-w-max pt-[15px] text-primary font-bold text-sm"
@@ -481,7 +512,7 @@
     </div>
 
     <div
-      class="fixed z-50 bottom-0 left-0 bg-white p-3 md:p-5 w-full lg:hidden shadowed"
+      class="fixed z-30 bottom-0 left-0 bg-white p-3 md:p-5 w-full lg:hidden shadowed"
     >
       <div class="mx-auto w-[321px] md:w-full md:grid md:grid-cols-2 md:gap-3">
         <div
@@ -576,6 +607,7 @@ export default {
         'Adipiscing elit, sed do eiusmod tempor incididunt',
       ],
       isShowPriceScheme: false,
+      isOpenMenu: false,
     };
   },
   mounted() {
@@ -593,6 +625,9 @@ export default {
     ...mapActions({
       createOrder: 'createOrder',
     }),
+    onToggleNavbarMenu(isOpen) {
+      this.isOpenMenu = isOpen;
+    },
     limitGroupByScreenSize() {
       let screen = window.innerWidth;
       let limitGroup = 3;
@@ -607,7 +642,6 @@ export default {
       const customerUid = this.$cookies.get('customerUid');
       if (customerUid) {
         const payload = {
-          customerUid: customerUid,
           packageVariantUid: this.selectedVariant.uid,
           ispreorder: this.selectedPackage.po === 1,
           userhost: this.selectedPackage.host === 1,
@@ -641,6 +675,11 @@ export default {
           this.selectedPackage.po == 1
             ? 'Dengan memilih paket Pre-order artinya kamu menunggu grup penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.'
             : '';
+        if (this.additionalInformation) {
+          this.selectedMenu = this.informationMenu;
+        } else {
+          this.selectedMenu = this.bottomMenus[0];
+        }
       }
     },
     onSelectVariant(variant) {
@@ -665,6 +704,11 @@ export default {
               this.selectedPackage.po == 1
                 ? 'Dengan memilih paket Pre-order artinya kamu menunggu grup penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.'
                 : '';
+            if (this.additionalInformation) {
+              this.selectedMenu = this.informationMenu;
+            } else {
+              this.selectedMenu = this.bottomMenus[0];
+            }
             this.selectedVariant = this.selectedPackage.variants.find(
               (variant) => {
                 return variant.isActive == 1;
