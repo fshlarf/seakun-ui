@@ -528,6 +528,7 @@
           @click="onClickOrder"
           add-class="w-full text-white bg-primary py-2 md:py-3 text-center font-bold"
           :disabled="!selectedPackage"
+          :is-loading="isLoadingCreateOrder"
           >Pesan</Button
         >
       </div>
@@ -546,7 +547,7 @@ import GroupCardShimmer from './views/group-card-shimmer.vue';
 import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -609,6 +610,11 @@ export default {
       isShowPriceScheme: false,
       isOpenMenu: false,
     };
+  },
+  computed: {
+    ...mapGetters({
+      isLoadingCreateOrder: 'getLoadingCreateOrder',
+    }),
   },
   mounted() {
     const { id, name } = this.$route.query;

@@ -35,12 +35,19 @@ class UserService {
     return this.serviceApi.post('/customer/verify', { token, userUid });
   }
 
+  verifyResetPassword(token, userUid) {
+    return this.serviceApi.post('/customer/verify/reset-password', {
+      token,
+      userUid,
+    });
+  }
+
   sendForgotPasswordEmail(email) {
     return this.serviceApi.post('/customer/email/forget-password', { email });
   }
 
   updateForgettedPassword(param) {
-    return this.serviceApi.patch('/customer/verify/forget-password', {
+    return this.serviceApi.patch('/customer/password/forgeted', {
       ...param,
     });
   }

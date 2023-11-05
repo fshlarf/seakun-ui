@@ -75,12 +75,18 @@ export default {
         }
       } catch (error) {
         console.log(error);
-        this.$refs.snackbar.showSnackbar({
-          message: `Token verifikasi tidak valid atau user tidak ditemukan`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
-        });
+        if (error.response.status == 403) {
+          this.$router.push(
+            `/user/verify-email/expired?token=${this.token}&userUid=${this.userUid}`
+          );
+        } else {
+          this.$refs.snackbar.showSnackbar({
+            message: `Token verifikasi tidak valid atau user tidak ditemukan`,
+            className: '',
+            color: 'bg-red-400',
+            duration: 4000,
+          });
+        }
       }
       this.isLoading = false;
     },

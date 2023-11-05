@@ -1,100 +1,109 @@
 <template>
   <div class="w-full min-h-screen bg-[#EBFFFB] lg:bg-white">
-    <div class="lg:grid grid-cols-2 px-4 sm:px-[1rem] md:px-[2rem] lg:px-0">
-      <section
-        class="relative w-full min-h-screen bg-[#DFFFF8] hidden lg:block"
-      >
-        <img
-          src="/images/brand-seakun/seakun-green.svg"
-          alt="seakun"
-          class="w-[120px] h-[29px] absolute top-[61px] left-[59px]"
-        />
-        <img
-          src="/images/user/forgot-password.svg"
-          alt="illustration"
-          class="mx-auto w-full"
-        />
-      </section>
-      <div class="w-full pt-8 lg:pt-0">
-        <div class="w-full sm:max-w-[478px] mx-auto">
-          <section
-            class="p-1 lg:p-5 bg-white card-wrapper rounded-xl lg:rounded-none mt-4 lg:mt-0"
-          >
-            <img
-              src="/images/profile-page/group-send.svg"
-              alt="forgot-password"
-              class="absolute w-[130px] h-[200px] right-0 top-0 hidden lg:block"
-            />
-            <div v-if="!isSuccess" class="mx-auto lg:mt-[148px]">
+    <div
+      v-if="isLoadingVerify"
+      class="w-full h-full flex justify-center items-center"
+    >
+      loading...
+    </div>
+    <div v-else>
+      <div class="lg:grid grid-cols-2 px-4 sm:px-[1rem] md:px-[2rem] lg:px-0">
+        <section
+          class="relative w-full min-h-screen bg-[#DFFFF8] hidden lg:block"
+        >
+          <img
+            src="/images/brand-seakun/seakun-green.svg"
+            alt="seakun"
+            class="w-[120px] h-[29px] absolute top-[61px] left-[59px]"
+          />
+          <img
+            src="/images/user/forgot-password.svg"
+            alt="illustration"
+            class="mx-auto w-full"
+          />
+        </section>
+        <div class="w-full pt-8 lg:pt-0">
+          <div class="w-full sm:max-w-[478px] mx-auto">
+            <section
+              class="p-1 lg:p-5 bg-white card-wrapper rounded-xl lg:rounded-none mt-4 lg:mt-0"
+            >
               <img
-                src="/images/illustration/forgot-password/request-mobile.png"
-                alt="email"
-                class="w-full lg:hidden"
+                src="/images/profile-page/group-send.svg"
+                alt="forgot-password"
+                class="absolute w-[130px] h-[200px] right-0 top-0 hidden lg:block"
               />
-              <div class="mt-5 lg:mt-0 px-4 pb-5 lg:pb-0 lg:px-0">
-                <h1 class="text-base lg:text-[26px] font-bold text-[#49A794]">
-                  Buat Password Baru
-                </h1>
-                <p
-                  class="text-sm lg:text-base text-gray-secondary dm-sans mt-[8px]"
-                >
-                  Password baru kamu harus berbeda dengan password sebelumnya..
-                </p>
-                <InputPassword
-                  v-model="password"
-                  id="password"
-                  label="Password"
-                  class-label="!text-sm lg:!text-base"
-                  placeholder="Masukkan password baru kamu"
-                  class="mt-5 lg:mt-8 !text-sm !lg:text-base"
-                  @keyup="validateForm('password')"
-                  :error="errorForm.password"
+              <div v-if="!isSuccess" class="mx-auto lg:mt-[148px]">
+                <img
+                  src="/images/illustration/forgot-password/request-mobile.png"
+                  alt="email"
+                  class="w-full lg:hidden"
                 />
-                <InputPassword
-                  v-model="retypePassword"
-                  id="confirm-password"
-                  label="Konfirmasi Password"
-                  class-label="!text-sm lg:!text-base"
-                  placeholder="Konfirmasi password baru kamu"
-                  class="mt-4 lg:mt-8 !text-sm !lg:text-base"
-                  @keyup="validateForm('retypePassword')"
-                  :error="errorForm.retypePassword"
-                />
-                <Button
-                  @click="onClickUpdatePassword"
-                  add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-8 dm-sans "
-                  :is-loading="isLoading"
-                  >Simpan</Button
-                >
-                <div
-                  v-if="errorUpdatePassword.isError"
-                  class="mt-5 text-center text-red-500"
-                >
-                  {{ errorUpdatePassword.message }}
+                <div class="mt-5 lg:mt-0 px-4 pb-5 lg:pb-0 lg:px-0">
+                  <h1 class="text-base lg:text-[26px] font-bold text-[#49A794]">
+                    Buat Password Baru
+                  </h1>
+                  <p
+                    class="text-sm lg:text-base text-gray-secondary dm-sans mt-[8px]"
+                  >
+                    Password baru kamu harus berbeda dengan password
+                    sebelumnya..
+                  </p>
+                  <InputPassword
+                    v-model="password"
+                    id="password"
+                    label="Password"
+                    class-label="!text-sm lg:!text-base"
+                    placeholder="Masukkan password baru kamu"
+                    class="mt-5 lg:mt-8 !text-sm !lg:text-base"
+                    @keyup="validateForm('password')"
+                    :error="errorForm.password"
+                  />
+                  <InputPassword
+                    v-model="retypePassword"
+                    id="confirm-password"
+                    label="Konfirmasi Password"
+                    class-label="!text-sm lg:!text-base"
+                    placeholder="Konfirmasi password baru kamu"
+                    class="mt-4 lg:mt-8 !text-sm !lg:text-base"
+                    @keyup="validateForm('retypePassword')"
+                    :error="errorForm.retypePassword"
+                  />
+                  <Button
+                    @click="onClickUpdatePassword"
+                    add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-8 dm-sans "
+                    :is-loading="isLoading"
+                    >Simpan</Button
+                  >
+                  <div
+                    v-if="errorUpdatePassword.isError"
+                    class="mt-5 text-center text-red-500"
+                  >
+                    {{ errorUpdatePassword.message }}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div v-else class="mx-auto mt-4 lg:mt-[148px] p-4">
-              <img
-                class="mx-auto"
-                src="/images/user/success-update-password.svg"
-                alt="password berhasil diubah"
-              />
-              <h2
-                class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
-              >
-                Password Berhasil Diganti
-              </h2>
-              <p class="text-[14px] lg:text-base text-center mt-[4px]">
-                Penggantian password telah berhasil dilakukan.
-              </p>
-              <Button
-                @click="toLoginPage"
-                add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-8 dm-sans "
-                >Login</Button
-              >
-            </div>
-          </section>
+              <div v-else class="mx-auto mt-4 lg:mt-[148px] p-4">
+                <img
+                  class="mx-auto"
+                  src="/images/user/success-update-password.svg"
+                  alt="password berhasil diubah"
+                />
+                <h2
+                  class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+                >
+                  Password Berhasil Diganti
+                </h2>
+                <p class="text-[14px] lg:text-base text-center mt-[4px]">
+                  Penggantian password telah berhasil dilakukan.
+                </p>
+                <Button
+                  @click="toLoginPage"
+                  add-class="bg-[#08A081] text-white w-full !h-[42px] lg:!h-[54px] text-sm lg:text-base font-bold mt-7 lg:mt-8 dm-sans "
+                  >Login</Button
+                >
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </div>
@@ -106,10 +115,6 @@
 <script>
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
-import RequestFromEmail from './views/request-from-email.vue';
-import FormVerification from './views/form-verification.vue';
-import FormNewPassword from './views/form-new-password.vue';
-import ModalSuccsess from './views/modal-succsess.vue';
 import Spinner from '~/components/atoms/Spinner.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import UserService from '~/services/UserServices';
@@ -118,10 +123,6 @@ export default {
   components: {
     InputPassword,
     Button,
-    RequestFromEmail,
-    FormVerification,
-    FormNewPassword,
-    ModalSuccsess,
     Spinner,
     Snackbar,
   },
@@ -149,6 +150,7 @@ export default {
         isError: false,
         message: '',
       },
+      isLoadingVerify: true,
     };
   },
   mounted() {
@@ -156,8 +158,22 @@ export default {
     const { token, userUid } = this.$route.query;
     this.userUid = userUid;
     this.token = token;
+    this.verifyResetPassword();
   },
   methods: {
+    async verifyResetPassword() {
+      this.isLoadingVerify = true;
+      const { UserService } = this;
+      try {
+        await UserService.verifyResetPassword(this.token, this.userUid);
+      } catch (error) {
+        this.$router.push(
+          `/user/forget-password/expired?token=${this.token}&userUid=${this.userUid}`
+        );
+        console.log(error);
+      }
+      this.isLoadingVerify = false;
+    },
     onClickUpdatePassword() {
       if (this.validateForm()) {
         this.updateForgettedPassword();
