@@ -67,7 +67,7 @@
             <div v-else class="mx-auto lg:mt-[148px]">
               <img
                 class="mx-auto"
-                src="/images/register/success.svg"
+                src="/images/illustration/send-email.png"
                 alt="email berhasil dikirim"
               />
               <h2
