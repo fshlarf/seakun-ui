@@ -76,7 +76,8 @@
                 Email Berhasil dikirim
               </h2>
               <p class="text-[14px] lg:text-base text-center mt-[4px]">
-                Silakan cek email kamu untuk membuat password baru.
+                Silakan cek email kamu untuk membuat password baru. Token ubah
+                password berlaku selama 12 jam.
               </p>
               <div class="flex space-x-3 items-center justify-center mt-[8px]">
                 <p class="text-center dm-sans text-sm text-slate-500">
@@ -106,10 +107,6 @@
 <script>
 import Input from '~/components/atoms/Input.vue';
 import Button from '~/components/atoms/Button.vue';
-import RequestFromEmail from './views/request-from-email.vue';
-import FormVerification from './views/form-verification.vue';
-import FormNewPassword from './views/form-new-password.vue';
-import ModalSuccsess from './views/modal-succsess.vue';
 import Spinner from '~/components/atoms/Spinner.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 import UserService from '~/services/UserServices';
@@ -118,10 +115,6 @@ export default {
   components: {
     Input,
     Button,
-    RequestFromEmail,
-    FormVerification,
-    FormNewPassword,
-    ModalSuccsess,
     Spinner,
     Snackbar,
   },
@@ -188,6 +181,12 @@ export default {
           this.resendEmailCounter = 15;
           this.isLoadingSendEmail = false;
           this.isResendEmailActive = false;
+          this.$refs.snackbar.showSnackbar({
+            message: `Email berhasil dikirim`,
+            className: '',
+            color: 'bg-green-400',
+            duration: 3000,
+          });
           await this.RunCountdown();
         }
       } catch (error) {

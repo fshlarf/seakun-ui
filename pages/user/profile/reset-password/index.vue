@@ -57,8 +57,22 @@
           Cek Email Kamu
         </h3>
         <p class="text-sm text-gray-secondary">
-          Kami telah mengirimkan instruksi pemulihan kata sandi ke email Anda
+          Kami telah mengirimkan instruksi pemulihan kata sandi ke email kamu.
+          Token reset password hanya berlaku selama 12 jam.
         </p>
+        <div class="flex space-x-3 items-center justify-center mt-[8px]">
+          <p class="text-center dm-sans text-sm text-slate-500">
+            Tidak menemukan email?
+            <span
+              v-if="isResendEmailActive"
+              class="text-[#08A081] cursor-pointer underline"
+              @click="sendUpdatePasswordEmail"
+              >Kirim ulang email</span
+            >
+            <span v-else-if="!isLoading">{{ resendEmailCounter }}</span>
+          </p>
+          <Spinner v-if="isLoading" />
+        </div>
         <!-- <Button
           class="text-white mt-5 bg-green-primary border-2 border-green-primary w-[166px] !text-base h-[46px]"
           >Buka Email</Button
@@ -75,6 +89,7 @@
 import UserService from '~/services/UserServices';
 import Input from '~/components/atoms/Input.vue';
 import Button from '~/components/atoms/Button.vue';
+import Spinner from '~/components/atoms/Spinner.vue';
 import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
@@ -83,13 +98,15 @@ export default {
     Input,
     Button,
     Snackbar,
+    Spinner,
   },
   data() {
     return {
       UserService,
-      form: 4,
       isSent: false,
       isLoading: false,
+      resendEmailCounter: 0,
+      isResendEmailActive: false,
       email: '',
       errorEmail: {
         isError: false,
@@ -122,9 +139,20 @@ export default {
         const fetchSendEmail = await UserService.sendUpdatePasswordEmail(email);
         if (fetchSendEmail.data) {
           this.isSent = true;
+          this.resendEmailCounter = 15;
+          this.isLoading = false;
+          this.isResendEmailActive = false;
+          this.$refs.snackbar.showSnackbar({
+            message: `Email berhasil dikirim`,
+            className: '',
+            color: 'bg-green-400',
+            duration: 3000,
+          });
+          await this.RunCountdown();
         }
       } catch (error) {
         console.log(error);
+        this.isLoading = false;
         this.$refs.snackbar.showSnackbar({
           message: `Gagal mengirim email. Pastikan email kamu sudah sesuai`,
           className: '',
@@ -132,11 +160,20 @@ export default {
           duration: 4000,
         });
       }
-      this.isLoading = false;
     },
     validateEmail(email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
+    },
+    async RunCountdown() {
+      const countdownInterval = setInterval(() => {
+        if (this.resendEmailCounter > 0) {
+          this.resendEmailCounter--;
+        } else {
+          clearInterval(countdownInterval);
+          this.isResendEmailActive = true;
+        }
+      }, 1000);
     },
   },
 };
