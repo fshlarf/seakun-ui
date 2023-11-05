@@ -135,7 +135,7 @@ export default {
         await UserService.verifyResetPassword(this.token, this.userUid);
       } catch (error) {
         this.$router.push(
-          `/user/reset-password/expired?token=${this.token}&userUid=${this.userUid}`
+          `/user/profile/reset-password/expired?token=${this.token}&userUid=${this.userUid}`
         );
         console.log(error);
       }

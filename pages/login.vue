@@ -67,7 +67,7 @@
             </section>
             <p
               class="text-[#25BCAF] cursor-pointer"
-              @click="$router.push('/user/forgot-password')"
+              @click="$router.push('/user/forget-password')"
             >
               Lupa password?
             </p>
