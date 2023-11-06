@@ -112,7 +112,7 @@
           class="my-2 relative z-20"
         >
           <div class="flex space-x-5 items-start">
-            <div class="flex flex-column justify-center space-y-2">
+            <div class="space-y-2">
               <div class="w-[24px] h-[24px] bg-[#52AF9C] rounded-full"></div>
               <img
                 v-if="id < chosedProvider.flow.length - 1"

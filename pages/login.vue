@@ -15,9 +15,9 @@
           class="w-full object-contain lg:hidden rounded-lg"
         />
         <h1
-          class="text-base md:text-xl lg:text-[26px] font-bold text-[#49A794] pt-5 lg:pt-0 pl-3 lg:pl-0"
+          class="text-base md:text-xl lg:text-[26px] font-bold text-[#49A794] pt-5 lg:pt-0 pl-3"
         >
-          Selamat Datang
+          Login
         </h1>
         <p
           class="text-sm lg:text-base text-[#474747] dm-sans pt-1 lg:pt-0 pl-3 mt-1"

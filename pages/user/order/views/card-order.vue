@@ -73,7 +73,7 @@
       <div
         v-if="order.packageVariant.providerSlug !== 'sekurban'"
         ref="bgProvider"
-        class="border-[1px] p-3 rounded-[6px] cursor-pointer w-[118px] h-[47px] flex justify-center items-center"
+        class="border-[1px] p-3 rounded-[6px] w-[118px] h-[47px] flex justify-center items-center"
       >
         <img
           ref="image"
