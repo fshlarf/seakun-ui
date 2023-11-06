@@ -141,8 +141,10 @@
                 <div class="flex items-start gap-2 mt-11">
                   <Checkbox add-class="w-5 h-5 pt-1" @getval="handleCheckbox" />
                   <p class="text-xs lg:text-sm text-main leading-[18px]">
-                    Dengan mendaftar, saya menyetujui Syarat dan Ketentuan
-                    Seakun, serta Kebijakan Privasi
+                    Dengan mendaftar, saya menyetujui
+                    <a class="text-primary" href="/terms-of-use" target="_blank"
+                      >Syarat dan Ketentuan Seakun</a
+                    >, serta Kebijakan Privasi
                   </p>
                 </div>
               </div>

@@ -16,19 +16,31 @@
       <template v-if="!isLoading">
         <div
           v-if="selectedPackage"
-          class="mt-4 rounded-[10px] w-full h-[204px] overflow-hidden border flex justify-center items-center"
+          class="mt-4 rounded-[10px] w-full h-[204px] xl:h-auto overflow-hidden flex justify-center items-center"
         >
           <img
-            class="!object-contain max-h-full max-w-full"
-            :src="priceScheme.screenshot"
+            class="!object-contain max-h-full max-w-full xl:w-full xl:h-auto"
+            :src="
+              isDesktopView
+                ? priceScheme.screenshot
+                : priceScheme.screenshotMobile
+            "
             alt="provider price"
           />
         </div>
         <div
           v-else
-          class="mt-4 !rounded-[10px] w-full h-[204px] !overflow-hidden border flex justify-center items-center text-sm"
+          class="mt-4 rounded-[10px] w-full h-[204px] xl:h-auto overflow-hidden flex justify-center items-center"
         >
-          Paket tidak aktif
+          <img
+            class="!object-contain max-h-full max-w-full xl:w-full xl:h-auto"
+            :src="
+              isDesktopView
+                ? '/images/price-scheme/desktop/not-active.png'
+                : '/images/price-scheme/mobile/not-active.png'
+            "
+            alt="provider not active"
+          />
         </div>
       </template>
       <template v-else>
@@ -253,33 +265,6 @@
             >
               <div class="flex items-center gap-[4px] mx-[15px">
                 <div
-                  v-if="additionalInformation"
-                  class="min-w-max pt-[15px] text-primary font-bold text-sm"
-                  :class="`${
-                    informationMenu.value == selectedMenu.value
-                      ? ''
-                      : ' cursor-pointer'
-                  }`"
-                  @click="
-                    informationMenu.value !== selectedMenu.value
-                      ? (selectedMenu = informationMenu)
-                      : (selectedMenu = selectedMenu),
-                      onSelectMenu(informationMenu)
-                  "
-                >
-                  <p class="px-[15px]">
-                    {{ informationMenu.name }}
-                  </p>
-                  <div
-                    class="mt-[10px]"
-                    :class="`${
-                      informationMenu.value == selectedMenu.value
-                        ? 'border-b-2 border-green-seakun-secondary-dark underlined'
-                        : ' cursor-pointer'
-                    }`"
-                  ></div>
-                </div>
-                <div
                   v-for="(menu, id) in bottomMenus"
                   :key="id"
                   class="min-w-max pt-[15px] text-primary font-bold text-sm"
@@ -310,25 +295,6 @@
             <div class="hidden lg:block rounded-t-[10px] border p-3">
               <div class="flex items-center">
                 <div
-                  v-if="additionalInformation"
-                  class="min-w-max p-[15px] text-base"
-                  :class="`${
-                    selectedMenu.value == 'information'
-                      ? 'text-primary bg-[#DFF6F2] rounded-[8px] font-bold'
-                      : 'text-[#66738F] cursor-pointer'
-                  }`"
-                  @click="
-                    selectedMenu.value !== 'information'
-                      ? (selectedMenu = informationMenu)
-                      : (selectedMenu = selectedMenu),
-                      onSelectMenu(informationMenu)
-                  "
-                >
-                  <p class="px-[15px]">
-                    {{ informationMenu.name }}
-                  </p>
-                </div>
-                <div
                   v-for="(menu, id) in bottomMenus"
                   :key="id"
                   class="min-w-max p-[15px] text-base"
@@ -355,11 +321,8 @@
               <div
                 v-if="selectedMenu.value == 'information'"
                 class="p-[12px] bg-[#F4FCFA]"
-              >
-                <p>
-                  {{ additionalInformation }}
-                </p>
-              </div>
+                v-html="priceScheme.additionalInfo"
+              ></div>
 
               <div
                 v-else-if="selectedMenu.value == 'orderScheme'"
@@ -440,7 +403,7 @@
           </div>
         </div>
 
-        <div class="hidden lg:block mt-8 w-[352px] h-[1200px]">
+        <div class="hidden lg:block mt-8 w-[352px]">
           <div class="border rounded-[8px] p-4">
             <p class="font-medium">Skema Harga</p>
             <div
@@ -586,20 +549,19 @@ export default {
       },
       bottomMenus: [
         {
+          name: 'Informasi',
+          value: 'information',
+        },
+        {
           name: 'Skema Berlangganan',
           value: 'orderScheme',
         },
-        // {
-        //   name: 'Rules',
-        //   value: 'rules',
-        // },
         {
           name: 'Grup Patungan',
           value: 'group',
         },
       ],
       selectedMenu: {},
-      additionalInformation: '',
       orderScheme: [],
       providerRules: [
         'Lorem ipsum dolor sit amet, consectetur',
@@ -615,6 +577,10 @@ export default {
     ...mapGetters({
       isLoadingCreateOrder: 'getLoadingCreateOrder',
     }),
+    isDesktopView() {
+      let screen = window.innerWidth;
+      return screen >= 1280;
+    },
   },
   mounted() {
     const { id, name } = this.$route.query;
@@ -674,22 +640,26 @@ export default {
       if (pkg.packageUid !== this.selectedPackage.packageUid) {
         this.selectedPackage = pkg;
         this.selectedVariant = this.selectedPackage.variants[0];
-        this.priceScheme = this.providerList.find((scheme) => {
-          return scheme.desc === this.selectedPackage.variants[0].notes;
+        const scheme = this.providerList.find((scheme) => {
+          return scheme.desc === this.selectedVariant.notes;
         });
-        this.additionalInformation =
-          this.selectedPackage.po == 1
-            ? 'Dengan memilih paket Pre-order artinya kamu menunggu grup penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.'
-            : '';
-        if (this.additionalInformation) {
-          this.selectedMenu = this.informationMenu;
-        } else {
-          this.selectedMenu = this.bottomMenus[0];
-        }
+        this.priceScheme = scheme
+          ? scheme
+          : this.providerList.find(
+              (scheme) => scheme.desc == this.selectedPackage.variants[0].notes
+            );
       }
     },
     onSelectVariant(variant) {
       this.selectedVariant = variant;
+      const scheme = this.providerList.find((scheme) => {
+        return scheme.desc === this.selectedVariant.notes;
+      });
+      this.priceScheme = scheme
+        ? scheme
+        : this.providerList.find(
+            (scheme) => scheme.desc == this.selectedPackage.variants[0].notes
+          );
     },
     async getProviderDetail() {
       this.isLoading = true;
@@ -701,20 +671,13 @@ export default {
         if (fetchProviderDetail.data) {
           const { data } = fetchProviderDetail.data;
           this.provider = data;
-          this.packages = this.provider.packages;
+          this.packages = this.provider.packages.filter((pkg) => {
+            return pkg.variants.some((variant) => variant.isDisplayed == 1);
+          });
           this.selectedPackage = this.packages.find((pkg) => {
             return pkg.active == 1;
           });
           if (this.selectedPackage) {
-            this.additionalInformation =
-              this.selectedPackage.po == 1
-                ? 'Dengan memilih paket Pre-order artinya kamu menunggu grup penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.'
-                : '';
-            if (this.additionalInformation) {
-              this.selectedMenu = this.informationMenu;
-            } else {
-              this.selectedMenu = this.bottomMenus[0];
-            }
             this.selectedVariant = this.selectedPackage.variants.find(
               (variant) => {
                 return variant.isActive == 1;
@@ -723,9 +686,15 @@ export default {
             if (this.selectedVariant) {
               this.packageVariantUid = this.selectedVariant.uid;
             }
-            this.priceScheme = this.providerList.find((scheme) => {
-              return scheme.desc === this.selectedPackage.variants[0].notes;
+            const scheme = this.providerList.find((scheme) => {
+              return scheme.desc === this.selectedVariant.notes;
             });
+            this.priceScheme = scheme
+              ? scheme
+              : this.providerList.find(
+                  (scheme) =>
+                    scheme.desc == this.selectedPackage.variants[0].notes
+                );
           }
         }
       } catch (error) {

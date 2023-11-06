@@ -4,7 +4,8 @@ export const providerList = [
     slug: 'netflix',
     title: 'Harga Paket Premium (User Host)',
     img: '/images/product/brand/netflix.png',
-    screenshot: '/images/price scheme/netflix.png',
+    screenshot: '/images/price-scheme/desktop/netflix.png',
+    screenshotMobile: '/images/price-scheme/mobile/netflix.png',
     desc: 'Netflix Paket Premium user Host 1 Bulan',
     member: 4,
     schemes: [
@@ -14,18 +15,20 @@ export const providerList = [
       'Profile dilengkapi PIN yang berbeda-beda',
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Netflix User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium User Host',
+        value: 'User Host (1 Bulan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Netflix',
+        title: 'Harga Provider',
         value: 'Rp186.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '4',
       },
       {
@@ -48,7 +51,8 @@ export const providerList = [
     slug: 'netflix',
     title: 'Harga Paket Premium (Reguler)',
     img: '/images/product/brand/netflix.png',
-    screenshot: '/images/price scheme/netflix.png',
+    screenshot: '/images/price-scheme/desktop/netflix.png',
+    screenshotMobile: '/images/price-scheme/mobile/netflix.png',
     desc: 'Netflix Paket Premium User Reguler 1 Bulan',
     member: 4,
     schemes: [
@@ -58,18 +62,20 @@ export const providerList = [
       'Profile dilengkapi PIN yang berbeda-beda',
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Netflix User Reguler</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
+        value: 'User Reguler (1 Bulan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Netflix',
+        title: 'Harga Provider',
         value: 'Rp186.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '4',
       },
       {
@@ -92,7 +98,8 @@ export const providerList = [
     slug: 'spotify',
     title: 'Harga Paket Premium Spotify 3 Bulan',
     img: '/images/product/brand/spotify.png',
-    screenshot: '/images/price scheme/spotify3.png',
+    screenshot: '/images/price-scheme/desktop/spotify3.png',
+    screenshotMobile: '/images/price-scheme/mobile/spotify3.png',
     desc: 'Spotify Paket Premium 3 Bulan',
     member: 5,
     schemes: [
@@ -102,18 +109,20 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Spotify</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Reguler 3 Bulan',
+        value: 'Spotify (3 Bulan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Spotify 3 Bulan',
+        title: 'Harga Provider',
         value: 'Rp261.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -136,25 +145,28 @@ export const providerList = [
     slug: 'gramedia-digital',
     title: 'Harga Paket Premium (Full)',
     img: '/images/product/brand/gramedia.png',
-    screenshot: '/images/price scheme/gramedia.png',
+    screenshot: '/images/price-scheme/desktop/gramedia.png',
+    screenshotMobile: '/images/price-scheme/mobile/gramedia.png',
     desc: 'Gramedia Digital Paket Full Premium 1 Bulan',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli PAKET PREMIUM di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Full Premium',
+        value: 'Full Premium (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Gramedia Digital',
+        title: 'Harga Provider',
         value: 'Rp99.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '2',
       },
       {
@@ -177,25 +189,28 @@ export const providerList = [
     slug: 'gramedia-digital',
     title: 'Harga Paket Premium (Fiksi)',
     img: '/images/product/brand/gramedia.png',
-    screenshot: '/images/price scheme/gramedia-fiction.png',
+    screenshot: '/images/price-scheme/desktop/gramedia-fiction.png',
+    screenshotMobile: '/images/price-scheme/mobile/gramedia-fiction.png',
     desc: 'Gramedia Digital Paket Fiksi 1 Bulan',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli PAKET FIKSI di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Fiksi',
+        value: 'Fiksi (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Fiksi',
+        title: 'Harga Provider',
         value: 'Rp49.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '2',
       },
       {
@@ -218,25 +233,28 @@ export const providerList = [
     slug: 'gramedia-digital',
     title: 'Harga Paket Premium (Non-Fiksi)',
     img: '/images/product/brand/gramedia.png',
-    screenshot: '/images/price scheme/gramedia-non-fiction.png',
+    screenshot: '/images/price-scheme/desktop/gramedia-non-fiction.png',
+    screenshotMobile: '/images/price-scheme/mobile/gramedia-non-fiction.png',
     desc: 'Gramedia Digital Paket Non Fiksi 1 Bulan',
     member: 2,
     schemes: [
       ' Seakun membuat akun dan membeli PAKET NON-FIKSI di Gramedia',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Non-Fiksi',
+        value: 'Non-Fiksi (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Non-Fiksi',
+        title: 'Harga Provider',
         value: 'Rp49.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '2',
       },
       {
@@ -258,8 +276,9 @@ export const providerList = [
   //   name: 'Youtube',
   //   slug: 'youtube',
   //   title: 'Harga Paket Premium User Host 6 Bulan',
-  //   img: '/images/product/brand/youtube.png',
-  //   screenshot: '/images/price scheme/youtube.png',
+  //   img: '/images/product/brand/youtube.png',>f
+  //   screenshot: '/images/price-scheme/desktop/youtube.png',
+  //   screenshotMobile: '/images/price-scheme/mobile/youtube.png',
   //   desc: 'Youtube Paket Premium User Host 6 Bulan',
   //   member: 5,
   //   schemes: [
@@ -280,11 +299,11 @@ export const providerList = [
   //       value: 'Rp99.000',
   //     },
   //     {
-  //       title: 'Harga setelah dikenakan pajak 11%',
+  //       title: 'Harga + pajak 11%',
   //       value: 'Rp109.890',
   //     },
   //     {
-  //       title: 'Jumlah Member Dalam 1 Grup',
+  //       title: 'Jumlah Member Per Grup',
   //       value: '5',
   //     },
   //     {
@@ -311,7 +330,8 @@ export const providerList = [
     slug: 'youtube',
     title: 'Harga Paket Premium Reguler',
     img: '/images/product/brand/youtube.png',
-    screenshot: '/images/price scheme/youtube.png',
+    screenshot: '/images/price-scheme/desktop/youtube.png',
+    screenshotMobile: '/images/price-scheme/mobile/youtube.png',
     desc: 'Youtube Paket Premium User Reguler 1 Bulan',
     member: 5,
     schemes: [
@@ -321,22 +341,24 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati firut Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>YouTube</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
+        value: 'Youtube (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Youtube',
+        title: 'Harga Provider',
         value: 'Rp99.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp109.890',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -359,7 +381,8 @@ export const providerList = [
     slug: 'microsoft-365',
     title: 'Harga Paket Premium (1 Bulan)',
     img: '/images/product/brand/microsoft-365.png',
-    screenshot: '/images/price scheme/microsoft365.png',
+    screenshot: '/images/price-scheme/desktop/microsoft365.png',
+    screenshotMobile: '/images/price-scheme/mobile/microsoft365.png',
     desc: 'Microsoft 365 Paket Premium 1 Bulan',
     member: 5,
     schemes: [
@@ -369,18 +392,20 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Microsoft 365</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Microsoft 365 (1 Bulan)',
+        value: 'Microsoft 365 (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Microsoft 365',
+        title: 'Harga Provider',
         value: 'Rp129.999 ~Rp130.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -403,7 +428,8 @@ export const providerList = [
     slug: 'microsoft-365',
     title: 'Harga Paket Premium (1 Tahun)',
     img: '/images/product/brand/microsoft-365.png',
-    screenshot: '/images/price scheme/microsoft365-year.png',
+    screenshot: '/images/price-scheme/desktop/microsoft365-year.png',
+    screenshotMobile: '/images/price-scheme/mobile/microsoft365-year.png',
     desc: 'Microsoft 365 Paket Premium 1 Tahun',
     member: 5,
     schemes: [
@@ -413,18 +439,20 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Microsoft 365</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Microsoft 365 (1 Tahun)',
+        value: 'Microsoft 365 (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Microsoft 365',
+        title: 'Harga Provider',
         value: 'Rp1.299.999',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -445,9 +473,10 @@ export const providerList = [
   {
     name: 'Canva',
     slug: 'canva',
-    title: 'Harga Paket Canva Teams (1 Bulan)',
+    title: 'Harga Paket Canva Teams (Bulanan)',
     img: '/images/product/brand/canva.png',
-    screenshot: '/images/price scheme/canva.png',
+    screenshot: '/images/price-scheme/desktop/canva.png',
+    screenshotMobile: '/images/price-scheme/mobile/canva.png',
     desc: 'Canva Paket Premium 1 Bulan',
     member: 4,
     schemes: [
@@ -457,18 +486,20 @@ export const providerList = [
       'Seakun mengundang 4 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Canva Teams Bulanan',
+        value: 'Canva (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Canva Teams',
+        title: 'Harga Provider',
         value: 'Rp190.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '4',
       },
       {
@@ -491,7 +522,8 @@ export const providerList = [
     slug: 'canva',
     title: 'Harga Paket Canva Teams (1 Tahun)',
     img: '/images/product/brand/canva.png',
-    screenshot: '/images/price scheme/canva.png',
+    screenshot: '/images/price-scheme/desktop/canva.png',
+    screenshotMobile: '/images/price-scheme/mobile/canva.png',
     desc: 'Canva Paket Premium 1 Tahun',
     member: 4,
     schemes: [
@@ -501,18 +533,20 @@ export const providerList = [
       'Seakun mengundang 4 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Canva Teams 1 Tahun',
+        value: 'Canva (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Canva Teams',
+        title: 'Harga Provider',
         value: 'Rp1.900.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '4',
       },
       {
@@ -535,7 +569,8 @@ export const providerList = [
     slug: 'disney-hotstar',
     title: 'Harga Paket Disney+ Hotstar Host 1 Tahun',
     img: '/images/product/brand/disney-hotstar.png',
-    screenshot: '/images/price scheme/disney-hotstar-year.png',
+    screenshot: '/images/price-scheme/desktop/disney-hotstar-host.png',
+    screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-host.png',
     desc: 'Disney+ Hotstar Paket Premium User Host 1 Tahun',
     member: 3,
     schemes: [
@@ -545,18 +580,20 @@ export const providerList = [
       'User dapat menikmati fitur Premium selama 1 tahun sebagai user host',
       'Berkomitmen merespon chat dan membantu user reguler untuk login pada Disney+',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Disney+ User Host</b> merupakan produk <b>Pre-Order</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran menggunakan nomor HP pada Disney+. Pembayaran provider akan dilakukan oleh Seakun dan user host <b>Berkomitmen</b> membantu user reguler untuk login pada Disney+. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Disney (Tahunan)',
+        value: 'User Host (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Disney+ Hotstar',
+        title: 'Harga Provider',
         value: 'Rp799.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '3',
       },
       {
@@ -579,7 +616,8 @@ export const providerList = [
     slug: 'disney-hotstar',
     title: 'Harga Paket Disney+ Hotstar Reguler 1 Tahun',
     img: '/images/product/brand/disney-hotstar.png',
-    screenshot: '/images/price scheme/disney-hotstar-year.png',
+    screenshot: '/images/price-scheme/desktop/disney-hotstar-reguler.png',
+    screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-reguler.png',
     desc: 'Disney+ Hotstar Paket Premium Reguler 1 Tahun',
     member: 3,
     schemes: [
@@ -588,18 +626,20 @@ export const providerList = [
       'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Disney+ User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Disney (Tahunan)',
+        value: 'User Reguler (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Disney+ Hotstar',
+        title: 'Harga Provider',
         value: 'Rp799.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '3',
       },
       {
@@ -622,7 +662,8 @@ export const providerList = [
     slug: 'wattpad',
     title: 'Harga Paket Wattpad (Bulanan)',
     img: '/images/product/brand/wattpad.png',
-    screenshot: '/images/price scheme/wattpad.png',
+    screenshot: '/images/price-scheme/desktop/wattpad.png',
+    screenshotMobile: '/images/price-scheme/mobile/wattpad.png',
     desc: 'Wattpad Paket Premium 1 Bulan',
     member: 3,
     schemes: [
@@ -631,18 +672,20 @@ export const providerList = [
       'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Wattpad</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Wattpad (Bulanan)',
+        value: 'Wattpad (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Wattpad',
+        title: 'Harga Provider',
         value: 'Rp65.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '3',
       },
       {
@@ -665,7 +708,8 @@ export const providerList = [
     slug: 'apple-one',
     title: 'Harga Paket Apple One (User Host)',
     img: '/images/product/brand/apple-one.png',
-    screenshot: '/images/price scheme/apple-one.png',
+    screenshot: '/images/price-scheme/desktop/apple-one-host.png',
+    screenshotMobile: '/images/price-scheme/mobile/apple-one-host.png',
     desc: 'Apple One Paket Premium Host 1 Bulan',
     member: 5,
     schemes: [
@@ -676,18 +720,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple One User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Apple One (Bulanan)',
+        value: 'User Host (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Apple One Family',
+        title: 'Harga Provider',
         value: 'Rp199.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -710,7 +756,8 @@ export const providerList = [
     slug: 'apple-one',
     title: 'Harga Paket Apple One (User Reguler)',
     img: '/images/product/brand/apple-one.png',
-    screenshot: '/images/price scheme/apple-one.png',
+    screenshot: '/images/price-scheme/desktop/apple-one-reguler.png',
+    screenshotMobile: '/images/price-scheme/mobile/apple-one-reguler.png',
     desc: 'Apple One Paket Premium 1 Bulan',
     member: 5,
     schemes: [
@@ -719,18 +766,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple One User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Apple One (Bulanan)',
+        value: 'User Reguler (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Apple One Family',
+        title: 'Harga Provider',
         value: 'Rp199.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -753,7 +802,8 @@ export const providerList = [
     slug: 'apple-music',
     title: 'Harga Paket Apple Music (User Host)',
     img: '/images/product/brand/apple-music.png',
-    screenshot: '/images/price scheme/apple-music.png',
+    screenshot: '/images/price-scheme/desktop/apple-music-host.png',
+    screenshotMobile: '/images/price-scheme/mobile/apple-music-host.png',
     desc: 'Paket Apple Music Premium Host 1 bulan',
     member: 5,
     schemes: [
@@ -764,18 +814,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple Music User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Apple Music (Bulanan)',
+        value: 'User Host (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket',
+        title: 'Harga Provider',
         value: 'Rp85.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -798,7 +850,8 @@ export const providerList = [
     slug: 'apple-music',
     title: 'Harga Paket Apple Music (User Reguler)',
     img: '/images/product/brand/apple-music.png',
-    screenshot: '/images/price scheme/apple-music.png',
+    screenshot: '/images/price-scheme/desktop/apple-music-reguler.png',
+    screenshotMobile: '/images/price-scheme/mobile/apple-music-reguler.png',
     desc: 'Paket Apple Music Premium Reguler 1 bulan',
     member: 5,
     schemes: [
@@ -807,18 +860,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple Music User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Apple Music (Bulanan)',
+        value: 'User Reguler (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket',
+        title: 'Harga Provider',
         value: 'Rp85.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -841,7 +896,8 @@ export const providerList = [
   //   slug: 'google-one',
   //   title: 'Harga Paket Google One (Userhost) 3 Bulan',
   //   img: '/images/product/brand/google-one.png',
-  //   screenshot: '/images/price scheme/google-one-premium.png',
+  //   screenshot: '/images/price-scheme/desktop/google-one-premium.png',
+  //   screenshotMobile: '/images/price-scheme/mobile/google-one-premium.png',
   //   desc: 'Google One Paket Premium Host 3 Bulan',
   //   member: 5,
   //   schemes: [
@@ -862,11 +918,11 @@ export const providerList = [
   //       value: 'Rp135.000',
   //     },
   //     {
-  //       title: 'Harga setelah dikenakan pajak 11%',
+  //       title: 'Harga + pajak 11%',
   //       value: 'Rp149.850',
   //     },
   //     {
-  //       title: 'Jumlah member dalam 1 grup',
+  //       title: 'Jumlah member Per grup',
   //       value: '5',
   //     },
   //     {
@@ -893,7 +949,8 @@ export const providerList = [
     slug: 'google-one',
     title: 'Harga Paket Google One (Reguler)',
     img: '/images/product/brand/google-one.png',
-    screenshot: '/images/price scheme/google-one-premium.png',
+    screenshot: '/images/price-scheme/desktop/google-one-premium.png',
+    screenshotMobile: '/images/price-scheme/mobile/google-one-premium.png',
     desc: 'Google One Paket Premium 1 Bulan',
     member: 5,
     schemes: [
@@ -903,22 +960,24 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Google One</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Reguler',
+        value: 'Google One (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Google One',
+        title: 'Harga Provider',
         value: 'Rp135.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp149.850',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -941,7 +1000,8 @@ export const providerList = [
     slug: 'nord-vpn',
     title: 'Harga Paket NordVPN (Bulanan)',
     img: '/images/product/brand/nord-vpn.png',
-    screenshot: '/images/price scheme/nord-vpn.png',
+    screenshot: '/images/price-scheme/desktop/nord-vpn.png',
+    screenshotMobile: '/images/price-scheme/mobile/nord-vpn.png',
     desc: 'Paket Nord VPN 1 bulan',
     member: 6,
     schemes: [
@@ -950,24 +1010,26 @@ export const providerList = [
       'Akun dishare HANYA ke 6 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Nord VPN</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium NordVPN (Bulanan)',
+        value: 'Nord VPN (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium NordVPN',
+        title: 'Harga Provider',
         value: '$11.99',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: '$13.31 = Rp214.273',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '6',
       },
       {
@@ -990,7 +1052,8 @@ export const providerList = [
     slug: 'nord-vpn',
     title: 'Harga Paket NordVPN 1 Tahun',
     img: '/images/product/brand/nord-vpn.png',
-    screenshot: '/images/price scheme/nord-vpn-year.png',
+    screenshot: '/images/price-scheme/desktop/nord-vpn-year.png',
+    screenshotMobile: '/images/price-scheme/mobile/nord-vpn-year.png',
     desc: 'Paket Nord VPN 1 tahun',
     member: 6,
     schemes: [
@@ -999,24 +1062,26 @@ export const providerList = [
       'Akun dishare HANYA ke 6 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Nord VPN</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium NordVPN 1 Tahun',
+        value: 'Nord VPN (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium NordVPN',
+        title: 'Harga Provider',
         value: '$67.35',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: '$74.76 = Rp1.203.636',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '6',
       },
       {
@@ -1039,7 +1104,8 @@ export const providerList = [
     slug: 'amazon-prime',
     title: 'Paket Premium Amazon Prime Video (Bulanan)',
     img: '/images/product/brand/amazon-prime.png',
-    screenshot: '/images/price scheme/amazon-prime.png',
+    screenshot: '/images/price-scheme/desktop/amazon-prime.png',
+    screenshotMobile: '/images/price-scheme/mobile/amazon-prime.png',
     desc: 'Paket Amazon Prime Video 1 bulan Reguler',
     member: 3,
     schemes: [
@@ -1048,18 +1114,20 @@ export const providerList = [
       'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium Amazon Prime Video sesuai dengan durasi berlangganan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Prime Video</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium Prime Video (Bulanan)',
+        value: 'Prime Video (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket',
+        title: 'Harga Provider',
         value: 'Rp79.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '3',
       },
       {
@@ -1082,7 +1150,8 @@ export const providerList = [
     slug: 'apple-one-premier',
     title: 'Harga Paket Apple One Premier (User Host)',
     img: '/images/product/brand/apple-one-premier.png',
-    screenshot: '/images/price scheme/apple-one-premier.png',
+    screenshot: '/images/price-scheme/desktop/apple-one-premier-host.png',
+    screenshotMobile: '/images/price-scheme/mobile/apple-one-premier-host.png',
     desc: 'Paket Apple One Premier Host 1 bulan',
     member: 5,
     schemes: [
@@ -1093,18 +1162,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple One Premier User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Apple One Premier (Bulanan)',
+        value: 'User Host (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Apple One Premier',
+        title: 'Harga Provider',
         value: 'Rp319.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -1127,7 +1198,9 @@ export const providerList = [
     slug: 'apple-one-premier',
     title: 'Harga Paket Apple One Premier (User Reguler)',
     img: '/images/product/brand/apple-one-premier.png',
-    screenshot: '/images/price scheme/apple-one-premier.png',
+    screenshot: '/images/price-scheme/desktop/apple-one-premier-reguler.png',
+    screenshotMobile:
+      '/images/price-scheme/mobile/apple-one-premier-reguler.png',
     desc: 'Paket Apple One Premier Reguler 1 bulan',
     member: 5,
     schemes: [
@@ -1136,18 +1209,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple One Premier User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Apple One Premier (Bulanan)',
+        value: 'User Reguler (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Apple One Premier',
+        title: 'Harga Provider',
         value: 'Rp319.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -1170,7 +1245,8 @@ export const providerList = [
     slug: 'apple-tv',
     title: 'Harga Paket Apple TV (User Host)',
     img: '/images/product/brand/apple-tv.png',
-    screenshot: '/images/price scheme/apple-tv.png',
+    screenshot: '/images/price-scheme/desktop/apple-tv-host.png',
+    screenshotMobile: '/images/price-scheme/mobile/apple-tv-host.png',
     desc: 'Paket Apple TV Premium Host 1 bulan',
     member: 5,
     schemes: [
@@ -1181,18 +1257,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple TV User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Apple TV (Bulanan)',
+        value: 'User Host (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Apple TV Premium',
+        title: 'Harga Provider',
         value: 'Rp99.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -1215,7 +1293,8 @@ export const providerList = [
     slug: 'apple-tv',
     title: 'Harga Paket Apple TV (User Reguler)',
     img: '/images/product/brand/apple-tv.png',
-    screenshot: '/images/price scheme/apple-tv.png',
+    screenshot: '/images/price-scheme/desktop/apple-tv-reguler.png',
+    screenshotMobile: '/images/price-scheme/mobile/apple-tv-reguler.png',
     desc: 'Paket Apple TV Premium Reguler 1 bulan',
     member: 5,
     schemes: [
@@ -1224,18 +1303,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Apple TV User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Apple TV (Bulanan)',
+        value: 'User Reguler (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Apple TV Premium',
+        title: 'Harga Provider',
         value: 'Rp99.000',
       },
       {
-        title: 'Jumlah member dalam 1 grup',
+        title: 'Jumlah member Per grup',
         value: '5',
       },
       {
@@ -1258,7 +1339,8 @@ export const providerList = [
     slug: 'iqiyi',
     title: 'Harga Paket Premium',
     img: '/images/product/brand/iqiyi.png',
-    screenshot: '/images/price scheme/iqiyi.png',
+    screenshot: '/images/price-scheme/desktop/iqiyi.png',
+    screenshotMobile: '/images/price-scheme/mobile/iqiyi.png',
     desc: 'Paket Iqiyi Premium Reguler 1 bulan',
     member: 4,
     schemes: [
@@ -1267,18 +1349,20 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Iqiyi</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
+        value: 'Iqiyi (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Iqiyi',
+        title: 'Harga Provider',
         value: 'Rp59.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '4',
       },
       {
@@ -1301,7 +1385,8 @@ export const providerList = [
     slug: 'zoom',
     title: 'Harga Paket Pro',
     img: '/images/product/brand/zoom.png',
-    screenshot: '/images/price scheme/zoom.png',
+    screenshot: '/images/price-scheme/desktop/zoom.png',
+    screenshotMobile: '/images/price-scheme/mobile/zoom.png',
     desc: 'Zoom Reguler 1 Bulan',
     member: 5,
     schemes: [
@@ -1310,24 +1395,26 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Pro selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Zoom</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Pro User Reguler',
+        value: 'Zoom (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Pro Zoom',
+        title: 'Harga Provider',
         value: 'Rp232.345',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp257.902,95',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -1350,7 +1437,8 @@ export const providerList = [
   //   slug: 'vidio',
   //   title: 'Harga Paket Diamond EPL',
   //   img: '/images/product/brand/vidio.png',
-  //   screenshot: '/images/price scheme/vidio.png',
+  //   screenshot: '/images/price-scheme/desktop/vidio.png',
+  //   screenshotMobile: '/images/price-scheme/mobile/vidio.png',
   //   desc: '',
   //   schemes: [
   //     'Seakun membuat akun dan membeli Paket Diamond EPL di Vidio',
@@ -1371,11 +1459,11 @@ export const providerList = [
   //       value: 'Rp450.000',
   //     },
   //     {
-  //       title: 'Harga setelah dikenakan pajak 11%',
+  //       title: 'Harga + pajak 11%',
   //       value: 'Rp499.500',
   //     },
   //     {
-  //       title: 'Jumlah Member Dalam 1 Grup',
+  //       title: 'Jumlah Member Per Grup',
   //       value: '2',
   //     },
   //     {
@@ -1398,7 +1486,8 @@ export const providerList = [
     slug: 'hbo-go',
     title: 'Harga Paket Premium',
     img: '/images/product/brand/hbo-go.png',
-    screenshot: '/images/price scheme/hbo-month.png',
+    screenshot: '/images/price-scheme/desktop/hbo-month.png',
+    screenshotMobile: '/images/price-scheme/mobile/hbo-month.png',
     desc: 'Paket HBO Go Premium 1 bulan',
     member: 2,
     schemes: [
@@ -1407,22 +1496,24 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>HBO Go</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
+        value: 'HBO Go (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Hbo Go 1 Bulan',
+        title: 'Harga Providern',
         value: 'Rp79.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp87.690',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '2',
       },
       {
@@ -1445,7 +1536,8 @@ export const providerList = [
     slug: 'hbo-go',
     title: 'Harga Paket Premium',
     img: '/images/product/brand/hbo-go.png',
-    screenshot: '/images/price scheme/hbo-year.png',
+    screenshot: '/images/price-scheme/desktop/hbo-year.png',
+    screenshotMobile: '/images/price-scheme/mobile/hbo-year.png',
     desc: 'Paket HBO Go Premium 1 tahun',
     member: 2,
     schemes: [
@@ -1454,22 +1546,24 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>HBO Go</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
+        value: 'HBO Go (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Hbo Go 1 Tahun',
+        title: 'Harga Provider',
         value: 'Rp399.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp442.890',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '2',
       },
       {
@@ -1492,7 +1586,8 @@ export const providerList = [
     slug: 'scribd',
     title: 'Harga Paket Premium',
     img: '/images/product/brand/scribd.png',
-    screenshot: '/images/price scheme/scribd.png',
+    screenshot: '/images/price-scheme/desktop/scribd.png',
+    screenshotMobile: '/images/price-scheme/mobile/scribd.png',
     desc: 'Paket Scribd Premium 1 bulan',
     member: 3,
     schemes: [
@@ -1501,22 +1596,24 @@ export const providerList = [
       'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Scribd</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium User Reguler',
+        value: 'Scribd (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Scribd',
+        title: 'Harga Provider',
         value: 'Rp70.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp77.700',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '3',
       },
       {
@@ -1539,7 +1636,8 @@ export const providerList = [
     slug: 'mcafee',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/mcafee.png',
-    screenshot: '/images/price scheme/mcafee.png',
+    screenshot: '/images/price-scheme/desktop/mcafee.png',
+    screenshotMobile: '/images/price-scheme/mobile/mcafee.png',
     desc: 'Paket McAfee 1 tahun',
     member: 5,
     schemes: [
@@ -1548,20 +1646,22 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>McAfee</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga Rp550.000 hanya berlaku untuk tahun pertama. Tahun berikut nya akan menggunakan harga Rp800.000 per tahun',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Tahun',
+        value: 'McAfee (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium McAfee',
+        title: 'Harga Provider',
         value: 'Rp550.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -1584,7 +1684,8 @@ export const providerList = [
     slug: 'setapp',
     title: 'Harga Paket Premium 1 Bulan',
     img: '/images/product/brand/setapp.png',
-    screenshot: '/images/price scheme/setapp.png',
+    screenshot: '/images/price-scheme/desktop/setapp.png',
+    screenshotMobile: '/images/price-scheme/mobile/setapp.png',
     desc: 'Paket Setapp 1 bulan',
     member: 4,
     schemes: [
@@ -1593,24 +1694,26 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Setapp</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Bulan',
+        value: 'Setapp (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Setapp',
+        title: 'Harga Provider',
         value: 'Rp232.345',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp257.902,95',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '4',
       },
       {
@@ -1633,7 +1736,8 @@ export const providerList = [
     slug: 'bitdefender',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/bitdefender.png',
-    screenshot: '/images/price scheme/bitdefender.png',
+    screenshot: '/images/price-scheme/desktop/bitdefender.png',
+    screenshotMobile: '/images/price-scheme/mobile/bitdefender.png',
     desc: '',
     member: 5,
     schemes: [
@@ -1642,22 +1746,24 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Bitdefender</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Tahun',
+        value: 'Bitdefender (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium Bitdefender',
+        title: 'Harga Provider',
         value: 'Rp512.955',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp569.380,05',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -1680,7 +1786,8 @@ export const providerList = [
     slug: 'lastpass',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/lastpass.png',
-    screenshot: '/images/price scheme/lastpass.png',
+    screenshot: '/images/price-scheme/desktop/lastpass.png',
+    screenshotMobile: '/images/price-scheme/mobile/lastpass.png',
     desc: 'Paket LastPass 1 tahun',
     member: 5,
     schemes: [
@@ -1689,24 +1796,26 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>LastPass</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Tahun',
+        value: 'LastPass (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium 1 Tahun',
+        title: 'Harga Provider',
         value: 'Rp720.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp799.200',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -1729,7 +1838,8 @@ export const providerList = [
     slug: 'wetv',
     title: 'Harga Paket VIP 1 Bulan',
     img: '/images/product/brand/wetv.png',
-    screenshot: '/images/price scheme/wetv.png',
+    screenshot: '/images/price-scheme/desktop/wetv.png',
+    screenshotMobile: '/images/price-scheme/mobile/wetv.png',
     desc: 'Paket WeTV VIP 1 bulan',
     member: 2,
     schemes: [
@@ -1738,18 +1848,20 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur VIP selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>WeTV</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket VIP 1 Bulan',
+        value: 'WeTV (1 Bulan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket VIP 1 Bulan',
+        title: 'Harga Provider',
         value: 'Rp49.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '2',
       },
       {
@@ -1772,7 +1884,8 @@ export const providerList = [
     slug: 'wetv',
     title: 'Harga Paket VIP 3 Bulan',
     img: '/images/product/brand/wetv.png',
-    screenshot: '/images/price scheme/wetv-3.png',
+    screenshot: '/images/price-scheme/desktop/wetv-3.png',
+    screenshotMobile: '/images/price-scheme/mobile/wetv-3.png',
     desc: 'Paket WeTV VIP 3 bulan',
     member: 2,
     schemes: [
@@ -1781,18 +1894,20 @@ export const providerList = [
       'Akun dishare HANYA ke 2 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur VIP selama 3 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>WeTV</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket VIP 3 Bulan',
+        value: 'WeTV (3 Bulan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket VIP 3 Bulan',
+        title: 'Harga Provider',
         value: 'Rp129.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '2',
       },
       {
@@ -1815,7 +1930,8 @@ export const providerList = [
     slug: 'nintendo-switch',
     title: 'Harga Paket Reguler 1 Tahun',
     img: '/images/product/brand/nintendo-switch.png',
-    screenshot: '/images/price scheme/nintendo-switch.png',
+    screenshot: '/images/price-scheme/desktop/nintendo-switch.png',
+    screenshotMobile: '/images/price-scheme/mobile/nintendo-switch.png',
     desc: 'Nintendo Switch Reguler 1 Tahun',
     member: 7,
     schemes: [
@@ -1825,24 +1941,26 @@ export const providerList = [
       'Seakun mengundang 7 member untuk join membership Family Nintendo Switch Online',
       'Member yang telah join ke grup dapat menikmati semua benefit Membership Nintendo Switch Online',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Nintendo Switch Online Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Reguler 1 Tahun',
+        value: 'Reguler (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Reguler 1 Tahun',
+        title: 'Harga Provider',
         value: '$34.99 = Rp563.339',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp625.306',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '7',
       },
       {
@@ -1865,7 +1983,8 @@ export const providerList = [
     slug: 'nintendo-switch',
     title: 'Harga Paket Expansion Pack 1 Tahun',
     img: '/images/product/brand/nintendo-switch.png',
-    screenshot: '/images/price scheme/nintendo-switch-x.png',
+    screenshot: '/images/price-scheme/desktop/nintendo-switch-x.png',
+    screenshotMobile: '/images/price-scheme/mobile/nintendo-switch-x.png',
     desc: 'Nintendo Switch Expansion Pack 1 Tahun',
     member: 7,
     schemes: [
@@ -1875,24 +1994,26 @@ export const providerList = [
       'Seakun mengundang 7 member untuk join membership Family Nintendo Switch Online Expansion Pack',
       'Member yang telah join ke grup dapat menikmati semua benefit Membership Nintendo Switch Online Expansion Pack',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Nintendo Switch Online Expansion Pack</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Expansion Pack 1 Tahun',
+        value: 'Expansion Pack (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Expansion Pack 1 Tahun',
+        title: 'Harga Provider',
         value: '$79.99 = Rp1.287.839',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp1.429.501',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '7',
       },
       {
@@ -1915,7 +2036,8 @@ export const providerList = [
     slug: 'kaspersky-total',
     title: 'Harga Paket Total Security 1 Tahun',
     img: '/images/product/brand/kaspersky-total.png',
-    screenshot: '/images/price scheme/kaspersky-total.png',
+    screenshot: '/images/price-scheme/desktop/kaspersky-total.png',
+    screenshotMobile: '/images/price-scheme/mobile/kaspersky-total.png',
     desc: 'Kaspersky Total Security 1 Tahun',
     member: 3,
     schemes: [
@@ -1924,18 +2046,20 @@ export const providerList = [
       'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Total Security selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Total Security 1 Tahun',
+        value: 'Total Security (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Total Security 1 Tahun',
+        title: 'Harga Provider',
         value: 'Rp555.500',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '3',
       },
       {
@@ -1958,7 +2082,8 @@ export const providerList = [
     slug: 'kaspersky-internet',
     title: 'Harga Paket Total Security 1 Tahun',
     img: '/images/product/brand/kaspersky-internet.png',
-    screenshot: '/images/price scheme/kaspersky-internet.png',
+    screenshot: '/images/price-scheme/desktop/kaspersky-internet.png',
+    screenshotMobile: '/images/price-scheme/mobile/kaspersky-internet.png',
     desc: 'Kaspersky Internet Security 1 Tahun',
     member: 5,
     schemes: [
@@ -1967,18 +2092,20 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Internet Security selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Internet Security 1 Tahun',
+        value: 'Internet Security (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Internet Security 1 Tahun',
+        title: 'Harga Provider',
         value: 'Rp656.500',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -2001,7 +2128,8 @@ export const providerList = [
     slug: 'medium',
     title: 'Harga Paket Premium 1 Bulan',
     img: '/images/product/brand/medium.png',
-    screenshot: '/images/price scheme/medium-month.png',
+    screenshot: '/images/price-scheme/desktop/medium-month.png',
+    screenshotMobile: '/images/price-scheme/mobile/medium-month.png',
     desc: 'Medium Paket Premium 1 Bulan',
     member: 5,
     schemes: [
@@ -2010,20 +2138,22 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Medium</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Bulan',
+        value: 'Medium (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Premium 1 Bulan',
+        title: 'Harga Provider',
         value: '$5.00 = Rp80.500',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -2046,7 +2176,8 @@ export const providerList = [
     slug: 'medium',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/medium.png',
-    screenshot: '/images/price scheme/medium-annual.png',
+    screenshot: '/images/price-scheme/desktop/medium-annual.png',
+    screenshotMobile: '/images/price-scheme/mobile/medium-annual.png',
     desc: 'Medium Paket Premium 1 Tahun',
     member: 5,
     schemes: [
@@ -2055,20 +2186,22 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Medium</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Tahun',
+        value: 'Medium (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Premium 1 Tahun',
+        title: 'Harga Provider',
         value: '$50.00 = Rp805.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -2091,7 +2224,8 @@ export const providerList = [
     slug: 'resso',
     title: 'Harga Paket Premium 3 Bulan',
     img: '/images/product/brand/resso.png',
-    screenshot: '/images/price scheme/resso.png',
+    screenshot: '/images/price-scheme/desktop/resso.png',
+    screenshotMobile: '/images/price-scheme/mobile/resso.png',
     desc: 'Resso Paket Premium 3 Bulan',
     member: 5,
     schemes: [
@@ -2100,26 +2234,28 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Resso</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 3 Bulan',
+        value: 'Resso (3 Bulan)',
         is_total: true,
       },
       {
-        title: 'Harga Premium 1 Bulan',
+        title: 'Harga 1 Bulan',
         value: 'Rp79.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp87.690',
       },
       {
-        title: 'Harga Premium 3 Bulan',
+        title: 'Harga 3 Bulan',
         value: 'Rp87.690 x 3 = Rp263.070',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -2142,7 +2278,8 @@ export const providerList = [
     slug: 'freepik',
     title: 'Harga Paket Premium 1 Bulan',
     img: '/images/product/brand/freepik.png',
-    screenshot: '/images/price scheme/freepik-month.png',
+    screenshot: '/images/price-scheme/desktop/freepik-month.png',
+    screenshotMobile: '/images/price-scheme/mobile/freepik-month.png',
     desc: 'Freepik Paket Premium 1 Bulan',
     member: 3,
     schemes: [
@@ -2151,24 +2288,26 @@ export const providerList = [
       'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Freepik</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Bulan',
+        value: 'Freepik (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Premium 1 Bulan',
+        title: 'Harga Provider',
         value: '€15',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: '€16.65 = Rp288.058',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '3',
       },
       {
@@ -2191,7 +2330,8 @@ export const providerList = [
     slug: 'freepik',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/freepik.png',
-    screenshot: '/images/price scheme/freepik-annual.png',
+    screenshot: '/images/price-scheme/desktop/freepik-annual.png',
+    screenshotMobile: '/images/price-scheme/mobile/freepik-annual.png',
     desc: 'Freepik Paket Premium 1 Tahun',
     member: 3,
     schemes: [
@@ -2200,24 +2340,26 @@ export const providerList = [
       'Akun dishare HANYA ke 3 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Freepik</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     notes:
       'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Tahun',
+        value: 'Freepik (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Premium 1 Tahun',
+        title: 'Harga Provider',
         value: '€108.00',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: '€119.88 = Rp2.074.044',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '3',
       },
       {
@@ -2240,7 +2382,8 @@ export const providerList = [
     slug: 'duolingo',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/duolingo.png',
-    screenshot: '/images/price scheme/duolingo.png',
+    screenshot: '/images/price-scheme/desktop/duolingo.png',
+    screenshotMobile: '/images/price-scheme/mobile/duolingo.png',
     desc: 'Duolingo Paket Premium 1 Tahun',
     member: 5,
     schemes: [
@@ -2249,22 +2392,24 @@ export const providerList = [
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Duolingo</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Tahun',
+        value: 'Duolingo (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Family 1 Tahun',
+        title: 'Harga Provider',
         value: 'Rp599.000',
       },
       {
-        title: 'Harga setelah dikenakan pajak 11%',
+        title: 'Harga + pajak 11%',
         value: 'Rp664.890',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
@@ -2287,7 +2432,8 @@ export const providerList = [
     slug: 'crunchyroll',
     title: 'Harga Paket Premium 1 Bulan',
     img: '/images/product/brand/crunchyroll.png',
-    screenshot: '/images/price scheme/crunchyroll.png',
+    screenshot: '/images/price-scheme/desktop/crunchyroll-month.png',
+    screenshotMobile: '/images/price-scheme/mobile/crunchyroll-month.png',
     desc: 'Crunchyroll Paket Premium 1 Bulan',
     member: 4,
     schemes: [
@@ -2296,18 +2442,20 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Crunchyroll</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Bulan',
+        value: 'Crunchyroll (Bulanan)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium 1 Bulan',
+        title: 'Harga Provider',
         value: 'Rp39.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '4',
       },
       {
@@ -2330,7 +2478,8 @@ export const providerList = [
     slug: 'crunchyroll',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/crunchyroll.png',
-    screenshot: '/images/price scheme/crunchyroll.png',
+    screenshot: '/images/price-scheme/desktop/crunchyroll-annual.png',
+    screenshotMobile: '/images/price-scheme/mobile/crunchyroll-annual.png',
     desc: 'Crunchyroll Paket Premium 1 Tahun',
     member: 4,
     schemes: [
@@ -2339,18 +2488,20 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    additionalInfo:
+      'Paket Patungan pada <b>Crunchyroll</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Paket Premium 1 Tahun',
+        value: 'Crunchyroll (1 Tahun)',
         is_total: true,
       },
       {
-        title: 'Harga Paket Premium 1 Tahun',
+        title: 'Harga Provider',
         value: 'Rp390.000',
       },
       {
-        title: 'Jumlah Member Dalam 1 Grup',
+        title: 'Jumlah Member Per Grup',
         value: '4',
       },
       {

@@ -4,39 +4,9 @@
     "slug": "netflix",
     "flow": [
       "Admin akan berikan email & password untuk didaftarkan ke Netflix oleh Host",
-      "Host melakukan subscribe pada akun Netflix dengan paket Plan Berlangganan Premium seharga Rp 186.000",
+      "Host melakukan subscribe pada akun Netflix dengan paket Plan Berlangganan Premium seharga Rp186.000",
       "Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi pada Netflix",
-      "Admin akan memproses setup akun dan mengirimkan penggantian dana sebesar Rp 139.500 (Rp186.000 - Rp 46.500)"
-    ]
-  },
-  {
-    "name": "Spotify",
-    "slug": "spotify",
-    "flow": [
-      "Admin akan berikan credential akun Spotify yang sudah terdaftar",
-      "Host melakukan subscribe pada akun Spotify dengan paket Plan Family Prabayar",
-      "Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi pada Spotify",
-      "Admin akan memproses setup link invitation dan mengirimkan penggantian dana"
-    ]
-  },
-  {
-    "name": "Youtube",
-    "slug": "youtube",
-    "flow": [
-      "Admin akan melakukan registrasi akun gmail menggunakan nomor Handphone yang telah di konfirmasi oleh Host",
-      "Akun ini akan digunakan sebagai family manager suatu grup. Seakun bertanggungjawab memanage akun YouTube dan melakukan pembelian YouTube Premium Group",
-      "Dalam proses registrasi, Host akan diminta memprovide otp yang terkirim ke nomor Handphone",
-      "Setelah berhasil purchase, Admin akan mengirimkan invitation melalui email yang terdaftar"
-    ]
-  },
-  {
-    "name": "Google One",
-    "slug": "google-one",
-    "flow": [
-      "Admin akan melakukan registrasi akun gmail menggunakan nomor Handphone yang telah di konfirmasi oleh Host",
-      "Akun ini akan digunakan sebagai family manager suatu grup. Seakun bertanggungjawab memanage akun dan melakukan pembelian paket Google One",
-      "Dalam proses registrasi, Host akan diminta memprovide otp yang terkirim ke nomor Handphone",
-      "Setelah berhasil purchase, Admin akan mengirimkan invitation melalui email yang terdaftar"
+      "Admin akan memproses setup akun dan mengirimkan penggantian dana sebesar Rp139.500 (Rp186.000 - Rp46.500)"
     ]
   },
   {
@@ -56,10 +26,10 @@
     "flow": [
       "Admin akan berikan apple id Seakun yang perlu di aktivasi oleh Host",
       "Host melakukan aktivasi apple id Seakun dengan login ke device iphone/ipad/mac",
-      "Host melakukan setup pada iTunes dan subscribe paket Apple One Family dengan harga 155.000",
+      "Host melakukan setup pada iTunes dan subscribe paket Apple One Family dengan harga Rp199.000",
       "Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi pada Apple",
-      "Silakan lakukan pembayaran ke Seakun 31.000 untuk biaya berlangganan",
-      "Admin akan mengirimkan invitation melalui email dan mengirimkan penggantian dana sebesar 155.000"
+      "Silakan lakukan pembayaran ke Seakun Rp39.800 untuk biaya berlangganan",
+      "Admin akan mengirimkan invitation melalui email dan mengirimkan penggantian dana sebesar Rp199.000 (jika tidak mendapat free trial)"
     ]
   },
   {
@@ -68,10 +38,10 @@
     "flow": [
       "Admin akan berikan apple id Seakun yang perlu di aktivasi oleh Host",
       "Host melakukan aktivasi apple id Seakun dengan login ke device iphone/ipad/mac",
-      "Host melakukan setup pada iTunes dan subscribe paket Apple One Premier dengan harga 275.000",
+      "Host melakukan setup pada iTunes dan subscribe paket Apple One Premier dengan harga Rp319.000",
       "Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi pada Apple",
-      "Silakan lakukan pembayaran ke Seakun 55.000 untuk biaya berlangganan",
-      "Admin akan mengirimkan invitation melalui email dan mengirimkan penggantian dana sebesar 275.000"
+      "Silakan lakukan pembayaran ke Seakun Rp69.500 untuk biaya berlangganan",
+      "Admin akan mengirimkan invitation melalui email dan mengirimkan penggantian dana sebesar Rp319.000 (jika tidak mendapat free trial)"
     ]
   },
   {
@@ -80,10 +50,10 @@
     "flow": [
       "Admin akan berikan apple id Seakun yang perlu di aktivasi oleh Host",
       "Host melakukan aktivasi apple id Seakun dengan login ke device iphone/ipad/mac",
-      "Host melakukan setup pada iTunes dan subscribe paket Apple TV+ dengan harga 69.000",
+      "Host melakukan setup pada iTunes dan subscribe paket Apple TV+ dengan harga Rp99.000",
       "Setelah berhasil melakukan purchase, informasikan ke Admin dengan mengirimkan bukti transaksi pada Apple",
-      "Silakan lakukan pembayaran ke Seakun 13.800 untuk biaya berlangganan",
-      "Admin akan mengirimkan invitation melalui email dan mengirimkan penggantian dana sebesar 69.000"
+      "Silakan lakukan pembayaran ke Seakun Rp19.800 untuk biaya berlangganan",
+      "Admin akan mengirimkan invitation melalui email dan mengirimkan penggantian dana sebesar Rp99.000 (jika tidak mendapat free trial)"
     ]
   }
 ]
