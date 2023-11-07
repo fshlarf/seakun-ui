@@ -4,8 +4,8 @@ export const providerList = [
     slug: 'netflix',
     title: 'Harga Paket Premium (User Host)',
     img: '/images/product/brand/netflix.png',
-    screenshot: '/images/price-scheme/desktop/netflix.png',
-    screenshotMobile: '/images/price-scheme/mobile/netflix.png',
+    screenshot: '/images/price-scheme/desktop/netflix-host.png',
+    screenshotMobile: '/images/price-scheme/mobile/netflix-host.png',
     desc: 'Netflix Paket Premium user Host 1 Bulan',
     member: 4,
     schemes: [
@@ -51,8 +51,8 @@ export const providerList = [
     slug: 'netflix',
     title: 'Harga Paket Premium (Reguler)',
     img: '/images/product/brand/netflix.png',
-    screenshot: '/images/price-scheme/desktop/netflix.png',
-    screenshotMobile: '/images/price-scheme/mobile/netflix.png',
+    screenshot: '/images/price-scheme/desktop/netflix-reguler.png',
+    screenshotMobile: '/images/price-scheme/mobile/netflix-reguler.png',
     desc: 'Netflix Paket Premium User Reguler 1 Bulan',
     member: 4,
     schemes: [
