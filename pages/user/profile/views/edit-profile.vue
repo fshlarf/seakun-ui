@@ -92,16 +92,36 @@
         class-label="!text-sm md:!text-xs !text-gray-secondary"
         @keyup="validateForm"
       />
-      <TextArea
-        v-model="domicile"
-        class-area="!resize-none"
-        label="Domisili"
-        class-label="!text-sm md:!text-xs !text-gray-secondary"
-        @keyup="validateForm"
-      />
+      <div class="mt-2">
+        <p class="text-sm">Domisili</p>
+        <input
+          id="input-domicile"
+          type="text"
+          v-model="domicile"
+          placeholder="Pilih domisili"
+          class="mt-2 focus:outline-none rounded-[8px] border border-[#A0A3BD66] p-3 text-sm w-full"
+          @keyup="onSearchProvince"
+          @click="onClickDomicile"
+        />
+      </div>
+      <div id="container-province" class="relative z-0 !mt-0">
+        <div
+          id="drop-province"
+          v-if="isShowDropDownDomicile"
+          class="!absolute !z-60 top-0 left-0 w-full rounded-[5px] bg-white py-2 overflow-y-auto overscroll-auto shadow-md"
+        >
+          <div
+            v-for="(province, id) in province"
+            :key="id"
+            class="p-2 lg:p-3 text-center w-full cursor-pointer bg-white hover:bg-primary hover:text-white text-sm lg:text-base"
+            @click="onSelectProvince(province)"
+          >
+            {{ province }}
+          </div>
+        </div>
+      </div>
       <Input
         v-model="email"
-        class-input="bg-[#A0A3BD26]"
         label="Email"
         class-label="!text-sm md:!text-xs !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
@@ -110,7 +130,6 @@
       />
       <Input
         v-model="phoneNumber"
-        class-input="bg-[#A0A3BD26]"
         label="No Whatsapp"
         class-label="!text-sm md:!text-xs  !text-gray-secondary"
         class-name="!text-sm md:!text-base !text-gray-secondary"
@@ -152,6 +171,7 @@ import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
 import TextArea from '~/components/atoms/TextArea.vue';
 import { toUnixTimestamp, unixToIsoDate } from '~/helpers/word-transformation';
+import { indonesiaProvince } from '~/constants/indonesia-province';
 
 export default {
   components: {
@@ -172,6 +192,7 @@ export default {
   },
   data() {
     return {
+      indonesiaProvince,
       isChangeAvatar: false,
       name: '',
       birthDate: '',
@@ -227,6 +248,8 @@ export default {
           name: 'woman-3',
         },
       ],
+      isShowDropDownDomicile: false,
+      province: [],
     };
   },
   watch: {
@@ -238,8 +261,63 @@ export default {
   },
   mounted() {
     this.getProfileData(this.profile);
+    this.province = this.indonesiaProvince;
   },
   methods: {
+    calculateDropDownProvince() {
+      const viewportHeight = window.innerHeight;
+      const container = document.getElementById('container-province');
+      const drop = document.getElementById('drop-province');
+      const elementPosition = container.getBoundingClientRect().top;
+      const lowerPartHeight = viewportHeight - elementPosition;
+      drop.style.maxHeight = `${lowerPartHeight}px`;
+    },
+    onClickDomicile() {
+      this.onSearchProvince();
+      this.isShowDropDownDomicile = !this.isShowDropDownDomicile;
+      setTimeout(() => {
+        const drop = document.getElementById('drop-province');
+        if (drop) {
+          this.calculateDropDownProvince();
+        }
+      }, 200);
+      const profileDomicile = this.profile.customerDetail.domicile
+        ? this.profile.customerDetail.domicile
+        : '';
+      this.isUpdate = profileDomicile !== this.domicile;
+      if (
+        !this.isShowDropDownDomicile &&
+        !this.indonesiaProvince.some((prov) => prov == this.domicile)
+      ) {
+        this.domicile = '';
+        const domicileInput = document.getElementById('input-domicile');
+        domicileInput.blur();
+      }
+    },
+    onSelectProvince(province) {
+      this.domicile = province;
+      this.isShowDropDownDomicile = false;
+      const profileDomicile = this.profile.customerDetail.domicile
+        ? this.profile.customerDetail.domicile
+        : '';
+      this.isUpdate = profileDomicile !== this.domicile;
+    },
+    onSearchProvince() {
+      // this.isShowDropDownDomicile = true;
+      this.province = this.indonesiaProvince.filter((province) => {
+        const prov = province.toLowerCase();
+        const dom = this.domicile.toLowerCase();
+        return prov.includes(dom);
+      });
+      const drop = document.getElementById('drop-province');
+      if (drop) {
+        this.calculateDropDownProvince();
+      }
+      const profileDomicile = this.profile.customerDetail.domicile
+        ? this.profile.customerDetail.domicile
+        : '';
+      this.isUpdate = profileDomicile !== this.domicile;
+    },
     getProfileData(profile) {
       if (profile) {
         this.name = profile.name;

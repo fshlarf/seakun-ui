@@ -8,15 +8,16 @@
     >
       {{ label }}
     </label>
-    <div class="form-content relative z-0">
+    <div class="form-content relativ z-0">
       <input
-        class="relative z-0 appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="relativ z-0 appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         :class="({ 'border-danger': error.isError }, classInput)"
         :type="type"
         :name="name"
         v-bind="$attrs"
         v-on="$listeners"
         :value="value"
+        :disabled="disabled"
         :placeholder="placeholder"
         @input="$emit('update', $event.target.value)"
         @keyup.enter="$emit('pressEnter')"
@@ -40,6 +41,10 @@
 export default {
   name: 'Input',
   props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     classError: {
       type: String,
       default: '',

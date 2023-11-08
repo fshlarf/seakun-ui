@@ -2,7 +2,7 @@ export const indonesiaProvince = [
   'Aceh',
   'Sumatera Utara',
   'Sumatera Selatan',
-  'Sumatra Barat',
+  'Sumatera Barat',
   'Bengkulu',
   'Riau',
   'Kepulauan Riau',
