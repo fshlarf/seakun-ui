@@ -36,8 +36,8 @@
             class="!object-contain max-h-full max-w-full xl:w-full xl:h-auto"
             :src="
               isDesktopView
-                ? '/images/price-scheme/desktop/not-active.png'
-                : '/images/price-scheme/mobile/not-active.png'
+                ? '/images/price-scheme/desktop/not-active.webp'
+                : '/images/price-scheme/mobile/not-active.webp'
             "
             alt="provider not active"
           />
