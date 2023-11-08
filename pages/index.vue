@@ -101,6 +101,8 @@ export default {
     const userGroup = document.getElementById('pengguna');
     if (this.providerList.list.length === 0) {
       this.fetchProvider('youtube');
+    } else {
+      this.isShowModalBase = false;
     }
     this.observeUserGroupSection(userGroup);
   },
