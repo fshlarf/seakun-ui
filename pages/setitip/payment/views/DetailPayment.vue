@@ -1,6 +1,5 @@
 <template>
   <section>
-    <Snackbar ref="snackbar" />
     <div class="payment-detail text-center mt-16">
       <p
         v-if="provider.toLowerCase() === 'sequrban'"
@@ -110,14 +109,12 @@
 </template>
 
 <script>
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 
 export default {
   name: 'DetailPayment',
   components: {
-    Snackbar,
     CopyIcon,
   },
   props: {
@@ -201,9 +198,9 @@ export default {
     clickCopyHandler(name, value) {
       navigator.clipboard.writeText(value).then(
         () => {
-          this.$refs.snackbar.showSnackbar({
+          this.$alert.show({
+            status: 'success',
             message: `${name} berhasil dicopy`,
-            className: '',
           });
         },
         (err) => console.log(err)

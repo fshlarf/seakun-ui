@@ -6,7 +6,7 @@
       class="md:container bg-white block md:flex md:justify-between md:items-center py-3 border-b md:border-none"
     >
       <div
-        class="flex justify-between items-center mx-auto w-[321px] md:w-full"
+        class="flex justify-between items-center px-[20px] md:px-0 md:container"
       >
         <nuxt-link to="/" class="">
           <img

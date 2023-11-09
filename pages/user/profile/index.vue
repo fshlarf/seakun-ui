@@ -94,8 +94,6 @@
         @onUpdateProfile="updateProfile"
       />
     </template>
-
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -103,7 +101,6 @@
 import CardProfile from './views/card-profile.vue';
 import EditProfile from './views/edit-profile.vue';
 import CustomerService from '~/services/CustomerServices';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import { setAvatar } from '~/helpers/tokenAuth';
 import { mapActions } from 'vuex';
 
@@ -113,7 +110,6 @@ export default {
   components: {
     CardProfile,
     EditProfile,
-    Snackbar,
   },
   data() {
     return {
@@ -152,11 +148,9 @@ export default {
           payload
         );
         if (fetchUpdateProfile.data) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Data profil berhasil diedit`,
-            className: '',
-            color: 'bg-green-400',
-            duration: 3000,
+          this.$alert.show({
+            status: 'success',
+            message: 'Data profil berhasil diedit',
           });
           await this.getCustomerDetail();
           setAvatar(this, this.customerData.avatar);
@@ -165,11 +159,10 @@ export default {
         }
       } catch (error) {
         console.log(error);
-        this.$refs.snackbar.showSnackbar({
-          message: `Gagal mengedit data profil. Coba beberapa saat lagi atau hubungi admin`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
+        this.$alert.show({
+          status: 'error',
+          message:
+            'Gagal mengedit data profil. Coba beberapa saat lagi atau hubungi admin',
         });
       }
       this.isLoading = false;

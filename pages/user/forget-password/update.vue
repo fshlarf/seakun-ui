@@ -1,10 +1,7 @@
 <template>
   <div class="w-full min-h-screen bg-[#EBFFFB] lg:bg-white">
-    <div
-      v-if="isLoadingVerify"
-      class="w-full h-full flex justify-center items-center"
-    >
-      loading...
+    <div v-if="isLoadingVerify" class="w-full h-screen">
+      <KebabLoader />
     </div>
     <div v-else>
       <div class="lg:grid grid-cols-2 px-4 sm:px-[1rem] md:px-[2rem] lg:px-0">
@@ -107,24 +104,20 @@
         </div>
       </div>
     </div>
-
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
-import Spinner from '~/components/atoms/Spinner.vue';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import UserService from '~/services/UserServices';
+import KebabLoader from '~/components/atoms/KebabLoader';
 
 export default {
   components: {
     InputPassword,
     Button,
-    Spinner,
-    Snackbar,
+    KebabLoader,
   },
   data() {
     return {
@@ -239,35 +232,30 @@ export default {
       } catch (error) {
         console.log(error);
         if (error.response.status === 400) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Gagal mengubah password. Pastikan password berbeda dengan password sebelumnya`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Gagal mengubah password. Pastikan password berbeda dengan password sebelumnya',
           });
         } else if (
           error.response.status === 403 ||
           error.response.status === 401
         ) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Token tidak valid atau sudah digunakan untuk mengubah password`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Token tidak valid atau sudah digunakan untuk mengubah password',
           });
         } else if (error.response.status === 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Token atau user tidak ditemukan`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message: 'Token atau user tidak ditemukan',
           });
         } else {
-          this.$refs.snackbar.showSnackbar({
-            message: `Terjadi kesalahan. Silakan coba beberapa saat lagi atau hubungi admin`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Terjadi kesalahan. Silakan coba beberapa saat lagi atau hubungi admin',
           });
         }
       }

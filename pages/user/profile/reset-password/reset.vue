@@ -1,12 +1,8 @@
 <template>
   <main class="mt-6 md:mt-0">
-    <div
-      v-if="isLoadingVerify"
-      class="w-full h-full flex justify-center items-center"
-    >
-      loading...
+    <div v-if="isLoadingVerify" class="w-full h-screen">
+      <KebabLoader />
     </div>
-
     <div v-else>
       <div
         v-if="!isSuccess"
@@ -76,8 +72,6 @@
         </div>
       </div>
     </div>
-
-    <Snackbar ref="snackbar" />
   </main>
 </template>
 
@@ -85,14 +79,14 @@
 import UserService from '~/services/UserServices';
 import Button from '~/components/atoms/Button.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
+import KebabLoader from '~/components/atoms/KebabLoader';
 
 export default {
   layout: 'profile',
   components: {
     InputPassword,
     Button,
-    Snackbar,
+    KebabLoader,
   },
   data() {
     return {
@@ -203,32 +197,27 @@ export default {
       } catch (error) {
         console.log(error);
         if (error.response.status === 400) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Gagal mengubah password. Pastikan password berbeda dengan password sebelumnya`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Gagal mengubah password. Pastikan password berbeda dengan password sebelumnya',
           });
         } else if (error.response.status === 401) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Token tidak valid atau sudah digunakan untuk mengubah password`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Token tidak valid atau sudah digunakan untuk mengubah password',
           });
         } else if (error.response.status === 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `User tidak ditemukan`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message: 'User tidak ditemukan',
           });
         } else {
-          this.$refs.snackbar.showSnackbar({
-            message: `Terjadi kesalahan. Silakan coba beberapa saat lagi atau hubungi admin`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Terjadi kesalahan. Silakan coba beberapa saat lagi atau hubungi admin',
           });
         }
       }

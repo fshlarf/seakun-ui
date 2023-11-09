@@ -67,8 +67,6 @@
         />
       </div>
     </div>
-
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -82,14 +80,9 @@ import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import DetailPayment from './views/DetailPayment.vue';
 import HeaderPayment from './views/HeaderPayment.vue';
 import WarningInfo from '~/components/mollecules/WarningInfo';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 // import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
-import {
-  currencyFormat,
-  capitalizeFirstLetter,
-  fullDate,
-} from '~/helpers/word-transformation.js';
+import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
 
 export default {
@@ -100,7 +93,6 @@ export default {
     HeaderPayment,
     DetailPayment,
     WarningInfo,
-    Snackbar,
     ButtonDrop,
     // DropDownPricesListSubcribe,
   },
@@ -114,7 +106,6 @@ export default {
       packet: '',
       packetId: null,
       total: null,
-      showSnackBar: false,
       type: 0,
       vouchersData: [],
       isLoadingPayment: false,
@@ -295,11 +286,10 @@ export default {
         }
       } catch (error) {
         if (error.response?.status == 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses',
           });
           setTimeout(
             function () {

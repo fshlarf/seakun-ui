@@ -1,6 +1,5 @@
 <template>
   <section>
-    <Snackbar ref="snackbar" />
     <div class="payment-detail text-center tn:mt-10 md:mt-16">
       <p
         v-if="provider.toLowerCase() === 'sequrban' && detailPaymentSequrban"
@@ -82,7 +81,6 @@
 </template>
 
 <script>
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import WarningInfo from '~/components/mollecules/WarningInfo.vue';
 import CopyIcon from '~/assets/images/icon/copy.svg?inline';
 import PaymentMethodList from './PaymentMethodList.vue';
@@ -92,7 +90,6 @@ import { currencyFormat } from '~/helpers/word-transformation.js';
 export default {
   name: 'DetailPayment',
   components: {
-    Snackbar,
     CopyIcon,
     PaymentMethodList,
     PaymentMethodListLoading,
@@ -188,10 +185,9 @@ export default {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(value).then(
           () => {
-            this.$refs.snackbar.showSnackbar({
-              color: 'bg-black',
+            this.$alert.show({
+              status: 'success',
               message: `${name} berhasil disalin`,
-              className: '',
             });
           },
           (err) => console.log(err)
@@ -216,10 +212,9 @@ export default {
       try {
         let successful = document.execCommand('copy');
         if (successful) {
-          this.$refs.snackbar.showSnackbar({
-            color: 'bg-black',
+          this.$alert.show({
+            status: 'success',
             message: `${name} berhasil disalin`,
-            className: '',
           });
         }
       } catch (err) {

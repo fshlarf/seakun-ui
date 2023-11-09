@@ -581,11 +581,9 @@ export const actions = {
       }
     } catch (error) {
       if (error.response?.status == 404) {
-        this.$refs.snackbar.showSnackbar({
-          message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan `,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
+        this.$alert.show({
+          status: 'error',
+          message: 'Order Anda Tidak Ditemukan / Sudah Terbayarkan',
         });
         setTimeout(
           function () {

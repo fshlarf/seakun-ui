@@ -17,7 +17,7 @@
         </nuxt-link>
       </div>
       <div
-        class="lg:bg-white relative lg:mt-0 rounded-[12px] lg:rounded-none lg:w-[53%] lg:h-screen lg:flex lg:items-center lg:justify-center lg:pb-10"
+        class="lg:bg-white relative mt-4 lg:mt-0 rounded-[12px] lg:rounded-none lg:w-[53%] lg:h-screen lg:flex lg:items-center lg:justify-center lg:pb-10"
       >
         <div v-if="!isRegisterSuccess" class="lg:w-[518px]">
           <img
@@ -34,12 +34,12 @@
                 alt="register"
                 class="w-full object-contain lg:hidden rounded-lg"
               />
-              <div class="px-3 lg:px-0 mt-3 lg:mt-0">
-                <h1 class="text-[26px] font-bold text-[#49A794]">
+              <div class="px-3 lg:px-0 mt-4 lg:mt-0">
+                <h1 class="text-base lg:text-[26px] font-bold text-[#49A794]">
                   Buat Akun di Sini
                 </h1>
                 <p
-                  class="text-sm lg:text-base text-[#474747] dm-sans pt-1 lg:pt-0"
+                  class="text-sm lg:text-base text-[#474747] dm-sans mt-1 pt-1 lg:pt-0"
                 >
                   Sudah punya akun?
                   <span
@@ -210,29 +210,32 @@
         </div>
       </div>
     </main>
+
     <ModalCountry
       v-if="isShowModalCountry"
       @clickOption="getCountryOption"
       :country-list="internationalPhoneNumbers"
       :selected="selectedCountry"
     />
-    <Snackbar ref="snackbar" />
+
+    <ModalAlreadyRegistered
+      :is-show="isShowAlreadyRegistered"
+      :email="email"
+      @close="onCloseModalAlreadyRegistered"
+    />
   </div>
 </template>
 
 <script>
 import ModalCountry from './views/modal-country.vue';
+import ModalAlreadyRegistered from './views/modal-already-registered.vue';
 import UserService from '~/services/UserServices';
 import Button from '~/components/atoms/Button.vue';
 import Spinner from '~/components/atoms/Spinner.vue';
 import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import Checkbox from '../../components/atoms/Checkbox.vue';
-import {
-  capitalizeFirstLetter,
-  formatPhoneNumber,
-} from '~/helpers/word-transformation.js';
+import { capitalizeFirstLetter } from '~/helpers/word-transformation.js';
 import { internationalPhoneNumbers } from '~/constants/code-phone';
 
 export default {
@@ -241,9 +244,9 @@ export default {
     Button,
     InputPassword,
     Spinner,
-    Snackbar,
     ModalCountry,
     Checkbox,
+    ModalAlreadyRegistered,
   },
   data() {
     return {
@@ -287,6 +290,7 @@ export default {
       resendEmailCounter: 0,
       isResendEmailActive: true,
       isLoadingResendEmail: false,
+      isShowAlreadyRegistered: false,
     };
   },
   mounted() {
@@ -297,6 +301,9 @@ export default {
     } else this.placeholderVal = 'Nomor Whatsapp';
   },
   methods: {
+    onCloseModalAlreadyRegistered() {
+      this.isShowAlreadyRegistered = false;
+    },
     checkAuth() {
       const accesToken = this.$cookies.get('ATS');
       const refreshToken = this.$cookies.get('RTS');
@@ -454,18 +461,17 @@ export default {
       } catch (error) {
         console.log(error);
         if (error.response.status === 400) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Email sudah terdaftar. Silakan login atau reset password di halaman login jika kamu lupa password`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
-          });
+          this.isShowAlreadyRegistered = true;
+          // this.$alert.show({
+          //   status: 'error',
+          //   message:
+          //     'Email sudah terdaftar. Silakan login atau reset password di halaman login jika kamu lupa password',
+          // });
         } else {
-          this.$refs.snackbar.showSnackbar({
-            message: `Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin',
           });
         }
       }
@@ -483,22 +489,19 @@ export default {
         if (fetchResendEmail.data) {
           this.resendEmailCounter = 15;
           this.isLoadingResendEmail = false;
-          this.$refs.snackbar.showSnackbar({
-            message: `Email berhasil dikirim. Silakan cek email kamu`,
-            className: '',
-            color: 'bg-green-400',
-            duration: 3000,
+          this.$alert.show({
+            status: 'success',
+            message: 'Email berhasil dikirim. Silakan cek email kamu',
           });
           await this.RunCountdown();
         }
       } catch (error) {
         this.isLoadingResendEmail = false;
         console.log(error);
-        this.$refs.snackbar.showSnackbar({
-          message: `Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
+        this.$alert.show({
+          status: 'error',
+          message:
+            'Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin',
         });
       }
     },

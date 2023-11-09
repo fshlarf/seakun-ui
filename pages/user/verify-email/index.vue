@@ -19,8 +19,6 @@
         >Login</Button
       >
     </div>
-
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -28,13 +26,11 @@
 import UserService from '~/services/UserServices';
 import Button from '~/components/atoms/Button';
 import KebabLoader from '~/components/atoms/KebabLoader';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
   components: {
     KebabLoader,
     Button,
-    Snackbar,
   },
   data() {
     return {
@@ -53,11 +49,9 @@ export default {
     if (token && userUid) {
       this.verifyEmailToken();
     } else {
-      this.$refs.snackbar.showSnackbar({
-        message: `Token verifikasi atau id user tidak ditemukan`,
-        className: '',
-        color: 'bg-red-400',
-        duration: 4000,
+      this.$alert.show({
+        status: 'error',
+        message: 'Token verifikasi atau id user tidak ditemukan',
       });
     }
   },
@@ -80,11 +74,9 @@ export default {
             `/user/verify-email/expired?token=${this.token}&userUid=${this.userUid}`
           );
         } else {
-          this.$refs.snackbar.showSnackbar({
-            message: `Token verifikasi tidak valid atau user tidak ditemukan`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message: 'Token verifikasi tidak valid atau user tidak ditemukan',
           });
         }
       }

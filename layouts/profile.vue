@@ -99,15 +99,12 @@
         </main>
       </div>
     </div>
-
-    <Snackbar ref="snackbar" />
   </main>
 </template>
 
 <script>
 import AuthService from '~/services/AuthServices';
 import ProfileOptions from '~/components/mollecules/ProfileOptions';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -115,7 +112,6 @@ export default {
   middleware: 'authorize',
   components: {
     ProfileOptions,
-    Snackbar,
   },
   data() {
     return {
@@ -184,11 +180,9 @@ export default {
         }
       } catch (error) {
         console.log(error);
-        this.$refs.snackbar.showSnackbar({
-          message: `Terjadi kesalahan. Silakan coba beberapa saat lagi`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
+        this.$alert.show({
+          status: 'error',
+          message: 'Terjadi kesalahan. Silakan coba beberapa saat lagi',
         });
       }
       this.isLoading = false;

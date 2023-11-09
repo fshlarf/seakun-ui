@@ -208,12 +208,10 @@
       :show-modal="isShowModalSuccess"
       @onClose="isShowModalSuccess = !isShowModalSuccess"
     />
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import TextAreaForm from '~/components/atoms/TextArea.vue';
 import InputForm from '~/components/atoms/Input.vue';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
@@ -231,7 +229,6 @@ export default {
     UncheckBox,
     TextAreaForm,
     Button,
-    Snackbar,
     ModalDonationSuccess,
   },
   data() {
@@ -395,29 +392,14 @@ export default {
 
         if (fetchSubmitDonation.data) {
           this.isShowModalSuccess = true;
-          console.log('sukses');
-          // this.$refs.snackbar.showSnackbar({
-          //   message: `Terima kasih. Data kamu berhasil di simpan`,
-          //   className: '',
-          //   color: 'bg-green-400',
-          //   duration: 5000,
-          // });
-          // setTimeout(
-          //   function () {
-          //     this.$router.push('/tip');
-          //   }.bind(this),
-          //   5000
-          // );
         } else {
           throw new Error(fetchSubmitDonation);
         }
       } catch (error) {
         console.log(error);
-        this.$refs.snackbar.showSnackbar({
-          message: `Terjadi kesalahan. Harap coba kembali beberapa saat lagi`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 5000,
+        this.$alert.show({
+          status: 'error',
+          message: 'Terjadi kesalahan. Harap coba kembali beberapa saat lagi',
         });
       }
       this.isLoadingSubmitDonation = false;

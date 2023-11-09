@@ -5,8 +5,10 @@
       tabindex="0"
       class="z-40 left-0 top-0 bottom-0 right-0 w-full h-full fixed"
     >
-      <div class="z-50 relative mx-auto my-0 w-full">
-        <div class="modal-popup shadow-lg flex flex-col !min-w-[340px]">
+      <div class="w-full h-full flex items-center justify-center">
+        <div
+          class="modal-popup z-50 relative shadow-lg max-w-[90%] max-h-[90%] min-w-[20rem]"
+        >
           <div
             class="h-[28px] w-[28px] absolute -right-[10px] -top-[10px] flex items-center justify-center rounded-full bg-black/60"
             role="button"
@@ -60,9 +62,6 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 95%;
-  max-width: 95%;
-  min-width: 20rem;
 }
 
 .scroll-bar-hidden::-webkit-scrollbar {
