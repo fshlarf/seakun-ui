@@ -54,12 +54,10 @@
         Masa promo berakhir
       </div>
     </div>
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import Detail from './Detail.vue';
 import Sidebar from './Sidebar.vue';
 import DetailProductLoading from './DetailProductLoading.vue';
@@ -72,7 +70,6 @@ export default {
   components: {
     Detail,
     Sidebar,
-    Snackbar,
     DetailProductLoading,
     CheckedBox,
     UncheckBox,
@@ -107,10 +104,9 @@ export default {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(value).then(
           () => {
-            this.$refs.snackbar.showSnackbar({
-              color: 'bg-green-400',
+            this.$alert.show({
+              status: 'success',
               message: `${name} berhasil disalin`,
-              className: '',
             });
           },
           (err) => console.log(err)
@@ -135,10 +131,9 @@ export default {
       try {
         let successful = document.execCommand('copy');
         if (successful) {
-          this.$refs.snackbar.showSnackbar({
-            color: 'bg-black',
+          this.$alert.show({
+            status: 'success',
             message: `${name} berhasil disalin`,
-            className: '',
           });
         }
       } catch (err) {

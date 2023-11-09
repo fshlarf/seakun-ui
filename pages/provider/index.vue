@@ -5,9 +5,7 @@
       v-if="isOpenMenu"
       class="fixed z-40 top-0 left-0 w-full h-screen bg-black/40"
     ></div>
-    <div
-      class="pt-20 bg-red-20 mx-auto w-[321px] md:w-full md:container dm-sans pb-24"
-    >
+    <div class="pt-20 px-[20px] md:w-full md:container dm-sans pb-24">
       <div class="flex items-center gap-2 text-sm">
         <nuxt-link class="text-primary" to="/#provider">Beranda</nuxt-link>
         <p>></p>
@@ -16,10 +14,10 @@
       <template v-if="!isLoading">
         <div
           v-if="selectedPackage"
-          class="mt-4 rounded-[10px] w-full h-[204px] xl:h-auto overflow-hidden flex justify-center items-center"
+          class="mt-4 rounded-[10px] w-full xl:h-auto overflow-hidden flex justify-center items-center"
         >
           <img
-            class="!object-contain max-h-full max-w-full xl:w-full xl:h-auto"
+            class="!object-contain w-full xl:w-full xl:h-auto"
             :src="
               isDesktopView
                 ? priceScheme.screenshot
@@ -248,8 +246,8 @@
                 class="flex gap-[8px] lg:gap-[12px] items-start"
               >
                 <img
-                  class="mt-[1px] w-[18px] lg:w-[20px]"
-                  src="/images/icons/atoms/checked-green.svg"
+                  class="w-[18px] lg:w-[20px]"
+                  src="/images/icons/atoms/checked-green-2.svg"
                   alt="benefit"
                 />
                 <p class="text-[12px] lg:text-[14px] max-w-[90%]">
@@ -267,7 +265,7 @@
                 <div
                   v-for="(menu, id) in bottomMenus"
                   :key="id"
-                  class="min-w-max pt-[15px] text-primary font-bold text-sm"
+                  class="min-w-max pt-[15px] px-3 text-primary font-bold text-sm"
                   :class="`${
                     menu.value == selectedMenu.value ? '' : ' cursor-pointer'
                   }`"
@@ -334,7 +332,7 @@
                   class="flex gap-[8px] lg:gap-[12px] items-start"
                 >
                   <div
-                    class="w-[18px] lg:w-[24px] h-[18px] lg:h-[24px] rounded-full bg-primary text-white flex justify-center items-center text-[11px] lg:text-[14px] mt-[2px] lg:mt-0"
+                    class="w-[18px] lg:w-[24px] h-[18px] lg:h-[24px] rounded-full bg-[#00BA88] text-white flex justify-center items-center text-[11px] lg:text-[14px] mt-[2px] lg:mt-0"
                   >
                     {{ id + 1 }}
                   </div>
@@ -475,9 +473,9 @@
     </div>
 
     <div
-      class="fixed z-30 bottom-0 left-0 bg-white p-3 md:p-5 w-full lg:hidden shadowed"
+      class="fixed z-30 bottom-0 left-0 bg-white py-3 md:py-5 w-full lg:hidden shadowed"
     >
-      <div class="mx-auto w-[321px] md:w-full md:grid md:grid-cols-2 md:gap-3">
+      <div class="px-[20px] md:w-full md:grid md:grid-cols-2 md:gap-3">
         <div
           v-if="!isLoading && selectedPackage"
           class="flex justify-between items-center mb-2 md:mb-0 md:block"
@@ -496,8 +494,6 @@
         >
       </div>
     </div>
-
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -509,7 +505,6 @@ import GroupCard from './views/group-card.vue';
 import GroupCardShimmer from './views/group-card-shimmer.vue';
 import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -518,7 +513,6 @@ export default {
     GroupCard,
     Button,
     GroupCardShimmer,
-    Snackbar,
   },
   data() {
     return {
@@ -579,7 +573,7 @@ export default {
     }),
     isDesktopView() {
       let screen = window.innerWidth;
-      return screen >= 1280;
+      return screen >= 768;
     },
   },
   mounted() {
@@ -620,11 +614,9 @@ export default {
         };
         this.createOrder(payload);
       } else {
-        this.$refs.snackbar.showSnackbar({
-          message: `Harap login untuk memesan`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 3000,
+        this.$alert.show({
+          status: 'error',
+          message: 'Harap login untuk memesan',
         });
         setTimeout(() => {
           this.$router.push('/login');

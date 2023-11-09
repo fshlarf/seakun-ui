@@ -164,6 +164,7 @@ export default {
   plugins: [
     { src: '~plugins/google-analytics.js', mode: 'client' },
     { src: '~/plugins/color-thief.js', mode: 'client' },
+    { src: '~/plugins/alert.js', mode: 'client' },
   ],
   /*
    ** Auto import components

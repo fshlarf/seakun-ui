@@ -25,7 +25,6 @@
         :isLoading="isLoadingPaymentButton"
       />
     </div>
-    <Snackbar ref="snackbar" />
     <ModalDuration
       :orderData="pickedOrder"
       :durationData="dataVariants"
@@ -46,7 +45,6 @@
 <script>
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import Button from '~/components/atoms/Button';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
 import OrderDetail from './views/OrderDetail.vue';
 import PaymentDetail from './views/PaymentDetail.vue';
@@ -66,7 +64,6 @@ export default {
     Button,
     OrderDetail,
     PaymentDetail,
-    Snackbar,
     OrderList,
     ModalDuration,
     ModalPayment,
@@ -189,11 +186,10 @@ export default {
         }
       } catch (error) {
         if (error.response?.status == 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses',
           });
           setTimeout(
             function () {
@@ -277,11 +273,10 @@ export default {
       } while (counter < 3);
       if (counter === 3) {
         this.isLoadingPaymentButton = false;
-        this.$refs.snackbar.showSnackbar({
-          message: `Terjadi kesalahan. Harap coba kembali`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 6000,
+        this.$alert.show({
+          status: 'error',
+          title: 'Terjadi kesalahan',
+          message: 'Harap coba beberapa saat lagi atau hubungi admin',
         });
       }
     },

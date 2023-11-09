@@ -73,15 +73,8 @@
           </p>
           <Spinner v-if="isLoading" />
         </div>
-        <!-- <Button
-          class="text-white mt-5 bg-green-primary border-2 border-green-primary w-[166px] !text-base h-[46px]"
-          >Buka Email</Button
-        >
-        <p class="pt-5 text-sm text-[#999CA1]">Skip, nanti saya konfirmasi</p> -->
       </div>
     </div>
-
-    <Snackbar ref="snackbar" />
   </main>
 </template>
 
@@ -90,14 +83,12 @@ import UserService from '~/services/UserServices';
 import Input from '~/components/atoms/Input.vue';
 import Button from '~/components/atoms/Button.vue';
 import Spinner from '~/components/atoms/Spinner.vue';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 
 export default {
   layout: 'profile',
   components: {
     Input,
     Button,
-    Snackbar,
     Spinner,
   },
   data() {
@@ -142,22 +133,18 @@ export default {
           this.resendEmailCounter = 15;
           this.isLoading = false;
           this.isResendEmailActive = false;
-          this.$refs.snackbar.showSnackbar({
-            message: `Email berhasil dikirim`,
-            className: '',
-            color: 'bg-green-400',
-            duration: 3000,
+          this.$alert.show({
+            status: 'success',
+            message: 'Email berhasil dikirim',
           });
           await this.RunCountdown();
         }
       } catch (error) {
         console.log(error);
         this.isLoading = false;
-        this.$refs.snackbar.showSnackbar({
-          message: `Gagal mengirim email. Pastikan email kamu sudah sesuai`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
+        this.$alert.show({
+          status: 'error',
+          message: 'Gagal mengirim email. Pastikan email kamu sudah sesuai',
         });
       }
     },

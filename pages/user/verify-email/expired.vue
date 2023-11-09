@@ -64,7 +64,6 @@
         </div>
       </div>
     </div>
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -72,7 +71,6 @@
 import Input from '~/components/atoms/Input.vue';
 import Button from '~/components/atoms/Button.vue';
 import Spinner from '~/components/atoms/Spinner.vue';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import UserService from '~/services/UserServices';
 
 export default {
@@ -80,7 +78,6 @@ export default {
     Input,
     Button,
     Spinner,
-    Snackbar,
   },
   data() {
     return {
@@ -144,22 +141,19 @@ export default {
           this.resendEmailCounter = 15;
           this.isLoadingSendEmail = false;
           this.isResendEmailActive = false;
-          this.$refs.snackbar.showSnackbar({
-            message: `Email berhasil dikirim`,
-            className: '',
-            color: 'bg-green-400',
-            duration: 3000,
+          this.$alert.show({
+            status: 'success',
+            message: 'Email berhasil dikirim',
           });
           await this.RunCountdown();
         }
       } catch (error) {
         console.log(error);
         this.isLoadingSendEmail = false;
-        this.$refs.snackbar.showSnackbar({
-          message: `Gagal mengirim email. Pastikan kamu menginput email yang sama dengan email registrasi.`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 4000,
+        this.$alert.show({
+          status: 'error',
+          message:
+            'Gagal mengirim email. Pastikan kamu menginput email yang sama dengan email registrasi.',
         });
       }
     },

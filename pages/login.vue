@@ -7,7 +7,7 @@
         </nuxt-link>
       </div>
       <div
-        class="mt-4 lg:mt-0 relative lg:fixed z-40 lg:top-[110px] lg:left-1/2 lg:-translate-x-1/2 bg-white pb-5 p-1 lg:p-5 lg:pb-8 rounded-[15px] mx-auto w-full sm:max-w-[478px]"
+        class="mt-4 lg:mt-0 relative lg:fixed z-40 lg:top-[110px] lg:left-1/2 lg:-translate-x-1/2 bg-white pb-5 p-1 lg:p-5 lg:pb-8 rounded-[12px] mx-auto w-full sm:max-w-[478px]"
       >
         <img
           src="/images/background/bg-register-mobile.png"
@@ -15,7 +15,7 @@
           class="w-full object-contain lg:hidden rounded-lg"
         />
         <h1
-          class="text-base md:text-xl lg:text-[26px] font-bold text-[#49A794] pt-5 lg:pt-0 pl-3"
+          class="text-base md:text-xl lg:text-[26px] font-bold text-[#49A794] pt-4 lg:pt-0 pl-3"
         >
           Login
         </h1>
@@ -98,8 +98,6 @@
         </section> -->
       </div>
     </main>
-
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
@@ -108,7 +106,6 @@ import Input from '~/components/atoms/Input.vue';
 import InputPassword from '~/components/atoms/InputPassword.vue';
 import Button from '~/components/atoms/Button.vue';
 import Checkbox from '~/components/atoms/Checkbox.vue';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import {
   setToken,
   setUid,
@@ -125,7 +122,6 @@ export default {
     InputPassword,
     Button,
     Checkbox,
-    Snackbar,
   },
   data() {
     return {
@@ -257,18 +253,16 @@ export default {
       } catch (error) {
         console.log(error);
         if (error.response.status === 401) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Email atau password salah`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            title: 'Login gagal',
+            message: 'Email atau password salah',
           });
         } else if (error.response.status === 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Email tidak ditemukan`,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            title: 'Login gagal',
+            message: 'Email tidak ditemukan',
           });
         }
       }
