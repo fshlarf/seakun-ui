@@ -1,13 +1,25 @@
 <template>
   <div>
-    <div class="p-2 bg-checkout mt-[-3px]">
-      <p class="text-base text-[#417465] font-bold text-center">
-        Ini halaman terakhir dari proses orderanmu. Pastikan semua sudah benar,
-        ya. :)
-      </p>
+    <div class="max-w-[680px] w-full mx-auto pt-5 px-4">
+      <div
+        class="text-[12px] md:text-sm text-[#417465] bg-[#E9FCF8] rounded-[8px] md:font-medium flex items-center gap-[8px] p-[12px] md:px-4 md:py-0"
+      >
+        <img
+          class="w-[50px] md:w-[115px]"
+          src="/images/payment/illustration/cart.svg"
+          alt="payment"
+        />
+        <p>
+          Ini halaman terakhir dari proses orderanmu. Pastikan semua sudah
+          benar, ya. :)
+        </p>
+      </div>
     </div>
-    <div class="max-w-2xl w-full mx-auto pt-5 px-4">
-      <OrderDetail :isLoading="isLoadingPayment" :orderDetail="detailOrder" />
+    <div class="max-w-[680px] w-full mx-auto px-4">
+      <CustomerDetail
+        :isLoading="isLoadingPayment"
+        :orderDetail="detailOrder"
+      />
       <OrderList
         :isLoading="isLoadingPayment"
         @changeDuration="getDetailVariant"
@@ -22,23 +34,46 @@
           @click="onClickPriceScheme"
         />
       </div>
-      <PaymentDetail
-        :isLoading="isLoadingPayment"
-        :paymentTotal="totalPayment"
+      <PaymentMethod
+        :method-list="paymentMethods"
+        :selected-method="selectedMethod"
+        :is-allow-va="isAllowVa"
+        @selectMethod="onSelectPaymentMethod"
       />
+
+      <div class="mt-[24px] md:mt-[28px]">
+        <h2 class="font-bold text-sm md:text-[20px]">Rincian Pembayaran</h2>
+        <div class="mt-2 md:mt-4 text-sm md:text-base">
+          <div class="flex justify-between items-center">
+            <p>Biaya Langganan</p>
+            <p class="font-medium">{{ currencyFormat(totalPrice) }}</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <p>Biaya Transaksi & Tax</p>
+            <p class="font-medium">{{ currencyFormat(serviceFee) }}</p>
+          </div>
+          <hr class="my-[8px] md:my-[12px]" />
+          <div class="flex justify-between items-center">
+            <p class="text-sm md:text-[20px] font-bold">Total Bayar</p>
+            <p class="font-bold text-[#00BA88] md:text-[20px]">
+              {{ currencyFormat(totalPayment) }}
+            </p>
+          </div>
+        </div>
+      </div>
+
       <Button
         label="Bayar"
-        class="w-full bg-green-seakun text-base text-white font-bold py-2 my-5"
-        @click="OpenCloseModalPayment"
+        class="w-full bg-green-seakun text-base text-white font-bold py-3 my-5"
+        @click="createInvoice"
         :isLoading="isLoadingPaymentButton"
       />
     </div>
-    <Snackbar ref="snackbar" />
     <ModalDuration
       :orderData="pickedOrder"
       :durationData="dataVariants"
       :showModal="isShowModalDuration"
-      @onClose="OpenCloseModalDuration"
+      @onClose="toggleModalDuration"
       @pickDuration="pickDuration"
       :isLoading="isLoadingVariant"
     />
@@ -60,10 +95,10 @@
 <script>
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
 import Button from '~/components/atoms/Button';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import DropDownPricesListSubcribe from './views/DropDownPricesListSubcribe.vue';
-import OrderDetail from './views/OrderDetail.vue';
+import CustomerDetail from './views/OrderDetail.vue';
 import PaymentDetail from './views/PaymentDetail.vue';
+import PaymentMethod from './views/PaymentMethod.vue';
 import OrderList from './views/OrderList.vue';
 import ModalDuration from './views/ModalDuration.vue';
 import ModalPayment from './views/ModalPayment.vue';
@@ -74,6 +109,7 @@ import { providerList } from '../../constants/price-scheme';
 import { priceChangeList } from '../../constants/price-change';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import WarningPriceChange from './views/WarningPriceChange.vue';
+import { currencyFormat } from '~/helpers/word-transformation';
 
 export default {
   name: 'NewPayment',
@@ -82,9 +118,9 @@ export default {
     ButtonDrop,
     DropDownPricesListSubcribe,
     Button,
-    OrderDetail,
+    CustomerDetail,
     PaymentDetail,
-    Snackbar,
+    PaymentMethod,
     OrderList,
     ModalDuration,
     ModalPayment,
@@ -114,6 +150,7 @@ export default {
       isLoadingPaymentButton: false,
       orderData: [],
       totalPayment: 0,
+      totalPrice: 0,
       detailOrder: {
         name: '',
         phone: '',
@@ -137,11 +174,70 @@ export default {
         slug: '',
         name: '',
       },
+      serviceFee: 0,
+      paymentMethod: ['QRIS'],
+      selectedMethod: {
+        code: 'QRIS',
+        slug: 'qris',
+      },
+      paymentMethods: [
+        {
+          code: 'QRIS',
+          slug: 'qris',
+          isVa: false,
+        },
+        {
+          code: 'OVO',
+          slug: 'ovo',
+          isVa: false,
+        },
+        {
+          code: 'DANA',
+          slug: 'dana',
+          isVa: false,
+        },
+        {
+          code: 'SHOPEEPAY',
+          slug: 'shopeepay',
+          isVa: false,
+        },
+        {
+          code: 'LINKAJA',
+          slug: 'linkaja',
+          isVa: false,
+        },
+        {
+          code: 'ALFAMART',
+          slug: 'alfamart',
+          isVa: true,
+        },
+        {
+          code: 'BNI',
+          slug: 'bni',
+          isVa: true,
+        },
+        {
+          code: 'BRI',
+          slug: 'bri',
+          isVa: true,
+        },
+        {
+          code: 'MANDIRI',
+          slug: 'mandiri',
+          isVa: true,
+        },
+        {
+          code: 'PERMATA',
+          slug: 'permata',
+          isVa: true,
+        },
+      ],
+      isAllowVa: false,
     };
   },
-  // beforeMount() {
-  //   this.$router.push('/info/maintenance');
-  // },
+  beforeMount() {
+    this.$router.push('/info/maintenance');
+  },
   computed: {
     updatedProviderList() {
       const providerSlugs = [];
@@ -172,6 +268,11 @@ export default {
     }
   },
   methods: {
+    onSelectPaymentMethod(method) {
+      this.selectedMethod = method;
+      this.paymentMethod = [];
+      this.paymentMethod.push(method.code);
+    },
     onClickPriceScheme(provider) {
       this.dataDetailProvider = {
         list: this.providerList,
@@ -230,7 +331,7 @@ export default {
                   total += order[i].provider.package.variant.grandTotal;
                 }
               }
-              this.totalPayment = total;
+              this.totalPrice = total;
             } else {
               this.orderData = orders;
               let total = 0;
@@ -239,22 +340,25 @@ export default {
                   total += orders[i].provider.package.variant.grandTotal;
                 }
               }
-              this.totalPayment = total;
+              this.totalPrice = total;
             }
           } else {
             this.orderData = newOrder;
-            this.totalPayment = rest.provider.package.variant.grandTotal;
+            this.totalPrice = rest.provider.package.variant.grandTotal;
           }
+
+          // calculate service fee
+          this.calculateServiceFee();
+          this.checkAllowVa();
         } else {
           throw new Error(fetchPayment);
         }
       } catch (error) {
         if (error.response?.status == 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
-            className: '',
-            color: 'bg-red-400',
-            duration: 4000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses',
           });
           setTimeout(
             function () {
@@ -267,6 +371,10 @@ export default {
       }
       this.isLoadingPayment = false;
     },
+    calculateServiceFee() {
+      this.serviceFee = this.totalPrice <= 65000 ? 500 : 1000;
+      this.totalPayment = this.totalPrice + this.serviceFee;
+    },
     async onCheckedOrder(order, index) {
       const { orderData } = this;
       const copyArray = [...orderData];
@@ -277,11 +385,19 @@ export default {
           total += copyArray[i].provider.package.variant.grandTotal;
         }
       }
-      this.totalPayment = total;
+      this.totalPrice = total;
       this.orderData = copyArray;
+      this.calculateServiceFee();
+      this.checkAllowVa();
+    },
+    checkAllowVa() {
+      this.isAllowVa = this.orderData.some((el) => {
+        return el.checked && el.provider.package.variant.duration >= 6;
+      });
     },
     async pickDuration(item) {
-      this.OpenCloseModalDuration();
+      this.toggleModalDuration();
+      this.isLoadingPayment = true;
       const { OrderService } = this;
       const payload = {
         orderUid: this.pickedOrder.orderUid,
@@ -293,6 +409,11 @@ export default {
           payload
         );
         if (fetchChangeVariant.data) {
+          this.selectedMethod = {
+            code: 'QRIS',
+            slug: 'qris',
+          };
+          this.paymentMethod = ['QRIS'];
           await this.getPaymentDigital(this.orderUid, this.customerUid);
         }
       } catch (err) {
@@ -301,7 +422,6 @@ export default {
     },
     async createInvoice() {
       this.isLoadingPaymentButton = true;
-      this.OpenCloseModalPayment();
       const { PaymentService } = this;
       const orders = this.orderData
         .filter((item) => item.checked)
@@ -312,6 +432,8 @@ export default {
       const payload = {
         customerUid: this.customerUid,
         totalAmount: this.totalPayment,
+        paymentMethod: this.paymentMethod,
+        serviceFee: this.serviceFee,
         order: orders,
       };
       let counter = 0;
@@ -338,11 +460,9 @@ export default {
       } while (counter < 3);
       if (counter === 3) {
         this.isLoadingPaymentButton = false;
-        this.$refs.snackbar.showSnackbar({
-          message: `Terjadi kesalahan. Harap coba kembali`,
-          className: '',
-          color: 'bg-red-400',
-          duration: 6000,
+        this.$alert.show({
+          status: 'error',
+          message: 'Terjadi kesalahan. Harap coba kembali',
         });
       }
     },
@@ -360,7 +480,7 @@ export default {
       });
     },
     async getDetailVariant(data) {
-      this.OpenCloseModalDuration();
+      this.toggleModalDuration();
       this.isLoadingVariant = true;
       const { slug } = data.provider;
       const { uid, variant } = data.provider.package;
@@ -401,12 +521,13 @@ export default {
       }
       this.isLoadingVariant = false;
     },
-    OpenCloseModalDuration() {
+    toggleModalDuration() {
       this.isShowModalDuration = !this.isShowModalDuration;
     },
     OpenCloseModalPayment() {
       this.isShowModalPayment = !this.isShowModalPayment;
     },
+    currencyFormat,
   },
 };
 </script>

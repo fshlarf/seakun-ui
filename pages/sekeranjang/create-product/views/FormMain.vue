@@ -474,13 +474,10 @@
       @onRecheck="onClickRecheck"
       @clickSubmit="onClickSubmit"
     />
-
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import CheckedBox from '~/assets/images/icon/checked-box.svg?inline';
 import UncheckBox from '~/assets/images/icon/uncheck-box.svg?inline';
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
@@ -514,7 +511,6 @@ export default {
     DatePicker,
     ModalConfirmation,
     WarningInfo,
-    Snackbar,
   },
   data() {
     return {

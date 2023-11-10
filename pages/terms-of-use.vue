@@ -254,6 +254,11 @@
     </div>
 
     <div>
+      <h5 class="text-xl mb-2">Biaya Transaksi dan Tax</h5>
+      <div></div>
+    </div>
+
+    <div>
       <h5 class="text-xl mb-2">Perubahan Biaya Berlangganan</h5>
       <div>
         Perubahan biaya berlangganan bisa terjadi apabila provider tertentu

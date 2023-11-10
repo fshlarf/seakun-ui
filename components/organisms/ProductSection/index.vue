@@ -68,7 +68,7 @@
                 :data-provider="product"
                 class="tn:w-full tn:h-full"
                 @showPriceScheme="showPriceScheme"
-                @on-click-product="onClickProductDigital"
+                @on-click-product="onClickProvider"
               />
             </div>
           </div>
@@ -125,10 +125,8 @@
         </div>
         <div
           v-else
-          class="grid tn:gap-3 md:gap-4 tn:grid-cols-3 md:grid-cols-6"
+          class="grid tn:gap-3 md:gap-4 tn:grid-cols-3 md:grid-cols-4"
         >
-          <CardShimmerVertical />
-          <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
           <CardShimmerVertical />
@@ -418,6 +416,9 @@ export default {
     },
     onCloseModalPackages() {
       this.isShowModalPackages = false;
+    },
+    onClickProvider(provider) {
+      this.$router.push(`/provider?name=${provider.slug}&id=${provider.uid}`);
     },
     onClickProductDigital(product) {
       this.setSelectedProvider(product);

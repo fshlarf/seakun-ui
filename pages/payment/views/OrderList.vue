@@ -2,7 +2,9 @@
   <div>
     <ProductHighLightLoading v-if="isLoading" />
     <div v-else>
-      <p class="text-lg font-bold mt-8">Detail Pesanan</p>
+      <p class="text-sm md:text-[20px] font-bold mt-[24px] md:mt-[28px]">
+        Detail Pesanan
+      </p>
       <p v-if="orderData.length > 1" class="text-base font-normal mt-2">
         Sekali bayar untuk banyak pesanan. Pilih pesanan yang lain yang ingin
         kamu perpanjang masa berlangganannya.

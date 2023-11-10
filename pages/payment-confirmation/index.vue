@@ -183,13 +183,11 @@
         />
       </div>
     </div>
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
 import ButtonDrop from '~/components/atoms/ButtonDropDownNew';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import InputForm from '~/components/atoms/Input.vue';
 import DownArrowIcon from '~/assets/images/icon/down-arrow.svg?inline';
 import Button from '~/components/atoms/Button';
@@ -217,7 +215,6 @@ export default {
     UploadPayment,
     DatePicker,
     Input,
-    Snackbar,
   },
   data() {
     return {
@@ -456,11 +453,10 @@ export default {
         }
       } catch (error) {
         if (error.response?.status == 404) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
-            className: '',
-            color: 'bg-red-400',
-            duration: 5000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses',
           });
           setTimeout(
             function () {
@@ -676,11 +672,10 @@ export default {
       } catch (error) {
         console.log(error);
         if (error.response?.status == 400) {
-          this.$refs.snackbar.showSnackbar({
-            message: `Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses `,
-            className: '',
-            color: 'bg-red-400',
-            duration: 5000,
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Order Anda Tidak Ditemukan / Sudah Terbayarkan dan sedang diproses',
           });
           setTimeout(
             function () {

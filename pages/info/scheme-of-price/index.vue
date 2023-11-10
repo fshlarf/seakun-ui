@@ -21,7 +21,7 @@
           melalui Seakun.id, member dinyatakan sudah mengerti dan setuju dengan
           skema harga yang sudah ditetapkan.
         </div>
-        <div class="row justify-content-around content-mobile">
+        <div class="flex justify-around flex-wrap content-mobile mb-[5px]">
           <div v-for="(item, index) in providerList" :key="index">
             <div class="card">
               <div class="w-1/4">
@@ -31,23 +31,25 @@
                   class="h-10 object-contain"
                 />
               </div>
-              <img :src="item.screenshot" alt="price scheme" class="ss" />
-              <p class="font-weight-bold info-mobile">Detail Harga</p>
+              <div class="border my-2">
+                <img :src="item.screenshot" alt="price scheme" class="ss" />
+              </div>
+              <p class="font-bold text-sm md:text-base">Detail Harga</p>
               <div
-                class="row pt-1"
+                class="mb-[5px] pt-1 flex justify-between items-center"
                 v-for="(info, ind) in item.informations"
                 :key="ind"
               >
                 <div
-                  :class="`col-md-auto info-mobile ${
-                    info.is_total ? 'font-weight-bold' : ''
+                  :class="`col-md-auto text-sm md:text-base ${
+                    info.is_total ? 'font-bold' : ''
                   }`"
                 >
                   {{ info.title }}
                 </div>
                 <div
-                  :class="`col text-right info-mobile ${
-                    info.is_total ? 'font-weight-bold' : ''
+                  :class="`col text-right text-sm md:text-base ${
+                    info.is_total ? 'font-bold' : ''
                   }`"
                 >
                   {{ info.value }}
@@ -59,10 +61,10 @@
                 </p>
               </div>
               <div class="divider"></div>
-              <p class="font-weight-bold">Skema Berlangganan</p>
+              <p class="font-bold">Skema Berlangganan</p>
               <ol style="padding-left: 1rem" class="list-decimal">
                 <li
-                  class="pt-1"
+                  class="pt-1 text-sm md:text-base"
                   v-for="(scheme, indx) in item.schemes"
                   :key="indx"
                 >
@@ -151,8 +153,13 @@ export default {
       padding: 0 0px;
       margin-left: 0 !important;
       .card {
+        padding: 10px 14px;
         img {
           margin: 0 0;
+        }
+
+        .ss {
+          margin: 0;
         }
       }
     }

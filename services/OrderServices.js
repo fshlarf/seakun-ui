@@ -1,10 +1,15 @@
 import { API_ORDER_URL } from '~/constants/api.constants.js';
-import httpRequest from '~/helpers/httpRequest.js';
+import { httpRequest, httpRequestAuth } from '~/helpers/httpRequest.js';
 
 class OrderService {
   constructor(ctx) {
     this.ctx = ctx;
     this.serviceApi = httpRequest(ctx, API_ORDER_URL).serviceApi;
+    this.serviceApiAuth = httpRequestAuth(ctx, API_ORDER_URL).serviceApi;
+  }
+
+  getCustomerOrders(params) {
+    return this.serviceApiAuth.get('/customer', { params });
   }
 
   getDetailOrder(orderUid, customerUid) {
@@ -18,7 +23,11 @@ class OrderService {
   }
 
   createOrder(params) {
-    return this.serviceApi.post('/customer', { ...params }, { timeout: 20000 });
+    return this.serviceApiAuth.post(
+      '/customer',
+      { ...params },
+      { timeout: 20000 }
+    );
   }
 
   getPaymentConfirmation(orderUid, customerUid, additionalOrder) {

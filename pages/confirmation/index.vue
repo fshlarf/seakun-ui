@@ -126,13 +126,11 @@
         </div>
       </transition>
     </div>
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
 import Button from '~/components/atoms/Button';
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -140,7 +138,6 @@ export default {
   layout: 'new',
   components: {
     Button,
-    Snackbar,
   },
   data() {
     return {
@@ -236,34 +233,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#snackbar {
-  background-color: #daeeef;
-  color: #2f524b;
-  text-align: center;
-  border-radius: 4px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  top: 100px;
-  font-size: 17px;
-  margin: 0 auto;
-  max-width: 600px;
-  left: 65%;
-  margin-left: -300px;
-  font-weight: 400;
-  display: grid;
-  button {
-    margin-top: 0px !important;
-    margin-bottom: 10px !important;
-  }
-  span {
-    font-size: 28px;
-    font-weight: 700;
-    cursor: pointer;
-    padding: 0px 12px;
-  }
-}
-
 .bg-box {
   background-color: rgb(252, 254, 254);
 }
@@ -273,14 +242,5 @@ export default {
 .slide-up-enter {
   transform: translateY(-20vh);
   opacity: 0;
-}
-@media (max-width: 800px) {
-  #snackbar {
-    position: absolute !important;
-    max-width: 200px !important;
-    left: 30% !important;
-    top: 60% !important;
-    margin-left: 0px !important;
-  }
 }
 </style>

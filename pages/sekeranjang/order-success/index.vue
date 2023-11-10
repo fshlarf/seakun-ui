@@ -101,12 +101,10 @@
       </div>
     </div>
     <Footer />
-    <Snackbar ref="snackbar" />
   </div>
 </template>
 
 <script>
-import Snackbar from '~/components/mollecules/Snackbar.vue';
 import Navbar from '~/components/mollecules/NavbarBlank.vue';
 import Footer from '../views/Footer.vue';
 import { mapActions, mapGetters } from 'vuex';
@@ -115,7 +113,6 @@ export default {
   components: {
     Navbar,
     Footer,
-    Snackbar,
   },
   data() {
     return {
@@ -146,10 +143,9 @@ export default {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(value).then(
           () => {
-            this.$refs.snackbar.showSnackbar({
-              color: 'bg-green-400',
+            this.$alert.show({
+              status: 'success',
               message: `${name} berhasil disalin`,
-              className: '',
             });
           },
           (err) => console.log(err)
@@ -174,10 +170,9 @@ export default {
       try {
         let successful = document.execCommand('copy');
         if (successful) {
-          this.$refs.snackbar.showSnackbar({
-            color: 'bg-green-400',
+          this.$alert.show({
+            status: 'success',
             message: `${name} berhasil disalin`,
-            className: '',
           });
         }
       } catch (err) {

@@ -25,12 +25,12 @@
         v-if="buttonChangeDuration"
         label="Ubah Durasi"
         @click="changeDuration"
-        class="bg-green-seakun text-base text-white font-bold py-2 self-end"
+        class="bg-green-seakun text-base text-white font-bold p-2 self-end"
         :disabled="!order.checked"
       />
     </div>
     <div class="tn:my-2 md:my-3 border-b border-[#E5E5E5]" />
-    <div class="tn:text-sm md:text-base font-semibold text-secondary">
+    <div class="tn:text-sm md:text-base text-secondary">
       <p>{{ order.customerEmail }}</p>
       <p>{{ order.customerPhone }}</p>
     </div>
@@ -69,13 +69,13 @@
           </div>
         </div>
       </div>
-      <div class="tn:my-2 md:my-3 border-b border-[#E5E5E5]" />
+      <!-- <div class="tn:my-2 md:my-3 border-b border-[#E5E5E5]" />
       <div class="flex justify-between items-center">
         <p class="text-base font-normal opacity-50">Biaya Langganan</p>
         <p class="text-base font-bold">
           {{ formatMoneyRupiah(order.provider.package.variant.grandTotal) }}
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

@@ -93,14 +93,16 @@ export default {
       groupList: 'getGroups',
     }),
   },
-  // beforeMount() {
-  //   this.$router.push('/info/maintenance');
-  // },
+  beforeMount() {
+    this.$router.push('/info/maintenance');
+  },
   mounted() {
     this.checkReferralCode();
     const userGroup = document.getElementById('pengguna');
     if (this.providerList.list.length === 0) {
       this.fetchProvider('youtube');
+    } else {
+      this.isShowModalBase = false;
     }
     this.observeUserGroupSection(userGroup);
   },
