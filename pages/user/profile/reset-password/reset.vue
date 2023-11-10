@@ -66,7 +66,7 @@
           </p>
           <Button
             @click="toProfilePage"
-            class="text-white mt-5 bg-green-primary border-2 border-green-primary w-full md:max-w-[138px] !text-base md:h-[42px]"
+            class="text-white mt-5 py-2 bg-green-primary border-2 border-green-primary w-full md:max-w-[138px] !text-base md:h-[42px]"
             >OK</Button
           >
         </div>

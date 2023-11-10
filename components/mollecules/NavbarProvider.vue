@@ -83,21 +83,23 @@
         </nuxt-link>
       </div>
       <div v-else class="py-3 border-b">
-        <div class="mx-auto w-[321px] md:w-full flex items-center gap-3">
-          <nuxt-link class="" to="/user/profile">
+        <nuxt-link class="" to="/user/profile">
+          <div class="mx-auto w-[321px] md:w-full flex items-center gap-3">
             <img
               :src="`/images/profile-page/avatar/${avatar}.svg`"
               alt="profile"
               class="rounded-full w-[42px] h-[42px] border border-[#D8EDEE]"
             />
-          </nuxt-link>
-          <p>Profil</p>
+            <p>Profil</p>
+          </div>
+        </nuxt-link>
+      </div>
+      <nuxt-link to="/">
+        <div class="my-4 flex items-center gap-1 mx-auto w-[321px] md:w-full">
+          <img src="/images/icons/atoms/home.svg" alt="kembali" />
+          <p>Kembali ke Beranda</p>
         </div>
-      </div>
-      <div class="my-4 flex items-center gap-1 mx-auto w-[321px] md:w-full">
-        <img src="/images/icons/atoms/home.svg" alt="kembali" />
-        <p>Kembali ke Beranda</p>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>

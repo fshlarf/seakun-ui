@@ -145,13 +145,14 @@
               <div
                 v-for="(pkg, id) in packages"
                 :key="id"
-                class="relative z-0 rounded-[8px] w-[99px] md:w-[233px] md:rounded-[8px] overflow-hidden"
+                class="relative z-0 rounded-[8px] w-[99px] md:w-[233px] md:rounded-[8px] overflow-hidden cursor-pointer"
                 :class="`${
                   selectedPackage &&
                   selectedPackage.packageUid == pkg.packageUid
                     ? 'border-2 border-primary'
                     : ''
                 }`"
+                @click="onSelectPackage(pkg)"
               >
                 <div
                   v-if="pkg.active !== 1"
@@ -164,14 +165,7 @@
                   </div>
                 </div>
                 <div
-                  @click="onSelectPackage(pkg)"
                   class="absolute z-10 bottom-0 left-0 w-full h-[39px] md:h-[71px] px-1 flex justify-center items-center pt-3"
-                  :class="`${
-                    selectedPackage &&
-                    pkg.packageUid === selectedPackage.packageUid
-                      ? ''
-                      : 'cursor-pointer'
-                  }`"
                 >
                   <p class="text-[10px] lg:text-[20px] font-bold text-white">
                     {{ pkg.packageName }}
@@ -465,8 +459,12 @@
           <Button
             @click="onClickOrder"
             add-class="w-full text-base text-white bg-primary py-3 text-center font-bold mt-[24px]"
-            :disabled="!selectedPackage"
-            >Pesan</Button
+            :disabled="selectedPackage && selectedPackage.active == 0"
+            >{{
+              selectedPackage && selectedPackage.active == 1
+                ? 'Pesan'
+                : 'Slot sedang penuh'
+            }}</Button
           >
         </div>
       </div>
@@ -487,10 +485,14 @@
         </div>
         <Button
           @click="onClickOrder"
-          add-class="w-full text-white bg-primary py-2 md:py-3 text-center font-bold"
-          :disabled="!selectedPackage"
+          add-class="w-full text-white bg-primary py-3 md:py-3 text-center font-bold"
+          :disabled="selectedPackage && selectedPackage.active == 0"
           :is-loading="isLoadingCreateOrder"
-          >Pesan</Button
+          >{{
+            selectedPackage && selectedPackage.active == 1
+              ? 'Pesan'
+              : 'Slot sedang penuh'
+          }}</Button
         >
       </div>
     </div>
@@ -666,15 +668,9 @@ export default {
           this.packages = this.provider.packages.filter((pkg) => {
             return pkg.variants.some((variant) => variant.isDisplayed == 1);
           });
-          this.selectedPackage = this.packages.find((pkg) => {
-            return pkg.active == 1;
-          });
+          this.selectedPackage = this.packages[0];
           if (this.selectedPackage) {
-            this.selectedVariant = this.selectedPackage.variants.find(
-              (variant) => {
-                return variant.isActive == 1;
-              }
-            );
+            this.selectedVariant = this.selectedPackage.variants[0];
             if (this.selectedVariant) {
               this.packageVariantUid = this.selectedVariant.uid;
             }
