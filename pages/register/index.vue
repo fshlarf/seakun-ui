@@ -30,7 +30,7 @@
           >
             <form @submit.prevent="submit">
               <img
-                src="/images/background/bg-register-mobile.png"
+                src="/images/background/bg-register-mobile.webp"
                 alt="register"
                 class="w-full object-contain lg:hidden rounded-lg"
               />
