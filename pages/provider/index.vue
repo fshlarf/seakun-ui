@@ -668,7 +668,10 @@ export default {
           this.packages = this.provider.packages.filter((pkg) => {
             return pkg.variants.some((variant) => variant.isDisplayed == 1);
           });
-          this.selectedPackage = this.packages[0];
+          const activePackage = this.packages.find((pkg) => pkg.active == 1);
+          this.selectedPackage = activePackage
+            ? activePackage
+            : this.packages[0];
           if (this.selectedPackage) {
             this.selectedVariant = this.selectedPackage.variants[0];
             if (this.selectedVariant) {
