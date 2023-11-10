@@ -1,7 +1,14 @@
 <template>
-  <div class="rounded-[10px] text-gray-secondary">
+  <div
+    class="rounded-[10px] overflow-hidden text-gray-secondary border"
+    :class="
+      order.status.value === 'Cancel' || order.status.value === 'Refund'
+        ? ''
+        : 'border-green-seakun-secondary-dark/30'
+    "
+  >
     <header
-      class="rounded-t-[10px] border-[1px] border-b-0 flex items-center justify-between p-3 md:px-5 md:py-3"
+      class="border-b-[1px] flex items-center justify-between p-3 md:px-5 md:py-3"
       :class="
         order.status.value === 'Cancel' || order.status.value === 'Refund'
           ? 'bg-[#D9D9D9]/30'
@@ -31,14 +38,7 @@
         </p>
       </div>
     </header>
-    <div
-      class="p-3 md:p-5 border-[1px] rounded-b-[10px] flex justify-between items-center"
-      :class="
-        order.status.value === 'Cancel' || order.status.value === 'Refund'
-          ? ''
-          : 'border-green-seakun-secondary-dark/30'
-      "
-    >
+    <div class="p-3 md:p-5 flex justify-between items-center">
       <div>
         <section class="flex gap-2 items-center text-sm font-bold">
           <img
@@ -84,6 +84,23 @@
         />
       </div>
     </div>
+    <div
+      v-if="
+        order.status.value == 'Registered' || order.status.value == 'Pending'
+      "
+      class="border-t-[1px] py-2 px-3 md:px-5 flex justify-end items-center"
+      :class="
+        order.status.value === 'Cancel' || order.status.value === 'Refund'
+          ? ''
+          : 'border-green-seakun-secondary-dark/30'
+      "
+    >
+      <nuxt-link
+        :to="paymentLink"
+        class="bg-primary text-white rounded-[5px] md:rounded-[8px] py-1 md:py-2 px-3 text-sm font-bold text-center min-w-[118px]"
+        >Bayar</nuxt-link
+      >
+    </div>
   </div>
 </template>
 
@@ -98,6 +115,13 @@ export default {
     order: {
       typeof: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    paymentLink() {
+      const url = this.order.redirectUrl;
+      const startIndex = url.indexOf('/payment');
+      return url.substring(startIndex);
     },
   },
   methods: {
