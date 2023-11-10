@@ -94,17 +94,26 @@
       />
       <div class="mt-2">
         <p class="text-sm">Domisili</p>
-        <input
-          id="input-domicile"
-          type="text"
-          v-model="domicile"
-          placeholder="Pilih domisili"
-          class="mt-2 focus:outline-none rounded-[8px] border border-[#A0A3BD66] p-3 text-sm w-full"
-          @keyup="onSearchProvince"
-          @click="onClickDomicile"
-        />
+        <div class="relative z-0 mt-2">
+          <div class="absolute z-10 right-3 top-1/2 transform -translate-y-1/2">
+            <img
+              class="w-[16px]"
+              src="/images/icons/atoms/chevron-gray.svg"
+              alt="pilih domisili"
+            />
+          </div>
+          <input
+            id="input-domicile"
+            type="text"
+            v-model="domicile"
+            placeholder="Pilih domisili"
+            class="focus:outline-none rounded-[8px] border border-[#A0A3BD66] p-3 text-sm w-full"
+            @keyup="onSearchProvince"
+            @click="onClickDomicile"
+          />
+        </div>
       </div>
-      <div id="container-province" class="relative z-0 !mt-0">
+      <div id="container-province" class="relative z-10 !mt-0">
         <div
           id="drop-province"
           v-if="isShowDropDownDomicile"

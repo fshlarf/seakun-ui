@@ -1,7 +1,7 @@
 <template>
   <div class="w-full min-h-screen hero-login">
     <main class="container !px-4 pb-4 lg:pb-0">
-      <div class="w-full sm:max-w-[478px] mx-auto lg:hidden pt-8 relative z-40">
+      <div class="max-w-max lg:hidden pt-8 relative z-40">
         <nuxt-link to="/">
           <img src="/images/icons/atoms/arrow-bold.svg" alt="back" />
         </nuxt-link>
@@ -10,7 +10,7 @@
         class="mt-4 lg:mt-0 relative lg:fixed z-40 lg:top-[110px] lg:left-1/2 lg:-translate-x-1/2 bg-white pb-5 p-1 lg:p-5 lg:pb-8 rounded-[12px] mx-auto w-full sm:max-w-[478px]"
       >
         <img
-          src="/images/background/bg-register-mobile.png"
+          src="/images/background/bg-register-mobile.webp"
           alt="login"
           class="w-full object-contain lg:hidden rounded-lg"
         />

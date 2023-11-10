@@ -117,11 +117,11 @@ export default {
         case 'Registered':
           return 'Menunggu Pembayaran';
         case 'Waiting For Confirmation':
-          return 'Sedang diproses';
+          return 'Sedang Diproses';
         case 'Active':
           return 'Aktif';
         case 'Pending':
-          return 'Masa tenggang';
+          return 'Masa Tenggang';
         case 'Cancel':
           return 'Dibatalkan';
         case 'Refund':

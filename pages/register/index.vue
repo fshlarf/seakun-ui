@@ -11,7 +11,7 @@
         class="hidden lg:block h-full min-h-screen lg:w-[47%] bg-cover bg-center relative"
         style="background-image: url(/images/background/bg-register.png)"
       ></div>
-      <div class="w-full sm:max-w-[478px] mx-auto lg:hidden pt-8">
+      <div class="max-w-max lg:hidden pt-8 relative z-40">
         <nuxt-link to="/login">
           <img src="/images/icons/atoms/arrow-bold.svg" alt="back" />
         </nuxt-link>
@@ -30,7 +30,7 @@
           >
             <form @submit.prevent="submit">
               <img
-                src="/images/background/bg-register-mobile.png"
+                src="/images/background/bg-register-mobile.webp"
                 alt="register"
                 class="w-full object-contain lg:hidden rounded-lg"
               />

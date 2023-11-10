@@ -39,7 +39,7 @@
         />
         <Button
           v-else
-          class="w-full bg-green-seakun text-white py-2"
+          class="w-full bg-green-seakun text-white py-3"
           label="Upload Bukti Pembayaran"
           :disabled="isLoadingPayment"
           @click="onClickConfirm('digital')"

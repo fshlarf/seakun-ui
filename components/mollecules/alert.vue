@@ -1,12 +1,12 @@
 <template>
   <div
-    class="!px-4 lg:px-8 xl:px-0 w-full md:w-auto !overflow-hidden transition-all ease-linear duration-700"
+    class="!px-4 lg:px-8 xl:px-0 pb-4 w-full md:w-auto !overflow-hidden transition-all ease-linear duration-500"
     :class="`alert md:right-[20px] ${
       show ? 'top-[20px] xl:top-[30px] ' : '-top-[300px]'
     }`"
   >
     <div
-      class="!block xl:right-[85px] rounded-[8px] overflow-hidden bg-white shadow-md !w-full lg:max-w-max"
+      class="!block xl:right-[85px] rounded-[8px] overflow-hidden bg-white !w-full lg:max-w-max !shadow-md"
     >
       <div class="flex items-stretch gap-[10px] xl:gap-[20px] w-full">
         <div class="w-[5px] items-stretch shrink-0" :class="borderColor"></div>

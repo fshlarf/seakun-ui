@@ -40,7 +40,7 @@
 
     <div
       v-else
-      class="bg-white p-6 rounded-xl text-gray-secondary"
+      class="bg-white p-6 rounded-xl text-gray-secondary mt-6 md:mt-0"
       style="box-shadow: 0px 2px 10px 0px rgba(158, 161, 182, 0.1)"
     >
       <nuxt-link to="/user/profile" class="flex items-center gap-2 mt-0">
@@ -56,7 +56,7 @@
         <h3 class="text-gray-secondary text-[18px] font-bold mt-6">
           Cek Email Kamu
         </h3>
-        <p class="text-sm text-gray-secondary">
+        <p class="text-sm text-gray-secondary mx-auto max-w-[400px]">
           Kami telah mengirimkan instruksi pemulihan kata sandi ke email kamu.
           Token reset password hanya berlaku selama 12 jam.
         </p>
