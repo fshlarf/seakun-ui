@@ -9,7 +9,7 @@
       <div
         id="bg-register"
         class="hidden lg:block h-full min-h-screen lg:w-[47%] bg-cover bg-center relative"
-        style="background-image: url(/images/background/bg-register.png)"
+        style="background-image: url(/images/background/bg-register.webp)"
       ></div>
       <div class="max-w-max lg:hidden pt-8 relative z-40">
         <nuxt-link to="/login">
@@ -144,7 +144,13 @@
                     Dengan mendaftar, saya menyetujui
                     <a class="text-primary" href="/terms-of-use" target="_blank"
                       >Syarat dan Ketentuan Seakun</a
-                    >, serta Kebijakan Privasi
+                    >, serta
+                    <a
+                      class="text-primary"
+                      href="/privacy-policy"
+                      target="_blank"
+                      >Kebijakan Privasi</a
+                    >
                   </p>
                 </div>
               </div>
@@ -462,11 +468,6 @@ export default {
         console.log(error);
         if (error.response.status === 400) {
           this.isShowAlreadyRegistered = true;
-          // this.$alert.show({
-          //   status: 'error',
-          //   message:
-          //     'Email sudah terdaftar. Silakan login atau reset password di halaman login jika kamu lupa password',
-          // });
         } else {
           this.$alert.show({
             status: 'error',

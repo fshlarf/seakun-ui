@@ -39,7 +39,7 @@
           class="cursor-pointer"
           @click="handleTab(menu.uid)"
         >
-          <div>
+          <div v-if="menu.name !== 'Refund'">
             <p
               :key="id"
               class="text-sm pb-4 pl-2 pr-1 whitespace-nowrap"

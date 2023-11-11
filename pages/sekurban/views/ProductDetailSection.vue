@@ -33,19 +33,6 @@
           }`"
         ></div>
       </div>
-      <!-- <div
-        id="cow-slide-container"
-        class="flex overflow-x-auto hide-scrollbar cow-slide-container"
-      >
-        <div
-          v-for="(image, id) in cowImages"
-          :key="id"
-          :id="`slide-${id + 1}`"
-          class="w-full flex-none overflow-hidden bg-black cow-img"
-        >
-          <img class="w-full object-contain" :src="image.img" alt="foto sapi" />
-        </div>
-      </div> -->
       <div>
         <img
           :src="`/images/sekurban/cow/cow-${activeSlider}.jpg`"

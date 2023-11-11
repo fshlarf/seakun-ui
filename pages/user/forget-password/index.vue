@@ -4,11 +4,13 @@
       <section
         class="relative w-full min-h-screen bg-[#DFFFF8] hidden lg:block"
       >
-        <img
-          src="/images/brand-seakun/seakun-green.svg"
-          alt="seakun"
-          class="w-[120px] h-[29px] absolute top-[61px] left-[59px]"
-        />
+        <nuxt-link to="/">
+          <img
+            src="/images/brand-seakun/seakun-green.svg"
+            alt="seakun"
+            class="w-[120px] h-[29px] absolute top-[61px] left-[59px]"
+          />
+        </nuxt-link>
         <img
           src="/images/user/forgot-password.svg"
           alt="illustration"
@@ -32,7 +34,7 @@
             />
             <div v-if="!isEmailSent" class="mx-auto lg:mt-[148px]">
               <img
-                src="/images/illustration/forgot-password/request-mobile.png"
+                src="/images/illustration/forgot-password/request-mobile.webp"
                 alt="email"
                 class="w-full lg:hidden"
               />
