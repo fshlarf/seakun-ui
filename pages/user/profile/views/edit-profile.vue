@@ -93,24 +93,22 @@
         @keyup="validateForm"
       />
       <div class="mt-2">
-        <p class="text-sm">Domisili</p>
+        <p class="text-sm">Provinsi</p>
         <div class="relative z-0 mt-2">
           <div class="absolute z-10 right-3 top-1/2 transform -translate-y-1/2">
             <img
               class="w-[16px]"
+              :class="{ 'rotate-180': isShowDropDownDomicile }"
               src="/images/icons/atoms/chevron-gray.svg"
               alt="pilih domisili"
             />
           </div>
-          <input
-            id="input-domicile"
-            type="text"
-            v-model="domicile"
-            placeholder="Pilih domisili"
-            class="focus:outline-none rounded-[8px] border border-[#A0A3BD66] p-3 text-sm w-full"
-            @keyup="onSearchProvince"
+          <div
             @click="onClickDomicile"
-          />
+            class="cursor-pointer rounded-[8px] border border-[#A0A3BD66] p-3 text-sm w-full"
+          >
+            {{ domicile ? domicile : 'Pilih Provinsi' }}
+          </div>
         </div>
       </div>
       <div id="container-province" class="relative z-10 !mt-0">
@@ -119,13 +117,25 @@
           v-if="isShowDropDownDomicile"
           class="!absolute !z-60 top-0 left-0 w-full rounded-[5px] bg-white py-2 overflow-y-auto overscroll-auto shadow-md"
         >
-          <div
-            v-for="(province, id) in province"
-            :key="id"
-            class="p-2 lg:p-3 text-center w-full cursor-pointer bg-white hover:bg-primary hover:text-white text-sm lg:text-base"
-            @click="onSelectProvince(province)"
-          >
-            {{ province }}
+          <div class="p-2">
+            <input
+              v-model="searchProvince"
+              class="focus:outline-none rounded-[8px] border border-[#A0A3BD66] px-3 py-2 text-sm w-full"
+              type="text"
+              placeholder="Cari provinsi"
+              @keyup="onSearchProvince"
+            />
+          </div>
+          <div>
+            <div
+              v-for="(province, id) in province"
+              :key="id"
+              placeholder="Cari provinsi"
+              class="p-2 lg:p-3 text-center w-full cursor-pointer bg-white hover:bg-primary hover:text-white text-sm lg:text-base"
+              @click="onSelectProvince(province)"
+            >
+              {{ province }}
+            </div>
           </div>
         </div>
       </div>
@@ -221,6 +231,7 @@ export default {
       password: '',
       address: '',
       domicile: '',
+      searchProvince: '',
       isUpdate: false,
       errorForm: {
         name: {
@@ -282,7 +293,6 @@ export default {
       drop.style.maxHeight = `${lowerPartHeight}px`;
     },
     onClickDomicile() {
-      this.onSearchProvince();
       this.isShowDropDownDomicile = !this.isShowDropDownDomicile;
       setTimeout(() => {
         const drop = document.getElementById('drop-province');
@@ -310,12 +320,12 @@ export default {
         ? this.profile.customerDetail.domicile
         : '';
       this.isUpdate = profileDomicile !== this.domicile;
+      this.searchProvince = '';
     },
     onSearchProvince() {
-      // this.isShowDropDownDomicile = true;
       this.province = this.indonesiaProvince.filter((province) => {
         const prov = province.toLowerCase();
-        const dom = this.domicile.toLowerCase();
+        const dom = this.searchProvince.toLowerCase();
         return prov.includes(dom);
       });
       const drop = document.getElementById('drop-province');

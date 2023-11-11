@@ -5,7 +5,7 @@
       v-if="isOpenMenu"
       class="fixed z-40 top-0 left-0 w-full h-screen bg-black/40"
     ></div>
-    <div class="pt-20 px-[20px] md:w-full md:container dm-sans pb-24">
+    <div class="pt-20 px-[20px] md:w-full md:container dm-sans pb-28">
       <div class="flex items-center gap-2 text-sm">
         <nuxt-link class="text-primary" to="/#provider">Beranda</nuxt-link>
         <p>></p>
@@ -55,17 +55,17 @@
           >
             <div class="flex items-center gap-1 lg:gap-3">
               <img
-                class="h-[20px] lg:h-[40px]"
+                class="h-[20px] lg:h-[40px] shrink-0"
                 :src="`/images/icons/${provider.slug}.svg`"
                 alt="provider logo"
               />
-              <p class="text-[18px] lg:text-[24px] font-bold">
+              <p class="text-[18px] lg:text-[24px] font-bold whitespace-nowrap">
                 {{ provider.name }}
               </p>
             </div>
             <div
               v-if="selectedPackage && selectedPackage.po == 1"
-              class="text-[12px] lg:text-[14px] bg-[#F6F6BE] rounded-full px-3 py-1 font-medium"
+              class="text-[12px] lg:text-[14px] bg-[#F6F6BE] rounded-full px-3 py-1 font-medium shrink-0"
             >
               Preorder
             </div>
@@ -148,7 +148,7 @@
                 class="relative z-0 rounded-[8px] w-[99px] md:w-[233px] md:rounded-[8px] overflow-hidden cursor-pointer"
                 :class="`${
                   selectedPackage &&
-                  selectedPackage.packageUid == pkg.packageUid
+                  selectedPackage.packageName == pkg.packageName
                     ? 'border-2 border-primary'
                     : ''
                 }`"
@@ -176,7 +176,7 @@
                   class="w-full"
                   :class="`${
                     selectedPackage &&
-                    pkg.packageUid === selectedPackage.packageUid
+                    pkg.packageName === selectedPackage.packageName
                       ? ''
                       : 'cursor-pointer'
                   }`"
@@ -195,38 +195,42 @@
             </div>
           </div>
 
-          <div v-if="!isLoading && selectedPackage" class="mt-4 lg:hidden">
+          <div
+            v-if="!isLoading && selectedPackage && selectedPackage.active == 1"
+            class="mt-4 lg:hidden"
+          >
             <h3 class="text-sm font-medium">Pilih Durasi Berlangganan</h3>
             <div class="mt-[12px] grid grid-cols-3 gap-[12px]">
-              <div
-                v-for="(variant, id) in selectedPackage.variants"
-                :key="id"
-                @click="onSelectVariant(variant)"
-                class="rounded-[6px] h-[37px] flex justify-center items-center gap-[4px]"
-                :class="`${
-                  variant.uid == selectedVariant.uid
-                    ? 'bg-[#DFF6F2]'
-                    : 'bg-[#F6FBFA] cursor-pointer'
-                }`"
-              >
-                <img
-                  :src="`/images/icons/atoms/${
-                    variant.uid == selectedVariant.uid
-                      ? 'radio-button-active'
-                      : 'radio-button'
-                  }.svg`"
-                  alt="radio"
-                />
-                <p
-                  class="text-sm"
+              <div v-for="(variant, id) in selectedPackage.variants" :key="id">
+                <div
+                  v-if="variant.isActive == 1"
+                  @click="onSelectVariant(variant)"
+                  class="rounded-[6px] h-[37px] flex justify-center items-center gap-[4px]"
                   :class="`${
                     variant.uid == selectedVariant.uid
-                      ? 'text-primary'
-                      : 'text-[#66738F]'
+                      ? 'bg-[#DFF6F2]'
+                      : 'bg-[#F6FBFA] cursor-pointer'
                   }`"
                 >
-                  {{ variant.duration }} Bulan
-                </p>
+                  <img
+                    :src="`/images/icons/atoms/${
+                      variant.uid == selectedVariant.uid
+                        ? 'radio-button-active'
+                        : 'radio-button'
+                    }.svg`"
+                    alt="radio"
+                  />
+                  <p
+                    class="text-sm"
+                    :class="`${
+                      variant.uid == selectedVariant.uid
+                        ? 'text-primary'
+                        : 'text-[#66738F]'
+                    }`"
+                  >
+                    {{ variant.duration }} Bulan
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -255,7 +259,7 @@
             <div
               class="rounded-t-[10px] bg-[#EFFAF8] overflow-x-auto overscroll-auto hide-scrollbar border border-[#EFFAF8] lg:hidden"
             >
-              <div class="flex items-center gap-[4px] mx-[15px">
+              <div class="flex items-center gap-[4px]">
                 <div
                   v-for="(menu, id) in bottomMenus"
                   :key="id"
@@ -359,7 +363,9 @@
               <template v-else-if="selectedMenu.value == 'group'">
                 <template v-if="!isLoadingGroup">
                   <div v-if="providerGroups.length > 0">
-                    <div class="flex flex-wrap gap-[12px] lg:gap-[20px]">
+                    <div
+                      class="flex flex-wrap justify-center gap-[12px] lg:gap-[20px]"
+                    >
                       <GroupCard
                         v-for="(group, id) in providerGroups"
                         :key="id"
@@ -411,38 +417,42 @@
             </div>
           </div>
 
-          <div v-if="!isLoading && selectedPackage" class="mt-[20px]">
+          <div
+            v-if="!isLoading && selectedPackage && selectedPackage.active == 1"
+            class="mt-[20px]"
+          >
             <h3 class="font-medium">Pilih Durasi Berlangganan</h3>
             <div class="mt-[12px] grid grid-cols-2 gap-[16px]">
-              <div
-                v-for="(variant, id) in selectedPackage.variants"
-                :key="id"
-                @click="onSelectVariant(variant)"
-                class="rounded-[6px] h-[37px] flex justify-center items-center gap-[4px]"
-                :class="`${
-                  variant.uid == selectedVariant.uid
-                    ? 'bg-[#DFF6F2]'
-                    : 'bg-[#F6FBFA] cursor-pointer'
-                }`"
-              >
-                <img
-                  :src="`/images/icons/atoms/${
-                    variant.uid == selectedVariant.uid
-                      ? 'radio-button-active'
-                      : 'radio-button'
-                  }.svg`"
-                  alt="radio"
-                />
-                <p
-                  class="text-sm"
+              <div v-for="(variant, id) in selectedPackage.variants" :key="id">
+                <div
+                  v-if="variant.isActive == 1"
+                  @click="onSelectVariant(variant)"
+                  class="rounded-[6px] h-[37px] flex justify-center items-center gap-[4px]"
                   :class="`${
                     variant.uid == selectedVariant.uid
-                      ? 'text-primary'
-                      : 'text-[#66738F]'
+                      ? 'bg-[#DFF6F2]'
+                      : 'bg-[#F6FBFA] cursor-pointer'
                   }`"
                 >
-                  {{ variant.duration }} Bulan
-                </p>
+                  <img
+                    :src="`/images/icons/atoms/${
+                      variant.uid == selectedVariant.uid
+                        ? 'radio-button-active'
+                        : 'radio-button'
+                    }.svg`"
+                    alt="radio"
+                  />
+                  <p
+                    class="text-sm"
+                    :class="`${
+                      variant.uid == selectedVariant.uid
+                        ? 'text-primary'
+                        : 'text-[#66738F]'
+                    }`"
+                  >
+                    {{ variant.duration }} Bulan
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -631,7 +641,7 @@ export default {
       }
     },
     onSelectPackage(pkg) {
-      if (pkg.packageUid !== this.selectedPackage.packageUid) {
+      if (pkg.packageName !== this.selectedPackage.packageName) {
         this.selectedPackage = pkg;
         this.selectedVariant = this.selectedPackage.variants[0];
         const scheme = this.providerList.find((scheme) => {
@@ -668,7 +678,34 @@ export default {
           this.packages = this.provider.packages.filter((pkg) => {
             return pkg.variants.some((variant) => variant.isDisplayed == 1);
           });
-          this.selectedPackage = this.packages[0];
+          if (
+            this.provider.slug == 'canva' ||
+            this.provider.slug == 'microsoft-365'
+          ) {
+            let newPackages = [];
+            this.packages[0].variants.forEach((variant) => {
+              if (variant.isDisplayed == 1) {
+                const pkg = {
+                  ...this.packages[0],
+                  packageName: variant.duration == 1 ? 'Bulanan' : 'Tahunan',
+                  variants:
+                    variant.duration == 1
+                      ? this.packages[0].variants.filter(
+                          (vary) => vary.duration < 12
+                        )
+                      : this.packages[0].variants.filter(
+                          (vary) => vary.duration == 12
+                        ),
+                };
+                newPackages.push(pkg);
+              }
+            });
+            this.packages = newPackages;
+          }
+          const activePackage = this.packages.find((pkg) => pkg.active == 1);
+          this.selectedPackage = activePackage
+            ? activePackage
+            : this.packages[0];
           if (this.selectedPackage) {
             this.selectedVariant = this.selectedPackage.variants[0];
             if (this.selectedVariant) {
@@ -700,7 +737,6 @@ export default {
         if (fetchGroup.data) {
           const { data } = fetchGroup.data;
           this.providerGroups = data;
-          console.log(data);
         }
       } catch (error) {
         console.log(error);

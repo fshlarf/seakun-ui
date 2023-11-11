@@ -21,23 +21,13 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
-    <ModalBase :is-show="isShowModalBase" @onClose="isShowModalBase = false">
-      <img
-        class="hidden xl:block xl:max-w-[900px]"
-        src="/images/promo/bonus-yt.png"
-        alt="bonus youtube"
-      />
-      <img
-        class="w-full xl:hidden"
-        src="/images/promo/bonus-yt-mobile.png"
-        alt="bonus youtube"
-      />
-    </ModalBase>
+    <ModalPromo />
   </div>
 </template>
 
 <script>
 import Navbar from '~/components/mollecules/Navbar';
+import ModalPromo from '~/components/mollecules/ModalPromo';
 import HeaderSection from '~/components/organisms/HeaderSection';
 import PortofolioSection from '~/components/organisms/PortofolioSection';
 import ProductSection from '~/components/organisms/ProductSection';
@@ -55,7 +45,6 @@ import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
 import SeakunHelpFloatingButton from '~/components/mollecules/SeakunHelpFloatingButton';
 import ModalSekurbanBanner from '~/components/mollecules/ModalSekurbanBanner';
 import ModalSeakunHelp from '~/components/mollecules/ModalSeakunHelp';
-import ModalBase from '~/components/atoms/ModalBase';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
 
@@ -79,7 +68,7 @@ export default {
     SeakunHelpFloatingButton,
     ModalSekurbanBanner,
     ModalSeakunHelp,
-    ModalBase,
+    ModalPromo,
   },
   data() {
     return {
