@@ -10,7 +10,7 @@
           class="modal-popup z-50 relative shadow-lg max-w-[90%] max-h-[90%] min-w-[20rem]"
         >
           <div
-            class="h-[28px] w-[28px] absolute -right-[10px] -top-[10px] flex items-center justify-center rounded-full bg-black/60"
+            class="h-[28px] w-[28px] absolute -right-[10px] -top-[10px] flex items-center justify-center rounded-full bg-black/60 z-50"
             role="button"
             @click="onClose"
           >

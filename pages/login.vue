@@ -1,5 +1,12 @@
 <template>
   <div class="w-full min-h-screen hero-login">
+    <nuxt-link class="hidden lg:block absolute z-10 top-12 left-24" to="/">
+      <img
+        class="w-[120px]"
+        src="/images/brand-seakun/seakunid-white.svg"
+        alt="logo seakun"
+      />
+    </nuxt-link>
     <main class="container !px-4 pb-4 lg:pb-0">
       <div class="max-w-max lg:hidden pt-8 relative z-40">
         <nuxt-link to="/">
@@ -286,7 +293,7 @@ export default {
   font-family: 'DM Sans', sans-serif;
   font-feature-settings: 'clig' off, 'liga' off;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1020px) {
   .hero-login {
     background-color: #c7f5ec;
     position: relative;
@@ -306,7 +313,7 @@ export default {
 }
 @media only screen and (min-width: 1024px) {
   .hero-login {
-    background-image: url('/images/background/bg-login.png');
+    background-image: url('/images/background/bg-login.webp');
     background-size: cover;
   }
 }
