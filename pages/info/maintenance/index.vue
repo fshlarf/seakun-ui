@@ -17,7 +17,7 @@
       </p>
       <br />
       <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
-        Kembali aktif lagi Minggu, 20 Agustus 2023 pukul 06.00 WIB ya. See you!
+        Kembali aktif lagi Sabtu, 11 November 2023 pukul 06.00 WIB ya. See you!
         <!-- Kembali aktif lagi siang ini pukul 12.00 WIB ya. See you! -->
       </p>
       <a
@@ -42,9 +42,9 @@ export default {
   components: {
     Button,
   },
-  beforeMount() {
-    this.$router.push('/');
-  },
+  // beforeMount() {
+  //   this.$router.push('/');
+  // },
 };
 </script>
 
