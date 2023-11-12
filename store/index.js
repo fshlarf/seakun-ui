@@ -517,6 +517,7 @@ export const actions = {
           JSON.stringify({ ...dataResult, createdAt: moment().unix() })
         );
         dispatch('redirectPage', params);
+        commit('SET_LOADING_CREATE_ORDER', false);
       } else {
         throw new Error(fetchCreateOrder);
       }
@@ -540,8 +541,8 @@ export const actions = {
         commit('SET_MODAL_CONFIRMATION', false);
       }
       console.log(error);
+      commit('SET_LOADING_CREATE_ORDER', false);
     }
-    commit('SET_LOADING_CREATE_ORDER', false);
   },
   redirectPage({ dispatch }, param) {
     if (!param.userhost && !param.ispreorder) {

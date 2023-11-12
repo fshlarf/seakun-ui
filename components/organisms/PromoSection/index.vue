@@ -1,0 +1,154 @@
+<template>
+  <div class="w-full px-4 md:container pt-20">
+    <div class="w-full relative z-0">
+      <template v-if="banners.length > 1">
+        <!-- chevron left -->
+        <div
+          @click="scrollLeft"
+          class="absolute z-10 top-1/2 left-3 xl:left-[22px] transform -translate-y-1/2 w-[26px] lg:w-[32px] h-[26px] lg:h-[32px] rounded-full flex justify-center items-center"
+          :class="`${
+            activeSlider.id == 1
+              ? 'bg-black/10 cursor-not-allowed'
+              : 'bg-black/30 cursor-pointer'
+          }`"
+        >
+          <img
+            class="mr-[2px]"
+            src="/images/icons/atoms/chevron-white-left.svg"
+            alt="scroll left"
+          />
+        </div>
+        <!-- chevron right -->
+        <div
+          @click="scrollRight"
+          class="absolute z-10 top-1/2 right-3 xl:right-[22px] transform -translate-y-1/2 w-[26px] lg:w-[32px] h-[26px] lg:h-[32px] rounded-full flex justify-center items-center rotate-180"
+          :class="`${
+            activeSlider.id == banners.length
+              ? 'bg-black/10 cursor-not-allowed'
+              : 'bg-black/30 cursor-pointer'
+          }`"
+        >
+          <img
+            class="mr-[2px]"
+            src="/images/icons/atoms/chevron-white-left.svg"
+            alt="scroll right"
+          />
+        </div>
+      </template>
+      <div
+        id="promo-scroll"
+        class="flex rounded-[10px] lg:rounded-[15px] overflow-hidden"
+      >
+        <img
+          :id="`promo-${banner.id}`"
+          class="w-full flex-none"
+          v-for="(banner, id) in banners"
+          :key="id"
+          :src="banner.img"
+          alt="promo"
+        />
+      </div>
+    </div>
+    <div
+      v-if="banners.length > 1"
+      class="-mt-[13px] md:mt-[20px] flex justify-center items-center gap-[4px] lg:gap-[8px] relative z-10"
+    >
+      <div
+        role="button"
+        @click="scrollTo(banner.id)"
+        v-for="(banner, id) in banners"
+        :key="id"
+        class="w-[7px] h-[7px] lg:w-[8px] lg:h-[8px] rounded-full"
+        :class="`${
+          banner.id == activeSlider.id ? 'bg-primary' : 'bg-[#D9D9D9]'
+        }`"
+      ></div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      mobileBanners: [
+        {
+          id: 1,
+          img: '/images/promo/1111-mobile.webp',
+        },
+        {
+          id: 2,
+          img: '/images/promo/bonus-yt-mobile.webp',
+        },
+      ],
+      desktopBanners: [
+        {
+          id: 1,
+          img: '/images/promo/1111-desktop.webp',
+        },
+        {
+          id: 2,
+          img: '/images/promo/bonus-yt-desktop.webp',
+        },
+      ],
+      banners: [],
+      activeSlider: {},
+    };
+  },
+  mounted() {
+    this.selectBannersByScreenSize();
+  },
+  methods: {
+    selectBannersByScreenSize() {
+      let screen = window.innerWidth;
+      if (screen <= 500) {
+        this.banners = this.mobileBanners;
+        this.activeSlider = this.mobileBanners[0];
+      } else {
+        this.banners = this.desktopBanners;
+        this.activeSlider = this.desktopBanners[0];
+      }
+    },
+    scrollTo(id) {
+      const container = document.getElementById('promo-scroll');
+      this.activeSlider = this.banners.find((ban) => ban.id == id);
+      container.scrollTo({
+        top: 0,
+        left:
+          container.clientWidth * this.activeSlider.id - container.clientWidth,
+        behavior: 'smooth',
+      });
+    },
+    scrollRight() {
+      if (this.activeSlider.id < this.banners.length) {
+        const container = document.getElementById('promo-scroll');
+        const newSliderId = this.activeSlider.id + 1;
+        this.activeSlider = this.banners.find((ban) => ban.id == newSliderId);
+        container.scrollTo({
+          top: 0,
+          left:
+            container.clientWidth * this.activeSlider.id -
+            container.clientWidth,
+          behavior: 'smooth',
+        });
+      }
+    },
+    scrollLeft() {
+      if (this.activeSlider.id > 1) {
+        const container = document.getElementById('promo-scroll');
+        const newSliderId = this.activeSlider.id - 1;
+        this.activeSlider = this.banners.find((ban) => ban.id == newSliderId);
+        container.scrollTo({
+          top: 0,
+          left:
+            container.clientWidth * this.activeSlider.id -
+            container.clientWidth,
+          behavior: 'smooth',
+        });
+      }
+    },
+  },
+};
+</script>
+
+<style></style>

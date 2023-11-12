@@ -470,6 +470,7 @@
             @click="onClickOrder"
             add-class="w-full text-base text-white bg-primary py-3 text-center font-bold mt-[24px]"
             :disabled="selectedPackage && selectedPackage.active == 0"
+            :is-loading="isLoadingCreateOrder"
             >{{
               selectedPackage && selectedPackage.active == 1
                 ? 'Pesan'
@@ -628,11 +629,12 @@ export default {
       } else {
         this.$alert.show({
           status: 'error',
+          duration: 4000,
           message: 'Harap login untuk memesan',
         });
         setTimeout(() => {
           this.$router.push('/login');
-        }, 3000);
+        }, 2000);
       }
     },
     onSelectMenu(menu) {
