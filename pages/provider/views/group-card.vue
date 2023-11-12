@@ -29,13 +29,13 @@
         >
           <p class="leading-4 min-w-[14px]">{{ id + 1 }}.</p>
           <p
-            class="max-w-[85%] leading-4"
+            class="max-w-[85%] leading-4 truncate"
             :class="{ 'font-medium text-primary': member.customerName == '-' }"
           >
             {{
               member.customerName == '-'
-                ? ' Slot tersedia'
-                : ` ${member.customerName}`
+                ? 'Slot tersedia'
+                : `${member.customerName}`
             }}
           </p>
         </div>

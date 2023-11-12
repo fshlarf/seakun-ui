@@ -5,6 +5,7 @@
     <PortofolioSection />
     <BenefitSection />
     <!-- <SeakunHelpBanner /> -->
+    <PromoSection />
     <ProductSection />
     <OrderFlowSection />
     <PaymentSection />
@@ -21,7 +22,6 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
-    <ModalPromo />
   </div>
 </template>
 
@@ -30,6 +30,7 @@ import Navbar from '~/components/mollecules/Navbar';
 import ModalPromo from '~/components/mollecules/ModalPromo';
 import HeaderSection from '~/components/organisms/HeaderSection';
 import PortofolioSection from '~/components/organisms/PortofolioSection';
+import PromoSection from '~/components/organisms/PromoSection';
 import ProductSection from '~/components/organisms/ProductSection';
 import CompanyPartnerSection from '~/components/organisms/CompanyPartnerSection';
 import OrderFlowSection from '~/components/organisms/OrderFlowSection';
@@ -53,6 +54,7 @@ export default {
     Navbar,
     HeaderSection,
     PortofolioSection,
+    PromoSection,
     ProductSection,
     CompanyPartnerSection,
     OrderFlowSection,

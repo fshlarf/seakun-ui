@@ -3,6 +3,13 @@
     class="w-full min-h-screen h-full"
     :class="`${isRegisterSuccess ? 'bg-white' : 'hero-register'}`"
   >
+    <nuxt-link class="hidden lg:block absolute z-10 top-12 left-24" to="/">
+      <img
+        class="w-[120px]"
+        src="/images/brand-seakun/seakunid-white.svg"
+        alt="logo seakun"
+      />
+    </nuxt-link>
     <main
       class="px-4 sm:px-[1rem] md:px-[2rem] lg:px-0 pb-4 lg:pb-0 lg:!flex lg:grid-cols-none lg:justify-between"
     >
