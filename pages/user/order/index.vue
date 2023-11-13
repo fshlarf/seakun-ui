@@ -81,8 +81,17 @@
         <div v-if="orderList.length > 0" class="space-y-5 pb-5">
           <Card v-for="(data, id) in orderList" :key="id" :order="data" />
         </div>
-        <div v-else class="py-12 text-center">
-          <p class="text-sm lg:text-base">Data pesanan tidak ditemukan</p>
+        <div v-else class="p-4 text-center">
+          <div class="">
+            <img
+              class="mx-auto w-[100px] lg:w-[150px]"
+              src="/images/user/order-not-found.png"
+              alt="pesanan tidak ditemukan"
+            />
+          </div>
+          <p class="text-xs md:text-sm xl:text-base mt-[12px] lg:mt-[24px]">
+            Oops! Pesanan Tidak Ditemukan
+          </p>
         </div>
       </template>
     </div>

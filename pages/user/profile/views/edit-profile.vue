@@ -111,30 +111,34 @@
           </div>
         </div>
       </div>
-      <div id="container-province" class="relative z-10 !mt-0">
+      <div class="relative z-10 !mt-1 xl:!mt-2">
         <div
-          id="drop-province"
           v-if="isShowDropDownDomicile"
-          class="!absolute !z-60 top-0 left-0 w-full rounded-[5px] bg-white py-2 overflow-y-auto overscroll-auto shadow-md"
+          class="!absolute !z-60 top-0 left-0 w-full rounded-[8px] bg-white border py-2"
         >
-          <div class="p-2">
-            <input
-              v-model="searchProvince"
-              class="focus:outline-none rounded-[8px] border border-[#A0A3BD66] px-3 py-2 text-sm w-full"
-              type="text"
-              placeholder="Cari provinsi"
-              @keyup="onSearchProvince"
-            />
-          </div>
           <div>
-            <div
-              v-for="(province, id) in province"
-              :key="id"
-              placeholder="Cari provinsi"
-              class="p-2 lg:p-3 text-center w-full cursor-pointer bg-white hover:bg-primary hover:text-white text-sm lg:text-base"
-              @click="onSelectProvince(province)"
-            >
-              {{ province }}
+            <div class="px-2">
+              <input
+                v-model="searchProvince"
+                class="focus:outline-none rounded-[8px] border border-[#A0A3BD66] px-3 py-2 text-sm w-full"
+                type="text"
+                placeholder="Cari provinsi"
+                @keyup="onSearchProvince"
+              />
+            </div>
+            <div id="container-province">
+              <div id="drop-province" class="overflow-y-auto overscroll-auto">
+                <div
+                  v-for="(province, id) in province"
+                  :key="id"
+                  placeholder="Cari provinsi"
+                  class="p-2 lg:p-3 text-center w-full cursor-pointer bg-white hover:bg-primary/20 text-sm lg:text-base"
+                  :class="{ 'text-primary': province == domicile }"
+                  @click="onSelectProvince(province)"
+                >
+                  {{ province }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -321,6 +325,7 @@ export default {
         : '';
       this.isUpdate = profileDomicile !== this.domicile;
       this.searchProvince = '';
+      this.province = this.indonesiaProvince;
     },
     onSearchProvince() {
       this.province = this.indonesiaProvince.filter((province) => {

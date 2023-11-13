@@ -40,19 +40,21 @@
             class="flex justify-between"
             @click="handleClickOption(opt)"
           >
-            <p
-              class="text-xs font-medium min-w-[158px]"
-              :class="
-                activeTab == opt.uid ? 'text-green-primary' : 'text-[#66738F]'
-              "
-            >
-              {{ opt.name }}
-            </p>
-            <img
-              src="/images/icons/atoms/checked-green.svg"
-              alt="cheked"
-              v-if="activeTab == opt.uid"
-            />
+            <template v-if="opt.name !== 'Refund'">
+              <p
+                class="text-xs font-medium min-w-[158px]"
+                :class="
+                  activeTab == opt.uid ? 'text-green-primary' : 'text-[#66738F]'
+                "
+              >
+                {{ opt.name }}
+              </p>
+              <img
+                src="/images/icons/atoms/checked-green.svg"
+                alt="cheked"
+                v-if="activeTab == opt.uid"
+              />
+            </template>
           </section>
         </div>
       </div>
