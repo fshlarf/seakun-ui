@@ -81,3 +81,28 @@ export function unixToIndonesianDate(unixTimestamp) {
 
   return `${day} ${month} ${year}`;
 }
+
+export function unixToIndonesianShortDate(unix) {
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'Mei',
+    'Jun',
+    'Jul',
+    'Ags',
+    'Sep',
+    'Okt',
+    'Nov',
+    'Des',
+  ];
+
+  const dateObject = new Date(unix * 1000); // Convert seconds to milliseconds
+
+  const day = dateObject.getDate();
+  const month = months[dateObject.getMonth()];
+  const year = dateObject.getFullYear();
+
+  return `${day} ${month} ${year}`;
+}

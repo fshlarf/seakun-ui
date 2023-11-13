@@ -140,12 +140,12 @@
             <h3 class="text-sm lg:text-base font-medium">Pilih Paket</h3>
             <div
               v-if="!isLoading"
-              class="mt-[12px] flex items-center gap-[12px]"
+              class="mt-[12px] grid grid-cols-3 gap-[12px]"
             >
               <div
                 v-for="(pkg, id) in packages"
                 :key="id"
-                class="relative z-0 rounded-[8px] w-[99px] md:w-[233px] md:rounded-[8px] overflow-hidden cursor-pointer"
+                class="relative z-0 rounded-[8px] md:rounded-[8px] overflow-hidden cursor-pointer"
                 :class="`${
                   selectedPackage &&
                   selectedPackage.packageName == pkg.packageName
@@ -165,7 +165,10 @@
                   </div>
                 </div>
                 <div
-                  class="absolute z-10 bottom-0 left-0 w-full h-[39px] md:h-[71px] px-1 flex justify-center items-center pt-3"
+                  class="absolute z-10 bottom-0 left-0 w-full h-[39px] md:h-[71px] px-1 flex justify-center items-center pt-1"
+                  :class="{
+                    'pt-2': pkg.packageName == selectedPackage.packageName,
+                  }"
                 >
                   <p class="text-[10px] lg:text-[20px] font-bold text-white">
                     {{ pkg.packageName }}
