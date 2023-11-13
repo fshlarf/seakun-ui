@@ -97,6 +97,9 @@ export default {
   },
   mounted() {
     this.selectBannersByScreenSize();
+    setTimeout(() => {
+      this.scrollRight();
+    }, 10000);
   },
   methods: {
     selectBannersByScreenSize() {
@@ -131,6 +134,13 @@ export default {
             container.clientWidth,
           behavior: 'smooth',
         });
+        // setTimeout(() => {
+        //   if (this.activeSlider.id < this.banners) {
+        //     this.scrollRight();
+        //   } else {
+        //     this.scrollLeft();
+        //   }
+        // }, 10000);
       }
     },
     scrollLeft() {
