@@ -2220,26 +2220,26 @@ export const providerList = [
     ],
   },
   {
-    name: 'Resso',
-    slug: 'resso',
+    name: 'Tiktok Music',
+    slug: 'tiktok-music',
     title: 'Harga Paket Premium 3 Bulan',
-    img: '/images/product/brand/resso.webp',
-    screenshot: '/images/price-scheme/desktop/resso.webp',
-    screenshotMobile: '/images/price-scheme/mobile/resso.webp',
-    desc: 'Resso Paket Premium 3 Bulan',
+    img: '/images/product/brand/tiktok-music.webp',
+    screenshot: '/images/price-scheme/desktop/tiktok-music.webp',
+    screenshotMobile: '/images/price-scheme/mobile/tiktok-music.webp',
+    desc: 'Tiktok Music Paket Premium 3 Bulan',
     member: 5,
     schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Resso',
+      'Seakun membuat akun dan membeli Paket Premium di Tiktok Music',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Resso</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Paket Patungan pada <b>Tiktok Music</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Resso (3 Bulan)',
+        value: 'Tiktok Music (3 Bulan)',
         is_total: true,
       },
       {
@@ -2264,11 +2264,11 @@ export const providerList = [
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp16.386',
+        value: 'Rp15.386',
       },
       {
         title: 'Harga Paket 3 Bulan',
-        value: 'Rp69.000',
+        value: 'Rp68.000',
         is_total: true,
       },
     ],
