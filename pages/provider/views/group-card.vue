@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full p-[8px] lg:p-[12px] shadow-md rounded-[8px]">
+  <div
+    class="w-[141px] lg:w-[222px] p-[8px] lg:p-[12px] shadow-md rounded-[8px]"
+  >
     <div class="flex justify-between items-center">
       <div class="">
         <img
