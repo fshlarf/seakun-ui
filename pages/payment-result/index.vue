@@ -9,7 +9,7 @@
       :total-price="totalTransfer"
       @onClick="toHomePage()"
     />
-    <FailedPayment v-else />
+    <FailedPayment :order="mainOrder" v-else />
   </div>
 </template>
 <script>
@@ -30,6 +30,7 @@ export default {
     dataOrders: [],
     isLoadingDataOrder: true,
     totalTransfer: null,
+    mainOrder: {},
   }),
   mounted() {
     this.OrderService = new OrderService(this);
@@ -52,6 +53,7 @@ export default {
             total = total + el.payment.totalPrice;
           });
           this.totalTransfer = total;
+          this.mainOrder = this.dataOrders[0];
         } else {
           throw new Error(fetchDetailOrder);
         }
