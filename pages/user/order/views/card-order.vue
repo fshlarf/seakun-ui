@@ -29,12 +29,8 @@
         </h3>
       </div>
       <div
-        class="bg-white text-xs md:text-sm font-bold border-[1px] text-center rounded-full"
-        :class="[
-          order.status.value === 'Cancel' || order.status.value === 'Refund'
-            ? 'text-gray-secondary border-gray-secondary'
-            : 'text-green-seakun-secondary-dark border-green-seakun-secondary-dark',
-        ]"
+        class="text-xs md:text-sm font-bold border-[1px] text-center rounded-full"
+        :class="statusClass"
       >
         <p class="py-2 px-3 lg:px-4">
           {{ convertStatusOrderName(order.status.value) }}
@@ -135,6 +131,26 @@ export default {
       const url = this.order.redirectUrl;
       const startIndex = url.indexOf('/payment');
       return url.substring(startIndex);
+    },
+    statusClass() {
+      switch (this.order.status.value) {
+        case 'Waiting For Follow-up':
+          return 'text-[#E8B90E] bg-[#FDF7E5] border-[#FCF1CC]';
+        case 'Registered':
+          return 'text-[#FA5757] bg-[#FFEBEB] border-[#FEE7E7]';
+        case 'Waiting For Confirmation':
+          return 'text-[#08A081] bg-[#D8FAF3] border-[#D6FFF7]';
+        case 'Active':
+          return 'text-[#02BB20] bg-[#E3FFE9] border-[#CEF5D6]';
+        case 'Pending':
+          return 'text-[#FA5757] bg-[#FFEBEB] border-[#FEE7E7]';
+        case 'Cancel':
+          return 'text-[#737070] bg-[#F6F5F5] border-[#F1EEEE]';
+        case 'Refund':
+          return 'text-[#737070] bg-[#F6F5F5] border-[#F1EEEE]';
+        default:
+          return '';
+      }
     },
   },
   methods: {
