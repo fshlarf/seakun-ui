@@ -706,6 +706,18 @@ export default {
               }
             });
             this.packages = newPackages;
+          } else if (this.provider.slug == 'netflix') {
+            let newPackages = [];
+            this.packages.forEach((pkg) => {
+              const newPkg = {
+                ...pkg,
+                variants: pkg.variants.filter(
+                  (variant) => variant.duration == 1
+                ),
+              };
+              newPackages.push(newPkg);
+            });
+            this.packages = newPackages;
           }
           const activePackage = this.packages.find((pkg) => pkg.active == 1);
           this.selectedPackage = activePackage
