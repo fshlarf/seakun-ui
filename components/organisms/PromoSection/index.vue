@@ -74,20 +74,12 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/1111-mobile.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/bonus-yt-mobile.webp',
         },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/1111-desktop.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/bonus-yt-desktop.webp',
         },
       ],
@@ -97,9 +89,11 @@ export default {
   },
   mounted() {
     this.selectBannersByScreenSize();
-    setTimeout(() => {
-      this.scrollRight();
-    }, 10000);
+    if (this.banners.length > 1) {
+      setTimeout(() => {
+        this.scrollRight();
+      }, 10000);
+    }
   },
   methods: {
     selectBannersByScreenSize() {
@@ -134,13 +128,6 @@ export default {
             container.clientWidth,
           behavior: 'smooth',
         });
-        // setTimeout(() => {
-        //   if (this.activeSlider.id < this.banners) {
-        //     this.scrollRight();
-        //   } else {
-        //     this.scrollLeft();
-        //   }
-        // }, 10000);
       }
     },
     scrollLeft() {
