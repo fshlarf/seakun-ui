@@ -140,6 +140,7 @@ export default {
       groupScrollPosition: 0,
       isPillEndScroll: false,
       isGroupEndScroll: false,
+      providerUid: '',
     };
   },
   components: {
@@ -215,6 +216,9 @@ export default {
       );
     },
     onClickOrderProvider() {
+      if (!this.providerUid) {
+        this.providerUid = this.dataProviderList.list[0].uid;
+      }
       this.$router.push(
         `/provider?name=${this.highlight}&id=${this.providerUid}`
       );
