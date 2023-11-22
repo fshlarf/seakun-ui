@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="w-full tn:shadow-md tn:rounded-[8px]">
+    <div class="w-full tn:shadow-md tn:rounded-[8px] h-full">
       <div>
         <div
           @click="toggleShow(answer.id)"
@@ -57,7 +57,7 @@
         <Transition>
           <div
             v-show="isShowAnswer"
-            class="tn:px-6 xl:px-10 tn:py-4 md:py-6 bg-primary text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200"
+            class="! tn:px-6 xl:px-10 tn:py-4 md:py-6 bg-primary text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200"
             :class="{ accordion: isShowAnswer }"
           >
             <div v-if="answer.list">

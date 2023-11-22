@@ -90,7 +90,7 @@ export default {
         {
           id: 3,
           label: 'Flow',
-          tag: 'order-flow-semabar',
+          tag: 'flow-semabar',
         },
         {
           id: 4,
