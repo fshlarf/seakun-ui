@@ -1,5 +1,5 @@
 <template>
-  <div id="head" class="relative">
+  <div id="head-semabar" class="relative">
     <div
       class="absolute top-0 left-0 z-0 w-full tn:h-[411px] xl:h-[520px]"
     ></div>
@@ -55,7 +55,7 @@ export default {
 
   methods: {
     onClickOrder() {
-      const penggunaSection = document.getElementById('provider-semabar');
+      const penggunaSection = document.getElementById('service-information');
       penggunaSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start',

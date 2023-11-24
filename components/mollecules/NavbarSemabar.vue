@@ -7,11 +7,11 @@
     ></div>
     <div class="static z-0 w-full text-gray-700">
       <div class="container lg:flex lg:justify-between lg:items-center">
-        <nuxt-link to="/semabar">
+        <nuxt-link to="/">
           <div @click="scrollToTop">
             <img
               class="tn:h-[40px]"
-              src="/images/navbar/brand_seakun.png"
+              src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
             />
           </div>
@@ -90,7 +90,7 @@ export default {
         {
           id: 3,
           label: 'Flow',
-          tag: 'order-flow-semabar',
+          tag: 'flow-semabar',
         },
         {
           id: 4,

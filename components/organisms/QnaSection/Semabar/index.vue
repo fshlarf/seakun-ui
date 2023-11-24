@@ -1,5 +1,5 @@
 <template>
-  <div id="qna-semabar" class="container pt-20 tn:mb-12 xl:mb-20">
+  <div id="qna-semabar" class="container pt-[52px] tn:mb-[48px] xl:mb-[52px]">
     <div class="text-center mb-7 lg:mb-8 text-[#15382F]">
       <h1 class="font-bold text-base md:text-xl lg:text-[28px]">
         Frequently Asked Questions

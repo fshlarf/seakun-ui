@@ -1,42 +1,46 @@
 <template>
-  <div class="p-3 bg-[#DBF8F2] text-dmsans rounded-lg space-y-3">
-    <header class="flex justify-between items-center text-main">
-      <p class="text-sm font-medium">Venue yang tersedia</p>
-      <div class="flex items-center gap-1">
-        <p class="text-xs">Filter Kota</p>
-        <Chevron />
-      </div>
-    </header>
+  <div
+    class="bg-white p-3 cursor-pointer rounded-[6px]"
+    @click="$emit('click-card')"
+  >
     <section
-      class="rounded-[10px] border-[#00BA88] border-[1px] p-2 flex items-start gap-1 bg-[#EBFFF9]"
+      class="w-full flex justify-center items-center border border-[#A0A3BD26] h-[90px] rounded"
     >
       <img
-        src="/images/icons/atoms/round-info-green.svg"
-        alt="info"
-        class="w-3 h-3"
+        :src="`/images/semabar/venue/${cardData.images}`"
+        :alt="cardData.name"
+        class="max-w-[70px] max-h-[60px] md:max-w-[80px] md:max-h-[70px]"
       />
-      <p class="text-xs text-[#00BA88] font-semibold text-nunito">
-        Nikmati harga lebih terjangkau dengan menjadi member! Bayar sekaligus 4
-        match per-bulan dan nikmati biaya admin lebih murah!
+    </section>
+    <div class="flex justify-between mt-2 items-center">
+      <p class="text-xs text-[#66738F]">Komunitas Main Bareng</p>
+      <p
+        class="text-[11px] text-green-seakun-secondary-dark font-medium bg-[#DBF8F2] rounded-[10px] py-0.5 px-2"
+      >
+        {{ cardData.member }} Member
       </p>
-    </section>
-    <section>
-      <div></div>
-    </section>
+    </div>
+    <div class="mt-1">
+      <p class="text-xs text-main font-medium">{{ cardData.name }}</p>
+      <p class="text-[11px] text-[#66738F] mt-3">Harga Per Match</p>
+      <section class="flex justify-between text-xs mt-2">
+        <p class="text-main">Membership</p>
+        <p class="text-green-seakun-secondary-dark">
+          Rp.{{ cardData.price.membership }}
+        </p>
+      </section>
+      <section class="flex justify-between text-xs mt-2">
+        <p class="text-main">Non Membership</p>
+        <p class="text-green-seakun-secondary-dark">
+          Rp.{{ cardData.price.nonMembership }}
+        </p>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
-import Chevron from '~/components/atoms/Chevron.vue';
 export default {
-  components: {
-    Chevron,
-  },
-  data() {
-    return {
-      isClickChevron: false,
-    };
-  },
   props: {
     cardData: {
       typeof: Object,

@@ -7,7 +7,7 @@
     <FlowSemabar />
     <TestimonySemabar />
     <QnaSemabar />
-    <Footer />
+    <FooterSemabar />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import ServiceSemabar from '~/components/organisms/ServiceSection/Semabar/index.
 import FlowSemabar from '~/components/organisms/FlowSemabarSection/index.vue';
 import TestimonySemabar from '../../components/organisms/TestimonySection/Semabar/index.vue';
 import QnaSemabar from '~/components/organisms/QnaSection/Semabar/index.vue';
-import Footer from '~/components/mollecules/Footer';
+import FooterSemabar from '~/components/mollecules/FooterSemabar';
 
 export default {
   components: {
@@ -30,7 +30,7 @@ export default {
     FlowSemabar,
     QnaSemabar,
     TestimonySemabar,
-    Footer,
+    FooterSemabar,
   },
 };
 </script>

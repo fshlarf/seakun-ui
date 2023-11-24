@@ -10,7 +10,7 @@
         viewBox="0 0 16 16"
         class="cursor-pointer text-white absolute z-10"
         :class="`${mode === 'left' ? 'reverse' : ''}`"
-        fill="currentColor"
+        :fill="fillColor"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -42,6 +42,10 @@ export default {
     variant: {
       type: String,
       default: 'bg-primary',
+    },
+    fillColor: {
+      type: String,
+      default: '#ffff',
     },
   },
 };
