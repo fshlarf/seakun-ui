@@ -13,7 +13,10 @@
         </p>
       </div>
     </template>
-    <div class="tn:space-y-3 xl:space-y-0 xl:flex xl:justify-center xl:w-auto">
+    <div
+      class="tn:space-y-3 xl:space-y-0 xl:flex xl:w-auto"
+      :class="{ 'xl:justify-center': dataScheme.list.length < 4 }"
+    >
       <div v-for="(scheme, id) in dataScheme.list" :key="id">
         <div
           v-if="scheme.slug === dataScheme.slug"

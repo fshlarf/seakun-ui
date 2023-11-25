@@ -35,7 +35,7 @@
       <p>{{ order.customerPhone }}</p>
     </div>
     <div class="tn:my-2 md:my-3 border-b border-[#E5E5E5]" />
-    <div class="flex flex-column w-full tn:mt-2">
+    <div class="flex flex-col w-full tn:mt-2">
       <div class="">
         <div class="flex justify-between flex-wrap items-center w-full">
           <div>

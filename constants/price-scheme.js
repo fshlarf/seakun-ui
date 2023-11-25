@@ -49,6 +49,53 @@ export const providerList = [
   {
     name: 'Netflix',
     slug: 'netflix',
+    title: 'Harga Paket Premium (User Host TV)',
+    img: '/images/product/brand/netflix.png',
+    screenshot: '/images/price-scheme/desktop/netflix-host-tv.webp',
+    screenshotMobile: '/images/price-scheme/mobile/netflix-host-tv.webp',
+    desc: 'Netflix Paket Premium User Host TV 1 Bulan',
+    member: 4,
+    schemes: [
+      'Seakun meminta membuat akun di Netflix dan melakukan pembayaran',
+      'Setelah berhasil membayar, Seakun akan proses profil User Host di Netflix',
+      'Profile disesuaikan dengan nama masing-masing member',
+      'Profile dilengkapi PIN yang berbeda-beda',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Netflix User Host TV</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Host TV (1 Bulan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp186.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp186.000 ÷ 4 = Rp46.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp10.000',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp56.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Netflix',
+    slug: 'netflix',
     title: 'Harga Paket Premium (Reguler)',
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price-scheme/desktop/netflix-reguler.webp',
@@ -89,6 +136,53 @@ export const providerList = [
       {
         title: 'Harga Paket Bulanan',
         value: 'Rp53.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Netflix',
+    slug: 'netflix',
+    title: 'Harga Paket Premium (Reguler TV)',
+    img: '/images/product/brand/netflix.png',
+    screenshot: '/images/price-scheme/desktop/netflix-reguler-tv.webp',
+    screenshotMobile: '/images/price-scheme/mobile/netflix-reguler-tv.webp',
+    desc: 'Netflix Paket Premium User Reguler TV 1 Bulan',
+    member: 4,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Netflix',
+      'Dalam 1 akun tersebut, Seakun membuat profile sebanyak 4',
+      'Profile disesuaikan dengan nama masing-masing member',
+      'Profile dilengkapi PIN yang berbeda-beda',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Netflix User Reguler TV</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Reguler TV (1 Bulan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp186.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp186.000 ÷ 4 = Rp46.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp13.500',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp60.000',
         is_total: true,
       },
     ],

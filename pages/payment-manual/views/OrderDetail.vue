@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="flex-1 flex-column p-3 rounded border-l-4 border-green-seakun bg-white"
+      class="flex-1 flex-col p-3 rounded border-l-4 border-green-seakun bg-white"
     >
       <p class="text-lg font-bold">Detail Pemesan</p>
       <div class="my-3 border-b border-[#E5E5E5]" />
