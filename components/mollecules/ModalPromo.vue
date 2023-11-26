@@ -53,23 +53,23 @@ export default {
       isShowModal: true,
       promoImages: [],
       promoImageMobile: [
+        // {
+        //   id: 1,
+        //   img: '/images/promo/1111-mobile.webp',
+        // },
         {
           id: 1,
-          img: '/images/promo/1111-mobile.webp',
-        },
-        {
-          id: 2,
-          img: '/images/promo/bonus-yt-mobile.png',
+          img: '/images/promo/bonus-yt-mobile.webp',
         },
       ],
       promoImageDesktop: [
+        // {
+        //   id: 1,
+        //   img: '/images/promo/1111.webp',
+        // },
         {
           id: 1,
-          img: '/images/promo/1111.webp',
-        },
-        {
-          id: 2,
-          img: '/images/promo/bonus-yt.png',
+          img: '/images/promo/bonus-yt.webp',
         },
       ],
       slider: 1,

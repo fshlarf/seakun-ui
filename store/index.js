@@ -539,6 +539,8 @@ export const actions = {
         commit('SET_DATA_HELPER_ORDER', dataHelpOrder);
         commit('SET_MODAL_ORDER_TIMEOUT', true);
         commit('SET_MODAL_CONFIRMATION', false);
+      } else if (error.response.data.message.includes('token required')) {
+        this.$router.push('/login');
       }
       console.log(error);
       commit('SET_LOADING_CREATE_ORDER', false);

@@ -5,7 +5,7 @@
       <p class="shimmer w-6/12"></p>
       <p class="shimmer w-9/12"></p>
     </div>
-    <div v-else class="flex flex-column mt-4 items-center">
+    <div v-else class="flex flex-col mt-4 items-center">
       <p class="text-base font-normal opacity-50 mt-4">Total bayar</p>
       <div class="payment-detail__price flex cursor-pointer">
         <p
