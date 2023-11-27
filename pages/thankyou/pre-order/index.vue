@@ -1,7 +1,7 @@
 <template>
   <div class="lg:pt-10 w-full">
     <div
-      class="tn:w-full lg:w-[780px] mx-auto md:px-[75px] lg:pb-20 lg:rounded-3xl lg:shadow-2xl"
+      class="tn:w-full lg:w-[780px] px-4 mx-auto md:px-[75px] lg:pb-20 lg:rounded-3xl lg:shadow-2xl"
     >
       <div class="col">
         <div class="">

@@ -1,7 +1,7 @@
 <template>
   <div class="mt-[24px] md:mt-[28px]">
     <div
-      class="flex-1 flex-column p-3 rounded border-l-4 border-green-seakun bg-[#E9FCF8]/30"
+      class="flex-1 flex-col p-3 rounded border-l-4 border-green-seakun bg-[#E9FCF8]/30"
     >
       <p class="text-sm md:text-[20px] font-bold">Detail Pelanggan</p>
       <div class="my-3 border-b border-[#E5E5E5]" />

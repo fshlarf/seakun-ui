@@ -1,7 +1,7 @@
 <template>
   <div class="lg:pt-10 w-full">
     <div
-      class="tn:w-full lg:w-[780px] mx-auto md:px-[75px] lg:pb-20 lg:rounded-3xl lg:shadow-2xl"
+      class="tn:w-full lg:w-[780px] mx-auto px-4 md:px-[75px] lg:pb-20 lg:rounded-3xl lg:shadow-2xl"
     >
       <div class="col">
         <div class="">
@@ -57,7 +57,7 @@
               class="my-2 relative z-20"
             >
               <div class="flex space-x-5 items-start">
-                <div class="flex flex-column justify-center space-y-2">
+                <div class="flex flex-col justify-center space-y-2">
                   <div
                     class="w-[24px] h-[24px] bg-[#52AF9C] rounded-full"
                   ></div>

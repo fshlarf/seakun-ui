@@ -114,7 +114,7 @@
           />
         </div>
         <div
-          class="relative z-2 w-full tn:h-[575px] flex flex-column items-center overflow-hidden bg-gradient-to-t from-indigo-400 to-primary tn:pt-8"
+          class="relative z-2 w-full tn:h-[575px] flex flex-col items-center overflow-hidden bg-gradient-to-t from-indigo-400 to-primary tn:pt-8"
         >
           <div class="w-full">
             <div class="space-y-2 mx-auto max-w-max">

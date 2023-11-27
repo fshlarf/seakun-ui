@@ -33,7 +33,7 @@ export default {
       partners: [
         'xendit',
         'flip',
-        'transfez',
+        'jack',
         'support-seller',
         'axdif',
         'kitabisa',

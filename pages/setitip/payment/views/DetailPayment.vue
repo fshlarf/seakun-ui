@@ -55,7 +55,7 @@
         <div
           v-for="(payment, index) in paymentMethodSekurban"
           :key="index"
-          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
+          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-col justify-center items-center"
         >
           <img
             :src="`/images/payment/${payment.name}.png`"
@@ -83,7 +83,7 @@
         <div
           v-for="(payment, index) in paymetnMethod"
           :key="index"
-          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-column justify-center items-center"
+          class="payment-options bg-white shadow-md w-full rounded-md py-6 px-4 flex flex-col justify-center items-center"
         >
           <img
             :src="`/images/payment/${payment.name}.png`"
