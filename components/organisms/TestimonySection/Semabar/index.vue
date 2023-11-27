@@ -75,18 +75,21 @@ export default {
           address: 'Medan, Sumatera Utara',
           text:
             'Main minisoccer bersama Seakun benar-benar seru! Lapangan yang nyaman, atmosfer penuh semangat, dan teman-teman yang ramah. Terima kasih Seakun untuk pengalaman main sepakbola yang tak terlupakan!',
+          images: 'khoir.jpeg',
         },
         {
           name: 'Samsul',
           address: 'Medan, Sumatera Utara',
           text:
             'Serunya main bareng minisoccer bersama Seakun! Pengalaman bermain yang luar biasa, lapangan bagus, dan teman-teman  yang seru. Terima kasih Seakun untuk pengalaman bermain yang tak terlupakan!',
+          images: 'samsul.jpeg',
         },
         {
           name: 'Fauzan',
           address: 'Medan, Sumatera Utara',
           text:
             'Ini bukan sekadar main sepakbola, bersama Seakun kita jalani kebersamaan di lapangan dan di luar lapangan. Terima kasih Seakun untuk momen-momen tak terlupakan dan persahabatan yang terus berkembang!',
+          images: 'fauzan.jpeg',
         },
         {
           name: 'Gilang',
@@ -100,6 +103,7 @@ export default {
           address: 'Medan, Sumatera Utara',
           text:
             'Main mini soccer bareng seakun itu sangat asik. Kita bakal ketemu sama orang baru yang tidak kita kenal tapi meraka baik baik semua. Sistem yang di terapkan untuk pertandingan juga sangat efisien. Fun banget main bareng mereka',
+          images: 'iqbal.jpeg',
         },
       ],
     };
