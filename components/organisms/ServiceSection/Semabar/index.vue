@@ -13,7 +13,7 @@
       </p>
     </div>
     <section
-      class="flex items-center mt-6 mx-[23px] md:mx-[40px] lg:mx-[55px] justify-center gap-4"
+      class="flex items-center mt-6 mx-[23px] md:mx-[40px] lg:mx-[69px] justify-center gap-4"
     >
       <ButtonChevron
         variant="bg-[#00BA881A]"
@@ -23,28 +23,34 @@
         class="hidden md:block"
       />
       <div
-        class="flex items-center gap-[9px] lg:gap-4 overflow-x-scroll service-parent scroll-smooth"
+        class="flex items-center gap-[9px] lg:gap-8 overflow-x-scroll service-parent scroll-smooth"
         id="service-wrapper"
       >
         <section
           v-for="(service, id) in menus"
           :key="id"
-          class="transition-all ease-in duration-200 p-2 lg:p-4 rounded-t-xl cursor-pointer lg:min-w-[190px] lg:max-w-[190px]"
-          @click="handleClickMenu(service.name)"
-          :class="{
-            ' bg-[#DEFDF5] ': activeMenu === service.name,
-          }"
+          class="transition-all ease-in duration-200 p-2 lg:p-4 rounded-t-xl lg:min-w-[190px] lg:max-w-[190px]"
+          @click="handleClickMenu(service)"
+          :class="`{
+            ${activeMenu === service.name ? 'bg-[#DEFDF5] ' : null}
+            ${service.isActive ? 'cursor-pointer' : 'cursor-not-allowed'}
+          }`"
         >
           <div
             class="bg-cover bg-center relative service-menu rounded-[6px] text-center"
-            :class="{
-              'border-[3px] border-[#23D7A6] rounded-[10px]':
-                activeMenu === service.name,
-            }"
+            :class="`{
+              ${
+                activeMenu === service.name
+                  ? 'border-[3px] border-[#23D7A6] rounded-[10px]'
+                  : null
+              }:
+              ${!service.isActive ? 'opacity-30' : null}
+              
+            }`"
             :style="`background-image: url(/images/semabar/illustration/service-menu/${service.background})`"
           >
             <h3
-              class="text-sm font-bold text-white w-[120px] py-[15px] relative z-40 whitespace-nowrap"
+              class="text-sm font-bold text-white min-w-[120px] py-[15px] relative z-40 whitespace-nowrap"
             >
               {{ service.name }}
             </h3>
@@ -64,11 +70,39 @@
         <p class="text-sm font-medium md:text-base lg:text-[20px] text-main">
           Venue yang tersedia
         </p>
-        <div class="flex items-center gap-1 cursor-pointer">
-          <p class="text-xs md:text-sm lg:text-[18px] text-main font-medium">
-            Filter Kota
+        <div class="flex items-center gap-1 cursor-pointer relative">
+          <p
+            class="text-xs md:text-sm lg:text-[18px] text-main font-medium"
+            @click="isShowModalCity = !isShowModalCity"
+          >
+            {{
+              selectedCity && selectedCity != 'Semua'
+                ? selectedCity
+                : 'Filter Kota'
+            }}
           </p>
-          <Chevron />
+          <Chevron
+            :isShow="isShowModalCity"
+            @click="isShowModalCity = !isShowModalCity"
+          />
+          <div
+            class="bg-white px-5 z-20 rounded-[5px] space-y-2 absolute top-[100%] mt-3 right-0 overflow-hidden transition-all ease-in-out"
+            :class="isShowModalCity ? 'h-max py-2' : 'h-0'"
+          >
+            <Dropdown
+              :class-text="{
+                'text-green-seakun-secondary-dark': selectedCity == data.name,
+              }"
+              v-for="(data, id) in citys"
+              :key="id"
+              :data="data"
+              @clickMenuFilter="
+                filterCity(data),
+                  (selectedCity = data.name),
+                  (isShowModalCity = false)
+              "
+            />
+          </div>
         </div>
       </header>
       <section
@@ -116,12 +150,13 @@
 import CardService from './views/CardService.vue';
 import Chevron from '~/components/atoms/Chevron.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
-
+import Dropdown from './views/Dropdown.vue';
 export default {
   components: {
     CardService,
     Chevron,
     ButtonChevron,
+    Dropdown,
   },
   data() {
     return {
@@ -130,109 +165,40 @@ export default {
         {
           name: 'Mini Soccer',
           background: 'minisoccer.svg',
+          isActive: true,
+        },
+        {
+          name: 'Tenis',
+          background: 'tennis.svg',
+          isActive: false,
         },
         {
           name: 'Badminton',
           background: 'badminton.svg',
+          isActive: false,
         },
         {
           name: 'Futsal',
           background: 'futsal.svg',
+          isActive: false,
         },
         {
-          name: 'Tenis Meja',
-          background: 'tenis.svg',
-        },
-        {
-          name: 'Mini Soccer 2',
-          background: 'minisoccer.svg',
-        },
-        {
-          name: 'Badminton 2',
-          background: 'badminton.svg',
-        },
-        {
-          name: 'Futsal 2',
-          background: 'futsal.svg',
-        },
-        {
-          name: 'Tenis Meja 2',
-          background: 'tenis.svg',
+          name: 'Tenis Meja ',
+          background: 'table-tennis.svg',
+          isActive: false,
         },
       ],
       dataVenue: {
         list: [
           {
-            name: 'Pancoran Soccer Field 1',
+            name: 'Lapangan Permata Hijaue',
             member: 150,
             price: {
               membership: 85000,
               nonMembership: 95000,
             },
-            images: 'psf.svg',
-          },
-          {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'd-37.svg',
-          },
-          {
-            name: 'Pancoran Soccer Field',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'psf.svg',
-          },
-          {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'd-37.svg',
-          },
-          {
-            name: 'Pancoran Soccer Field',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'psf.svg',
-          },
-          {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'd-37.svg',
-          },
-          {
-            name: 'Pancoran Soccer Field',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'psf.svg',
-          },
-          {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'd-37.svg',
+            images: 'permata-hijau.svg',
+            city: 'Jakarta Selatan',
           },
           {
             name: 'Pancoran Soccer Field 1',
@@ -242,6 +208,7 @@ export default {
               nonMembership: 95000,
             },
             images: 'psf.svg',
+            city: 'Jakarta Pusat',
           },
           {
             name: 'D37 Mini Soccer',
@@ -251,10 +218,120 @@ export default {
               nonMembership: 95000,
             },
             images: 'd-37.svg',
+            city: 'Jakarta Timur',
+          },
+          {
+            name: 'EPIC Wesoccer by Doospace',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'epic-wesoccer.svg',
+            city: 'Jakarta Pusat',
+          },
+          {
+            name: 'Lapangan Permata Hijau',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'permata-hijau.svg',
+            city: 'Jakarta Pusat',
+          },
+          {
+            name: 'Main Gandaria',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'main-gandaria.svg',
+            city: 'Jakarta Pusat',
+          },
+          {
+            name: 'Lapangan Permata Hijaue',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'permata-hijau.svg',
+            city: 'Jakarta Selatan',
+          },
+          {
+            name: 'Pancoran Soccer Field 1',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'psf.svg',
+            city: 'Jakarta Pusat',
+          },
+          {
+            name: 'D37 Mini Soccer',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'd-37.svg',
+            city: 'Jakarta Timur',
+          },
+          {
+            name: 'EPIC Wesoccer by Doospace',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'epic-wesoccer.svg',
+            city: 'Jakarta Timur',
+          },
+          {
+            name: 'Lapangan Permata Hijau',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'permata-hijau.svg',
+            city: 'Jakarta Utara',
+          },
+          {
+            name: 'Main Gandaria',
+            member: 150,
+            price: {
+              membership: 85000,
+              nonMembership: 95000,
+            },
+            images: 'main-gandaria.svg',
+            city: 'Jakarta Utara',
           },
         ],
       },
+      citys: [
+        {
+          name: 'Semua',
+        },
+        {
+          name: 'Jakarta Selatan',
+        },
+        {
+          name: 'Jakarta Pusat',
+        },
+        {
+          name: 'Jakarta Timur',
+        },
+        {
+          name: 'Jakarta Utara',
+        },
+      ],
       filteredList: [],
+      isShowModalCity: false,
+      selectedCity: 'Semua',
     };
   },
   created() {
@@ -268,6 +345,16 @@ export default {
   },
 
   methods: {
+    filterCity(param) {
+      if (param.name == 'Semua') {
+        this.filteredList = this.dataVenue.list;
+      } else {
+        this.filteredList = this.dataVenue.list.filter(
+          (data) => data.city == param.name
+        );
+      }
+    },
+
     updateFilteredList() {
       const screenWidth = window.innerWidth;
 
@@ -280,10 +367,14 @@ export default {
       }
     },
     showAllDataVenue() {
-      this.filteredList = this.dataVenue.list;
+      if (this.selectedCity == 'Semua') {
+        this.filteredList = this.dataVenue.list;
+      }
     },
-    handleClickMenu(name) {
-      this.activeMenu = name;
+    handleClickMenu(val) {
+      if (val.isActive) {
+        this.activeMenu = val.name;
+      }
     },
     scrollFill(direction) {
       const wrapper = document.getElementById('service-wrapper');
@@ -315,6 +406,7 @@ export default {
   z-index: 20;
   background: rgba(0, 0, 0, 0.45);
 }
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .service-parent::-webkit-scrollbar {
   display: none;

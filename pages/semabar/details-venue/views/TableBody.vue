@@ -186,11 +186,17 @@
       <p class="text-main text-sm md:text-base font-medium pt-2">
         {{ data.addressVenue.address }}
       </p>
-      <img
-        src="/images/semabar/illustration/maps.png"
-        alt="maps"
-        class="w-full h-[154px] md:h-[200px] lg:h-[288px] mt-3 md:mt-4"
-      />
+      <div class="w-full h-[154px] md:h-[200px] lg:h-[288px]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1092.838005676419!2d106.88154836239426!3d-6.217592097366221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3623218d00b%3A0xc307600961d2da46!2sGOR%20Kurnia%20Badminton%20Court!5e0!3m2!1sid!2sid!4v1701167979982!5m2!1sid!2sid"
+          width="100%"
+          height="100%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </section>
     <section v-if="selected == 'facility' && data.facility">
       <p class="text-sm md:text-base text-[#66738F] font-medium">Fasilitas</p>
