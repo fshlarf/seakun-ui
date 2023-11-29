@@ -26,13 +26,13 @@
       <section class="flex justify-between text-xs mt-2">
         <p class="text-main">Membership</p>
         <p class="text-green-seakun-secondary-dark">
-          Rp.{{ cardData.price.membership }}
+          {{ toRupiah(cardData.price.membership) }}
         </p>
       </section>
       <section class="flex justify-between text-xs mt-2">
         <p class="text-main">Non Membership</p>
         <p class="text-green-seakun-secondary-dark">
-          Rp.{{ cardData.price.nonMembership }}
+          {{ toRupiah(cardData.price.nonMembership) }}
         </p>
       </section>
     </div>
@@ -45,6 +45,15 @@ export default {
     cardData: {
       typeof: Object,
       default: () => {},
+    },
+  },
+  methods: {
+    toRupiah(word) {
+      if (word) {
+        return 'Rp' + word.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+      } else {
+        return 'Rp0';
+      }
     },
   },
 };
