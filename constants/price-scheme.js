@@ -2697,7 +2697,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'RpRp3.301.556,80 ÷ 5 = Rp660.311,36',
+        value: 'Rp3.301.556,80 ÷ 5 = Rp660.311,36',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -2710,55 +2710,55 @@ export const providerList = [
       },
     ],
   },
-  {
-    name: 'Inshot',
-    slug: 'inshot',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/inshot.png',
-    screenshot: '/images/price-scheme/desktop/inshot.webp',
-    screenshotMobile: '/images/price-scheme/mobile/inshot.webp',
-    desc: 'Inshot Paket Premium 1 Tahun',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket InShot Pro',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Member membuat/menyediakan akun masing-masing',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Inshot Family</b> merupakan produk <b>khusus pengguna Apple<b>. Produk ini <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Inshot (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp249.000',
-      },
-      {
-        title: 'Harga + Pajak 11%',
-        value: 'Rp276.390',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp276.390 ÷ 5 = Rp49.800',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp28.200',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp78.000',
-        is_total: true,
-      },
-    ],
-  },
+  // {
+  //   name: 'Inshot',
+  //   slug: 'inshot',
+  //   title: 'Harga Paket Premium 1 Tahun',
+  //   img: '/images/product/brand/inshot.png',
+  //   screenshot: '/images/price-scheme/desktop/inshot.webp',
+  //   screenshotMobile: '/images/price-scheme/mobile/inshot.webp',
+  //   desc: 'Inshot Paket Premium 1 Tahun',
+  //   member: 5,
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket InShot Pro',
+  //     'Seakun bertindak sebagai user Host dalam grup',
+  //     'Member membuat/menyediakan akun masing-masing',
+  //     'Akun dishare HANYA ke 5 member dalam 1 grup',
+  //     'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+  //   ],
+  //   additionalInfo:
+  //     'Paket Patungan pada <b>Inshot Family</b> merupakan produk <b>khusus pengguna Apple</b>. Produk ini <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Inshot (1 Tahun)',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Provider',
+  //       value: 'Rp249.000',
+  //     },
+  //     {
+  //       title: 'Harga + Pajak 11%',
+  //       value: 'Rp276.390',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Per Grup',
+  //       value: '5',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp276.390 ÷ 5 = Rp49.800',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp28.200',
+  //     },
+  //     {
+  //       title: 'Harga Paket 1 Tahun',
+  //       value: 'Rp78.000',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
 ];
