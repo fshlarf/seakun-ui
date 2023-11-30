@@ -443,7 +443,7 @@ export const actions = {
       );
       if (fetchGroupList.data) {
         const { data } = fetchGroupList.data;
-        commit('SET_DATA_GROUPS', data);
+        commit('SET_DATA_GROUPS', data ? data : []);
       } else {
         throw new Error(fetchGroupList);
       }

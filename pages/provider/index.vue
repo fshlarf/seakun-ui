@@ -753,7 +753,7 @@ export default {
         );
         if (fetchGroup.data) {
           const { data } = fetchGroup.data;
-          this.providerGroups = data;
+          this.providerGroups = data ? data : [];
         }
       } catch (error) {
         console.log(error);
