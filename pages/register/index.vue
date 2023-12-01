@@ -77,7 +77,8 @@
                   @keyup="validationForm('email')"
                   :error="errorForm.email"
                 />
-                <div class="flex gap-3">
+                <p class="text-sm">Nomor Whatsapp</p>
+                <div class="flex gap-3 !mt-2">
                   <div
                     class="border h-full p-3 rounded-lg flex gap-1 items-center cursor-pointer"
                     @click="isShowModalCountry = true"
@@ -475,6 +476,13 @@ export default {
         console.log(error);
         if (error.response.status === 400) {
           this.isShowAlreadyRegistered = true;
+        } else if (error.response.status === 403) {
+          this.$alert.show({
+            status: 'error',
+            title: 'Nomor whatsapp tidak valid',
+            message: 'Pastikan nomor whatsapp kamu sudah benar',
+            duration: 6000,
+          });
         } else {
           this.$alert.show({
             status: 'error',
