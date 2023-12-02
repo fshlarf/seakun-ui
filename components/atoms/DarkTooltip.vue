@@ -4,9 +4,9 @@
     class="absolute bottom-[27px]"
     :class="`${
       position == 'right'
-        ? '-right-[24px]'
+        ? '-right-[20px]'
         : position == 'left'
-        ? '-left-[24px]'
+        ? '-left-[20px]'
         : 'left-1/2 transform -translate-x-1/2'
     }`"
   >
@@ -66,7 +66,7 @@ export default {
 .triangle-left {
   position: absolute;
   top: 100%;
-  left: 22px;
+  left: 18px;
   width: 0;
   height: 0;
   border-style: solid;
@@ -76,7 +76,7 @@ export default {
 .triangle-right {
   position: absolute;
   top: 100%;
-  right: 22px;
+  right: 18px;
   width: 0;
   height: 0;
   border-style: solid;
