@@ -31,8 +31,8 @@
                   class="h-10 object-contain"
                 />
               </div>
-              <div class="border my-2">
-                <img :src="item.screenshot" alt="price scheme" class="ss" />
+              <div class="w-full my-2">
+                <img :src="item.screenshotMobile" alt="price scheme" />
               </div>
               <p class="font-bold text-sm md:text-base">Detail Harga</p>
               <div
