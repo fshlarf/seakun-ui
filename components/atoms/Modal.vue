@@ -30,7 +30,7 @@
             <slot name="header"></slot>
           </div>
           <div
-            class="scroll-bar tn:px-3 tn:py-0 md:px-6 overflow-y-auto overscroll-auto"
+            class="scroll-bar px-3 !py-0 md:px-6 overflow-y-auto overscroll-auto"
           >
             <div v-if="!isLoading">
               <slot />
