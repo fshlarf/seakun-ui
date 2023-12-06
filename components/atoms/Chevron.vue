@@ -32,11 +32,10 @@ export default {
       typeof: String,
       default: '',
     },
-  },
-  data() {
-    return {
-      isShow: false,
-    };
+    isShow: {
+      typeof: Boolean,
+      default: false,
+    },
   },
 };
 </script>
