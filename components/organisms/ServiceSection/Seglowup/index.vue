@@ -1,11 +1,14 @@
 <template>
-  <div class="mt-[90px]" id="service-information">
+  <div
+    class="mt-6 md:mt-[44px] lg:mt-[64px] container-semabar"
+    id="service-seglowup"
+  >
     <div class="w-full text-center text-[#2A5446] max-w-[928px] mx-auto">
-      <h1 class="text-nunito font-[800] text-base md:text-xl lg:text-[30px]">
-        SeGlowUp
+      <h1 class="text-dmsans font-bold text-base md:text-xl lg:text-[30px]">
+        Layanan
       </h1>
-      <p class="text-nunito text-sm md:text-base lg:text-lg pt-2">
-        Layanan Patungan Treatment Kecantikan.
+      <p class="text-sm md:text-base lg:text-xl pt-2">
+        Berikut ini beragam layanan yang tersedia di SeGlowUp
       </p>
     </div>
     <section
@@ -62,24 +65,28 @@
           ZAP Series
         </p>
       </header>
+
       <section
         class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-6 w-full"
         v-if="zap && !dataProviderListActive.loading"
       >
         <CardService
-          v-for="(service, id) in zap.variants.slice(0, 3)"
+          v-for="(service, id) in zap.variants"
           :key="id"
           :data="service"
           :zap-uid="zap.uid"
           :id="1 + id"
         />
       </section>
-      <section v-else class="grid md:grid-cols-2 lg:grid-cols-3">
+      <section
+        v-else
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-6 w-full"
+      >
         <CardShimmer />
         <CardShimmer />
         <CardShimmer />
       </section>
-      <div
+      <!-- <div
         class="flex gap-2 items-center pt-6 mx-auto w-max cursor-pointer"
         @click="$router.push('/seglowup')"
       >
@@ -89,7 +96,7 @@
           Show more
         </p>
         <Chevron color="#00BA88" />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -97,8 +104,8 @@
 <script>
 import Chevron from '~/components/atoms/Chevron.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
+import CardShimmer from './views/CardShimmer.vue';
 import CardService from './views/CardService.vue';
-import CardShimmer from '~/components/organisms/ServiceSection/Seglowup/views/CardShimmer.vue';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -117,6 +124,9 @@ export default {
         (provider) => provider.slug == 'zap'
       );
     },
+  },
+  mounted() {
+    this.fetchProvider();
   },
   data() {
     return {
@@ -140,6 +150,9 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      fetchProvider: 'fetchProvider',
+    }),
     updateFilteredList() {
       const screenWidth = window.innerWidth;
 

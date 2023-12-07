@@ -1,5 +1,5 @@
 <template>
-  <div id="navbar" class="w-full fixed z-40 tn:py-3 lg:py-0 bg-none">
+  <div id="navbar-seglowup" class="w-full fixed z-40 tn:py-3 lg:py-0 bg-none">
     <div
       v-if="open"
       class="opacity-20 fixed inset-0 z-90 bg-black"
@@ -80,27 +80,27 @@ export default {
         {
           id: 1,
           label: 'Skema Harga',
-          tag: 'benefit-semabar',
+          tag: 'price-scheme-seglowup',
         },
         {
           id: 2,
           label: 'Flow Berlangganan',
-          tag: 'service-information',
+          tag: 'order-flow-seglowup',
         },
         {
           id: 3,
           label: 'Layanan',
-          tag: 'flow-semabar',
+          tag: 'service-seglowup',
         },
         {
           id: 4,
           label: 'Testimoni',
-          tag: 'testimony-semabar',
+          tag: 'testimony-seglowup',
         },
         {
           id: 5,
           label: 'FAQ',
-          tag: 'qna-semabar',
+          tag: 'qna-seglowup',
         },
       ],
     };
@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     handleScrollEffect() {
-      const myNav = document.getElementById('navbar');
+      const myNav = document.getElementById('navbar-seglowup');
       if (
         document.body.scrollTop >= 50 ||
         document.documentElement.scrollTop >= 50
@@ -152,7 +152,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bg-nav {
   background-color: #ffffff !important;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
