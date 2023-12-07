@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NavbarSeGlowUp from '~/components/mollecules/NavbarSeGlowUp';
+import NavbarSeGlowUp from '~/components/mollecules/NavbarSeglowUp';
 import HeaderSeGlowUp from '~/components/organisms/HeaderSection/Seglowup';
 import SeGlowUpScheme from '~/components/organisms/SeGlowUp/Scheme';
 import OrderFlowSeGlowUp from '~/components/organisms/SeGlowUp/OrderFlow';

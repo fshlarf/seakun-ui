@@ -1,6 +1,6 @@
 <template>
   <section
-    class="xl:mx-4 rounded-[10px] p-4 bg-white h-max"
+    class="rounded-[10px] p-[12px] md:p-4 bg-white h-max"
     style="box-shadow: 0px 2px 8px 0px rgba(28, 37, 44, 0.08)"
   >
     <div class="flex gap-3 items-center">

@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white p-3 rounded-[6px] w-full">
-    <nuxt-link :to="`/seglowup/provider?name=zap&id=${zapUid}`">
+    <nuxt-link to="/seglowup">
       <header
         class="bg-cover w-full h-[106px]"
         :style="`background-image: url(/images/seglowup/background/series-${id}.webp)`"

@@ -59,7 +59,7 @@
       />
     </section>
 
-    <div class="p-3 md:p-5 lg:p-8 bg-[#DBF8F2] text-dmsans rounded-lg">
+    <div class="p-3 md:p-5 lg:p-8 bg-[#DEF3EF] text-dmsans rounded-lg">
       <header class="flex justify-between items-center text-main">
         <p class="text-sm font-medium md:text-base lg:text-[20px] text-main">
           ZAP Series
