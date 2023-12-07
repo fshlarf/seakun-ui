@@ -16,6 +16,9 @@
         <template v-if="order.provider.slug === 'sekurban'">
           <SekurbanOrderCard :sekurban="order" />
         </template>
+        <template v-else-if="order.provider.slug === 'zap'">
+          <ZapOrderCard :zap="order" />
+        </template>
         <template v-else>
           <OrderCard
             :orderData="orderData"
@@ -35,6 +38,7 @@
 import ProductHighLightLoading from '~/components/mollecules/ProductHighlightLoading.vue';
 import OrderCard from '~/components/mollecules/OrderCard.vue';
 import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
+import ZapOrderCard from '~/components/mollecules/ZapOrderCard.vue';
 
 export default {
   name: 'OrderList',
@@ -42,6 +46,7 @@ export default {
     ProductHighLightLoading,
     OrderCard,
     SekurbanOrderCard,
+    ZapOrderCard,
   },
   props: {
     orderData: {
