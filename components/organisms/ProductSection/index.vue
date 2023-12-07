@@ -65,6 +65,7 @@
               :key="id"
             >
               <ProviderCard
+                v-if="product.slug != 'zap'"
                 :data-provider="product"
                 class="tn:w-full tn:h-full"
                 @showPriceScheme="showPriceScheme"
@@ -96,6 +97,7 @@
         </div>
       </div>
 
+      <SeGlowUpServiceSection />
       <!-- <SetitipBanner /> -->
 
       <div id="product-ondemand" class="pt-5 md:mt-8 md:py-4">
@@ -165,7 +167,7 @@ import SetitipBanner from './views/SetitipBanner.vue';
 import { mapGetters, mapActions } from 'vuex';
 import InputSearch from '~/components/atoms/InputSearch';
 import SelectOption from './views/SelectOption.vue';
-
+import SeGlowUpServiceSection from '~/components/organisms/SeGlowUp/ServiceSection';
 export default {
   components: {
     ProductCard,
@@ -178,6 +180,7 @@ export default {
     SetitipBanner,
     InputSearch,
     SelectOption,
+    SeGlowUpServiceSection,
   },
   data() {
     return {

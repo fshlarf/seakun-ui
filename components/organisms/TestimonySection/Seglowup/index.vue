@@ -1,0 +1,82 @@
+<template>
+  <div class="container-semabar" id="testimony-seglowup">
+    <div class="mt-6 md:mt-10 lg:mt-[64px] py-6">
+      <header
+        class="w-full text-center text-[#2A5446] max-w-[928px] mx-auto text-nunito"
+      >
+        <h1 class="font-bold text-base md:text-xl lg:text-[30px]">
+          Testimonial
+        </h1>
+        <p class="text-sm md:text-base lg:text-lg pt-1 md:pt-2">
+          Berikut ini kata mereka yang sudah menggunakan layanan kami.
+        </p>
+      </header>
+      <div class="grid lg:grid-cols-3 gap-6 mt-5 md:mt-6 lg:mt-8">
+        <div
+          v-for="(testimony, id) in dataTestimony"
+          :key="id"
+          class="p-5 bg-white rounded-lg text-[11px] md:text-xs text-main md:max-w-[500px] lg:max-w-full mx-auto"
+          style="box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.08)"
+        >
+          <section class="flex gap-5">
+            <img
+              src="/images/seglowup/testimony/quote.svg"
+              alt="quote"
+              class="w-6 md:w-8 h-[21px] md:h-7"
+            />
+            <p class="text-justify">{{ testimony.testimony }}</p>
+          </section>
+          <section class="mt-[15px] md:mt-5 gap-3 flex">
+            <img
+              :src="`/images/seglowup/testimony/${testimony.images}.svg`"
+              alt="testimony"
+              class="w-10 h-10"
+            />
+            <div>
+              <p class="text-xs md:text-sm font-medium">{{ testimony.name }}</p>
+              <p class="text-[#2D2D2DCC] pt-1">{{ testimony.address }}</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      dataTestimony: [
+        {
+          name: 'Firstname Lastname',
+          address: 'Jakarta',
+          testimony:
+            "Yourname's ongoing assistance has certainly been of significant and direct benefit to us in terms of User Experience as well as website functionality and integration with our internal systems.",
+          images: 'dummy',
+        },
+        {
+          name: 'Firstname Lastname',
+          address: 'Jakarta',
+          testimony:
+            "Yourname's ongoing assistance has certainly been of significant and direct benefit to us in terms of User Experience as well as website functionality and integration with our internal systems.",
+          images: 'dummy',
+        },
+        {
+          name: 'Firstname Lastname',
+          address: 'Jakarta',
+          testimony:
+            "Yourname's ongoing assistance has certainly been of significant and direct benefit to us in terms of User Experience as well as website functionality and integration with our internal systems.",
+          images: 'dummy',
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.text-nunito {
+  font-family: 'Nunito Sans', sans-serif;
+}
+</style>

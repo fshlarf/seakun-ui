@@ -76,6 +76,9 @@
             <template v-if="detailOrder.provider.slug === 'sekurban'">
               <SekurbanOrderCard :sekurban="detailOrder" />
             </template>
+            <template v-else-if="detailOrder.provider.slug === 'zap'">
+              <ZapOrderCard :zap="detailOrder" />
+            </template>
             <template v-else>
               <OrderCard :order="detailOrder" />
             </template>
@@ -132,6 +135,7 @@
 import Button from '~/components/atoms/Button';
 import OrderCard from './OrderCard.vue';
 import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
+import ZapOrderCard from '~/components/mollecules/ZapOrderCard.vue';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
 
@@ -170,6 +174,7 @@ export default {
     Button,
     OrderCard,
     SekurbanOrderCard,
+    ZapOrderCard,
   },
   methods: {
     toHomePage() {

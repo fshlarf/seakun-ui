@@ -263,9 +263,9 @@ export default {
     this.type = parseInt(type);
     this.orderUid = order_uid;
     this.customerUid = customer_uid;
-    if (this.type === 1) {
-      this.getPaymentDigital(order_uid, customer_uid);
-    }
+    // if (this.type === 1) {
+    // }
+    this.getPaymentDigital(order_uid, customer_uid);
   },
   methods: {
     onSelectPaymentMethod(method) {
