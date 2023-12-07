@@ -57,8 +57,8 @@
         <Transition>
           <div
             v-show="isShowAnswer"
-            class="! tn:px-6 xl:px-10 tn:py-4 md:py-6 bg-primary text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200"
-            :class="{ accordion: isShowAnswer }"
+            class="! tn:px-6 xl:px-10 tn:py-4 md:py-6 text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200"
+            :class="({ accordion: isShowAnswer }, classAnswer)"
           >
             <div v-if="answer.list">
               <ol class="list-decimal list-outside">
@@ -89,6 +89,10 @@ export default {
     answer: {
       type: Object,
       default: {},
+    },
+    classAnswer: {
+      typeof: String,
+      default: 'bg-primary',
     },
   },
   methods: {
