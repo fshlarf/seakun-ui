@@ -9,7 +9,7 @@
       </p>
     </div>
     <section
-      class="flex items-center w-full mt-6 ml-[23px] md:mx-[40px] lg:mx-[62px] justify-center gap-4"
+      class="flex items-center w-full mt-6 ml-[23px] md:ml-0 xl:ml-[23px] xl:mx-[62px] justify-center gap-4"
     >
       <ButtonChevron
         variant="bg-[#00BA881A]"
@@ -25,14 +25,14 @@
         <section
           v-for="(service, id) in menus"
           :key="id"
-          class="transition-all ease-in duration-200 p-2 lg:p-4 rounded-t-xl cursor-pointer min-w-[120px] md:min-w-[155px] lg:min-w-[190px]"
+          class="transition-all ease-in duration-200 p-2 lg:p-4 rounded-t-xl cursor-pointer min-w-[120px] lg:min-w-[190px]"
           :class="[service.name == activeMenu ? 'bg-[#DEF3EF] ' : '']"
         >
           <div
-            class="w-full h-[48px] md:h-[50px] lg:h-[70px] bg-[#DEF3EF] rounded-lg flex items-center justify-center"
+            class="w-full h-[48px] md:h-[60px] lg:h-[70px] bg-[#DEF3EF] rounded-lg flex items-center justify-center"
           >
             <div
-              class="bg-[#DEF3EF] w-full h-full rounded-lg"
+              class="bg-[#DEF3EF] w-full h-full rounded-lg flex items-center justify-center"
               :class="{
                 'border-[3px] border-[#23D7A6] !bg-white':
                   service.name === activeMenu,
@@ -42,7 +42,7 @@
                 v-if="service.background"
                 :src="`/images/product/${service.background}`"
                 :alt="service.name"
-                class="w-full h-auto"
+                class="w-full h-[26px] md:h-10 lg:h-[60px]"
               />
             </div>
           </div>
@@ -62,6 +62,7 @@
           ZAP Series
         </p>
       </header>
+
       <section
         class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-6 w-full"
         v-if="zap && !dataProviderListActive.loading"
@@ -74,7 +75,10 @@
           :id="1 + id"
         />
       </section>
-      <section v-else class="grid md:grid-cols-2 lg:grid-cols-3">
+      <section
+        v-else
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-6 w-full"
+      >
         <CardShimmer />
         <CardShimmer />
         <CardShimmer />

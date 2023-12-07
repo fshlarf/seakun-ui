@@ -10,7 +10,7 @@
       <img
         src="/images/seglowup/banner/woman-mobile.webp"
         alt="woman"
-        class="w-full mx-auto px-3 h-[345px] lg:hidden"
+        class="w-full max-w-[400px] md:max-w-[350px] mx-auto px-3 h-[345px] sm:h-[400px] lg:hidden mt-7"
       />
       <div>
         <section
