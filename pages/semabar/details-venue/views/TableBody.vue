@@ -27,6 +27,7 @@
         </p>
       </div>
     </section>
+
     <section
       v-if="selected == 'price' && data.detailsFee"
       class="flex flex-col lg:flex-row gap-6"
@@ -316,8 +317,8 @@ export default {
       default: 'about',
     },
     data: {
-      typeof: [Object, Array],
-      default: () => ({}),
+      typeof: Object,
+      default: () => {},
     },
   },
   mounted() {

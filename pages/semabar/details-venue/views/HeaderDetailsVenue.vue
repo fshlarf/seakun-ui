@@ -63,6 +63,7 @@
                 :key="id"
                 class="border rounded-lg w-[38px] h-[40px] lg:h-[56px] lg:w-[56px] flex justify-center items-center shadow-lg cursor-pointer"
                 style="border: 1px solid rgba(160, 163, 189, 0.5)"
+                @click="onClickShareLink(media.name)"
               >
                 <img
                   :src="`/images/icons/atoms/semabar/${media.name}.svg`"
@@ -75,7 +76,7 @@
             <div class="bg-[#00BA88] rounded-lg">
               <a
                 :href="detailsVenue.whatsappCommunity"
-                class="flex items-center gap-1 px-2 cursor-pointer h-full"
+                class="flex items-center gap-1 px-2 md:px-3 cursor-pointer h-full"
               >
                 <img
                   src="/images/icons/atoms/semabar/whatsapp-white.svg"
@@ -111,8 +112,30 @@ export default {
           name: 'twitter',
         },
       ],
-      detailsVenue: JSON.parse(this.$route.query.detailVenue),
     };
+  },
+  props: {
+    detailsVenue: {
+      typeof: Object,
+      default: () => {},
+    },
+  },
+  methods: {
+    onClickShareLink(target) {
+      const currentUrl = encodeURIComponent(window.location.href);
+      if (target === 'twitter') {
+        const share = `https://www.twitter.com/share?url=${currentUrl}`;
+        window.open(
+          share,
+          '_blank',
+          'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
+        );
+      } else if (target === 'whatsapp') {
+        const share = `https://api.whatsapp.com/send?text=${currentUrl}`;
+        window.open(share, '_blank');
+      } else if (target === 'instagram') {
+      }
+    },
   },
 };
 </script>

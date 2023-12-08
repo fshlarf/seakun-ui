@@ -44,7 +44,6 @@ export default {
 
   data() {
     return {
-      detailsVenue: JSON.parse(this.$route.query.detailVenue),
       tabMenu: [
         {
           name: 'Tentang',
@@ -74,7 +73,12 @@ export default {
       activeTab: 'about',
     };
   },
-  props: {},
+  props: {
+    detailsVenue: {
+      typeof: Object,
+      default: () => {},
+    },
+  },
 };
 </script>
 
