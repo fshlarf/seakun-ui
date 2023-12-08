@@ -383,26 +383,6 @@
                 </div>
               </div>
 
-              <div
-                v-else-if="selectedMenu.value == 'rules'"
-                class="space-y-[6px] lg:space-y-[10px]"
-              >
-                <div
-                  v-for="(rule, id) in providerRules"
-                  :key="id"
-                  class="flex gap-[8px] lg:gap-[12px] items-start"
-                >
-                  <div
-                    class="w-[18px] lg:w-[24px] h-[18px] lg:h-[24px] rounded-full bg-primary text-white flex justify-center items-center text-[11px] lg:text-[14px] mt-[2px] lg:mt-0"
-                  >
-                    {{ id + 1 }}
-                  </div>
-                  <p class="text-[12px] lg:text-[14px] max-w-[90%] lg:mt-[2px]">
-                    {{ rule }}
-                  </p>
-                </div>
-              </div>
-
               <template v-else-if="selectedMenu.value == 'group'">
                 <template v-if="!isLoadingGroup">
                   <div v-if="providerGroups.length > 0">
@@ -629,12 +609,6 @@ export default {
       ],
       selectedMenu: {},
       orderScheme: [],
-      providerRules: [
-        'Lorem ipsum dolor sit amet, consectetur',
-        'Adipiscing elit, sed do eiusmod tempor incididunt',
-        'Lorem ipsum dolor sit amet, consectetur ',
-        'Adipiscing elit, sed do eiusmod tempor incididunt',
-      ],
       isShowPriceScheme: false,
       isOpenMenu: false,
       isLoadingCreateOrder: false,
@@ -642,9 +616,6 @@ export default {
     };
   },
   computed: {
-    // ...mapGetters({
-    //   isLoadingCreateOrder: 'getLoadingCreateOrder',
-    // }),
     isDesktopView() {
       let screen = window.innerWidth;
       return screen >= 768;
@@ -666,11 +637,7 @@ export default {
     closeModalBlackList() {
       this.isShowModalBlackList = false;
     },
-    // ...mapActions({
-    //   createOrder: 'createOrder',
-    // }),
-    async createOrder({ commit, dispatch }, params) {
-      // commit('SET_LOADING_CREATE_ORDER', true);
+    async createOrder() {
       this.isLoadingCreateOrder = true;
       try {
         const payload = {
@@ -681,7 +648,7 @@ export default {
         const fetchCreateOrder = await this.OrderServices.createOrder(payload);
         if (fetchCreateOrder.data) {
           const dataResult = fetchCreateOrder.data.data;
-          params = {
+          const params = {
             ...payload,
             customerUid: dataResult.customerUid,
             orderUid: dataResult.orderUid,
@@ -775,6 +742,7 @@ export default {
     },
     async getProviderDetail() {
       this.isLoading = true;
+      const { package_id } = this.$route.query;
       const { MasterService, paramProfiderDetail } = this;
       try {
         const fetchProviderDetail = await MasterService.getProviderDetail(
@@ -786,45 +754,11 @@ export default {
           this.packages = this.provider.packages.filter((pkg) => {
             return pkg.variants.some((variant) => variant.isDisplayed == 1);
           });
-          if (
-            this.provider.slug == 'canva' ||
-            this.provider.slug == 'microsoft-365'
-          ) {
-            let newPackages = [];
-            this.packages[0].variants.forEach((variant) => {
-              if (variant.isDisplayed == 1) {
-                const pkg = {
-                  ...this.packages[0],
-                  packageName: variant.duration == 1 ? 'Bulanan' : 'Tahunan',
-                  variants:
-                    variant.duration == 1
-                      ? this.packages[0].variants.filter(
-                          (vary) => vary.duration < 12
-                        )
-                      : this.packages[0].variants.filter(
-                          (vary) => vary.duration == 12
-                        ),
-                };
-                newPackages.push(pkg);
-              }
-            });
-            this.packages = newPackages;
-          } else if (this.provider.slug == 'netflix') {
-            let newPackages = [];
-            this.packages.forEach((pkg) => {
-              const newPkg = {
-                ...pkg,
-                variants: pkg.variants.filter(
-                  (variant) => variant.duration == 1
-                ),
-              };
-              newPackages.push(newPkg);
-            });
-            this.packages = newPackages;
-          }
-          const activePackage = this.packages.find((pkg) => pkg.active == 1);
-          this.selectedPackage = activePackage
-            ? activePackage
+          this.selectedPackage = this.packages.find(
+            (pkg) => pkg.packageUid == package_id
+          );
+          this.selectedPackage = this.selectedPackage
+            ? this.selectedPackage
             : this.packages[0];
           if (this.selectedPackage) {
             this.selectedVariant = this.selectedPackage.variants[0];

@@ -40,8 +40,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-
 export default {
   components: {},
   data() {
@@ -71,14 +69,6 @@ export default {
         },
       ],
     };
-  },
-  mounted() {
-    this.fetchProvider();
-  },
-  methods: {
-    ...mapActions({
-      fetchProvider: 'fetchProvider',
-    }),
   },
 };
 </script>

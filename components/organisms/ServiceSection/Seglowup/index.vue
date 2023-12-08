@@ -77,6 +77,7 @@
             :key="id"
             :data="service"
             :zap-uid="zap.uid"
+            :package-uid="service.packageUid"
             :id="1 + id"
           />
         </section>
@@ -88,17 +89,6 @@
           <CardShimmer />
           <CardShimmer />
         </section>
-        <!-- <div
-          class="flex gap-2 items-center pt-6 mx-auto w-max cursor-pointer"
-          @click="$router.push('/seglowup')"
-        >
-          <p
-            class="text-green-seakun-secondary-dark text-xs md:text-sm font-medium"
-          >
-            Show more
-          </p>
-          <Chevron color="#00BA88" />
-        </div> -->
       </div>
     </div>
   </div>
