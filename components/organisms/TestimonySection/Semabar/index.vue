@@ -10,7 +10,7 @@
         </h1>
         <p class="text-sm md:text-base lg:text-xl text-center pt-2">
           Berikut ini testimoni dari mereka yang sudah menggunakan layanan
-          semabar.
+          Semabar
         </p>
       </header>
       <div class="relative md:pr-3">

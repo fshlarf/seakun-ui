@@ -10,12 +10,12 @@
       <img
         src="/images/semabar/illustration/minisoccer-mobile.png"
         alt="banner"
-        class="rounded-xl w-full h-[120px] mt-8 md:hidden"
+        class="rounded-xl w-full h-[120px] mt-8 sm:hidden"
       />
       <img
         src="/images/semabar/illustration/minisoccer.png"
         alt="banner"
-        class="rounded-xl w-full md:h-[200px] lg:h-[242px] mt-8 hidden md:block"
+        class="rounded-xl w-full md:h-[200px] lg:h-[242px] mt-8 hidden sm:block"
       />
       <div
         class="mt-2 md:mt-4 lg:mt-6 flex flex-col lg:flex-row justify-between"
@@ -26,12 +26,13 @@
           >
             Komunitas Main Bareng
           </p>
+
           <div class="flex items-center gap-2 pt-1">
             <p
               style="font-feature-settings: 'clig' off, 'liga' off"
               class="text-base md:text-lg lg:text-[26px] font-bold text-main leading-normal"
             >
-              Lapangan Permata Hijau
+              {{ detailsVenue.name }}
             </p>
             <img
               src="/images/icons/atoms/certified.svg"
@@ -39,7 +40,8 @@
               class="w-[19px] h-[16px] md:w-[25px] md:h-[20px] lg:w-[37px] lg:h-[30px]"
             />
           </div>
-          <div class="flex gap-3 mt-1 md:mt-[11px]">
+          <!-- flex -->
+          <div class="gap-3 mt-1 md:mt-[11px] hidden">
             <img
               src="/images/icons/atoms/semabar/group.svg"
               alt="group"
@@ -54,13 +56,14 @@
         </section>
         <section>
           <p class="text-base text-[#66738F] mt-3 lg:mt-0">Bagikan ke</p>
-          <div class="flex gap-4 lg:gap-6 mt-3">
+          <div class="flex gap-3 lg:gap-6 mt-3">
             <div class="flex items-center gap-2 lg:gap-3">
               <div
                 v-for="(media, id) in shareSocialMedia"
                 :key="id"
-                class="border rounded-lg w-[40px] h-[40px] lg:h-[56px] lg:w-[56px] flex justify-center items-center shadow-lg cursor-pointer"
+                class="border rounded-lg w-[38px] h-[40px] lg:h-[56px] lg:w-[56px] flex justify-center items-center shadow-lg cursor-pointer"
                 style="border: 1px solid rgba(160, 163, 189, 0.5)"
+                @click="onClickShareLink(media.name)"
               >
                 <img
                   :src="`/images/icons/atoms/semabar/${media.name}.svg`"
@@ -69,19 +72,23 @@
                 />
               </div>
             </div>
-            <div
-              class="bg-[#00BA88] flex items-center gap-1 px-3 rounded-lg cursor-pointer"
-            >
-              <img
-                src="/images/icons/atoms/semabar/whatsapp-white.svg"
-                alt="whatsapp"
-                class="w-[18px] h-[18px] lg:w-7 lg:h-7"
-              />
-              <p
-                class="font-bold text-sm md:text-base lg:text-[20px] text-white"
+
+            <div class="bg-[#00BA88] rounded-lg">
+              <a
+                :href="detailsVenue.whatsappCommunity"
+                class="flex items-center gap-1 px-2 md:px-3 cursor-pointer h-full"
               >
-                Gabung Komunitas
-              </p>
+                <img
+                  src="/images/icons/atoms/semabar/whatsapp-white.svg"
+                  alt="whatsapp"
+                  class="w-[18px] h-[18px] lg:w-7 lg:h-7"
+                />
+                <p
+                  class="font-bold text-sm md:text-base lg:text-[20px] text-white"
+                >
+                  Gabung Komunitas
+                </p>
+              </a>
             </div>
           </div>
         </section>
@@ -106,6 +113,29 @@ export default {
         },
       ],
     };
+  },
+  props: {
+    detailsVenue: {
+      typeof: Object,
+      default: () => {},
+    },
+  },
+  methods: {
+    onClickShareLink(target) {
+      const currentUrl = encodeURIComponent(window.location.href);
+      if (target === 'twitter') {
+        const share = `https://www.twitter.com/share?url=${currentUrl}`;
+        window.open(
+          share,
+          '_blank',
+          'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
+        );
+      } else if (target === 'whatsapp') {
+        const share = `https://api.whatsapp.com/send?text=${currentUrl}`;
+        window.open(share, '_blank');
+      } else if (target === 'instagram') {
+      }
+    },
   },
 };
 </script>

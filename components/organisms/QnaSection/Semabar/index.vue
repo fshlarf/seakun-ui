@@ -4,7 +4,7 @@
       <h1 class="font-bold text-base md:text-xl lg:text-[28px]">
         Frequently Asked Questions
       </h1>
-      <p class="text-sm md:text-base lg:text-xl">
+      <p class="text-sm md:text-base lg:text-xl pt-2">
         Berikut ini beberapa pertanyaan yang sering ditanyakan
       </p>
     </div>
@@ -18,7 +18,8 @@
         :title="faq.question"
         :answer="faq"
         @toggleShow="toggleShow"
-        class="w-full h-full"
+        class="w-full h-max"
+        class-answer="bg-[#86D0C1]"
       />
     </div>
   </div>
@@ -32,17 +33,16 @@ export default {
       dataFaq: [
         {
           id: 1,
-          question: 'Apakah harus menunggu peserta mabar lain?',
+          question: 'Apa saja fasilitas yang didapatkan dari Semabar?',
           answer:
             'Fasilitas yang didapatkan bervariasi tergantung pada jenis permainan dan venue. Untuk informasi lebih lanjut, silakan melihat bagian paket dengan memilih jenis permainan dan lokasi di atas.',
           isShow: false,
         },
         {
           id: 2,
-          question:
-            'Jika dalam satu match belum terisi full peserta, apakah biaya akan direfund?',
+          question: 'Apakah harus menunggu peserta mabar lain?',
           answer:
-            'Fasilitas yang didapatkan bervariasi tergantung pada jenis permainan dan venue. Untuk informasi lebih lanjut, silakan melihat bagian paket dengan memilih jenis permainan dan lokasi di atas.',
+            'Iya, betul. Pembagian dan formasi tim akan diumumkan beberapa jam sebelum permainan.',
           isShow: false,
         },
         {
@@ -50,28 +50,29 @@ export default {
           question:
             'Jika dalam satu match belum terisi full peserta, apakah biaya akan direfund?',
           answer:
-            'Fasilitas yang didapatkan bervariasi tergantung pada jenis permainan dan venue. Untuk informasi lebih lanjut, silakan melihat bagian paket dengan memilih jenis permainan dan lokasi di atas.',
+            'Jika peserta tidak memadai atau terjadi kendala dengan venue, peserta dapat memilih untuk refund 100% atau quota bermain dapat dipakai di waktu berikutnya.',
           isShow: false,
         },
         {
           id: 4,
-          question: 'Apa saja fasilitas yang didapatkan?',
+          question:
+            'Jika saya telah membeli membership untuk 4 kali bermain namun berhalangan hadir, apakah quota saya hangus?',
           answer:
-            'Fasilitas yang didapatkan bervariasi tergantung pada jenis permainan dan venue. Untuk informasi lebih lanjut, silakan melihat bagian paket dengan memilih jenis permainan dan lokasi di atas.',
+            'Tenang saja, quota bermain kamu dapat tetap dipakai di waktu berikutnya. Silakan konfirmasi ke Admin komunitas jika kamu tidak dapat join di suatu sesi permainan.',
           isShow: false,
         },
         {
           id: 5,
-          question: 'Apa saja fasilitas yang didapatkan?',
+          question: 'Kapan saya dapat melihat jadwal bermain?',
           answer:
-            'Fasilitas yang didapatkan bervariasi tergantung pada jenis permainan dan venue. Untuk informasi lebih lanjut, silakan melihat bagian paket dengan memilih jenis permainan dan lokasi di atas.',
+            'Silakan join ke komunitas Semabar sesuai jenis permainan. Semua informasi detail terkait jadwal bermain, lokasi, pembagian tim, dan tata cara bermain akan diinformasikan di grup komunitas.',
           isShow: false,
         },
         {
           id: 6,
-          question: 'Apa saja fasilitas yang didapatkan?',
+          question: 'Siapa yang dapat saya hubungi jika merasa kesulitan?',
           answer:
-            'Fasilitas yang didapatkan bervariasi tergantung pada jenis permainan dan venue. Untuk informasi lebih lanjut, silakan melihat bagian paket dengan memilih jenis permainan dan lokasi di atas.',
+            'TIdak perlu khawatir, karena Admin komunitas kami akan membantu kamu jika kamu menemui kesulitan. Admin komunitas juga akan hadir pada saat jadwal pemainan.',
           isShow: false,
         },
       ],
