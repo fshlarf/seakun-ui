@@ -6,7 +6,7 @@
       @click="open = false"
     ></div>
     <div class="static z-0 w-full text-gray-700">
-      <div class="container lg:flex lg:justify-between lg:items-center">
+      <div class="px-4 md:container lg:flex lg:justify-between lg:items-center">
         <nuxt-link to="/">
           <div @click="scrollToTop">
             <img

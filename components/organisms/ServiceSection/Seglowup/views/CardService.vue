@@ -3,7 +3,7 @@
     <nuxt-link :to="`/seglowup/provider?name=zap&id=${zapUid}`">
       <header
         class="bg-cover w-full h-[106px]"
-        :style="`background-image: url(/images/seglowup/background/series-${id}.webp)`"
+        :style="`background-image: url(/images/seglowup/background/series-${id}.webp); background-size: 100%;`"
       >
         <div
           class="font-nunito text-green-seakun-secondary-dark leading-normal pt-[26px] pl-4 md:pl-[23px]"
@@ -53,8 +53,11 @@
         <div class="text-xs mt-2">
           <p class="text-[#66738F]">Kategori Perawatan:</p>
           <div v-for="(category, id) in category" :key="id">
-            <div v-if="category.name.includes(data.notes)">
-              <p class="truncate md:pr-3 pt-2 categoryWidth">
+            <div
+              v-if="category.name.includes(data.notes)"
+              class="overflow-hidden"
+            >
+              <p class="md:pr-3 pt-2 one-line">
                 {{ category.value }}
               </p>
             </div>
@@ -139,20 +142,5 @@ export default {
 <style lang="scss" scoped>
 .font-nunito {
   font-family: 'Nunito Sans', sans-serif;
-}
-@media (max-width: 425px) {
-  .categoryWidth {
-    max-width: 320px;
-  }
-}
-@media (max-width: 375px) {
-  .categoryWidth {
-    max-width: 300px;
-  }
-}
-@media (max-width: 320px) {
-  .categoryWidth {
-    max-width: 260px;
-  }
 }
 </style>

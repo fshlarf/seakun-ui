@@ -1,9 +1,8 @@
 <template>
-  <div
-    class="mt-6 md:mt-[44px] lg:mt-[64px] container-semabar"
-    id="service-seglowup"
-  >
-    <div class="w-full text-center text-[#2A5446] max-w-[928px] mx-auto">
+  <div class="mt-6 md:mt-[44px] lg:mt-[64px]" id="service-seglowup">
+    <div
+      class="container-semabar w-full text-center text-[#2A5446] max-w-[928px] mx-auto"
+    >
       <h1 class="text-dmsans font-bold text-base md:text-xl lg:text-[30px]">
         Layanan
       </h1>
@@ -12,7 +11,7 @@
       </p>
     </div>
     <section
-      class="flex items-center w-full mt-6 ml-[23px] md:ml-0 xl:ml-[23px] xl:mx-[62px] justify-center gap-4"
+      class="md:container-semabar flex items-center w-full mt-6 pl-[23px] !justify-center gap-4"
     >
       <ButtonChevron
         variant="bg-[#00BA881A]"
@@ -22,14 +21,16 @@
         class="hidden md:block"
       />
       <div
-        class="flex w-max items-center gap-[9px] lg:gap-4 overflow-x-scroll service-parent scroll-smooth"
+        class="flex w-max items-center gap-[9px] lg:gap-4 overflow-x-scroll service-parent scroll-smooth pl-4 pr-8"
         id="service-wrapper"
       >
         <section
           v-for="(service, id) in menus"
           :key="id"
-          class="transition-all ease-in duration-200 p-2 lg:p-4 rounded-t-xl cursor-pointer min-w-[120px] lg:min-w-[190px]"
-          :class="[service.name == activeMenu ? 'bg-[#DEF3EF] ' : '']"
+          class="transition-all ease-in duration-200 p-2 lg:p-4 rounded-t-xl min-w-[120px] lg:min-w-[190px]"
+          :class="[
+            service.name == activeMenu ? 'bg-[#DEF3EF] cursor-pointer' : '',
+          ]"
         >
           <div
             class="w-full h-[48px] md:h-[60px] lg:h-[70px] bg-[#DEF3EF] rounded-lg flex items-center justify-center"
@@ -59,44 +60,46 @@
       />
     </section>
 
-    <div class="p-3 md:p-5 lg:p-8 bg-[#DEF3EF] text-dmsans rounded-lg">
-      <header class="flex justify-between items-center text-main">
-        <p class="text-sm font-medium md:text-base lg:text-[20px] text-main">
-          ZAP Series
-        </p>
-      </header>
+    <div class="container-semabar">
+      <div class="p-3 md:p-5 lg:p-8 bg-[#DEF3EF] text-dmsans rounded-lg">
+        <header class="flex justify-between items-center text-main">
+          <p class="text-sm font-medium md:text-base lg:text-[20px] text-main">
+            ZAP Series
+          </p>
+        </header>
 
-      <section
-        class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-6 w-full"
-        v-if="zap && !dataProviderListActive.loading"
-      >
-        <CardService
-          v-for="(service, id) in zap.variants"
-          :key="id"
-          :data="service"
-          :zap-uid="zap.uid"
-          :id="1 + id"
-        />
-      </section>
-      <section
-        v-else
-        class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-6 w-full"
-      >
-        <CardShimmer />
-        <CardShimmer />
-        <CardShimmer />
-      </section>
-      <!-- <div
-        class="flex gap-2 items-center pt-6 mx-auto w-max cursor-pointer"
-        @click="$router.push('/seglowup')"
-      >
-        <p
-          class="text-green-seakun-secondary-dark text-xs md:text-sm font-medium"
+        <section
+          class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-3 md:mt-6 w-full"
+          v-if="zap && !dataProviderListActive.loading"
         >
-          Show more
-        </p>
-        <Chevron color="#00BA88" />
-      </div> -->
+          <CardService
+            v-for="(service, id) in zap.variants"
+            :key="id"
+            :data="service"
+            :zap-uid="zap.uid"
+            :id="1 + id"
+          />
+        </section>
+        <section
+          v-else
+          class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mt-6 w-full"
+        >
+          <CardShimmer />
+          <CardShimmer />
+          <CardShimmer />
+        </section>
+        <!-- <div
+          class="flex gap-2 items-center pt-6 mx-auto w-max cursor-pointer"
+          @click="$router.push('/seglowup')"
+        >
+          <p
+            class="text-green-seakun-secondary-dark text-xs md:text-sm font-medium"
+          >
+            Show more
+          </p>
+          <Chevron color="#00BA88" />
+        </div> -->
+      </div>
     </div>
   </div>
 </template>

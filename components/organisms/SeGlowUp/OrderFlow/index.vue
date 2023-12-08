@@ -16,7 +16,7 @@
     <div
       class="mt-[48px] grid grid-cols-2 md:flex justify-center flex-wrap gap-5 md:gap-[70px] xl:gap-[92px] gap-y-[48px] container-semabar"
     >
-      <div v-for="(flow, id) in flow">
+      <div v-for="(flow, id) in flow" :key="id">
         <div class="flex items-start justify-center">
           <div
             class="w-6 h-6 rounded-full lg:flex justify-center hidden items-center bg-[#08A081] text-white font-bold text-base"
