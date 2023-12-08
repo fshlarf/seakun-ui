@@ -8,7 +8,7 @@
         Benefit Semabar
       </h1>
       <p class="text-sm md:text-base lg:text-xl pt-2 leading-normal">
-        Berikut ini benefit yang akan kamu dapatkan apabila gabung semabar
+        Berikut ini benefit yang akan kamu dapatkan apabila gabung Semabar
       </p>
     </div>
     <div class="lg:mt-12 mt-6 md:mt-5">

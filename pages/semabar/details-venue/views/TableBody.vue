@@ -6,24 +6,30 @@
   Show 2 more colors
   "
   >
-    <section v-if="selected == 'about' && data.about">
+    <section v-if="selected == 'about'">
       <p
         class="text-green-seakun-secondary-dark font-bold text-sm md:text-base lg:text-[18px]"
       >
         Seakun Main Bareng (Semabar)
       </p>
-      <div class="pt-1 lg:pt-2 space-y-5 lg:space-y-8">
-        <p
-          class="text-sm md:text-base lg:text-[18px] text-main leading-[22px] lg:leading-[26px]"
-          v-for="(about, id) in data.about"
-          :key="id"
-        >
-          {{ about }}
+      <div
+        class="pt-1 lg:pt-2 space-y-5 lg:space-y-8 text-sm md:text-base lg:text-[18px] text-main leading-[22px] lg:leading-[26px]"
+      >
+        <p>
+          Merupakan komunitas main bareng yang diinisiasi oleh Seakun.id dengan
+          tujuan untuk mempertemukan kamu dengan mereka yang ingin bermain atau
+          berolahraga bareng, namun terkendala dalam mencari teman mabar.',
+        </p>
+        <p>
+          'Kini dengan Semabar kamu tidak perlu bingung dalam mencari teman
+          untuk main bareng. Cukup dengan bergabung dalam komunitas, nanti kamu
+          akan dicarikan partner untuk main bareng..
         </p>
       </div>
     </section>
+
     <section
-      v-if="selected == 'price' && data.price"
+      v-if="selected == 'price' && data.detailsFee"
       class="flex flex-col lg:flex-row gap-6"
     >
       <div
@@ -38,20 +44,26 @@
             class="text-sm lg:text-base text-main font-medium flex justify-between items-center"
           >
             <p>Lapangan 2 Jam</p>
-            <p>{{ toRupiah(data.price.detailsOfPlayingFees.field) }}</p>
+            <p>{{ toRupiah(data.detailsFee.fieldFee) }}</p>
           </div>
           <div
             class="text-sm lg:text-base text-main font-medium flex justify-between items-center"
           >
             <p>Konsumsi</p>
-            <p>{{ toRupiah(data.price.detailsOfPlayingFees.consumption) }}</p>
+            <p>{{ toRupiah(data.detailsFee.consumption) }}</p>
+          </div>
+          <div
+            class="text-sm lg:text-base text-main font-medium flex justify-between items-center"
+          >
+            <p>Wasit</p>
+            <p>{{ toRupiah(data.detailsFee.referee) }}</p>
           </div>
           <div
             class="text-sm lg:text-base text-main font-medium flex justify-between items-center"
           >
             <p>Fasilitas Lainnya</p>
             <p>
-              {{ toRupiah(data.price.detailsOfPlayingFees.otherFacilities) }}
+              {{ toRupiah(data.detailsFee.otherFacilities) }}
             </p>
           </div>
           <div
@@ -59,7 +71,7 @@
           >
             <p>Total</p>
             <p class="font-bold">
-              {{ toRupiah(data.price.detailsOfPlayingFees.count) }}
+              {{ toRupiah(data.detailsFee.totalFee) }}
             </p>
           </div>
         </div>
@@ -85,15 +97,24 @@
             <div
               class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
             >
-              <p>Biaya Admin</p>
+              <p>Harga Patungan</p>
               <p>
                 {{
-                  toRupiah(
-                    data.price.detailsOfPermatchFees.nonMembership.adminFees
-                  )
+                  toRupiah(data.detailsFee.detailsPrice.nonMembership.sharedFee)
                 }}
               </p>
             </div>
+            <div
+              class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
+            >
+              <p>Biaya Admin</p>
+              <p>
+                {{
+                  toRupiah(data.detailsFee.detailsPrice.nonMembership.adminFee)
+                }}
+              </p>
+            </div>
+
             <div
               class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
             >
@@ -101,7 +122,19 @@
               <p>
                 {{
                   toRupiah(
-                    data.price.detailsOfPermatchFees.nonMembership.pricePerMatch
+                    data.detailsFee.detailsPrice.nonMembership.pricePerMatch
+                  )
+                }}
+              </p>
+            </div>
+            <div
+              class="text-sm lg:text-base flex justify-between items-center font-medium text-main mt-2 lg:mt-3"
+            >
+              <p>Harga 4 Match</p>
+              <p>
+                {{
+                  toRupiah(
+                    data.detailsFee.detailsPrice.nonMembership.pricePerMatch * 4
                   )
                 }}
               </p>
@@ -118,11 +151,29 @@
             <div
               class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
             >
+              <p>Harga Patungan</p>
+              <p>
+                {{
+                  toRupiah(data.detailsFee.detailsPrice.membership.sharedFee)
+                }}
+              </p>
+            </div>
+            <div
+              class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
+            >
               <p>Biaya Admin</p>
+              <p>
+                {{ toRupiah(data.detailsFee.detailsPrice.membership.adminFee) }}
+              </p>
+            </div>
+            <div
+              class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
+            >
+              <p>Harga 1 Match</p>
               <p>
                 {{
                   toRupiah(
-                    data.price.detailsOfPermatchFees.membership.adminFees
+                    data.detailsFee.detailsPrice.membership.pricePerMatch
                   )
                 }}
               </p>
@@ -134,13 +185,13 @@
               <p>
                 {{
                   toRupiah(
-                    data.price.detailsOfPermatchFees.membership
-                      .priceForFourMatch
+                    data.detailsFee.detailsPrice.membership.pricePerMatch * 4
                   )
                 }}
               </p>
             </div>
             <div
+              v-if="data.detailsFee.detailsPrice.membership.moreEffiecient"
               class="w-full bg-[#00BA88] h-8 flex items-center gap-1 text-white text-sm lg:text-base font-extrabold px-3 rounded-[6px] mt-2 lg:mt-3"
             >
               <img
@@ -148,7 +199,10 @@
                 alt="discount"
                 class="w-[18px] h-[18px] md:w-5 md:h-5"
               />
-              <p>Hemat 40%!!</p>
+              <p>
+                Hemat
+                {{ data.detailsFee.detailsPrice.membership.moreEffiecient }}
+              </p>
             </div>
           </section>
         </div>
@@ -179,16 +233,16 @@
         </div>
       </div>
     </section>
-    <section v-if="selected == 'address' && data.addressVenue">
+    <section v-if="selected == 'address' && data.address">
       <p class="text-sm md:text-base text-[#66738F] font-medium">
         Alamat Venue
       </p>
       <p class="text-main text-sm md:text-base font-medium pt-2">
-        {{ data.addressVenue.address }}
+        {{ data.address }}
       </p>
-      <div class="w-full h-[154px] md:h-[200px] lg:h-[288px]">
+      <div class="w-full mt-3 md:mt-4 h-[154px] md:h-[200px] lg:h-[288px]">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1092.838005676419!2d106.88154836239426!3d-6.217592097366221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3623218d00b%3A0xc307600961d2da46!2sGOR%20Kurnia%20Badminton%20Court!5e0!3m2!1sid!2sid!4v1701167979982!5m2!1sid!2sid"
+          :src="data.maps"
           width="100%"
           height="100%"
           style="border: 0"
@@ -213,7 +267,11 @@
             :alt="facility.name"
             class="p-2 bg-[#DBF8F2] rounded-lg w-9 h-9 lg:w-12 lg:h-12"
           />
-          <p>{{ facility.name }}</p>
+          <p
+            class="text-xs md:text-sm lg:text-base text-main font-medium md:whitespace-nowrap"
+          >
+            {{ facility.name }}
+          </p>
         </div>
       </div>
     </section>
@@ -223,35 +281,68 @@
       >
         <div v-for="(gallery, id) in data.gallery" :key="id">
           <img
-            :src="`/images/semabar/gallery/${gallery.images}.png`"
+            :src="`/images/semabar/gallery/${gallery.images}`"
             :alt="gallery.images"
-            class="w-full h-[70px] md:h-[110px] lg:h-[168px]"
+            class="w-full h-[70px] md:h-[110px] lg:h-[168px] object-cover cursor-pointer rounded sm:rounded[6px]"
+            @click="handlePreview(id)"
           />
         </div>
       </div>
     </section>
+    <PreviewGallery
+      v-if="isShowPreviewGallery"
+      :gallery="data.gallery"
+      :current-id="sendIdImage"
+      @click-arrow="isShowPreviewGallery = false"
+    />
   </div>
 </template>
 
 <script>
+import PreviewGallery from './PreviewGallery.vue';
 export default {
+  components: {
+    PreviewGallery,
+  },
+  data() {
+    return {
+      isShowPreviewGallery: false,
+      dataPreviewGallery: null,
+      sendIdImage: null,
+    };
+  },
   props: {
     selected: {
       typeof: String,
       default: 'about',
     },
     data: {
-      typeof: [Object, Array],
-      default: () => ({}),
+      typeof: Object,
+      default: () => {},
     },
   },
+  mounted() {
+    document.addEventListener('keydown', this.shortCutClosePreview);
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.shortCutClosePreview);
+  },
   methods: {
+    shortCutClosePreview(event) {
+      if (event.keyCode === 27) {
+        this.isShowPreviewGallery = false;
+      }
+    },
     toRupiah(word) {
       if (word) {
         return 'Rp' + word.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
       } else {
         return 'Rp0';
       }
+    },
+    handlePreview(id) {
+      this.isShowPreviewGallery = !this.isShowPreviewGallery;
+      this.sendIdImage = id;
     },
   },
 };

@@ -128,7 +128,14 @@
           v-for="(data, id) in filteredList"
           :key="id"
           :cardData="data"
-          @click-card="$router.push('/semabar/details-venue')"
+          @click-card="
+            data.isAvailable
+              ? $router.push({
+                  path: '/semabar/details-venue',
+                  query: { detailVenue: data.slug },
+                })
+              : null
+          "
         />
       </section>
       <div
@@ -191,124 +198,133 @@ export default {
       dataVenue: {
         list: [
           {
-            name: 'Lapangan Permata Hijaue',
+            name: 'LA.PANG.AN 45 Permata Hijau',
+            slug: 'permata-hijau',
             member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
+            detailsFee: {
+              detailsPrice: {
+                membership: {
+                  sharedFee: 81000,
+                  adminFee: 9000,
+                  pricePerMatch: 90000,
+                  moreEffiecient: '56% !!',
+                },
+                nonMembership: {
+                  sharedFee: 81000,
+                  adminFee: 14000,
+                  pricePerMatch: 95000,
+                },
+              },
             },
+            isAvailable: true,
             images: 'permata-hijau.svg',
             city: 'Jakarta Selatan',
           },
           {
-            name: 'Pancoran Soccer Field 1',
+            name: 'Rahayu Minisoccer',
+            slug: 'rahayu-minisoccer',
             member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
+            detailsFee: {
+              fieldFee: 600000,
+              referee: 100000,
+              consumption: 50000,
+              otherFacilities: 300000,
+              totalFee: 1050000,
+              detailsPrice: {
+                membership: {
+                  sharedFee: 30000,
+                  adminFee: 7500,
+                  pricePerMatch: 37500,
+                },
+                nonMembership: {
+                  sharedFee: 30000,
+                  adminFee: 7500,
+                  pricePerMatch: 37500,
+                },
+              },
             },
-            images: 'psf.svg',
-            city: 'Jakarta Pusat',
+            isAvailable: true,
+            images: 'rahayu-minisoccer.webp',
+            city: 'Medan',
           },
           {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
+            name: 'D37 Duren Tiga',
+            isAvailable: false,
             images: 'd-37.svg',
-            city: 'Jakarta Timur',
-          },
-          {
-            name: 'EPIC Wesoccer by Doospace',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'epic-wesoccer.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'Lapangan Permata Hijau',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'permata-hijau.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'Main Gandaria',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'main-gandaria.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'Lapangan Permata Hijaue',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'permata-hijau.svg',
             city: 'Jakarta Selatan',
           },
           {
-            name: 'Pancoran Soccer Field 1',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'psf.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'd-37.svg',
-            city: 'Jakarta Timur',
-          },
-          {
-            name: 'EPIC Wesoccer by Doospace',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
+            name: 'Epic Wesoccer Menteng',
+            isAvailable: false,
             images: 'epic-wesoccer.svg',
-            city: 'Jakarta Timur',
+            city: 'Jakarta Selatan',
           },
           {
-            name: 'Lapangan Permata Hijau',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'permata-hijau.svg',
-            city: 'Jakarta Utara',
+            name: 'Pancoran Soccer Field',
+            isAvailable: false,
+            images: 'psf.svg',
+            city: 'Jakarta Selatan',
           },
           {
             name: 'Main Gandaria',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
+            isAvailable: false,
             images: 'main-gandaria.svg',
+            city: 'Jakarta Selatan',
+          },
+          {
+            name: 'ASATU Arena Cikini',
+            isAvailable: false,
+            images: 'asatu-cikini.webp',
+            classImage: 'rounded',
+            city: 'Jakarta Pusat',
+          },
+          {
+            name: 'Revo Duren Sawit',
+            isAvailable: false,
+            images: 'revo.webp',
+            classImage: 'rounded',
+
+            city: 'Jakarta Timur',
+          },
+          {
+            name: 'POP Pulomas',
+            isAvailable: false,
+            images: 'pulomas.webp',
+            classImage: 'rounded ',
+            city: 'Jakarta Timur',
+          },
+          {
+            name: 'Centro Utan Jati',
+            isAvailable: false,
+            images: 'centro.webp',
+            classImage: 'rounded',
+            city: 'Jakarta Barat',
+          },
+          {
+            name: 'Rival Sport Sunter',
+            isAvailable: false,
+            images: 'rival-sunter.webp',
+            classImage: 'rounded',
+
             city: 'Jakarta Utara',
+          },
+          {
+            name: 'Gator Arena PIK',
+            isAvailable: false,
+            images: 'gator-arena.webp',
+            city: 'Jakarta Utara',
+          },
+          {
+            name: 'Jet One Bintaro',
+            isAvailable: false,
+            images: 'jet-one-bintaro.webp',
+            city: 'Tanggerang',
+          },
+          {
+            name: 'DNA Arena Cinere',
+            isAvailable: false,
+            images: 'arena-cinere.webp',
+            city: 'Depok',
           },
         ],
       },
@@ -327,6 +343,15 @@ export default {
         },
         {
           name: 'Jakarta Utara',
+        },
+        {
+          name: 'Tanggerang',
+        },
+        {
+          name: 'Depok',
+        },
+        {
+          name: 'Medan',
         },
       ],
       filteredList: [],
