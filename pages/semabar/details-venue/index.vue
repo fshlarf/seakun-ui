@@ -1,18 +1,18 @@
 <template>
   <div>
-    <Hero />
+    <HeaderDetailsVenue />
     <TableDetails />
     <FooterSemabar />
   </div>
 </template>
 
 <script>
-import Hero from './views/Hero.vue';
+import HeaderDetailsVenue from './views/HeaderDetailsVenue.vue';
 import TableDetails from './views/TableDetails.vue';
 import FooterSemabar from '~/components/mollecules/FooterSemabar.vue';
 export default {
   components: {
-    Hero,
+    HeaderDetailsVenue,
     TableDetails,
     FooterSemabar,
   },

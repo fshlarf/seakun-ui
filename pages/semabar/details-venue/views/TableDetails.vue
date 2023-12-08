@@ -29,7 +29,7 @@
       <TableBody
         class="p-3 md:p-5 lg:p-8"
         :selected="activeTab"
-        :data="details"
+        :data="detailsVenue"
       />
     </div>
   </div>
@@ -41,8 +41,10 @@ export default {
   components: {
     TableBody,
   },
+
   data() {
     return {
+      detailsVenue: JSON.parse(this.$route.query.detailVenue),
       tabMenu: [
         {
           name: 'Tentang',
@@ -70,100 +72,6 @@ export default {
         },
       ],
       activeTab: 'about',
-      details: {
-        about: [
-          'Merupakan komunitas main bareng yang diinisiasi oleh Seakun.id dengan tujuan untuk mempertemukan kamu dengan mereka yang ingin bermain atau berolahraga bareng, namun terkendala dalam mencari teman mabar.',
-          'Kini dengan Semabar kamu tidak perlu bingung dalam mencari teman untuk main bareng. Cukup dengan bergabung dalam komunitas, nanti kamu akan dicarikan partner untuk main bareng.. ',
-        ],
-        price: {
-          detailsOfPlayingFees: {
-            field: 1800000,
-            consumption: 55000,
-            otherFacilities: 450000,
-            count: 2305000,
-          },
-          detailsOfPermatchFees: {
-            nonMembership: {
-              adminFees: 29123,
-              pricePerMatch: 95000,
-            },
-            membership: {
-              adminFees: 19123,
-              priceForFourMatch: 340000,
-            },
-          },
-
-          galery: [
-            {
-              images: 'galery-1',
-            },
-            {
-              images: 'galery-2',
-            },
-            {
-              images: 'galery-3',
-            },
-            {
-              images: 'galery-4',
-            },
-          ],
-        },
-        benefits: [
-          'Maintain Komunitas',
-          'Maintain Membership Venue',
-          'Organize Game (In Game)',
-          'Organize Member',
-          'Fasilitas Tambahan (Rompi)',
-          'Leaderboards',
-          'Pembagian Tim In Game',
-        ],
-        addressVenue: {
-          address:
-            'Jl. Swadaya No.37-43, RT.6/RW.14, Cipinang Besar Utara, Kec. Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13410',
-        },
-        facility: [
-          {
-            name: 'Bench Pemain',
-            images: 'bench',
-          },
-          {
-            name: 'Tribune Penonton',
-            images: 'tribune',
-          },
-          {
-            name: 'Musholla',
-            images: 'mosque',
-          },
-          {
-            name: 'Kamar Mandi',
-            images: 'bathroom',
-          },
-          {
-            name: 'Parkir Motor & Mobil',
-            images: 'park',
-          },
-        ],
-        gallery: [
-          {
-            images: 'gallery-1',
-          },
-          {
-            images: 'gallery-2',
-          },
-          {
-            images: 'gallery-3',
-          },
-          {
-            images: 'gallery-4',
-          },
-          {
-            images: 'gallery-1',
-          },
-          {
-            images: 'gallery-2',
-          },
-        ],
-      },
     };
   },
   props: {},
