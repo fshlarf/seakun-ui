@@ -220,7 +220,7 @@
                         : 'text-[#66738F]'
                     }`"
                   >
-                    {{ variant.name }}
+                    8x Treatment
                   </p>
                 </div>
               </div>
@@ -493,7 +493,7 @@
                         : 'text-[#66738F]'
                     }`"
                   >
-                    {{ variant.name }}
+                    8x Treatment
                   </p>
                 </div>
               </div>
@@ -561,6 +561,7 @@
 <script>
 import NavbarProvider from '~/components/mollecules/NavbarProvider.vue';
 import { providerList } from '~/constants/price-scheme';
+import { seglowupPriceList } from '~/constants/seglowup-price';
 import { currencyFormat } from '~/helpers/word-transformation';
 import GroupCard from './views/group-card.vue';
 import GroupCardShimmer from './views/group-card-shimmer.vue';
@@ -569,7 +570,6 @@ import Button from '~/components/atoms/Button.vue';
 import Chevron from '~/components/atoms/Chevron.vue';
 import OrderService from '~/services/OrderServices.js';
 import ModalBlackListWarning from '~/components/mollecules/ModalBlackListWarning.vue';
-import moment from 'moment';
 
 export default {
   components: {
@@ -587,6 +587,7 @@ export default {
       providerUid: '',
       priceScheme: {},
       providerList,
+      seglowupPriceList,
       isShowLessCategory: true,
       paramProfiderDetail: {
         uid: '',
@@ -687,10 +688,6 @@ export default {
             type: dataResult.provider.type,
             redirectUrl: dataResult.redirectUrl,
           };
-          localStorage.setItem(
-            'swo',
-            JSON.stringify({ ...dataResult, createdAt: moment().unix() })
-          );
           this.toThankyouPage(params);
         } else {
           throw new Error(fetchCreateOrder);
@@ -755,24 +752,24 @@ export default {
       if (pkg.packageName !== this.selectedPackage.packageName) {
         this.selectedPackage = pkg;
         this.selectedVariant = this.selectedPackage.variants[0];
-        const scheme = this.providerList.find((scheme) => {
+        const scheme = this.seglowupPriceList.find((scheme) => {
           return scheme.desc === this.selectedVariant.notes;
         });
         this.priceScheme = scheme
           ? scheme
-          : this.providerList.find(
+          : this.seglowupPriceList.find(
               (scheme) => scheme.desc == this.selectedPackage.variants[0].notes
             );
       }
     },
     onSelectVariant(variant) {
       this.selectedVariant = variant;
-      const scheme = this.providerList.find((scheme) => {
+      const scheme = this.seglowupPriceList.find((scheme) => {
         return scheme.desc === this.selectedVariant.notes;
       });
       this.priceScheme = scheme
         ? scheme
-        : this.providerList.find(
+        : this.seglowupPriceList.find(
             (scheme) => scheme.desc == this.selectedPackage.variants[0].notes
           );
     },
@@ -834,12 +831,12 @@ export default {
             if (this.selectedVariant) {
               this.packageVariantUid = this.selectedVariant.uid;
             }
-            const scheme = this.providerList.find((scheme) => {
+            const scheme = this.seglowupPriceList.find((scheme) => {
               return scheme.desc === this.selectedVariant.notes;
             });
             this.priceScheme = scheme
               ? scheme
-              : this.providerList.find(
+              : this.seglowupPriceList.find(
                   (scheme) =>
                     scheme.desc == this.selectedPackage.variants[0].notes
                 );

@@ -13,19 +13,16 @@
           {{ propose.name }} <br />
           <span> {{ propose.preview }} </span>
         </h1>
-        <!-- <p class="text-xs md:text-base font-semibold md:font-normal">
-          {{ propose.preview }}
-        </p> -->
       </div>
       <div class="md:mt-4 mt-[11px] md:mb-[25px] tn:mb-3">
         <nuxt-link to="/vote">
           <Button
             label="Ajukan layanan"
-            class="text-base text-[#8DCABE] mx-auto border-[1px] border-[#8DCABE] md:block tn:hidden"
+            class="text-base text-[#8DCABE] mx-auto border-[1px] border-[#8DCABE] md:block tn:hidden px-[15px] py-1"
           />
           <Button
             label="Ajukan"
-            class="text-sm text-[#8DCABE] border-[1px] border-[#8DCABE] md:hidden px-[15px]"
+            class="text-sm text-[#8DCABE] border-[1px] border-[#8DCABE] md:hidden px-[15px] py-1"
           />
         </nuxt-link>
       </div>

@@ -27,50 +27,22 @@
           <p
             class="text-[#08A081] text-sm md:text-base leading-[44px] md:py-3 font-bold"
           >
-            Paket ZAP Series Rp1.249K
+            Paket {{ priceScheme.desc }}
           </p>
         </section>
         <section
           class="text-xs md:text-sm lg:text-base text-gray-secondary space-y-1 md:space-y-2 lg:space-y-3 mt-3 leading-normal"
         >
-          <div class="flex items-center justify-between">
-            <p>Jumlah Treatment</p>
-            <p>32x</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <p>Jumlah Member</p>
-            <p>4x</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <p>Jumlah Treatment Per Member</p>
-            <p>8x</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <p>Harga 32x Treatment</p>
-            <p>Rp39.968.000</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <p>Diskon Patungan</p>
-            <p>Rp5.995.200</p>
-          </div>
-          <div class="flex items-start justify-between">
-            <div>
-              <p>Harga Per Member 8x Treatment</p>
-              <p>(Rp33.972.800 ÷ 4)</p>
-            </div>
-            <p>Rp8.493.200</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <p>Diskon Patungan</p>
-            <p>Rp1.498.800</p>
-          </div>
-          <div class="flex items-center justify-between">
-            <p>Biaya Admin Seakun</p>
-            <p>Rp75.000</p>
-          </div>
-          <div class="flex items-center justify-between font-bold">
-            <p>Harga Patungan Per Member</p>
-            <p class="text-[#08A081]">Rp8.569.000</p>
+          <div
+            v-for="(info, id) in priceScheme.informations"
+            :key="id"
+            class="grid grid-cols-2 gap-1 items-start text-sm py-1 text-main"
+            :class="`${
+              id == priceScheme.informations.length - 1 ? 'font-bold' : ''
+            }`"
+          >
+            <p v-html="info.title"></p>
+            <p class="text-right" v-html="info.value"></p>
           </div>
         </section>
       </div>
@@ -79,7 +51,21 @@
 </template>
 
 <script>
-export default {};
+import { seglowupPriceList } from '~/constants/seglowup-price';
+
+export default {
+  data() {
+    return {
+      seglowupPriceList,
+      priceScheme: {},
+    };
+  },
+  mounted() {
+    this.priceScheme = this.seglowupPriceList.find((scheme) => {
+      return scheme.series == 'Series 749Rb';
+    });
+  },
+};
 </script>
 
 <style lang="scss" scoped>

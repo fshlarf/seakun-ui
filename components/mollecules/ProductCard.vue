@@ -2,7 +2,7 @@
   <div
     class="w-full h-full border-[1px] border-[#8DCABE] max-w-[166px] bg-[#8DCABE] bg-opacity-5 md:rounded-2xl tn:rounded-lg overflow-hidden relative z-0"
     :class="`${
-      product.slug === 'sekurban'
+      product.isActive
         ? 'md:border-opacity-100 tn:border-opacity-20'
         : 'border-opacity-20'
     }`"
@@ -68,34 +68,6 @@
         </p>
       </div>
     </div>
-
-    <!-- <div class="w-full tn:p-2 md:p-4">
-      <div class="">
-        <h1 class="font-bold text-[#8DCABE]">
-          {{ product.name }}
-        </h1>
-        <div class="tn:mt-2">
-          <p class="tn:text-xs md:text-base">
-            {{ product.preview }}
-          </p>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="w-full tn:h-14 md:h-20"></div>
-
-    <div class="absolute z-10 bottom-0 left-0 w-full tn:p-2 md:p-4">
-      <div class="h-px w-full bg-primary"></div>
-      <div class="text-center">
-        <Button
-          variant="primary"
-          label="Pesan"
-          class="w-full font-bold tn:mt-2 md:mt-3 md:py-3"
-          :disabled="!product.isActive"
-          @click="$emit('on-click-product', product)"
-        />
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -103,7 +75,6 @@
 import Button from '~/components/atoms/Button.vue';
 import Label from '~/components/atoms/Label.vue';
 import moment from 'moment';
-import { currencyFormat } from '~/helpers';
 export default {
   components: {
     Button,
@@ -119,12 +90,6 @@ export default {
     },
   },
   methods: {
-    formatMoneyRupiah(num) {
-      return currencyFormat(num);
-    },
-    showPriceScheme(param1, param2) {
-      this.$emit('showPriceScheme', param1, param2);
-    },
     checkIsNewProduct(createdDate) {
       const crateDateFormat = moment.unix(createdDate);
       const differentMonth = moment(moment()).diff(
