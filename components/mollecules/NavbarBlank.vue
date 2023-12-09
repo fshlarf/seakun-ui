@@ -1,15 +1,11 @@
 <template>
-  <div
-    id="navbar"
-    class="w-full fixed top-0 z-40 tn:py-3 px-2"
-    :class="className"
-  >
+  <div id="navbar" class="w-full fixed top-0 z-40 py-3 px-2" :class="className">
     <div
       class="!container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between"
     >
       <nuxt-link to="/">
         <img
-          class="tn:h-[30px] absolute top-1/2 -translate-y-1/2"
+          class="h-[30px]"
           src="/images/navbar/brand_seakun.svg"
           alt="brand seakun"
         />

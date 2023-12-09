@@ -46,26 +46,26 @@ export default {
     return {
       flow: [
         {
-          text: 'Pilih & Daftar Layanan di Seakun',
+          text: 'Pilih & daftar layanan di Seakun',
         },
         {
-          text: 'Member Menunggu Grup Penuh',
+          text: 'Member melakukan pembayaran',
         },
         {
-          text: 'Member Melakukan Payment',
+          text: 'Member menunggu grup penuh',
         },
         {
-          text: 'Seakun menyerahkan data member & melakukan payment',
+          text: 'Seakun menyerahkan data member & melakukan pembayaran',
         },
         {
-          text: 'Member Registrasi di Website ZAP',
+          text: 'Member registrasi di website ZAP',
         },
         {
-          text: 'ZAP mengaktifasi quota Series Treatment ke member Seakun',
+          text: 'ZAP mengaktivasi quota series treatment ke member Seakun',
         },
         {
           text:
-            'Nikmati treatment di lokasi ZAP manapun dengan menunjukan akun ZAP',
+            'Nikmati treatment di lokasi ZAP manapun dengan menunjukkan akun ZAP',
         },
       ],
     };

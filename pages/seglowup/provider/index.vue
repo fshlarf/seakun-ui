@@ -108,7 +108,7 @@
             </div>
           </div>
 
-          <div
+          <section
             class="transition-all ease-in-out duration-200 overflow-hidden"
             :class="`${
               !isLoading && selectedPackage && isShowPriceScheme
@@ -132,52 +132,28 @@
                 <p class="text-right" v-html="info.value"></p>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div class="mt-4">
+          <section class="mt-4">
             <h3 class="text-sm lg:text-base font-medium">Pilih Paket</h3>
             <div
               v-if="!isLoading"
               class="mt-[12px] grid grid-cols-3 md:grid-cols-5 gap-[12px]"
             >
-              <div
+              <PackageCard
                 v-for="(pkg, id) in packages"
                 :key="id"
-                class="relative z-0 rounded-[8px] md:rounded-[8px] overflow-hidden cursor-pointer h-[85px]"
-                :class="`${
-                  selectedPackage &&
-                  selectedPackage.packageName == pkg.packageName
-                    ? 'border-2 border-primary'
-                    : ''
-                }`"
-                @click="onSelectPackage(pkg)"
-              >
-                <div
-                  v-if="pkg.active !== 1"
-                  class="absolute z-20 w-full h-full bg-black/40 flex justify-center items-center lg:justify-end lg:items-start lg:p-3"
-                >
-                  <div
-                    class="bg-white rounded-full px-2 py-1 text-[10px] lg:text-[12px]"
-                  >
-                    Slot Penuh
-                  </div>
-                </div>
-                <div
-                  class="absolute z-10 bottom-0 top-1/2 -translate-y-1/2 left-0 h-full w-full px-1 flex justify-center items-center pt-10"
-                >
-                  <p class="text-[10px] lg:text-base font-[800] text-white">
-                    {{ pkg.packageName }}
-                  </p>
-                </div>
-                <div
-                  class="h-[85px] bg-white bg-cover bg-center w-full"
-                  :style="`background-image: url(/images/product/zap/background-${
-                    id + 1
-                  }.svg);`"
-                ></div>
-              </div>
+                :id="id"
+                :pkg="pkg"
+                :selected-package="selectedPackage"
+                @onSelectPackage="onSelectPackage"
+              />
             </div>
-            <div v-else class="flex items-center gap-[12px] mt-[12px]">
+            <div
+              v-else
+              name="packageLoader"
+              class="flex items-center gap-[12px] mt-[12px]"
+            >
               <div
                 class="shimmer !rounded-[8px] w-[99px] h-[80px] md:w-[233px] md:h-[160px] md:rounded-[8px] !overflow-hidden"
               ></div>
@@ -185,9 +161,9 @@
                 class="shimmer !rounded-[8px] w-[99px] h-[80px] md:w-[233px] md:h-[160px] md:rounded-[8px] !overflow-hidden"
               ></div>
             </div>
-          </div>
+          </section>
 
-          <div
+          <section
             v-if="!isLoading && selectedPackage && selectedPackage.active == 1"
             class="mt-4 lg:hidden"
           >
@@ -225,9 +201,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div v-if="!isLoading && selectedPackage" class="mt-4">
+          <section v-if="!isLoading && selectedPackage" class="mt-4">
             <h3 class="text-sm lg:text-base font-medium">Benefit</h3>
             <div class="mt-[12px] space-y-[8px] lg:space-y-[10px]">
               <div
@@ -245,9 +221,10 @@
                 </p>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div v-if="!isLoading && selectedPackage" class="mt-4 lg:mt-8">
+          <!-- Bottom menu -->
+          <section v-if="!isLoading && selectedPackage" class="mt-4 lg:mt-8">
             <div
               class="rounded-t-[10px] bg-[#EFFAF8] overflow-x-auto overscroll-auto hide-scrollbar border border-[#EFFAF8] lg:hidden"
             >
@@ -421,7 +398,8 @@
                 </div>
               </template>
             </div>
-          </div>
+          </section>
+          <!-- Bottom menu -->
         </div>
 
         <div class="hidden lg:block mt-8 w-[352px]">
@@ -544,6 +522,7 @@ import { providerList } from '~/constants/price-scheme';
 import { seglowupPriceList } from '~/constants/seglowup-price';
 import { currencyFormat } from '~/helpers/word-transformation';
 import GroupCard from './views/group-card.vue';
+import PackageCard from './views/package-card.vue';
 import GroupCardShimmer from './views/group-card-shimmer.vue';
 import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
@@ -559,6 +538,7 @@ export default {
     GroupCardShimmer,
     Chevron,
     ModalBlackListWarning,
+    PackageCard,
   },
   data() {
     return {
@@ -655,7 +635,11 @@ export default {
             type: dataResult.provider.type,
             redirectUrl: dataResult.redirectUrl,
           };
-          this.toThankyouPage(params);
+          localStorage.setItem(
+            'swo',
+            JSON.stringify({ ...dataResult, createdAt: moment().unix() })
+          );
+          this.toPaymentPage(params.redirectUrl);
         } else {
           throw new Error(fetchCreateOrder);
         }
@@ -672,10 +656,8 @@ export default {
       }
       this.isLoadingCreateOrder = false;
     },
-    toThankyouPage(param) {
-      this.$router.push(
-        `/seglowup/thankyou?type=${param.type}&order_uid=${param.orderUid}&customer_uid=${param.customerUid}`
-      );
+    toPaymentPage(url) {
+      window.location.href = url;
     },
     onToggleNavbarMenu(isOpen) {
       this.isOpenMenu = isOpen;

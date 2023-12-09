@@ -53,8 +53,9 @@
               <p
                 class="max-w-[319px] md:max-w-[500px] text-sm md:text-base lg:text-lg text-[#2A5446]"
               >
-                Cari teman treatment bareng di klinik kecantikan favoritmu
-                dengan mudah, dan aman lewat Seakun Glow Up Bareng.
+                Cantik bersama dengan biaya yang lebih terjangkau! Cari teman
+                treatment bareng di klinik kecantikan favoritmu dengan mudah dan
+                aman lewat Seakun.
               </p>
               <Button
                 label="Lihat Layanan"
