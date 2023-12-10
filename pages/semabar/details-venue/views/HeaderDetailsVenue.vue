@@ -7,16 +7,25 @@
       </div>
     </nuxt-link>
     <div>
-      <img
-        src="/images/semabar/illustration/minisoccer-mobile.png"
-        alt="banner"
-        class="rounded-xl w-full h-[120px] mt-8 sm:hidden"
-      />
-      <img
-        src="/images/semabar/illustration/minisoccer.png"
-        alt="banner"
-        class="rounded-xl w-full md:h-[200px] lg:h-[242px] mt-8 hidden sm:block"
-      />
+      <div class="relative">
+        <div class="absolute rounded-[6px] left-5 lg:left-5 bottom-[20px]">
+          <img
+            :src="`/images/semabar/venue/${detailsVenue.images}`"
+            :alt="detailsVenue.name"
+            class="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px] rounded-[6px] bg-white p-[5px] lg:px-[10px] lg:py-[11px]"
+          />
+        </div>
+        <img
+          src="/images/semabar/illustration/minisoccer-mobile.webp"
+          alt="banner"
+          class="rounded-xl w-full h-[120px] mt-8 sm:hidden p-2"
+        />
+        <img
+          src="/images/semabar/illustration/minisoccer.webp"
+          alt="banner"
+          class="rounded-xl w-full md:h-[200px] lg:h-[242px] mt-8 hidden sm:block"
+        />
+      </div>
       <div
         class="mt-2 md:mt-4 lg:mt-6 flex flex-col lg:flex-row justify-between"
       >
@@ -34,11 +43,24 @@
             >
               {{ detailsVenue.name }}
             </p>
+
             <img
               src="/images/icons/atoms/certified.svg"
               alt="available"
               class="w-[19px] h-[16px] md:w-[25px] md:h-[20px] lg:w-[37px] lg:h-[30px]"
             />
+          </div>
+          <div class="flex items-center gap-1 mt-2 md:mt-3">
+            <img
+              src="/images/icons/atoms/location.svg"
+              alt="location"
+              class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6"
+            />
+            <p
+              class="font-medium text-sm md:text-base lg:text-[20px] text-[#08A081]"
+            >
+              {{ detailsVenue.city }}
+            </p>
           </div>
           <!-- flex -->
           <div class="gap-3 mt-1 md:mt-[11px] hidden">
@@ -123,6 +145,7 @@ export default {
   methods: {
     onClickShareLink(target) {
       const currentUrl = encodeURIComponent(window.location.href);
+      const text = `Yuk main mini soccer bareng di ${this.detailsVenue.name} lewat komunitas Seakun. Skema patungannya murah banget!`;
       if (target === 'twitter') {
         const share = `https://www.twitter.com/share?url=${currentUrl}`;
         window.open(
@@ -131,7 +154,7 @@ export default {
           'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
         );
       } else if (target === 'whatsapp') {
-        const share = `https://api.whatsapp.com/send?text=${currentUrl}`;
+        const share = `https://api.whatsapp.com/send?text=${text}%20${currentUrl}`;
         window.open(share, '_blank');
       } else if (target === 'instagram') {
       }

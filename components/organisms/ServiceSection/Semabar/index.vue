@@ -9,7 +9,7 @@
       </h1>
       <p class="text-sm md:text-base lg:text-xl pt-2">
         Pilih permainan dan olahraga yang kamu sukai, dan temukan informasi
-        lengkap tentang layanan semabar di bawah ini!
+        lengkap tentang layanan Semabar di bawah ini!
       </p>
     </div>
     <section
@@ -75,11 +75,7 @@
             class="text-xs md:text-sm lg:text-[18px] text-main font-medium"
             @click="isShowModalCity = !isShowModalCity"
           >
-            {{
-              selectedCity && selectedCity != 'Semua'
-                ? selectedCity
-                : 'Filter Kota'
-            }}
+            {{ selectedCity != 'Semua' ? selectedCity : 'Filter Kota' }}
           </p>
           <Chevron
             :isShow="isShowModalCity"
@@ -96,11 +92,7 @@
               v-for="(data, id) in citys"
               :key="id"
               :data="data"
-              @clickMenuFilter="
-                filterCity(data),
-                  (selectedCity = data.name),
-                  (isShowModalCity = false)
-              "
+              @clickMenuFilter="filterCity(data)"
             />
           </div>
         </div>
@@ -116,8 +108,8 @@
         <p
           class="text-xs md:text-sm lg:text-base text-[#00BA88] font-semibold text-nunito"
         >
-          Nikmati harga lebih terjangkau dengan menjadi member! Bayar sekaligus
-          4 match per-bulan dan nikmati biaya admin lebih murah!
+          Yuk, jadi member sekarang! Bayar sekaligus 4 match per-bulan dan
+          nikmati biaya admin lebih murah
         </p>
       </section>
       <section
@@ -141,6 +133,7 @@
       <div
         class="flex gap-2 items-center pt-6 mx-auto w-max cursor-pointer"
         @click="showAllDataVenue"
+        v-if="!allreadyDisplayData"
       >
         <p
           class="text-green-seakun-secondary-dark text-xs md:text-sm font-medium"
@@ -167,6 +160,8 @@ export default {
   },
   data() {
     return {
+      allreadyDisplayData: false,
+      isShowMore: false,
       activeMenu: 'Mini Soccer',
       menus: [
         {
@@ -221,7 +216,7 @@ export default {
             city: 'Jakarta Selatan',
           },
           {
-            name: 'Rahayu Minisoccer',
+            name: 'Rahayu Mini Soccer Medan',
             slug: 'rahayu-minisoccer',
             member: 150,
             detailsFee: {
@@ -318,7 +313,7 @@ export default {
             name: 'Jet One Bintaro',
             isAvailable: false,
             images: 'jet-one-bintaro.webp',
-            city: 'Tanggerang',
+            city: 'Tangerang',
           },
           {
             name: 'DNA Arena Cinere',
@@ -345,7 +340,7 @@ export default {
           name: 'Jakarta Utara',
         },
         {
-          name: 'Tanggerang',
+          name: 'Tangerang',
         },
         {
           name: 'Depok',
@@ -371,13 +366,17 @@ export default {
 
   methods: {
     filterCity(param) {
+      this.selectedCity = param.name;
       if (param.name == 'Semua') {
-        this.filteredList = this.dataVenue.list;
+        this.allreadyDisplayData = false;
+        this.updateFilteredList();
       } else {
         this.filteredList = this.dataVenue.list.filter(
           (data) => data.city == param.name
         );
+        this.allreadyDisplayData = true;
       }
+      this.isShowModalCity = false;
     },
 
     updateFilteredList() {
@@ -394,6 +393,7 @@ export default {
     showAllDataVenue() {
       if (this.selectedCity == 'Semua') {
         this.filteredList = this.dataVenue.list;
+        this.allreadyDisplayData = true;
       }
     },
     handleClickMenu(val) {
