@@ -353,11 +353,13 @@ export default {
       filteredList: [],
       isShowModalCity: false,
       selectedCity: 'Semua',
+      windowWidth: 0,
     };
   },
   created() {
     if (process.client) {
       this.displayAllListByScreenSize();
+      this.windowWidth = window.innerWidth;
       window.addEventListener('resize', this.updateFilteredListByResize);
     }
   },
@@ -394,19 +396,23 @@ export default {
       }
     },
     updateFilteredListByResize() {
-      this.$alert.show({
-        status: 'error',
-        message: 'resize triggered',
-      });
-      this.filterCity(this.selectedCity);
-      const screenWidth = window.innerWidth;
+      const newWindowWidth = window.innerWidth;
+      if (newWindowWidth !== this.windowWidth) {
+        this.windowWidth = newWindowWidth;
+        this.$alert.show({
+          status: 'error',
+          message: 'resize triggered',
+        });
+        this.filterCity(this.selectedCity);
+        const screenWidth = window.innerWidth;
 
-      if (screenWidth < 768) {
-        this.filteredList = this.filteredList.slice(0, 3);
-      } else if (screenWidth < 1024) {
-        this.filteredList = this.filteredList.slice(0, 4);
-      } else {
-        this.filteredList = this.filteredList.slice(0, 8);
+        if (screenWidth < 768) {
+          this.filteredList = this.filteredList.slice(0, 3);
+        } else if (screenWidth < 1024) {
+          this.filteredList = this.filteredList.slice(0, 4);
+        } else {
+          this.filteredList = this.filteredList.slice(0, 8);
+        }
       }
     },
     onShowMore() {
