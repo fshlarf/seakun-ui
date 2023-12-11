@@ -6,7 +6,7 @@
       <section
         v-for="(menu, id) in tabMenu"
         :key="id"
-        class="relative text-center cursor-pointer min-w-[140px] md:min-w-[140px] mx-4 py-4 lg:py-6 lg:mx-6 whitespace-nowrap md:whitespace-normal"
+        class="menu-tab-size relative text-center cursor-pointer mx-4 py-4 lg:py-6 lg:mx-6 whitespace-nowrap"
         @click="activeTab = menu.content"
         :class="`${[
           activeTab == menu.content
@@ -105,5 +105,30 @@ export default {
 .tab-menu {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+@media (min-width: 100px) {
+  .menu-tab-size {
+    min-width: 90px;
+  }
+}
+@media (min-width: 325px) {
+  .menu-tab-size {
+    min-width: 110px;
+  }
+}
+@media (min-width: 640px) {
+  .menu-tab-size {
+    min-width: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .menu-tab-size {
+    min-width: 120px;
+  }
+}
+@media (min-width: 1024px) {
+  .menu-tab-size {
+    min-width: 125px;
+  }
 }
 </style>

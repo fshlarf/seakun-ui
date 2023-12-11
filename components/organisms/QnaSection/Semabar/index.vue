@@ -5,7 +5,7 @@
         Frequently Asked Questions
       </h1>
       <p class="text-sm md:text-base lg:text-xl pt-2">
-        Berikut ini beberapa pertanyaan yang sering ditanyakan
+        Beberapa pertanyaan yang sering ditanyakan
       </p>
     </div>
     <div
@@ -72,7 +72,7 @@ export default {
           id: 6,
           question: 'Siapa yang dapat saya hubungi jika merasa kesulitan?',
           answer:
-            'TIdak perlu khawatir, karena Admin komunitas kami akan membantu kamu jika kamu menemui kesulitan. Admin komunitas juga akan hadir pada saat jadwal pemainan.',
+            'Tidak perlu khawatir, karena Admin komunitas kami akan membantu kamu jika kamu menemui kesulitan. Admin komunitas juga akan hadir pada saat jadwal pemainan.',
           isShow: false,
         },
       ],

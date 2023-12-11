@@ -116,7 +116,7 @@ export default {
             ],
           },
           {
-            name: 'Rahayu Minisoccer',
+            name: 'Rahayu Mini Soccer Medan',
             slug: 'rahayu-minisoccer',
             member: 150,
             detailsFee: {
@@ -273,7 +273,7 @@ export default {
             name: 'Jet One Bintaro',
             isAvailable: false,
             images: 'jet-one-bintaro.webp',
-            city: 'Tanggerang',
+            city: 'Tangerang',
           },
           {
             name: 'DNA Arena Cinere',

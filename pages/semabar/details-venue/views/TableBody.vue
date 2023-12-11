@@ -16,14 +16,11 @@
         class="pt-1 lg:pt-2 space-y-5 lg:space-y-8 text-sm md:text-base lg:text-[18px] text-main leading-[22px] lg:leading-[26px]"
       >
         <p>
-          Merupakan komunitas main bareng yang diinisiasi oleh Seakun.id dengan
-          tujuan untuk mempertemukan kamu dengan mereka yang ingin bermain atau
-          berolahraga bareng, namun terkendala dalam mencari teman mabar.',
-        </p>
-        <p>
-          'Kini dengan Semabar kamu tidak perlu bingung dalam mencari teman
-          untuk main bareng. Cukup dengan bergabung dalam komunitas, nanti kamu
-          akan dicarikan partner untuk main bareng..
+          Komunitas main bareng yang diinisiasi oleh Seakun.id, bertujuan untuk
+          mempertemukan kamu dengan individu lain yang ingin bermain atau
+          berolahraga bersama. Dengan Semabar, kamu tidak perlu khawatir mencari
+          teman untuk main bareng lagi! Cukup dengan bergabung komunitas, dan
+          kami yang akan mengelola sisanya.
         </p>
       </div>
     </section>
@@ -285,6 +282,7 @@
             :alt="gallery.images"
             class="w-full h-[70px] md:h-[110px] lg:h-[168px] object-cover cursor-pointer rounded sm:rounded[6px]"
             @click="handlePreview(id)"
+            @click.stop
           />
         </div>
       </div>
@@ -323,13 +321,22 @@ export default {
   },
   mounted() {
     document.addEventListener('keydown', this.shortCutClosePreview);
+    document.addEventListener('click', this.closePreviewClickOutside);
   },
   beforeDestroy() {
     document.removeEventListener('keydown', this.shortCutClosePreview);
+    document.removeEventListener('click', this.closePreviewClickOutside);
   },
   methods: {
     shortCutClosePreview(event) {
       if (event.keyCode === 27) {
+        this.isShowPreviewGallery = false;
+      }
+    },
+    closePreviewClickOutside(event) {
+      const preview = this.$el.querySelector('.preview-gallery');
+
+      if (preview && !preview.contains(event.target)) {
         this.isShowPreviewGallery = false;
       }
     },

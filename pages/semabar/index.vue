@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarSemabar />
+    <NavbarSemabar class="z-50" />
     <HeaderSemabar />
     <BenefitSemabar />
     <ServiceSemabar />

@@ -11,7 +11,7 @@
           Flow Main Bareng
         </h3>
         <p class="text-sm md:text-base lg:text-xl text-[#15382F] pt-2">
-          Berikut ini flow main bareng yang harus kamu ketahui
+          Flow main bareng yang perlu kamu ketahui
         </p>
       </header>
       <div class="grid grid-cols-2 md:flex mt-[52px] gap-6 lg:gap-0 w-full">
@@ -46,7 +46,7 @@ export default {
     return {
       flow: [
         {
-          name: 'Gabung Otomatis',
+          name: 'Gabung Komunitas',
           images: 'flow-1',
         },
         {

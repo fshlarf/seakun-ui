@@ -9,8 +9,8 @@
           Testimonial
         </h1>
         <p class="text-sm md:text-base lg:text-xl text-center pt-2">
-          Berikut ini testimoni dari mereka yang sudah menggunakan layanan
-          Semabar
+          Lihat tanggapan puas dari mereka yang sudah lebih dulu bergabung di
+          komunitas Semabar
         </p>
       </header>
       <div class="relative md:pr-3">

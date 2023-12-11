@@ -4,24 +4,39 @@
     :class="[cardData.isAvailable ? 'cursor-pointer' : 'cursor-not-allowed']"
     @click="$emit('click-card')"
   >
-    <section
-      class="w-full flex justify-center items-center border border-[#A0A3BD26] h-[90px] rounded"
-    >
-      <img
-        :src="`/images/semabar/venue/${cardData.images}`"
-        :alt="cardData.name"
-        :class="`max-w-[70px] max-h-[60px] md:max-w-[80px] md:max-h-[70px] ${cardData.classImage}`"
-      />
-    </section>
-    <div class="flex justify-between mt-2 items-center">
-      <p class="text-xs text-[#66738F]">Komunitas Main Bareng</p>
-      <p
-        class="hidden text-[11px] text-green-seakun-secondary-dark font-medium bg-[#DBF8F2] rounded-[10px] py-0.5 px-2"
+    <div class="relative">
+      <div
+        v-if="!cardData.isAvailable"
+        class="absolute top-0 left-0 right-0 bottom-0 bg-[#FFF]/60"
+      ></div>
+      <section
+        class="w-full flex justify-center items-center border border-[#A0A3BD26] h-[90px] rounded"
       >
-        {{ cardData.member }} Member
-      </p>
+        <img
+          :src="`/images/semabar/venue/${cardData.images}`"
+          :alt="cardData.name"
+          :class="`max-w-[70px] max-h-[60px] md:max-w-[80px] md:max-h-[70px] ${cardData.classImage}`"
+        />
+      </section>
+      <div class="flex justify-between mt-2 items-center">
+        <p class="text-xs text-[#66738F]">Komunitas Main Bareng</p>
+        <p
+          class="hidden text-[11px] text-green-seakun-secondary-dark font-medium bg-[#DBF8F2] rounded-[10px] py-0.5 px-2"
+        >
+          {{ cardData.member }} Member
+        </p>
+      </div>
+      <p class="pt-1 text-xs text-main font-bold">{{ cardData.name }}</p>
+      <div class="mt-2 flex gap-1">
+        <img
+          src="/images/icons/atoms/location.svg"
+          alt="location"
+          class="w-[15px] h-[15px]"
+        />
+        <p class="text-xs text-[#08A081] font-medium">{{ cardData.city }}</p>
+      </div>
     </div>
-    <p class="pt-1 text-xs text-main font-medium">{{ cardData.name }}</p>
+
     <div v-if="cardData.isAvailable">
       <p class="text-[11px] text-[#66738F] mt-3">Harga Per Match</p>
       <section class="flex justify-between text-xs mt-2">
