@@ -65,7 +65,7 @@
       />
     </section>
 
-    <div class="p-3 md:p-5 lg:p-8 bg-[#DBF8F2] text-dmsans rounded-lg">
+    <div class="p-3 md:p-5 lg:p-8 bg-[#DEFDF5] text-dmsans rounded-lg">
       <header class="flex justify-between items-center text-main">
         <p class="text-sm font-medium md:text-base lg:text-[20px] text-main">
           Venue yang tersedia
@@ -89,10 +89,10 @@
               :class-text="{
                 'text-green-seakun-secondary-dark': selectedCity == data.name,
               }"
-              v-for="(data, id) in citys"
+              v-for="(data, id) in cities"
               :key="id"
               :data="data"
-              @clickMenuFilter="filterCity(data)"
+              @clickMenuFilter="onFilterCity(data)"
             />
           </div>
         </div>
@@ -132,7 +132,7 @@
       </section>
       <div
         class="flex gap-2 items-center pt-6 mx-auto w-max cursor-pointer"
-        @click="showAllDataVenue"
+        @click="onShowMore"
         v-if="!allreadyDisplayData"
       >
         <p
@@ -151,6 +151,7 @@ import CardService from './views/CardService.vue';
 import Chevron from '~/components/atoms/Chevron.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import Dropdown from './views/Dropdown.vue';
+
 export default {
   components: {
     CardService,
@@ -323,7 +324,7 @@ export default {
           },
         ],
       },
-      citys: [
+      cities: [
         {
           name: 'Semua',
         },
@@ -356,30 +357,32 @@ export default {
   },
   created() {
     if (process.client) {
-      this.updateFilteredList();
-      window.addEventListener('resize', this.updateFilteredList);
+      this.displayAllListByScreenSize();
+      window.addEventListener('resize', this.updateFilteredListByResize);
     }
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.updateFilteredList);
+    window.removeEventListener('resize', this.updateFilteredListByResize);
   },
 
   methods: {
-    filterCity(param) {
+    onFilterCity(param) {
       this.selectedCity = param.name;
-      if (param.name == 'Semua') {
+      this.filterCity();
+    },
+    filterCity() {
+      if (this.selectedCity == 'Semua') {
         this.allreadyDisplayData = false;
-        this.updateFilteredList();
+        this.displayAllListByScreenSize();
       } else {
         this.filteredList = this.dataVenue.list.filter(
-          (data) => data.city == param.name
+          (data) => data.city == this.selectedCity
         );
         this.allreadyDisplayData = true;
       }
       this.isShowModalCity = false;
     },
-
-    updateFilteredList() {
+    displayAllListByScreenSize() {
       const screenWidth = window.innerWidth;
 
       if (screenWidth < 768) {
@@ -390,7 +393,23 @@ export default {
         this.filteredList = this.dataVenue.list.slice(0, 8);
       }
     },
-    showAllDataVenue() {
+    updateFilteredListByResize() {
+      this.$alert.show({
+        status: 'error',
+        message: 'resize triggered',
+      });
+      this.filterCity(this.selectedCity);
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth < 768) {
+        this.filteredList = this.filteredList.slice(0, 3);
+      } else if (screenWidth < 1024) {
+        this.filteredList = this.filteredList.slice(0, 4);
+      } else {
+        this.filteredList = this.filteredList.slice(0, 8);
+      }
+    },
+    onShowMore() {
       if (this.selectedCity == 'Semua') {
         this.filteredList = this.dataVenue.list;
         this.allreadyDisplayData = true;
