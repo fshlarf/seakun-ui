@@ -529,6 +529,7 @@ import Button from '~/components/atoms/Button.vue';
 import Chevron from '~/components/atoms/Chevron.vue';
 import OrderService from '~/services/OrderServices.js';
 import ModalBlackListWarning from '~/components/mollecules/ModalBlackListWarning.vue';
+import moment from 'moment';
 
 export default {
   components: {
