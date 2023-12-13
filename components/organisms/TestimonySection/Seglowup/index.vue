@@ -28,9 +28,9 @@
           </section>
           <section class="mt-[15px] md:mt-5 gap-3 flex">
             <img
-              :src="`/images/seglowup/testimony/${testimony.images}.svg`"
+              :src="`/images/profile-page/avatar/${testimony.images}.svg`"
               alt="testimony"
-              class="w-10 h-10"
+              class="w-10 h-10 rounded-full"
             />
             <div>
               <p class="text-xs md:text-sm font-medium">{{ testimony.name }}</p>
@@ -49,25 +49,25 @@ export default {
     return {
       dataTestimony: [
         {
-          name: 'Firstname Lastname',
-          address: 'Jakarta',
+          name: 'Fara Nur Azizah',
+          address: 'Balikpapan',
           testimony:
-            "Yourname's ongoing assistance has certainly been of significant and direct benefit to us in terms of User Experience as well as website functionality and integration with our internal systems.",
-          images: 'dummy',
+            'aku tuh sebenarnya udah lama ngincer ZAP untuk treatment disana, ternyata di Seakun.id ada Seglowup layanan baru untuk sharing paket series, jauh hemaat banget sih ini untuk 8x treatment di klinik sekelas ZAP 🥹',
+          images: 'woman-1',
         },
         {
-          name: 'Firstname Lastname',
+          name: 'Indriyani Puspita',
           address: 'Jakarta',
           testimony:
-            "Yourname's ongoing assistance has certainly been of significant and direct benefit to us in terms of User Experience as well as website functionality and integration with our internal systems.",
-          images: 'dummy',
+            'Akhirnya seakun ada patungan treatment bareng. Dulu sempat boros, tapi pas tau seglowup, ternyata biayanya jauh lebih hemat dong. Ini sih cocok banget buat yang mau glow up tapi tetep pengen hemat juga kaya aku hehe..',
+          images: 'woman-2',
         },
         {
-          name: 'Firstname Lastname',
+          name: 'Marlina Dian Safitri',
           address: 'Jakarta',
           testimony:
-            "Yourname's ongoing assistance has certainly been of significant and direct benefit to us in terms of User Experience as well as website functionality and integration with our internal systems.",
-          images: 'dummy',
+            'Biasanya beli treatment series untuk sendiri karena harga per treatment nya jd lebih murah, tp waktu sibuk dan g sempat treatment jd beberapa expired, ternyata di seakun.id ada layanan seGlowUp bisa dicariin temen sharing, tetep dapat harga murah tanpa khawatir expired 🫶🏻',
+          images: 'woman-3',
         },
       ],
     };
