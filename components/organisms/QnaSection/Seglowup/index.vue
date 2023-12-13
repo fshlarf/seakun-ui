@@ -1,6 +1,6 @@
 <template>
   <div
-    id="qna-semabar"
+    id="qna-seglowup"
     class="container-semabar pt-[24px] md:pt-[44px] lg:pt-[64px] tn:mb-[48px] xl:mb-[52px]"
   >
     <div class="text-center mb-7 lg:mb-8 text-[#15382F]">
@@ -40,44 +40,44 @@ export default {
       dataFaq: [
         {
           id: 1,
-          question: 'Apa itu SeGlowUp ?',
+          question: 'Apa itu SeGlowUp?',
           answer:
             'SeGlowUp adalah layanan patungan treatment kecantikan bersama yang menghubungkan orang-orang dengan tujuan yang sama untuk mendapatkan perawatan kecantikan berkualitas dengan harga yang terjangkau.',
           isShow: false,
         },
         {
           id: 2,
-          question: 'Treatment apa saja yang tersedia ?',
-          answer:
-            'SeGlowUp adalah layanan patungan treatment kecantikan bersama yang menghubungkan orang-orang dengan tujuan yang sama untuk mendapatkan perawatan kecantikan berkualitas dengan harga yang terjangkau.',
+          question: 'Treatment apa saja yang tersedia?',
+          answer: 'Treatment yang tersedia saat ini rangkaian paket ZAP Series',
           isShow: false,
         },
         {
           id: 3,
-          question: 'Bagaimana jika grup tidak full? Apakah bisa refund ?',
+          question: 'Bagaimana jika grup tidak full? Apakah bisa refund?',
           answer:
-            'SeGlowUp adalah layanan patungan treatment kecantikan bersama yang menghubungkan orang-orang dengan tujuan yang sama untuk mendapatkan perawatan kecantikan berkualitas dengan harga yang terjangkau.',
+            'Kami akan memberikan informasi terbaru terkait grup SeGlowUp dan pelaksanaannya. Jika grup tidak full akan kami refund.',
           isShow: false,
         },
         {
           id: 4,
-          question: 'Apakah SeGlowUp aman ?',
+          question: 'Apakah SeGlowUp aman?',
           answer:
-            'SeGlowUp adalah layanan patungan treatment kecantikan bersama yang menghubungkan orang-orang dengan tujuan yang sama untuk mendapatkan perawatan kecantikan berkualitas dengan harga yang terjangkau.',
+            'Aman karna semua prosesnya transparan dan akan dibantu sampai selesai untuk menikmati layanannya.',
           isShow: false,
         },
         {
           id: 5,
-          question: 'Bagaimana cara bergabung SeGlowUp ?',
-          answer:
-            'SeGlowUp adalah layanan patungan treatment kecantikan bersama yang menghubungkan orang-orang dengan tujuan yang sama untuk mendapatkan perawatan kecantikan berkualitas dengan harga yang terjangkau.',
-          isShow: false,
-        },
-        {
-          id: 6,
-          question: 'Bagaimana cara bergabung SeGlowUp ?',
-          answer:
-            'SeGlowUp adalah layanan patungan treatment kecantikan bersama yang menghubungkan orang-orang dengan tujuan yang sama untuk mendapatkan perawatan kecantikan berkualitas dengan harga yang terjangkau.',
+          question: 'Bagaimana cara bergabung SeGlowUp?',
+          answer: [
+            'Pilih & daftar layanan di Seakun',
+            'Member melakukan pembayaran',
+            'Member menunggu grup penuh',
+            'Seakun menyerahkan data member & melakukan pembayaran',
+            'Member registrasi di website ZAP',
+            'ZAP mengaktivasi quota series treatment ke member Seakun',
+            'Nikmati treatment di lokasi ZAP manapun dengan menunjukkan akun ZAP',
+          ],
+          list: true,
           isShow: false,
         },
       ],
