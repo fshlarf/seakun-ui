@@ -13,33 +13,34 @@ import FooterSemabar from '~/components/mollecules/FooterSemabar.vue';
 export default {
   head() {
     return {
-      title: 'Seakun Main Bareng',
+      title: 'Seakun | Situs Cari Teman Patungan Aman & Murah',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Brief description of your page',
+          content:
+            'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'Ini Og Title',
+          content: 'Semabar | Seakun Main Bareng',
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: 'Brief description of your page',
+          content:
+            'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content:
-            'https://drive.google.com/uc?id=16bxCiKV5nIXV04t5nQ2-nKnRVdBfMeKO',
+          content: 'https://seakun.id/images/shared-link/semabar.png',
         },
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'test.com',
+          content: 'https://seakun.id/semabar/details-venue',
         },
         {
           hid: 'og:type',
@@ -49,23 +50,31 @@ export default {
         {
           hid: 'twitter:card',
           name: 'twitter:card',
-          content:
-            'https://drive.google.com/file/d/16bxCiKV5nIXV04t5nQ2-nKnRVdBfMeKO/view?usp=sharing',
+          content: 'summary_large_image',
+        },
+        {
+          property: 'twitter:domain',
+          content: 'seakun.id',
+        },
+        {
+          property: 'twitter:url',
+          content: 'https://seakun.id/semabar/details-venue',
         },
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: 'Your Page Title',
+          content: 'Semabar | Seakun Main Bareng',
         },
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content: 'Brief description of your page',
+          content:
+            'Seakun.id, Platform pertama di Indonesia yang memberikan layanan Berlangganan Bersama agar lebih praktis, legal, aman dan murah.',
         },
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          content: 'URL to your preview image',
+          content: 'https://seakun.id/images/shared-link/semabar.png',
         },
       ],
     };
