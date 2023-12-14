@@ -8,7 +8,7 @@
         Benefit Semabar
       </h1>
       <p class="text-sm md:text-base lg:text-xl pt-2 leading-normal">
-        Berikut ini benefit yang akan kamu dapatkan apabila gabung semabar
+        Benefit yang akan kamu dapatkan dengan bergabung di Semabar
       </p>
     </div>
     <div class="lg:mt-12 mt-6 md:mt-5">
@@ -118,7 +118,7 @@ export default {
           icon: 'hamburger.svg',
         },
         {
-          name: 'Membership dan komunitas yang di kelola rapi',
+          name: 'Manajemen membership dan komunitas yang teratur',
           icon: 'people.svg',
         },
         {

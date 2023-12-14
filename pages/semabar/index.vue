@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarSemabar />
+    <NavbarSemabar class="z-50" />
     <HeaderSemabar />
     <BenefitSemabar />
     <ServiceSemabar />
@@ -34,5 +34,4 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped></style>

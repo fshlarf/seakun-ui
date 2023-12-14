@@ -23,7 +23,7 @@
         </div>
         <div class="flex justify-around flex-wrap content-mobile mb-[5px]">
           <div v-for="(item, index) in providerList" :key="index">
-            <div class="card">
+            <div v-if="item.slug !== 'zap'" class="card">
               <div class="w-1/4">
                 <img
                   :src="item.img"

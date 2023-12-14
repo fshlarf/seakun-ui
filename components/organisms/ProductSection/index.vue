@@ -65,6 +65,7 @@
               :key="id"
             >
               <ProviderCard
+                v-if="product.slug != 'zap'"
                 :data-provider="product"
                 class="tn:w-full tn:h-full"
                 @showPriceScheme="showPriceScheme"
@@ -96,6 +97,7 @@
         </div>
       </div>
 
+      <!-- <SeGlowUpServiceSection /> -->
       <!-- <SetitipBanner /> -->
 
       <div id="product-ondemand" class="pt-5 md:mt-8 md:py-4">
@@ -165,7 +167,7 @@ import SetitipBanner from './views/SetitipBanner.vue';
 import { mapGetters, mapActions } from 'vuex';
 import InputSearch from '~/components/atoms/InputSearch';
 import SelectOption from './views/SelectOption.vue';
-
+import SeGlowUpServiceSection from '~/components/organisms/SeGlowUp/ServiceSection';
 export default {
   components: {
     ProductCard,
@@ -178,6 +180,7 @@ export default {
     SetitipBanner,
     InputSearch,
     SelectOption,
+    SeGlowUpServiceSection,
   },
   data() {
     return {
@@ -190,7 +193,14 @@ export default {
       },
       dataProductOnDemand: [
         {
-          id: 1,
+          name: 'SeGlowUp',
+          slug: 'seglowup',
+          img: '/images/product/on demand/new/seglowup.png',
+          isActive: true,
+          // preview:
+          //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
+        },
+        {
           name: 'Sekurban',
           slug: 'sekurban',
           img: '/images/product/on demand/new/sekurban.png',
@@ -199,7 +209,6 @@ export default {
           //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
         },
         {
-          id: 2,
           name: 'Sefitnes',
           slug: 'sefitnes',
           img: '/images/product/on demand/new/sefitnes.png',
@@ -208,7 +217,6 @@ export default {
           //   'Cari teman patungan berlangganan gym, fitness dan fasilitas olahraga untuk mendapatakan potongan harga.',
         },
         {
-          id: 3,
           name: 'Seatap',
           slug: 'seatap',
           img: '/images/product/on demand/new/seatap.png',
@@ -217,7 +225,6 @@ export default {
           //   'Cari teman patungan untuk sewa rumah, kostan atau apartemen.',
         },
         {
-          id: 4,
           name: 'Sekelas',
           slug: 'sekelas',
           img: '/images/product/on demand/new/sekelas.png',
@@ -226,7 +233,6 @@ export default {
           //   'Cari teman patungan untuk beli dan berlangganan kelas online atau offline.',
         },
         {
-          id: 5,
           name: 'Sekatering',
           slug: 'sekatering',
           img: '/images/product/on demand/new/sekatering.png',
@@ -234,7 +240,6 @@ export default {
           // preview: 'Cari teman patungan berlangganan katering terdekat.',
         },
         {
-          id: 6,
           name: 'Sekantor',
           slug: 'sekantor',
           img: '/images/product/on demand/new/sekantor.png',
@@ -242,7 +247,6 @@ export default {
           // preview: 'Cari teman patungan berlangganan katering terdekat.',
         },
         {
-          id: 7,
           name: 'Sekeranjang',
           slug: 'sekeranjang',
           img: '/images/product/on demand/new/sekeranjang.png',
@@ -251,7 +255,6 @@ export default {
           //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
         },
         {
-          id: 5,
           name: 'Semabar',
           slug: 'semabar',
           img: '/images/product/on demand/new/semabar.png',
@@ -259,7 +262,6 @@ export default {
           preview: '(Main Bareng)',
         },
         {
-          id: 9,
           name: 'Sejalan',
           slug: 'sejalan',
           img: '/images/product/on demand/new/sejalan.png',
@@ -267,7 +269,6 @@ export default {
           // preview: 'Berlangganan bersama ojek online terpercaya.',
         },
         {
-          id: 10,
           name: 'Seumrah',
           slug: 'seumrah',
           img: '/images/product/on demand/new/seumrah.png',
@@ -275,7 +276,6 @@ export default {
           // preview: 'Berlangganan bersama ojek online terpercaya.',
         },
         {
-          id: 11,
           name: 'Setrip',
           slug: 'setrip',
           img: '/images/product/on demand/new/setrip.png',

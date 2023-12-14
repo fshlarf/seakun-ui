@@ -98,6 +98,11 @@
             <nuxt-link class="hover:no-underline" to="/sekurban"
               >Sequrban</nuxt-link
             >
+          </li>
+          <li class="relative max-w-max">
+            <nuxt-link class="hover:no-underline" to="/seglowup"
+              >SeGlowUp</nuxt-link
+            >
             <img
               class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-1 w-[9px]"
               :class="`${showSpark1 ? 'opacity-100' : 'opacity-20'}`"

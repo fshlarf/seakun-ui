@@ -20,8 +20,8 @@
           <p
             class="text-dark-green text-xs md:text-sm lg:text-[18px] tn:mt-3 tn:text-center md:text-left leading-normal"
           >
-            Cari teman main bareng untuk olahraga dan game favoritmu dengan
-            mudah, dan aman lewat Seakun Main Bareng.
+            Temukan teman bermain untuk aktivitas olahraga dan game favoritmu
+            dengan mudah dan aman melalui Seakun Main Bareng
           </p>
           <Button
             variant="gradient-dark"

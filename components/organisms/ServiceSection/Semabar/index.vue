@@ -9,7 +9,7 @@
       </h1>
       <p class="text-sm md:text-base lg:text-xl pt-2">
         Pilih permainan dan olahraga yang kamu sukai, dan temukan informasi
-        lengkap tentang layanan semabar di bawah ini!
+        lengkap tentang layanan Semabar di bawah ini!
       </p>
     </div>
     <section
@@ -65,7 +65,7 @@
       />
     </section>
 
-    <div class="p-3 md:p-5 lg:p-8 bg-[#DBF8F2] text-dmsans rounded-lg">
+    <div class="p-3 md:p-5 lg:p-8 bg-[#DEFDF5] text-dmsans rounded-lg">
       <header class="flex justify-between items-center text-main">
         <p class="text-sm font-medium md:text-base lg:text-[20px] text-main">
           Venue yang tersedia
@@ -75,11 +75,7 @@
             class="text-xs md:text-sm lg:text-[18px] text-main font-medium"
             @click="isShowModalCity = !isShowModalCity"
           >
-            {{
-              selectedCity && selectedCity != 'Semua'
-                ? selectedCity
-                : 'Filter Kota'
-            }}
+            {{ selectedCity != 'Semua' ? selectedCity : 'Filter Kota' }}
           </p>
           <Chevron
             :isShow="isShowModalCity"
@@ -93,14 +89,10 @@
               :class-text="{
                 'text-green-seakun-secondary-dark': selectedCity == data.name,
               }"
-              v-for="(data, id) in citys"
+              v-for="(data, id) in cities"
               :key="id"
               :data="data"
-              @clickMenuFilter="
-                filterCity(data),
-                  (selectedCity = data.name),
-                  (isShowModalCity = false)
-              "
+              @clickMenuFilter="onFilterCity(data)"
             />
           </div>
         </div>
@@ -116,8 +108,8 @@
         <p
           class="text-xs md:text-sm lg:text-base text-[#00BA88] font-semibold text-nunito"
         >
-          Nikmati harga lebih terjangkau dengan menjadi member! Bayar sekaligus
-          4 match per-bulan dan nikmati biaya admin lebih murah!
+          Yuk, jadi member sekarang! Bayar sekaligus 4 match per-bulan dan
+          nikmati biaya admin lebih murah
         </p>
       </section>
       <section
@@ -128,12 +120,20 @@
           v-for="(data, id) in filteredList"
           :key="id"
           :cardData="data"
-          @click-card="$router.push('/semabar/details-venue')"
+          @click-card="
+            data.isAvailable
+              ? $router.push({
+                  path: '/semabar/details-venue',
+                  query: { detailVenue: data.slug },
+                })
+              : null
+          "
         />
       </section>
       <div
         class="flex gap-2 items-center pt-6 mx-auto w-max cursor-pointer"
-        @click="showAllDataVenue"
+        @click="onShowMore"
+        v-if="!allreadyDisplayData"
       >
         <p
           class="text-green-seakun-secondary-dark text-xs md:text-sm font-medium"
@@ -151,6 +151,7 @@ import CardService from './views/CardService.vue';
 import Chevron from '~/components/atoms/Chevron.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import Dropdown from './views/Dropdown.vue';
+
 export default {
   components: {
     CardService,
@@ -160,6 +161,8 @@ export default {
   },
   data() {
     return {
+      allreadyDisplayData: false,
+      isShowMore: false,
       activeMenu: 'Mini Soccer',
       menus: [
         {
@@ -191,128 +194,137 @@ export default {
       dataVenue: {
         list: [
           {
-            name: 'Lapangan Permata Hijaue',
+            name: 'LA.PANG.AN 45 Permata Hijau',
+            slug: 'permata-hijau',
             member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
+            detailsFee: {
+              detailsPrice: {
+                membership: {
+                  sharedFee: 81000,
+                  adminFee: 9000,
+                  pricePerMatch: 90000,
+                  moreEffiecient: '56% !!',
+                },
+                nonMembership: {
+                  sharedFee: 81000,
+                  adminFee: 14000,
+                  pricePerMatch: 95000,
+                },
+              },
             },
+            isAvailable: true,
             images: 'permata-hijau.svg',
             city: 'Jakarta Selatan',
           },
           {
-            name: 'Pancoran Soccer Field 1',
+            name: 'Rahayu Mini Soccer Medan',
+            slug: 'rahayu-minisoccer',
             member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
+            detailsFee: {
+              fieldFee: 600000,
+              referee: 100000,
+              consumption: 50000,
+              otherFacilities: 300000,
+              totalFee: 1050000,
+              detailsPrice: {
+                membership: {
+                  sharedFee: 30000,
+                  adminFee: 7500,
+                  pricePerMatch: 37500,
+                },
+                nonMembership: {
+                  sharedFee: 30000,
+                  adminFee: 7500,
+                  pricePerMatch: 37500,
+                },
+              },
             },
-            images: 'psf.svg',
-            city: 'Jakarta Pusat',
+            isAvailable: true,
+            images: 'rahayu-minisoccer.webp',
+            city: 'Medan',
           },
           {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
+            name: 'D37 Duren Tiga',
+            isAvailable: false,
             images: 'd-37.svg',
-            city: 'Jakarta Timur',
-          },
-          {
-            name: 'EPIC Wesoccer by Doospace',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'epic-wesoccer.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'Lapangan Permata Hijau',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'permata-hijau.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'Main Gandaria',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'main-gandaria.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'Lapangan Permata Hijaue',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'permata-hijau.svg',
             city: 'Jakarta Selatan',
           },
           {
-            name: 'Pancoran Soccer Field 1',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'psf.svg',
-            city: 'Jakarta Pusat',
-          },
-          {
-            name: 'D37 Mini Soccer',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'd-37.svg',
-            city: 'Jakarta Timur',
-          },
-          {
-            name: 'EPIC Wesoccer by Doospace',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
+            name: 'Epic Wesoccer Menteng',
+            isAvailable: false,
             images: 'epic-wesoccer.svg',
-            city: 'Jakarta Timur',
+            city: 'Jakarta Selatan',
           },
           {
-            name: 'Lapangan Permata Hijau',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
-            images: 'permata-hijau.svg',
-            city: 'Jakarta Utara',
+            name: 'Pancoran Soccer Field',
+            isAvailable: false,
+            images: 'psf.svg',
+            city: 'Jakarta Selatan',
           },
           {
             name: 'Main Gandaria',
-            member: 150,
-            price: {
-              membership: 85000,
-              nonMembership: 95000,
-            },
+            isAvailable: false,
             images: 'main-gandaria.svg',
+            city: 'Jakarta Selatan',
+          },
+          {
+            name: 'ASATU Arena Cikini',
+            isAvailable: false,
+            images: 'asatu-cikini.webp',
+            classImage: 'rounded',
+            city: 'Jakarta Pusat',
+          },
+          {
+            name: 'Revo Duren Sawit',
+            isAvailable: false,
+            images: 'revo.webp',
+            classImage: 'rounded',
+
+            city: 'Jakarta Timur',
+          },
+          {
+            name: 'POP Pulomas',
+            isAvailable: false,
+            images: 'pulomas.webp',
+            classImage: 'rounded ',
+            city: 'Jakarta Timur',
+          },
+          {
+            name: 'Centro Utan Jati',
+            isAvailable: false,
+            images: 'centro.webp',
+            classImage: 'rounded',
+            city: 'Jakarta Barat',
+          },
+          {
+            name: 'Rival Sport Sunter',
+            isAvailable: false,
+            images: 'rival-sunter.webp',
+            classImage: 'rounded',
+
             city: 'Jakarta Utara',
+          },
+          {
+            name: 'Gator Arena PIK',
+            isAvailable: false,
+            images: 'gator-arena.webp',
+            city: 'Jakarta Utara',
+          },
+          {
+            name: 'Jet One Bintaro',
+            isAvailable: false,
+            images: 'jet-one-bintaro.webp',
+            city: 'Tangerang',
+          },
+          {
+            name: 'DNA Arena Cinere',
+            isAvailable: false,
+            images: 'arena-cinere.webp',
+            city: 'Depok',
           },
         ],
       },
-      citys: [
+      cities: [
         {
           name: 'Semua',
         },
@@ -328,34 +340,51 @@ export default {
         {
           name: 'Jakarta Utara',
         },
+        {
+          name: 'Tangerang',
+        },
+        {
+          name: 'Depok',
+        },
+        {
+          name: 'Medan',
+        },
       ],
       filteredList: [],
       isShowModalCity: false,
       selectedCity: 'Semua',
+      windowWidth: 0,
     };
   },
   created() {
     if (process.client) {
-      this.updateFilteredList();
-      window.addEventListener('resize', this.updateFilteredList);
+      this.displayAllListByScreenSize();
+      this.windowWidth = window.innerWidth;
+      window.addEventListener('resize', this.updateFilteredListByResize);
     }
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.updateFilteredList);
+    window.removeEventListener('resize', this.updateFilteredListByResize);
   },
 
   methods: {
-    filterCity(param) {
-      if (param.name == 'Semua') {
-        this.filteredList = this.dataVenue.list;
+    onFilterCity(param) {
+      this.selectedCity = param.name;
+      this.filterCity();
+    },
+    filterCity() {
+      if (this.selectedCity == 'Semua') {
+        this.allreadyDisplayData = false;
+        this.displayAllListByScreenSize();
       } else {
         this.filteredList = this.dataVenue.list.filter(
-          (data) => data.city == param.name
+          (data) => data.city == this.selectedCity
         );
+        this.allreadyDisplayData = true;
       }
+      this.isShowModalCity = false;
     },
-
-    updateFilteredList() {
+    displayAllListByScreenSize() {
       const screenWidth = window.innerWidth;
 
       if (screenWidth < 768) {
@@ -366,9 +395,26 @@ export default {
         this.filteredList = this.dataVenue.list.slice(0, 8);
       }
     },
-    showAllDataVenue() {
+    updateFilteredListByResize() {
+      const newWindowWidth = window.innerWidth;
+      if (newWindowWidth !== this.windowWidth) {
+        this.windowWidth = newWindowWidth;
+        this.filterCity(this.selectedCity);
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth < 768) {
+          this.filteredList = this.filteredList.slice(0, 3);
+        } else if (screenWidth < 1024) {
+          this.filteredList = this.filteredList.slice(0, 4);
+        } else {
+          this.filteredList = this.filteredList.slice(0, 8);
+        }
+      }
+    },
+    onShowMore() {
       if (this.selectedCity == 'Semua') {
         this.filteredList = this.dataVenue.list;
+        this.allreadyDisplayData = true;
       }
     },
     handleClickMenu(val) {
