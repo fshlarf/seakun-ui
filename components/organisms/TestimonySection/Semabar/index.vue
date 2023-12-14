@@ -42,7 +42,7 @@
             <p
               class="text-green-seakun-secondary-dark text-xs md:text-sm font-medium"
             >
-              Show more
+              {{ allreadyDisplayData ? 'Show less' : 'Show more' }}
             </p>
             <Chevron color="#00BA88" />
           </div>
@@ -74,38 +74,40 @@ export default {
           name: 'Khoir',
           address: 'Medan, Sumatera Utara',
           text:
-            'Main minisoccer bersama Seakun benar-benar seru! Lapangan yang nyaman, atmosfer penuh semangat, dan teman-teman yang ramah. Terima kasih Seakun untuk pengalaman main sepakbola yang tak terlupakan!',
+            'Minisoccer bareng kawan di Seakun seru!!! Lapangan yang nyaman, atmosfer penuh semangat, dan teman-teman yang ramah.',
           images: 'khoir.jpeg',
         },
         {
           name: 'Samsul',
           address: 'Medan, Sumatera Utara',
           text:
-            'Serunya main bareng minisoccer bersama Seakun! Pengalaman bermain yang luar biasa, lapangan bagus, dan teman-teman  yang seru. Terima kasih Seakun untuk pengalaman bermain yang tak terlupakan!',
+            'Lapangannya bagus, matchnya sudah diatur, dan ketemu temen baru yang asik dan seru. Terima kasih Seakun untuk pengalaman bermain yang tak terlupakan!',
           images: 'samsul.jpeg',
         },
         {
           name: 'Fauzan',
           address: 'Medan, Sumatera Utara',
           text:
-            'Ini bukan sekadar main sepakbola, bersama Seakun kita jalani kebersamaan di lapangan dan di luar lapangan. Terima kasih Seakun untuk momen-momen tak terlupakan dan persahabatan yang terus berkembang!',
+            'Rasanya bukan sekedar main sepakbola, karena kita jadi akrab di lapangan maupun di luar lapangan. Selain sehat, juga bisa punya persahabatan baru.',
           images: 'fauzan.jpeg',
         },
         {
           name: 'Gilang',
           address: 'Medan, Sumatera Utara',
           text:
-            'Selama join main minisoccer di Mainbarengseakun itu makin nambah teman , nambah wawasan, sehat, dan matchnya itu seru,yang pastinya mantap lah...',
+            'Selama join main minisoccer di Semabar makin nambah teman, nambah wawasan, sehat, dan matchnya itu seru! Yang pastinya mantap lah...',
           images: 'gilang.jpeg',
         },
         {
           name: 'Iqbal',
           address: 'Medan, Sumatera Utara',
           text:
-            'Main mini soccer bareng seakun itu sangat asik. Kita bakal ketemu sama orang baru yang tidak kita kenal tapi meraka baik baik semua. Sistem yang di terapkan untuk pertandingan juga sangat efisien. Fun banget main bareng mereka',
+            'Kita bakal ketemu sama orang baru yang tidak kita kenal, tapi meraka baik baik semua. Sistem yang diterapkan untuk pertandingan juga sangat efisien. Fun banget main bareng mereka.',
           images: 'iqbal.jpeg',
         },
       ],
+      windowWidth: 0,
+      allreadyDisplayData: false,
     };
   },
   mounted() {
@@ -125,6 +127,7 @@ export default {
   created() {
     if (process.client) {
       this.updateFilteredList();
+      this.windowWidth = window.innerWidth;
       window.addEventListener('resize', this.updateFilteredList);
     }
   },
@@ -134,15 +137,22 @@ export default {
   methods: {
     waitForElement,
     updateFilteredList() {
-      const screenWidth = window.innerWidth;
-      if (screenWidth < 768) {
+      const newWindowWidth = window.innerWidth;
+      if (newWindowWidth !== this.windowWidth) {
+        if (newWindowWidth < 768) {
+          this.filteredList = this.dataTestimony.slice(0, 3);
+        } else {
+          this.filteredList = this.dataTestimony;
+        }
+      }
+    },
+    showAllDataVenue() {
+      if (this.allreadyDisplayData) {
         this.filteredList = this.dataTestimony.slice(0, 3);
       } else {
         this.filteredList = this.dataTestimony;
       }
-    },
-    showAllDataVenue() {
-      this.filteredList = this.dataTestimony;
+      this.allreadyDisplayData = !this.allreadyDisplayData;
     },
     scrollPill(direction) {
       const wrapper = document.getElementById('semabar-testimony-wrapper');

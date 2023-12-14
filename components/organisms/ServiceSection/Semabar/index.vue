@@ -399,10 +399,6 @@ export default {
       const newWindowWidth = window.innerWidth;
       if (newWindowWidth !== this.windowWidth) {
         this.windowWidth = newWindowWidth;
-        this.$alert.show({
-          status: 'error',
-          message: 'resize triggered',
-        });
         this.filterCity(this.selectedCity);
         const screenWidth = window.innerWidth;
 
