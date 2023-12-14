@@ -11,6 +11,66 @@ import HeaderDetailsVenue from './views/HeaderDetailsVenue.vue';
 import TableDetails from './views/TableDetails.vue';
 import FooterSemabar from '~/components/mollecules/FooterSemabar.vue';
 export default {
+  head() {
+    return {
+      title: 'Seakun Main Bareng',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Brief description of your page',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Ini Og Title',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Brief description of your page',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content:
+            'https://drive.google.com/uc?id=16bxCiKV5nIXV04t5nQ2-nKnRVdBfMeKO',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'test.com',
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website',
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content:
+            'https://drive.google.com/file/d/16bxCiKV5nIXV04t5nQ2-nKnRVdBfMeKO/view?usp=sharing',
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: 'Your Page Title',
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'Brief description of your page',
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: 'URL to your preview image',
+        },
+      ],
+    };
+  },
+
   components: {
     HeaderDetailsVenue,
     TableDetails,
@@ -287,5 +347,4 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped></style>

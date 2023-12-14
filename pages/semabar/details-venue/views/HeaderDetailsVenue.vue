@@ -12,7 +12,7 @@
           <img
             :src="`/images/semabar/venue/${detailsVenue.images}`"
             :alt="detailsVenue.name"
-            class="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px] rounded-[6px] bg-white p-[5px] lg:px-[10px] lg:py-[11px]"
+            class="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px] rounded-[6px] bg-white p-[5px] lg:p-2 object-contain"
           />
         </div>
         <img
@@ -127,9 +127,9 @@ export default {
         {
           name: 'whatsapp',
         },
-        {
-          name: 'instagram',
-        },
+        // {
+        //   name: 'instagram',
+        // },
         {
           name: 'twitter',
         },
@@ -147,7 +147,9 @@ export default {
       const currentUrl = encodeURIComponent(window.location.href);
       const text = `Yuk main mini soccer bareng di ${this.detailsVenue.name} lewat komunitas Seakun. Skema patungannya murah banget!`;
       if (target === 'twitter') {
-        const share = `https://www.twitter.com/share?url=${currentUrl}`;
+        const share = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+          currentUrl
+        )}&text=${encodeURIComponent(text)}`;
         window.open(
           share,
           '_blank',
