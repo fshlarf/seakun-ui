@@ -115,7 +115,7 @@
             <div
               class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
             >
-              <p>Harga 1 Match</p>
+              <p>Harga 1 Event</p>
               <p>
                 {{
                   toRupiah(
@@ -127,11 +127,11 @@
             <div
               class="text-sm lg:text-base flex justify-between items-center font-medium text-main mt-2 lg:mt-3"
             >
-              <p>Harga 4 Match</p>
+              <p>Harga 2 Event</p>
               <p>
                 {{
                   toRupiah(
-                    data.detailsFee.detailsPrice.nonMembership.pricePerMatch * 4
+                    data.detailsFee.detailsPrice.nonMembership.pricePerMatch * 2
                   )
                 }}
               </p>
@@ -166,7 +166,7 @@
             <div
               class="text-sm lg:text-base flex justify-between items-center mt-2 lg:mt-3 font-medium text-main"
             >
-              <p>Harga 1 Match</p>
+              <p>Harga 1 Event</p>
               <p>
                 {{
                   toRupiah(
@@ -178,11 +178,11 @@
             <div
               class="text-sm lg:text-base flex justify-between items-center font-medium text-main mt-2 lg:mt-3"
             >
-              <p>Harga 4 Match</p>
+              <p>Harga 2 Event</p>
               <p>
                 {{
                   toRupiah(
-                    data.detailsFee.detailsPrice.membership.pricePerMatch * 4
+                    data.detailsFee.detailsPrice.membership.pricePerMatch * 2
                   )
                 }}
               </p>
