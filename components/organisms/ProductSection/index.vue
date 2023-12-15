@@ -193,6 +193,13 @@ export default {
       },
       dataProductOnDemand: [
         {
+          name: 'Semabar',
+          slug: 'semabar',
+          img: '/images/product/on demand/new/semabar.png',
+          isActive: true,
+          preview: '(Main Bareng)',
+        },
+        {
           name: 'SeGlowUp',
           slug: 'seglowup',
           img: '/images/product/on demand/new/seglowup.png',
@@ -204,6 +211,14 @@ export default {
           name: 'Sekurban',
           slug: 'sekurban',
           img: '/images/product/on demand/new/sekurban.png',
+          isActive: true,
+          // preview:
+          //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
+        },
+        {
+          name: 'Sekeranjang',
+          slug: 'sekeranjang',
+          img: '/images/product/on demand/new/sekeranjang.png',
           isActive: true,
           // preview:
           //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
@@ -245,21 +260,6 @@ export default {
           img: '/images/product/on demand/new/sekantor.png',
           isActive: false,
           // preview: 'Cari teman patungan berlangganan katering terdekat.',
-        },
-        {
-          name: 'Sekeranjang',
-          slug: 'sekeranjang',
-          img: '/images/product/on demand/new/sekeranjang.png',
-          isActive: true,
-          // preview:
-          //   'Cari teman patungan beli barang Buy 1 Get 1 atau beli barang dengan kuantitas banyak untuk mendapatkan discount sampai 50%.',
-        },
-        {
-          name: 'Semabar',
-          slug: 'semabar',
-          img: '/images/product/on demand/new/semabar.png',
-          isActive: false,
-          preview: '(Main Bareng)',
         },
         {
           name: 'Sejalan',
