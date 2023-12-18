@@ -45,8 +45,7 @@
                 <p
                   class="text-sm lg:text-base text-gray-secondary dm-sans mt-[8px]"
                 >
-                  Kami akan mengirim link ubah password ke email dan whatsapp
-                  Kamu
+                  Kami akan mengirim link ubah password ke email Kamu
                 </p>
                 <Input
                   v-model="email"
@@ -79,17 +78,17 @@
                 Email Berhasil dikirim
               </h2>
               <p class="text-[14px] lg:text-base text-center mt-[4px]">
-                Silakan cek email atau whatsapp kamu untuk membuat password
-                baru. Token ubah password berlaku selama 12 jam.
+                Silakan cek email kamu untuk membuat password baru. Token ubah
+                password berlaku selama 12 jam.
               </p>
               <div class="flex space-x-3 items-center justify-center mt-[8px]">
                 <p class="text-center dm-sans text-sm text-slate-500">
-                  Tidak menemukan email/whatsapp?
+                  Tidak menemukan email?
                   <span
                     v-if="isResendEmailActive"
                     class="text-[#08A081] cursor-pointer underline"
                     @click="sendForgotPasswordEmail"
-                    >Kirim ulang email & whatsapp</span
+                    >Kirim ulang email</span
                   >
                   <span v-else-if="!isLoadingSendEmail">{{
                     resendEmailCounter

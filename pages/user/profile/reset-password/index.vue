@@ -54,20 +54,20 @@
           class="w-[125px] h-[115px] mx-auto"
         />
         <h3 class="text-gray-secondary text-[18px] font-bold mt-6">
-          Cek Email atau Whatsapp Kamu
+          Cek Email Kamu
         </h3>
         <p class="text-sm text-gray-secondary mx-auto max-w-[400px]">
-          Kami telah mengirimkan instruksi pemulihan kata sandi ke email dan
-          whatsapp kamu. Token reset password hanya berlaku selama 12 jam.
+          Kami telah mengirimkan instruksi pemulihan kata sandi ke email kamu.
+          Token reset password hanya berlaku selama 12 jam.
         </p>
         <div class="flex space-x-3 items-center justify-center mt-[8px]">
           <p class="text-center dm-sans text-sm text-slate-500">
-            Tidak menemukan email/whatsapp?
+            Tidak menemukan email?
             <span
               v-if="isResendEmailActive"
               class="text-[#08A081] cursor-pointer underline"
               @click="sendUpdatePasswordEmail"
-              >Kirim ulang email & whatsapp</span
+              >Kirim ulang email</span
             >
             <span v-else-if="!isLoading">{{ resendEmailCounter }}</span>
           </p>
@@ -135,7 +135,7 @@ export default {
           this.isResendEmailActive = false;
           this.$alert.show({
             status: 'success',
-            message: 'Email & whatsapp berhasil dikirim',
+            message: 'Email berhasil dikirim',
           });
           await this.RunCountdown();
         }
