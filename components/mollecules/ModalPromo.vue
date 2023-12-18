@@ -59,6 +59,10 @@ export default {
         // },
         {
           id: 1,
+          img: '/images/promo/semabar-mobile.webp',
+        },
+        {
+          id: 2,
           img: '/images/promo/bonus-yt-mobile.webp',
         },
       ],
@@ -69,6 +73,10 @@ export default {
         // },
         {
           id: 1,
+          img: '/images/promo/semabar.webp',
+        },
+        {
+          id: 2,
           img: '/images/promo/bonus-yt.webp',
         },
       ],
