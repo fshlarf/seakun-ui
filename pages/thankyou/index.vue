@@ -166,8 +166,8 @@
         <p class="tn:text-center md:text-left md:text-lg text-gray-500">
           Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
           telegram
-          <a href="https://t.me/Seakun_id" class="text-primary" target="_blank"
-            >Seakun_id</a
+          <a href="https://t.me/seakunid" class="text-primary" target="_blank"
+            >@seakunid</a
           >
         </p>
       </div>

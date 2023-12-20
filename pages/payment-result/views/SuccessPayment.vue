@@ -113,8 +113,8 @@
         <p class="tn:mt-4 md:mt-6 lg:mt-8">
           Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
           pesanan kamu belum diproses, harap hubungi admin via telegram
-          <a href="https://t.me/Seakun_id" target="_blank" class="text-primary"
-            >Seakun_id</a
+          <a href="https://t.me/seakunid" target="_blank" class="text-primary"
+            >@seakunid</a
           >.
         </p>
       </div>
