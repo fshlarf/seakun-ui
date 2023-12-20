@@ -24,12 +24,8 @@
       <br />
       <p>
         Jika kamu tetap ingin berlangganan di Seakun, pastikan untuk mengikuti
-        syarat yang berlaku dan hubungi admin kami melalui Whatsapp
-        <a
-          class="text-blue-500"
-          href="https://api.whatsapp.com/send/?phone=6282124852232&text=Halo%20min,%20Saya%20ingin%20mendaftar%20di%20Seakun,%20namun%20nomor%20saya%20sebelumnya%20masuk%20dalam%20daftar%20hitam.%20Saya%20akan%20mengikuti%20syarat%20yang%20ditetapkan."
-          >+62821 2485 2232</a
-        >
+        syarat yang berlaku dan hubungi admin kami melalui Telegram
+        <a class="text-blue-500" href="https://t.me/Seakun_id">@Seakun_id</a>
       </p>
     </div>
   </Modal>

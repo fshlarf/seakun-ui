@@ -22,9 +22,12 @@
               Sampai bertemu, teman!
             </p>
             <p class="text-center mt-10" style="color: #666666">
-              Jika ada kendala segera hubungi ke Whatsapp Seakun.id
-              <a href="https://api.whatsapp.com/send?phone=6282124852232"
-                >+6282124852232</a
+              Jika ada kendala segera hubungi ke Telegram
+              <a
+                href="https://t.me/Seakun_id"
+                target="_blank"
+                class="text-green-seakun-dark"
+                >Seakun_id</a
               >
             </p>
           </div>
