@@ -9,10 +9,10 @@
           src="/images/illustration-whatsapp-banner.svg"
         />
       </div>
-      <div
-        class="whatsapp-banner-content flex-1 md:px-8"
-      >
-        <h1 class="text-3xl font-bold text-secondary tn:text-center md:text-left tn:my-2 md:my-4">
+      <div class="whatsapp-banner-content flex-1 md:px-8">
+        <h1
+          class="text-3xl font-bold text-secondary tn:text-center md:text-left tn:my-2 md:my-4"
+        >
           Info Penting
         </h1>
         <p class="font-bold mb-2 my-2">
@@ -21,12 +21,12 @@
         </p>
 
         <p class="font-light my-2">
-          Segala proses pembayaran maupun pengaduan harap diinfokan ke nomor
-          whatsapp berikut
+          Segala proses pembayaran maupun pengaduan harap diinfokan ke telegram
           <a
-            href="https://api.whatsapp.com/send?phone=6282124852232"
+            href="https://t.me/Seakun_id"
+            target="_blank"
             class="text-green-seakun-dark"
-            >+6282124852232</a
+            >Seakun_id</a
           >
         </p>
       </div>

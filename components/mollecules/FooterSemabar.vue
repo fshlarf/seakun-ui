@@ -133,10 +133,8 @@
             </a>
           </div>
           <div class="flex space-x-2">
-            <img src="/images/footer/phone-icon.svg" alt="#" />
-            <a href="https://api.whatsapp.com/send?phone=6282124852232"
-              >+62821 2485 2232</a
-            >
+            <img src="/images/footer/telegram.svg" alt="#" />
+            <a href="https://t.me/Seakun_id">@Seakun_id</a>
           </div>
           <div class="flex space-x-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />
