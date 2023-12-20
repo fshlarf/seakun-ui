@@ -24,10 +24,10 @@
             <p class="text-center mt-10" style="color: #666666">
               Jika ada kendala segera hubungi ke Telegram
               <a
-                href="https://t.me/Seakun_id"
+                href="https://t.me/seakunid"
                 target="_blank"
                 class="text-green-seakun-dark"
-                >Seakun_id</a
+                >@seakunid</a
               >
             </p>
           </div>

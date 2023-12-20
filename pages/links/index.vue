@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     goToTelegram() {
-      window.location.href = 'https://t.me/Seakun_id';
+      window.location.href = 'https://t.me/seakunid';
     },
     goToWhatsapp() {
       window.location.href =
