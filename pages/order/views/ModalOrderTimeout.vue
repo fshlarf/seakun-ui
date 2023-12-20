@@ -15,9 +15,7 @@
       </p>
     </div>
     <a
-      :href="`https://api.whatsapp.com/send?phone=6282124852232&text=${encodeURIComponent(
-        message
-      )}`"
+      href="https://t.me/Seakun_id"
       target="_blank"
       rel="noopener noreferrer"
       class="tn:mt-4 w-full"

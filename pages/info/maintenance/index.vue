@@ -20,15 +20,11 @@
         <!-- Kembali aktif lagi Sabtu, 11 November 2023 pukul 06.00 WIB ya. See you! -->
         Kembali aktif lagi siang ini pukul 15.00 WIB ya. See you!
       </p>
-      <a
-        class="w-full"
-        target="_blank"
-        href="https://api.whatsapp.com/send?phone=6282124852232"
-      >
+      <a class="w-full" target="_blank" href="https://t.me/Seakun_id">
         <Button
           class="mt-4 w-full !py-4"
           variant="secondary"
-          label="Hubungi admin via whatsapp"
+          label="Hubungi admin via telegram"
         />
       </a>
     </div>

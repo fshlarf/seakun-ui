@@ -165,9 +165,9 @@
       >
         <p class="tn:text-center md:text-left md:text-lg text-gray-500">
           Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
-          Whatsapp di nomor
-          <a class="text-primary" target="_blank" :href="getLinkWhatsapp()"
-            >+6282124852232</a
+          telegram
+          <a href="https://t.me/Seakun_id" class="text-primary" target="_blank"
+            >Seakun_id</a
           >
         </p>
       </div>
@@ -317,7 +317,7 @@ export default {
       const name = this.dataDetailOrder.paymentHolder;
       const packageName = this.dataProduct.packageName;
 
-      return `https://api.whatsapp.com/send/?phone=6282124852232&text=
+      return `https://api.whatsapp.com/send/?phone=6282124852235&text=
         Halo+saya+sudah+melakukan+pesanan+dan+pembayaran%0A%0A*No+Order:*+${orderNumber}%0A*Nama:*+${name}%0A*Pesanan:*+${packageName}&app_absent=0`;
     },
   },

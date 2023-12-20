@@ -50,9 +50,9 @@
         />
         <Button
           class="py-3"
-          label="Hubungi WA"
+          label="Hubungi via Telegram"
           variant="primary"
-          @click="goToWhatsapp"
+          @click="goToTelegram"
         />
       </div>
     </div>
@@ -97,9 +97,12 @@ export default {
     Button,
   },
   methods: {
+    goToTelegram() {
+      window.location.href = 'https://t.me/Seakun_id';
+    },
     goToWhatsapp() {
       window.location.href =
-        'https://api.whatsapp.com/send?phone=6282124852232';
+        'https://api.whatsapp.com/send?phone=6282124852235';
     },
     goToSeakunHelp() {
       window.location.href = 'https://forms.gle/t1AbaxnjEtJr8NAPA';
