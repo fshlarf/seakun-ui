@@ -20,7 +20,7 @@
         <!-- Kembali aktif lagi Sabtu, 11 November 2023 pukul 06.00 WIB ya. See you! -->
         Kembali aktif lagi siang ini pukul 15.00 WIB ya. See you!
       </p>
-      <a class="w-full" target="_blank" href="https://t.me/Seakun_id">
+      <a class="w-full" target="_blank" href="https://t.me/seakunid">
         <Button
           class="mt-4 w-full !py-4"
           variant="secondary"

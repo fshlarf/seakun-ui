@@ -25,7 +25,7 @@
       <p>
         Jika kamu tetap ingin berlangganan di Seakun, pastikan untuk mengikuti
         syarat yang berlaku dan hubungi admin kami melalui Telegram
-        <a class="text-blue-500" href="https://t.me/Seakun_id">Seakun_id</a>
+        <a class="text-blue-500" href="https://t.me/seakunid">@seakunid</a>
       </p>
     </div>
   </Modal>

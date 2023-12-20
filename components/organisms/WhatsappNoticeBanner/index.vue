@@ -23,10 +23,10 @@
         <p class="font-light my-2">
           Segala proses pembayaran maupun pengaduan harap diinfokan ke telegram
           <a
-            href="https://t.me/Seakun_id"
+            href="https://t.me/seakunid"
             target="_blank"
             class="text-green-seakun-dark"
-            >Seakun_id</a
+            >@seakunid</a
           >
         </p>
       </div>
