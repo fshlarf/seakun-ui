@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isShowSeakunHelp"
-    class="btn-float tn:bottom-[15px] tn:right-[15px] xl:bottom-[30px] xl:right-[30px]"
+    class="btn-float tn:bottom-[15px] tn:left-[15px] xl:bottom-[30px] xl:left-[30px]"
   >
     <div class="relative">
       <div
