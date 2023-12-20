@@ -134,7 +134,7 @@
           </div>
           <div class="flex space-x-2">
             <img src="/images/footer/telegram.svg" alt="#" />
-            <a href="https://t.me/Seakun_id">@Seakun_id</a>
+            <a href="https://t.me/seakunid">@seakunid (telegram)</a>
           </div>
           <div class="flex space-x-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />

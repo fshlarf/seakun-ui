@@ -15,7 +15,7 @@
       </p>
     </div>
     <a
-      href="https://t.me/Seakun_id"
+      href="https://t.me/seakunid"
       target="_blank"
       rel="noopener noreferrer"
       class="tn:mt-4 w-full"
