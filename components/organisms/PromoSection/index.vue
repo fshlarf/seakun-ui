@@ -74,20 +74,28 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/semabar-mobile.webp',
+          img: '/images/promo/banned-mobile.webp',
         },
         {
           id: 2,
+          img: '/images/promo/semabar-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/bonus-yt-mobile.webp',
         },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/semabar-desktop.webp',
+          img: '/images/promo/banned-desktop.webp',
         },
         {
           id: 2,
+          img: '/images/promo/semabar-desktop.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/bonus-yt-desktop.webp',
         },
       ],
@@ -97,11 +105,11 @@ export default {
   },
   mounted() {
     this.selectBannersByScreenSize();
-    if (this.banners.length > 1) {
-      setTimeout(() => {
-        this.scrollRight();
-      }, 10000);
-    }
+    // if (this.banners.length > 1) {
+    //   setTimeout(() => {
+    //     this.scrollRight();
+    //   }, 10000);
+    // }
   },
   methods: {
     selectBannersByScreenSize() {
