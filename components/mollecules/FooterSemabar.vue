@@ -155,6 +155,12 @@
             >
           </div>
           <div class="flex space-x-2 items-start">
+            <img src="/images/footer/whatsapp.svg" alt="#" />
+            <a href="https://api.whatsapp.com/send?phone=6282124852232"
+              >082124852232 (WA-CS4)</a
+            >
+          </div>
+          <div class="flex space-x-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />
             <div class="space-y-1">
               <p class="font-bold">Jam Operasional</p>
