@@ -57,16 +57,16 @@ export default {
         //   id: 1,
         //   img: '/images/promo/1111-mobile.webp',
         // },
+        // {
+        //   id: 1,
+        //   img: '/images/promo/telegram-mobile.png',
+        // },
         {
           id: 1,
-          img: '/images/promo/telegram-mobile.png',
-        },
-        {
-          id: 2,
           img: '/images/promo/semabar-mobile.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/bonus-yt-mobile.webp',
         },
       ],
@@ -75,16 +75,16 @@ export default {
         //   id: 1,
         //   img: '/images/promo/1111.webp',
         // },
+        // {
+        //   id: 1,
+        //   img: '/images/promo/telegram.png',
+        // },
         {
           id: 1,
-          img: '/images/promo/telegram.png',
-        },
-        {
-          id: 2,
           img: '/images/promo/semabar.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/bonus-yt.webp',
         },
       ],
@@ -94,9 +94,9 @@ export default {
   },
   mounted() {
     this.setPromoImageByScreenSize();
-    // setTimeout(() => {
-    //   this.slideRight();
-    // }, 8000);
+    setTimeout(() => {
+      this.slideRight();
+    }, 8000);
   },
   methods: {
     setPromoImageByScreenSize() {

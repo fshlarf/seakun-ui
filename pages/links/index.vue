@@ -50,9 +50,9 @@
         />
         <Button
           class="py-3"
-          label="Hubungi via Telegram"
+          label="Hubungi via Whatsapp"
           variant="primary"
-          @click="goToTelegram"
+          @click="goToWhatsapp"
         />
       </div>
     </div>

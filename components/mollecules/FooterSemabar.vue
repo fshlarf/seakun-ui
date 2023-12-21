@@ -132,9 +132,27 @@
               <p>cs@seakun.id</p>
             </a>
           </div>
-          <div class="flex space-x-2">
+          <!-- <div class="flex space-x-2">
             <img src="/images/footer/telegram.svg" alt="#" />
             <a href="https://t.me/seakunid">@seakunid (telegram)</a>
+          </div> -->
+          <div class="flex space-x-2 items-start">
+            <img src="/images/footer/whatsapp.svg" alt="#" />
+            <a href="https://api.whatsapp.com/send?phone=6282124852235"
+              >082124852235 (WA-CS1)</a
+            >
+          </div>
+          <div class="flex space-x-2 items-start">
+            <img src="/images/footer/whatsapp.svg" alt="#" />
+            <a href="https://api.whatsapp.com/send?phone=6282124852238"
+              >082124852238 (WA-CS2)</a
+            >
+          </div>
+          <div class="flex space-x-2 items-start">
+            <img src="/images/footer/whatsapp.svg" alt="#" />
+            <a href="https://api.whatsapp.com/send?phone=62895386225151"
+              >0895386225151 (WA-CS3)</a
+            >
           </div>
           <div class="flex space-x-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />
