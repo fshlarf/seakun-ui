@@ -165,26 +165,11 @@
       >
         <p class="tn:text-center md:text-left md:text-lg text-gray-500">
           Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
-          whatsapp:
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852235"
-            >082124852235 (CS1)</a
-          >,
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852238"
-            >082124852238 (CS2)</a
-          >,
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=62895386225151"
-            >0895386225151 (CS3)</a
-          >,
+          whatsapp
           <a
             class="text-blue-500"
             href="https://api.whatsapp.com/send?phone=6282124852232"
-            >082124852232 (CS4)</a
+            >082124852232</a
           >
         </p>
       </div>
@@ -334,7 +319,7 @@ export default {
       const name = this.dataDetailOrder.paymentHolder;
       const packageName = this.dataProduct.packageName;
 
-      return `https://api.whatsapp.com/send/?phone=6282124852235&text=
+      return `https://api.whatsapp.com/send/?phone=6282124852&text=
         Halo+saya+sudah+melakukan+pesanan+dan+pembayaran%0A%0A*No+Order:*+${orderNumber}%0A*Nama:*+${name}%0A*Pesanan:*+${packageName}&app_absent=0`;
     },
   },

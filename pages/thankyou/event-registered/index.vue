@@ -24,10 +24,10 @@
             <p class="text-center mt-10" style="color: #666666">
               Jika ada kendala segera hubungi ke Whatsapp
               <a
-                href="https://api.whatsapp.com/send?phone=6282124852235"
+                href="https://api.whatsapp.com/send?phone=6282124852232"
                 target="_blank"
                 class="text-green-seakun-dark"
-                >082124852235</a
+                >082124852232</a
               >
             </p>
           </div>

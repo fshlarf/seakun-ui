@@ -112,26 +112,11 @@
       >
         <p class="tn:mt-4 md:mt-6 lg:mt-8">
           Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
-          pesanan kamu belum diproses, harap hubungi admin via whatsapp:
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852235"
-            >082124852235 (CS1)</a
-          >,
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852238"
-            >082124852238 (CS2)</a
-          >,
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=62895386225151"
-            >0895386225151 (CS3)</a
-          >,
+          pesanan kamu belum diproses, harap hubungi admin via whatsapp
           <a
             class="text-blue-500"
             href="https://api.whatsapp.com/send?phone=6282124852232"
-            >082124852232 (CS4)</a
+            >082124852232</a
           >
         </p>
       </div>

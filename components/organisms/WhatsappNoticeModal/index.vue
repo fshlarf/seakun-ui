@@ -25,9 +25,9 @@
         >segala proses pembayaran maupun pengaduan harap diinfokan ke nomor
         whatsapp berikut
         <a
-          href="https://api.whatsapp.com/send?phone=6282124852235"
+          href="https://api.whatsapp.com/send?phone=6282124852232"
           class="text-primary"
-          >+6282124852235</a
+          >+6282124852232</a
         >
       </b>
     </div>
