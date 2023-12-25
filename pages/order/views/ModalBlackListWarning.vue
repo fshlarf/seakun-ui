@@ -24,12 +24,8 @@
       <br />
       <p>
         Jika kamu tetap ingin berlangganan di Seakun, pastikan untuk mengikuti
-        syarat yang berlaku dan hubungi admin kami melalui Whatsapp
-        <a
-          class="text-blue-500"
-          href="https://api.whatsapp.com/send?phone=6282124852232"
-          >082124852232</a
-        >
+        syarat yang berlaku dan hubungi admin kami melalui LiveChat Seakun
+        (pojok kanan bawah).
       </p>
     </div>
   </Modal>

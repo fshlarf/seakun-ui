@@ -57,16 +57,16 @@ export default {
         //   id: 1,
         //   img: '/images/promo/1111-mobile.webp',
         // },
-        // {
-        //   id: 1,
-        //   img: '/images/promo/banned-mobile.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/semabar-mobile.webp',
+          img: '/images/promo/livechat-mobile.webp',
         },
         {
           id: 2,
+          img: '/images/promo/semabar-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/bonus-yt-mobile.webp',
         },
       ],
@@ -75,16 +75,16 @@ export default {
         //   id: 1,
         //   img: '/images/promo/1111.webp',
         // },
-        // {
-        //   id: 1,
-        //   img: '/images/promo/banned.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/semabar.webp',
+          img: '/images/promo/livechat.webp',
         },
         {
           id: 2,
+          img: '/images/promo/semabar.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/bonus-yt.webp',
         },
       ],
@@ -94,9 +94,16 @@ export default {
   },
   mounted() {
     this.setPromoImageByScreenSize();
-    setTimeout(() => {
-      this.slideRight();
-    }, 8000);
+    if (this.promoImages.length > 1) {
+      let slideCount = 0;
+      const slidePromo = setInterval(() => {
+        slideCount++;
+        this.slideRight();
+        if (slideCount == this.promoImages.length - 1) {
+          clearInterval(slidePromo);
+        }
+      }, 8000);
+    }
   },
   methods: {
     setPromoImageByScreenSize() {

@@ -309,7 +309,7 @@
       <h5 class="text-xl mb-2">12. KONTAK KAMI</h5>
       <div>
         Anda dapat menghubungi Kami terkait dengan Kebijakan Privasi dan
-        Ketentuan Penggunaan melalui surat elektronik cs@seakun.id.
+        Ketentuan Penggunaan melalui surat elektronik admin@seakun.id.
       </div>
     </div>
   </div>

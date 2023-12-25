@@ -112,12 +112,8 @@
       >
         <p class="tn:mt-4 md:mt-6 lg:mt-8">
           Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
-          pesanan kamu belum diproses, harap hubungi admin via whatsapp
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852232"
-            >082124852232</a
-          >
+          pesanan kamu belum diproses, harap hubungi admin via LiveChat Seakun
+          (pojok kanan bawah).
         </p>
       </div>
 

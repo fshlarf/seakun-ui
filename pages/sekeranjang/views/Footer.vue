@@ -99,8 +99,8 @@
         >
           <div class="flex space-x-2">
             <img src="/images/footer/email-icon.svg" alt="#" />
-            <a href="mailto:cs@seakun.id">
-              <p>cs@seakun.id</p>
+            <a href="mailto:admin@seakun.id">
+              <p>admin@seakun.id</p>
             </a>
           </div>
           <div class="flex space-x-2">

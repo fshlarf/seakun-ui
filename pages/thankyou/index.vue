@@ -165,12 +165,7 @@
       >
         <p class="tn:text-center md:text-left md:text-lg text-gray-500">
           Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
-          whatsapp
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852232"
-            >082124852232</a
-          >
+          LiveChat Seakun (pojok kanan bawah)
         </p>
       </div>
       <Button

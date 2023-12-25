@@ -78,10 +78,14 @@ export default {
         // },
         {
           id: 1,
-          img: '/images/promo/semabar-mobile.webp',
+          img: '/images/promo/livechat-mobile.webp',
         },
         {
           id: 2,
+          img: '/images/promo/semabar-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/bonus-yt-mobile.webp',
         },
       ],
@@ -92,10 +96,14 @@ export default {
         // },
         {
           id: 1,
-          img: '/images/promo/semabar-desktop.webp',
+          img: '/images/promo/livechat-desktop.webp',
         },
         {
           id: 2,
+          img: '/images/promo/semabar-desktop.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/bonus-yt-desktop.webp',
         },
       ],
@@ -106,9 +114,17 @@ export default {
   mounted() {
     this.selectBannersByScreenSize();
     if (this.banners.length > 1) {
-      setTimeout(() => {
+      let slideCount = 0;
+      const slidePromo = setInterval(() => {
+        slideCount++;
         this.scrollRight();
+        if (slideCount == this.banners.length - 1) {
+          clearInterval(slidePromo);
+        }
       }, 10000);
+      // setTimeout(() => {
+      //   this.scrollRight();
+      // }, 10000);
     }
   },
   methods: {
