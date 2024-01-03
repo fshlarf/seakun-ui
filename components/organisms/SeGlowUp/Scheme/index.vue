@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pt-[30px] wrapper-scheme bg-cover pb-[35px] md:pb-[45px] lg:pb-[69px]"
+    class="pt-[30px] wrapper-scheme bg-contain bg-top md:bg-center pb-[35px] md:pb-[45px] lg:pb-[69px] bg-no-repeat"
     id="price-scheme-seglowup"
   >
     <div class="w-full text-center text-[#2A5446] text-nunito">
@@ -72,12 +72,14 @@ export default {
 .text-nunito {
   font-family: 'Nunito Sans', sans-serif;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .wrapper-scheme {
     background-image: url('/images/seglowup/background/scheme.png');
   }
 }
-.wrapper-scheme {
-  background-image: url('/images/seglowup/background/scheme-mobile.webp');
+@media (max-width: 767px) {
+  .wrapper-scheme {
+    background-image: url('/images/seglowup/background/scheme-mobile.webp');
+  }
 }
 </style>
