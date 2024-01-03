@@ -157,7 +157,7 @@
       </div>
     </div>
     <div class="text-center text-white tn:py-2 lg:py-4">
-      <p>&copy; 2024 PT Seakun Global Teknologi</p>
+      <p>&copy; 2020 - 2024 PT Seakun Global Teknologi</p>
     </div>
   </div>
 </template>
