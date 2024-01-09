@@ -7,7 +7,7 @@ document.head.prepend(qchatInit);
 document.head.prepend(qchatWidget);
 qchatInit.onload = function () {
   qchatInitialize({
-    id: 'bf95722f-ce4d-47b6-b9d3-cc3fd1bd98f8',
-    code: 'hQFtCSQDQOLCQCdC6uTgGQ',
+    id: '36b9aebd-1fd6-45f6-8f0c-e2e0e81ffb4e',
+    code: 'GE-XnOitijajxKYbWA54-g',
   });
 };
