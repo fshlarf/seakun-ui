@@ -36,8 +36,8 @@ export default {
       document.head.prepend(qchatWidget);
       qchatInit.onload = function () {
         qchatInitialize({
-          id: '36b9aebd-1fd6-45f6-8f0c-e2e0e81ffb4e',
-          code: 'GE-XnOitijajxKYbWA54-g',
+          id: 'a300084d-a7c2-4f34-9ab4-77ec52955eaa',
+          code: '5ATkEbe5k6lSryKx_vM45g',
         });
       };
     },
