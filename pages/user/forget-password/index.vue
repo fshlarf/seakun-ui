@@ -79,7 +79,8 @@
               </h2>
               <p class="text-[14px] lg:text-base text-center mt-[4px]">
                 Silakan cek email kamu untuk membuat password baru. Token ubah
-                password berlaku selama 12 jam.
+                password berlaku selama 12 jam. Jika tidak ada email masuk,
+                periksa spam/junk di email kamu.
               </p>
               <div class="flex space-x-3 items-center justify-center mt-[8px]">
                 <p class="text-center dm-sans text-sm text-slate-500">

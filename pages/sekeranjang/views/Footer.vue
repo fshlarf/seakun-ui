@@ -99,14 +99,14 @@
         >
           <div class="flex space-x-2">
             <img src="/images/footer/email-icon.svg" alt="#" />
-            <a href="mailto:cs@seakun.id">
-              <p>cs@seakun.id</p>
+            <a href="mailto:admin@seakun.id">
+              <p>admin@seakun.id</p>
             </a>
           </div>
           <div class="flex space-x-2">
             <img src="/images/footer/phone-icon.svg" alt="#" />
-            <a href="https://api.whatsapp.com/send?phone=6282124852235"
-              >+62821 2485 2235</a
+            <a href="https://api.whatsapp.com/send?phone=6282124852"
+              >+62821 2485 2232</a
             >
           </div>
           <div class="flex space-x-2 items-start">

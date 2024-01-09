@@ -21,12 +21,11 @@
         </p>
 
         <p class="font-light my-2">
-          Segala proses pembayaran maupun pengaduan harap diinfokan ke telegram
+          Segala proses pembayaran maupun pengaduan harap diinfokan ke whatsapp
           <a
-            href="https://t.me/seakunid"
-            target="_blank"
-            class="text-green-seakun-dark"
-            >@seakunid</a
+            class="text-blue-500"
+            href="https://api.whatsapp.com/send?phone=6282124852232"
+            >082124852232</a
           >
         </p>
       </div>

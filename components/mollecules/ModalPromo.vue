@@ -59,7 +59,7 @@ export default {
         // },
         {
           id: 1,
-          img: '/images/promo/telegram-mobile.png',
+          img: '/images/promo/livechat-mobile.webp',
         },
         {
           id: 2,
@@ -77,7 +77,7 @@ export default {
         // },
         {
           id: 1,
-          img: '/images/promo/telegram.png',
+          img: '/images/promo/livechat.webp',
         },
         {
           id: 2,
@@ -94,9 +94,16 @@ export default {
   },
   mounted() {
     this.setPromoImageByScreenSize();
-    // setTimeout(() => {
-    //   this.slideRight();
-    // }, 8000);
+    if (this.promoImages.length > 1) {
+      let slideCount = 0;
+      const slidePromo = setInterval(() => {
+        slideCount++;
+        this.slideRight();
+        if (slideCount == this.promoImages.length - 1) {
+          clearInterval(slidePromo);
+        }
+      }, 8000);
+    }
   },
   methods: {
     setPromoImageByScreenSize() {

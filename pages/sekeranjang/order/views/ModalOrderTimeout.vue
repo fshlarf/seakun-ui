@@ -15,7 +15,7 @@
       </p>
     </div>
     <a
-      href="https://t.me/seakunid"
+      href="https://api.whatsapp.com/send?phone=6282124852"
       target="_blank"
       rel="noopener noreferrer"
       class="tn:mt-4 w-full"

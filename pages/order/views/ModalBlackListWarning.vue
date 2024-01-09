@@ -24,8 +24,8 @@
       <br />
       <p>
         Jika kamu tetap ingin berlangganan di Seakun, pastikan untuk mengikuti
-        syarat yang berlaku dan hubungi admin kami melalui Telegram
-        <a class="text-blue-500" href="https://t.me/seakunid">@seakunid</a>
+        syarat yang berlaku dan hubungi admin kami melalui LiveChat Seakun
+        (pojok kanan bawah).
       </p>
     </div>
   </Modal>

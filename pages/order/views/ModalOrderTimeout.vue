@@ -10,23 +10,11 @@
     </div>
     <div class="tn:mt-4">
       <p class="tn:text-sm md:text-base">
-        Tenang, pesanan kamu tetap bisa di proses. Yuk klik tombol di bawah
-        untuk menghubungi admin agar pesanan kamu dibantu langsung oleh admin.
+        Tenang, pesanan kamu tetap bisa di proses. Yuk klik tombol LiveChat
+        Seakun (pojok kanan bawah) untuk menghubungi admin agar pesanan kamu
+        dibantu langsung oleh admin.
       </p>
     </div>
-    <a
-      href="https://t.me/seakunid"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="tn:mt-4 w-full"
-    >
-      <Button
-        variant="primary"
-        label="Hubungi Admin"
-        class="w-full tn:mt-4 py-3"
-        :is-loading="isLoading"
-      />
-    </a>
   </Modal>
 </template>
 

@@ -165,10 +165,7 @@
       >
         <p class="tn:text-center md:text-left md:text-lg text-gray-500">
           Pesanan akan diproses maksimal 1x24 jam. Hubungi Admin melalui
-          telegram
-          <a href="https://t.me/seakunid" class="text-primary" target="_blank"
-            >@seakunid</a
-          >
+          LiveChat Seakun (pojok kanan bawah)
         </p>
       </div>
       <Button
@@ -317,7 +314,7 @@ export default {
       const name = this.dataDetailOrder.paymentHolder;
       const packageName = this.dataProduct.packageName;
 
-      return `https://api.whatsapp.com/send/?phone=6282124852235&text=
+      return `https://api.whatsapp.com/send/?phone=6282124852&text=
         Halo+saya+sudah+melakukan+pesanan+dan+pembayaran%0A%0A*No+Order:*+${orderNumber}%0A*Nama:*+${name}%0A*Pesanan:*+${packageName}&app_absent=0`;
     },
   },

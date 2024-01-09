@@ -72,12 +72,12 @@
             >. Kamu akan diberitahukan oleh admin Seakun apabila grup pre-order
             sudah terisi penuh untuk melakukan pembayaran.
           </p>
-          <div class="tn:mt-4 md:mt-8 text-center">
+          <!-- <div class="tn:mt-4 md:mt-8 text-center">
             <p class="font-semibold tn:text-sm md:text-base">
               Sedang mengalihkan ke whatsapp Seakun...
             </p>
             <p class="tn:text-xl md:text-2xl font-bold">{{ countdown }}</p>
-          </div>
+          </div> -->
         </div>
       </transition>
 
@@ -146,20 +146,20 @@ export default {
     };
   },
   watch: {
-    waitingListConfirmation(val) {
-      if (val.status === 1) {
-        setInterval(() => {
-          if (this.countdown > 0) {
-            this.countdown--;
-          }
-        }, 1000);
-      }
-    },
-    countdown(val) {
-      if (val === 0) {
-        this.confirm();
-      }
-    },
+    // waitingListConfirmation(val) {
+    //   if (val.status === 1) {
+    //     setInterval(() => {
+    //       if (this.countdown > 0) {
+    //         this.countdown--;
+    //       }
+    //     }, 1000);
+    //   }
+    // },
+    // countdown(val) {
+    //   if (val === 0) {
+    //     this.confirm();
+    //   }
+    // },
   },
   computed: {
     ...mapGetters({
@@ -210,7 +210,7 @@ export default {
       } else {
         message = `Halo Admin, saya ${customerName} dengan nomor order ${orderNumber} sudah konfirmasi ikut menjadi User Host ${provider}. Saya tunggu selama 1 x 24 jam ya agar dipandu dalam proses selanjutnya, terimakasih.`;
       }
-      window.location.href = `https://api.whatsapp.com/send?phone=6282124852235&text=${encodeURIComponent(
+      window.location.href = `https://api.whatsapp.com/send?phone=6282124852232&text=${encodeURIComponent(
         message
       )}`;
     },

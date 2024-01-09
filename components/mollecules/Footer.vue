@@ -131,13 +131,19 @@
         <div class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <div class="flex space-x-2">
             <img src="/images/footer/email-icon.svg" alt="#" />
-            <a href="mailto:cs@seakun.id">
-              <p>cs@seakun.id</p>
+            <a href="mailto:admin@seakun.id">
+              <p>admin@seakun.id</p>
             </a>
           </div>
-          <div class="flex space-x-2">
+          <!-- <div class="flex space-x-2">
             <img src="/images/footer/telegram.svg" alt="#" />
             <a href="https://t.me/seakunid">@seakunid (telegram)</a>
+          </div> -->
+          <div class="flex space-x-2 items-center">
+            <img src="/images/footer/whatsapp.svg" alt="#" />
+            <a href="https://api.whatsapp.com/send?phone=6282124852232"
+              >082124852232</a
+            >
           </div>
           <div class="flex space-x-2 items-start">
             <img class="ml-1" src="/images/footer/time-circle.svg" alt="#" />
@@ -151,7 +157,7 @@
       </div>
     </div>
     <div class="text-center text-white tn:py-2 lg:py-4">
-      <p>&copy; 2023 PT Seakun Global Teknologi</p>
+      <p>&copy; 2020 - 2024 PT Seakun Global Teknologi</p>
     </div>
   </div>
 </template>
