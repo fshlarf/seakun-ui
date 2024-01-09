@@ -4,6 +4,47 @@
   </div>
 </template>
 
+<script>
+export default {
+  // head() {
+  //   return {
+  //     // Menambahkan script ke bagian head dari halaman
+  //     script: [
+  //       {
+  //         src: 'https://webchat.qontak.com/qchatInitialize.js',
+  //         body: true,
+  //       },
+  //       {
+  //         src: 'https://webchat.qontak.com/js/app.js',
+  //         body: true,
+  //       },
+  //     ],
+  //   };
+  // },
+  mounted() {
+    // Melakukan inisialisasi webchat setelah DOM selesai dimuat
+    this.qchatInit();
+  },
+  methods: {
+    qchatInit() {
+      // Inisialisasi webchat setelah script dimuat
+      const qchatInit = document.createElement('script');
+      qchatInit.src = 'https://webchat.qontak.com/qchatInitialize.js';
+      const qchatWidget = document.createElement('script');
+      qchatWidget.src = 'https://webchat.qontak.com/js/app.js';
+      document.head.prepend(qchatInit);
+      document.head.prepend(qchatWidget);
+      qchatInit.onload = function () {
+        qchatInitialize({
+          id: '36b9aebd-1fd6-45f6-8f0c-e2e0e81ffb4e',
+          code: 'GE-XnOitijajxKYbWA54-g',
+        });
+      };
+    },
+  },
+};
+</script>
+
 <style>
 html {
   font-family: Montserrat !important;
