@@ -11,3 +11,7 @@ qchatInit.onload = function () {
     code: 'GE-XnOitijajxKYbWA54-g',
   });
 };
+
+export default {
+  mode: 'client', // Specify that this plugin should run on the client side only
+};
