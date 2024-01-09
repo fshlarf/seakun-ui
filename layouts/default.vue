@@ -36,7 +36,7 @@ export default {
       document.head.prepend(qchatWidget);
       qchatInit.onload = function () {
         qchatInitialize({
-          id: '13555c37-6a2a-49ee-b8b0-3905508b7527',
+          id: '36b9aebd-1fd6-45f6-8f0c-e2e0e81ffb4e',
           code: 'GE-XnOitijajxKYbWA54-g',
         });
       };
