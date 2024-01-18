@@ -27,6 +27,16 @@
             ><img src="/images/footer/linkedin.svg" alt="linkedin icon"
           /></a>
         </div>
+        <div class="text-sm text-white leading-[22px] pt-3 max-w-[312px]">
+          <p>
+            Sudah terdaftar sebagai penyedia media elektronik di Kominfo
+            <img
+              src="/images/icons/atoms/shield-check.svg"
+              alt="check"
+              class="inline w-[18px] h-[18px] mb-1"
+            />
+          </p>
+        </div>
       </div>
       <div class="tn:my-4 md:mt-0">
         <h1 class="font-bold tn:text-lg md:text-2xl tn:my-8 lg:mb-4 xl:mb-8">

@@ -15,6 +15,32 @@
         data-dnt="true"
       >
         <p lang="in" dir="ltr">
+          Tahun lalu iseng iseng nyari, eh nemu seakun ini. Pertama cuma iseng
+          <br />sebulan sebulan, lama lama keterusan sampe setahun lebih.
+          Langganan <br />dari dulu jaman transfer masih manual bank, sekarang
+          udh ada virtual <br />accountnya, makin trusted sih. admin-nya juga
+          cepet handlenya.
+          <a href="https://twitter.com/LeovandyK?ref_src=twsrc%5Etfw"
+            >@LeovandyK</a
+          >
+          <a href="https://t.co/2GvQ1Oyzdh">pic.twitter.com/2GvQ1Oyzdh</a>
+        </p>
+        &mdash; leovandy kuswandana (@LeovandyK)
+        <a href="https://twitter.com/LeovandyK/status/1726643348772155496?s=20"
+          >20 November 23023</a
+        >
+      </blockquote>
+      <blockquote
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+        data-cards="hidden"
+        tw-align-center
+        data-conversation="none"
+        hide_thread="true"
+        data-dnt="true"
+      >
+        <p lang="in" dir="ltr">
           Yesss berhasil langganan yt prem stgh harga yg legal lewat
           &quot;seakun&quot;<br />28rb sebulan udah include yt music
           jugaaa!!!<br />Kmren2 yt music doang 54k 😭<br />Coba tau dari kmren2
