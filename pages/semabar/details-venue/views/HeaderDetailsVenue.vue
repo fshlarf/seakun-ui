@@ -16,12 +16,20 @@
           />
         </div>
         <img
-          src="/images/semabar/illustration/minisoccer-mobile.webp"
+          :src="[
+            detailsVenue.isPromotion
+              ? `/images/semabar/promo/${detailsVenue.slug}-mobile.webp`
+              : `/images/semabar/illustration/minisoccer-mobile.webp`,
+          ]"
           alt="banner"
           class="rounded-xl w-full h-[120px] mt-8 sm:hidden p-2"
         />
         <img
-          src="/images/semabar/illustration/minisoccer.webp"
+          :src="[
+            detailsVenue.isPromotion
+              ? `/images/semabar/promo/${detailsVenue.slug}.webp`
+              : `/images/semabar/illustration/minisoccer-mobile.webp`,
+          ]"
           alt="banner"
           class="rounded-xl w-full md:h-[200px] lg:h-[242px] mt-8 hidden sm:block"
         />

@@ -99,6 +99,7 @@ export default {
             name: 'LA.PANG.AN 45 Permata Hijau',
             slug: 'permata-hijau',
             member: 150,
+            isPromotion: true,
             detailsFee: {
               fieldFee: 2400000,
               referee: 200000,
