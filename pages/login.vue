@@ -238,7 +238,7 @@ export default {
           this.email,
           this.password,
           this.deviceOS,
-          timestamp
+          timestamp.toString()
         );
         const {
           accessToken,
