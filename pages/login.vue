@@ -147,6 +147,7 @@ export default {
           message: '',
         },
       },
+      deviceOS: 'web',
     };
   },
   mounted() {
@@ -232,9 +233,12 @@ export default {
     async login() {
       this.isLoading = true;
       try {
+        const timestamp = new Date().getTime();
         const fetchLogin = await this.AuthService.login(
           this.email,
-          this.password
+          this.password,
+          this.deviceOS,
+          timestamp
         );
         const {
           accessToken,

@@ -8,10 +8,12 @@ class AuthService {
     this.serviceApiAuth = httpRequestAuth(ctx, API_AUTH_URL).serviceApi;
   }
 
-  login(email, password) {
+  login(email, password, deviceOs, deviceId) {
     return this.serviceApi.post('/customer/sign/in', {
       email,
       password,
+      deviceOs,
+      deviceId,
     });
   }
 
