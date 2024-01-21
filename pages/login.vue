@@ -148,6 +148,7 @@ export default {
         },
       },
       deviceOS: 'web',
+      scope: 'web',
     };
   },
   mounted() {
@@ -238,7 +239,8 @@ export default {
           this.email,
           this.password,
           this.deviceOS,
-          timestamp.toString()
+          timestamp.toString(),
+          scope
         );
         const {
           accessToken,
