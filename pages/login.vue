@@ -240,7 +240,7 @@ export default {
           this.password,
           this.deviceOS,
           timestamp.toString(),
-          scope
+          this.scope
         );
         const {
           accessToken,
