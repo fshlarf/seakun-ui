@@ -5,15 +5,15 @@
         <img
           class="mx-auto"
           src="/images/user/verify-expired.svg"
-          alt="token kadaluarsa"
+          alt="link kadaluarsa"
         />
         <h2
           class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
         >
-          Token Sudah Kedaluarsa
+          Link Sudah Kedaluarsa
         </h2>
         <p class="text-[14px] lg:text-base text-center mt-[4px]">
-          Masa aktif token hanya berlaku selama 12 jam. Silakan masukkan email
+          Masa aktif link hanya berlaku selama 12 jam. Silakan masukkan email
           untuk mengirim ulang email verifikasi
         </p>
         <Input
@@ -44,7 +44,7 @@
           Email Berhasil dikirim
         </h2>
         <p class="text-[14px] lg:text-base text-center mt-[4px]">
-          Silakan cek email kamu untuk melakukan verifikasi. Token verifikasi
+          Silakan cek email kamu untuk melakukan verifikasi. Link verifikasi
           hanya berlaku selama 12 jam.
         </p>
         <div class="flex space-x-3 items-center justify-center mt-[8px]">

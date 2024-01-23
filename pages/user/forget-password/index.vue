@@ -78,7 +78,7 @@
                 Email Berhasil dikirim
               </h2>
               <p class="text-[14px] lg:text-base text-center mt-[4px]">
-                Silakan cek email kamu untuk membuat password baru. Token ubah
+                Silakan cek email kamu untuk membuat password baru. Link ubah
                 password berlaku selama 12 jam. Jika tidak ada email masuk,
                 periksa spam/junk di email kamu.
               </p>

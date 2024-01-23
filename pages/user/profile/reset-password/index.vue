@@ -58,7 +58,7 @@
         </h3>
         <p class="text-sm text-gray-secondary mx-auto max-w-[400px]">
           Kami telah mengirimkan instruksi pemulihan kata sandi ke email kamu.
-          Token reset password hanya berlaku selama 12 jam. Jika tidak ada email
+          Link reset password hanya berlaku selama 12 jam. Jika tidak ada email
           masuk, periksa spam/junk di email kamu.
         </p>
         <div class="flex space-x-3 items-center justify-center mt-[8px]">

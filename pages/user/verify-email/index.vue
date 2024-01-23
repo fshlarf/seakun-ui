@@ -51,7 +51,7 @@ export default {
     } else {
       this.$alert.show({
         status: 'error',
-        message: 'Token verifikasi atau id user tidak ditemukan',
+        message: 'Link verifikasi atau id user tidak ditemukan',
       });
     }
   },
@@ -76,7 +76,7 @@ export default {
         } else {
           this.$alert.show({
             status: 'error',
-            message: 'Token verifikasi tidak valid atau user tidak ditemukan',
+            message: 'Link verifikasi tidak valid atau user tidak ditemukan',
           });
         }
       }
