@@ -65,7 +65,7 @@
         </p>
         <p v-else class="text-center md:text-lg tn:mt-4 text-gray-500">
           Konfirmasi pembayaranmu telah berhasil. Admin akan segera menghubungi
-          untuk memberikan detail pesananmu.
+          via email untuk memberikan detail pesananmu.
         </p>
       </div>
 

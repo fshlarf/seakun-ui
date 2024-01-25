@@ -320,8 +320,13 @@
               <div
                 v-if="selectedMenu.value == 'information'"
                 class="p-[12px] bg-[#F4FCFA]"
-                v-html="priceScheme.additionalInfo"
-              ></div>
+              >
+                <div v-html="priceScheme.additionalInfo"></div>
+                <p class="mt-2">
+                  Informasi terbaru mengenai pembayaran dan akun akan kami
+                  kirimkan via email
+                </p>
+              </div>
 
               <div
                 v-else-if="selectedMenu.value == 'orderScheme'"
