@@ -84,10 +84,10 @@ export default {
           id: 2,
           img: '/images/promo/semabar-mobile.webp',
         },
-        {
-          id: 3,
-          img: '/images/promo/bonus-yt-mobile.webp',
-        },
+        // {
+        //   id: 3,
+        //   img: '/images/promo/bonus-yt-mobile.webp',
+        // },
       ],
       desktopBanners: [
         // {
@@ -102,10 +102,10 @@ export default {
           id: 2,
           img: '/images/promo/semabar-desktop.webp',
         },
-        {
-          id: 3,
-          img: '/images/promo/bonus-yt-desktop.webp',
-        },
+        // {
+        //   id: 3,
+        //   img: '/images/promo/bonus-yt-desktop.webp',
+        // },
       ],
       banners: [],
       activeSlider: {},

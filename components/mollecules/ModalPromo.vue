@@ -65,10 +65,10 @@ export default {
           id: 2,
           img: '/images/promo/semabar-mobile.webp',
         },
-        {
-          id: 3,
-          img: '/images/promo/bonus-yt-mobile.webp',
-        },
+        // {
+        //   id: 3,
+        //   img: '/images/promo/bonus-yt-mobile.webp',
+        // },
       ],
       promoImageDesktop: [
         // {
@@ -83,10 +83,10 @@ export default {
           id: 2,
           img: '/images/promo/semabar.webp',
         },
-        {
-          id: 3,
-          img: '/images/promo/bonus-yt.webp',
-        },
+        // {
+        //   id: 3,
+        //   img: '/images/promo/bonus-yt.webp',
+        // },
       ],
       slider: 1,
       activeSlider: {},

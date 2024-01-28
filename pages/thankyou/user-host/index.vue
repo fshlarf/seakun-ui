@@ -79,10 +79,10 @@
             class="text-center text-[#2d2d2d] opacity-80 tn:text-sm md:text-base"
           >
             Apabila kamu setuju menjadi User Host dan mengerti prosedur sebagai
-            User Host, lakukan konfirmasi dengan klik tombol di bawah. Atau kamu
-            bisa klik link yang sudah dikirimkan ke whatsapp kamu. Konfirmasi
-            ini bertujuan untuk memasukkan nama dan data diri kamu pada grup
-            yang available secara sistematis sebagai User Host.
+            User Host, lakukan konfirmasi dengan klik tombol di bawah.
+            Konfirmasi ini bertujuan untuk memasukkan nama dan data diri kamu
+            pada grup yang available secara sistematis sebagai User Host.
+            Informasi terbaru akan kami kirimkan via email.
           </p>
         </div>
 

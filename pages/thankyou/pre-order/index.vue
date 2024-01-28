@@ -44,9 +44,9 @@
           >
             Lakukan konfirmasi ulang bahwa kamu fix berkomitmen untuk ikut
             pre-order layanan patungan {{ provider }} di Seakun dengan cara klik
-            tombol di bawah. Atau kamu bisa klik link yang sudah dikirimkan ke
-            whatsapp kamu. Konfirmasi ini bertujuan untuk memasukkan nama dan
-            data diri kamu pada grup yang available secara sistematis.
+            tombol di bawah. Konfirmasi ini bertujuan untuk memasukkan nama dan
+            data diri kamu pada grup yang available secara sistematis. Informasi
+            terbaru akan kami kirimkan via email.
           </p>
         </div>
 

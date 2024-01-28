@@ -244,12 +244,12 @@ export default {
           this.$alert.show({
             status: 'error',
             message:
-              'Token tidak valid atau sudah digunakan untuk mengubah password',
+              'Link tidak valid atau sudah digunakan untuk mengubah password',
           });
         } else if (error.response.status === 404) {
           this.$alert.show({
             status: 'error',
-            message: 'Token atau user tidak ditemukan',
+            message: 'Link atau user tidak ditemukan',
           });
         } else {
           this.$alert.show({
