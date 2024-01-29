@@ -55,7 +55,7 @@ export default {
           text: 'Member menunggu grup penuh',
         },
         {
-          text: 'Seakun menyerahkan data member & melakukan pembayaran',
+          text: 'Seakun melakukan pemesanan ke Zap',
         },
         {
           text: 'Member registrasi di website ZAP',
