@@ -18,8 +18,11 @@ class AuthService {
     });
   }
 
-  logout() {
-    return this.serviceApiAuth.get('/customer/sign/out');
+  logout(deviceId, deviceOs) {
+    return this.serviceApiAuth.post('/customer/sign/out', {
+      deviceId,
+      deviceOs,
+    });
   }
 }
 

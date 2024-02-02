@@ -119,6 +119,7 @@ import {
   setUsername,
   setCustomerUid,
   setAvatar,
+  setDeviceId,
 } from '~/helpers/tokenAuth';
 import AuthService from '~/services/AuthServices';
 import { mapActions } from 'vuex';
@@ -256,6 +257,7 @@ export default {
         setUsername(this, username);
         setCustomerUid(this, customerUid);
         setAvatar(this, avatar);
+        setDeviceId(this, timestamp);
         this.setUserAvatar(avatar);
         if (this.isRememberMe) {
           this.setLocalStorageLoginData();
