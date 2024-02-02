@@ -167,8 +167,10 @@ export default {
     async logout() {
       this.isLoading = true;
       const { AuthService } = this;
+      const deviceId = this.$cookies.get('deviceId');
+      const deviceOs = 'web';
       try {
-        const fetchLogout = await AuthService.logout();
+        const fetchLogout = await AuthService.logout(deviceId, deviceOs);
         if (fetchLogout.data) {
           const dataLogout = fetchLogout.data;
           if (dataLogout.meta.status === 200) {
