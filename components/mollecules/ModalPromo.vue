@@ -53,16 +53,16 @@ export default {
       isShowModal: true,
       promoImages: [],
       promoImageMobile: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/1111-mobile.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/livechat-mobile.webp',
+          img: '/images/promo/netflix-info-mobile.webp',
         },
         {
           id: 2,
+          img: '/images/promo/livechat-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/semabar-mobile.webp',
         },
         // {
@@ -71,16 +71,16 @@ export default {
         // },
       ],
       promoImageDesktop: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/1111.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/livechat.webp',
+          img: '/images/promo/netflix-info.webp',
         },
         {
           id: 2,
+          img: '/images/promo/livechat.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/semabar.webp',
         },
         // {

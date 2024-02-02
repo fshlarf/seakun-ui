@@ -72,16 +72,16 @@ export default {
   data() {
     return {
       mobileBanners: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/banned-mobile.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/livechat-mobile.webp',
+          img: '/images/promo/netflix-info-mobile.webp',
         },
         {
           id: 2,
+          img: '/images/promo/livechat-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/semabar-mobile.webp',
         },
         // {
@@ -90,16 +90,16 @@ export default {
         // },
       ],
       desktopBanners: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/banned-desktop.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/livechat-desktop.webp',
+          img: '/images/promo/netflix-info-desktop.webp',
         },
         {
           id: 2,
+          img: '/images/promo/livechat-desktop.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/semabar-desktop.webp',
         },
         // {
