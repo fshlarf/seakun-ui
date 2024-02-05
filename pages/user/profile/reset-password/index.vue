@@ -141,7 +141,6 @@ export default {
           await this.RunCountdown();
         }
       } catch (error) {
-        console.log(error);
         this.isLoading = false;
         this.$alert.show({
           status: 'error',

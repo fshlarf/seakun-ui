@@ -187,7 +187,6 @@ export default {
           await this.RunCountdown();
         }
       } catch (error) {
-        console.log(error);
         this.isLoadingSendEmail = false;
         this.$alert.show({
           status: 'error',

@@ -43,7 +43,6 @@ export const httpRequest = function (context, url) {
     axiosInterceptorsRequest,
     axiosInterceptorsRequestError
   );
-
   return {
     serviceApi,
     serviceAbort,
