@@ -46,20 +46,6 @@ export const seglowupPriceList = [
         ],
       },
       {
-        title: 'Injection',
-        description: [
-          {
-            text: 'Insta Glow Serum Micro Injection',
-          },
-          {
-            text: 'Face PRP MIcro Injection (3cc)',
-          },
-          {
-            text: 'Hair Regrowth PRP Micro Injection (3cc)',
-          },
-        ],
-      },
-      {
         title: 'Body Treatment',
         description: [
           {
@@ -167,18 +153,6 @@ export const seglowupPriceList = [
           {
             text: 'Blue Light Acne Therapy',
           },
-          {
-            text: 'Navel Hair Removal',
-          },
-          {
-            text: 'Stomach Hair Removal (Incl. Navel)',
-          },
-          {
-            text: 'Lower Arm Removal',
-          },
-          {
-            text: 'Upper Arm Hair Removal',
-          },
         ],
       },
       {
@@ -207,6 +181,18 @@ export const seglowupPriceList = [
           },
           {
             text: 'Nipples Hair Removal',
+          },
+          {
+            text: 'Navel Hair Removal',
+          },
+          {
+            text: 'Stomach Hair Removal (Include. Navel)',
+          },
+          {
+            text: 'Lower Arm Removal',
+          },
+          {
+            text: 'Upper Arm Hair Removal',
           },
         ],
       },
@@ -334,7 +320,7 @@ export const seglowupPriceList = [
             text: 'Buttock Hair Removal',
           },
           {
-            text: 'Chest Hair Removal (Incl Nipples)',
+            text: 'Chest Hair Removal (Include Nipples)',
           },
           {
             text: 'Woman Brazilian (V+I)',
@@ -472,16 +458,6 @@ export const seglowupPriceList = [
           {
             text: 'Laser Peel Glow',
           },
-          {
-            text: 'Upper Leg Hair Removal (Incl Bikini Line)',
-          },
-          {
-            text: 'Super Brightening Miss V',
-          },
-          {
-            text:
-              'Bikini Line Rejuvenation Combo + Super Brigtening Bikini Line',
-          },
         ],
       },
       {
@@ -497,10 +473,10 @@ export const seglowupPriceList = [
             text: 'Full Arms Hair Removal',
           },
           {
-            text: 'Upper Leg Rejuvenation (Incl Bikini Line)',
+            text: 'Upper Leg Rejuvenation (Include Bikini Line)',
           },
           {
-            text: 'Underarm Rejuvenation Combo + Super Brightening Underarm',
+            text: 'Lower Legs Hair Removal (Include Feet)',
           },
         ],
       },
@@ -511,10 +487,23 @@ export const seglowupPriceList = [
             text: 'Back Acne Rejuvenation',
           },
           {
-            text: 'Full Arms Rejuvenation (Incl Hand)',
+            text: 'Full Arms Rejuvenation (Include Hand)',
           },
           {
-            text: 'Lower Legs Rejuvenation (Incl Feet)',
+            text: 'Lower Legs Rejuvenation (Include Feet)',
+          },
+          {
+            text: 'Upper Legs Rejuvenation (Include Bikini Line)',
+          },
+          {
+            text: 'Underarm Rejuvenation Combo + Super Brightening',
+          },
+          {
+            text: 'Underarm Super Brightening Miss V',
+          },
+          {
+            text:
+              'Bikini Line Rejuvenation Combo + Super Brightening Bikini Line',
           },
         ],
       },
@@ -525,7 +514,7 @@ export const seglowupPriceList = [
             text: 'Fleck Blocker Micro Injection',
           },
           {
-            text: 'Active Acne Therapy (New)',
+            text: 'Active Acne Therapy Injection (0.5cc)',
           },
         ],
       },
@@ -537,6 +526,9 @@ export const seglowupPriceList = [
           },
           {
             text: 'Infuse Booster Premium',
+          },
+          {
+            text: 'Super Stamina Drips',
           },
         ],
       },
