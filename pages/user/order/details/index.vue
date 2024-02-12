@@ -1,115 +1,91 @@
 <template>
-  <div class="mt-[26px] bg-white rounded-xl">
-    <img
-      src="/images/product/brand/header/spotify.png"
-      alt="spotify"
-      class="w-full h-11 md:h-20 rounded-t-xl"
-    />
-    <div class="p-3">
-      <h3 class="text-base font-bold text-green-seakun-secondary-dark">
-        Detail Pesanan
-      </h3>
-      <div class="space-y-5 mt-4">
-        <CardOrderDetails :order-details="dataOrderDetails" />
-        <ListPackage :data-package="dataPackage" />
-        <ListDetailsMember :details="priceDetails" />
-        <ListBenefit :data-benefit="dataBenefit" />
-        <CardGroup :data-group="dataGroup" />
-      </div>
+  <main class="mt-8 md:mt-0">
+    <OrderDetailsLoading v-if="isLoading" />
+    <div
+      class="bg-white rounded-xl pb-10"
+      style="box-shadow: 0px 2px 10px 0px rgba(158, 161, 182, 0.1)"
+      v-else
+    >
+      <HeaderDetails
+        :providerSlug="dataOrderDetails.packageVariant.providerSlug"
+      />
+      <main class="px-6">
+        <div class="mt-5 space-y-5">
+          <OrderDetails :order-details="dataOrderDetails" />
+          <div
+            v-if="
+              dataOrderDetails.status.value !== 'Waiting For Follow-up' &&
+              dataOrderDetails.status.value !== 'Registered' &&
+              dataOrderDetails.status.value !== 'Waiting For Confirmation'
+            "
+          >
+            <information :details="dataOrderDetails" />
+          </div>
+          <BannerWrapper :status="dataOrderDetails.status" />
+        </div>
+
+        <div
+          class="mt-8"
+          v-if="
+            dataOrderDetails.status.value == 'Registered' ||
+            dataOrderDetails.status.value == 'Pending'
+          "
+        >
+          <PaymentButton :orderDetails="dataOrderDetails" />
+        </div>
+      </main>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
-import CardOrderDetails from './views/card-order-details.vue';
-import ListPackage from './views/list-package-order.vue';
-import ListDetailsMember from './views/list-details-member.vue';
-import ListBenefit from './views/list-benefit.vue';
-import CardGroup from './views/card-group.vue';
+import OrderService from '~/services/OrderServices';
+import HeaderDetails from './components/header-details.vue';
+import information from './components/information.vue';
+import OrderDetails from './components/order-details.vue';
+import OrderDetailsLoading from './components/order-details-loading.vue';
+import BannerWrapper from './components/banner/banner-wrapper.vue';
+import PaymentButton from './components/payment-button.vue';
+
 export default {
   layout: 'profile',
   components: {
-    ListPackage,
-    ListDetailsMember,
-    ListBenefit,
-    CardGroup,
-    CardOrderDetails,
+    HeaderDetails,
+    OrderDetails,
+    information,
+    BannerWrapper,
+    OrderDetailsLoading,
+    PaymentButton,
   },
   data() {
     return {
-      dataOrderDetails: {
-        orderCode: 'ORD23050007',
-        email: 'faishal@mail.com',
-        phone: '082277034234',
-        group: '1345',
-        isActive: true,
-      },
-      dataPackage: [
-        {
-          name: 'Paket Premium Spotify 3 Bulan',
-          details: '67.500 / (3 Bulan)',
-        },
-        {
-          name: 'Masa Berlangganan',
-          details: '20 Mei - 20 Juli 2023',
-        },
-        {
-          name: 'Berlangganan lewat Seakun sejak',
-          details: '12 Okt 2022',
-        },
-        {
-          name: 'Sudah menghemat',
-          details: 'Rp20.000',
-        },
-      ],
-      priceDetails: [
-        {
-          name: 'Spotify Premium 3 bulan',
-          details: 'Rp261.000',
-        },
-        {
-          name: 'Jumlah member grup',
-          details: '5',
-        },
-        {
-          name: 'Harga patungan di Seakun',
-          details: 'Rp67.500',
-        },
-      ],
-      dataBenefit: [
-        {
-          name: 'Login menggunakan akun pribadi, bukan akun orang lain',
-        },
-        {
-          name:
-            'Link invitation untuk bergabung grup premium akan dikirim melalui Whatsapp yang terdaftar',
-        },
-        {
-          name:
-            'Full akses ke semua lagu, podcast, dan playlist Spotify tanpa batas dan tanpa jeda iklan',
-        },
-        {
-          name: 'Fitur mode offline, skip lagu, dan blokir musik explicit',
-        },
-      ],
-      dataGroup: [
-        {
-          name: 'Andrejaj',
-        },
-        {
-          name: 'Bgasdas',
-        },
-        {
-          name: 'Dafaf',
-        },
-        {
-          name: 'Jorgesikasdasdasdasdadsa',
-        },
-        {
-          name: 'Priapriamanis',
-        },
-      ],
+      OrderService,
+      isLoading: true,
+      dataOrderDetails: null,
     };
+  },
+  mounted() {
+    this.OrderService = new OrderService(this);
+
+    const { uid } = this.$route.query;
+    if (uid) {
+      this.getOrderDetails(uid);
+    }
+  },
+  methods: {
+    async getOrderDetails(uid) {
+      this.isLoading = true;
+      const { OrderService } = this;
+      try {
+        const fetchGetOrderDetail = await OrderService.getPackageOrderDetails(
+          uid
+        );
+        if (fetchGetOrderDetail) {
+          this.dataOrderDetails = fetchGetOrderDetail.data.data;
+        }
+      } catch (error) {}
+      this.isLoading = false;
+    },
   },
 };
 </script>

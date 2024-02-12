@@ -11,7 +11,7 @@
           class="w-[120px] h-[29px] hidden md:block cursor-pointer"
         />
         <img
-          @click="toHomePage"
+          @click="$router.back()"
           src="/images/icons/atoms/arrow-bold.svg"
           alt="back"
           class="w-6 h-6 md:hidden cursor-pointer"
