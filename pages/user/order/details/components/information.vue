@@ -94,6 +94,7 @@ export default {
     },
     isShowAccountInfo() {
       const slug = this.details.packageVariant.providerSlug;
+      let result = {};
       if (
         slug == 'netflix' ||
         slug == 'gramedia-digital' ||
@@ -111,7 +112,11 @@ export default {
         slug == 'crunchyroll' ||
         slug == 'masterclass'
       ) {
-        return this.details.account.email;
+        result = {
+          email: this.details.account.email.email,
+          password: this.details.account.password,
+        };
+        return result;
       } else if (slug == 'medium') {
         return { email: this.details.account.email.email };
       } else return null;

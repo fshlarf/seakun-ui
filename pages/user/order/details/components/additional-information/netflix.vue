@@ -20,11 +20,11 @@
         />
         <p>
           Password :
-          <span v-if="isShowPassword">{{ information.email.password }}</span>
+          <span v-if="isShowPassword">{{ information.password }}</span>
           <span
             v-else
             class="tracking-[1px]"
-            v-html="maskPassword(information.email.password)"
+            v-html="maskPassword(information.password)"
           >
           </span>
         </p>
