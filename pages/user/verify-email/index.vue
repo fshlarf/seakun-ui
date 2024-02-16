@@ -68,7 +68,6 @@ export default {
           this.isVerified = true;
         }
       } catch (error) {
-        console.log(error);
         if (error.response.status == 403) {
           this.$router.push(
             `/user/verify-email/expired?token=${this.token}&userUid=${this.userUid}`

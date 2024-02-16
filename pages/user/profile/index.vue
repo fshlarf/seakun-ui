@@ -135,9 +135,7 @@ export default {
         if (fetchCustomer.data) {
           this.customerData = fetchCustomer.data.data;
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
       this.isLoading = false;
     },
     async updateProfile(payload) {
@@ -158,7 +156,6 @@ export default {
           this.isEdit = false;
         }
       } catch (error) {
-        console.log(error);
         this.$alert.show({
           status: 'error',
           message:
