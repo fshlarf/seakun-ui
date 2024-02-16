@@ -290,7 +290,7 @@ export const seglowupPriceList = [
     title: 'Harga Paket 8x Treatment',
     screenshot: '/images/price-scheme/desktop/zap-series-499.webp',
     screenshotMobile: '/images/price-scheme/mobile/zap-series-499.webp',
-    desc: 'Zap Series 449K',
+    desc: 'Zap Series 499K',
     member: 4,
     schemes: [
       'Seakun membeli Voucher Paket Series di ZAP',

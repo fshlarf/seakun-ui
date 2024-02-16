@@ -698,12 +698,9 @@ export default {
       }
     },
     onSelectPackage(pkg) {
-      console.log('run select package');
       if (pkg.packageName !== this.selectedPackage.packageName) {
         this.selectedPackage = pkg;
         this.selectedVariant = this.selectedPackage.variants[0];
-        console.log(' this.selectedVariant', this.selectedVariant);
-        console.log('seglowupPriceList', this.seglowupPriceList);
         const scheme = this.seglowupPriceList.find((scheme) => {
           return scheme.desc === this.selectedVariant.notes;
         });
@@ -712,7 +709,6 @@ export default {
           : this.seglowupPriceList.find(
               (scheme) => scheme.desc == this.selectedPackage.variants[0].notes
             );
-        console.log(' this.priceScheme ', this.priceScheme);
       }
     },
     onSelectVariant(variant) {
