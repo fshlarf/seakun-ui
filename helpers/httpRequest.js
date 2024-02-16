@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { removeToken, setToken } from '~/helpers/tokenAuth';
+import {
+  removeToken,
+  setToken,
+  setAvatar,
+  setCustomerUid,
+  setUid,
+  setUsername,
+} from '~/helpers/tokenAuth';
 import { API_AUTH_URL } from '~/constants/api.constants';
 import Cookies from 'js-cookie';
 
@@ -146,6 +153,29 @@ const fetchRefreshToken = async (refreshToken) => {
     );
     if (gerRefreshToken.data?.data) {
       return gerRefreshToken.data?.data;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const authorizeWebview = async (ctx, atoken) => {
+  try {
+    const getWebviewToken = await axios.get(
+      API_AUTH_URL + '/customer/token/webview',
+      {
+        headers: {
+          'Access-Control-Requested-Token': `${atoken}`,
+        },
+      }
+    );
+    if (getWebviewToken.data?.data) {
+      const auth = getWebviewToken.data?.data;
+      setToken(ctx, auth);
+      setUid(ctx, auth.uid);
+      setAvatar(ctx, auth.avatar);
+      setCustomerUid(ctx, auth.customerUid);
+      setUsername(ctx, auth.username);
     }
   } catch (error) {
     console.error(error);
