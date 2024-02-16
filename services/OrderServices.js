@@ -55,6 +55,10 @@ class OrderService {
   updateOrderNotes(params) {
     return this.serviceApi.patch('/customer/notes', { ...params });
   }
+
+  getPackageOrderDetails(uid) {
+    return this.serviceApiAuth.get(`/customer/${uid}/detail`);
+  }
 }
 
 export default OrderService;

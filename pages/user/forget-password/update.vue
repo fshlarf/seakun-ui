@@ -163,7 +163,6 @@ export default {
         this.$router.push(
           `/user/forget-password/expired?token=${this.token}&userUid=${this.userUid}`
         );
-        console.log(error);
       }
       this.isLoadingVerify = false;
     },
@@ -230,7 +229,6 @@ export default {
           this.isSuccess = true;
         }
       } catch (error) {
-        console.log(error);
         if (error.response.status === 400) {
           this.$alert.show({
             status: 'error',

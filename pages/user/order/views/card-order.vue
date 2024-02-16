@@ -8,14 +8,18 @@
     "
   >
     <header
-      class="border-b-[1px] flex items-center justify-between p-3 md:px-5 md:py-[9px]"
+      class="border-b-[1px] flex items-center justify-between p-3 md:px-5 md:py-[9px] bg-cover bg-no-repeat"
+      style="background-image: url('/images/order-details/mask-order-card.png')"
       :class="
         order.status.value === 'Cancel' || order.status.value === 'Refund'
           ? 'bg-[#D9D9D9]/30'
           : 'bg-[#1AB26B1A]/[5%] border-green-seakun-secondary-dark/30'
       "
     >
-      <div class="text-xs md:text-sm">
+      <div
+        class="text-xs md:text-sm cursor-pointer"
+        @click="gotoOrderDetails(order.uid)"
+      >
         <p class="text-[#66738F]">No Pesanan:</p>
         <h3
           :class="
@@ -64,7 +68,14 @@
               ]"
               alt="product"
             />
-            <p class="text-xs md:text-sm text-[#363636]">
+            <p
+              class="text-xs md:text-sm text-[#363636]"
+              v-if="order.packageVariant.providerSlug == 'zap'"
+            >
+              {{ currencyFormat(order.packageVariant.grandTotal) }} /8x
+              Treatment
+            </p>
+            <p class="text-xs md:text-sm text-[#363636]" v-else>
               {{ currencyFormat(order.packageVariant.grandTotal) }} /{{
                 order.packageVariant.duration
               }}
@@ -104,8 +115,13 @@
           <nuxt-link
             :to="paymentLink"
             class="text-primary xl:text-base font-bold"
-            >Bayar Sekarang</nuxt-link
           >
+            {{
+              order.status.value == 'Pending'
+                ? 'Perpanjang Sekarang'
+                : ' Bayar Sekarang'
+            }}
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -137,11 +153,11 @@ export default {
         case 'Waiting For Follow-up':
           return 'text-[#E8B90E] bg-[#FDF7E5] border-[#FCF1CC]';
         case 'Registered':
-          return 'text-[#FA5757] bg-[#FFEBEB] border-[#FEE7E7]';
+          return 'text-[#00BA88] bg-[#DFFBF3] border-[#DFFBF3]';
         case 'Waiting For Confirmation':
           return 'text-[#08A081] bg-[#D8FAF3] border-[#D6FFF7]';
         case 'Active':
-          return 'text-[#02BB20] bg-[#E3FFE9] border-[#CEF5D6]';
+          return 'text-[#02BB20] bg-[#DFFBF3] border-[#DFFBF3]';
         case 'Pending':
           return 'text-[#FA5757] bg-[#FFEBEB] border-[#FEE7E7]';
         case 'Cancel':
@@ -158,7 +174,7 @@ export default {
       const image = this.$refs.image;
       const colorPalette = this.$colorThief.getColor(image); // 5 is the number of colors to generate
       const bgProvider = `rgba(${colorPalette[0]},${colorPalette[1]},${colorPalette[2]},0.05)`;
-      const borderProvider = `rgba(${colorPalette[0]},${colorPalette[1]},${colorPalette[2]},0.5)`;
+      const borderProvider = `rgba(${colorPalette[0]},${colorPalette[1]},${colorPalette[2]},0.1)`;
       const providerBox = this.$refs.bgProvider;
       providerBox.style.backgroundColor = bgProvider;
       providerBox.style.borderColor = borderProvider;
@@ -182,6 +198,9 @@ export default {
         default:
           return 'Aktif';
       }
+    },
+    gotoOrderDetails(uid) {
+      this.$router.push(`/user/order/details?uid=${uid}`);
     },
     capitalizeFirstLetter,
     currencyFormat,

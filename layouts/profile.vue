@@ -11,7 +11,7 @@
           class="w-[120px] h-[29px] hidden md:block cursor-pointer"
         />
         <img
-          @click="toHomePage"
+          @click="$router.back()"
           src="/images/icons/atoms/arrow-bold.svg"
           alt="back"
           class="w-6 h-6 md:hidden cursor-pointer"
@@ -167,8 +167,10 @@ export default {
     async logout() {
       this.isLoading = true;
       const { AuthService } = this;
+      const deviceId = this.$cookies.get('deviceId');
+      const deviceOs = 'web';
       try {
-        const fetchLogout = await AuthService.logout();
+        const fetchLogout = await AuthService.logout(deviceId, deviceOs);
         if (fetchLogout.data) {
           const dataLogout = fetchLogout.data;
           if (dataLogout.meta.status === 200) {

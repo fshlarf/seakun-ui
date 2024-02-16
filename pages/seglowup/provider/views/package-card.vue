@@ -8,6 +8,7 @@
     }`"
     @click="$emit('onSelectPackage', pkg)"
   >
+    <div class="overflow-scroll"></div>
     <div
       v-if="pkg.active !== 1"
       class="absolute z-20 w-full h-full bg-black/40 flex justify-center items-center lg:justify-end lg:items-start lg:p-3"

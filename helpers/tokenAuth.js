@@ -29,6 +29,7 @@ export const removeToken = (ctx) => {
   ctx.$cookies.remove('uid');
   ctx.$cookies.remove('customerUid');
   ctx.$cookies.remove('avatar');
+  ctx.$cookies.remove('deviceId');
 };
 
 export const setUid = (ctx, uid) => {
@@ -67,6 +68,17 @@ export const setCustomerUid = (ctx, customerUid) => {
 export const setAvatar = (ctx, avatar) => {
   try {
     ctx.$cookies.set('avatar', avatar, {
+      path: '/',
+      maxAge: 3600 * 24 * 90,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setDeviceId = (ctx, deviceId) => {
+  try {
+    ctx.$cookies.set('deviceId', deviceId, {
       path: '/',
       maxAge: 3600 * 24 * 90,
     });

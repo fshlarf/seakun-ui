@@ -74,7 +74,7 @@ export default {
 }
 @media (min-width: 768px) {
   .wrapper-scheme {
-    background-image: url('/images/seglowup/background/scheme.png');
+    background-image: url('/images/seglowup/background/scheme.webp');
   }
 }
 @media (max-width: 767px) {

@@ -150,19 +150,42 @@ export default {
 		  ttq.page();
 		}(window, document, 'ttq');`,
       },
-      {
-        // Kode LiveChat.com
-        src: 'https://cdn.livechatinc.com/tracking.js',
-        async: true,
-      },
-      {
-        // Inisialisasi LiveChat.com
-        innerHTML: `
-          window.__lc = window.__lc || {};
-          window.__lc.license = 16912641;
-          (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice));
-        `,
-      },
+      // {
+      //   src: 'https://webchat.qontak.com/qchatInitialize.js',
+      //   body: true,
+      // },
+      // {
+      //   src: 'https://webchat.qontak.com/js/app.js',
+      //   body: true,
+      // },
+      // {
+      //   innerHTML: `
+      //     const qchatInit = document.createElement('script');
+      //     qchatInit.src = "https://webchat.qontak.com/qchatInitialize.js";
+      //     const qchatWidget = document.createElement('script');
+      //     qchatWidget.src = "https://webchat.qontak.com/js/app.js";
+      //     document.head.prepend(qchatInit);
+      //     document.head.prepend(qchatWidget);
+      //     qchatInit.onload = function() { qchatInitialize({
+      //       id: "bf95722f-ce4d-47b6-b9d3-cc3fd1bd98f8",
+      //       code: "hQFtCSQDQOLCQCdC6uTgGQ"
+      //     })};
+      //   `,
+      //   body: true,
+      // },
+      // {
+      //   // Kode LiveChat.com
+      //   src: 'https://cdn.livechatinc.com/tracking.js',
+      //   async: true,
+      // },
+      // {
+      //   // Inisialisasi LiveChat.com
+      //   innerHTML: `
+      //     window.__lc = window.__lc || {};
+      //     window.__lc.license = 16912641;
+      //     (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice));
+      //   `,
+      // },
     ],
     __dangerouslyDisableSanitizers: ['script'],
   },
@@ -178,6 +201,8 @@ export default {
     { src: '~plugins/google-analytics.js', mode: 'client' },
     { src: '~/plugins/color-thief.js', mode: 'client' },
     { src: '~/plugins/alert.js', mode: 'client' },
+    // { src: '~/plugins/qontak-webchat.js', mode: 'client' },
+    // '~/plugins/qontak-webchat.js',
   ],
   /*
    ** Auto import components

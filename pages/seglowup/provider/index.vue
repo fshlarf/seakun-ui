@@ -8,7 +8,6 @@
     <div class="pt-20 px-[20px] md:w-full md:container dm-sans pb-28">
       <div class="flex items-center gap-2 text-sm">
         <nuxt-link class="text-primary" to="/seglowup">Beranda</nuxt-link>
-        <p>></p>
         <p>Zap {{ priceScheme.series }}</p>
       </div>
       <template v-if="!isLoading">

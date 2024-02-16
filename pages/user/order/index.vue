@@ -62,7 +62,9 @@
       </div>
     </header>
 
-    <div class="mt-[26px] p-3 lg:p-0 lg:mt-6 space-y-5 bg-white lg:bg-none">
+    <div
+      class="mt-[26px] p-3 lg:p-0 lg:mt-6 space-y-5 bg-white lg:bg-none rounded-[10px]"
+    >
       <div class="lg:hidden flex justify-between items-center">
         <h3 class="text-sm text-gray-secondary font-medium">
           Lihat Berdasarkan
@@ -156,9 +158,7 @@ export default {
           const { data } = fetchGetOrders.data;
           this.orderList = data;
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
       this.isLoading = false;
     },
     async getOrderStatusRef() {
@@ -178,9 +178,7 @@ export default {
           });
           this.menus.sort((a, b) => a.sequence - b.sequence);
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
       this.isLoading = false;
     },
     convertStatusOrderName(status) {
