@@ -20,7 +20,7 @@
         </div>
       </section>
       <section>
-        <p class="text-[#66738F]">Search Addres</p>
+        <p class="text-[#66738F]">Search Address</p>
         <div class="flex items-center gap-2 mt-3">
           <img
             src="/images/order-details/icons/copy.svg"

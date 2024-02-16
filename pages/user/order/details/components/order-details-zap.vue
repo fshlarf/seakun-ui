@@ -68,56 +68,11 @@
                 alt="product"
               />
               <p class="text-xs md:text-sm text-[#363636]">
-                {{ currencyFormat(orderDetails.packageVariant.grandTotal) }} /{{
-                  orderDetails.packageVariant.duration
-                }}
-                Bulan
+                {{ currencyFormat(orderDetails.packageVariant.grandTotal) }}
+                <span class="font-medium"> (8x Treatment) </span>
               </p>
             </section>
           </div>
-          <div
-            v-if="orderDetails.packageVariant.providerSlug !== 'sekurban'"
-            ref="bgProvider"
-            class="border-[1px] p-3 rounded-[6px] w-[52px] lg:w-[118px] h-[47px] flex justify-center items-center"
-          >
-            <img
-              ref="image"
-              :src="brandImage"
-              alt="brand"
-              class=""
-              @load="getColorPalette"
-            />
-          </div>
-        </div>
-        <div
-          v-if="
-            orderDetails.status.value == 'Registered' ||
-            orderDetails.status.value == 'Pending'
-          "
-        >
-          <hr class="mt-4" />
-          <div
-            class="pt-2 flex justify-between items-center text-[#66738F] text-[12px] lg:text-sm"
-          >
-            <p v-if="orderDetails.status.value == 'Registered'">
-              Tgl Pesan :
-              {{ unixToIndonesianShortDate(orderDetails.createdAt) }}
-            </p>
-            <p v-else-if="orderDetails.status.value == 'Pending'">
-              Tgl Expired :
-              {{ unixToIndonesianShortDate(orderDetails.expiredAt) }}
-            </p>
-          </div>
-        </div>
-        <div
-          v-if="orderDetails.status.value == 'Active'"
-          class="text-xs lg:text-sm text-[#66738F]"
-        >
-          <hr class="mt-4 mb-3" />
-          <p>
-            Tgl Expired :
-            {{ unixToIndonesianShortDate(orderDetails.expiredAt) }}
-          </p>
         </div>
       </div>
     </div>
@@ -137,7 +92,6 @@ export default {
       default: () => {},
     },
   },
-
   computed: {
     paymentLink() {
       const url = this.orderDetails.redirectUrl;
