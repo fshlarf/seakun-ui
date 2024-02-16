@@ -8,10 +8,17 @@
     >
       <HeaderDetails
         :providerSlug="dataOrderDetails.packageVariant.providerSlug"
+        :packageVariant="dataOrderDetails.packageVariant"
       />
       <main class="px-6">
         <div class="mt-5 space-y-5">
-          <OrderDetails :order-details="dataOrderDetails" />
+          <div>
+            <OderDetailsZap
+              :order-details="dataOrderDetails"
+              v-if="dataOrderDetails.packageVariant.providerSlug == 'zap'"
+            />
+            <OrderDetails :order-details="dataOrderDetails" v-else />
+          </div>
           <div
             v-if="
               dataOrderDetails.status.value !== 'Waiting For Follow-up' &&
@@ -43,6 +50,7 @@ import OrderService from '~/services/OrderServices';
 import HeaderDetails from './components/header-details.vue';
 import information from './components/information.vue';
 import OrderDetails from './components/order-details.vue';
+import OderDetailsZap from './components/order-details-zap.vue';
 import OrderDetailsLoading from './components/order-details-loading.vue';
 import BannerWrapper from './components/banner/banner-wrapper.vue';
 import PaymentButton from './components/payment-button.vue';
@@ -56,6 +64,7 @@ export default {
     BannerWrapper,
     OrderDetailsLoading,
     PaymentButton,
+    OderDetailsZap,
   },
   data() {
     return {

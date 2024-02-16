@@ -16,7 +16,10 @@
           : 'bg-[#1AB26B1A]/[5%] border-green-seakun-secondary-dark/30'
       "
     >
-      <div class="text-xs md:text-sm">
+      <div
+        class="text-xs md:text-sm cursor-pointer"
+        @click="gotoOrderDetails(order.uid)"
+      >
         <p class="text-[#66738F]">No Pesanan:</p>
         <h3
           :class="
@@ -29,21 +32,13 @@
           {{ order.orderNumber }}
         </h3>
       </div>
-      <div class="flex items-center gap-3">
-        <div
-          class="text-xs md:text-sm font-bold border-[1px] text-center rounded-full"
-          :class="statusClass"
-        >
-          <p class="py-2 px-3 lg:px-4">
-            {{ convertStatusOrderName(order.status.value) }}
-          </p>
-        </div>
-        <img
-          src="/images/icon/links/launch.svg"
-          alt="details"
-          class="cursor-pointer w-[26px] h-[26px]"
-          @click="gotoOrderDetails(order.uid)"
-        />
+      <div
+        class="text-xs md:text-sm font-bold border-[1px] text-center rounded-full"
+        :class="statusClass"
+      >
+        <p class="py-2 px-3 lg:px-4">
+          {{ convertStatusOrderName(order.status.value) }}
+        </p>
       </div>
     </header>
     <div class="p-3 md:p-5 md:pb-4">
@@ -73,7 +68,14 @@
               ]"
               alt="product"
             />
-            <p class="text-xs md:text-sm text-[#363636]">
+            <p
+              class="text-xs md:text-sm text-[#363636]"
+              v-if="order.packageVariant.providerSlug == 'zap'"
+            >
+              {{ currencyFormat(order.packageVariant.grandTotal) }} /8x
+              Treatment
+            </p>
+            <p class="text-xs md:text-sm text-[#363636]" v-else>
               {{ currencyFormat(order.packageVariant.grandTotal) }} /{{
                 order.packageVariant.duration
               }}
@@ -113,8 +115,13 @@
           <nuxt-link
             :to="paymentLink"
             class="text-primary xl:text-base font-bold"
-            >Bayar Sekarang</nuxt-link
           >
+            {{
+              order.status.value == 'Pending'
+                ? 'Perpanjang Sekarang'
+                : ' Bayar Sekarang'
+            }}
+          </nuxt-link>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="this.details.packageVariant.providerSlug !== 'zap'">
     <p class="text-[#00BA88] text-sm lg:text-base font-medium lg:font-bold">
       Informasi Tambahan
     </p>
@@ -20,15 +20,8 @@
         <BannerAddtionalInformation :message="customerNeeds" class="pt-5" />
       </section>
       <section v-if="details.packageVariant.providerSlug === 'tiktok-music'">
-        <InvitationLink :invitationLink="invitationLinkValue" />
+        <InvitationLink :information="details.account.tiktokMusic" />
       </section>
-
-      <!-- <div v-if="customerNeeds == 'OTP'" class="pt-5">
-        <RequestOTP />
-      </div>
-      <div v-if="customerNeeds == 'invitationByEmail'" class="pt-3">
-        <InvitationByEmailVue />
-      </div> -->
     </div>
   </div>
 </template>

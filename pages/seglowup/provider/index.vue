@@ -8,7 +8,6 @@
     <div class="pt-20 px-[20px] md:w-full md:container dm-sans pb-28">
       <div class="flex items-center gap-2 text-sm">
         <nuxt-link class="text-primary" to="/seglowup">Beranda</nuxt-link>
-        <p>></p>
         <p>Zap {{ priceScheme.series }}</p>
       </div>
       <template v-if="!isLoading">
@@ -699,9 +698,12 @@ export default {
       }
     },
     onSelectPackage(pkg) {
+      console.log('run select package');
       if (pkg.packageName !== this.selectedPackage.packageName) {
         this.selectedPackage = pkg;
         this.selectedVariant = this.selectedPackage.variants[0];
+        console.log(' this.selectedVariant', this.selectedVariant);
+        console.log('seglowupPriceList', this.seglowupPriceList);
         const scheme = this.seglowupPriceList.find((scheme) => {
           return scheme.desc === this.selectedVariant.notes;
         });
@@ -710,6 +712,7 @@ export default {
           : this.seglowupPriceList.find(
               (scheme) => scheme.desc == this.selectedPackage.variants[0].notes
             );
+        console.log(' this.priceScheme ', this.priceScheme);
       }
     },
     onSelectVariant(variant) {
