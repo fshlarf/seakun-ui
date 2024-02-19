@@ -80,24 +80,24 @@ export default {
           id: 2,
           img: '/images/promo/netflix-info-mobile.webp',
         },
-        {
-          id: 3,
-          img: '/images/promo/semabar-mobile.webp',
-        },
+        // {
+        //   id: 3,
+        //   img: '/images/promo/semabar-mobile.webp',
+        // },
       ],
       desktopBanners: [
         {
           id: 1,
           img: '/images/promo/election-desktop.webp',
         },
-        {
-          id: 2,
-          img: '/images/promo/netflix-info-desktop.webp',
-        },
-        {
-          id: 3,
-          img: '/images/promo/semabar-desktop.webp',
-        },
+        // {
+        //   id: 2,
+        //   img: '/images/promo/netflix-info-desktop.webp',
+        // },
+        // {
+        //   id: 3,
+        //   img: '/images/promo/semabar-desktop.webp',
+        // },
       ],
       banners: [],
       activeSlider: {},
