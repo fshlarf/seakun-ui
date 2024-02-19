@@ -432,7 +432,7 @@ export const providerList = [
       'Seakun bertindak sebagai user Host dalam grup ',
       'Member membuat/menyediakan akun masing-masing ',
       'Seakun mengundang 5 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati firut Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
       'Paket Patungan pada <b>YouTube</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',

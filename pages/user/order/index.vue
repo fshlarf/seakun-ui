@@ -80,6 +80,7 @@
         <CardOrderLoading />
       </div>
       <template v-else>
+        <BannerUpdateInformation />
         <div v-if="orderList.length > 0" class="space-y-5 pb-5">
           <Card v-for="(data, id) in orderList" :key="id" :order="data" />
         </div>
@@ -106,6 +107,7 @@ import CardOrderLoading from './views/card-order-loading.vue';
 import SelectOrderStatusMobile from './views/select-order-status-mobile.vue';
 import OrderService from '~/services/OrderServices';
 import MasterService from '~/services/MasterServices';
+import BannerUpdateInformation from './views/banner-update-information.vue';
 
 export default {
   layout: 'profile',
@@ -113,6 +115,7 @@ export default {
     Card,
     SelectOrderStatusMobile,
     CardOrderLoading,
+    BannerUpdateInformation,
   },
   data() {
     return {

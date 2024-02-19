@@ -8,14 +8,14 @@
         text="Proses pemesanan memakan waktu lebih lama dari yang seharusnya."
       />
     </div>
-    <div class="tn:mt-4">
+    <!-- <div class="tn:mt-4">
       <p class="tn:text-sm md:text-base">
         Tenang, pesanan kamu tetap bisa di proses. Yuk klik tombol LiveChat
         Seakun (pojok kanan bawah) untuk menghubungi admin agar pesanan kamu
         dibantu langsung oleh admin.
       </p>
-    </div>
-    <!-- <a
+    </div> -->
+    <a
       href="https://api.whatsapp.com/send?phone=6282124852232"
       target="_blank"
       rel="noopener noreferrer"
@@ -27,7 +27,7 @@
         class="w-full tn:mt-4 py-3"
         :is-loading="isLoading"
       />
-    </a> -->
+    </a>
   </Modal>
 </template>
 
