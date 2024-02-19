@@ -90,10 +90,10 @@ export default {
           id: 1,
           img: '/images/promo/election-desktop.webp',
         },
-        // {
-        //   id: 2,
-        //   img: '/images/promo/netflix-info-desktop.webp',
-        // },
+        {
+          id: 2,
+          img: '/images/promo/netflix-info-desktop.webp',
+        },
         // {
         //   id: 3,
         //   img: '/images/promo/semabar-desktop.webp',

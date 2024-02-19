@@ -57,10 +57,10 @@ export default {
           id: 1,
           img: '/images/promo/election-mobile.webp',
         },
-        // {
-        //   id: 2,
-        //   img: '/images/promo/netflix-info-mobile.webp',
-        // },
+        {
+          id: 2,
+          img: '/images/promo/netflix-info-mobile.webp',
+        },
         // {
         //   id: 3,
         //   img: '/images/promo/semabar-mobile.webp',
@@ -71,10 +71,10 @@ export default {
           id: 1,
           img: '/images/promo/election.webp',
         },
-        // {
-        //   id: 2,
-        //   img: '/images/promo/netflix-info.webp',
-        // },
+        {
+          id: 2,
+          img: '/images/promo/netflix-info.webp',
+        },
         // {
         //   id: 3,
         //   img: '/images/promo/semabar.webp',
