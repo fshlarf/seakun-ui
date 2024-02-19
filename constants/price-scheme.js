@@ -3480,4 +3480,191 @@ export const providerList = [
   //     },
   //   ],
   // },
+  {
+    name: 'Adobe Photoshop',
+    slug: 'adobe-photoshop',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-photoshop.png',
+    screenshot: '/images/price-scheme/desktop/adobe-photoshop-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/adobe-photoshop-annual.webp',
+    desc: 'Adobe Photoshop Paket Premium User Host 1 Tahun',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe Photoshop',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Host (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.437.4940',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp718.747',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Adobe Photoshop',
+    slug: 'adobe-photoshop',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-photoshop.png',
+    screenshot: '/images/price-scheme/desktop/adobe-photoshop-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/adobe-photoshop-annual.webp',
+    desc: 'Adobe Photoshop Paket Premium User Reguler 1 Tahun',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe Photoshop',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Reguler (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.437.4940',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp80.253',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp799.000',
+        is_total: true,
+      },
+    ],
+  },
+
+  {
+    name: 'Adobe Illutstrator',
+    slug: 'adobe-illutstrator',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-illustrator.png',
+    screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
+    screenshotMobile:
+      '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
+    desc: 'Adobe Illustrator Paket Premium User Host 1 Tahun',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe AI',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Host (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.437.4940',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp718.747',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Adobe Illustrator',
+    slug: 'adobe-illustrator',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-ilustrator.png',
+    screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
+    screenshotMobile:
+      '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
+    desc: 'Adobe Illustrator Paket Premium User Reguler 1 Tahun',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe AI',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Reguler (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.437.4940',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp80.253',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp799.000',
+        is_total: true,
+      },
+    ],
+  },
 ];

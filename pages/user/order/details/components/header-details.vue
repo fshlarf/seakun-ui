@@ -26,7 +26,6 @@ export default {
       const screenWidth = window.innerWidth;
       if (this.packageVariant && this.providerSlug === 'zap') {
         const variantZap = this.formatZap(this.packageVariant.name);
-        console.log({ variantZap });
         if (screenWidth >= 1024) {
           return `/images/order-details/banner/${variantZap}.webp`;
         } else return `/images/order-details/banner/mobile/${variantZap}.webp`;

@@ -86,13 +86,13 @@
         <div
           v-if="order.packageVariant.providerSlug !== 'sekurban'"
           ref="bgProvider"
-          class="border-[1px] p-3 rounded-[6px] w-[118px] h-[47px] flex justify-center items-center"
+          class="border p-2 md:p-3 rounded-[6px] w-max max-w-[118px] h-[47px] flex justify-center items-center"
         >
           <img
             ref="image"
             :src="`/images/product/brand/${order.packageVariant.providerSlug}.png`"
             alt="brand"
-            class=""
+            class="max-h-[39px] lg:max-h-[35px]"
             @load="getColorPalette"
           />
         </div>
