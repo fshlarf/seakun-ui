@@ -1,19 +1,24 @@
 export const priceChangeList = [
   {
-    name: 'HBO Go',
-    slug: 'hbo-go',
-    message: 'Provider Hbo Go memperbarui harga berlangganannya',
+    name: 'WeTV',
+    slug: 'wetv',
+    message: 'Provider WeTv memperbarui harga berlangganannya',
   },
-  {
-    name: 'Canva',
-    slug: 'canva',
-    message: 'Provider Canva memperbarui harga berlangganannya',
-  },
-  {
-    name: 'Disney+ Hotstar',
-    slug: 'disney-hotstar',
-    message: 'Provider Disney+ Hotstar memperbarui harga berlangganannya',
-  },
+  // {
+  //   name: 'HBO Go',
+  //   slug: 'hbo-go',
+  //   message: 'Provider Hbo Go memperbarui harga berlangganannya',
+  // },
+  // {
+  //   name: 'Canva',
+  //   slug: 'canva',
+  //   message: 'Provider Canva memperbarui harga berlangganannya',
+  // },
+  // {
+  //   name: 'Disney+ Hotstar',
+  //   slug: 'disney-hotstar',
+  //   message: 'Provider Disney+ Hotstar memperbarui harga berlangganannya',
+  // },
   // {
   //   name: 'Nord VPN',
   //   slug: 'nord-vpn',
@@ -39,16 +44,16 @@ export const priceChangeList = [
   //   slug: 'scribd',
   //   message: 'penambahan pajak 11%',
   // },
-  {
-    name: 'Apple One',
-    slug: 'apple-one',
-    message: 'kenaikan biaya berlangganan provider Apple One',
-  },
-  {
-    name: 'Apple One Premier',
-    slug: 'apple-one-premier',
-    message: 'kenaikan biaya berlangganan provider Apple One',
-  },
+  // {
+  //   name: 'Apple One',
+  //   slug: 'apple-one',
+  //   message: 'kenaikan biaya berlangganan provider Apple One',
+  // },
+  // {
+  //   name: 'Apple One Premier',
+  //   slug: 'apple-one-premier',
+  //   message: 'kenaikan biaya berlangganan provider Apple One',
+  // },
   // {
   //   name: 'Apple Music',
   //   slug: 'apple-music',

@@ -1949,7 +1949,7 @@ export const providerList = [
       },
       {
         title: 'Harga Provider',
-        value: 'Rp49.000',
+        value: 'Rp56.000',
       },
       {
         title: 'Jumlah Member Per Grup',
@@ -1957,7 +1957,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp49.000 ÷ 2 = Rp24.500',
+        value: 'Rp56.000 ÷ 2 = Rp28.000',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -1965,7 +1965,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp29.500',
+        value: 'Rp33.000',
         is_total: true,
       },
     ],
@@ -1995,7 +1995,7 @@ export const providerList = [
       },
       {
         title: 'Harga Provider',
-        value: 'Rp129.000',
+        value: 'Rp135.000',
       },
       {
         title: 'Jumlah Member Per Grup',
@@ -2003,7 +2003,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp129.000 ÷ 2 = Rp64.500',
+        value: 'Rp135.000 ÷ 2 = Rp67.500',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -2011,7 +2011,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket 3 Bulanan',
-        value: 'Rp79.500',
+        value: 'Rp82.500',
         is_total: true,
       },
     ],
