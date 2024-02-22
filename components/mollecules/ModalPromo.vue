@@ -55,10 +55,6 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/election-mobile.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/netflix-info-mobile.webp',
         },
         // {
@@ -69,10 +65,6 @@ export default {
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/election.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/netflix-info.webp',
         },
         // {
