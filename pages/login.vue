@@ -119,6 +119,7 @@ import {
   setUsername,
   setCustomerUid,
   setAvatar,
+  setDeviceId,
 } from '~/helpers/tokenAuth';
 import AuthService from '~/services/AuthServices';
 import { mapActions } from 'vuex';
@@ -147,6 +148,8 @@ export default {
           message: '',
         },
       },
+      deviceOS: 'web',
+      scope: 'web',
     };
   },
   mounted() {
@@ -232,9 +235,13 @@ export default {
     async login() {
       this.isLoading = true;
       try {
+        const timestamp = new Date().getTime();
         const fetchLogin = await this.AuthService.login(
           this.email,
-          this.password
+          this.password,
+          this.deviceOS,
+          timestamp.toString(),
+          this.scope
         );
         const {
           accessToken,
@@ -250,6 +257,7 @@ export default {
         setUsername(this, username);
         setCustomerUid(this, customerUid);
         setAvatar(this, avatar);
+        setDeviceId(this, timestamp);
         this.setUserAvatar(avatar);
         if (this.isRememberMe) {
           this.setLocalStorageLoginData();
