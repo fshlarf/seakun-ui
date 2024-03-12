@@ -61,7 +61,9 @@
           >
             <div
               class=""
-              v-for="(product, id) in dataProviderListActive.list"
+              v-for="(product, id) in filterDataProviderList(
+                dataProviderListActive.list
+              )"
               :key="id"
             >
               <ProviderCard
@@ -355,6 +357,14 @@ export default {
       setProvidersActive: 'setProvidersActive',
       setFilterProvider: 'setFilterProvider',
     }),
+    filterDataProviderList() {
+      // Your filtering logic goes here
+      // For example, filtering based on a condition
+      return this.dataProviderListActive.list.filter((product) => {
+        // Replace the condition with your actual filtering logic
+        return product.slug !== 'zap';
+      });
+    },
     onSearchProvider(keyword) {
       const filter = {
         ...this.filterProvider,
