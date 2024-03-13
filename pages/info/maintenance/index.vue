@@ -18,7 +18,7 @@
       <br />
       <p class="md:text-[20px] text-[#2d2d2d] opacity-80">
         <!-- Kembali aktif lagi Sabtu, 11 November 2023 pukul 06.00 WIB ya. See you! -->
-        Kembali aktif lagi sore ini pukul 16.00 WIB ya. See you!
+        Kembali aktif lagi sore ini pukul 19.00 WIB ya. See you!
       </p>
       <a
         class="w-full"
