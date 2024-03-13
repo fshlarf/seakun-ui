@@ -3496,7 +3496,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
@@ -3505,7 +3505,7 @@ export const providerList = [
       },
       {
         title: 'Harga Photoshop',
-        value: 'Rp1.437.4940',
+        value: 'Rp1.581.244',
       },
       {
         title: 'Jumlah Member Per Grup',
@@ -3513,7 +3513,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -3521,7 +3521,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp718.747',
+        value: 'Rp790.622',
         is_total: true,
       },
     ],
@@ -3542,7 +3542,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
@@ -3551,7 +3551,7 @@ export const providerList = [
       },
       {
         title: 'Harga Photoshop',
-        value: 'Rp1.437.4940',
+        value: 'Rp1.581.244',
       },
       {
         title: 'Jumlah Member Per Grup',
@@ -3559,15 +3559,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp80.253',
+        value: 'Rp99.378',
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp799.000',
+        value: 'Rp890.000',
         is_total: true,
       },
     ],
@@ -3590,7 +3590,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
@@ -3599,7 +3599,7 @@ export const providerList = [
       },
       {
         title: 'Harga Photoshop',
-        value: 'Rp1.437.4940',
+        value: 'Rp1.581.244',
       },
       {
         title: 'Jumlah Member Per Grup',
@@ -3607,7 +3607,7 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -3615,7 +3615,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp718.747',
+        value: 'Rp790.622',
         is_total: true,
       },
     ],
@@ -3637,7 +3637,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
@@ -3646,7 +3646,7 @@ export const providerList = [
       },
       {
         title: 'Harga Photoshop',
-        value: 'Rp1.437.4940',
+        value: 'Rp1.581.244',
       },
       {
         title: 'Jumlah Member Per Grup',
@@ -3654,15 +3654,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.437.494 ÷ 2 = Rp718.747',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp80.253',
+        value: 'Rp99.378',
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp799.000',
+        value: 'Rp890.000',
         is_total: true,
       },
     ],
