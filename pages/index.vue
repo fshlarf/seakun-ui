@@ -22,7 +22,7 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
-    <!-- <ModalPromo /> -->
+     <ModalPromo /> 
   </div>
 </template>
 
