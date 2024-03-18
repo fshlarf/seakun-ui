@@ -4,8 +4,9 @@
     "target": {
       "namespace": "android_app",
       "package_name": "id.seakun.app",
-      "sha256_cert_fingerprints":
-        ["4B:9B:B3:6D:B1:5E:4A:16:0F:D0:9A:C4:82:56:28:17:4D:F0:A3:F6:E6:92:94:F1:CB:F5:37:78:35:F4:B6:AE"]
+      "sha256_cert_fingerprints": [
+        "4B:9B:B3:6D:B1:5E:4A:16:0F:D0:9A:C4:82:56:28:17:4D:F0:A3:F6:E6:92:94:F1:CB:F5:37:78:35:F4:B6:AE"
+      ]
     }
   }
 ]
