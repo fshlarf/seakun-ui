@@ -1114,11 +1114,11 @@ export const providerList = [
       },
       {
         title: 'Harga Provider',
-        value: '$11.99',
+        value: '$13.49',
       },
       {
         title: 'Harga + pajak 11%',
-        value: '$13.31 = Rp214.273',
+        value: '$14.97 = Rp244.011',
       },
       {
         title: 'Jumlah member Per grup',
@@ -1126,15 +1126,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp214.273 ÷ 6 = Rp35.712',
+        value: 'Rp244.011 ÷ 6 = Rp40.669',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.288',
+        value: 'Rp6.332',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp42.000',
+        value: 'Rp47.000',
         is_total: true,
       },
     ],
@@ -1166,11 +1166,11 @@ export const providerList = [
       },
       {
         title: 'Harga Provider',
-        value: '$67.35',
+        value: '$74.85',
       },
       {
         title: 'Harga + pajak 11%',
-        value: '$74.76 = Rp1.203.636',
+        value: '$83.08 = Rp1.354.204',
       },
       {
         title: 'Jumlah member Per grup',
@@ -1178,15 +1178,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.203.636 ÷ 6 = Rp200.606',
+        value: 'Rp1.354.204 ÷ 6 = Rp225.701',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp89.394',
+        value: 'Rp84.299',
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp290.000',
+        value: 'Rp310.000',
         is_total: true,
       },
     ],
