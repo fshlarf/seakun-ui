@@ -191,36 +191,68 @@
             </section> -->
           </div>
         </div>
-        <div v-else class="xl:w-[518px] mt-20 xl:mt-0">
-          <img
-            class="mx-auto"
-            src="/images/register/success.svg"
-            alt="pendaftaran berhasil"
-          />
-          <h2
-            class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+        <div v-else class="w-full xl:w-[518px] mt-20 xl:mt-0">
+          <div
+            class="bg-white py-6 rounded-xl shadow-md"
+            v-if="isTooManyAttempt"
           >
-            Registrasi Berhasil
-          </h2>
-          <p class="text-[14px] lg:text-base text-center mt-[4px]">
-            Silakan cek email kamu untuk melakukan verifikasi. Link verifikasi
-            hanya berlaku selama 12 jam. Jika tidak ada email masuk, periksa
-            spam/junk di email kamu.
-          </p>
-          <div class="flex space-x-3 items-center justify-center mt-[8px]">
-            <p class="text-center dm-sans text-sm text-slate-500">
-              Tidak menemukan email?
-              <span
-                v-if="isResendEmailActive"
-                class="text-[#08A081] cursor-pointer underline"
-                @click="resendVerificationEmail"
-                >Kirim ulang email</span
-              >
-              <span v-else-if="!isLoadingResendEmail">{{
-                resendEmailCounter
-              }}</span>
+            <img
+              class="mx-auto w-[220px]"
+              src="/images/user/too-many-attempts.svg"
+              alt="email overload"
+            />
+            <h2
+              class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+            >
+              Oops! Silahkan Menghubungi Admin
+            </h2>
+            <p class="text-[14px] lg:text-base text-center mt-[4px]">
+              Masih belum mendapatkan email verifikasi? Silahkan hubungi admin
+              Seakun agar admin dapat membantu proses verifikasi email kamu.
             </p>
-            <Spinner v-if="isLoadingResendEmail" />
+            <a
+              class="w-full flex justify-center"
+              target="_blank"
+              href="https://api.whatsapp.com/send?phone=6282124852232"
+            >
+              <Button
+                class="mt-6 mx-auto px-6 py-3 text-[16px]"
+                variant="primary"
+                label="Hubungi admin"
+              />
+            </a>
+          </div>
+          <div v-else>
+            <img
+              class="mx-auto"
+              src="/images/register/success.svg"
+              alt="pendaftaran berhasil"
+            />
+            <h2
+              class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+            >
+              Registrasi Berhasil
+            </h2>
+            <p class="text-[14px] lg:text-base text-center mt-[4px]">
+              Silakan cek email kamu untuk melakukan verifikasi. Link verifikasi
+              hanya berlaku selama 12 jam. Jika tidak ada email masuk, periksa
+              spam/junk di email kamu.
+            </p>
+            <div class="flex space-x-3 items-center justify-center mt-[8px]">
+              <p class="text-center dm-sans text-sm text-slate-500">
+                Tidak menemukan email?
+                <span
+                  v-if="isResendEmailActive"
+                  class="text-[#08A081] cursor-pointer underline"
+                  @click="resendVerificationEmail"
+                  >Kirim ulang email</span
+                >
+                <span v-else-if="!isLoadingResendEmail">{{
+                  resendEmailCounter
+                }}</span>
+              </p>
+              <Spinner v-if="isLoadingResendEmail" />
+            </div>
           </div>
         </div>
       </div>
@@ -306,6 +338,7 @@ export default {
       isResendEmailActive: true,
       isLoadingResendEmail: false,
       isShowAlreadyRegistered: false,
+      isTooManyAttempt: false,
     };
   },
   mounted() {
@@ -515,11 +548,15 @@ export default {
       } catch (error) {
         this.isLoadingResendEmail = false;
         console.log(error);
-        this.$alert.show({
-          status: 'error',
-          message:
-            'Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin',
-        });
+        if (error?.response?.status == 403) {
+          this.isTooManyAttempt = true;
+        } else {
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Terjadi kesalahan. Coba beberapa saat lagi atau hubungi admin',
+          });
+        }
       }
     },
     async RunCountdown() {

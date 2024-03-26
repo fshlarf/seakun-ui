@@ -47,32 +47,61 @@
         <img src="/images/icons/atoms/arrow-back.svg" alt="back" />
         <p class="text-xs">Kembali</p>
       </nuxt-link>
-      <div class="text-center mt-6">
+      <div class="py-6" v-if="isTooManyAttempt">
         <img
-          src="/images/illustration/send-email.png"
-          alt="check email"
-          class="w-[125px] h-[115px] mx-auto"
+          class="mx-auto w-[220px]"
+          src="/images/user/too-many-attempts.svg"
+          alt="email overload"
         />
-        <h3 class="text-gray-secondary text-[18px] font-bold mt-6">
-          Cek Email Kamu
-        </h3>
-        <p class="text-sm text-gray-secondary mx-auto max-w-[400px]">
-          Kami telah mengirimkan instruksi pemulihan kata sandi ke email kamu.
-          Link reset password hanya berlaku selama 12 jam. Jika tidak ada email
-          masuk, periksa spam/junk di email kamu.
+        <h2
+          class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+        >
+          Oops! Silahkan Menghubungi Admin
+        </h2>
+        <p class="text-[14px] lg:text-base text-center mt-[4px]">
+          Masih belum mendapatkan email? Silahkan hubungi admin Seakun agar
+          admin dapat membantu proses perubahan password kamu.
         </p>
-        <div class="flex space-x-3 items-center justify-center mt-[8px]">
-          <p class="text-center dm-sans text-sm text-slate-500">
-            Tidak menemukan email?
-            <span
-              v-if="isResendEmailActive"
-              class="text-[#08A081] cursor-pointer underline"
-              @click="sendUpdatePasswordEmail"
-              >Kirim ulang email</span
-            >
-            <span v-else-if="!isLoading">{{ resendEmailCounter }}</span>
+        <a
+          class="w-full flex justify-center"
+          target="_blank"
+          href="https://api.whatsapp.com/send?phone=6282124852232"
+        >
+          <Button
+            class="mt-6 mx-auto px-6 py-3 text-[16px]"
+            variant="primary"
+            label="Hubungi admin"
+          />
+        </a>
+      </div>
+      <div v-else>
+        <div class="text-center mt-6">
+          <img
+            src="/images/illustration/send-email.png"
+            alt="check email"
+            class="w-[125px] h-[115px] mx-auto"
+          />
+          <h3 class="text-gray-secondary text-[18px] font-bold mt-6">
+            Cek Email Kamu
+          </h3>
+          <p class="text-sm text-gray-secondary mx-auto max-w-[400px]">
+            Kami telah mengirimkan instruksi perubahan password ke email kamu.
+            Link reset password hanya berlaku selama 12 jam. Jika tidak ada
+            email masuk, periksa spam/junk di email kamu.
           </p>
-          <Spinner v-if="isLoading" />
+          <div class="flex space-x-3 items-center justify-center mt-[8px]">
+            <p class="text-center dm-sans text-sm text-slate-500">
+              Tidak menemukan email?
+              <span
+                v-if="isResendEmailActive"
+                class="text-[#08A081] cursor-pointer underline"
+                @click="sendUpdatePasswordEmail"
+                >Kirim ulang email</span
+              >
+              <span v-else-if="!isLoading">{{ resendEmailCounter }}</span>
+            </p>
+            <Spinner v-if="isLoading" />
+          </div>
         </div>
       </div>
     </div>
@@ -104,6 +133,7 @@ export default {
         isError: false,
         message: '',
       },
+      isTooManyAttempt: false,
     };
   },
   mounted() {
@@ -142,10 +172,15 @@ export default {
         }
       } catch (error) {
         this.isLoading = false;
-        this.$alert.show({
-          status: 'error',
-          message: 'Gagal mengirim email. Pastikan email kamu sudah sesuai',
-        });
+        if (error?.response?.status == 403) {
+          this.isSent = true;
+          this.isTooManyAttempt = true;
+        } else {
+          this.$alert.show({
+            status: 'error',
+            message: 'Gagal mengirim email. Pastikan email kamu sudah sesuai',
+          });
+        }
       }
     },
     validateEmail(email) {
