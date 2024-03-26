@@ -67,35 +67,66 @@
               </div>
             </div>
             <div v-else class="mx-auto lg:mt-[148px]">
-              <img
-                class="mx-auto"
-                src="/images/illustration/send-email.png"
-                alt="email berhasil dikirim"
-              />
-              <h2
-                class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
-              >
-                Email Berhasil dikirim
-              </h2>
-              <p class="text-[14px] lg:text-base text-center mt-[4px]">
-                Silakan cek email kamu untuk membuat password baru. Link ubah
-                password berlaku selama 12 jam. Jika tidak ada email masuk,
-                periksa spam/junk di email kamu.
-              </p>
-              <div class="flex space-x-3 items-center justify-center mt-[8px]">
-                <p class="text-center dm-sans text-sm text-slate-500">
-                  Tidak menemukan email?
-                  <span
-                    v-if="isResendEmailActive"
-                    class="text-[#08A081] cursor-pointer underline"
-                    @click="sendForgotPasswordEmail"
-                    >Kirim ulang email</span
-                  >
-                  <span v-else-if="!isLoadingSendEmail">{{
-                    resendEmailCounter
-                  }}</span>
+              <div class="py-6" v-if="isTooManyAttempt">
+                <img
+                  class="mx-auto w-[220px]"
+                  src="/images/user/too-many-attempts.svg"
+                  alt="email overload"
+                />
+                <h2
+                  class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+                >
+                  Oops! Silahkan Menghubungi Admin
+                </h2>
+                <p class="text-[14px] lg:text-base text-center mt-[4px]">
+                  Masih belum mendapatkan email? Silahkan hubungi admin Seakun
+                  agar admin dapat membantu proses pemulihan password kamu.
                 </p>
-                <Spinner v-if="isLoadingSendEmail" />
+                <a
+                  class="w-full flex justify-center"
+                  target="_blank"
+                  href="https://api.whatsapp.com/send?phone=6282124852232"
+                >
+                  <Button
+                    class="mt-6 mx-auto px-6 py-3 text-[16px]"
+                    variant="primary"
+                    label="Hubungi admin"
+                  />
+                </a>
+              </div>
+              <div v-else>
+                <img
+                  class="mx-auto"
+                  src="/images/illustration/send-email.png"
+                  alt="email berhasil dikirim"
+                />
+                <h2
+                  class="text-[#00BA88] font-bold text-center mt-[16px] lg:text-[24px]"
+                >
+                  Email Berhasil dikirim
+                </h2>
+                <p class="text-[14px] lg:text-base text-center mt-[4px]">
+                  Silakan cek email kamu untuk membuat password baru. Link ubah
+                  password berlaku selama 12 jam. Jika tidak ada email masuk,
+                  periksa spam/junk di email kamu.
+                </p>
+                <div
+                  class="flex space-x-3 items-center justify-center mt-[8px]"
+                >
+                  <p class="text-center dm-sans text-sm text-slate-500">
+                    Tidak menemukan email?
+                    <span
+                      v-if="isResendEmailActive"
+                      class="text-[#08A081] cursor-pointer underline"
+                      @click="sendForgotPasswordEmail"
+                      >Kirim ulang email</span
+                    >
+                    <span v-else-if="!isLoadingSendEmail">{{
+                      resendEmailCounter
+                    }}</span>
+                  </p>
+                  <Spinner v-if="isLoadingSendEmail" />
+                </div>
               </div>
             </div>
           </section>
@@ -129,6 +160,7 @@ export default {
         isError: false,
         message: '',
       },
+      isTooManyAttempt: false,
     };
   },
   mounted() {
@@ -188,11 +220,16 @@ export default {
         }
       } catch (error) {
         this.isLoadingSendEmail = false;
-        this.$alert.show({
-          status: 'error',
-          message:
-            'Gagal mengirim email. Pastikan kamu menginput email yang sama dengan email registrasi.',
-        });
+        if (error?.response?.status == 403) {
+          this.isEmailSent = true;
+          this.isTooManyAttempt = true;
+        } else {
+          this.$alert.show({
+            status: 'error',
+            message:
+              'Gagal mengirim email. Pastikan kamu menginput email yang sama dengan email registrasi.',
+          });
+        }
       }
     },
     async RunCountdown() {
