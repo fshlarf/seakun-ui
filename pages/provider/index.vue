@@ -653,7 +653,19 @@ export default {
     onSelectPackage(pkg) {
       if (pkg.packageName !== this.selectedPackage.packageName) {
         this.selectedPackage = pkg;
+        console.log(this.selectedPackage.providerSlug);
+        if (this.providerSlug == 'apple-one') {
+          console.log('apple-one');
+          const variants = this.selectedPackage.variants.filter(
+            (variant) => variant.duration != 1
+          );
+          this.selectedPackage.variants = variants;
+          console.log(this.selectedPackage.variants);
+        }
         this.selectedVariant = this.selectedPackage.variants[0];
+        if (this.selectedVariant) {
+          this.packageVariantUid = this.selectedVariant.uid;
+        }
         const scheme = this.providerList.find((scheme) => {
           return scheme.desc === this.selectedVariant.notes;
         });
@@ -729,6 +741,21 @@ export default {
             ? activePackage
             : this.packages[0];
           if (this.selectedPackage) {
+            // const activeVariants = this.selectedPackage.variants.filter(
+            //   (variant) => {
+            //     if (this.selectedPackage.providerSlug == 'apple-one') {
+            //       return variant.isActive == 1 && variant.duration !== 1;
+            //     } else {
+            //       return variant.isActive == 1;
+            //     }
+            //   }
+            // );
+            if (this.providerSlug == 'apple-one') {
+              const variants = this.selectedPackage.variants.filter(
+                (variant) => variant.duration != 1
+              );
+              this.selectedPackage.variants = variants;
+            }
             this.selectedVariant = this.selectedPackage.variants[0];
             if (this.selectedVariant) {
               this.packageVariantUid = this.selectedVariant.uid;
@@ -739,8 +766,7 @@ export default {
             this.priceScheme = scheme
               ? scheme
               : this.providerList.find(
-                  (scheme) =>
-                    scheme.desc == this.selectedPackage.variants[0].notes
+                  (scheme) => scheme.desc == this.selectedVariant.notes
                 );
           }
         }
