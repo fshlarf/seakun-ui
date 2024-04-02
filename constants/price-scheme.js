@@ -6,7 +6,7 @@ export const providerList = [
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price-scheme/desktop/netflix-host.webp',
     screenshotMobile: '/images/price-scheme/mobile/netflix-host.webp',
-    desc: 'Netflix Paket Premium user Host 1 Bulan',
+    desc: 'Netflix Paket Premium user Host',
     member: 4,
     schemes: [
       'Seakun meminta membuat akun di Netflix dan melakukan pembayaran',
@@ -53,7 +53,7 @@ export const providerList = [
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price-scheme/desktop/netflix-host-tv.webp',
     screenshotMobile: '/images/price-scheme/mobile/netflix-host-tv.webp',
-    desc: 'Netflix Paket Premium User Host TV 1 Bulan',
+    desc: 'Netflix Paket Premium User Host TV',
     member: 4,
     schemes: [
       'Seakun meminta membuat akun di Netflix dan melakukan pembayaran',
@@ -100,7 +100,7 @@ export const providerList = [
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price-scheme/desktop/netflix-reguler.webp',
     screenshotMobile: '/images/price-scheme/mobile/netflix-reguler.webp',
-    desc: 'Netflix Paket Premium User Reguler 1 Bulan',
+    desc: 'Netflix Paket Premium User Reguler',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Netflix',
@@ -147,7 +147,7 @@ export const providerList = [
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price-scheme/desktop/netflix-reguler-tv.webp',
     screenshotMobile: '/images/price-scheme/mobile/netflix-reguler-tv.webp',
-    desc: 'Netflix Paket Premium User Reguler TV 1 Bulan',
+    desc: 'Netflix Paket Premium User Reguler TV',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Netflix',
@@ -194,7 +194,7 @@ export const providerList = [
     img: '/images/product/brand/spotify.png',
     screenshot: '/images/price-scheme/desktop/spotify3.webp',
     screenshotMobile: '/images/price-scheme/mobile/spotify3.webp',
-    desc: 'Spotify Paket Premium 3 Bulan',
+    desc: 'Spotify Paket Premium',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Spotify',
@@ -241,7 +241,7 @@ export const providerList = [
     img: '/images/product/brand/gramedia.png',
     screenshot: '/images/price-scheme/desktop/gramedia.webp',
     screenshotMobile: '/images/price-scheme/mobile/gramedia.webp',
-    desc: 'Gramedia Digital Paket Full Premium 1 Bulan',
+    desc: 'Gramedia Digital Paket Full Premium',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli PAKET PREMIUM di Gramedia',
@@ -285,7 +285,7 @@ export const providerList = [
     img: '/images/product/brand/gramedia.png',
     screenshot: '/images/price-scheme/desktop/gramedia-fiction.webp',
     screenshotMobile: '/images/price-scheme/mobile/gramedia-fiction.webp',
-    desc: 'Gramedia Digital Paket Fiksi 1 Bulan',
+    desc: 'Gramedia Digital Paket Fiksi',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli PAKET FIKSI di Gramedia',
@@ -329,7 +329,7 @@ export const providerList = [
     img: '/images/product/brand/gramedia.png',
     screenshot: '/images/price-scheme/desktop/gramedia-non-fiction.webp',
     screenshotMobile: '/images/price-scheme/mobile/gramedia-non-fiction.webp',
-    desc: 'Gramedia Digital Paket Non Fiksi 1 Bulan',
+    desc: 'Gramedia Digital Paket Non Fiksi',
     member: 2,
     schemes: [
       ' Seakun membuat akun dan membeli PAKET NON-FIKSI di Gramedia',
@@ -425,7 +425,7 @@ export const providerList = [
     img: '/images/product/brand/youtube.png',
     screenshot: '/images/price-scheme/desktop/youtube.webp',
     screenshotMobile: '/images/price-scheme/mobile/youtube.webp',
-    desc: 'Youtube Paket Premium User Reguler 1 Bulan',
+    desc: 'Youtube Paket Premium User Reguler',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Youtube',
@@ -476,7 +476,7 @@ export const providerList = [
     img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price-scheme/desktop/microsoft-month.webp',
     screenshotMobile: '/images/price-scheme/mobile/microsoft-month.webp',
-    desc: 'Microsoft 365 Paket Premium 1 Bulan',
+    desc: 'Microsoft 365 Paket Premium Bulanan',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
@@ -523,7 +523,7 @@ export const providerList = [
     img: '/images/product/brand/microsoft-365.png',
     screenshot: '/images/price-scheme/desktop/microsoft-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/microsoft-annual.webp',
-    desc: 'Microsoft 365 Paket Premium 1 Tahun',
+    desc: 'Microsoft 365 Paket Premium Tahunan',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Microsoft 365',
@@ -570,7 +570,7 @@ export const providerList = [
     img: '/images/product/brand/canva.png',
     screenshot: '/images/price-scheme/desktop/canva.webp',
     screenshotMobile: '/images/price-scheme/mobile/canva.webp',
-    desc: 'Canva Paket Premium 1 Bulan',
+    desc: 'Canva Paket Premium Bulanan',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
@@ -617,7 +617,7 @@ export const providerList = [
     img: '/images/product/brand/canva.png',
     screenshot: '/images/price-scheme/desktop/canva.webp',
     screenshotMobile: '/images/price-scheme/mobile/canva.webp',
-    desc: 'Canva Paket Premium 1 Tahun',
+    desc: 'Canva Paket Premium Tahunan',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
@@ -664,7 +664,7 @@ export const providerList = [
     img: '/images/product/brand/disney-hotstar.png',
     screenshot: '/images/price-scheme/desktop/disney-hotstar-host.webp',
     screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-host.webp',
-    desc: 'Disney+ Hotstar Paket Premium User Host 1 Tahun',
+    desc: 'Disney+ Hotstar Paket Premium User Host',
     member: 3,
     schemes: [
       'User melakukan pendaftaran ke Disney+ menggunakan nomor pribadi',
@@ -711,7 +711,7 @@ export const providerList = [
     img: '/images/product/brand/disney-hotstar.png',
     screenshot: '/images/price-scheme/desktop/disney-hotstar-reguler.webp',
     screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-reguler.webp',
-    desc: 'Disney+ Hotstar Paket Premium Reguler 1 Tahun',
+    desc: 'Disney+ Hotstar Paket Premium Reguler',
     member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Disney+ Hotstar',
@@ -757,7 +757,7 @@ export const providerList = [
     img: '/images/product/brand/wattpad.png',
     screenshot: '/images/price-scheme/desktop/wattpad.webp',
     screenshotMobile: '/images/price-scheme/mobile/wattpad.webp',
-    desc: 'Wattpad Paket Premium 1 Bulan',
+    desc: 'Wattpad Paket Premium',
     member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Wattpad PREMIUM',
@@ -803,7 +803,7 @@ export const providerList = [
     img: '/images/product/brand/apple-one.png',
     screenshot: '/images/price-scheme/desktop/apple-one-host.webp',
     screenshotMobile: '/images/price-scheme/mobile/apple-one-host.webp',
-    desc: 'Apple One Paket Premium Host 1 Bulan',
+    desc: 'Apple One Paket Premium Host Bulanan',
     member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
@@ -851,7 +851,7 @@ export const providerList = [
     img: '/images/product/brand/apple-one.png',
     screenshot: '/images/price-scheme/desktop/apple-one-reguler.webp',
     screenshotMobile: '/images/price-scheme/mobile/apple-one-reguler.webp',
-    desc: 'Apple One Paket Premium 1 Bulan',
+    desc: 'Apple One Paket Premium Bulanan',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Family',
@@ -897,7 +897,7 @@ export const providerList = [
     img: '/images/product/brand/apple-music.png',
     screenshot: '/images/price-scheme/desktop/apple-music-host.webp',
     screenshotMobile: '/images/price-scheme/mobile/apple-music-host.webp',
-    desc: 'Paket Apple Music Premium Host 1 bulan',
+    desc: 'Paket Apple Music Premium Host',
     member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
@@ -945,7 +945,7 @@ export const providerList = [
     img: '/images/product/brand/apple-music.png',
     screenshot: '/images/price-scheme/desktop/apple-music-reguler.webp',
     screenshotMobile: '/images/price-scheme/mobile/apple-music-reguler.webp',
-    desc: 'Paket Apple Music Premium Reguler 1 bulan',
+    desc: 'Paket Apple Music Premium Reguler',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Apple Music',
@@ -1043,7 +1043,7 @@ export const providerList = [
     img: '/images/product/brand/google-one.png',
     screenshot: '/images/price-scheme/desktop/google-one-premium.webp',
     screenshotMobile: '/images/price-scheme/mobile/google-one-premium.webp',
-    desc: 'Google One Paket Premium 1 Bulan',
+    desc: 'Google One Paket Premium',
     member: 5,
     schemes: [
       'Seakun membuat akun gmail dan membeli Paket Premium Google',
@@ -1094,7 +1094,7 @@ export const providerList = [
     img: '/images/product/brand/nord-vpn.png',
     screenshot: '/images/price-scheme/desktop/nord-vpn.webp',
     screenshotMobile: '/images/price-scheme/mobile/nord-vpn.webp',
-    desc: 'Paket Nord VPN 1 bulan',
+    desc: 'Paket Nord VPN bulanan',
     member: 6,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Nord VPN',
@@ -1146,7 +1146,7 @@ export const providerList = [
     img: '/images/product/brand/nord-vpn.png',
     screenshot: '/images/price-scheme/desktop/nord-vpn-year.webp',
     screenshotMobile: '/images/price-scheme/mobile/nord-vpn-year.webp',
-    desc: 'Paket Nord VPN 1 tahun',
+    desc: 'Paket Nord VPN Tahunan',
     member: 6,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Nord VPN 1 tahun',
@@ -1198,7 +1198,7 @@ export const providerList = [
     img: '/images/product/brand/amazon-prime.png',
     screenshot: '/images/price-scheme/desktop/amazon-prime.webp',
     screenshotMobile: '/images/price-scheme/mobile/amazon-prime.webp',
-    desc: 'Paket Amazon Prime Video 1 bulan Reguler',
+    desc: 'Paket Amazon Prime Video Reguler',
     member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Prime Video',
@@ -1244,7 +1244,7 @@ export const providerList = [
     img: '/images/product/brand/apple-one-premier.png',
     screenshot: '/images/price-scheme/desktop/apple-one-premier-host.webp',
     screenshotMobile: '/images/price-scheme/mobile/apple-one-premier-host.webp',
-    desc: 'Paket Apple One Premier Host 1 bulan',
+    desc: 'Paket Apple One Premier Host',
     member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
@@ -1293,7 +1293,7 @@ export const providerList = [
     screenshot: '/images/price-scheme/desktop/apple-one-premier-reguler.webp',
     screenshotMobile:
       '/images/price-scheme/mobile/apple-one-premier-reguler.webp',
-    desc: 'Paket Apple One Premier Reguler 1 bulan',
+    desc: 'Paket Apple One Premier Reguler',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Premier',
@@ -1339,7 +1339,7 @@ export const providerList = [
     img: '/images/product/brand/apple-tv.png',
     screenshot: '/images/price-scheme/desktop/apple-tv-host.webp',
     screenshotMobile: '/images/price-scheme/mobile/apple-tv-host.webp',
-    desc: 'Paket Apple TV Premium Host 1 bulan',
+    desc: 'Paket Apple TV Premium Host',
     member: 5,
     schemes: [
       'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
@@ -1387,7 +1387,7 @@ export const providerList = [
     img: '/images/product/brand/apple-tv.png',
     screenshot: '/images/price-scheme/desktop/apple-tv-reguler.webp',
     screenshotMobile: '/images/price-scheme/mobile/apple-tv-reguler.webp',
-    desc: 'Paket Apple TV Premium Reguler 1 bulan',
+    desc: 'Paket Apple TV Premium Reguler',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple TV',
@@ -1433,7 +1433,7 @@ export const providerList = [
     img: '/images/product/brand/iqiyi.png',
     screenshot: '/images/price-scheme/desktop/iqiyi.webp',
     screenshotMobile: '/images/price-scheme/mobile/iqiyi.webp',
-    desc: 'Paket Iqiyi Premium Reguler 1 bulan',
+    desc: 'Paket Iqiyi Premium Reguler',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Iqiyi',
@@ -1479,7 +1479,7 @@ export const providerList = [
     img: '/images/product/brand/zoom.png',
     screenshot: '/images/price-scheme/desktop/zoom.webp',
     screenshotMobile: '/images/price-scheme/mobile/zoom.webp',
-    desc: 'Zoom Reguler 1 Bulan',
+    desc: 'Zoom Reguler',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Pro di Zoom',
@@ -1579,7 +1579,7 @@ export const providerList = [
     img: '/images/product/brand/hbo-go.png',
     screenshot: '/images/price-scheme/desktop/hbo-month.webp',
     screenshotMobile: '/images/price-scheme/mobile/hbo-month.webp',
-    desc: 'Paket HBO Go Premium 1 bulan',
+    desc: 'Paket HBO Go Premium Bulanan',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di HBO Go',
@@ -1629,7 +1629,7 @@ export const providerList = [
     img: '/images/product/brand/hbo-go.png',
     screenshot: '/images/price-scheme/desktop/hbo-year.webp',
     screenshotMobile: '/images/price-scheme/mobile/hbo-year.webp',
-    desc: 'Paket HBO Go Premium 1 tahun',
+    desc: 'Paket HBO Go Premium Tahunan',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di HBO Go',
@@ -1679,7 +1679,7 @@ export const providerList = [
     img: '/images/product/brand/scribd.png',
     screenshot: '/images/price-scheme/desktop/scribd.webp',
     screenshotMobile: '/images/price-scheme/mobile/scribd.webp',
-    desc: 'Paket Scribd Premium 1 bulan',
+    desc: 'Paket Scribd Premium',
     member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Scribd',
@@ -1729,7 +1729,7 @@ export const providerList = [
     img: '/images/product/brand/mcafee.png',
     screenshot: '/images/price-scheme/desktop/mcafee.webp',
     screenshotMobile: '/images/price-scheme/mobile/mcafee.webp',
-    desc: 'Paket McAfee 1 tahun',
+    desc: 'Paket McAfee',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di McAfee',
@@ -1777,7 +1777,7 @@ export const providerList = [
     img: '/images/product/brand/setapp.png',
     screenshot: '/images/price-scheme/desktop/setapp.webp',
     screenshotMobile: '/images/price-scheme/mobile/setapp.webp',
-    desc: 'Paket Setapp 1 bulan',
+    desc: 'Paket Setapp',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Setapp',
@@ -1879,7 +1879,7 @@ export const providerList = [
     img: '/images/product/brand/lastpass.png',
     screenshot: '/images/price-scheme/desktop/lastpass.webp',
     screenshotMobile: '/images/price-scheme/mobile/lastpass.webp',
-    desc: 'Paket LastPass 1 tahun',
+    desc: 'Paket LastPass',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di LastPass',
@@ -2023,7 +2023,7 @@ export const providerList = [
     img: '/images/product/brand/nintendo-switch.png',
     screenshot: '/images/price-scheme/desktop/nintendo-switch.webp',
     screenshotMobile: '/images/price-scheme/mobile/nintendo-switch.webp',
-    desc: 'Nintendo Switch Reguler 1 Tahun',
+    desc: 'Nintendo Switch Reguler',
     member: 7,
     schemes: [
       'Seakun membuat akun dan membeli Membership Family Nintendo Switch Online',
@@ -2076,7 +2076,7 @@ export const providerList = [
     img: '/images/product/brand/nintendo-switch.png',
     screenshot: '/images/price-scheme/desktop/nintendo-switch-x.webp',
     screenshotMobile: '/images/price-scheme/mobile/nintendo-switch-x.webp',
-    desc: 'Nintendo Switch Expansion Pack 1 Tahun',
+    desc: 'Nintendo Switch Expansion Pack',
     member: 7,
     schemes: [
       'Seakun membuat akun dan membeli Membership Family Nintendo Switch Online Expansion Pack',
@@ -2129,7 +2129,7 @@ export const providerList = [
     img: '/images/product/brand/kaspersky-total.png',
     screenshot: '/images/price-scheme/desktop/kaspersky-total.webp',
     screenshotMobile: '/images/price-scheme/mobile/kaspersky-total.webp',
-    desc: 'Kaspersky Total Security 1 Tahun',
+    desc: 'Kaspersky Total Security',
     member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Total Security di Kaspersky',
@@ -2175,7 +2175,7 @@ export const providerList = [
     img: '/images/product/brand/kaspersky-internet.png',
     screenshot: '/images/price-scheme/desktop/kaspersky-internet.webp',
     screenshotMobile: '/images/price-scheme/mobile/kaspersky-internet.webp',
-    desc: 'Kaspersky Internet Security 1 Tahun',
+    desc: 'Kaspersky Internet Security',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Internet Security di Kaspersky',
@@ -2221,7 +2221,7 @@ export const providerList = [
     img: '/images/product/brand/medium.png',
     screenshot: '/images/price-scheme/desktop/medium-month.webp',
     screenshotMobile: '/images/price-scheme/mobile/medium-month.webp',
-    desc: 'Medium Paket Premium 1 Bulan',
+    desc: 'Medium Paket Premium Bulanan',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Medium',
@@ -2269,7 +2269,7 @@ export const providerList = [
     img: '/images/product/brand/medium.png',
     screenshot: '/images/price-scheme/desktop/medium-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/medium-annual.webp',
-    desc: 'Medium Paket Premium 1 Tahun',
+    desc: 'Medium Paket Premium Tahunan',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Medium',
@@ -2317,7 +2317,7 @@ export const providerList = [
     img: '/images/product/brand/tiktok-music.png',
     screenshot: '/images/price-scheme/desktop/tiktok-music.webp',
     screenshotMobile: '/images/price-scheme/mobile/tiktok-music.webp',
-    desc: 'Tiktok Music Paket Premium 3 Bulan',
+    desc: 'Tiktok Music Paket Premium',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Tiktok Music',
@@ -2371,7 +2371,7 @@ export const providerList = [
     img: '/images/product/brand/freepik.png',
     screenshot: '/images/price-scheme/desktop/freepik-month.webp',
     screenshotMobile: '/images/price-scheme/mobile/freepik-month.webp',
-    desc: 'Freepik Paket Premium 1 Bulan',
+    desc: 'Freepik Paket Premium Bulanan',
     member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Freepik',
@@ -2423,7 +2423,7 @@ export const providerList = [
     img: '/images/product/brand/freepik.png',
     screenshot: '/images/price-scheme/desktop/freepik-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/freepik-annual.webp',
-    desc: 'Freepik Paket Premium 1 Tahun',
+    desc: 'Freepik Paket Premium Tahunan',
     member: 3,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Freepik',
@@ -2475,7 +2475,7 @@ export const providerList = [
     img: '/images/product/brand/duolingo.png',
     screenshot: '/images/price-scheme/desktop/duolingo.webp',
     screenshotMobile: '/images/price-scheme/mobile/duolingo.webp',
-    desc: 'Duolingo Paket Premium 1 Tahun',
+    desc: 'Duolingo Paket Premium',
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Duolingo',
@@ -2525,7 +2525,7 @@ export const providerList = [
     img: '/images/product/brand/crunchyroll.png',
     screenshot: '/images/price-scheme/desktop/crunchyroll-month.webp',
     screenshotMobile: '/images/price-scheme/mobile/crunchyroll-month.webp',
-    desc: 'Crunchyroll Paket Premium 1 Bulan',
+    desc: 'Crunchyroll Paket Premium Bulanan',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Crunchyroll',
@@ -2571,7 +2571,7 @@ export const providerList = [
     img: '/images/product/brand/crunchyroll.png',
     screenshot: '/images/price-scheme/desktop/crunchyroll-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/crunchyroll-annual.webp',
-    desc: 'Crunchyroll Paket Premium 1 Tahun',
+    desc: 'Crunchyroll Paket Premium Tahunan',
     member: 4,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Crunchyroll',
@@ -2617,7 +2617,7 @@ export const providerList = [
     img: '/images/product/brand/masterclass.png',
     screenshot: '/images/price-scheme/desktop/masterclass.webp',
     screenshotMobile: '/images/price-scheme/mobile/masterclass.webp',
-    desc: 'MasterClass Paket Premium 1 Tahun',
+    desc: 'MasterClass Paket Premium',
     member: 4,
     schemes: [
       'Seakun membuat akun Masterclass dan membeli Paket Masterclass Family',
@@ -2666,7 +2666,7 @@ export const providerList = [
     img: '/images/product/brand/dropbox.png',
     screenshot: '/images/price-scheme/desktop/dropbox-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/dropbox-annual.webp',
-    desc: 'Dropbox Paket Premium 1 Tahun',
+    desc: 'Dropbox Paket Premium',
     member: 5,
     schemes: [
       'Seakun membuat akun dropdox dan membeli Paket Dropdox Family',
@@ -3487,7 +3487,7 @@ export const providerList = [
     img: '/images/product/brand/adobe-photoshop.png',
     screenshot: '/images/price-scheme/desktop/adobe-photoshop-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/adobe-photoshop-annual.webp',
-    desc: 'Adobe Photoshop Paket Premium User Host 1 Tahun',
+    desc: 'Adobe Photoshop Paket Premium User Host',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Adobe Photoshop',
@@ -3533,7 +3533,7 @@ export const providerList = [
     img: '/images/product/brand/adobe-photoshop.png',
     screenshot: '/images/price-scheme/desktop/adobe-photoshop-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/adobe-photoshop-annual.webp',
-    desc: 'Adobe Photoshop Paket Premium User Reguler 1 Tahun',
+    desc: 'Adobe Photoshop Paket Premium User Reguler',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Adobe Photoshop',
@@ -3581,7 +3581,7 @@ export const providerList = [
     screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
     screenshotMobile:
       '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
-    desc: 'Adobe Illustrator Paket Premium User Host 1 Tahun',
+    desc: 'Adobe Illustrator Paket Premium User Host',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Adobe AI',
@@ -3628,7 +3628,7 @@ export const providerList = [
     screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
     screenshotMobile:
       '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
-    desc: 'Adobe Illustrator Paket Premium User Reguler 1 Tahun',
+    desc: 'Adobe Illustrator Paket Premium User Reguler',
     member: 2,
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Adobe AI',

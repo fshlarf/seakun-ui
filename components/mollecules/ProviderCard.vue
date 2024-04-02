@@ -202,7 +202,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="css" scoped>
 .provider-card {
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.06);
 }
