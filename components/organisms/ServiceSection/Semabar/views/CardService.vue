@@ -2,7 +2,6 @@
   <div
     class="bg-white p-3 rounded-[6px]"
     :class="[cardData.isAvailable ? 'cursor-pointer' : 'cursor-not-allowed']"
-    @click="$emit('click-card')"
   >
     <div class="relative">
       <div
@@ -16,28 +15,39 @@
           :src="`/images/semabar/venue/${cardData.images}`"
           :alt="cardData.name"
           :class="`max-w-[70px] max-h-[60px] md:max-w-[80px] md:max-h-[70px] ${cardData.classImage}`"
+          @click="$emit('click-card')"
         />
       </section>
-      <div class="flex justify-between mt-2 items-center">
-        <p class="text-xs text-[#66738F]">Komunitas Main Bareng</p>
-        <p
-          class="hidden text-[11px] text-green-seakun-secondary-dark font-medium bg-[#DBF8F2] rounded-[10px] py-0.5 px-2"
-        >
-          {{ cardData.member }} Member
-        </p>
-      </div>
-      <p class="pt-1 text-xs text-main font-bold">{{ cardData.name }}</p>
-      <div class="mt-2 flex gap-1">
-        <img
-          src="/images/icons/atoms/location.svg"
-          alt="location"
-          class="w-[15px] h-[15px]"
+      <div class="flex items-center justify-between">
+        <div @click="$emit('click-card')">
+          <div class="flex justify-between mt-2 items-center">
+            <p class="text-xs text-[#66738F]">Komunitas Main Bareng</p>
+            <p
+              class="hidden text-[11px] text-green-seakun-secondary-dark font-medium bg-[#DBF8F2] rounded-[10px] py-0.5 px-2"
+            >
+              {{ cardData.member }} Member
+            </p>
+          </div>
+          <p class="pt-1 text-xs text-main font-bold">{{ cardData.name }}</p>
+          <div class="mt-2 flex gap-1">
+            <img
+              src="/images/icons/atoms/location.svg"
+              alt="location"
+              class="w-[15px] h-[15px]"
+            />
+            <p class="text-xs text-[#08A081] font-medium">
+              {{ cardData.city }}
+            </p>
+          </div>
+        </div>
+        <THREnvelopeVue
+          :envelopeKey="15"
+          v-if="cardData.name == 'Rahayu Mini Soccer Medan'"
         />
-        <p class="text-xs text-[#08A081] font-medium">{{ cardData.city }}</p>
       </div>
     </div>
 
-    <div v-if="cardData.isAvailable">
+    <div v-if="cardData.isAvailable" @click="$emit('click-card')">
       <p class="text-[11px] text-[#66738F] mt-3">Harga Per Match</p>
       <section class="flex justify-between text-xs mt-2">
         <p class="text-main">Membership</p>
@@ -69,12 +79,16 @@
 </template>
 
 <script>
+import THREnvelopeVue from '../../../ThrChallenge/THREnvelope.vue';
 export default {
   props: {
     cardData: {
       typeof: Object,
       default: () => {},
     },
+  },
+  components: {
+    THREnvelopeVue,
   },
   methods: {
     toRupiah(word) {

@@ -77,6 +77,7 @@
               :group="group"
               class="my-2 h-full flex-none"
               @click-order="onClickOrderProvider"
+              :indexForEnvelope="id"
             />
             <ButtonChevron
               v-if="dataGroupList.list && dataGroupList.list.length >= 5"

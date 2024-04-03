@@ -4,21 +4,25 @@
     class="container pt-20 relative z-0"
     :class="{ 'show-more': isShowMore }"
   >
-    <div class="text-center xl:hidden">
-      <h1
-        class="font-bold tn:text-[20px] md:text-[30px] xl:text-[36px] tn:mb-4 lg:mb-12"
-      >
-        Apa kata mereka?
-      </h1>
+    <div class="relative w-max mx-auto xl:ml-0">
+      <div class="text-center xl:hidden">
+        <h1
+          class="font-bold tn:text-[20px] md:text-[30px] xl:text-[36px] tn:mb-4 lg:mb-12"
+        >
+          Apa kata mereka?
+        </h1>
+      </div>
+      <div class="hidden text-left xl:block">
+        <h1
+          class="font-bold tn:text-xl md:text-2xl xl:text-[36px] md:mb-4 lg:mb-8"
+        >
+          Apa kata mereka yang menggunakan Seakun?
+        </h1>
+      </div>
+      <div class="absolute -top-4 -right-[62px]">
+        <THREnvelopeVue :envelopeKey="4" />
+      </div>
     </div>
-    <div class="hidden text-left xl:block">
-      <h1
-        class="font-bold tn:text-xl md:text-2xl xl:text-[36px] md:mb-4 lg:mb-8"
-      >
-        Apa kata mereka yang menggunakan Seakun?
-      </h1>
-    </div>
-
     <div class="relative z-0">
       <ButtonChevron
         v-if="tweetScrollPosition !== 0"
@@ -43,6 +47,7 @@ import TiktokTestimony from './views/TiktokTestimony.vue';
 import InstagramTestimony from './views/InstagramTestimony.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import Button from '~/components/atoms/Button.vue';
+import THREnvelopeVue from '../ThrChallenge/THREnvelope.vue';
 
 export default {
   components: {
@@ -51,6 +56,7 @@ export default {
     InstagramTestimony,
     ButtonChevron,
     Button,
+    THREnvelopeVue,
   },
   data() {
     return {

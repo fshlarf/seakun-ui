@@ -6,7 +6,7 @@
       <h2
         class="tn:text-[20px] md:text-[30px] xl:text-[36px] leading-[64px] font-bold text-center"
       >
-        Cara Berlangganan
+        Cara Berlangganan ni
       </h2>
       <div
         class="flex flex-wrap gap-[20px] justify-center items-center tn:mt-[16px] md:mt-[28px]"
@@ -14,13 +14,17 @@
         <div
           v-for="(flow, id) in orderFlow"
           :key="id"
-          class="tn:w-[105px] md:w-[210px]"
+          class="tn:w-[105px] md:w-[210px] relative"
         >
+          <div class="absolute right-0 top-3" a v-if="id == 3">
+            <THREnvelopeVue :envelopeKey="3" />
+          </div>
           <img
-            class="mx-auto"
+            class="mx-auto relative z-20"
             :src="`/images/order flow/${flow.img}.svg`"
             :alt="flow.desc"
           />
+
           <div
             class="flex items-center justify-center tn:space-x-1 md:space-x-2 tn:mt-[20px]"
           >
@@ -40,7 +44,11 @@
 </template>
 
 <script>
+import THREnvelopeVue from '../ThrChallenge/THREnvelope.vue';
 export default {
+  components: {
+    THREnvelopeVue,
+  },
   data() {
     return {
       orderFlow: [

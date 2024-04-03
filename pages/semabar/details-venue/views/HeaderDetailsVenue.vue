@@ -41,7 +41,7 @@
           <p
             class="text-[#66738F] text-sm md:text-base lg:text-[20px] leading-normal"
           >
-            Komunitas Main Bareng
+            Komunitas Main Bareng nih
           </p>
 
           <div class="flex items-center gap-2 pt-1">
@@ -102,23 +102,32 @@
                 />
               </div>
             </div>
-
-            <div class="bg-[#00BA88] rounded-lg">
-              <a
-                :href="detailsVenue.whatsappCommunity"
-                class="flex items-center gap-1 px-2 md:px-3 cursor-pointer h-full"
+            <div class="flex items-center gap-3">
+              <div
+                class="bg-[#00BA88] rounded-lg h-10 lg:h-[56px] flex items-center"
               >
-                <img
-                  src="/images/icons/atoms/semabar/whatsapp-white.svg"
-                  alt="whatsapp"
-                  class="w-[18px] h-[18px] lg:w-7 lg:h-7"
-                />
-                <p
-                  class="font-bold text-sm md:text-base lg:text-[20px] text-white"
+                <a
+                  :href="detailsVenue.whatsappCommunity"
+                  class="flex items-center gap-1 px-2 md:px-3 cursor-pointer"
                 >
-                  Gabung Komunitas
-                </p>
-              </a>
+                  <img
+                    src="/images/icons/atoms/semabar/whatsapp-white.svg"
+                    alt="whatsapp"
+                    class="w-[18px] h-[18px] lg:w-7 lg:h-7"
+                  />
+                  <p
+                    class="font-bold text-sm md:text-base lg:text-[20px] text-white"
+                  >
+                    Gabung Komunitas
+                  </p>
+                </a>
+              </div>
+              <div
+                class="mb-2 lg:mb-3"
+                v-if="detailsVenue.slug == 'permata-hijau'"
+              >
+                <THREnvelopeVue :envelopeKey="6" />
+              </div>
             </div>
           </div>
         </section>
@@ -128,7 +137,11 @@
 </template>
 
 <script>
+import THREnvelopeVue from '../../../../components/organisms/ThrChallenge/THREnvelope.vue';
 export default {
+  components: {
+    THREnvelopeVue,
+  },
   data() {
     return {
       shareSocialMedia: [

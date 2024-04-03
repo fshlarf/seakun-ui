@@ -14,9 +14,12 @@
       class="!container relative tn:grid tn:grid-cols-1 md:grid-cols-2 tn:gap-6 tn:items-center tn:z-20 tn:pt-20 md:pt-24 xl:pt-64 tn:px-8 lg:px-10 xl:px-2"
     >
       <div class="tn:px-8 md:px-4 xl:px-0">
-        <h1 class="tn:text-[36px] md:text-[40px] lg:text-[56px] font-bold">
-          Sekeranjang
-        </h1>
+        <div class="flex items-center gap-3 lg:gap-5">
+          <h1 class="tn:text-[36px] md:text-[40px] lg:text-[56px] font-bold">
+            Sekeranjang
+          </h1>
+          <THREnvelopeVue :envelopeKey="12" class="mb-2" />
+        </div>
         <h2
           class="tn:text-[20px] md:text-[28px] lg:text-[40px] text-[#474747] tn:mt-1 md:mt-2 lg:mt-4"
         >
@@ -43,7 +46,12 @@
 </template>
 
 <script>
-export default {};
+import THREnvelopeVue from '../../../../components/organisms/ThrChallenge/THREnvelope.vue';
+export default {
+  components: {
+    THREnvelopeVue,
+  },
+};
 </script>
 
 <style>

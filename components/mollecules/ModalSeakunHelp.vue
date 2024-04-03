@@ -10,11 +10,16 @@
           @click="toSeakunHelp"
         >
           <div class="">
-            <img
-              class="mx-auto"
-              src="/images/seakun-help/help.svg"
-              alt="report"
-            />
+            <div class="relative">
+              <img
+                class="mx-auto"
+                src="/images/seakun-help/help.svg"
+                alt="report"
+              />
+              <div class="absolute top-0 right-0">
+                <THREnvelopeVue :envelopeKey="5" />
+              </div>
+            </div>
             <div class="flex justify-center items-center gap-1 mt-[10px]">
               <p class="text-[12px]">Laporan Kendala</p>
               <div class="relative">
@@ -108,6 +113,7 @@ import IconQuestionMark from '~/components/icons/QuestionMark.vue';
 import IconAppointment from '~/components/icons/Appointment.vue';
 import IconInfo from '~/components/icons/Info.vue';
 import DarkTooltip from '~/components/atoms/DarkTooltip.vue';
+import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
 
 export default {
   data() {
@@ -133,6 +139,7 @@ export default {
     IconAppointment,
     IconInfo,
     DarkTooltip,
+    THREnvelopeVue,
   },
   methods: {
     closeModal() {
