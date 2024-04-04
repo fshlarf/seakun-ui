@@ -30,8 +30,19 @@ export default {
       default: 0,
     },
   },
+  data() {
+    return {
+      isLoggedin: false,
+    };
+  },
   mounted() {
     this.getData();
+    const username = this.$cookies.get('username');
+    if (username) {
+      this.isLoggedin = true;
+    } else {
+      this.isLoggedin = false;
+    }
   },
   methods: {
     async getData() {
@@ -45,16 +56,18 @@ export default {
     },
     saveEnvelopeToLocal() {
       this.showPopup();
-      const data = {
-        key: this.envelopeKey,
-        name: 'thr seakun',
-      };
-      const saveEnvelope = [...this.thrChallengeData];
+      if (this.isLoggedin) {
+        const data = {
+          key: this.envelopeKey,
+          name: 'thr seakun',
+        };
+        const saveEnvelope = [...this.thrChallengeData];
 
-      if (!this.checkExistingEnvelope()) {
-        saveEnvelope.push(data);
-        this.$store.commit('setThrChallengeData', saveEnvelope);
-        localStorage.setItem('thr_challenge', JSON.stringify(saveEnvelope));
+        if (!this.checkExistingEnvelope()) {
+          saveEnvelope.push(data);
+          this.$store.commit('setThrChallengeData', saveEnvelope);
+          localStorage.setItem('thr_challenge', JSON.stringify(saveEnvelope));
+        }
       }
     },
     checkExistingEnvelope() {

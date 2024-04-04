@@ -53,7 +53,7 @@ import ModalSekurbanBanner from '~/components/mollecules/ModalSekurbanBanner';
 import ModalSeakunHelp from '~/components/mollecules/ModalSeakunHelp';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
-import THRChallengeVue from '../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
+import THRChallengeVue from '~/components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 bottom-0 left-0 right-0 bg-black/40 flex justify-center z-0"
+    class="fixed top-0 bottom-0 left-0 right-0 bg-black/40 flex justify-center z-50"
     v-if="isShow"
     style="font-family: 'DM Sans', sans-serif"
   >

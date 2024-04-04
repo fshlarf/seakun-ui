@@ -12,6 +12,15 @@
     <TestimonySection />
     <FaqSection />
     <Footer />
+    <THRChallengeVue
+      :isShow="$store.state.isShowPopupTHRChallenge"
+      @handleClose="
+        $store.commit(
+          'setShowPopupTHRChallenge',
+          !$store.state.isShowPopupTHRChallenge
+        )
+      "
+    />
   </div>
 </template>
 
@@ -29,6 +38,7 @@ import TestimonySection from './views/TestimonySection.vue';
 import FaqSection from './views/FaqSection.vue';
 import Footer from '~/components/mollecules/Footer.vue';
 import { mapActions, mapGetters } from 'vuex';
+import THRChallengeVue from '../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {
@@ -44,6 +54,7 @@ export default {
     TestimonySection,
     FaqSection,
     Footer,
+    THRChallengeVue,
   },
   data() {
     return {

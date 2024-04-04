@@ -532,6 +532,15 @@
       :show-modal="isShowModalBlackList"
       @onClose="closeModalBlackList"
     />
+    <THRChallengeVue
+      :isShow="$store.state.isShowPopupTHRChallenge"
+      @handleClose="
+        $store.commit(
+          'setShowPopupTHRChallenge',
+          !$store.state.isShowPopupTHRChallenge
+        )
+      "
+    />
   </div>
 </template>
 
@@ -550,6 +559,7 @@ import OrderService from '~/services/OrderServices.js';
 import ModalBlackListWarning from '~/components/mollecules/ModalBlackListWarning.vue';
 import moment from 'moment';
 import THREnvelopeVue from '../../../components/organisms/ThrChallenge/THREnvelope.vue';
+import THRChallengeVue from '../../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 export default {
   components: {
     NavbarProvider,
@@ -560,6 +570,7 @@ export default {
     ModalBlackListWarning,
     PackageCard,
     THREnvelopeVue,
+    THRChallengeVue,
   },
   data() {
     return {
