@@ -6,7 +6,7 @@
       <h2
         class="tn:text-[20px] md:text-[30px] xl:text-[36px] leading-[64px] font-bold text-center"
       >
-        Cara Berlangganan ni
+        Cara Berlangganan
       </h2>
       <div
         class="flex flex-wrap gap-[20px] justify-center items-center tn:mt-[16px] md:mt-[28px]"
