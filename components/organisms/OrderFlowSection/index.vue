@@ -6,7 +6,7 @@
       <h2
         class="tn:text-[20px] md:text-[30px] xl:text-[36px] leading-[64px] font-bold text-center"
       >
-        Cara Berlangganan ni
+        Cara Berlangganan
       </h2>
       <div
         class="flex flex-wrap gap-[20px] justify-center items-center tn:mt-[16px] md:mt-[28px]"
@@ -16,11 +16,15 @@
           :key="id"
           class="tn:w-[105px] md:w-[210px] relative"
         >
-          <div class="absolute right-0 top-3" a v-if="id == 3">
+          <div
+            class="absolute right-0 md:right-7 lg:right-0 top-0 md:top-5 lg:top-3 z-10 cursor-pointer"
+            a
+            v-if="id == 3"
+          >
             <THREnvelopeVue :envelopeKey="3" />
           </div>
           <img
-            class="mx-auto relative z-20"
+            class="mx-auto relative z-20 pointer-events-none"
             :src="`/images/order flow/${flow.img}.svg`"
             :alt="flow.desc"
           />
