@@ -1,8 +1,10 @@
 <template>
-  <div id="order-flow-sekurban">
-    <div class="w-full tn:py-[24px] lg:py-[60px] my-5 bg-flow-sekurban">
+  <div id="order-flow-sekurban" class="py-0 md:py-5">
+    <div class="w-full py-[40.5px] lg:py-[60px] bg-flow-sekurban bg-[#F3FFFD]">
       <div class="container-sekurban-new">
-        <h1 class="text-xl md:text-3xl font-bold mt-2 mb-8 lg:mb-12 text-center">
+        <h1
+          class="text-xl md:text-2xl lg:text-3xl font-bold mb-8 lg:mb-12 text-center"
+        >
           Flow Program Qurban
         </h1>
         <div
@@ -10,7 +12,7 @@
         >
           <div v-for="(flow, id) in orderFlow" :key="id">
             <div
-              class="bg-white shadow-lg border border-gray-100 py-[14px] md:py-4 px-2 md:px-4 rounded-xl h-[174px] lg:h-[112px]"
+              class="bg-white shadow-lg border border-gray-100 py-4 md:py-4 lg:py-6 px-1.5 md:px-4 lg:px-2.5 rounded-xl min-h-[190px] lg:min-h-0"
             >
               <div
                 class="absolute -translate-x-6 -translate-y-6 bg-primary text-white text-sm font-bold rounded-full py-1 px-2.5 inline-block"
@@ -19,11 +21,11 @@
               </div>
               <div class="flex flex-col lg:flex-row gap-3 items-center">
                 <div>
-                  <img :src="flow.img" class="w-[60px] md:w-[70px]" />
+                  <img :src="flow.img" class="w-[60px] md:min-w-[60px]" />
                 </div>
                 <div class="text-center lg:text-left">
                   <p
-                    class="text-xs md:text-base font-bold mb-1 text-primary leading-[15px] md:leading-5"
+                    class="text-xs md:text-base font-bold mb-[5px] text-primary leading-[15px] md:leading-5"
                   >
                     {{ flow.title }}
                   </p>
@@ -74,8 +76,7 @@ export default {
         },
         {
           title: 'Dokumentasi & Sertifikat',
-          desc:
-            'Peserta qurban menerima dokumantasi proses qurban dan sertifikat qurban.',
+          desc: 'Peserta qurban menerima dokumentasi dan sertifikat qurban.',
           img: '/images/sekurban-new/order-flow/step-6.png',
         },
       ],

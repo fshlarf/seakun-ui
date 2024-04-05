@@ -11,7 +11,7 @@
         >
           Investasi Kebaikan
         </div>
-        <h1 class="text-xl md:text-3xl font-bold mt-2 mb-3">
+        <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mt-2 mb-3">
           Ayo Lengkapi Ibadahmu dengan berqurban!
         </h1>
         <div
@@ -19,12 +19,12 @@
         >
           <img src="/images/sekurban-new/cta-image.png" alt="daftar sekarang" />
         </div>
-        <p class="text-sm font-normal leading-[22px]">
+        <p class="text-xs md:text-sm font-normal leading-5 lg:leading-[22px] mx-5 md:mx-0">
           Jadilah bagian dari kebaikan ini dan mari berqurban bersama-sama untuk
           mendapat keberkahan-Nya.
         </p>
         <button
-          class="bg-primary text-base w-full lg:w-[276px] md:text-[22px] font-bold text-white px-12 py-3 mt-6 lg:mt-8"
+          class="bg-primary text-base w-[280px] md:w-[240px] md:text-lg lg:text-[22px] font-bold text-white py-3 mt-6 lg:mt-8"
           @click="$emit('onClickOrder')"
         >
           Daftar Sekarang

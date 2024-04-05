@@ -12,7 +12,7 @@
         >
           Latar Belakang
         </div>
-        <h1 class="text-xl md:text-3xl font-bold mt-2 mb-1 md:mb-3">
+        <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mt-2 mb-1 md:mb-3">
           Program Patungan Qurban
         </h1>
         <p class="text-xs md:text-sm font-normal leading-[22px]">

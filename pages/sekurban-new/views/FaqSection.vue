@@ -1,7 +1,7 @@
 <template>
-  <div id="faq-sekurban" class="container-sekurban-new mb-5 py-8 md:py-3 pb-10">
+  <div id="faq-sekurban" class="container-sekurban-new my-5 py-3 md:py-3">
     <div class="text-center">
-      <h1 class="text-xl md:text-3xl font-bold mb-6 md:mb-10">
+      <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-10">
         Frequently Asked Question
       </h1>
     </div>

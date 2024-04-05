@@ -1,99 +1,101 @@
 <template>
-  <div id="testimony-sekurban" class="container-sekurban-new">
-    <div class="my-5 md:my-5 md:py-8">
-      <div class="flex flex-col lg:flex-row items-center justify-between">
-        <div class="hidden lg:block">
-          <img
-            src="/images/sekurban-new/testimony-image.png"
-            class="h-[432px]"
-          />
-        </div>
-        <h1
-          class="block lg:hidden text-center text-xl md:text-3xl font-bold mt-2 mb-1 md:mb-3 mx-10"
-        >
-          Apa Kata Mereka Tentang Program Kami
-        </h1>
+  <div class="bg-[#F3FFFD]">
+    <div id="testimony-sekurban" class="container-sekurban-new">
+      <div class="my-5 md:my-5 py-8">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <div class="hidden lg:block">
+            <img
+              src="/images/sekurban-new/testimony-image.png"
+              class="h-[432px]"
+            />
+          </div>
+          <h1
+            class="block lg:hidden text-center text-xl md:text-2xl font-bold mb-5 mx-10"
+          >
+            Apa Kata Mereka Tentang Program Kami
+          </h1>
 
-        <!-- Mobile -->
-        <div class="md:hidden relative mr-0 md:mr-16">
-          <div class="relative">
-            <div v-for="(testi, id) in testimonial" :key="id">
-              <div class="shadow-md rounded-xl p-6 w-full md:w-[486px]">
-                <div class="flex justify-between items-center mb-8">
-                  <div class="flex items-center gap-3">
-                    <img :src="testi.icon" class="w-8 h-8" />
-                    <span class="text-xs font-bold">{{ testi.name }}</span>
+          <!-- Mobile Testi -->
+          <div class="md:hidden relative mr-0 md:mr-16">
+            <div class="flex flex-col gap-4">
+              <div v-for="(testi, id) in testimonial" :key="id">
+                <div class="shadow-md rounded-xl p-6 w-full md:w-[486px] bg-white">
+                  <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center gap-3">
+                      <img :src="testi.icon" class="w-8 h-8" />
+                      <span class="text-xs font-bold">{{ testi.name }}</span>
+                    </div>
+                    <div>
+                      <img
+                        src="/images/sekurban-new/icons/close-tick.png"
+                        alt="closing quotes"
+                        class="w-8"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <img
-                      src="/images/sekurban-new/icons/close-tick.png"
-                      alt="closing quotes"
-                      class="w-8"
-                    />
-                  </div>
+                  <p
+                    class="text-xs text-main font-normal leading-[22px] md:leading-6"
+                  >
+                    “{{ testi.testi }}”
+                  </p>
                 </div>
-                <p
-                  class="text-xs text-main font-normal leading-[22px] md:leading-6"
-                >
-                  “{{ testi.testi }}”
-                </p>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Non Mobile -->
-        <div class="hidden md:items-center md:block relative mr-0 lg:mr-16">
-          <div
-            @click="slideLeft"
-            class="flex absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 lg:-translate-x-14 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
-            :class="{
-              'bg-[#83CFC0]': activeSlider === 1,
-              'bg-chevron hover:bg-primary/80': activeSlider !== 1,
-            }"
-          >
-            <img
-              src="/images/icons/atoms/chevron-white-left.svg"
-              alt="chevron"
-            />
-          </div>
-          <div
-            @click="slideRight"
-            class="flex absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 lg:translate-x-14 rotate-180 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
-            :class="{
-              'bg-[#83CFC0]': activeSlider === testimonial.length,
-              'bg-chevron hover:bg-primary/80':
-                activeSlider !== testimonial.length,
-            }"
-          >
-            <img
-              src="/images/icons/atoms/chevron-white-left.svg"
-              alt="chevron"
-            />
-          </div>
-          <div class="relative">
+          <!-- Non Mobile Testi -->
+          <div class="hidden md:items-center md:block relative mr-0 lg:mr-16">
             <div
-              v-for="(testi, id) in testimonial"
-              :key="id"
-              v-show="activeSlider === id + 1"
+              @click="slideLeft"
+              class="flex absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 lg:-translate-x-14 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
+              :class="{
+                'bg-[#83CFC0]': activeSlider === 1,
+                'bg-chevron hover:bg-primary/80': activeSlider !== 1,
+              }"
             >
-              <div class="shadow-md rounded-xl p-6 w-full lg:w-[486px]">
-                <div class="flex justify-between items-center mb-8">
-                  <div class="flex items-center gap-3">
-                    <img :src="testi.icon" />
-                    <span class="text-base font-bold">{{ testi.name }}</span>
+              <img
+                src="/images/icons/atoms/chevron-white-left.svg"
+                alt="chevron"
+              />
+            </div>
+            <div
+              @click="slideRight"
+              class="flex absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 lg:translate-x-14 rotate-180 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
+              :class="{
+                'bg-[#83CFC0]': activeSlider === testimonial.length,
+                'bg-chevron hover:bg-primary/80':
+                  activeSlider !== testimonial.length,
+              }"
+            >
+              <img
+                src="/images/icons/atoms/chevron-white-left.svg"
+                alt="chevron"
+              />
+            </div>
+            <div class="relative">
+              <div
+                v-for="(testi, id) in testimonial"
+                :key="id"
+                v-show="activeSlider === id + 1"
+              >
+                <div class="shadow-md rounded-xl md:p-8 lg:p-6 w-full lg:w-[486px] bg-white">
+                  <div class="flex justify-between items-center md:mb-6 mb-8">
+                    <div class="flex items-center gap-3">
+                      <img :src="testi.icon" />
+                      <span class="text-base font-bold">{{ testi.name }}</span>
+                    </div>
+                    <div class="md:block">
+                      <img
+                        src="/images/sekurban-new/icons/close-tick.png"
+                        alt="closing quotes"
+                        class="w-8"
+                      />
+                    </div>
                   </div>
-                  <div class="md:block">
-                    <img
-                      src="/images/sekurban-new/icons/close-tick.png"
-                      alt="closing quotes"
-                      class="w-8"
-                    />
-                  </div>
+                  <p class="md:text-sm text-base text-main font-normal leading-6">
+                    “{{ testi.testi }}”
+                  </p>
                 </div>
-                <p class="text-base text-main font-normal leading-6">
-                  “{{ testi.testi }}”
-                </p>
               </div>
             </div>
           </div>

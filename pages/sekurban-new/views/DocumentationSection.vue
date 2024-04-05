@@ -4,7 +4,7 @@
       class="container-sekurban-new md:flex md:justify-between md:items-center"
     >
       <div class="text-left">
-        <h1 class="text-xl md:text-3xl font-bold mb-1 md:mb-2">
+        <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mb-1 md:mb-2">
           Dokumentasi Proses Qurban
         </h1>
         <p class="text-xs md:text-sm font-normal leading-[22px]">

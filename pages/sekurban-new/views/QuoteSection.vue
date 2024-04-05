@@ -1,11 +1,11 @@
 <template>
-  <div class="lg:container-sekurban-new my-5">
+  <div class="lg:container-sekurban-new mt-5 md:mt-0 my-0 md:my-5">
     <div
       class="bg-gradient-to-r from-[#6DD794] via-[#51D0B6] to-[#81CEEB] py-6 px-5 md:px-8 text-center text-white lg:rounded-xl"
     >
-      <p class="text-xl md:text-[26px] font-bold mb-2.5">Perintah Berqurban</p>
-      <div class="xl:flex xl:justify-center xl:items-center xl:space-x-12">
-        <div class="tn:hidden xl:block">
+      <p class="text-xl md:text-2xl lg:text-[26px] font-bold mb-2.5">Perintah Berqurban</p>
+      <div class="lg:flex lg:justify-center lg:items-center lg:space-x-12">
+        <div class="hidden lg:block">
           <img
             src="/images/sekurban/open-tick.png"
             alt="opening quotes"
@@ -15,7 +15,7 @@
         <div
           class="mx-auto md:w-[560px] lg:w-[700px] xl:w-[990px]"
         >
-          <p class="text-xs md:text-[22px] leading-5">
+          <p class="text-xs md:text-[22px] leading-5 md:leading-9">
             عَنْ َأبِي هُرَيْرَة: َأنَّ رَسُوْل اللهِ صلى الله عليه وسلم قال :
             مَنْ كَانَ لهُ سَعَة وَلمْ يَضَحْ فَلا يَقْربَنَّ مُصَلَّانَا
           </p>

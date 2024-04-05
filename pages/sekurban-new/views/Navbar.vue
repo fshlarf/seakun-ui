@@ -20,7 +20,7 @@
           </div>
         </nuxt-link>
         <div
-          class="absolute top-1 right-1 py-3 px-4 md:px-4 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
+          class="absolute top-1 md:top-2 right-1 py-3 px-4 md:px-4 lg:top-0 lg:right-0 lg:relative z-100 flex flex-col w-3/5 md:w-1/2 lg:w-4/5 rounded-xl lg:p-0 lg:justify-end lg:flex-row lg:items-center"
           :class="{ shadow: open, 'bg-white': open, 'py-6': !isScrolled }"
         >
           <div class="items-center">
@@ -28,18 +28,16 @@
               class="lg:hidden rounded-lg focus:outline-none float-right"
               @click="open = !open"
             >
-              <svg
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                class="w-6 h-6 primary"
-              >
+              <svg viewBox="0 0 20 20" class="w-6 h-6 primary">
                 <path
+                  :fill="isScrolled ? 'currentColor' : '#FFFFFF'"
                   v-show="!open"
                   fill-rule="evenodd"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
                   clip-rule="evenodd"
                 ></path>
                 <path
+                  fill="currentColor"
                   v-show="open"
                   fill-rule="evenodd"
                   d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"

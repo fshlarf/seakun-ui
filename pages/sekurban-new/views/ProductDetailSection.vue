@@ -1,8 +1,9 @@
 <template>
   <div id="product-detail-sekurban" class="container-sekurban-new my-5">
-    <div class="my-5 lg:py-10">
-      <div class="flex flex-col lg:flex-row items-center justify-center gap-9">
-        <div class="relative w-full h-[220px] md:h-[280px] block lg:hidden">
+    <div class="my-5 pb-5 md:pb-0 lg:py-10">
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-5 md:gap-6 lg:gap-9">
+        <!-- Mobile Carousel -->
+        <div class="w-full block lg:hidden">
           <div
             class="cow-gallery w-full mx-auto overflow-hidden rounded-[12px] relative"
           >
@@ -56,13 +57,15 @@
             </div>
           </div>
         </div>
-        <div class="w-full lg:w-[322px] md:mt-[250px] mt-6 lg:mt-0">
+
+        <!-- Detail Explanation -->
+        <div class="w-full lg:w-[322px] lg:mt-0">
           <div
             class="text-xs md:text-sm font-bold bg-[#C0F5EA] text-primary py-1 lg:py-1.5 px-2 lg:px-3 inline-block rounded-lg"
           >
             Detail Hewan Qurban
           </div>
-          <h1 class="text-xl md:text-3xl font-bold mt-2 mb-1 lg:mb-3">
+          <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mt-2 mb-1 lg:mb-3">
             Detail Sapi Qurban
           </h1>
           <p class="text-xs md:text-sm font-normal leading-[22px]">
@@ -92,11 +95,13 @@
           </div>
 
           <button
-            class="bg-primary text-base w-full lg:w-[276px] md:text-[22px] font-bold text-white px-12 py-3 mt-6 lg:mt-8"
+            class="bg-primary text-base w-full lg:w-[240px] md:text-lg lg:text-[22px] font-bold text-white py-3 mt-6 lg:mt-8"
           >
-            Lihat Layanan
+            Daftar Sekarang
           </button>
         </div>
+
+        <!-- Non Mobile Carousel -->
         <div class="relative w-[467px] hidden lg:block">
           <div
             @click="slideLeft"
@@ -152,6 +157,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Icons with explanation Non Mobile -->
         <div class="w-[236px] hidden lg:block">
           <div class="flex flex-col gap-4">
             <div class="bg-[#EBFAF6] rounded-[10px] py-3 px-4">
