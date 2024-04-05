@@ -41,7 +41,12 @@
           >
         </div>
       </div>
-      <div class="tn:order-1 md:order-2 flex tn:justify-center">
+      <div class="tn:order-1 md:order-2 flex tn:justify-center relative">
+        <div
+          class="absolute -right-1 top-0 sm:right-[75px] md:right-0 lg:-right-4 lg:-top-5 xl:right-5 xl:-top-5"
+        >
+          <THREnvelopeVue :envelopeKey="14" />
+        </div>
         <img
           class="!w-[460px]"
           src="/images/sekurban/banner-main.png"
@@ -54,10 +59,12 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
+import THREnvelopeVue from '../../../components/organisms/ThrChallenge/THREnvelope.vue';
 
 export default {
   components: {
     Button,
+    THREnvelopeVue,
   },
   methods: {
     scrollToSection() {

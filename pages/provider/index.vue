@@ -174,18 +174,26 @@
                     {{ pkg.packageName }}
                   </p>
                 </div>
-                <img
-                  @click="onSelectPackage(pkg)"
-                  class="w-full"
-                  :class="`${
-                    selectedPackage &&
-                    pkg.packageName === selectedPackage.packageName
-                      ? ''
-                      : 'cursor-pointer'
-                  }`"
-                  :src="`/images/product/${provider.slug}.svg`"
-                  alt="provider"
-                />
+                <div class="relative">
+                  <div
+                    class="absolute top-0 left-0 sm:left-4 sm:top-4 md:left-5 md:top-5 lg:top-0 lg:left-0 xl:left-3"
+                    v-if="pkg.packageName == 'Spotify'"
+                  >
+                    <THREnvelopeVue :envelopeKey="13" />
+                  </div>
+                  <img
+                    @click="onSelectPackage(pkg)"
+                    class="w-full"
+                    :class="`${
+                      selectedPackage &&
+                      pkg.packageName === selectedPackage.packageName
+                        ? ''
+                        : 'cursor-pointer'
+                    }`"
+                    :src="`/images/product/${provider.slug}.svg`"
+                    alt="provider"
+                  />
+                </div>
               </div>
             </div>
             <div v-else class="flex items-center gap-[12px] mt-[12px]">
@@ -515,6 +523,15 @@
         >
       </div>
     </div>
+    <THRChallengeVue
+      :isShow="$store.state.isShowPopupTHRChallenge"
+      @handleClose="
+        $store.commit(
+          'setShowPopupTHRChallenge',
+          !$store.state.isShowPopupTHRChallenge
+        )
+      "
+    />
   </div>
 </template>
 
@@ -527,6 +544,8 @@ import GroupCardShimmer from './views/group-card-shimmer.vue';
 import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
 import { mapActions, mapGetters } from 'vuex';
+import THREnvelopeVue from '../../components/organisms/ThrChallenge/THREnvelope.vue';
+import THRChallengeVue from '~/components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {
@@ -534,6 +553,8 @@ export default {
     GroupCard,
     Button,
     GroupCardShimmer,
+    THREnvelopeVue,
+    THRChallengeVue,
   },
   data() {
     return {

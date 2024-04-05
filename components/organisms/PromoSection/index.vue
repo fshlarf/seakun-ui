@@ -74,30 +74,30 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/wa-mobile.webp',
+          img: '/images/promo/spotify-case-mobile.webp',
         },
         {
           id: 2,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
-        // {
-        //   id: 3,
-        //   img: '/images/promo/semabar-mobile.webp',
-        // },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/wa-desktop.webp',
+          img: '/images/promo/spotify-case-desktop.webp',
         },
         {
           id: 2,
+          img: '/images/promo/wa-desktop.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info-desktop.webp',
         },
-        // {
-        //   id: 3,
-        //   img: '/images/promo/semabar-desktop.webp',
-        // },
       ],
       banners: [],
       activeSlider: {},

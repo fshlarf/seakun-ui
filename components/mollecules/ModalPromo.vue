@@ -55,24 +55,28 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/wa-mobile.webp',
+          img: '/images/promo/spotify-case-mobile.webp',
         },
         {
           id: 2,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
-        // {
-        //   id: 3,
-        //   img: '/images/promo/semabar-mobile.webp',
-        // },
       ],
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/wa.webp',
+          img: '/images/promo/spotify-case.webp',
         },
         {
           id: 2,
+          img: '/images/promo/wa.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info.webp',
         },
         // {

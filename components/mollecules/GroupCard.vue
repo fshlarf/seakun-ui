@@ -22,7 +22,15 @@
         </p>
       </div>
     </div>
-    <p class="my-2 font-bold">Group {{ group.group }}</p>
+    <div class="flex justify-between items-center">
+      <p class="my-2 font-bold">Group {{ group.group }}</p>
+      <div
+        v-if="group.providerSlug == 'netflix' && indexForEnvelope == 2"
+        class=""
+      >
+        <THREnvelopeVue :envelopeKey="2" />
+      </div>
+    </div>
     <div class="h-px w-full bg-gray-300 my-2"></div>
     <ol class="space-y-1">
       <li v-for="(member, id) in group.accountGroup" :key="id">
@@ -48,15 +56,21 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
+import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
 export default {
   props: {
     group: {
       type: Object,
       default: () => {},
     },
+    indexForEnvelope: {
+      type: Number,
+      default: 0,
+    },
   },
   components: {
     Button,
+    THREnvelopeVue,
   },
   methods: {
     setDisabledBtn(members) {
