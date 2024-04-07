@@ -43,31 +43,33 @@
             v-else
             class="mx-auto mt-3 flex flex-wrap max-w-[281px] justify-center gap-y-3 gap-x-4"
           >
-            <template v-for="(envelope, id) in thrEnvelope">
-              <div class="relative w-max" :key="id">
-                <img
-                  src="/images/ramadan/thr/icons/seakun.svg"
-                  alt="seakun"
-                  class="absolute left-1/2 -translate-x-1/2 bottom-1 w-3 h-3"
-                />
-                <div
-                  class="absolute -right-[3px] -top-[3px] flex justify-center items-center rounded-full w-[10px] h-[10px] font-bold text-[8px] bg-white text-primary"
-                  style="
-                    font-family: nunito;
-                    outline: outset;
-                    outline-color: black;
-                    outline-width: 0.17px;
-                  "
-                >
-                  {{ envelope.key }}
-                </div>
-                <img
-                  src="/images/ramadan/thr/icons/envelope.svg"
-                  alt="envelope"
-                  class="w-5 h-[27px]"
-                />
+            <div
+              v-for="(envelope, id) in thrEnvelope"
+              :key="id"
+              class="relative w-max"
+            >
+              <img
+                src="/images/ramadan/thr/icons/seakun.svg"
+                alt="seakun"
+                class="absolute left-1/2 -translate-x-1/2 bottom-1 w-3 h-3"
+              />
+              <div
+                class="absolute -right-[3px] -top-[3px] flex justify-center items-center rounded-full w-[10px] h-[10px] font-bold text-[8px] bg-white text-primary"
+                style="
+                  font-family: nunito;
+                  outline: outset;
+                  outline-color: black;
+                  outline-width: 0.17px;
+                "
+              >
+                {{ envelope.key }}
               </div>
-            </template>
+              <img
+                src="/images/ramadan/thr/icons/envelope.svg"
+                alt="envelope"
+                class="w-5 h-[27px]"
+              />
+            </div>
           </div>
         </div>
       </div>
