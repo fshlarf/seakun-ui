@@ -52,10 +52,6 @@ export default {
     const username = this.$cookies.get('username');
     if (username) {
       this.isLoggedin = true;
-      const userData = localStorage.getItem('user_data');
-      if (!userData) {
-        this.getCustomerDetail();
-      }
     } else {
       this.isLoggedin = false;
     }
@@ -72,7 +68,9 @@ export default {
           const customerData = fetchCustomer.data.data;
           localStorage.setItem('user_data', JSON.stringify(customerData));
         }
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     },
     showPopup() {
       this.$store.commit(
