@@ -47,6 +47,7 @@ export default {
     };
   },
   mounted() {
+    this.CustomerService = new CustomerService(this);
     this.getData();
     const username = this.$cookies.get('username');
     if (username) {
@@ -64,7 +65,6 @@ export default {
       await this.$store.dispatch('initializeTHREnvelopeFromLocalStorage');
     },
     async getCustomerDetail() {
-      this.CustomerService = new CustomerService(this);
       const { CustomerService } = this;
       try {
         const fetchCustomer = await CustomerService.getCustomerByUid();
