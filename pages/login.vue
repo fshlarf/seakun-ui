@@ -125,6 +125,7 @@ import AuthService from '~/services/AuthServices';
 import { mapActions } from 'vuex';
 
 export default {
+  layout: 'none',
   components: {
     Input,
     InputPassword,

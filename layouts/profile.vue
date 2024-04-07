@@ -175,6 +175,8 @@ export default {
           const dataLogout = fetchLogout.data;
           if (dataLogout.meta.status === 200) {
             this.$cookies.removeAll();
+            localStorage.removeItem('user_data');
+            localStorage.removeItem('thr_challenge');
             this.$router.push({ path: '/login' });
           }
         } else {
