@@ -55,28 +55,20 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/spotify-case-mobile.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa-mobile.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/spotify-case.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info.webp',
         },
         // {

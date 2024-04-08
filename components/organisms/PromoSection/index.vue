@@ -74,28 +74,20 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/spotify-case-mobile.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa-mobile.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/spotify-case-desktop.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa-desktop.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
