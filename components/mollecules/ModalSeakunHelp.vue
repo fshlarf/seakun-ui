@@ -5,34 +5,41 @@
       <div
         class="grid grid-cols-2 xl:flex xl:flex-wrap items-center gap-3 xl:gap-4 mt-[16px] pb-[4px] max-w-max mx-auto"
       >
-        <div
-          class="rounded-[10px] bg-white w-[140px] h-[132px] shadow-md mx-auto flex justify-center items-center cursor-pointer"
-          @click="toSeakunHelp"
-        >
-          <div class="">
-            <img
-              class="mx-auto"
-              src="/images/seakun-help/help.svg"
-              alt="report"
-            />
-            <div class="flex justify-center items-center gap-1 mt-[10px]">
-              <p class="text-[12px]">Laporan Kendala</p>
-              <div class="relative">
-                <DarkTooltip
-                  :is-show="isShowTooltipHelp"
-                  position="center"
-                  message="Laporan kendala apapun pada layanan Seakun"
-                />
-                <img
-                  @mouseenter="isShowTooltipHelp = true"
-                  @mouseleave="isShowTooltipHelp = false"
-                  @click="onClickTooltip('help')"
-                  class="w-[14px] h-[14px] cursor-pointer"
-                  src="/images/icons/atoms/question-gray.svg"
-                  alt="info"
-                />
+        <div class="relative">
+          <div
+            class="rounded-[10px] bg-white w-[140px] h-[132px] shadow-md mx-auto flex justify-center items-center cursor-pointer"
+            @click="toSeakunHelp"
+          >
+            <div class="">
+              <!-- <div class="relative"> -->
+              <img
+                class="mx-auto"
+                src="/images/seakun-help/help.svg"
+                alt="report"
+              />
+              <!-- </div> -->
+              <div class="flex justify-center items-center gap-1 mt-[10px]">
+                <p class="text-[12px]">Laporan Kendala</p>
+                <div class="relative">
+                  <DarkTooltip
+                    :is-show="isShowTooltipHelp"
+                    position="center"
+                    message="Laporan kendala apapun pada layanan Seakun"
+                  />
+                  <img
+                    @mouseenter="isShowTooltipHelp = true"
+                    @mouseleave="isShowTooltipHelp = false"
+                    @click="onClickTooltip('help')"
+                    class="w-[14px] h-[14px] cursor-pointer"
+                    src="/images/icons/atoms/question-gray.svg"
+                    alt="info"
+                  />
+                </div>
               </div>
             </div>
+          </div>
+          <div class="absolute top-4 right-4">
+            <THREnvelopeVue :envelopeKey="5" />
           </div>
         </div>
 
@@ -108,6 +115,7 @@ import IconQuestionMark from '~/components/icons/QuestionMark.vue';
 import IconAppointment from '~/components/icons/Appointment.vue';
 import IconInfo from '~/components/icons/Info.vue';
 import DarkTooltip from '~/components/atoms/DarkTooltip.vue';
+import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
 
 export default {
   data() {
@@ -133,6 +141,7 @@ export default {
     IconAppointment,
     IconInfo,
     DarkTooltip,
+    THREnvelopeVue,
   },
   methods: {
     closeModal() {

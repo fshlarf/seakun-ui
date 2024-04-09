@@ -57,17 +57,30 @@
         <Transition>
           <div
             v-show="isShowAnswer"
-            class="! tn:px-6 xl:px-10 tn:py-4 md:py-6 text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200"
+            class="! tn:px-6 xl:px-10 tn:py-4 md:py-6 text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200 relative flex"
             :class="({ accordion: isShowAnswer }, classAnswer)"
           >
             <div v-if="answer.list">
-              <ol class="list-decimal list-outside">
+              <ol
+                class="list-decimal list-outside"
+                :class="{ 'pr-6': indexEnvelope() }"
+              >
                 <li v-for="(list, id) in answer.answer" :key="id">
                   {{ list }}
                 </li>
               </ol>
             </div>
-            <div v-else v-html="answer.answer"></div>
+            <div
+              v-else
+              v-html="answer.answer"
+              :class="{ 'pr-6 xl:pr-10': indexEnvelope() }"
+            ></div>
+            <div
+              class="min-w-10 min-h-[60px] w-max h-max absolute right-2 md:right-2 sm:right-3 xl:right-9 top:4 xl:top-6"
+              v-show="indexEnvelope()"
+            >
+              <THREnvelopeVue :envelopeKey="11" />
+            </div>
           </div>
         </Transition>
       </div>
@@ -76,6 +89,7 @@
 </template>
 
 <script>
+import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
 export default {
   props: {
     isShowAnswer: {
@@ -95,9 +109,20 @@ export default {
       default: 'bg-primary',
     },
   },
+  components: {
+    THREnvelopeVue,
+  },
   methods: {
     toggleShow(id) {
       this.$emit('toggleShow', id);
+    },
+    indexEnvelope() {
+      if (
+        this.title ==
+        'Apa perbedaan seakun dengan platform langganan yang lain?'
+      ) {
+        return true;
+      } else return false;
     },
   },
 };
