@@ -40,8 +40,10 @@
         class="flex rounded-[10px] lg:rounded-[15px] overflow-hidden"
       >
         <img
+          @click="onClickBanner(banner)"
           :id="`promo-${banner.id}`"
           class="w-full flex-none"
+          :class="`${banner.link ? 'cursor-pointer' : ''}`"
           v-for="(banner, id) in banners"
           :key="id"
           :src="banner.img"
@@ -74,7 +76,8 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/spotify-case-mobile.webp',
+          img: '/images/promo/thr-mobile.webp',
+          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
         },
         {
           id: 2,
@@ -88,7 +91,8 @@ export default {
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/spotify-case-desktop.webp',
+          img: '/images/promo/thr-desktop.webp',
+          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
         },
         {
           id: 2,
@@ -120,6 +124,11 @@ export default {
     }
   },
   methods: {
+    onClickBanner(banner) {
+      if (banner.link) {
+        window.open(banner.link, '_blank');
+      }
+    },
     selectBannersByScreenSize() {
       let screen = window.innerWidth;
       if (screen <= 500) {
