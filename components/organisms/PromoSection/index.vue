@@ -84,7 +84,7 @@ export default {
           img: '/images/promo/wa-mobile.webp',
         },
         {
-          id: 2,
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
@@ -99,7 +99,7 @@ export default {
           img: '/images/promo/wa-desktop.webp',
         },
         {
-          id: 2,
+          id: 3,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
