@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import axios from 'axios';
+import CustomerService from '~/services/CustomerServices';
+
 export default {
   // head() {
   //   return {
@@ -21,11 +24,70 @@ export default {
   //     ],
   //   };
   // },
+  data() {
+    return {
+      CustomerService,
+    };
+  },
   mounted() {
+    this.CustomerService = new CustomerService(this);
     // Melakukan inisialisasi webchat setelah DOM selesai dimuat
     // this.qchatInit();
+    this.checkThrChallenge();
   },
   methods: {
+    async checkThrChallenge() {
+      let customer = localStorage.getItem('user_data');
+      if (!customer) {
+        await this.getCustomerDetail();
+        customer = localStorage.getItem('user_data');
+      }
+      const thr = localStorage.getItem('thr_challenge');
+      if (!thr) {
+        await this.getThrDataFromSheet();
+      }
+    },
+    async getCustomerDetail() {
+      const { CustomerService } = this;
+      try {
+        const fetchCustomer = await CustomerService.getCustomerByUid();
+        if (fetchCustomer.data) {
+          const customerData = fetchCustomer.data.data;
+          localStorage.setItem('user_data', JSON.stringify(customerData));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getThrDataFromSheet() {
+      try {
+        const customer = JSON.parse(localStorage.getItem('user_data'));
+        const scriptUrl =
+          'https://script.google.com/macros/s/AKfycby9FuVbW_ybX3vWi7jN0-BtbT7R2JrQAvbMu9g-8TwD_XgwjrmI4UJVgaLcitZFx0Y_/exec' +
+          '?columnName=email&filterValue=' +
+          customer.email;
+        const getSheetData = await axios.get(scriptUrl, {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        });
+        if (getSheetData.data && getSheetData.data.length > 0) {
+          let thrs = [];
+          getSheetData.data.map((item) => {
+            const thr = {
+              key: item.envelope,
+              name: 'thr seakun',
+            };
+            thrs.push(thr);
+          });
+          localStorage.setItem('thr_challenge', JSON.stringify(thrs));
+          await this.$store.dispatch('initializeTHREnvelopeFromLocalStorage');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     // qchatInit() {
     //   // Inisialisasi webchat setelah script dimuat
     //   const qchatInit = document.createElement('script');

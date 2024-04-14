@@ -83,6 +83,8 @@ export const state = () => ({
     loading: true,
   },
   userHostProcedure: {},
+  thrChallengeData: [],
+  isShowPopupTHRChallenge: false,
 });
 
 export const getters = {
@@ -306,9 +308,23 @@ export const mutations = {
   SET_USERHOST_PROCEDURE(state, data) {
     state.userHostProcedure = data;
   },
+  setShowPopupTHRChallenge(state, value) {
+    state.isShowPopupTHRChallenge = value;
+  },
+  setThrChallengeData(state, newData) {
+    state.thrChallengeData = newData;
+  },
 };
 
 export const actions = {
+  initializeTHREnvelopeFromLocalStorage({ commit }) {
+    if (process.client) {
+      const localStorageData = localStorage.getItem('thr_challenge');
+      if (localStorageData) {
+        commit('setThrChallengeData', JSON.parse(localStorageData));
+      }
+    }
+  },
   setUserAvatar({ commit }, data) {
     commit('SET_AVATAR', data);
   },

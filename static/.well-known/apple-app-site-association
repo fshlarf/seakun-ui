@@ -1,0 +1,27 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appIDs": [ "V5B93KZ6L3.id.seakun.app"],
+             "components": [
+               {
+                  "/": "/user/forget-password/*",
+                  "comment" : "Matches any URL with a path that starts with /user/forget-password."
+               },
+               {
+                  "/": "/user/verify-email/*",
+                  "comment" : "Matches any URL with a path that starts with /user/verify-email."
+               },
+               {
+                  "/": "/user/profile/reset-password/*",
+                  "comment" : "Matches any URL with a path that starts with /user/reset-password."
+               },
+               {
+                  "/": "/user/profile/expired-token/*",
+                  "comment" : "Matches any URL with a path that starts with /user/expired token."
+               }
+            ]
+           }
+       ]
+   }
+}

@@ -3,6 +3,15 @@
     <HeaderDetailsVenue :details-venue="filterVenue" />
     <TableDetails :details-venue="filterVenue" />
     <FooterSemabar />
+    <THRChallengeVue
+      :isShow="$store.state.isShowPopupTHRChallenge"
+      @handleClose="
+        $store.commit(
+          'setShowPopupTHRChallenge',
+          !$store.state.isShowPopupTHRChallenge
+        )
+      "
+    />
   </div>
 </template>
 
@@ -10,6 +19,7 @@
 import HeaderDetailsVenue from './views/HeaderDetailsVenue.vue';
 import TableDetails from './views/TableDetails.vue';
 import FooterSemabar from '~/components/mollecules/FooterSemabar.vue';
+import THRChallengeVue from '../../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 export default {
   head() {
     return {
@@ -84,6 +94,7 @@ export default {
     HeaderDetailsVenue,
     TableDetails,
     FooterSemabar,
+    THRChallengeVue,
   },
   computed: {
     filterVenue() {

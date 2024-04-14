@@ -35,12 +35,19 @@
             @click="onClickOrder"
           />
         </div>
-        <div class="tn:px-[27px] md:px-0 md:pr-[42px] tn:order-1 md:order-2">
+        <div
+          class="tn:px-[27px] md:px-0 md:pr-[42px] tn:order-1 md:order-2 relative"
+        >
           <img
             class="md:w-[450px] lg:w-[445px] mx-auto"
             src="/images/header/header.svg"
             alt="seakun"
           />
+          <div
+            class="absolute top-[58%] left-[57%] sm:top-[60%] lg:top-1/2 sm:left-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
+            <THREnvelope :envelopeKey="1" class="mb-[110px] mr-14" />
+          </div>
         </div>
       </div>
     </div>
@@ -49,9 +56,11 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
+import THREnvelope from '../ThrChallenge/THREnvelope.vue';
 export default {
   components: {
     Button,
+    THREnvelope,
   },
   data() {
     return {

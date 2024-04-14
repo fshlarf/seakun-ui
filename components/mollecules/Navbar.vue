@@ -8,12 +8,13 @@
     <div class="static z-0 w-full text-gray-700">
       <div class="container lg:flex lg:justify-between lg:items-center">
         <nuxt-link to="/">
-          <div @click="scrollToTop">
+          <div @click="scrollToTop" class="flex items-center gap-1">
             <img
               class="tn:h-[40px]"
               src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
             />
+            <img src="/images/ramadan/ramadan-icon.svg" alt="ramadan" />
           </div>
         </nuxt-link>
         <div
@@ -56,9 +57,13 @@
             :key="id"
           >
             <div
-              class="cursor-pointer tn:text-right tn:my-3 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-12 relative"
+              class="cursor-pointer tn:text-right tn:my-3 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-10 relative"
               :class="`${navbar.tag === 'profile' ? 'lg:my-1' : 'lg:my-3'}`"
-              @click="scrollToSection(navbar)"
+              @click="
+                navbar.tag == 'thr'
+                  ? (isShowModalTHR = !isShowModalTHR)
+                  : scrollToSection(navbar)
+              "
             >
               <div v-if="navbar.tag === 'profile'">
                 <img
@@ -68,7 +73,7 @@
                 />
                 <p class="lg:hidden">{{ navbar.label }}</p>
               </div>
-              <p v-else>
+              <p v-else class="whitespace-nowrap">
                 {{ navbar.label }}
               </p>
               <template v-if="navbar.tag === 'sekurban'">
@@ -112,12 +117,27 @@
         </div>
       </div>
     </div>
+    <template v-if="!isLoggedin">
+      <UserMustLoginVue
+        :isShow="isShowModalTHR"
+        @handleClose="isShowModalTHR = !isShowModalTHR"
+      />
+    </template>
+    <template v-else>
+      <THRChallengeVue
+        :isShow="isShowModalTHR"
+        @handleClose="isShowModalTHR = !isShowModalTHR"
+        @findThr="isShowModalTHR = !isShowModalTHR"
+      />
+    </template>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/atoms/Logo.vue';
 import { mapActions, mapGetters } from 'vuex';
+import UserMustLoginVue from '../organisms/ThrChallenge/ModalPopup/UserMustLogin.vue';
+import THRChallengeVue from '../organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   data() {
@@ -127,11 +147,17 @@ export default {
       showSpark3: false,
       open: false,
       isLoggedin: true,
+      isShowModalTHR: false,
       navbarLink: [
         {
           id: 1,
           label: 'Layanan',
           tag: 'provider',
+        },
+        {
+          id: 9,
+          label: 'Cari THR',
+          tag: 'thr',
         },
         {
           id: 2,
@@ -168,6 +194,8 @@ export default {
   },
   components: {
     Logo,
+    THRChallengeVue,
+    UserMustLoginVue,
   },
   computed: {
     ...mapGetters({

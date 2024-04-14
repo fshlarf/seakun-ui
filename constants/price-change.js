@@ -1,9 +1,9 @@
 export const priceChangeList = [
-  {
-    name: 'WeTV',
-    slug: 'wetv',
-    message: 'Provider WeTv memperbarui harga berlangganannya',
-  },
+  // {
+  //   name: 'WeTV',
+  //   slug: 'wetv',
+  //   message: 'Provider WeTv memperbarui harga berlangganannya',
+  // },
   // {
   //   name: 'HBO Go',
   //   slug: 'hbo-go',
@@ -19,11 +19,11 @@ export const priceChangeList = [
   //   slug: 'disney-hotstar',
   //   message: 'Provider Disney+ Hotstar memperbarui harga berlangganannya',
   // },
-  // {
-  //   name: 'Nord VPN',
-  //   slug: 'nord-vpn',
-  //   message: 'perubahan kurs Rupiah terhadap Dollar',
-  // },
+  {
+    name: 'Nord VPN',
+    slug: 'nord-vpn',
+    message: 'Provider Nord VPN memperbarui harga berlangganannya',
+  },
   // {
   //   name: 'Setapp',
   //   slug: 'setapp',
