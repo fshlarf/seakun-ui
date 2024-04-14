@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="w-full tn:shadow-md tn:rounded-[8px] h-full">
+    <div
+      class="w-full tn:shadow-md tn:rounded-[8px] lg:min-h-[88px] xl:min-h-min"
+    >
       <div>
         <div
           @click="toggleShow(answer.id)"
-          class="h-full rounded-t-[8px] rounded-b-[8px] bg-white tn:px-4 lg:px-6 xl:px-10 tn:py-4 md:py-6 cursor-pointer flex justify-between items-center"
+          class="h-full rounded-t-[8px] rounded-b-[8px] bg-white tn:px-4 lg:px-5 xl:px-6 tn:py-4 md:py-6 cursor-pointer flex justify-between items-center"
           :class="{ 'rounded-b-none': isShowAnswer, accordion: isShowAnswer }"
           id="headingOne"
         >
