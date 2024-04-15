@@ -1,29 +1,38 @@
 <template>
-  <div class="tn:pt-12 lg:pt-20">
-    <div class="bg-quotes tn:py-[40px] lg:py-[56px] text-center text-white">
-      <div
-        class="container-sekurban xl:flex xl:justify-center xl:items-center xl:space-x-12"
-      >
-        <div class="tn:hidden xl:block">
-          <img src="/images/sekurban/open-tick.png" alt="opening quotes" />
+  <div class="lg:container-sekurban-new mt-5 md:mt-0 my-0 md:my-5">
+    <div
+      class="bg-gradient-to-r from-[#6DD794] via-[#51D0B6] to-[#81CEEB] py-6 px-5 md:px-8 text-center text-white lg:rounded-xl"
+    >
+      <p class="text-xl md:text-2xl lg:text-[26px] font-bold mb-2.5">Perintah Berqurban</p>
+      <div class="lg:flex lg:justify-center lg:items-center lg:space-x-12">
+        <div class="hidden lg:block">
+          <img
+            src="/images/sekurban/open-tick.png"
+            alt="opening quotes"
+            class="opacity-50"
+          />
         </div>
         <div
-          class="tn:mx-auto tn:w-[316px] md:w-[560px] lg:w-[700px] xl:w-[990px]"
+          class="mx-auto md:w-[560px] lg:w-[700px] xl:w-[990px]"
         >
-          <p class="tn:text-[14px] md:text-[20px] lg:text-[26px]">
-            كنا مع رسول الله صلى الله عليه وسلم في سفر فحضر النحر فاشتركنا في
-            البقرة عن سبعة
+          <p class="text-xs md:text-[22px] leading-5 md:leading-9">
+            عَنْ َأبِي هُرَيْرَة: َأنَّ رَسُوْل اللهِ صلى الله عليه وسلم قال :
+            مَنْ كَانَ لهُ سَعَة وَلمْ يَضَحْ فَلا يَقْربَنَّ مُصَلَّانَا
           </p>
-          <p class="tn:text-[12px] md:text-base lg:text-[20px] tn:mt-3 lg:mt-6">
-            “Kami pernah bepergian bersama Rasulullah SAW, kebetulan di tengah
-            perjalanan hari raya Idul Adha (yaumun nahr) datang. Akhirnya, kami
-            patungan membeli sapi sebanyak tujuh orang untuk diqurbankan.“
+          <p class="text-xs md:text-sm mt-2.5 md:mt-4 leading-5 md:leading-6">
+            "Rasulullah SAW bersabda, barangsiapa yang mempunyai kemampuan,
+            tetapi ia tidak berkurban maka janganlah ia mendekati (menghampiri)
+            tempat shalat kami."
             <br />
-            (HR Al-Hakim)
+            (HR Ahmad dan Ibnu Majah)
           </p>
         </div>
-        <div class="tn:hidden xl:block">
-          <img src="/images/sekurban/close-tick.png" alt="closing quotes" />
+        <div class="hidden xl:block">
+          <img
+            src="/images/sekurban/close-tick.png"
+            alt="closing quotes"
+            class="opacity-50"
+          />
         </div>
       </div>
     </div>
@@ -34,8 +43,4 @@
 export default {};
 </script>
 
-<style>
-.bg-quotes {
-  background: linear-gradient(96.79deg, #82e1ce 1.13%, #98daf2 103.41%);
-}
-</style>
+<style></style>

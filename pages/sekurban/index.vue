@@ -1,16 +1,17 @@
 <template>
-  <div id="sekurban-page">
+  <div>
     <Navbar />
-    <HeaderSection />
+    <IntroSection />
     <ProductBackgroundSection />
-    <QuoteSection />
     <ProductDetailSection @onClickOrder="onClickOrder" />
     <PricingSection />
+    <BenefitSection />
+    <QuoteSection />
     <OrderFlowSection />
     <DocumentationSection />
-    <CtaBannerSection @onClickOrder="onClickOrder" />
     <TestimonySection />
     <FaqSection />
+    <CtaBannerSection @onClickOrder="onClickOrder" />
     <Footer />
     <THRChallengeVue
       :isShow="$store.state.isShowPopupTHRChallenge"
@@ -26,63 +27,76 @@
 
 <script>
 import Navbar from './views/Navbar.vue';
-import HeaderSection from './views/HeaderSection.vue';
+import IntroSection from './views/IntroSection.vue';
 import ProductBackgroundSection from './views/ProductBackgroundSection.vue';
-import QuoteSection from './views/QuoteSection.vue';
 import ProductDetailSection from './views/ProductDetailSection.vue';
 import PricingSection from './views/PricingSection.vue';
+import BenefitSection from './views/BenefitSection.vue';
+import QuoteSection from './views/QuoteSection.vue';
 import OrderFlowSection from './views/OrderFlowSection.vue';
 import DocumentationSection from './views/DocumentationSection.vue';
-import CtaBannerSection from './views/CtaBannerSection.vue';
 import TestimonySection from './views/TestimonySection.vue';
 import FaqSection from './views/FaqSection.vue';
 import Footer from '~/components/mollecules/Footer.vue';
+import CtaBannerSection from './views/CtaBannerSection.vue';
 import { mapActions, mapGetters } from 'vuex';
 import THRChallengeVue from '../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {
     Navbar,
-    HeaderSection,
+    IntroSection,
     ProductBackgroundSection,
-    QuoteSection,
     ProductDetailSection,
     PricingSection,
+    BenefitSection,
+    QuoteSection,
     OrderFlowSection,
     DocumentationSection,
-    CtaBannerSection,
     TestimonySection,
     FaqSection,
+    CtaBannerSection,
     Footer,
     THRChallengeVue,
   },
   data() {
-    return {
-      sekurbanProvider: {},
-    };
+    return {};
   },
   computed: {
     ...mapGetters({
-      providerList: 'getProviders',
       providerSekurban: 'getProviderSekurban',
     }),
   },
   mounted() {
-    this.checkProvider();
+    if (!this.providerSekurban.uid) {
+      this.fetchProviderSekurban();
+    }
   },
   methods: {
     ...mapActions({
-      fetchProvider: 'fetchProvider',
+      fetchProviderSekurban: 'fetchProviderSekurban',
+      createOrder: 'createOrder',
     }),
-    async checkProvider() {
-      if (this.providerList.list.length === 0) {
-        await this.fetchProvider('youtube');
-      }
-    },
     onClickOrder() {
-      this.$router.push(
-        `/order?provider=${this.providerSekurban.slug}&variant_id=${this.providerSekurban.variants[0].uid}&package_id=${this.providerSekurban.variants[0].packageUid}`
-      );
+      const sekurban = this.providerSekurban;
+      const customerUid = this.$cookies.get('customerUid');
+      if (customerUid) {
+        const payload = {
+          packageVariantUid: sekurban.variants[0].uid,
+          ispreorder: sekurban.variants[0].isPo === 1,
+          userhost: sekurban.variants[0].isHost === 1,
+        };
+        this.createOrder(payload);
+      } else {
+        this.$alert.show({
+          status: 'error',
+          duration: 4000,
+          message: 'Harap login untuk memesan',
+        });
+        setTimeout(() => {
+          this.$router.push('/login');
+        }, 2000);
+      }
     },
   },
 };

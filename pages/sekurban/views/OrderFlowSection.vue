@@ -1,36 +1,40 @@
 <template>
-  <div id="order-flow-sekurban" class="tn:pt-12 lg:pt-20">
-    <div class="w-full tn:py-[24px] lg:py-[42px] bg-flow-sekurban">
-      <div class="container-sekurban">
+  <div id="order-flow-sekurban" class="py-0 md:py-5">
+    <div class="w-full py-[40.5px] lg:py-[60px] bg-flow-sekurban bg-[#F3FFFD]">
+      <div class="container-sekurban-new">
         <h1
-          class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold text-center"
+          class="text-xl md:text-2xl lg:text-3xl font-bold mb-8 lg:mb-12 text-center"
         >
           Flow Program Qurban
         </h1>
         <div
-          class="flex flex-wrap justify-center items-start tn:gap-3 md:gap-14 tn:mt-6 lg:mt-12"
+          class="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-10 mx-2 lg:mx-0"
         >
-          <div
-            v-for="(flow, id) in orderFlow"
-            :key="id"
-            class="tn:w-[150px] md:w-[260px]"
-          >
-            <img
-              class="tn:w-[86px] md:w-[188px] mx-auto"
-              :src="flow.img"
-              alt="flow order"
-            />
-            <div class="flex justify-center space-x-2 items-start tn:mt-2">
+          <div v-for="(flow, id) in orderFlow" :key="id">
+            <div
+              class="bg-white shadow-lg border border-gray-100 py-4 md:py-4 lg:py-6 px-1.5 md:px-4 lg:px-2.5 rounded-xl min-h-[190px] lg:min-h-0"
+            >
               <div
-                class="bg-[#00BA88] tn:w-[20px] tn:h-[20px] md:w-[36px] md:h-[36px] rounded-full text-white tn:text-[12px] md:text-[14px] font-bold flex justify-center items-center"
+                class="absolute -translate-x-6 -translate-y-6 bg-primary text-white text-sm font-bold rounded-full py-1 px-2.5 inline-block"
               >
                 {{ id + 1 }}
               </div>
-              <div class="tn:w-[121px] md:w-[220px]">
-                <p class="font-bold text-secondary tn:text-[12px] md:text-base">
-                  {{ flow.title }}
-                </p>
-                <p class="tn:text-[12px] md:text-[14px]">{{ flow.desc }}</p>
+              <div class="flex flex-col lg:flex-row gap-3 items-center">
+                <div>
+                  <img :src="flow.img" class="w-[60px] md:min-w-[60px]" />
+                </div>
+                <div class="text-center lg:text-left">
+                  <p
+                    class="text-xs md:text-base font-bold mb-[5px] text-primary leading-[15px] md:leading-5"
+                  >
+                    {{ flow.title }}
+                  </p>
+                  <p
+                    class="text-[11px] md:text-sm font-normal text-main leading-4 md:leading-[18px]"
+                  >
+                    {{ flow.desc }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -48,33 +52,32 @@ export default {
         {
           title: 'Daftar Peserta Qurban',
           desc: 'Peserta melakukan pendaftaran secara online',
-          img: '/images/sekurban/order flow/step-1.png',
+          img: '/images/sekurban-new/order-flow/step-1.png',
         },
         {
           title: 'Pembayaran',
           desc: 'Peserta qurban melakukan pembayaran',
-          img: '/images/sekurban/order flow/step-2.png',
+          img: '/images/sekurban-new/order-flow/step-2.png',
         },
         {
           title: 'Kirim Bukti Transfer',
           desc: 'Peserta qurban mengirim bukti transfer',
-          img: '/images/sekurban/order flow/step-3.png',
+          img: '/images/sekurban-new/order-flow/step-3.png',
         },
         {
           title: 'Qurban Diproses',
           desc: 'Qurban diproses pada hari-H Idul Adha',
-          img: '/images/sekurban/order flow/step-4.png',
+          img: '/images/sekurban-new/order-flow/step-4.png',
         },
         {
           title: 'Pembagian Daging Qurban',
           desc: 'Daging qurban didistribusikan kepada yang berhak menerima.',
-          img: '/images/sekurban/order flow/step-5.png',
+          img: '/images/sekurban-new/order-flow/step-5.png',
         },
         {
           title: 'Dokumentasi & Sertifikat',
-          desc:
-            'Peserta qurban menerima dokumantasi proses qurban dan sertifikat qurban.',
-          img: '/images/sekurban/order flow/step-6.png',
+          desc: 'Peserta qurban menerima dokumentasi dan sertifikat qurban.',
+          img: '/images/sekurban-new/order-flow/step-6.png',
         },
       ],
     };
