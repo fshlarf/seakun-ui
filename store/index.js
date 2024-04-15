@@ -317,6 +317,7 @@ export const mutations = {
   },
   setThrChallengeData(state, newData) {
     state.thrChallengeData = newData;
+  },
   SET_LOADING_PROVIDER_SEKURBAN(state, loading) {
     state.isLoadingProviderSekurban = loading;
   },
