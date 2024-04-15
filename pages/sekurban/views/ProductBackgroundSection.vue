@@ -1,69 +1,75 @@
 <template>
-  <div
-    id="product-background-sekurban"
-    class="tn:pt-12 lg:pt-20 grid lg:grid-cols-2 tn:gap-6 md:gap-8 items-center container-sekurban"
-  >
-    <div>
-      <img
-        class="tn:w-[250px] md:w-[340px] lg:w-[586px] tn:mx-auto"
-        src="/images/sekurban/product-bg.png"
-        alt="latar belakang"
-      />
-    </div>
+  <div id="product-background-sekurban" class="container-sekurban-new my-5">
     <div
-      class="bg-opacity rounded-[18px] tn:px-[16px] lg:px-[34px] tn:py-[12px] lg:py-[32px] tn:text-[12px] md:text-base"
+      class="flex flex-col lg:flex-row gap-5 lg:gap-[84px] my-10 items-center justify-between"
     >
-      <h2
-        class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold lg:font-bold tn:w-[231px] md:w-full"
-      >
-        <span class="text-[#00BA88]">Latar Belakang</span> Program Patungan
-        Qurban
-      </h2>
-      <p class="tn:mt-2 lg:mt-3">
-        Seakun dan Kitabisa berkolaborasi dalam rangka membantu sesama dalam
-        menunaikan ibadah qurban. Sebagaimana qurban merupakan salah satu ibadah
-        penting dalam agama Islam. Namun, tidak semua orang mampu untuk
-        melaksanakan ibadah qurban secara mandiri karena keterbatasan finansial.
-        Untuk itu, Seakun dan Kitabisa memiliki misi dalam:
-      </p>
-      <div class="flex items-start space-x-2 mt-1">
+      <div class="items-center justify-center lg:hidden">
+        <img src="/images/sekurban-new/product-image.png" width="500px" />
+      </div>
+      <div class="w-full md:w-full lg:w-1/2">
         <div
-          class="w-[24px] h-[24px] rounded-full flex justify-center items-center bg-[#00BA88] text-[14px] text-white"
+          class="text-xs md:text-sm font-bold bg-[#C0F5EA] text-primary py-1 md:py-1.5 px-2 md:px-3 inline-block rounded-lg"
         >
-          1
+          Latar Belakang
         </div>
-        <div class="w-[90%]">
-          Mempermudah umat Islam yang ingin berqurban dengan memberikan biaya
-          qurban yang murah dan terjangkau
+        <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mt-2 mb-1 md:mb-3">
+          Program Patungan Qurban
+        </h1>
+        <p class="text-xs md:text-sm font-normal leading-[22px]">
+          Seakun, Kitabisa, dan Ecoqurban berkolaborasi dalam membantu ibadah
+          kurban. Kurban merupakan salah satu ibadah penting dalam Islam, namun
+          tak semua mampu melaksanakannya. Maka dari itu, program ini bertujuan
+          untuk:
+        </p>
+
+        <!-- Points -->
+        <div
+          v-for="(point, id) in points"
+          :key="id"
+          class="flex flex-col gap-3 mt-3"
+        >
+          <div class="flex gap-3 items-center">
+            <div
+              class="bg-[#00BA88] text-white text-[11px] md:text-sm font-bold px-[7px] md:px-2.5 py-[2px] md:py-1 rounded-full items-center text-center inline-flex"
+            >
+              {{ id + 1 }}
+            </div>
+            <p
+              class="text-xs md:text-sm font-normal leading-[15.62px] md:leading-[18px]"
+            >
+              {{ point.desc }}
+            </p>
+          </div>
         </div>
       </div>
-      <div class="flex items-start space-x-2 mt-1">
-        <div
-          class="w-[24px] h-[24px] rounded-full flex justify-center items-center bg-[#00BA88] text-[14px] text-white"
-        >
-          2
-        </div>
-        <div class="w-[90%]">
-          Membantu anak muda di Indonesia dalam rangka belajar untuk menunaikan
-          ibadah qurban
-        </div>
-      </div>
-      <div class="flex items-start space-x-2 mt-1">
-        <div
-          class="w-[24px] h-[24px] rounded-full flex justify-center items-center bg-[#00BA88] text-[14px] text-white"
-        >
-          3
-        </div>
-        <div class="w-[90%]">
-          Berbagi kebahagiaan untuk dapat merasakan indahnya berqurban ke sesama
-        </div>
+      <div class="hidden md:hidden lg:block lg:w-1/2">
+        <img src="/images/sekurban-new/product-image.png" width="500px" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      points: [
+        {
+          desc:
+            'Mempermudah umat Islam yang ingin berkurban dengan memberikan biaya kurban yang murah dan terjangkau.',
+        },
+        {
+          desc:
+            'Membantu anak muda di Indonesia dalam rangka belajar untuk menunaikan ibadah kurban.',
+        },
+        {
+          desc:
+            'Berbagi kebahagiaan untuk dapat merasakan indahnya berkurban ke sesama.',
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style>

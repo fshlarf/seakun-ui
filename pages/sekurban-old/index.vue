@@ -1,63 +1,78 @@
 <template>
-  <div>
+  <div id="sekurban-page">
     <Navbar />
-    <IntroSection />
+    <HeaderSection />
     <ProductBackgroundSection />
-    <ProductDetailSection />
-    <PricingSection />
-    <BenefitSection />
     <QuoteSection />
+    <ProductDetailSection @onClickOrder="onClickOrder" />
+    <PricingSection />
     <OrderFlowSection />
     <DocumentationSection />
+    <CtaBannerSection @onClickOrder="onClickOrder" />
     <TestimonySection />
     <FaqSection />
-    <CtaBannerSection />
     <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from './views/Navbar.vue';
-import IntroSection from './views/IntroSection.vue';
+import HeaderSection from './views/HeaderSection.vue';
 import ProductBackgroundSection from './views/ProductBackgroundSection.vue';
+import QuoteSection from './views/QuoteSection.vue';
 import ProductDetailSection from './views/ProductDetailSection.vue';
 import PricingSection from './views/PricingSection.vue';
-import BenefitSection from './views/BenefitSection.vue';
-import QuoteSection from './views/QuoteSection.vue';
 import OrderFlowSection from './views/OrderFlowSection.vue';
 import DocumentationSection from './views/DocumentationSection.vue';
+import CtaBannerSection from './views/CtaBannerSection.vue';
 import TestimonySection from './views/TestimonySection.vue';
 import FaqSection from './views/FaqSection.vue';
 import Footer from '~/components/mollecules/Footer.vue';
-import CtaBannerSection from './views/CtaBannerSection.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
     Navbar,
-    IntroSection,
+    HeaderSection,
     ProductBackgroundSection,
+    QuoteSection,
     ProductDetailSection,
     PricingSection,
-    BenefitSection,
-    QuoteSection,
     OrderFlowSection,
     DocumentationSection,
+    CtaBannerSection,
     TestimonySection,
     FaqSection,
-    CtaBannerSection,
-    Footer
+    Footer,
   },
   data() {
-    
+    return {
+      sekurbanProvider: {},
+    };
   },
   computed: {
-    
+    ...mapGetters({
+      providerList: 'getProviders',
+      providerSekurban: 'getProviderSekurban',
+    }),
   },
   mounted() {
-    
+    this.checkProvider();
   },
   methods: {
-
+    ...mapActions({
+      fetchProvider: 'fetchProvider',
+    }),
+    async checkProvider() {
+      if (this.providerList.list.length === 0) {
+        await this.fetchProvider('youtube');
+      }
+    },
+    onClickOrder() {
+      this.$router.push(
+        `/order?provider=${this.providerSekurban.slug}&variant_id=${this.providerSekurban.variants[0].uid}&package_id=${this.providerSekurban.variants[0].packageUid}`
+      );
+    },
   },
 };
 </script>
