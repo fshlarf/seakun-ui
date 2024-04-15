@@ -33,7 +33,10 @@
             }`"
           ></div>
         </div>
-        <div class="">
+        <a v-if="activeSlider.link" :href="activeSlider.link" target="_blank">
+          <img :src="`${activeSlider.img}`" alt="foto promo" />
+        </a>
+        <div v-else>
           <img :src="`${activeSlider.img}`" alt="foto promo" />
         </div>
       </div>
@@ -55,16 +58,30 @@ export default {
       promoImageMobile: [
         {
           id: 1,
+          img: '/images/promo/thr-mobile.webp',
+          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
+        },
+        {
+          id: 2,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
-        // {
-        //   id: 3,
-        //   img: '/images/promo/semabar-mobile.webp',
-        // },
       ],
       promoImageDesktop: [
         {
           id: 1,
+          img: '/images/promo/thr.webp',
+          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
+        },
+        {
+          id: 2,
+          img: '/images/promo/wa.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info.webp',
         },
         // {

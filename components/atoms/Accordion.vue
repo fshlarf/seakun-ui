@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="w-full tn:shadow-md tn:rounded-[8px] h-full">
+    <div
+      class="w-full tn:shadow-md tn:rounded-[8px] lg:min-h-[88px] xl:min-h-min"
+    >
       <div>
         <div
           @click="toggleShow(answer.id)"
-          class="h-full rounded-t-[8px] rounded-b-[8px] bg-white tn:px-4 lg:px-6 xl:px-10 tn:py-4 md:py-6 cursor-pointer flex justify-between items-center"
+          class="h-full rounded-t-[8px] rounded-b-[8px] bg-white tn:px-4 lg:px-5 xl:px-6 tn:py-4 md:py-6 cursor-pointer flex justify-between items-center"
           :class="{ 'rounded-b-none': isShowAnswer, accordion: isShowAnswer }"
           id="headingOne"
         >
@@ -57,17 +59,30 @@
         <Transition>
           <div
             v-show="isShowAnswer"
-            class="! tn:px-6 xl:px-10 tn:py-4 md:py-6 text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200"
+            class="! tn:px-6 xl:px-10 tn:py-4 md:py-6 text-white rounded-b-[8px] tn:text-sm ease-in-out duration-200 relative flex"
             :class="({ accordion: isShowAnswer }, classAnswer)"
           >
             <div v-if="answer.list">
-              <ol class="list-decimal list-outside">
+              <ol
+                class="list-decimal list-outside"
+                :class="{ 'pr-6': indexEnvelope() }"
+              >
                 <li v-for="(list, id) in answer.answer" :key="id">
                   {{ list }}
                 </li>
               </ol>
             </div>
-            <div v-else v-html="answer.answer"></div>
+            <div
+              v-else
+              v-html="answer.answer"
+              :class="{ 'pr-6 xl:pr-10': indexEnvelope() }"
+            ></div>
+            <div
+              class="min-w-10 min-h-[60px] w-max h-max absolute right-2 md:right-2 sm:right-3 xl:right-9 top:4 xl:top-6"
+              v-show="indexEnvelope()"
+            >
+              <THREnvelopeVue :envelopeKey="11" />
+            </div>
           </div>
         </Transition>
       </div>
@@ -76,6 +91,7 @@
 </template>
 
 <script>
+import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
 export default {
   props: {
     isShowAnswer: {
@@ -95,9 +111,20 @@ export default {
       default: 'bg-primary',
     },
   },
+  components: {
+    THREnvelopeVue,
+  },
   methods: {
     toggleShow(id) {
       this.$emit('toggleShow', id);
+    },
+    indexEnvelope() {
+      if (
+        this.title ==
+        'Apa perbedaan seakun dengan platform langganan yang lain?'
+      ) {
+        return true;
+      } else return false;
     },
   },
 };

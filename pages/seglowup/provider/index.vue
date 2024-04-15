@@ -118,7 +118,17 @@
             <div
               class="rounded-[8px] py-3 px-[12px] border border-[#66738F80]/50"
             >
-              <p class="text-[12px] font-bold">Skema Harga</p>
+              <div class="flex items-end justify-between">
+                <p class="text-[12px] font-bold">Skema Harga</p>
+                <div
+                  v-if="
+                    !isLoading &&
+                    priceScheme.informations[0].value == 'ZAP Series Rp299RB'
+                  "
+                >
+                  <THREnvelopeVue :envelopeKey="9" />
+                </div>
+              </div>
               <div
                 v-for="(info, id) in priceScheme.informations"
                 :key="id"
@@ -403,7 +413,17 @@
 
         <div class="hidden lg:block mt-8 w-[352px]">
           <div class="border rounded-[8px] p-4">
-            <p class="font-medium">Skema Harga</p>
+            <div class="flex justify-between items-center">
+              <p class="font-medium">Skema Harga</p>
+              <div
+                v-if="
+                  !isLoading &&
+                  priceScheme.informations[0].value == 'ZAP Series Rp299RB'
+                "
+              >
+                <THREnvelopeVue :envelopeKey="9" />
+              </div>
+            </div>
             <div
               v-for="(info, id) in priceScheme.informations"
               :key="id"
@@ -512,6 +532,15 @@
       :show-modal="isShowModalBlackList"
       @onClose="closeModalBlackList"
     />
+    <THRChallengeVue
+      :isShow="$store.state.isShowPopupTHRChallenge"
+      @handleClose="
+        $store.commit(
+          'setShowPopupTHRChallenge',
+          !$store.state.isShowPopupTHRChallenge
+        )
+      "
+    />
   </div>
 </template>
 
@@ -529,7 +558,8 @@ import Chevron from '~/components/atoms/Chevron.vue';
 import OrderService from '~/services/OrderServices.js';
 import ModalBlackListWarning from '~/components/mollecules/ModalBlackListWarning.vue';
 import moment from 'moment';
-
+import THREnvelopeVue from '../../../components/organisms/ThrChallenge/THREnvelope.vue';
+import THRChallengeVue from '../../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 export default {
   components: {
     NavbarProvider,
@@ -539,6 +569,8 @@ export default {
     Chevron,
     ModalBlackListWarning,
     PackageCard,
+    THREnvelopeVue,
+    THRChallengeVue,
   },
   data() {
     return {
