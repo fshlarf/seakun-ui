@@ -76,30 +76,20 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/thr-mobile.webp',
-          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa-mobile.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/thr-desktop.webp',
-          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa-desktop.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
