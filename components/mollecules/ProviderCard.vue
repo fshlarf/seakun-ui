@@ -159,12 +159,6 @@
             add-class="!rounded-[8px] py-2 md:py-3"
             @click="$emit('on-click-product', dataProvider)"
           />
-          <div
-            class="absolute bottom-4 right-2 md:bottom-7 md:right-[10px] z-20"
-            v-if="dataProvider.slug == 'adobe-illustrator'"
-          >
-            <THREnvelopeVue :envelopeKey="7" />
-          </div>
         </div>
       </div>
     </div>
@@ -175,12 +169,10 @@
 import Button from '~/components/atoms/Button.vue';
 import moment from 'moment';
 import { currencyFormat } from '~/helpers';
-import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
 
 export default {
   components: {
     Button,
-    THREnvelopeVue,
   },
   data: () => ({
     moment,

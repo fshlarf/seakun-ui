@@ -18,7 +18,6 @@
           <h1 class="tn:text-[36px] md:text-[40px] lg:text-[56px] font-bold">
             Sekeranjang
           </h1>
-          <THREnvelopeVue :envelopeKey="12" class="mb-2" />
         </div>
         <h2
           class="tn:text-[20px] md:text-[28px] lg:text-[40px] text-[#474747] tn:mt-1 md:mt-2 lg:mt-4"
@@ -46,12 +45,7 @@
 </template>
 
 <script>
-import THREnvelopeVue from '../../../../components/organisms/ThrChallenge/THREnvelope.vue';
-export default {
-  components: {
-    THREnvelopeVue,
-  },
-};
+export default {};
 </script>
 
 <style>

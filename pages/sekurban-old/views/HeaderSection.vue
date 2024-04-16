@@ -59,12 +59,10 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
-import THREnvelopeVue from '../../../components/organisms/ThrChallenge/THREnvelope.vue';
 
 export default {
   components: {
     Button,
-    THREnvelopeVue,
   },
   methods: {
     scrollToSection() {

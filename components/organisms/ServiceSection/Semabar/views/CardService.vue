@@ -2,6 +2,7 @@
   <div
     class="bg-white p-3 rounded-[6px]"
     :class="[cardData.isAvailable ? 'cursor-pointer' : 'cursor-not-allowed']"
+    @click="$emit('click-card')"
   >
     <div class="relative">
       <div
@@ -15,11 +16,10 @@
           :src="`/images/semabar/venue/${cardData.images}`"
           :alt="cardData.name"
           :class="`max-w-[70px] max-h-[60px] md:max-w-[80px] md:max-h-[70px] ${cardData.classImage}`"
-          @click="$emit('click-card')"
         />
       </section>
       <div class="flex items-center justify-between">
-        <div @click="$emit('click-card')">
+        <div>
           <div class="flex justify-between mt-2 items-center">
             <p class="text-xs text-[#66738F]">Komunitas Main Bareng</p>
             <p
@@ -40,14 +40,10 @@
             </p>
           </div>
         </div>
-        <THREnvelopeVue
-          :envelopeKey="15"
-          v-if="cardData.name == 'Rahayu Mini Soccer Medan'"
-        />
       </div>
     </div>
 
-    <div v-if="cardData.isAvailable" @click="$emit('click-card')">
+    <div v-if="cardData.isAvailable">
       <p class="text-[11px] text-[#66738F] mt-3">Harga Per Match</p>
       <section class="flex justify-between text-xs mt-2">
         <p class="text-main">Membership</p>
@@ -79,7 +75,6 @@
 </template>
 
 <script>
-import THREnvelopeVue from '../../../ThrChallenge/THREnvelope.vue';
 export default {
   props: {
     cardData: {
@@ -87,9 +82,7 @@ export default {
       default: () => {},
     },
   },
-  components: {
-    THREnvelopeVue,
-  },
+
   methods: {
     toRupiah(word) {
       if (word) {
