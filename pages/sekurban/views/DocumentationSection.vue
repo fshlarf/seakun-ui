@@ -73,7 +73,7 @@
       <div
         v-for="(doc, id) in documentation"
         :key="id"
-        class="w-[191px] h-[136px] md:w-[362px] md:h-[285px] rounded-[6px] md:rounded-[10px] overflow-hidden flex-none"
+        class="tn:w-[191px] tn:h-[136px] md:w-[323px] md:h-[285px] tn:rounded-[6px] md:rounded-[15px] overflow-hidden flex-none"
       >
         <img
           :src="doc.image"
@@ -100,6 +100,7 @@ export default {
   },
   data() {
     return {
+      showAll: false,
       isShowPreview: false,
       currentPreview: null,
       documentation: [
@@ -127,6 +128,10 @@ export default {
     },
     slideRight() {
       document.getElementById('doc-container').scrollLeft += 600;
+    },
+    handlePreview(id) {
+      this.isShowPreview = !this.isShowPreview;
+      this.currentPreview = id;
     },
     handlePreview(id) {
       this.isShowPreview = !this.isShowPreview;
