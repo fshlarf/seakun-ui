@@ -4,7 +4,7 @@
     <IntroSection />
     <ProductBackgroundSection />
     <ProductDetailSection @onClickOrder="onClickOrder" />
-    <PricingSection />
+    <PricingSection @onClickOrder="onClickOrder" />
     <BenefitSection />
     <QuoteSection />
     <OrderFlowSection />

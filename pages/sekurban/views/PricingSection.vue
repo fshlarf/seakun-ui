@@ -74,10 +74,18 @@
               >
             </div>
           </div>
-          <button class="bg-primary rounded-lg py-3 px-4 w-full mt-4 lg:mt-6">
-            <div
-              class="flex justify-between text-white font-bold text-xs md:text-sm lg:text-base"
-            >
+          <button
+            class="bg-primary rounded-lg py-3 px-4 w-full mt-4 lg:mt-6 text-white font-bold text-xs md:text-sm lg:text-base"
+            @click="$emit('onClickOrder')"
+            :disabled="isLoadingProviderSekurban || isLoadingOrder"
+          >
+            <div class="" v-if="isLoadingProviderSekurban || isLoadingOrder">
+              <div>
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                Loading...
+              </div>
+            </div>
+            <div class="flex justify-between" v-else>
               <p>Total Biaya Per orang</p>
               <p>Rp1.890.000</p>
             </div>
@@ -92,11 +100,37 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+import Button from '~/components/atoms/Button.vue';
+export default {
+  components: {
+    Button,
+  },
+  computed: {
+    ...mapGetters({
+      isLoadingProviderSekurban: 'getIsLoadingProviderSekurban',
+      isLoadingOrder: 'getLoadingCreateOrder',
+    }),
+  },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
 .bg-desc {
   background: rgba(70, 195, 163, 0.4);
+}
+button:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+button:hover:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
 }
 </style>
