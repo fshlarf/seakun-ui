@@ -38,9 +38,6 @@
               </div>
             </div>
           </div>
-          <div class="absolute top-4 right-4">
-            <THREnvelopeVue :envelopeKey="5" />
-          </div>
         </div>
 
         <div
@@ -115,7 +112,6 @@ import IconQuestionMark from '~/components/icons/QuestionMark.vue';
 import IconAppointment from '~/components/icons/Appointment.vue';
 import IconInfo from '~/components/icons/Info.vue';
 import DarkTooltip from '~/components/atoms/DarkTooltip.vue';
-import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
 
 export default {
   data() {
@@ -141,7 +137,6 @@ export default {
     IconAppointment,
     IconInfo,
     DarkTooltip,
-    THREnvelopeVue,
   },
   methods: {
     closeModal() {

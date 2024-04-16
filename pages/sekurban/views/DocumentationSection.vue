@@ -129,9 +129,8 @@ export default {
     slideRight() {
       document.getElementById('doc-container').scrollLeft += 600;
     },
-    handlePreview(id) {
-      this.isShowPreview = !this.isShowPreview;
-      this.currentPreview = id;
+    showAllImages() {
+      this.showAll = true;
     },
     handlePreview(id) {
       this.isShowPreview = !this.isShowPreview;

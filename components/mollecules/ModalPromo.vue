@@ -58,36 +58,22 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/thr-mobile.webp',
-          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa-mobile.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/thr.webp',
-          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
-        },
-        {
-          id: 2,
           img: '/images/promo/wa.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/netflix-info.webp',
         },
-        // {
-        //   id: 3,
-        //   img: '/images/promo/semabar.webp',
-        // },
       ],
       slider: 1,
       activeSlider: {},

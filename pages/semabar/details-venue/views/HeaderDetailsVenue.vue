@@ -122,12 +122,6 @@
                   </p>
                 </a>
               </div>
-              <div
-                class="mb-2 lg:mb-3"
-                v-if="detailsVenue.slug == 'permata-hijau'"
-              >
-                <THREnvelopeVue :envelopeKey="6" />
-              </div>
             </div>
           </div>
         </section>
@@ -137,11 +131,7 @@
 </template>
 
 <script>
-import THREnvelopeVue from '../../../../components/organisms/ThrChallenge/THREnvelope.vue';
 export default {
-  components: {
-    THREnvelopeVue,
-  },
   data() {
     return {
       shareSocialMedia: [
