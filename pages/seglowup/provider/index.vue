@@ -676,6 +676,7 @@ export default {
           throw new Error(fetchCreateOrder);
         }
       } catch (error) {
+        this.isLoadingCreateOrder = false;
         console.log(error);
         if (
           error.response &&
@@ -686,7 +687,7 @@ export default {
           this.$router.push('/login');
         }
       }
-      this.isLoadingCreateOrder = false;
+      // this.isLoadingCreateOrder = false;
     },
     toPaymentPage(url) {
       window.location.href = url;

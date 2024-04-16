@@ -447,7 +447,7 @@ export default {
             if (dataResult) {
               counter = 5;
               window.location.href = dataResult.invoice_url;
-              this.isLoadingPaymentButton = false;
+              // this.isLoadingPaymentButton = false;
             } else {
               counter++;
             }
