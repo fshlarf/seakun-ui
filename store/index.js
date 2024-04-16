@@ -533,11 +533,12 @@ export const actions = {
           JSON.stringify({ ...dataResult, createdAt: moment().unix() })
         );
         dispatch('redirectPage', params);
-        commit('SET_LOADING_CREATE_ORDER', false);
+        // commit('SET_LOADING_CREATE_ORDER', false);
       } else {
         throw new Error(fetchCreateOrder);
       }
     } catch (error) {
+      commit('SET_LOADING_CREATE_ORDER', false);
       if (
         error.response &&
         error.response.data.message.includes('blocked customer')
@@ -559,8 +560,8 @@ export const actions = {
         this.$router.push('/login');
       }
       console.log(error);
-      commit('SET_LOADING_CREATE_ORDER', false);
     }
+    // commit('SET_LOADING_CREATE_ORDER', false);
   },
   redirectPage({ dispatch }, param) {
     if (!param.userhost && !param.ispreorder) {
