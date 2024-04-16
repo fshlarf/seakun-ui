@@ -41,28 +41,66 @@
       class="flex items-center tn:space-x-3 md:space-x-6 overflow-x-auto overscroll-x-contain hide-scrollbar doc-container tn:mt-4 md:mt-8"
     >
       <div
-        v-for="id in 5"
+        v-for="(doc, id) in documentation"
         :key="id"
         class="tn:w-[191px] tn:h-[136px] md:w-[323px] md:h-[285px] tn:rounded-[6px] md:rounded-[15px] overflow-hidden flex-none"
       >
         <img
-          :src="`/images/sekurban/documentation/photo-${id}.jpg`"
+          :src="doc.image"
           alt="dokumentasi kurban"
-          class="min-w-full min-h-full object-cover object-center"
+          class="min-w-full min-h-full object-cover object-center cursor-pointer"
+          @click="handlePreview(id)"
         />
       </div>
     </div>
+    <PreviewImageVue
+      v-if="isShowPreview"
+      :dataPreview="documentation"
+      :currentId="currentPreview"
+      @click-arrow="isShowPreview = false"
+    />
   </div>
 </template>
 
 <script>
+import PreviewImageVue from '../../../components/mollecules/PreviewImage.vue';
 export default {
+  components: {
+    PreviewImageVue,
+  },
+  data() {
+    return {
+      isShowPreview: false,
+      currentPreview: null,
+      documentation: [
+        {
+          image: '/images/sekurban/documentation/photo-1.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-2.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-3.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-4.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-5.jpg',
+        },
+      ],
+    };
+  },
   methods: {
     slideLeft() {
       document.getElementById('doc-container').scrollLeft -= 600;
     },
     slideRight() {
       document.getElementById('doc-container').scrollLeft += 600;
+    },
+    handlePreview(id) {
+      this.isShowPreview = !this.isShowPreview;
+      this.currentPreview = id;
     },
   },
 };
