@@ -74,6 +74,7 @@ export const state = () => ({
   isShowModalOrderTimeout: false,
   isShowModalConfirmation: false,
   isShowModalBlackList: false,
+  isLoadingProviderSekurban: false,
   dataDetailOrder: {
     data: {},
     loading: true,
@@ -147,6 +148,9 @@ export const getters = {
   },
   getUserHostProcedure(state) {
     return state.userHostProcedure;
+  },
+  getIsLoadingProviderSekurban(state) {
+    return state.isLoadingProviderSekurban;
   },
 };
 
@@ -314,6 +318,9 @@ export const mutations = {
   setThrChallengeData(state, newData) {
     state.thrChallengeData = newData;
   },
+  SET_LOADING_PROVIDER_SEKURBAN(state, loading) {
+    state.isLoadingProviderSekurban = loading;
+  },
 };
 
 export const actions = {
@@ -423,6 +430,29 @@ export const actions = {
     }
     commit('SET_LOADING_PROVIDER', false);
     commit('SET_LOADING_PROVIDER_ACTIVE', false);
+  },
+  async fetchProviderSekurban({ commit, state }) {
+    commit('SET_LOADING_PROVIDER_SEKURBAN', true);
+    try {
+      const MasterServices = new MasterService(this);
+      const fetchProviderList = await MasterServices.getProvider({
+        page: 1,
+        limit: 1,
+        keyword: 'sekurban',
+      });
+      if (fetchProviderList.data) {
+        const { data } = fetchProviderList.data;
+        const sekurban = data.find((provider) => {
+          return provider.slug === 'sekurban';
+        });
+        commit('SET_DATA_PROVIDER_SEKURBAN', sekurban);
+      } else {
+        throw new Error(fetchProviderList);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    commit('SET_LOADING_PROVIDER_SEKURBAN', false);
   },
   async fetchProviderActive({ commit, state }) {
     commit('SET_LOADING_PROVIDER_ACTIVE', true);

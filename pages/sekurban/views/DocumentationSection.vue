@@ -1,24 +1,24 @@
 <template>
-  <div class="!overflow-visible tn:pt-12 lg:pt-20">
-    <div class="container-sekurban md:flex md:justify-between md:items-center">
-      <div>
-        <h1
-          class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold"
-        >
+  <div class="!overflow-visible my-5 py-3 md:py-6">
+    <div
+      class="container-sekurban-new md:flex md:justify-between md:items-center"
+    >
+      <div class="text-left">
+        <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mb-1 md:mb-2">
           Dokumentasi Proses Qurban
         </h1>
-        <p class="tn:text-[12px] md:text-[16px] lg:text-[24px]">
+        <p class="text-xs md:text-sm font-normal leading-[22px]">
           Berikut ini beberapa dokumentasi saat qurban diproses.
         </p>
       </div>
 
-      <div class="tn:hidden xl:flex items-center space-x-8">
+      <div class="hidden md:flex items-center space-x-4">
         <div
           @click="slideLeft"
           class="w-[38px] h-[38px] rounded-full flex justify-center items-center bg-chevron-green cursor-pointer"
         >
           <img
-            class="tn:mr-1"
+            class="mr-1"
             src="/images/icons/atoms/chevron-green-left.svg"
             alt="slide kiri"
           />
@@ -28,7 +28,7 @@
           class="w-[38px] h-[38px] rounded-full flex justify-center items-center bg-chevron-green transform rotate-180 cursor-pointer"
         >
           <img
-            class="tn:mr-1"
+            class="mr-1"
             src="/images/icons/atoms/chevron-green-left.svg"
             alt="slide kanan"
           />
@@ -36,33 +36,105 @@
       </div>
     </div>
 
+    <!-- Mobile -->
     <div
-      id="doc-container"
-      class="flex items-center tn:space-x-3 md:space-x-6 overflow-x-auto overscroll-x-contain hide-scrollbar doc-container tn:mt-4 md:mt-8"
+      class="container-sekurban-new flex md:hidden flex-col items-center mt-5"
     >
       <div
-        v-for="id in 5"
+        v-for="(id, index) in showAll ? 5 : 3"
+        :key="id"
+        class="mb-4 w-full h-[184px] md:w-[323px] md:h-[285px] rounded-[9px] md:rounded-[10px] overflow-hidden"
+      >
+        <img
+          v-if="index < 3 || showAll"
+          :src="`/images/sekurban/documentation/photo-${id}.jpg`"
+          alt="dokumentasi kurban"
+          class="w-full h-full object-cover object-center"
+        />
+      </div>
+      <div
+        v-if="!showAll"
+        class="flex gap-2 items-center cursor-pointer"
+        @click="showAllImages"
+      >
+        <p class="text-xs font-semibold text-primary">Tampilkan semua</p>
+        <img
+          src="/images/icons/atoms/chevron-green-left.svg"
+          class="-rotate-90"
+        />
+      </div>
+    </div>
+
+    <!-- Non Mobile -->
+    <div
+      id="doc-container"
+      class="container-sekurban-new hidden md:flex items-center space-x-3 md:space-x-4 overflow-x-auto overscroll-x-contain hide-scrollbar mt-5"
+    >
+      <div
+        v-for="(doc, id) in documentation"
         :key="id"
         class="tn:w-[191px] tn:h-[136px] md:w-[323px] md:h-[285px] tn:rounded-[6px] md:rounded-[15px] overflow-hidden flex-none"
       >
         <img
-          :src="`/images/sekurban/documentation/photo-${id}.jpg`"
+          :src="doc.image"
           alt="dokumentasi kurban"
-          class="min-w-full min-h-full object-cover object-center"
+          class="min-w-full min-h-full object-cover object-center cursor-pointer"
+          @click="handlePreview(id)"
         />
       </div>
     </div>
+    <PreviewImageVue
+      v-if="isShowPreview"
+      :dataPreview="documentation"
+      :currentId="currentPreview"
+      @click-arrow="isShowPreview = false"
+    />
   </div>
 </template>
 
 <script>
+import PreviewImageVue from '../../../components/mollecules/PreviewImage.vue';
 export default {
+  components: {
+    PreviewImageVue,
+  },
+  data() {
+    return {
+      showAll: false,
+      isShowPreview: false,
+      currentPreview: null,
+      documentation: [
+        {
+          image: '/images/sekurban/documentation/photo-1.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-2.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-3.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-4.jpg',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-5.jpg',
+        },
+      ],
+    };
+  },
   methods: {
     slideLeft() {
       document.getElementById('doc-container').scrollLeft -= 600;
     },
     slideRight() {
       document.getElementById('doc-container').scrollLeft += 600;
+    },
+    showAllImages() {
+      this.showAll = true;
+    },
+    handlePreview(id) {
+      this.isShowPreview = !this.isShowPreview;
+      this.currentPreview = id;
     },
   },
 };

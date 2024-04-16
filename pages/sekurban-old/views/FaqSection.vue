@@ -1,12 +1,14 @@
 <template>
-  <div id="faq-sekurban" class="container-sekurban-new my-5 py-3 md:py-3">
-    <div class="text-center">
-      <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mb-10">
-        Frequently Asked Question
+  <div class="container-sekurban tn:pt-12 lg:pt-20 tn:mb-12 xl:mb-20">
+    <div class="tn:text-center lg:text-left">
+      <h1
+        class="tn:text-[20px] md:text-[26px] lg:text-[32px] tn:font-semibold md:font-bold tn:mb-4 lg:mb-8"
+      >
+        Frequently Asked Questions (FAQ)
       </h1>
     </div>
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 items-center"
+      class="grid tn:grid-cols-1 lg:grid-cols-2 tn:gap-3 lg:gap-8 items-center"
     >
       <Accordion
         v-for="(faq, id) in dataFaq"
@@ -32,7 +34,7 @@ export default {
           question:
             'Bagaimana flow dalam mengikuti program Patungan Qurban ini?',
           answer:
-            'Detail flow dapat dilihat di link berikut <a class="underline text-white font-semibold" href="#order-flow-sekurban">flow Program Patungan Qurban</a>',
+            'Detail flow dapat dilihat di link berikut <a class="underline text-secondary font-semibold" href="#order-flow-sekurban">flow Program Patungan Qurban</a>',
           isShow: false,
         },
         {
@@ -70,7 +72,7 @@ export default {
           id: 6,
           question: 'Jenis sapi apa yang akan diqurbankan?',
           answer:
-            'Untuk detail sapi yang akan diqurbankan pada program ini bisa dilihat pada link <a class="underline text-white font-semibold" href="#product-detail-sekurban">detail hewan qurban</a>',
+            'Untuk detail sapi yang akan diqurbankan pada program ini bisa dilihat pada link <a class="underline text-secondary font-semibold" href="#product-detail-sekurban">detail hewan qurban</a>',
           isShow: false,
         },
       ],
