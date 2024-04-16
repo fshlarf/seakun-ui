@@ -8,15 +8,6 @@
     <TestimonySemabar />
     <QnaSemabar />
     <FooterSemabar />
-    <THRChallengeVue
-      :isShow="$store.state.isShowPopupTHRChallenge"
-      @handleClose="
-        $store.commit(
-          'setShowPopupTHRChallenge',
-          !$store.state.isShowPopupTHRChallenge
-        )
-      "
-    />
   </div>
 </template>
 
@@ -29,7 +20,6 @@ import FlowSemabar from '~/components/organisms/FlowSemabarSection/index.vue';
 import TestimonySemabar from '../../components/organisms/TestimonySection/Semabar/index.vue';
 import QnaSemabar from '~/components/organisms/QnaSection/Semabar/index.vue';
 import FooterSemabar from '~/components/mollecules/FooterSemabar';
-import THRChallengeVue from '../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {
@@ -41,7 +31,6 @@ export default {
     QnaSemabar,
     TestimonySemabar,
     FooterSemabar,
-    THRChallengeVue,
   },
 };
 </script>

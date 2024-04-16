@@ -117,27 +117,12 @@
         </div>
       </div>
     </div>
-    <template v-if="!isLoggedin">
-      <UserMustLoginVue
-        :isShow="isShowModalTHR"
-        @handleClose="isShowModalTHR = !isShowModalTHR"
-      />
-    </template>
-    <template v-else>
-      <THRChallengeVue
-        :isShow="isShowModalTHR"
-        @handleClose="isShowModalTHR = !isShowModalTHR"
-        @findThr="isShowModalTHR = !isShowModalTHR"
-      />
-    </template>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/atoms/Logo.vue';
 import { mapActions, mapGetters } from 'vuex';
-import UserMustLoginVue from '../organisms/ThrChallenge/ModalPopup/UserMustLogin.vue';
-import THRChallengeVue from '../organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   data() {
@@ -153,11 +138,6 @@ export default {
           id: 1,
           label: 'Layanan',
           tag: 'provider',
-        },
-        {
-          id: 9,
-          label: 'Cari THR',
-          tag: 'thr',
         },
         {
           id: 2,
@@ -194,8 +174,6 @@ export default {
   },
   components: {
     Logo,
-    THRChallengeVue,
-    UserMustLoginVue,
   },
   computed: {
     ...mapGetters({

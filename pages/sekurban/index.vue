@@ -13,15 +13,6 @@
     <FaqSection />
     <CtaBannerSection @onClickOrder="onClickOrder" />
     <Footer />
-    <THRChallengeVue
-      :isShow="$store.state.isShowPopupTHRChallenge"
-      @handleClose="
-        $store.commit(
-          'setShowPopupTHRChallenge',
-          !$store.state.isShowPopupTHRChallenge
-        )
-      "
-    />
   </div>
 </template>
 
@@ -40,7 +31,6 @@ import FaqSection from './views/FaqSection.vue';
 import Footer from '~/components/mollecules/Footer.vue';
 import CtaBannerSection from './views/CtaBannerSection.vue';
 import { mapActions, mapGetters } from 'vuex';
-import THRChallengeVue from '../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {
@@ -57,7 +47,6 @@ export default {
     FaqSection,
     CtaBannerSection,
     Footer,
-    THRChallengeVue,
   },
   data() {
     return {};

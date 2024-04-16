@@ -24,12 +24,6 @@
     </div>
     <div class="flex justify-between items-center">
       <p class="my-2 font-bold">Group {{ group.group }}</p>
-      <div
-        v-if="group.providerSlug == 'netflix' && indexForEnvelope == 2"
-        class=""
-      >
-        <THREnvelopeVue :envelopeKey="2" />
-      </div>
     </div>
     <div class="h-px w-full bg-gray-300 my-2"></div>
     <ol class="space-y-1">
@@ -56,7 +50,7 @@
 
 <script>
 import Button from '~/components/atoms/Button.vue';
-import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
+
 export default {
   props: {
     group: {
@@ -70,7 +64,6 @@ export default {
   },
   components: {
     Button,
-    THREnvelopeVue,
   },
   methods: {
     setDisabledBtn(members) {
