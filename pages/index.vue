@@ -91,9 +91,9 @@ export default {
       groupList: 'getGroups',
     }),
   },
-  beforeMount() {
-    this.$router.push('/info/maintenance');
-  },
+  // beforeMount() {
+  //   this.$router.push('/info/maintenance');
+  // },
   mounted() {
     this.checkReferralCode();
     const userGroup = document.getElementById('pengguna');
