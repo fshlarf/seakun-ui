@@ -1,81 +1,136 @@
 <template>
-  <div
-    id="pricing-sekurban"
-    class="container-sekurban tn:pt-12 lg:pt-20 flex tn:flex-col md:flex-row md:justify-between md:items-center"
-  >
+  <div class="bg-[#F3FFFD]">
     <div
-      class="tn:w-full tn:mx-auto md:w-[330px] lg:w-[450px] md:mx-0 xl:w-[586px] tn:!order-2 md:!order-1 tn:mt-6 md:mt-0"
+      id="pricing-sekurban"
+      class="container-sekurban-new lg:mb-5 flex flex-col lg:flex-row lg:justify-between items-end"
     >
-      <div
-        class="bg-desc tn:px-[10px] lg:px-[22px] py-[8px] rounded-[8px] font-medium tn:text-[12px] lg:text-[18px] text-secondary"
-      >
-        Sapi seharga Rp11.500.000 dengan berat minimal 200 kg dibagi sama rata
-        biayanya ke 7 orang.
+      <div class="hidden lg:block w-1/4">
+        <img src="/images/sekurban-new/illustrations/cow-1.png" width="300px" />
       </div>
       <div
-        class="tn:space-y-2 lg:space-y-3 tn:mt-4 lg:mt-6 tn:text-[12px] lg:text-[18px]"
+        class="w-full lg:w-2/4 text-center mx-0 lg:mx-20 my-[41.5px] md:my-[44px] lg:my-[44px]"
       >
-        <div class="flex justify-between items-center">
-          <div class="flex items-center tn:space-x-2 lg:space-x-3">
-            <img
-              class="tn:w-[15px] lg:w-[20px]"
-              src="/images/sekurban/icons/label.svg"
-              alt="harga sapi"
-            />
-            <p class="font-bold">Harga sapi</p>
+        <div class="mb-8 md:mb-5">
+          <div
+            class="text-xs md:text-sm font-bold bg-[#C0F5EA] text-primary py-1 lg:py-1.5 px-2 lg:px-3 inline-block rounded-lg"
+          >
+            Rincian Biaya
           </div>
-          <p class="font-bold">Rp11.500.000</p>
+          <h2
+            class="text-xl md:text-2xl lg:text-3xl font-bold mt-2 mb-1 md:mb-3"
+          >
+            Biaya Patungan Sapi Qurban
+          </h2>
+          <p class="text-xs md:text-sm font-normal leading-[22px]">
+            Berikut ini rincian biaya sapi qurban pada program yang diadakan
+            oleh Seakun, Kitabisa dan Ecoqurban.
+          </p>
         </div>
-        <div class="flex justify-between items-center">
-          <div class="flex items-center tn:space-x-2 lg:space-x-3">
-            <img
-              class="tn:w-[15px] lg:w-[20px]"
-              src="/images/sekurban/icons/user.svg"
-              alt="harga per orang"
-            />
-            <p class="font-bold">Harga per orang (7 orang)</p>
+        <div class="bg-[#D7FCF2] rounded-xl border-2 border-primary p-3 lg:p-4">
+          <div class="flex flex-col gap-1 lg:gap-3">
+            <div class="flex justify-between items-center">
+              <div class="flex gap-2 items-center">
+                <img
+                  src="/images/sekurban-new/icons/wallet.svg"
+                  class="w-5 h-5"
+                />
+                <span
+                  class="text-xs md:text-sm lg:text-base font-bold text-main"
+                  >Harga Sapi</span
+                >
+              </div>
+              <span class="text-xs md:text-sm lg:text-base font-bold text-main"
+                >Rp12.300.000</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex gap-2 items-center">
+                <img
+                  src="/images/sekurban-new/icons/person.svg"
+                  class="w-5 h-5"
+                />
+                <span
+                  class="text-xs md:text-sm lg:text-base font-bold text-main"
+                  >Harga Per orang (7 orang)</span
+                >
+              </div>
+              <span class="text-xs md:text-sm lg:text-base font-bold text-main"
+                >Rp1.757.143</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <div class="flex gap-2 items-center">
+                <img
+                  src="/images/sekurban-new/icons/price-tag.svg"
+                  class="w-5 h-5"
+                />
+                <span
+                  class="text-xs md:text-sm lg:text-base font-bold text-main"
+                  >Biaya Admin Seakun</span
+                >
+              </div>
+              <span class="text-xs md:text-sm lg:text-base font-bold text-main"
+                >Rp132.857</span
+              >
+            </div>
           </div>
-          <p class="font-bold">Rp1.642.857</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <div class="flex items-center tn:space-x-2 lg:space-x-3">
-            <img
-              class="tn:w-[15px] lg:w-[20px]"
-              src="/images/sekurban/icons/percent.svg"
-              alt="biaya admin"
-            />
-            <p class="font-bold">Biaya admin Seakun</p>
-          </div>
-          <p class="font-bold">Rp147.143</p>
-        </div>
-        <div
-          class="flex justify-between items-center font-bold tn:text-[12px] lg:text-[18px] text-[#046F53]"
-        >
-          <p>Total biaya</p>
-          <p>Rp1.790.000</p>
+          <button
+            class="bg-primary rounded-lg py-3 px-4 w-full mt-4 lg:mt-6 text-white font-bold text-xs md:text-sm lg:text-base"
+            @click="$emit('onClickOrder')"
+            :disabled="isLoadingProviderSekurban || isLoadingOrder"
+          >
+            <div class="" v-if="isLoadingProviderSekurban || isLoadingOrder">
+              <div>
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                Loading...
+              </div>
+            </div>
+            <div class="flex justify-between" v-else>
+              <p>Total Biaya Per orang</p>
+              <p>Rp1.890.000</p>
+            </div>
+          </button>
         </div>
       </div>
-      <div
-        class="bg-[#00BA88] tn:px-[10px] lg:px-[22px] py-[8px] tn:rounded-[8px] lg:rounded-[12px] tn:text-[12px] lg:text-[18px] text-white tn:mt-4 lg:mt-6"
-      >
-        Dengan biaya sebesar <b>Rp1.790.000</b> kamu sudah bisa menunaikan
-        ibadah qurban melalui Seakun dan Kitabisa.
+      <div class="hidden lg:block w-1/4">
+        <img src="/images/sekurban-new/illustrations/cow-2.png" width="300px" />
       </div>
-    </div>
-    <div
-      class="tn:mx-auto md:mx-0 tn:w-[248px] md:w-[330px] lg:w-[450px] xl:w-[570px] tn:!order-1 md:!order-2"
-    >
-      <img src="/images/sekurban/pricing.png" alt="detail harga" />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+import Button from '~/components/atoms/Button.vue';
+export default {
+  components: {
+    Button,
+  },
+  computed: {
+    ...mapGetters({
+      isLoadingProviderSekurban: 'getIsLoadingProviderSekurban',
+      isLoadingOrder: 'getLoadingCreateOrder',
+    }),
+  },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
 .bg-desc {
   background: rgba(70, 195, 163, 0.4);
+}
+button:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+button:hover:disabled {
+  border: 1px solid #a9e0d5 !important;
+  background-color: #a9e0d5 !important;
+  color: #ffffff !important;
+}
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
 }
 </style>
