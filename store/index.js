@@ -4,6 +4,7 @@ import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
 import { providerList } from '../constants/price-scheme';
 import userHostProviders from '../constants/user-host-flow.json';
+import Vue from 'vue';
 
 export const state = () => ({
   avatar: '',
@@ -547,12 +548,22 @@ export const actions = {
           'swo',
           JSON.stringify({ ...dataResult, createdAt: moment().unix() })
         );
-        dispatch('redirectPage', params);
-        // commit('SET_LOADING_CREATE_ORDER', false);
+        await dispatch('redirectPage', params);
+        await new Promise((resolve) => {
+          const unwatch = this.$router.afterEach(() => {
+            unwatch();
+            resolve();
+          });
+        });
+        commit('SET_LOADING_CREATE_ORDER', false);
       } else {
         throw new Error(fetchCreateOrder);
       }
     } catch (error) {
+      Vue.prototype.$alert.show({
+        status: 'error',
+        message: 'Gagal membuat pesanan',
+      });
       commit('SET_LOADING_CREATE_ORDER', false);
       if (
         error.response &&
@@ -578,9 +589,16 @@ export const actions = {
     }
     // commit('SET_LOADING_CREATE_ORDER', false);
   },
-  redirectPage({ dispatch }, param) {
+  redirectPage({ commit, dispatch }, param) {
     if (!param.userhost && !param.ispreorder) {
-      window.location.href = param.redirectUrl;
+      this.$router.push({
+        path: '/payment',
+        query: {
+          type: param.type,
+          order_uid: param.orderUid,
+          customer_uid: param.customerUid,
+        },
+      });
     } else {
       let urlPath = param.userhost
         ? 'thankyou/user-host'
@@ -616,7 +634,7 @@ export const actions = {
       }
     } catch (error) {
       if (error.response?.status == 404) {
-        this.$alert.show({
+        Vue.prototype.$alert.show({
           status: 'error',
           message: 'Order Anda Tidak Ditemukan / Sudah Terbayarkan',
         });

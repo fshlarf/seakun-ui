@@ -249,7 +249,11 @@ export default {
       });
     },
   },
+  beforeDestroy() {
+    window.removeEventListener('pageshow', this.handleLoadingPaymentButton);
+  },
   mounted() {
+    window.addEventListener('pageshow', this.handleLoadingPaymentButton);
     this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
     this.PaymentService = new PaymentService(this);
@@ -268,6 +272,9 @@ export default {
     this.getPaymentDigital(order_uid, customer_uid);
   },
   methods: {
+    handleLoadingPaymentButton() {
+      this.isLoadingPaymentButton = false;
+    },
     onSelectPaymentMethod(method) {
       this.selectedMethod = method;
       this.paymentMethod = [];
@@ -447,7 +454,6 @@ export default {
             if (dataResult) {
               counter = 5;
               window.location.href = dataResult.invoice_url;
-              // this.isLoadingPaymentButton = false;
             } else {
               counter++;
             }
@@ -456,6 +462,7 @@ export default {
           }
         } catch (error) {
           counter++;
+          this.isLoadingPaymentButton = false;
           console.log(JSON.stringify(error, null, 2));
         }
       } while (counter < 3);

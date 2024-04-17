@@ -59,7 +59,7 @@
         >
           Konfirmasi pembayaranmu telah berhasil. Terimakasih sudah mengikuti
           <span class="font-bold"
-            >Program Patungan Qurban Seakun x Kitabisa</span
+            >Program Patungan Qurban Seakun x Kitabisa x Ecoqurban</span
           >. Untuk informasi tentang jadwal pelaksanaan proses qurban, akan
           diinformasikan mendekati hari H (Idul Adha).
         </p>

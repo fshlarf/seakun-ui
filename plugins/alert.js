@@ -12,8 +12,9 @@ const AlertPlugin = {
         alertInstance.showAlert(data);
       },
     };
-
-    document.body.appendChild(alertInstance.$el);
+    if (process.client) {
+      document.body.appendChild(alertInstance.$el);
+    }
   },
 };
 

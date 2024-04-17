@@ -1,8 +1,6 @@
 <template>
-  <div class="!overflow-visible my-5 py-3 md:py-6">
-    <div
-      class="container-sekurban-new md:flex md:justify-between md:items-center"
-    >
+  <div class="my-5 py-3 md:py-6 container-sekurban-new">
+    <div class="sm:flex sm:justify-between sm:items-center">
       <div class="text-left">
         <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mb-1 md:mb-2">
           Dokumentasi Proses Qurban
@@ -12,7 +10,7 @@
         </p>
       </div>
 
-      <div class="hidden md:flex items-center space-x-4">
+      <div class="hidden sm:flex items-center space-x-4">
         <div
           @click="slideLeft"
           class="w-[38px] h-[38px] rounded-full flex justify-center items-center bg-chevron-green cursor-pointer"
@@ -36,53 +34,36 @@
       </div>
     </div>
 
-    <!-- Mobile -->
-    <div
-      class="container-sekurban-new flex md:hidden flex-col items-center mt-5"
-    >
-      <div
-        v-for="(id, index) in showAll ? 5 : 3"
-        :key="id"
-        class="mb-4 w-full h-[184px] md:w-[323px] md:h-[285px] rounded-[9px] md:rounded-[10px] overflow-hidden"
-      >
-        <img
-          v-if="index < 3 || showAll"
-          :src="`/images/sekurban/documentation/photo-${id}.jpg`"
-          alt="dokumentasi kurban"
-          class="w-full h-full object-cover object-center"
-        />
-      </div>
-      <div
-        v-if="!showAll"
-        class="flex gap-2 items-center cursor-pointer"
-        @click="showAllImages"
-      >
-        <p class="text-xs font-semibold text-primary">Tampilkan semua</p>
-        <img
-          src="/images/icons/atoms/chevron-green-left.svg"
-          class="-rotate-90"
-        />
-      </div>
-    </div>
-
-    <!-- Non Mobile -->
     <div
       id="doc-container"
-      class="container-sekurban-new hidden md:flex items-center space-x-3 md:space-x-4 overflow-x-auto overscroll-x-contain hide-scrollbar mt-5"
+      ref="docContainer"
+      class="flex flex-col sm:flex-row items-center gap-y-4 sm:gap-x-4 sm:overflow-x-auto overscroll-x-contain hide-scrollbar mt-5"
     >
       <div
-        v-for="(doc, id) in documentation"
+        v-for="(doc, id) in documentation.slice(0, documentationSlice)"
         :key="id"
-        class="tn:w-[191px] tn:h-[136px] md:w-[323px] md:h-[285px] tn:rounded-[6px] md:rounded-[15px] overflow-hidden flex-none"
-      >
-        <img
-          :src="doc.image"
-          alt="dokumentasi kurban"
-          class="min-w-full min-h-full object-cover object-center cursor-pointer"
-          @click="handlePreview(id)"
-        />
-      </div>
+        class="h-[184px] sm:h-[250px] lg:h-[285px] tn:rounded-[6px] md:rounded-[10px] flex-none bg-cover bg-center !max-w-[500px] sm:max-w-full cursor-pointer"
+        :style="{
+          backgroundImage: `url('${doc.image}')`,
+          width: `${imgWidth}px`,
+        }"
+        @click="handlePreview(id)"
+        @click.stop
+      ></div>
     </div>
+    <div
+      class="flex gap-2 items-center cursor-pointer mt-5 w-max mx-auto sm:hidden"
+      @click="isShowAll = !isShowAll"
+    >
+      <p class="text-xs font-semibold text-primary">
+        {{ isShowAll ? 'Tampilkan sedikit' : 'Tampilkan semua' }}
+      </p>
+      <img
+        src="/images/icons/atoms/chevron-green-left.svg"
+        :class="[isShowAll ? 'rotate-90' : '-rotate-90']"
+      />
+    </div>
+
     <PreviewImageVue
       v-if="isShowPreview"
       :dataPreview="documentation"
@@ -100,41 +81,99 @@ export default {
   },
   data() {
     return {
-      showAll: false,
       isShowPreview: false,
       currentPreview: null,
+      isShowAll: false,
+      imgWidth: null,
       documentation: [
         {
-          image: '/images/sekurban/documentation/photo-1.jpg',
+          image: '/images/sekurban/documentation/photo-1.webp',
         },
         {
-          image: '/images/sekurban/documentation/photo-2.jpg',
+          image: '/images/sekurban/documentation/photo-2.webp',
         },
         {
-          image: '/images/sekurban/documentation/photo-3.jpg',
+          image: '/images/sekurban/documentation/photo-3.webp',
         },
         {
-          image: '/images/sekurban/documentation/photo-4.jpg',
+          image: '/images/sekurban/documentation/photo-4.webp',
         },
         {
-          image: '/images/sekurban/documentation/photo-5.jpg',
+          image: '/images/sekurban/documentation/photo-5.webp',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-6.webp',
+        },
+        {
+          image: '/images/sekurban/documentation/photo-7.webp',
         },
       ],
     };
   },
+  watch: {
+    isShowAll(newVal) {
+      this.documentationSlice;
+    },
+  },
+  computed: {
+    documentationSlice() {
+      if (process.client) {
+        if (this.isShowAll) {
+          return this.documentation.length;
+        } else if (window.innerWidth >= 630) {
+          return this.documentation.length;
+        } else return 3;
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener('click', this.closePreviewClickOutside);
+    this.$nextTick(() => {
+      this.updateImgWidth();
+    });
+  },
+
+  beforeDestroy() {
+    document.removeEventListener('click', this.closePreviewClickOutside);
+  },
   methods: {
+    updateImgWidth() {
+      const docContainer = this.$refs.docContainer;
+
+      if (docContainer) {
+        if (window.innerWidth >= 1024) {
+          const result = docContainer.offsetWidth / 3 - 12;
+          this.imgWidth = parseInt(result);
+        } else if (window.innerWidth >= 630) {
+          const result = docContainer.offsetWidth / 2 - 12;
+          this.imgWidth = parseInt(result);
+        } else {
+          this.imgWidth = '100%';
+        }
+      }
+    },
     slideLeft() {
-      document.getElementById('doc-container').scrollLeft -= 600;
+      const docContainer = this.$refs.docContainer;
+      if (docContainer) {
+        docContainer.scrollLeft -= docContainer.offsetWidth;
+      }
     },
     slideRight() {
-      document.getElementById('doc-container').scrollLeft += 600;
-    },
-    showAllImages() {
-      this.showAll = true;
+      const docContainer = this.$refs.docContainer;
+      if (docContainer) {
+        docContainer.scrollLeft += docContainer.offsetWidth;
+      }
     },
     handlePreview(id) {
       this.isShowPreview = !this.isShowPreview;
       this.currentPreview = id;
+    },
+    closePreviewClickOutside(event) {
+      const preview = this.$el.querySelector('.preview-image');
+
+      if (preview && !preview.contains(event.target)) {
+        this.isShowPreview = false;
+      }
     },
   },
 };
