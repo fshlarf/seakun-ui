@@ -42,7 +42,7 @@
       <div
         v-for="(doc, id) in documentation.slice(0, documentationSlice)"
         :key="id"
-        class="h-[184px] sm:h-[250px] lg:h-[285px] tn:rounded-[6px] md:rounded-[10px] flex-none bg-cover bg-center !max-w-[500px] sm:max-w-full cursor-pointer"
+        class="w-full h-[184px] sm:h-[250px] lg:h-[285px] tn:rounded-[6px] md:rounded-[10px] flex-none bg-cover bg-center !max-w-[500px] sm:max-w-full cursor-pointer"
         :style="{
           backgroundImage: `url('${doc.image}')`,
           width: `${imgWidth}px`,
