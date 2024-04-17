@@ -11,11 +11,8 @@
           >
             <div
               @click="slideLeft"
-              class="absolute left-[24px] top-1/2 transform -translate-y-1/2 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer z-10"
-              :class="{
-                'bg-[#83CFC0]': activeSlider === 1,
-                'bg-chevron hover:bg-primary/80': activeSlider !== 1,
-              }"
+              class="bg-primary absolute left-[10px] top-1/2 transform -translate-y-1/2 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer z-10"
+              :class="{ 'opacity-70': activeSlider == 1 }"
             >
               <img
                 src="/images/icons/atoms/chevron-white-left.svg"
@@ -24,12 +21,8 @@
             </div>
             <div
               @click="slideRight"
-              class="absolute right-[24px] top-1/2 transform -translate-y-1/2 rotate-180 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer z-10"
-              :class="{
-                'bg-[#83CFC0]': activeSlider === cowImages.length,
-                'bg-chevron hover:bg-primary/80':
-                  activeSlider !== cowImages.length,
-              }"
+              class="bg-primary absolute right-[10px] top-1/2 transform -translate-y-1/2 rotate-180 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer z-10"
+              :class="{ 'opacity-70': activeSlider == cowImages.length }"
             >
               <img
                 src="/images/icons/atoms/chevron-white-left.svg"
@@ -114,11 +107,8 @@
         <div class="relative w-[467px] hidden lg:block">
           <div
             @click="slideLeft"
-            class="absolute left-[24px] top-1/2 transform -translate-y-1/2 -translate-x-0 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer"
-            :class="{
-              'bg-[#83CFC0]': activeSlider === 1,
-              'bg-chevron hover:bg-primary/80': activeSlider !== 1,
-            }"
+            class="bg-primary absolute -left-5 top-1/2 transform -translate-y-1/2 -translate-x-0 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer"
+            :class="{ 'opacity-70': activeSlider == 1 }"
           >
             <img
               src="/images/icons/atoms/chevron-white-left.svg"
@@ -127,12 +117,8 @@
           </div>
           <div
             @click="slideRight"
-            class="absolute right-[24px] top-1/2 transform -translate-y-1/2 translate-x-0 rotate-180 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer"
-            :class="{
-              'bg-[#83CFC0]': activeSlider === cowImages.length,
-              'bg-chevron hover:bg-primary/80':
-                activeSlider !== cowImages.length,
-            }"
+            class="bg-primary absolute -right-5 top-1/2 transform -translate-y-1/2 translate-x-0 rotate-180 w-[38px] h-[38px] rounded-full flex justify-center items-center cursor-pointer"
+            :class="{ 'opacity-70': activeSlider == cowImages.length }"
           >
             <img
               src="/images/icons/atoms/chevron-white-left.svg"
@@ -302,9 +288,6 @@ export default {
         },
         {
           img: '/images/sekurban-new/cow/cow-5.jpg',
-        },
-        {
-          img: '/images/sekurban-new/cow/cow-6.jpg',
         },
       ],
     };

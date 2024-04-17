@@ -19,7 +19,9 @@
           <div class="md:hidden relative mr-0 md:mr-16">
             <div class="flex flex-col gap-4">
               <div v-for="(testi, id) in testimonial" :key="id">
-                <div class="shadow-md rounded-xl p-6 w-full md:w-[486px] bg-white">
+                <div
+                  class="shadow-md rounded-xl p-6 w-full md:w-[486px] bg-white"
+                >
                   <div class="flex justify-between items-center mb-8">
                     <div class="flex items-center gap-3">
                       <img :src="testi.icon" class="w-8 h-8" />
@@ -47,11 +49,8 @@
           <div class="hidden md:items-center md:block relative mr-0 lg:mr-16">
             <div
               @click="slideLeft"
-              class="flex absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 lg:-translate-x-14 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
-              :class="{
-                'bg-[#83CFC0]': activeSlider === 1,
-                'bg-chevron hover:bg-primary/80': activeSlider !== 1,
-              }"
+              class="bg-primary flex absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-5 lg:-translate-x-14 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
+              :class="{ 'opacity-70': activeSlider == 1 }"
             >
               <img
                 src="/images/icons/atoms/chevron-white-left.svg"
@@ -60,12 +59,8 @@
             </div>
             <div
               @click="slideRight"
-              class="flex absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 lg:translate-x-14 rotate-180 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
-              :class="{
-                'bg-[#83CFC0]': activeSlider === testimonial.length,
-                'bg-chevron hover:bg-primary/80':
-                  activeSlider !== testimonial.length,
-              }"
+              class="bg-primary flex absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-5 lg:translate-x-14 rotate-180 w-[38px] h-[38px] rounded-full justify-center items-center cursor-pointer z-10"
+              :class="{ 'opacity-70': activeSlider == testimonial.length }"
             >
               <img
                 src="/images/icons/atoms/chevron-white-left.svg"
@@ -78,7 +73,9 @@
                 :key="id"
                 v-show="activeSlider === id + 1"
               >
-                <div class="shadow-md rounded-xl md:p-8 lg:p-6 w-full lg:w-[486px] bg-white">
+                <div
+                  class="shadow-md rounded-xl md:p-8 lg:p-6 w-full lg:w-[486px] bg-white"
+                >
                   <div class="flex justify-between items-center md:mb-6 mb-8">
                     <div class="flex items-center gap-3">
                       <img :src="testi.icon" />
@@ -92,7 +89,9 @@
                       />
                     </div>
                   </div>
-                  <p class="md:text-sm text-base text-main font-normal leading-6">
+                  <p
+                    class="md:text-sm text-base text-main font-normal leading-6"
+                  >
                     “{{ testi.testi }}”
                   </p>
                 </div>
