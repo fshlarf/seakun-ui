@@ -1,7 +1,7 @@
 <template>
   <div class="fixed top-0 right-0 left-0 bottom-0 bg-[#00000099] z-50">
     <div
-      class="absolute top-1/2 -translate-y-1/2 md:top-[58px] md:translate-y-0 left-1/2 -translate-x-1/2 w-max z-40 preview-image"
+      class="absolute top-1/2 -translate-y-1/2 md:top-[58px] md:translate-y-0 left-1/2 -translate-x-1/2 w-full sm:w-max z-40 preview-image"
     >
       <div
         class="flex items-center sm:gap-2 md:gap-3 lg:gap-10 xl:gap-[68px] justify-center sm:w-max mx-auto"
@@ -34,7 +34,7 @@
             <div v-for="(preview, id) in dataPreview" :key="id" class="w-full">
               <div
                 v-show="idImage === id"
-                class="w-full h-[200px] sm:w-[500px] sm:h-[270px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] xl:w-[940px] xl:h-[500px] mt-2 sm:mt-4 rounded-lg relative"
+                class="w-full h-[200px] sm:w-[500px] sm:h-[270px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] xl:w-[940px] xl:h-[500px] mt-2 sm:mt-4 rounded-lg"
               >
                 <img
                   :src="preview.image"
