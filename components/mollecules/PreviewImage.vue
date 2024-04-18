@@ -34,7 +34,7 @@
             <div v-for="(preview, id) in dataPreview" :key="id" class="w-full">
               <div
                 v-show="idImage === id"
-                class="w-full h-[200px] sm:w-[500px] sm:h-[270px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] xl:w-[940px] xl:h-[500px] mt-2 sm:mt-4 rounded-lg"
+                class="w-full h-[200px] sm:w-[500px] sm:h-[270px] md:w-[600px] md:h-[300px] lg:w-[800px] lg:h-[400px] xl:w-[940px] xl:h-[500px] mt-2 sm:mt-4 rounded-lg relative"
               >
                 <img
                   :src="preview.image"
