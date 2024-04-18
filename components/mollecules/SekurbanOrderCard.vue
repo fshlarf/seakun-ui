@@ -12,7 +12,7 @@
       </div>
       <div class="space-y-1">
         <p class="md:text-base tn:text-sm font-bold">
-          Sequrban (Seakun x Kitabisa)
+          Sequrban (Seakun x Kitabisa x Ecoqurban)
         </p>
         <p class="md:text-base tn:text-sm">Sapi Kupang / Bali</p>
         <p class="md:text-base tn:text-sm">

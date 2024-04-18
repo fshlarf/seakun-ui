@@ -1,37 +1,34 @@
 <template>
   <div class="fixed top-0 right-0 left-0 bottom-0 bg-[#00000099] z-50">
     <div
-      class="absolute top-1/2 -translate-y-1/2 md:top-[58px] md:translate-y-0 left-1/2 -translate-x-1/2 w-full z-40"
+      class="absolute top-1/2 -translate-y-1/2 md:top-[58px] md:translate-y-0 left-1/2 -translate-x-1/2 w-full sm:w-max z-40 preview-image"
     >
       <div
-        class="flex items-center sm:gap-2 md:gap-3 lg:gap-10 xl:gap-[68px] justify-center sm:w-max mx-auto preview-gallery"
+        class="flex items-center sm:gap-2 md:gap-3 lg:gap-10 xl:gap-[68px] justify-center sm:w-max mx-auto"
       >
         <div class="w-10 hidden sm:block">
-          <ButtonChevron
-            fill-color="white"
-            variant="bg-[#00000080]"
-            mode="left"
-            add-class="!w-10 !h-10"
+          <img
             v-if="idImage !== 0"
-            @click-chevron="handleChevron('left')"
+            src="/images/icons/atoms/ellipse-chevron.svg"
+            alt="left"
+            @click="handleChevron('left')"
+            class="cursor-pointer w-10 h-10"
           />
         </div>
         <div
           v-if="dataPreview"
           class="grid px-5 sm:px-0 w-full sm:w-max mx-auto"
         >
-          <ArrowBack @click="$emit('click-arrow')" />
           <div class="relative h-max">
             <div
               class="sm:hidden absolute top-1/2 -translate-y-1/2 left-2 z-20"
             >
-              <ButtonChevron
-                fill-color="white"
-                variant="bg-[#00000066]"
-                mode="left"
-                add-class="!w-6 !h-6"
+              <img
                 v-if="idImage !== 0"
-                @click-chevron="handleChevron('left')"
+                src="/images/icons/atoms/ellipse-chevron.svg"
+                alt="left"
+                @click="handleChevron('left')"
+                class="cursor-pointer w-6 h-6"
               />
             </div>
             <div v-for="(preview, id) in dataPreview" :key="id" class="w-full">
@@ -42,28 +39,34 @@
                 <img
                   :src="preview.image"
                   alt="gallery"
-                  class="w-full h-full rounded-lg object-contain absolute"
+                  class="w-full h-full rounded-lg object-cover absolute"
+                />
+                <img
+                  src="/images/icons/atoms/ellipse-close-chevron.svg "
+                  alt=""
+                  class="w-6 h-6 md:w-7 md:h-7 cursor-pointer z-40 absolute -right-2 -top-3"
+                  @click="$emit('click-arrow')"
                 />
               </div>
             </div>
             <div class="sm:hidden absolute top-1/2 -translate-y-1/2 right-2">
-              <ButtonChevron
-                fill-color="white"
-                variant="bg-[#00000066]"
-                add-class="!w-6 !h-6 "
+              <img
                 v-if="idImage + 1 !== dataPreview.length"
-                @click-chevron="handleChevron('right')"
+                src="/images/icons/atoms/ellipse-chevron.svg"
+                alt="left"
+                @click="handleChevron('right')"
+                class="cursor-pointer w-6 h-6 rotate-180"
               />
             </div>
           </div>
         </div>
         <div class="w-10 hidden sm:block">
-          <ButtonChevron
-            fill-color="white"
-            variant="bg-[#00000080]"
-            add-class="!w-10 !h-10"
+          <img
             v-if="idImage + 1 !== dataPreview.length"
-            @click-chevron="handleChevron('right')"
+            src="/images/icons/atoms/ellipse-chevron.svg"
+            alt="left"
+            @click="handleChevron('right')"
+            class="cursor-pointer w-10 h-10 rotate-180"
           />
         </div>
       </div>
@@ -73,11 +76,9 @@
 
 <script>
 import ButtonChevron from '~/components/atoms/ButtonChevron';
-import ArrowBack from '~/components/atoms/ArrowBack.vue';
 export default {
   components: {
     ButtonChevron,
-    ArrowBack,
   },
   props: {
     dataPreview: {
@@ -88,6 +89,8 @@ export default {
       type: Number,
       default: null,
     },
+    clickOutside: Function,
+    default: () => {},
   },
 
   data() {
@@ -95,6 +98,7 @@ export default {
       idImage: this.currentId,
     };
   },
+
   mounted() {
     document.addEventListener('keydown', this.shortCutHandleChevron);
   },
