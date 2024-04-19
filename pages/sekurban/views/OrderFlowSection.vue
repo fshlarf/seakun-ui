@@ -60,8 +60,8 @@ export default {
           img: '/images/sekurban-new/order-flow/step-2.png',
         },
         {
-          title: 'Kirim Bukti Transfer',
-          desc: 'Peserta qurban mengirim bukti transfer',
+          title: 'Sosialisasi Prosedur Qurban',
+          desc: 'Admin Seakun mensosialisasikan prosedur qurban kepada peserta',
           img: '/images/sekurban-new/order-flow/step-3.png',
         },
         {
@@ -76,7 +76,8 @@ export default {
         },
         {
           title: 'Dokumentasi & Sertifikat',
-          desc: 'Peserta qurban menerima dokumentasi dan sertifikat qurban.',
+          desc:
+            'Peserta qurban menerima dokumantasi proses qurban dan sertifikat qurban.',
           img: '/images/sekurban-new/order-flow/step-6.png',
         },
       ],
