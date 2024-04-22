@@ -148,8 +148,8 @@
           </div> -->
           <div class="flex space-x-2 items-center">
             <img src="/images/footer/whatsapp.svg" alt="#" />
-            <a href="https://api.whatsapp.com/send?phone=6282124852232"
-              >082124852232</a
+            <a href="https://api.whatsapp.com/send?phone=6282124852235"
+              >082124852235</a
             >
           </div>
           <div class="flex space-x-2 items-start">

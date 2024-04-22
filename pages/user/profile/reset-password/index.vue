@@ -65,7 +65,7 @@
         <a
           class="w-full flex justify-center"
           target="_blank"
-          href="https://api.whatsapp.com/send?phone=6282124852232"
+          href="https://api.whatsapp.com/send?phone=6282124852235"
         >
           <Button
             class="mt-6 mx-auto px-6 py-3 text-[16px]"

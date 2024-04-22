@@ -174,12 +174,12 @@ export default {
     contentWarning() {
       const { provider, holder, duration } = this.$router.history.current.query;
       let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852232?text=${text}">+6282124852232</a>`;
+      return `Setelah melakukan pembayaran, kirimkan bukti pembayaran ke Whatsapp Seakun.id <a target="_blank" href="https://wa.me/6282124852235?text=${text}">+6282124852235</a>`;
     },
     confirmationWhatsapp() {
       const { provider, holder, duration } = this.$router.history.current.query;
       let text = `Atas Nama ${holder}, berlangganan ${provider}, selama ${duration} bulan`;
-      return `https://wa.me/6282124852232?text=${text}`;
+      return `https://wa.me/6282124852235?text=${text}`;
     },
   },
   methods: {
