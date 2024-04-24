@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full px-4 md:container pt-20">
+  <div id="promo-section" class="w-full px-4 md:container pt-20">
     <div class="w-full relative z-0">
       <template v-if="banners.length > 1">
         <!-- chevron left -->
@@ -99,25 +99,37 @@ export default {
   },
   mounted() {
     this.selectBannersByScreenSize();
-    if (this.banners.length > 1) {
-      let slideCount = 0;
-      const slidePromo = setInterval(() => {
-        slideCount++;
-        this.scrollRight();
-        if (slideCount == this.banners.length - 1) {
-          clearInterval(slidePromo);
-        }
-      }, 10000);
-      // setTimeout(() => {
-      //   this.scrollRight();
-      // }, 10000);
-    }
+    const thisSeection = document.getElementById('promo-section');
+    this.observeScroll(thisSeection);
   },
   methods: {
     onClickBanner(banner) {
       if (banner.link) {
         window.open(banner.link, '_blank');
       }
+    },
+    observeScroll(element) {
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (this.banners.length > 1) {
+              let slideCount = 0;
+              const slidePromo = setInterval(() => {
+                slideCount++;
+                this.scrollRight();
+                if (slideCount == this.banners.length - 1) {
+                  clearInterval(slidePromo);
+                }
+              }, 10000);
+            }
+          }
+        },
+        {
+          root: null,
+          threshold: 0.1, // set offset 0.1 means trigger if atleast 10% of element in viewport
+        }
+      );
+      observer.observe(element);
     },
     selectBannersByScreenSize() {
       let screen = window.innerWidth;

@@ -23,7 +23,7 @@
       <a
         class="w-full"
         target="_blank"
-        href="https://api.whatsapp.com/send?phone=6282124852232"
+        href="https://api.whatsapp.com/send?phone=6282124852235"
       >
         <Button
           class="mt-4 w-full !py-4"
