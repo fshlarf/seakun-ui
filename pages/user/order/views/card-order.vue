@@ -8,18 +8,16 @@
     "
   >
     <header
-      class="border-b-[1px] flex items-center justify-between p-3 md:px-5 md:py-[9px] bg-cover bg-no-repeat"
+      class="border-b-[1px] flex items-center justify-between p-3 md:px-5 md:py-[9px] bg-cover bg-no-repeat cursor-pointer"
       style="background-image: url('/images/order-details/mask-order-card.png')"
       :class="
         order.status.value === 'Cancel' || order.status.value === 'Refund'
           ? 'bg-[#D9D9D9]/30'
           : 'bg-[#1AB26B1A]/[5%] border-green-seakun-secondary-dark/30'
       "
+      @click="gotoOrderDetails(order.uid)"
     >
-      <div
-        class="text-xs md:text-sm cursor-pointer"
-        @click="gotoOrderDetails(order.uid)"
-      >
+      <div class="text-xs md:text-sm cursor-pointer">
         <p class="text-[#66738F]">No Pesanan:</p>
         <h3
           :class="
@@ -42,7 +40,10 @@
       </div>
     </header>
     <div class="p-3 md:p-5 md:pb-4">
-      <div class="flex justify-between items-center">
+      <div
+        class="flex justify-between items-center cursor-pointer"
+        @click="gotoOrderDetails(order.uid)"
+      >
         <div>
           <section class="flex gap-2 items-center text-sm font-bold">
             <img

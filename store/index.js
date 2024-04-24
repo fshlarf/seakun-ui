@@ -85,6 +85,7 @@ export const state = () => ({
     loading: true,
   },
   userHostProcedure: {},
+  isShowModalInformation: 'halo',
 });
 
 export const getters = {
@@ -150,6 +151,9 @@ export const getters = {
   },
   getIsLoadingProviderSekurban(state) {
     return state.isLoadingProviderSekurban;
+  },
+  getIsShowModalInformation(state) {
+    return state.isShowModalInformation;
   },
 };
 
@@ -314,6 +318,9 @@ export const mutations = {
 
   SET_LOADING_PROVIDER_SEKURBAN(state, loading) {
     state.isLoadingProviderSekurban = loading;
+  },
+  SET_IS_SHOW_MODAL_INFORMATION(state, isShow) {
+    state.isShowModalInformation = isShow;
   },
 };
 
