@@ -80,7 +80,10 @@
         <CardOrderLoading />
       </div>
       <template v-else>
-        <BannerUpdateInformation />
+        <BannerUpdateInformation
+          v-if="isShowModalInformation"
+          @handleClose="$store.commit('SET_IS_SHOW_MODAL_INFORMATION', false)"
+        />
         <div v-if="orderList.length > 0" class="space-y-5 pb-5">
           <Card v-for="(data, id) in orderList" :key="id" :order="data" />
         </div>
@@ -108,6 +111,7 @@ import SelectOrderStatusMobile from './views/select-order-status-mobile.vue';
 import OrderService from '~/services/OrderServices';
 import MasterService from '~/services/MasterServices';
 import BannerUpdateInformation from './views/banner-update-information.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   layout: 'profile',
@@ -131,6 +135,11 @@ export default {
       isLoading: true,
       orderList: [],
     };
+  },
+  computed: {
+    ...mapGetters({
+      isShowModalInformation: 'getIsShowModalInformation',
+    }),
   },
   mounted() {
     this.OrderService = new OrderService(this);
