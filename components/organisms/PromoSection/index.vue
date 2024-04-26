@@ -43,7 +43,9 @@
           @click="onClickBanner(banner)"
           :id="`promo-${banner.id}`"
           class="w-full flex-none"
-          :class="`${banner.link ? 'cursor-pointer' : ''}`"
+          :class="`${
+            banner.internalLink || banner.externalLink ? 'cursor-pointer' : ''
+          }`"
           v-for="(banner, id) in banners"
           :key="id"
           :src="banner.img"
@@ -76,20 +78,30 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/wa-mobile.webp',
+          img: '/images/promo/sequrban-mobile.webp',
+          internalLink: '/sekurban',
         },
         {
           id: 2,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/wa-desktop.webp',
+          img: '/images/promo/sequrban-desktop.webp',
+          internalLink: '/sekurban',
         },
         {
           id: 2,
+          img: '/images/promo/wa-desktop.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
@@ -104,8 +116,10 @@ export default {
   },
   methods: {
     onClickBanner(banner) {
-      if (banner.link) {
-        window.open(banner.link, '_blank');
+      if (banner.internalLink) {
+        this.$router.push(banner.internalLink);
+      } else if (banner.externalLink) {
+        window.open(banner.externalLink, '_blank');
       }
     },
     observeScroll(element) {
