@@ -24,7 +24,9 @@
           <div
             v-for="(promo, id) in promoImages"
             :key="id"
-            @click="activeSlider.id = id + 1"
+            @click="
+              activeSlider = promoImages.find((promo) => promo.id == id + 1)
+            "
             class="rounded-full transition-all ease-in-out delay-50"
             :class="`${
               activeSlider.id === id + 1
@@ -33,7 +35,17 @@
             }`"
           ></div>
         </div>
-        <a v-if="activeSlider.link" :href="activeSlider.link" target="_blank">
+        <nuxt-link
+          v-if="activeSlider.internalLink"
+          :to="activeSlider.internalLink"
+        >
+          <img :src="`${activeSlider.img}`" alt="foto promo" />
+        </nuxt-link>
+        <a
+          v-else-if="activeSlider.externalLink"
+          :href="activeSlider.externalLink"
+          target="_blank"
+        >
           <img :src="`${activeSlider.img}`" alt="foto promo" />
         </a>
         <div v-else>
@@ -58,20 +70,30 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/wa-mobile.webp',
+          img: '/images/promo/sequrban-mobile.webp',
+          internalLink: '/sekurban',
         },
         {
           id: 2,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/wa.webp',
+          img: '/images/promo/sequrban.webp',
+          internalLink: '/sekurban',
         },
         {
           id: 2,
+          img: '/images/promo/wa.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/netflix-info.webp',
         },
       ],
@@ -114,6 +136,16 @@ export default {
         const idx = this.activeSlider.id + 1;
         this.activeSlider = this.promoImages.find((promo) => promo.id == idx);
       }
+    },
+    scrollTo(id) {
+      const container = document.getElementById('promo-scroll');
+      this.activeSlider = this.banners.find((ban) => ban.id == id);
+      container.scrollTo({
+        top: 0,
+        left:
+          container.clientWidth * this.activeSlider.id - container.clientWidth,
+        behavior: 'smooth',
+      });
     },
   },
 };
