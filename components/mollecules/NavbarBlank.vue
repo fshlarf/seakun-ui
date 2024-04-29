@@ -5,8 +5,8 @@
     >
       <nuxt-link to="/">
         <img
-          class="h-[30px]"
-          src="/images/navbar/brand_seakun.svg"
+          class="h-[30px] w-[175px]"
+          src="/images/navbar/new_brand_seakun.svg"
           alt="brand seakun"
         />
       </nuxt-link>

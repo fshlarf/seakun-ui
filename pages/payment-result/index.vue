@@ -14,12 +14,13 @@
 </template>
 <script>
 import OrderService from '~/services/OrderServices.js';
-import SuccessPayment from './views/SuccessPayment.vue';
+import SuccessPayment from './views/redesign/SuccessPayment.vue';
 import FailedPayment from './views/FailedPayment.vue';
 
 export default {
   name: 'PaymentResult',
-  layout: 'new',
+  // layout: 'new',
+  layout: 'PaymentResult',
   components: {
     SuccessPayment,
     FailedPayment,

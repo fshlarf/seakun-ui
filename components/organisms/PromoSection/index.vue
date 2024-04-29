@@ -1,5 +1,5 @@
 <template>
-  <div id="promo-section" class="w-full px-4 md:container pt-20">
+  <div id="promo-section" class="w-full" :class="addClass">
     <div class="w-full relative z-0">
       <template v-if="banners.length > 1">
         <!-- chevron left -->
@@ -43,7 +43,7 @@
           @click="onClickBanner(banner)"
           :id="`promo-${banner.id}`"
           class="w-full flex-none"
-          :class="`${banner.link ? 'cursor-pointer' : ''}`"
+          :class="[banner.link ? 'cursor-pointer' : '', classImg]"
           v-for="(banner, id) in banners"
           :key="id"
           :src="banner.img"
@@ -71,6 +71,16 @@
 
 <script>
 export default {
+  props: {
+    addClass: {
+      typeof: String,
+      default: 'px-4 md:container pt-20',
+    },
+    classImg: {
+      typeof: String,
+      default: '',
+    },
+  },
   data() {
     return {
       mobileBanners: [
