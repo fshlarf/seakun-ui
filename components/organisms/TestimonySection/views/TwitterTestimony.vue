@@ -15,6 +15,111 @@
         data-dnt="true"
       >
         <p lang="in" dir="ltr">
+          Ikut nimbrung ah. Waduh, udah legal lagi. Adobe? Langganan. Spotify?
+          Sharing sama temen berenam jauh lebih murah. OTT (Netflix)? Sharing
+          (bukan carding kaya yang dijual2 di sopi) dari
+          <a href="https://twitter.com/OfficialSeakun?ref_src=twsrc%5Etfw"
+            >@OfficialSeakun</a
+          >.<br />Film adanya di OTT lain? Ya subs lagi dari Seakun. Terus
+          gimana?
+        </p>
+        &mdash; Le Bale (@tfniqbale)
+        <a
+          href="https://twitter.com/tfniqbale/status/1782984618708537759?ref_src=twsrc%5Etfw"
+          >April 24, 2024</a
+        >
+      </blockquote>
+      <script
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      ></script>
+
+      <blockquote
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+        data-cards="hidden"
+        tw-align-center
+        data-conversation="none"
+        hide_thread="true"
+        data-dnt="true"
+      >
+        <p lang="in" dir="ltr">
+          Aku pake seakun udah 2 tahunan nder, aman banget. Gak pernah ada
+          masalah &amp; pembayarannya juga mudah. Murah pula. Gak ada alasan
+          buat ninggalin seakun deh pokoknya nyaman &amp; trusted banget!🥹
+        </p>
+        &mdash; Ay🍉 (@Pineapple1189)
+        <a
+          href="https://twitter.com/Pineapple1189/status/1783711196816011338?ref_src=twsrc%5Etfw"
+          >April 26, 2024</a
+        >
+      </blockquote>
+      <blockquote
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+        data-cards="hidden"
+        tw-align-center
+        data-conversation="none"
+        hide_thread="true"
+        data-dnt="true"
+      >
+        <p lang="in" dir="ltr">
+          Kmrn ak nyari” buat langganan netflix khusus tv ketemu sama
+          <a href="https://t.co/DdHsvRZnXW">https://t.co/DdHsvRZnXW</a>
+          langganan disitu jd murah bgtttt adminnya jg fast respon rilll
+        </p>
+        &mdash; babyblue (@bubblewinterrr)
+        <a
+          href="https://twitter.com/bubblewinterrr/status/1733802805083910409?ref_src=twsrc%5Etfw"
+          >December 10, 2023</a
+        >
+      </blockquote>
+      <script
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      ></script>
+      <blockquote
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+        data-cards="hidden"
+        tw-align-center
+        data-conversation="none"
+        hide_thread="true"
+        data-dnt="true"
+      >
+        <p lang="in" dir="ltr">
+          Aman bgt langganan disini. Aku langganan netflix dari 2021 dan sampai
+          skrg ga pernah zonk. Trus skrg nambah langganan spotify sm youtube
+          premium. Secinta itu sama seakun🫶
+        </p>
+        &mdash; 🍦 (@dk_is_dhika)
+        <a
+          href="https://twitter.com/dk_is_dhika/status/1726419830126051803?ref_src=twsrc%5Etfw"
+          >November 20, 2023</a
+        >
+      </blockquote>
+      <script
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      ></script>
+
+      <blockquote
+        class="twitter-tweet"
+        data-lang="id"
+        data-theme="light"
+        data-cards="hidden"
+        tw-align-center
+        data-conversation="none"
+        hide_thread="true"
+        data-dnt="true"
+      >
+        <p lang="in" dir="ltr">
           Tahun lalu iseng iseng nyari, eh nemu seakun ini. Pertama cuma iseng
           <br />sebulan sebulan, lama lama keterusan sampe setahun lebih.
           Langganan <br />dari dulu jaman transfer masih manual bank, sekarang
@@ -30,6 +135,7 @@
           >20 November 23023</a
         >
       </blockquote>
+
       <blockquote
         class="twitter-tweet"
         data-lang="id"
@@ -77,86 +183,7 @@
           >November 12, 2022</a
         >
       </blockquote>
-      <!-- <blockquote
-        class="twitter-tweet"
-        data-lang="id"
-        data-theme="light"
-        data-cards="hidden"
-        tw-align-center
-        data-dnt="true"
-      >
-        <p lang="in" dir="ltr">
-          semenjak dikenalin temen
-          <a href="https://t.co/WuEAaLRYry">https://t.co/WuEAaLRYry</a> skrg
-          jadi langganan disana semua. youtube premiun gue yg biasanya pribadi.
-          70k tiap bulan jadi 25k 😭❤️
-        </p>
-        &mdash; Pecinta Mie ayam (@kusukabawang)
-        <a
-          href="https://twitter.com/kusukabawang/status/1591396826128986112?ref_src=twsrc%5Etfw"
-          >November 12, 2022</a
-        >
-      </blockquote> -->
-      <blockquote
-        class="twitter-tweet"
-        data-lang="id"
-        data-theme="light"
-        data-cards="hidden"
-        tw-align-center
-        data-dnt="true"
-      >
-        <p lang="in" dir="ltr">
-          kalo mau beli trusted mending di seakun .id ajaaa tapi aku baru nyoba
-          netflix disitu sih dan trusted bgt beneran gapernah problem, rules nya
-          juga ga aneh2
-        </p>
-        &mdash; ☁︎ (@reineverse)
-        <a
-          href="https://twitter.com/reineverse/status/1584384361679720449?ref_src=twsrc%5Etfw"
-          >October 24, 2022</a
-        >
-      </blockquote>
-      <blockquote
-        data-cards="hidden"
-        tw-align-center
-        class="twitter-tweet"
-        data-lang="id"
-        data-theme="light"
-      >
-        <p lang="in" dir="ltr">
-          That&#39;s why aku males beli akun apapun di twitter. Mending kalian
-          pada beli di
-          <a href="https://t.co/XgeCqEEGBJ">https://t.co/XgeCqEEGBJ</a> aja deh,
-          sistemnya sharing, dan nggak pernah bermasalah
-        </p>
-        &mdash; gia🍓🍀🎲 (@bberrywinkle)
-        <a
-          href="https://twitter.com/bberrywinkle/status/1554854873463541765?ref_src=twsrc%5Etfw"
-          >August 3, 2022</a
-        >
-      </blockquote>
-      <!-- <blockquote
-        data-cards="hidden"
-        data-lang="id"
-        data-theme="light"
-        tw-align-center
-        class="twitter-tweet"
-        data-conversation="none"
-      >
-        <p lang="in" dir="ltr">
-          Ni contoh word online. Bisa full features. Jangan subscribe office 365
-          yg 30 ribu di playstore, soalnya, ternyata ga masuk Full premium.
-          Mending beli di
-          <a href="https://t.co/6upEgpt0IZ">https://t.co/6upEgpt0IZ</a>
-          sama-sama 30 ribu tapi full premium.
-          <a href="https://t.co/P8A8Vmqs3h">pic.twitter.com/P8A8Vmqs3h</a>
-        </p>
-        &mdash; Mocheve (@zhafara88)
-        <a
-          href="https://twitter.com/zhafara88/status/1543592122351177733?ref_src=twsrc%5Etfw"
-          >July 3, 2022</a
-        >
-      </blockquote> -->
+
       <blockquote
         data-cards="hidden"
         tw-align-center
