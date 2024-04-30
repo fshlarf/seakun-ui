@@ -73,13 +73,6 @@ import Card from '~/components/mollecules/ArticleCardBlog.vue';
 import PaginationButton from '~/components/mollecules/PaginationButtonBlog.vue';
 
 export default {
-  props: {
-    articles: {
-      type: Array,
-      required: true,
-      default: () => [],
-    },
-  },
   components: {
     Card,
     PaginationButton,

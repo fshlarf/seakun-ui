@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-full w-full cursor-pointer rounded-[6px] bg-cover hover:shadow-md"
+    class="w-full cursor-pointer rounded-[6px] bg-cover hover:shadow-md"
     :style="`background-image: url('${article.image}')`"
   >
     <div
@@ -9,7 +9,7 @@
       <div>
         <!-- Category Tag -->
         <template v-if="showLabel">
-          <CategoryTag :title="article.label" :type="label - type" />
+          <CategoryTag :label="article.label" :type="labelType" />
         </template>
 
         <!-- Title -->
@@ -67,7 +67,17 @@ export default {
     },
     size: {
       type: String,
-      default: "small",
+      default: 'small',
+    },
+    labelType: {
+      type: String,
+      default: 'light',
+    },
+    label: {
+      type: String,
+    },
+    type: {
+      type: String,
     },
     showLabel: {
       type: Boolean,
@@ -79,17 +89,17 @@ export default {
   },
   computed: {
     captionPadding() {
-      return this.size === "small" ? "p-2 md:p-5" : "p-3 md:p-7";
+      return this.size === 'small' ? 'p-2 md:p-5' : 'p-3 md:p-7';
     },
     titleSize() {
-      return this.size === "small"
-        ? "text-[12px] md:text-[14px] "
-        : "text-[20px] md:text-[24px]";
+      return this.size === 'small'
+        ? 'text-[12px] md:text-[14px] '
+        : 'text-[20px] md:text-[24px]';
     },
     descriptionSize() {
-      return this.size === "small"
-        ? "text-[10px] md:text-[12px] "
-        : "text-[14px] md:text-[16px]";
+      return this.size === 'small'
+        ? 'text-[10px] md:text-[12px] '
+        : 'text-[14px] md:text-[16px]';
     },
   },
 };
@@ -97,6 +107,6 @@ export default {
 
 <style>
 .title-font {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 </style>

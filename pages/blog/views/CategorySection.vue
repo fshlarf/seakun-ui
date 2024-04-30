@@ -147,54 +147,47 @@ import Card from '~/components/mollecules/ArticleCardBlog.vue';
 import SeeMoreTag from '~/components/mollecules/SeeMoreTagBlog.vue';
 
 export default {
-  props: {
-    articles: {
-      type: Array,
-      required: true,
-      default: [],
-    },
-  },
   components: {
     Card,
-    SeeMoreTag
+    SeeMoreTag,
   },
   data() {
     return {
       article_list: [
         {
-          title: "Top 3 Netflix Movies 2023",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Film",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'Top 3 Netflix Movies 2023',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Film',
+          image: '/images/seakun-blog/netflix.jpg',
         },
         {
-          title: "Top 10 Most Streamed Songs on Spotify 2023",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Musik",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'Top 10 Most Streamed Songs on Spotify 2023',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Musik',
+          image: '/images/seakun-blog/netflix.jpg',
         },
         {
-          title: "Duolingo Tips That EVERY User Should Know",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Film",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'Duolingo Tips That EVERY User Should Know',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Film',
+          image: '/images/seakun-blog/netflix.jpg',
         },
         {
-          title: "What is Google One, and Is it Worth Paying For?",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Musik",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'What is Google One, and Is it Worth Paying For?',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Musik',
+          image: '/images/seakun-blog/netflix.jpg',
         },
         {
-          title: "What is Google One, and Is it Worth Paying For?",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Musik",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'What is Google One, and Is it Worth Paying For?',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Musik',
+          image: '/images/seakun-blog/netflix.jpg',
         },
       ],
     };
@@ -202,9 +195,8 @@ export default {
 };
 </script>
 
-
 <style>
 .title-font {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 </style>

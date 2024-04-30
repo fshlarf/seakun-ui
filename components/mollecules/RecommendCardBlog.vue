@@ -7,7 +7,7 @@
     <div class="w-full pl-[12px]">
       <!-- Tag -->
       <template v-if="showLabel">
-        <CategoryTag :title="article.label" />
+        <CategoryTag :label="article.label" />
       </template>
 
       <!-- Title -->
@@ -40,7 +40,7 @@
 
         <!-- Tag -->
         <template v-if="showLabelMedium">
-          <CategoryTag :title="article.label" />
+          <CategoryTag :label="article.label" />
         </template>
       </div>
 

@@ -38,7 +38,7 @@
 
         <!-- Label -->
         <template v-if="showLabel">
-          <CategoryTag :title="article.label" :type="label_type" />
+          <CategoryTag :label="article.label" />
         </template>
       </div>
     </div>
@@ -74,6 +74,12 @@ export default {
     color: {
       type: String,
       default: 'article',
+    },
+    label: {
+      type: String,
+    },
+    type: {
+      type: String,
     },
   },
   components: {

@@ -127,11 +127,11 @@ export default {
     return {
       menus: [
         {
-          path: '/seakun-blog',
+          path: '/blog',
           label: 'Semua',
         },
         {
-          path: '/seakun-blog/category-film',
+          path: '/blog/category-film',
           label: 'Film',
         },
         {

@@ -63,7 +63,7 @@
                   12 Nov 2023
                 </p>
               </div>
-              <CategoryTag :title="'Film'" :type="label_type" size="small" />
+              <CategoryTag :label="'Film'" size="small" />
             </div>
 
             <!-- Share Icon -->
@@ -283,6 +283,7 @@
             <CardRelated
               card-type="category"
               v-for="(article, id) in paginatedPage"
+              :key="id"
               :article="article"
             />
           </div>
@@ -368,7 +369,6 @@ import PaginationButton from '~/components/mollecules/PaginationButtonBlog.vue';
 import CategoryTag from '~/components/mollecules/CategoryTagBlog.vue';
 
 export default {
-  props: ['articles'],
   components: {
     CardRecommend,
     CardRelated,

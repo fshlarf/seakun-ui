@@ -7,6 +7,7 @@
         :article="left_article"
         label-type="dark"
         size="large"
+        class="h-full"
       />
     </div>
 
@@ -19,8 +20,9 @@
         <Card
           show-label
           :article="article"
-          :size="small"
+          size="small"
           label-type="dark"
+          class="h-full"
         />
       </div>
     </div>
@@ -32,13 +34,6 @@ import CategoryTag from'~/components/mollecules/CategoryTagBlog.vue';
 import Card from '~/components/mollecules/FullImageCardBlog.vue';
 
 export default {
-  props: {
-    articles: {
-      type: Array,
-      required: true,
-      default: () => [],
-    },
-  },
   components: {
     Card,
     CategoryTag

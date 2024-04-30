@@ -12,6 +12,7 @@
         v-for="(article, id) in article_list"
         :key="id"
         :article="article"
+        class="h-full"
       />
     </div>
     <div
@@ -35,40 +36,33 @@ import CardHero from '~/components/mollecules/FullImageCardBlog.vue';
 import CardRecommend from '~/components/mollecules/RecommendCardBlog.vue';
 
 export default {
-  props: {
-    articles: {
-      type: Array,
-      required: true,
-      default: () => [],
-    },
-  },
   components: {
     CardHero,
-    CardRecommend
+    CardRecommend,
   },
   data() {
     return {
       article_list: [
         {
-          title: "Top 3 Netflix Movies 2023",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Film",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'Top 3 Netflix Movies 2023',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Film',
+          image: '/images/seakun-blog/netflix.jpg',
         },
         {
-          title: "Top 3 Netflix Movies 2023",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Musik",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'Top 3 Netflix Movies 2023',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Musik',
+          image: '/images/seakun-blog/netflix.jpg',
         },
         {
-          title: "Top 3 Netflix Movies 2023",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Film",
-          image: "/images/seakun-blog/netflix.jpg",
+          title: 'Top 3 Netflix Movies 2023',
+          created_at: '2024-01-02',
+          author: 'Seakun.id',
+          label: 'Film',
+          image: '/images/seakun-blog/netflix.jpg',
         },
       ],
     };
@@ -76,9 +70,8 @@ export default {
 };
 </script>
 
-
 <style>
 .title-font {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 </style>
