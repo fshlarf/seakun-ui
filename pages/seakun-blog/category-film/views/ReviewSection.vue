@@ -63,7 +63,7 @@
         class="grid w-full grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-4"
       >
         <CardHero
-          class="!h-36 md:h-[180px] lg:h-[280px]"
+          class="h-36 md:h-[180px] lg:h-[280px]"
           v-for="(article, id) in paginatedPage"
           :key="id"
           :article="article"
