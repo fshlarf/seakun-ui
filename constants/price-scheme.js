@@ -3624,7 +3624,7 @@ export const providerList = [
     name: 'Adobe Illustrator',
     slug: 'adobe-illustrator',
     title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/adobe-ilustrator.png',
+    img: '/images/product/brand/adobe-illustrator.png',
     screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
     screenshotMobile:
       '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
@@ -3671,7 +3671,7 @@ export const providerList = [
     name: 'ChatGPT Plus',
     slug: 'chat-gpt-plus',
     title: 'ChatGPT Plus',
-    img: '/images/product/brand/chat-gpt.png',
+    img: '/images/product/brand/chat-gpt-plus.png',
     screenshot: '/images/price-scheme/desktop/chat-gpt-web-annual.webp',
     screenshotMobile: '/images/price-scheme/mobile/chat-gpt-web-annual.webp',
     desc: 'ChatGPT Plus Paket Premium 1 Bulan',
@@ -3704,11 +3704,11 @@ export const providerList = [
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp5.333.33',
+        value: 'Rp8.333.33',
       },
       {
         title: 'Harga Paket 1 Bulan',
-        value: 'Rp60.000',
+        value: 'Rp63.000',
         is_total: true,
       },
     ],
