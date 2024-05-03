@@ -35,7 +35,7 @@
       >
         <img
           class="w-6/12 mx-auto"
-          src="/images/sekurban/thankyou.png"
+          src="/images/sekurban-new/thankyou.png"
           alt="pembayaran sukses"
         />
       </template>
@@ -48,7 +48,7 @@
       </template>
 
       <div class="text-center tn:px-4 md:px-12 tn:mb-4">
-        <h3 class="font-bold text-3xl tn:mt-4 text-center">Terima Kasih!</h3>
+        <h3 class="font-bold text-3xl tn:mt-8 text-center">Terima Kasih!</h3>
         <p
           v-if="
             dataOrder.length > 0 && dataOrder[0].provider.slug === 'sekurban'
@@ -153,6 +153,26 @@
             >082124852235</a
           >
         </p>
+      </div>
+      <div v-else>
+        <div
+          class="mt-4 bg-[#E9FCF8] px-3 md:px-4 py-3 md:py-[11px] flex items-start gap-2 md:gap-3 rounded-lg border border-[#D6F5EF]"
+        >
+          <img
+            src="/images/illustration/installment-payment.webp"
+            alt="intallment"
+            class="w-[50px] h-[37px] hidden md:block"
+          />
+          <img
+            src="/images/icons/atoms/exclamation-mark-symbol.svg"
+            alt="warning"
+            class="w-4 h-4 md:hidden"
+          />
+          <p class="text-xs text-[#417465]">
+            Kamu telah memilih pembayaran dengan cicilan dua kali. Pembayaran
+            kedua harus dibayarkan paling lambat tanggal 5 Juni 2024.
+          </p>
+        </div>
       </div>
 
       <Button
