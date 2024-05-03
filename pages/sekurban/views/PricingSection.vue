@@ -10,7 +10,7 @@
       <div
         class="w-full lg:w-2/4 text-center mx-0 lg:mx-20 my-[41.5px] md:my-[44px] lg:my-[44px]"
       >
-        <div class="mb-8 md:mb-5">
+        <div class="mb-[10px] md:mb-4">
           <div
             class="text-xs md:text-sm font-bold bg-[#C0F5EA] text-primary py-1 lg:py-1.5 px-2 lg:px-3 inline-block rounded-lg"
           >
@@ -26,6 +26,13 @@
             oleh Seakun, Kitabisa dan Ecoqurban.
           </p>
         </div>
+        <section class="mb-4 md:mb-5">
+          <img
+            src="/images/illustration/labels-can-pay-twice.webp"
+            alt="installment-payment"
+            class="w-[200px] h-[46px] md:w-[261px] md:h-[59px] mx-auto"
+          />
+        </section>
         <div class="bg-[#D7FCF2] rounded-xl border-2 border-primary p-3 lg:p-4">
           <div class="flex flex-col gap-1 lg:gap-3">
             <div class="flex justify-between items-center">
