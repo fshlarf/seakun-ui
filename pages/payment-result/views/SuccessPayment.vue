@@ -84,7 +84,41 @@
             </template>
           </div>
         </div>
-        <div class="px-3">
+
+        <div v-if="dataOrder[0].provider.slug === 'sekurban'" class="px-3">
+          <div class="mt-3">
+            <div
+              v-if="transferAmount == 946000"
+              class="flex justify-between items-center text-sm md:text-base"
+            >
+              <p>Biaya Cicilan Pertama</p>
+              <p class="font-bold">
+                {{ currencyFormat(transferAmount - serviceFee) }}
+              </p>
+            </div>
+            <div
+              v-else
+              class="flex justify-between items-center text-sm md:text-base"
+            >
+              <p>Biaya Langganan</p>
+              <p class="font-bold">{{ currencyFormat(totalPrice) }}</p>
+            </div>
+            <div class="flex justify-between items-center text-sm md:text-base">
+              <p>Biaya Transfer & Tax</p>
+              <p class="font-bold">{{ currencyFormat(serviceFee) }}</p>
+            </div>
+          </div>
+          <hr class="mt-3" />
+          <div class="mt-4">
+            <div class="flex items-center justify-between">
+              <p>Total Pembayaran</p>
+              <p class="font-bold text-[18px]">
+                {{ currencyFormat(transferAmount) }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div v-else class="px-3">
           <div class="mt-3">
             <div class="flex justify-between items-center text-sm md:text-base">
               <p>Biaya Langganan</p>
@@ -147,6 +181,10 @@ export default {
       default: () => [],
     },
     totalPrice: {
+      type: Number,
+      default: null,
+    },
+    transferAmount: {
       type: Number,
       default: null,
     },

@@ -7,6 +7,7 @@
       v-else-if="result == 'true'"
       :data-order="dataOrders"
       :total-price="totalTransfer"
+      :transfer-amount="transferAmount"
       @onClick="toHomePage()"
     />
     <FailedPayment :order="mainOrder" v-else />
@@ -30,6 +31,7 @@ export default {
     dataOrders: [],
     isLoadingDataOrder: true,
     totalTransfer: null,
+    transferAmount: null,
     mainOrder: {},
   }),
   mounted() {
@@ -51,6 +53,7 @@ export default {
           let total = 0;
           dataResult.forEach((el) => {
             total = total + el.payment.totalPrice;
+            this.transferAmount += el.payment.transferAmount;
           });
           this.totalTransfer = total;
           this.mainOrder = this.dataOrders[0];

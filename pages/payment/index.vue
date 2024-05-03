@@ -474,6 +474,22 @@ export default {
     },
     async createInvoice() {
       this.isLoadingPaymentButton = true;
+      if (this.isInstallmentPayments) {
+        const notesPayload = {
+          orderUid: this.orderData[0].orderUid,
+          customerUid: this.customerUid,
+          notes: 'Cicilan 2x',
+        };
+        const isNotesUpdated = await this.updateOrderNotes(notesPayload);
+        if (!isNotesUpdated) {
+          this.$alert.show({
+            status: 'error',
+            message: 'Terjadi kesalahan. Harap coba kembali',
+          });
+          this.isLoadingPaymentButton = false;
+          return;
+        }
+      }
       const { PaymentService } = this;
       const orders = this.orderData
         .filter((item) => item.checked)
@@ -518,6 +534,21 @@ export default {
           status: 'error',
           message: 'Terjadi kesalahan. Harap coba kembali',
         });
+      }
+    },
+    async updateOrderNotes(payload) {
+      try {
+        const fetchUpdateNotes = await this.OrderService.updateOrderNotes(
+          payload
+        );
+        if (fetchUpdateNotes.data) {
+          return true;
+        } else {
+          return false;
+        }
+      } catch (error) {
+        console.log(error);
+        return false;
       }
     },
     manualPayment() {
