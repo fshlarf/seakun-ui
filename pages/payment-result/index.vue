@@ -1,7 +1,11 @@
 <template>
   <div>
     <div v-if="isLoadingDataOrder" class="flex justify-center py-80 z-10">
-      <div class="spinner-border text-primary opacity-50"></div>
+      <div
+        class="w-full flex justify-center text-primary opacity-50 tn:pb-6 tn:pt-20"
+      >
+        <i class="fa-solid fa-circle-notch fa-spin fa-5x mx-auto"></i>
+      </div>
     </div>
     <SuccessPayment
       v-else-if="result == 'true'"
@@ -71,13 +75,4 @@ export default {
   },
 };
 </script>
-<style>
-.spinner-border {
-  display: flex;
-  justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  border: 0.5em solid currentColor;
-  border-right-color: transparent;
-}
-</style>
+<style></style>
