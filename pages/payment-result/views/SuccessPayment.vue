@@ -154,7 +154,13 @@
           >
         </p>
       </div>
-      <div v-else>
+      <div
+        v-else-if="
+          dataOrder.length > 0 &&
+          dataOrder[0].provider.slug == 'sekurban' &&
+          totalTransfer == 946000
+        "
+      >
         <div
           class="mt-4 bg-[#E9FCF8] px-3 md:px-4 py-3 md:py-[11px] flex items-start gap-2 md:gap-3 rounded-lg border border-[#D6F5EF]"
         >
