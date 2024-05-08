@@ -186,7 +186,7 @@
 
 <script>
 import Button from '~/components/atoms/Button';
-import OrderCard from './OrderCard.vue';
+import OrderCard from './OrderCardOld.vue';
 import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
 import ZapOrderCard from '~/components/mollecules/ZapOrderCard.vue';
 import { currencyFormat } from '~/helpers/word-transformation.js';

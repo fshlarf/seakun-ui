@@ -7,13 +7,15 @@
         <i class="fa-solid fa-circle-notch fa-spin fa-5x mx-auto"></i>
       </div>
     </div>
+
     <SuccessPayment
-      v-else-if="result == 'true'"
+      v-else-if="result"
       :data-order="dataOrders"
       :total-price="totalTransfer"
       :transfer-amount="transferAmount"
       @onClick="toHomePage()"
     />
+
     <FailedPayment :order="mainOrder" v-else />
   </div>
 </template>
@@ -21,6 +23,7 @@
 import OrderService from '~/services/OrderServices.js';
 import SuccessPayment from './views/redesign/SuccessPayment.vue';
 import FailedPayment from './views/FailedPayment.vue';
+import Article from './views/Article.vue';
 
 export default {
   name: 'PaymentResult',
@@ -29,6 +32,7 @@ export default {
   components: {
     SuccessPayment,
     FailedPayment,
+    Article,
   },
   data: () => ({
     OrderService,

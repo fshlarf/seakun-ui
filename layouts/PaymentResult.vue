@@ -1,9 +1,9 @@
 <template>
   <div>
     <div
-      class="w-full fixed top-0 z-40 flex items-center bg-white shadow h-[49px] sm:h-[64px] pl-4 md:pl-40"
+      class="w-full fixed top-0 z-40 flex items-center bg-white shadow h-[49px] sm:h-[64px] px-5 md:px-9 lg:px-40"
     >
-      <nuxt-link to="/">
+      <nuxt-link to="/" class="w-full max-w-[728px] mx-auto">
         <img
           class="h-6 w-[100px] sm:h-[40px] sm:w-[163px]"
           src="/images/navbar/new_brand_seakun.svg"
@@ -11,7 +11,7 @@
         />
       </nuxt-link>
     </div>
-    <div class="mt-[73px] lg:mt-[101px] px-40">
+    <div class="mt-[73px] lg:mt-[101px] px-5 md:px-9 lg:px-40">
       <Nuxt />
     </div>
   </div>

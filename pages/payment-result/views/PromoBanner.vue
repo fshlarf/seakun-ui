@@ -91,21 +91,6 @@ export default {
   },
   data() {
     return {
-      mobileBanners: [
-        {
-          id: 1,
-          img: '/images/promo/sequrban-mobile.webp',
-          internalLink: '/sekurban',
-        },
-        {
-          id: 2,
-          img: '/images/promo/wa-mobile.webp',
-        },
-        {
-          id: 3,
-          img: '/images/promo/netflix-info-mobile.webp',
-        },
-      ],
       desktopBanners: [
         {
           id: 1,
@@ -162,14 +147,8 @@ export default {
       observer.observe(element);
     },
     selectBannersByScreenSize() {
-      let screen = window.innerWidth;
-      if (screen <= 500) {
-        this.banners = this.mobileBanners;
-        this.activeSlider = this.mobileBanners[0];
-      } else {
-        this.banners = this.desktopBanners;
-        this.activeSlider = this.desktopBanners[0];
-      }
+      this.banners = this.desktopBanners;
+      this.activeSlider = this.desktopBanners[0];
     },
     scrollTo(id) {
       const container = document.getElementById('promo-scroll');
