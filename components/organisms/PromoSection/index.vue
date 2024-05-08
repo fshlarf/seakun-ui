@@ -83,10 +83,16 @@ export default {
         },
         {
           id: 2,
-          img: '/images/promo/wa-mobile.webp',
+          img: '/images/promo/uang-kaget-mobile.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
           id: 3,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 4,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
@@ -98,10 +104,16 @@ export default {
         },
         {
           id: 2,
-          img: '/images/promo/wa-desktop.webp',
+          img: '/images/promo/uang-kaget-desktop.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
           id: 3,
+          img: '/images/promo/wa-desktop.webp',
+        },
+        {
+          id: 4,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
