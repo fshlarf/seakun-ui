@@ -3624,7 +3624,7 @@ export const providerList = [
     name: 'Adobe Illustrator',
     slug: 'adobe-illustrator',
     title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/adobe-ilustrator.png',
+    img: '/images/product/brand/adobe-illustrator.png',
     screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
     screenshotMobile:
       '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
@@ -3663,6 +3663,52 @@ export const providerList = [
       {
         title: 'Harga Paket 1 Tahun',
         value: 'Rp890.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'ChatGPT Plus',
+    slug: 'chat-gpt-plus',
+    title: 'ChatGPT Plus',
+    img: '/images/product/brand/chat-gpt-plus.png',
+    screenshot: '/images/price-scheme/desktop/chat-gpt-web-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/chat-gpt-web-annual.webp',
+    desc: 'ChatGPT Plus Paket Premium 1 Bulan',
+
+    member: 6,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di ChatGPT',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 6 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>ChatGPT Plus</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'ChatGPT Plus',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp328.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '6',
+      },
+      {
+        title: 'Harga Patungan',
+        value: '(Rp328.000 ÷ 6) = Rp54.666.67',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp8.333.33',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp63.000',
         is_total: true,
       },
     ],
