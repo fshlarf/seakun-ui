@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex border-[1px] border-green-seakun py-[11px] px-[11px] md:py-6 md:pl-6 md:pr-[50px] bg-white mt-3 rounded-xl items-center"
+    class="flex border-[1px] border-green-seakun py-[11px] px-[11px] md:py-6 md:px-6 bg-white mt-3 rounded-xl items-center"
   >
     <div class="w-full">
       <div class="">
