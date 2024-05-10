@@ -1,77 +1,37 @@
 <template>
-  <div
-    class="thankyou max-w-2xl w-full mx-auto tn:pt-6 md:pt-12 tn:-mb-4 md:mb-0"
-  >
-    <img
-      class="w-full tn:hidden md:block cursor-pointer -mt-12"
-      src="/images/general-gift/thankyou.png"
-      alt="thr banner"
-      @click="toTipPage"
-    />
-    <!-- <img
-      @click="toSekurbanPage"
-      src="/images/thankyou/sequrban-banner-website.png"
-      alt="sequrban banner"
-      class="cursor-pointer tn:hidden md:block"
-    /> -->
-    <div
-      class="md:rounded-3xl md:shadow-md tn:px-3 md:px-8 lg:px-16 md:py-8 w-full md:mt-4"
-    >
-      <!-- <img
-        @click="toSekurbanPage"
-        src="/images/thankyou/sequrban-banner-mobile.png"
-        alt="sequrban banner"
-        class="cursor-pointer md:hidden w-full mb-7"
-      /> -->
-      <img
-        class="w-full md:hidden tn:mb-6 cursor-pointer"
-        src="/images/general-gift/thankyou-mobile.png"
-        alt="thr banner"
-        @click="toTipPage"
+  <div class="flex flex-col justify-center md:flex-row gap-x-6 w-full pb-10">
+    <section class="w-full relative max-w-[728px]">
+      <PromoBanner
+        addClass="''"
+        classImg="md:!h-[170px] !h-[116px]"
+        radioClass="!mt-2 md:!mt-3"
       />
-      <!-- <template v-if="!isLoading"> -->
-      <template
-        v-if="dataOrder.length > 0 && dataOrder[0].provider.slug === 'sekurban'"
+
+      <section
+        class="bg-[#E2FCF6] px-[33px] py-3 flex md:flex-row flex-col-reverse justify-between items-center gap-3 rounded-t-xl md:mt-4 mt-[100px]"
       >
+        <div class="text-center md:text-left">
+          <p class="font-extrabold text-base md:text-[24px] text-primary">
+            Terima Kasih!
+          </p>
+          <p
+            class="text-xs md:text-sm text-gray-secondary max-w-[2820px] md:max-w-[450px] pt-1 md:pt-2"
+          >
+            Konfirmasi pembayaranmu telah berhasil. Admin akan segera
+            menghubungi untuk memberikan detail pesananmu.
+          </p>
+        </div>
         <img
-          class="w-6/12 mx-auto"
-          src="/images/sekurban-new/thankyou.png"
-          alt="pembayaran sukses"
+          src="/images/payment-result/thankyou.webp"
+          alt="thankyou"
+          class="w-[122px] md:w-[136px] h-[109px] -mt-24 -mb-2 md:mb-0 md:mt-0"
         />
-      </template>
-      <template v-else>
-        <img
-          class="w-6/12 mx-auto"
-          src="/images/thank-you-new.png"
-          alt="pembayaran sukses"
-        />
-      </template>
-
-      <div class="text-center tn:px-4 md:px-12 tn:mb-4">
-        <h3 class="font-bold text-3xl tn:mt-8 text-center">Terima Kasih!</h3>
-        <p
-          v-if="
-            dataOrder.length > 0 && dataOrder[0].provider.slug === 'sekurban'
-          "
-          class="text-center md:text-lg tn:mt-2 text-gray-500"
-        >
-          Konfirmasi pembayaranmu telah berhasil. Terimakasih sudah mengikuti
-          <span class="font-bold"
-            >Program Patungan Qurban Seakun x Kitabisa x Ecoqurban</span
-          >. Untuk informasi tentang jadwal pelaksanaan proses qurban, akan
-          diinformasikan mendekati hari H (Idul Adha).
-        </p>
-        <p v-else class="text-center md:text-lg tn:mt-4 text-gray-500">
-          Konfirmasi pembayaranmu telah berhasil. Admin akan segera menghubungi
-          untuk memberikan detail pesananmu.
-        </p>
-      </div>
-
-      <div
-        class="tn:px-4 md:px-6 tn:py-4 md:py-8 mt-2 tn:mb-4 md:mb-6 lg:mb-8 bg-gray-50 shadow-md tn:rounded-xl md:rounded-3xl"
+      </section>
+      <section
+        class="bg-[#F6FFFD] border border-[#E2FCF6] px-3 md:px-[33px] py-[9px] md:py-4 rounded-b-xl"
       >
         <div>
-          <p class="font-bold text-lg">Detail Pesanan</p>
+          <p class="font-bold text-sm md:text-lg">Detail Pesanan</p>
           <div v-for="(detailOrder, id) in dataOrder" :key="id">
             <template v-if="detailOrder.provider.slug === 'sekurban'">
               <SekurbanOrderCard :sekurban="detailOrder" />
@@ -84,77 +44,125 @@
             </template>
           </div>
         </div>
-
         <div v-if="dataOrder[0].provider.slug === 'sekurban'" class="px-3">
-          <div class="mt-3">
+          <div class="mt-4 md:mt-5 space-y-3 md:space-y-[14px]">
             <div
               v-if="transferAmount == 946000"
-              class="flex justify-between items-center text-sm md:text-base"
+              class="flex justify-between items-center text-xs md:text-sm text-gray-secondary"
             >
               <p>Biaya Cicilan Pertama</p>
-              <p class="font-bold">
+              <p>
                 {{ currencyFormat(transferAmount - serviceFee) }}
               </p>
             </div>
             <div
               v-else
-              class="flex justify-between items-center text-sm md:text-base"
+              class="flex justify-between items-center text-xs md:text-sm text-gray-secondary"
             >
               <p>Biaya Langganan</p>
-              <p class="font-bold">{{ currencyFormat(totalPrice) }}</p>
+              <p>{{ currencyFormat(totalPrice) }}</p>
             </div>
             <div class="flex justify-between items-center text-sm md:text-base">
               <p>Biaya Transfer & Tax</p>
-              <p class="font-bold">{{ currencyFormat(serviceFee) }}</p>
+              <p>{{ currencyFormat(serviceFee) }}</p>
             </div>
           </div>
           <hr class="mt-3" />
           <div class="mt-4">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between font-bold">
               <p>Total Pembayaran</p>
-              <p class="font-bold text-[18px]">
+              <p class="text-primary">
                 {{ currencyFormat(transferAmount) }}
               </p>
             </div>
           </div>
         </div>
         <div v-else class="px-3">
-          <div class="mt-3">
-            <div class="flex justify-between items-center text-sm md:text-base">
+          <div class="mt-4 md:mt-5 space-y-3 md:space-y-[14px]">
+            <div
+              class="flex justify-between items-center text-xs md:text-sm text-gray-secondary"
+            >
               <p>Biaya Langganan</p>
-              <p class="font-bold">{{ currencyFormat(totalPrice) }}</p>
+              <p>{{ currencyFormat(totalPrice) }}</p>
             </div>
-            <div class="flex justify-between items-center text-sm md:text-base">
+            <div
+              class="flex justify-between items-center text-xs md:text-sm text-gray-secondary"
+            >
               <p>Biaya Transfer & Tax</p>
-              <p class="font-bold">{{ currencyFormat(serviceFee) }}</p>
+              <p>{{ currencyFormat(serviceFee) }}</p>
             </div>
           </div>
-          <hr class="mt-3" />
-          <div class="mt-4">
-            <div class="flex items-center justify-between">
+          <hr class="mt-2 md:mt-3" />
+          <div class="mt-2 md:mt-4">
+            <div
+              class="flex justify-between items-center text-xs md:text-sm text-gray-secondary font-bold"
+            >
               <p>Total Pembayaran</p>
-              <p class="font-bold text-[18px]">
+              <p class="text-primary">
                 {{ currencyFormat(totalTransfer) }}
               </p>
             </div>
           </div>
         </div>
-      </div>
-
-      <div
+        <!-- <div>
+          <div class="mt-4 md:mt-5 space-y-3 md:space-y-[14px]">
+            <div
+              class="flex justify-between items-center text-sm md:text-sm text-gray-secondary"
+            >
+              <p>Biaya Langganan</p>
+              <p>{{ currencyFormat(totalPrice) }}</p>
+            </div>
+            <div
+              class="flex justify-between items-center text-sm md:text-sm text-gray-secondary"
+            >
+              <p>Biaya Transfer & Tax</p>
+              <p>{{ currencyFormat(serviceFee) }}</p>
+            </div>
+          </div>
+          <hr class="mt-2 md:mt-3" />
+          <div class="mt-2 md:mt-4">
+            <div class="flex items-center justify-between font-bold text-sm">
+              <p class="text-gray-secondary">Total Pembayaran</p>
+              <p class="text-primary">
+                {{ currencyFormat(totalTransfer) }}
+              </p>
+            </div>
+          </div>
+        </div> -->
+      </section>
+      <section
         v-if="dataOrder.length > 0 && dataOrder[0].provider.slug !== 'sekurban'"
       >
-        <p class="tn:mt-4 md:mt-6 lg:mt-8">
-          Mohon menunggu 1 x 24 jam, jika melewati rentang waktu tersebut dan
-          pesanan kamu belum diproses, harap hubungi admin via whatsapp
-          <a
-            class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852235"
-            >082124852235</a
-          >
-        </p>
-      </div>
-      <div v-else>
+        <div
+          class="bg-[#FFC801]/10 border border-[#F9F0CE] rounded-lg p-[7px] md:p-3 text-xs md:text-sm flex items-start gap-1 md:gap-2 mt-5"
+        >
+          <img
+            src="/images/icons/atoms/info-rounded-black.svg"
+            alt="info"
+            class="w-[16px] h-[16px] md:w-6 md:h-6"
+          />
+          <section>
+            <p>
+              <span class="font-bold"> Mohon menunggu 1 x 24 jam. </span>
+              Jika melewati rentang waktu tersebut dan pesanan kamu belum
+              diproses, harap hubungi admin via whatsapp
+              <a
+                class="text-blue-500"
+                href="https://api.whatsapp.com/send?phone=6282124852235"
+                >082124852235</a
+              >
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <div
+        v-else-if="
+          dataOrder.length > 0 &&
+          dataOrder[0].provider.slug == 'sekurban' &&
+          transferAmount == 946000
+        "
+      >
         <div
           class="mt-4 bg-[#E9FCF8] px-3 md:px-4 py-3 md:py-[11px] flex items-start gap-2 md:gap-3 rounded-lg border border-[#D6F5EF]"
         >
@@ -176,25 +184,64 @@
       </div>
 
       <Button
-        class="w-full bg-green-seakun text-white tn:mt-5 md:mt-6 py-[12px] rounded-2xl"
+        class="w-full bg-green-seakun text-white tn:mt-5 md:mt-6 py-[15px] md:py-[20px] rounded-2xl"
         label="Kembali ke beranda"
         @click="toHomePage()"
       />
-    </div>
+      <hr class="border-[#E9EDEC] my-8" />
+      <!--start banner tip temporary -->
+      <div>
+        <p class="text-sm md:text-base font-bold text-gray-secondary">
+          Mau Kirim TIP Untuk Seakun?
+        </p>
+        <img
+          class="cursor-pointer min-w-full h-[109px] md:w-[368px] md:h-[200px] rounded-lg mt-3"
+          src="/images/general-gift/send-tip.webp"
+          alt="thr banner"
+          @click="toTipPage"
+        />
+      </div>
+      <!-- end banner tip temporary -->
+    </section>
+
+    <!-- Hide sidebar -->
+    <!-- <section class="min-w-[368px]">
+      <div>
+        <p class="text-sm md:text-base font-bold text-gray-secondary">
+          Mau Kirim TIP Untuk Seakun?
+        </p>
+        <img
+          class="cursor-pointer w-[368px] h-[109px] md:w-[368px] md:h-[120px] rounded-lg mt-3"
+          src="/images/general-gift/send-tip.webp"
+          alt="thr banner"
+          @click="toTipPage"
+        />
+      </div>
+      <Article />
+    </section> -->
   </div>
 </template>
 
 <script>
 import Button from '~/components/atoms/Button';
 import OrderCard from './OrderCard.vue';
-import SekurbanOrderCard from '~/components/mollecules/SekurbanOrderCard.vue';
-import ZapOrderCard from '~/components/mollecules/ZapOrderCard.vue';
+
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
-
+import Article from './Article.vue';
+import PromoBanner from './PromoBanner.vue';
+import ZapOrderCard from '../../../components/mollecules/ZapOrderCard.vue';
+import SekurbanOrderCard from '../../../components/mollecules/SekurbanOrderCard.vue';
 export default {
   name: 'thankyou-page',
-  layout: 'new',
+  components: {
+    Button,
+    OrderCard,
+    PromoBanner,
+    Article,
+    SekurbanOrderCard,
+    ZapOrderCard,
+  },
   props: {
     dataOrder: {
       type: Array,
@@ -227,12 +274,7 @@ export default {
       return fee;
     },
   },
-  components: {
-    Button,
-    OrderCard,
-    SekurbanOrderCard,
-    ZapOrderCard,
-  },
+
   methods: {
     toHomePage() {
       this.$router.push('/');

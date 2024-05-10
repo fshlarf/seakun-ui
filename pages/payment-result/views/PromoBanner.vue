@@ -91,46 +91,17 @@ export default {
   },
   data() {
     return {
-      mobileBanners: [
-        {
-          id: 1,
-          img: '/images/promo/sequrban-mobile.webp',
-          internalLink: '/sekurban',
-        },
-        {
-          id: 2,
-          img: '/images/promo/uang-kaget-mobile.webp',
-          externalLink:
-            'https://x.com/OfficialSeakun/status/1788089320072781888',
-        },
-        {
-          id: 3,
-          img: '/images/promo/wa-mobile.webp',
-        },
-        {
-          id: 4,
-          img: '/images/promo/netflix-info-mobile.webp',
-        },
-      ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/sequrban-desktop.webp',
-          internalLink: '/sekurban',
-        },
-        {
-          id: 2,
-          img: '/images/promo/uang-kaget-desktop.webp',
+          img: '/images/thankyou-promo/1.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 3,
-          img: '/images/promo/wa-desktop.webp',
-        },
-        {
-          id: 4,
-          img: '/images/promo/netflix-info-desktop.webp',
+          id: 2,
+          img: '/images/thankyou-promo/2.webp',
+          internalLink: '/sekurban',
         },
       ],
       banners: [],
@@ -174,14 +145,8 @@ export default {
       observer.observe(element);
     },
     selectBannersByScreenSize() {
-      let screen = window.innerWidth;
-      if (screen <= 500) {
-        this.banners = this.mobileBanners;
-        this.activeSlider = this.mobileBanners[0];
-      } else {
-        this.banners = this.desktopBanners;
-        this.activeSlider = this.desktopBanners[0];
-      }
+      this.banners = this.desktopBanners;
+      this.activeSlider = this.desktopBanners[0];
     },
     scrollTo(id) {
       const container = document.getElementById('promo-scroll');
