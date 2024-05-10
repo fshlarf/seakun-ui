@@ -94,16 +94,14 @@ export default {
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/sequrban-desktop.webp',
-          internalLink: '/sekurban',
+          img: '/images/thankyou-promo/1.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
           id: 2,
-          img: '/images/promo/wa-desktop.webp',
-        },
-        {
-          id: 3,
-          img: '/images/promo/netflix-info-desktop.webp',
+          img: '/images/thankyou-promo/2.webp',
+          internalLink: '/sekurban',
         },
       ],
       banners: [],

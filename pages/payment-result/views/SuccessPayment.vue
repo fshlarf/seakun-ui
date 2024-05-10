@@ -228,10 +228,10 @@ import OrderCard from './OrderCard.vue';
 
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import moment from 'moment';
-import Article from '../Article.vue';
-import PromoBanner from '../PromoBanner.vue';
-import ZapOrderCard from '../../../../components/mollecules/ZapOrderCard.vue';
-import SekurbanOrderCard from '../../../../components/mollecules/SekurbanOrderCard.vue';
+import Article from './Article.vue';
+import PromoBanner from './PromoBanner.vue';
+import ZapOrderCard from '../../../components/mollecules/ZapOrderCard.vue';
+import SekurbanOrderCard from '../../../components/mollecules/SekurbanOrderCard.vue';
 export default {
   name: 'thankyou-page',
   components: {
