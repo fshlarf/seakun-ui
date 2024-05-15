@@ -265,7 +265,10 @@ export default {
         } else {
           localStorage.removeItem('login_data');
         }
-        this.$router.push({ path: '/' });
+        const fromPage = this.$route.query.from;
+        if (fromPage) {
+          this.$router.push(`/${fromPage}`);
+        } else this.$router.push({ path: '/' });
       } catch (error) {
         console.log(error);
         if (error.response.status === 401) {
