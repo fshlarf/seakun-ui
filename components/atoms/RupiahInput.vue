@@ -12,21 +12,15 @@
       <input
         class="relative z-0 appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         :class="({ 'border-danger': error.isError }, classInput)"
-        :type="type"
-        :name="name"
-        v-bind="$attrs"
-        v-on="$listeners"
-        :value="value"
-        :disabled="disabled"
+        type="text"
+        v-model="currentValue"
+        @input="handleInput"
         :placeholder="placeholder"
-        @input="$emit('update', $event.target.value)"
-        @keyup.enter="$emit('pressEnter')"
       />
       <div class="icon-left">
         <slot name="iconLeft"> </slot>
       </div>
     </div>
-
     <p
       v-if="error.isError"
       class="text-red-500 text-xs pt-1 italic"
@@ -39,8 +33,11 @@
 
 <script>
 export default {
-  name: 'Input',
   props: {
+    value: {
+      type: [String, Number],
+      default: '',
+    },
     disabled: {
       type: Boolean,
       default: false,
@@ -52,9 +49,6 @@ export default {
     classInput: {
       type: String | Array,
       default: '',
-    },
-    value: {
-      type: String | Number,
     },
     label: {
       type: String,
@@ -88,9 +82,32 @@ export default {
       default: '',
     },
   },
-  model: {
-    prop: 'value',
-    event: 'update',
+  data() {
+    return {
+      currentValue: '',
+    };
+  },
+  watch: {
+    value: {
+      handler(after) {
+        this.currentValue = this.formatRupiah(after);
+      },
+      immediate: true,
+    },
+  },
+  methods: {
+    formatRupiah(value) {
+      if (value) {
+        return (
+          'Rp ' +
+          (value + '').replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+        );
+      }
+    },
+    handleInput() {
+      this.currentValue = this.formatRupiah(this.currentValue);
+      this.$emit('input', (this.currentValue + '').replace(/[^0-9]/g, ''));
+    },
   },
 };
 </script>
@@ -113,16 +130,5 @@ export default {
     -webkit-appearance: none;
     margin: 0;
   }
-
-  // [type='date'] {
-  //   background: #fff url('/images/icons/atoms/calendar.svg') 97% 50% no-repeat;
-  // }
-  // [type='date']::-webkit-inner-spin-button {
-  //   display: none;
-  // }
-  // [type='date']::-webkit-calendar-picker-indicator {
-  //   opacity: 0;
-  //   cursor: pointer;
-  // }
 }
 </style>
