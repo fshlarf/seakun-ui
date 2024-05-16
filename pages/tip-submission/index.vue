@@ -212,10 +212,12 @@ export default {
       } else {
         this.resetErrorInput('errorName');
         this.resetErrorInput('errorNominal');
+        const parseNominal = parseInt(this.payload.nominal);
         this.payload = {
           ...this.payload,
           isHideNominal: this.payload.isHideNominal ? 1 : 0,
           paymentMethods: [selectedMethod.code],
+          nominal: parseNominal,
         };
         try {
           let i = 0;
@@ -224,7 +226,6 @@ export default {
             const response = await MasterService.addDonation(this.payload);
             if (response.status == 200) {
               const { data } = response.data;
-
               window.location.href = data.redirectURL;
               i = 3;
               break;
