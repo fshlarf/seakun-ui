@@ -10,8 +10,8 @@
           Isi Data Donatur TIP
         </p>
         <p class="text-xs sm:text-sm mt-2 info-header">
-          Silahkan isi data di bawah agar nama kakak bisa masuk ke dalam List
-          Donatur TIP dan ditampilkan di website Seakun.
+          Silakan isi data di bawah untuk masuk ke dalam List Donatur TIP dan
+          ditampilkan di website Seakun.
         </p>
       </header>
       <form class="mt-5 md:mt-6 lg:mt-7">
@@ -19,7 +19,7 @@
           v-model="payload.name"
           :error="errorName"
           label="Nama"
-          placeholder="Masukkan nama asli/samaran"
+          placeholder="Masukkan nama asli / samaran"
         />
         <RupiahInput
           v-model="payload.nominal"
@@ -33,11 +33,11 @@
         <NominalCard class="mt-3" @onClick="handleNominalCard" />
         <div
           class="mt-3 flex items-start md:items-center gap-1 cursor-pointer"
-          @click="payload.isHideNominal = !payload.isHideNominal"
+          @click="isHide = !isHide"
         >
           <img
             :src="
-              payload.isHideNominal
+              isHide
                 ? '/images/seakun-tip/icons/check-active.svg'
                 : '/images/seakun-tip/icons/check.svg'
             "
@@ -45,8 +45,7 @@
             class="w-5 h-5"
           />
           <p class="text-[#474747]/50 text-xs md:text-sm">
-            Sembunyikan nominal TIP pada list donatur: <br class="md:hidden" />
-            "RpXX.XXX"
+            Sembunyikan nominal TIP pada list donatur: "RpXXX"
           </p>
         </div>
         <PaymentMethod
@@ -97,12 +96,13 @@ export default {
       MasterService,
       amount: null,
       isLoadingAddDonation: false,
+      isHide: false,
       payload: {
         donationType: 'tip',
         name: '',
         nominal: 0,
-        isHideNominal: false,
         message: '',
+        isHideNominal: 0,
         paymentMethods: [],
       },
       selectedMethod: {
@@ -213,9 +213,20 @@ export default {
         this.resetErrorInput('errorName');
         this.resetErrorInput('errorNominal');
         const parseNominal = parseInt(this.payload.nominal);
+
+        if (parseNominal < 10000) {
+          this.scrollToTop();
+          this.errorNominal = {
+            isError: true,
+            message: 'Nominal TIP Minimal Rp. 10.000',
+          };
+          this.isLoadingAddDonation = false;
+
+          return;
+        }
         this.payload = {
           ...this.payload,
-          isHideNominal: this.payload.isHideNominal ? 1 : 0,
+          isHideNominal: this.isHide ? 1 : 0,
           paymentMethods: [selectedMethod.code],
           nominal: parseNominal,
         };
@@ -223,6 +234,7 @@ export default {
           let i = 0;
           while (i < 3) {
             const { MasterService } = this;
+
             const response = await MasterService.addDonation(this.payload);
             if (response.status == 200) {
               const { data } = response.data;

@@ -195,7 +195,8 @@
           Mau Kirim TIP Untuk Seakun?
         </p>
         <img
-          class="cursor-pointer min-w-full h-[109px] md:w-[368px] md:h-[200px] rounded-lg mt-3"
+          class="cursor-pointer min-w-full md:w-[368px] rounded-lg mt-3"
+          :class="bannerTIPWidth"
           src="/images/general-gift/send-tip.webp"
           alt="thr banner"
           @click="toTipPage"
@@ -260,6 +261,7 @@ export default {
     return {
       currencyFormat,
       moment,
+      bannerTIPWidth: '',
     };
   },
   computed: {
@@ -274,7 +276,10 @@ export default {
       return fee;
     },
   },
-
+  mounted() {
+    this.handleBannerTIPWidth();
+    window.addEventListener('resize', this.handleBannerTIPWidth);
+  },
   methods: {
     toHomePage() {
       this.$router.push('/');
@@ -284,6 +289,17 @@ export default {
     },
     toTipPage() {
       this.$router.push('/tip');
+    },
+    handleBannerTIPWidth() {
+      if (process.client) {
+        if (window.innerWidth < 425) {
+          this.bannerTIPWidth = 'h-[109px]';
+        } else if (window.innerWidth < 600) {
+          this.bannerTIPWidth = 'h-[150px]';
+        } else if (window.innerWidth < 1024) {
+          this.bannerTIPWidth = 'h-[180px]';
+        } else this.bannerTIPWidth = 'h-[190px]';
+      }
     },
   },
 };
