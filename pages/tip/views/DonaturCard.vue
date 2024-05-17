@@ -5,9 +5,12 @@
     @click="$emit('onClickDonaturCard', donaturData)"
   >
     <p class="text-sm md:text-base">{{ donaturData.name }}</p>
-    <p class="text-[20px] font-bold mt-3 text-[#08A081]">
-      {{ currencyFormat(donaturData.nominal) }}
-    </p>
+    <div class="text-[20px] font-bold mt-3 text-[#08A081]">
+      <p v-if="donaturData.isHideNominal == 1">Rp XXX.XXX</p>
+      <p v-else>
+        {{ currencyFormat(donaturData.nominal) }}
+      </p>
+    </div>
     <div class="mt-5 md:mt-8">
       <img src="/images/icons/atoms/quote.svg" alt="quote icon" />
       <p

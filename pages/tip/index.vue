@@ -38,7 +38,7 @@
             </p>
             <p class="text-xs sm:text-sm md:text-base lg:text-[18px] tn:mt-2">
               Daftar pengguna Seakun yang memberikan apresiasi terbaik berupa
-              TIP ke Tim Seakun yang bertugas.
+              TIP ke tim Seakun yang bertugas.
             </p>
           </div>
           <div class="">
@@ -157,46 +157,44 @@
       </div>
     </section>
     <div
-      class="tn:px-[30px] md:!container tn:mt-12 grid lg:grid-cols-2 tn:gap-4 lg:gap-8 text-justify items-start"
+      class="nunito-font tn:px-[30px] md:!container tn:mt-12 grid lg:grid-cols-2 tn:gap-4 lg:gap-8 text-justify items-start"
     >
       <div
         class="rounded-xl tn:px-[15px] md:px-[20px] lg:px-[30px] tn:py-[12px] md:py-[15px] lg:py-[20px] tn:text-sm text-gray-secondary bg-[#F4F9F8]"
       >
-        <h1 class="font-bold text-[14px]">Hai kak,</h1>
-        <p class="tn:mt-3">
-          Seluruh Tim Seakun mengucapkan terimakasih banyak sudah memberikan
-          kepercayaan kepada kami dalam memberikan layanan terbaik ke seluruh
-          pengguna Seakun, termasuk kakak.
+        <h1 class="font-bold text-[14px]">Hai Kak,</h1>
+        <p class="mt-3">
+          Seluruh tim Seakun mengucapkan terima kasih atas kepercayaan yang
+          Kakak berikan kepada kami dalam memberikan layanan terbaik kepada
+          seluruh pengguna Seakun, termasuk Kakak.
         </p>
-        <p class="tn:mt-3">
-          Tidak terasa sudah 3 tahun lamanya tim Seakun melayani kakak-kakak
-          semua. Sehingga kakak dapat menikmati layanan premium secara legal dan
-          menghemat hingga jutaan rupiah setiap tahunnya.
+        <p class="mt-7">
+          Tidak terasa, sudah 3 tahun tim Seakun hadir, memungkinkan Kakak
+          menikmati layanan premium secara legal dan berbagai keseruan lainnya
+          dengan menghemat hingga jutaan rupiah setiap tahunnya melalui
+          berpatungan.
         </p>
-        <p class="tn:mt-3">
-          Jika kakak merasa sangat terbantu dan senang dengan layanan yang
-          Seakun berikan, kakak bisa mengirimkan TIP untuk Tim Seakun yang
-          bertugas dengan cara klik tombol <b>Kirim TIP untuk Seakun</b> di
-          atas.
+        <p class="mt-7">
+          Jika kakak merasa terbantu dan senang dengan layanan Seakun, Kakak
+          dapat mengirimkan tip untuk tim Seakun dengan cara klik tombol Kirim
+          TIP untuk Seakun di atas.
         </p>
-        <p class="tn:mt-5">Salam, <br />Tim Seakun</p>
+        <p class="mt-7">Salam, <br />Tim Seakun</p>
       </div>
 
       <div
         class="rounded-xl tn:px-[15px] md:px-[20px] lg:px-[30px] tn:py-[12px] md:py-[15px] lg:py-[20px] tn:text-sm text-gray-secondary bg-[#FFF2F2]"
       >
         <h3 class="font-bold text-[14px]">Disclaimer</h3>
-        <p class="tn:mt-3">
-          Program ini bertujuan untuk mewadahi pengguna Seakun dalam memberikan
-          dukungan dan apresiasi yang lebih kepada Tim Seakun yang bertugas,
-          tanpa ada paksaan dari pihak manapun. Program TIP untuk Seakun ini
-          diinisiasi oleh beberapa pengguna Seakun yang senang atas pelayanan
-          yang diberikan oleh Seakun.
+        <p class="mt-3">
+          Progam TIP untuk Seakun merupakan inisiasi dari beberapa pengguna yang
+          senang dengan pelayanan Seakun. Program ini dibentuk untuk mewadahi
+          Sekawan yang ingin memberikan dukungan dan apresiasi lebih ke tim
+          Seakun, tanpa ada paksaan dari pihak manapun.
         </p>
-        <p class="tn:mt-3">
-          Hal-hal yang merupakan tanggung jawab Manajemen Seakun perihal hak-hak
-          karyawan sudah ditunaikan dengan baik dan mengikuti aturan yang
-          berlaku.
+        <p class="mt-7">
+          Manajemen Seakun telah menunaikan tanggung jawab terhadap hak-hak
+          karyawan dengan baik dan sesuai dengan aturan yang berlaku.
         </p>
       </div>
     </div>
@@ -409,6 +407,9 @@ export default {
 
 <style>
 #general-gift {
-  font-family: 'DM Sans', sans-serif !important;
+  font-family: 'DM Sans', sans-serif;
+}
+.nunito-font {
+  font-family: 'Nunito Sans', sans-serif;
 }
 </style>
