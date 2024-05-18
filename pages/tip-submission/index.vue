@@ -161,6 +161,7 @@ export default {
           isVa: true,
         },
       ],
+      defaultPaymentMethods: null,
       errorName: {
         isError: false,
         message: '',
@@ -171,9 +172,23 @@ export default {
       },
     };
   },
+  watch: {
+    payload: {
+      handler(newVal, oldVal) {
+        if (newVal.nominal >= 200000) {
+          this.paymentMethods = this.paymentMethods.map((item) => ({
+            ...item,
+            isVa: false,
+          }));
+        } else this.paymentMethods = this.defaultPaymentMethods;
+      },
+      deep: true,
+    },
+  },
   mounted() {
     this.MasterService = new MasterService(this);
     this.checkAuth();
+    this.defaultPaymentMethods = this.paymentMethods;
   },
   methods: {
     onSelectPaymentMethod(method) {

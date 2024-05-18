@@ -1,6 +1,6 @@
 <template>
   <div
-    class="tn:w-[300px] xl:w-full rounded-xl bg-white p-[20px] min-h-[190px] lg:min-h-[214px]"
+    class="tn:w-[300px] xl:w-full rounded-xl bg-white p-[20px] min-h-[190px] md:min-h-[200px] lg:min-h-[214px]"
   >
     <div class="shimmer w-1/2 h-4"></div>
     <div class="flex space-x-2 items-center text-primary">

@@ -121,14 +121,24 @@
         </div>
         <div
           v-if="isLoadingDataDonation"
-          class="tn:hidden xl:block w-full xl:mt-12 xl:!container"
+          class="tn:hidden relative xl:mt-12 xl:w-full xl:grid xl:grid-cols-4 gap-4 max-w-[1150px] mx-auto px-8"
         >
-          <div class="w-full xl:grid xl:grid-cols-4 items-center gap-4">
-            <DonaturCardLoading />
-            <DonaturCardLoading />
-            <DonaturCardLoading />
-            <DonaturCardLoading />
-          </div>
+          <ButtonChevron
+            v-if="donaturList.pagination.currentPage !== 1"
+            mode="left"
+            class="hidden xl:block absolute z-10 -left-5 top-1/2 transform -translate-y-1/2"
+            variant="bg-white opacity-30"
+          />
+          <DonaturCardLoading />
+          <DonaturCardLoading />
+          <DonaturCardLoading />
+          <DonaturCardLoading />
+
+          <ButtonChevron
+            mode="right"
+            class="hidden xl:block absolute z-10 -right-5 top-1/2 transform -translate-y-1/2"
+            variant="!bg-white opacity-30"
+          />
         </div>
         <!-- desktop view -->
 
