@@ -197,7 +197,7 @@
         <img
           class="cursor-pointer min-w-full md:w-[368px] rounded-lg mt-3"
           :class="bannerTIPWidth"
-          src="/images/general-gift/send-tip.webp"
+          :src="bannerTIPSrc"
           alt="thr banner"
           @click="toTipPage"
         />
@@ -262,6 +262,7 @@ export default {
       currencyFormat,
       moment,
       bannerTIPWidth: '',
+      bannerTIPSrc: '',
     };
   },
   computed: {
@@ -293,12 +294,18 @@ export default {
     handleBannerTIPWidth() {
       if (process.client) {
         if (window.innerWidth < 425) {
-          this.bannerTIPWidth = 'h-[109px]';
+          this.bannerTIPWidth = 'h-[99px]';
+          this.bannerTIPSrc = '/images/general-gift/send-tip.webp';
         } else if (window.innerWidth < 600) {
+          this.bannerTIPSrc = '/images/general-gift/send-tip2.webp';
           this.bannerTIPWidth = 'h-[150px]';
         } else if (window.innerWidth < 1024) {
-          this.bannerTIPWidth = 'h-[180px]';
-        } else this.bannerTIPWidth = 'h-[190px]';
+          this.bannerTIPSrc = '/images/general-gift/send-tip2.webp';
+          this.bannerTIPWidth = 'h-[170px]';
+        } else {
+          this.bannerTIPWidth = 'h-[170px]';
+          this.bannerTIPSrc = '/images/general-gift/send-tip2.webp';
+        }
       }
     },
   },

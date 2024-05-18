@@ -396,7 +396,7 @@ export default {
     },
     handleBannerSource() {
       if (process.client) {
-        window.innerWidth < 768
+        window.innerWidth < 550
           ? (this.bannerSource = '/images/seakun-tip/banner-tip-mobile.webp')
           : (this.bannerSource = '/images/seakun-tip/banner-tip.webp');
       }
