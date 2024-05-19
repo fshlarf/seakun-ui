@@ -2,7 +2,7 @@ export const providerList = [
   {
     name: 'Netflix',
     slug: 'netflix',
-    title: 'Harga Paket Premium (User Host)',
+    title: 'Harga Paket Premium (User Host Non TV)',
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price-scheme/desktop/netflix-host.webp',
     screenshotMobile: '/images/price-scheme/mobile/netflix-host.webp',
@@ -16,11 +16,11 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Netflix User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      'Paket Patungan pada <b>Netflix User Host Non TV</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'User Host (1 Bulan)',
+        value: 'User Host Non TV (1 Bulan)',
         is_total: true,
       },
       {
@@ -63,7 +63,7 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Netflix User Host TV</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      'Paket Patungan pada <b>Netflix User Host TV</b> merupakan produk <b>Ready</b> sesuai dengan ketersedian slot. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke provider seperti Netflix. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>. Dengan paket ini kamu dapat menjadi household dengan login di TV.',
     informations: [
       {
         title: 'Nama Paket',
@@ -96,7 +96,7 @@ export const providerList = [
   {
     name: 'Netflix',
     slug: 'netflix',
-    title: 'Harga Paket Premium (Reguler)',
+    title: 'Harga Paket Premium (Reguler Non TV)',
     img: '/images/product/brand/netflix.png',
     screenshot: '/images/price-scheme/desktop/netflix-reguler.webp',
     screenshotMobile: '/images/price-scheme/mobile/netflix-reguler.webp',
@@ -110,11 +110,11 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Netflix User Reguler</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
+      'Paket Patungan pada <b>Netflix User Reguler Non TV</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'User Reguler (1 Bulan)',
+        value: 'User Reguler Non TV (1 Bulan)',
         is_total: true,
       },
       {
@@ -157,7 +157,7 @@ export const providerList = [
       'Akun dishare HANYA ke 4 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Netflix User Reguler TV</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
+      'Paket Patungan pada <b>Netflix User Reguler TV</b> merupakan produk <b>Ready</b> sesuai dengan ketersedian slot. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil. Dengan paket ini kamu dapat menjadi household dengan login di TV.',
     informations: [
       {
         title: 'Nama Paket',
