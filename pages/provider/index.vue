@@ -324,10 +324,6 @@
                 class="p-[12px] bg-[#F4FCFA]"
               >
                 <div v-html="priceScheme.additionalInfo"></div>
-                <p class="mt-2">
-                  Informasi terbaru mengenai pembayaran dan akun akan kami
-                  kirimkan via email
-                </p>
               </div>
 
               <div
