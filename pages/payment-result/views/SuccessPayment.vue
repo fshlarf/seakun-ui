@@ -3,7 +3,7 @@
     <section class="w-full relative max-w-[728px]">
       <PromoBanner
         addClass="''"
-        classImg="md:!h-[170px] !h-[116px]"
+        classImg="md:!h-[170px]"
         radioClass="!mt-2 md:!mt-3"
       />
 
