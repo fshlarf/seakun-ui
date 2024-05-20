@@ -28,7 +28,13 @@
         />
         <p class="text-[14px]">tidak tercantum</p>
       </div> -->
-      <p class="text-[20px] font-bold tn:mt-2 text-secondary">
+      <p
+        v-if="donaturDetail.isHideNominal == 1"
+        class="text-[20px] font-bold tn:mt-2 text-secondary"
+      >
+        RpXXX
+      </p>
+      <p v-else class="text-[20px] font-bold tn:mt-2 text-secondary">
         {{ currencyFormat(donaturDetail.nominal) }}
       </p>
       <div class="tn:mt-5">
