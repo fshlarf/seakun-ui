@@ -71,6 +71,9 @@
               >Laporan Kendala</a
             >
           </li>
+          <li>
+            <nuxt-link to="/tip">TIP untuk Seakun</nuxt-link>
+          </li>
           <!-- <li>
             <nuxt-link class="hover:no-underline" to="/"
               >Karir

@@ -39,10 +39,6 @@ export default {
           nominal: 200000,
         },
         {
-          text: 'Rp200.000',
-          nominal: 200000,
-        },
-        {
           text: 'Rp500.000',
           nominal: 500000,
         },
