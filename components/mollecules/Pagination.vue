@@ -48,7 +48,7 @@
         </div>
         <div
           v-if="paged > 5"
-          class="rounded-full tn:p-2 text-black bg-white w-[40px] h-[40px] flex justify-center items-center"
+          class="rounded-full tn:p-2 text-white w-[40px] h-[40px] flex justify-center items-center"
         >
           ...
         </div>
@@ -81,7 +81,7 @@
       >
         <div
           v-if="paged < totalPages - 4"
-          class="rounded-full tn:p-2 text-black bg-white w-[40px] h-[40px] flex justify-center items-center"
+          class="rounded-full tn:p-2 text-white w-[40px] h-[40px] flex justify-center items-center"
         >
           ...
         </div>
