@@ -3683,7 +3683,7 @@ export const providerList = [
       'Akun dishare HANYA ke 6 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>ChatGPT Plus</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Paket Patungan pada <b>ChatGPT Plus</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran. Akun ChatGPT dikelola oleh Seakun dan akun akan dishare ke 6 member dalam 1 grup.',
     informations: [
       {
         title: 'Nama Paket',
