@@ -3713,4 +3713,152 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'Google Gemini',
+    slug: 'google-gemini',
+    title: 'Google Gemini',
+    img: '/images/product/brand/google-gemini.png',
+    screenshot: '/images/price-scheme/desktop/google-gemini.webp',
+    screenshotMobile: '/images/price-scheme/mobile/google-gemini.webp',
+    desc: 'Google Gemini Paket Premium 1 Bulan',
+
+    member: 6,
+    schemes: [
+      'Seakun membuat akun gmail dan membeli Paket Premium Gemini Advanced',
+      'Seakun bertindak sebagai manager family dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Akun dishare hanya ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      '<b>Syarat & Ketentuan :</b> <br/> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>-</p>Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Gmail kamu belum pernah berpindah family selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>-</p>Tidak sedang aktif tergabung pada family Google<p></p></section></div> ',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Google Gemini Bulanan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp309.000',
+      },
+      {
+        title: 'Harga + Pajak (11%)',
+        value: 'Rp342.990',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan (Rp342.990 ÷ 5) ',
+        value: ' Rp68.598',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp8.902',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp77.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'CapCut',
+    slug: 'capcut',
+    title: 'CapCut',
+    img: '/images/product/brand/capcut.png',
+    screenshot: '/images/price-scheme/desktop/capcut.webp',
+    screenshotMobile: '/images/price-scheme/mobile/capcut.webp',
+    desc: 'Capcut Paket Premium 1 Tahun',
+
+    member: 6,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di CapCut',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare hanya ke 5 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>CapCut</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'CapCut Tahunan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp720.000',
+      },
+      {
+        title: 'Harga + Pajak (11%)',
+        value: 'Rp799.200',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan (Rp799.200 ÷ 5)',
+        value: 'Rp159.840',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp79.160',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp239.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Envato',
+    slug: 'envato',
+    title: 'Envato',
+    img: '/images/product/brand/envato.png',
+    screenshot: '/images/price-scheme/desktop/envato.webp',
+    screenshotMobile: '/images/price-scheme/mobile/envato.webp',
+    desc: 'Envato Paket Premium 1 Tahun',
+
+    member: 6,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Envato',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare hanya ke 5 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Envato</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'CapCut Tahunan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '$420 = Rp6.930.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan (Rp6.930.000 ÷ 5)',
+        value: 'Rp1.386.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp99.000',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp1.485.000',
+        is_total: true,
+      },
+    ],
+  },
 ];
