@@ -235,190 +235,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Gramedia Digital',
-    slug: 'gramedia-digital',
-    title: 'Harga Paket Premium (Full)',
-    img: '/images/product/brand/gramedia.png',
-    screenshot: '/images/price-scheme/desktop/gramedia.webp',
-    screenshotMobile: '/images/price-scheme/mobile/gramedia.webp',
-    desc: 'Gramedia Digital Paket Full Premium',
-    member: 2,
-    schemes: [
-      'Seakun membuat akun dan membeli PAKET PREMIUM di Gramedia',
-      'Akun dishare HANYA ke 2 member dalam 1 grup',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Full Premium (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp99.000',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '2',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp99.000 ÷ 2 = Rp49.500',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp54.500',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Gramedia Digital',
-    slug: 'gramedia-digital',
-    title: 'Harga Paket Premium (Fiksi)',
-    img: '/images/product/brand/gramedia.png',
-    screenshot: '/images/price-scheme/desktop/gramedia-fiction.webp',
-    screenshotMobile: '/images/price-scheme/mobile/gramedia-fiction.webp',
-    desc: 'Gramedia Digital Paket Fiksi',
-    member: 2,
-    schemes: [
-      'Seakun membuat akun dan membeli PAKET FIKSI di Gramedia',
-      'Akun dishare HANYA ke 2 member dalam 1 grup',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Fiksi (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp49.000',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '2',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp49.000 ÷ 2 = Rp24.500',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp29.500',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Gramedia Digital',
-    slug: 'gramedia-digital',
-    title: 'Harga Paket Premium (Non-Fiksi)',
-    img: '/images/product/brand/gramedia.png',
-    screenshot: '/images/price-scheme/desktop/gramedia-non-fiction.webp',
-    screenshotMobile: '/images/price-scheme/mobile/gramedia-non-fiction.webp',
-    desc: 'Gramedia Digital Paket Non Fiksi',
-    member: 2,
-    schemes: [
-      ' Seakun membuat akun dan membeli PAKET NON-FIKSI di Gramedia',
-      'Akun dishare HANYA ke 2 member dalam 1 grup',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Non-Fiksi (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp49.000',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '2',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp49.000 ÷ 2 = Rp24.500',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp5.000',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp29.500',
-        is_total: true,
-      },
-    ],
-  },
-  // {
-  //   name: 'Youtube',
-  //   slug: 'youtube',
-  //   title: 'Harga Paket Premium User Host 6 Bulan',
-  //   img: '/images/product/brand/youtube.webp'png  //   screenshot: '/images/price-scheme/desktop/youtube.webp',
-  //   screenshotMobile: '/images/price-scheme/mobile/youtube.webp',
-  //   desc: 'Youtube Paket Premium User Host 6 Bulan',
-  //   member: 5,
-  //   schemes: [
-  //     'Seakun membuat akun dan membeli Paket Premium di Youtube',
-  //     'Member bertindak sebagai user Host dalam grup',
-  //     'Seakun akan menggunakan No. hp User Host untuk OTP',
-  //     'Seakun mengundang User Host untuk join grup Premium',
-  //     'Member yang telah join ke grup dapat menikmati fitur Premium',
-  //   ],
-  //   informations: [
-  //     {
-  //       title: 'Nama Paket',
-  //       value: 'Paket Premium User Host 6 Bulan',
-  //       is_total: true,
-  //     },
-  //     {
-  //       title: 'Harga Paket Premium Youtube',
-  //       value: 'Rp99.000',
-  //     },
-  //     {
-  //       title: 'Harga + pajak 11%',
-  //       value: 'Rp109.890',
-  //     },
-  //     {
-  //       title: 'Jumlah Member Per Grup',
-  //       value: '5',
-  //     },
-  //     {
-  //       title: 'Harga Patungan',
-  //       value: 'Rp109.890 ÷ 5 = Rp21.978',
-  //     },
-  //     {
-  //       title: 'Biaya Admin Seakun',
-  //       value: 'Rp0 (FREE)',
-  //     },
-  //     {
-  //       title: 'Harga Paket Bulanan',
-  //       value: 'Rp21.978',
-  //     },
-  //     {
-  //       title: 'Harga Paket 6 Bulan',
-  //       value: 'Rp21.978 x 6 = Rp131.868',
-  //       is_total: true,
-  //     },
-  //   ],
-  // },
-  {
     name: 'Youtube',
     slug: 'youtube',
     title: 'Harga Paket Premium Reguler',
@@ -564,188 +380,133 @@ export const providerList = [
     ],
   },
   {
-    name: 'Canva',
-    slug: 'canva',
-    title: 'Harga Paket Canva Teams (Bulanan)',
-    img: '/images/product/brand/canva.png',
-    screenshot: '/images/price-scheme/desktop/canva.webp',
-    screenshotMobile: '/images/price-scheme/mobile/canva.webp',
-    desc: 'Canva Paket Premium Bulanan',
-    member: 4,
+    name: 'Gramedia Digital',
+    slug: 'gramedia-digital',
+    title: 'Harga Paket Premium (Full)',
+    img: '/images/product/brand/gramedia.png',
+    screenshot: '/images/price-scheme/desktop/gramedia.webp',
+    screenshotMobile: '/images/price-scheme/mobile/gramedia.webp',
+    desc: 'Gramedia Digital Paket Full Premium',
+    member: 2,
     schemes: [
-      'Seakun membuat akun dan membeli Paket Teams Canva',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 4 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+      'Seakun membuat akun dan membeli PAKET PREMIUM di Gramedia',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Canva (Bulanan)',
+        value: 'Full Premium (Bulanan)',
         is_total: true,
       },
       {
         title: 'Harga Provider',
-        value: 'Rp190.000',
+        value: 'Rp99.000',
       },
       {
-        title: 'Jumlah member Per grup',
-        value: '4',
+        title: 'Jumlah Member Per Grup',
+        value: '2',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp190.000 ÷ 4 = Rp47.500',
+        value: 'Rp99.000 ÷ 2 = Rp49.500',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.500',
+        value: 'Rp5.000',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp54.000',
+        value: 'Rp54.500',
         is_total: true,
       },
     ],
   },
   {
-    name: 'Canva',
-    slug: 'canva',
-    title: 'Harga Paket Canva Teams (1 Tahun)',
-    img: '/images/product/brand/canva.png',
-    screenshot: '/images/price-scheme/desktop/canva.webp',
-    screenshotMobile: '/images/price-scheme/mobile/canva.webp',
-    desc: 'Canva Paket Premium Tahunan',
-    member: 4,
+    name: 'Gramedia Digital',
+    slug: 'gramedia-digital',
+    title: 'Harga Paket Premium (Fiksi)',
+    img: '/images/product/brand/gramedia.png',
+    screenshot: '/images/price-scheme/desktop/gramedia-fiction.webp',
+    screenshotMobile: '/images/price-scheme/mobile/gramedia-fiction.webp',
+    desc: 'Gramedia Digital Paket Fiksi',
+    member: 2,
     schemes: [
-      'Seakun membuat akun dan membeli Paket Teams Canva',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 4 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+      'Seakun membuat akun dan membeli PAKET FIKSI di Gramedia',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Canva (1 Tahun)',
+        value: 'Fiksi (Bulanan)',
         is_total: true,
       },
       {
         title: 'Harga Provider',
-        value: 'Rp1.900.000',
+        value: 'Rp49.000',
       },
       {
-        title: 'Jumlah member Per grup',
-        value: '4',
+        title: 'Jumlah Member Per Grup',
+        value: '2',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.900.000 ÷ 4 = Rp475.000',
+        value: 'Rp49.000 ÷ 2 = Rp24.500',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp70.000',
+        value: 'Rp5.000',
       },
       {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp545.000',
+        title: 'Harga Paket Bulanan',
+        value: 'Rp29.500',
         is_total: true,
       },
     ],
   },
   {
-    name: 'Disney+ Hotstar',
-    slug: 'disney-hotstar',
-    title: 'Harga Paket Disney+ Hotstar Host 1 Tahun',
-    img: '/images/product/brand/disney-hotstar.png',
-    screenshot: '/images/price-scheme/desktop/disney-hotstar-host.webp',
-    screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-host.webp',
-    desc: 'Disney+ Hotstar Paket Premium User Host',
-    member: 3,
+    name: 'Gramedia Digital',
+    slug: 'gramedia-digital',
+    title: 'Harga Paket Premium (Non-Fiksi)',
+    img: '/images/product/brand/gramedia.png',
+    screenshot: '/images/price-scheme/desktop/gramedia-non-fiction.webp',
+    screenshotMobile: '/images/price-scheme/mobile/gramedia-non-fiction.webp',
+    desc: 'Gramedia Digital Paket Non Fiksi',
+    member: 2,
     schemes: [
-      'User melakukan pendaftaran ke Disney+ menggunakan nomor pribadi',
-      'Admin login pada akun Disney user host dan subscribe Plan Yearly seharga Rp799.000 menggunakan payment Seakun',
-      'Setelah Admin berhasil melakukan purchase & set up, menginfokan user host untuk melakukan pembayaran di Seakun sebesar Rp266.333',
-      'User dapat menikmati fitur Premium selama 1 tahun sebagai user host',
-      'Berkomitmen merespon chat dan membantu user reguler untuk login pada Disney+',
+      ' Seakun membuat akun dan membeli PAKET NON-FIKSI di Gramedia',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Disney+ User Host</b> merupakan produk <b>Pre-Order</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran menggunakan nomor HP pada Disney+. Pembayaran provider akan dilakukan oleh Seakun dan user host <b>Berkomitmen</b> membantu user reguler untuk login pada Disney+. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      'Paket Patungan pada <b>Gramedia</b> terdapat 3 macam yaitu, Paket Gramedia <b>Full Premium</b>, <b>Fiksi</b> dan <b>Non Fiksi</b>. Untuk dapat menggunakan paket ini, kamu harus menunggu terlebih dahulu karena bersifat <b>Pre-Order</b>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'User Host (1 Tahun)',
+        value: 'Non-Fiksi (Bulanan)',
         is_total: true,
       },
       {
         title: 'Harga Provider',
-        value: 'Rp799.000',
+        value: 'Rp49.000',
       },
       {
-        title: 'Jumlah member Per grup',
-        value: '3',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp799.000 ÷ 3 = Rp266.333',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0',
-      },
-      {
-        title: 'Harga Paket Tahunan',
-        value: 'Rp266.333',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Disney+ Hotstar',
-    slug: 'disney-hotstar',
-    title: 'Harga Paket Disney+ Hotstar Reguler 1 Tahun',
-    img: '/images/product/brand/disney-hotstar.png',
-    screenshot: '/images/price-scheme/desktop/disney-hotstar-reguler.webp',
-    screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-reguler.webp',
-    desc: 'Disney+ Hotstar Paket Premium Reguler',
-    member: 3,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Disney+ Hotstar',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Disney+ User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'User Reguler (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp799.000',
-      },
-      {
-        title: 'Jumlah member Per grup',
-        value: '3',
+        title: 'Jumlah Member Per Grup',
+        value: '2',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp799.000 ÷ 3 = Rp266.333',
+        value: 'Rp49.000 ÷ 2 = Rp24.500',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp29.667',
+        value: 'Rp5.000',
       },
       {
-        title: 'Harga Paket Tahunan',
-        value: 'Rp296.000',
+        title: 'Harga Paket Bulanan',
+        value: 'Rp29.500',
         is_total: true,
       },
     ],
@@ -792,100 +553,6 @@ export const providerList = [
       {
         title: 'Harga Paket Bulanan',
         value: 'Rp26.500',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Apple One',
-    slug: 'apple-one',
-    title: 'Harga Paket Apple One (User Host)',
-    img: '/images/product/brand/apple-one.png',
-    screenshot: '/images/price-scheme/desktop/apple-one-host.webp',
-    screenshotMobile: '/images/price-scheme/mobile/apple-one-host.webp',
-    desc: 'Apple One Paket Premium Host Bulanan',
-    member: 5,
-    schemes: [
-      'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
-      'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
-      'Host melakukan setup pada iTunes dan subscribe paket Apple One Family',
-      'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Apple One User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'User Host (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp199.000',
-      },
-      {
-        title: 'Jumlah member Per grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp199.000 ÷ 5 = Rp39.800',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp39.800',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Apple One',
-    slug: 'apple-one',
-    title: 'Harga Paket Apple One (User Reguler)',
-    img: '/images/product/brand/apple-one.png',
-    screenshot: '/images/price-scheme/desktop/apple-one-reguler.webp',
-    screenshotMobile: '/images/price-scheme/mobile/apple-one-reguler.webp',
-    desc: 'Apple One Paket Premium Bulanan',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Apple One Family',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Apple One User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'User Reguler (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp199.000',
-      },
-      {
-        title: 'Jumlah member Per grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp199.000 ÷ 5 = Rp39.800',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp5.700',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp45.500',
         is_total: true,
       },
     ],
@@ -984,89 +651,34 @@ export const providerList = [
       },
     ],
   },
-  // {
-  //   name: 'Google One',
-  //   slug: 'google-one',
-  //   title: 'Harga Paket Google One (Userhost) 3 Bulan',
-  //   img: '/images/product/brand/google-one.webpng  //   screenshot: '/images/price-scheme/desktop/google-one-premium.webp',
-  //   screenshotMobile: '/images/price-scheme/mobile/google-one-premium.webp',
-  //   desc: 'Google One Paket Premium Host 3 Bulan',
-  //   member: 5,
-  //   schemes: [
-  //     'Seakun membuat akun gmail dan membeli Paket Premium Google',
-  //     'Member bertindak sebagai user Host dalam grup',
-  //     'Seakun akan menggunakan No. hp User Host untuk OTP',
-  //     'Seakun mengundang User Host untuk join grup Premium',
-  //     'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
-  //   ],
-  //   informations: [
-  //     {
-  //       title: 'Nama Paket',
-  //       value: 'Paket Premium User Host',
-  //       is_total: true,
-  //     },
-  //     {
-  //       title: 'Harga Paket Google One',
-  //       value: 'Rp135.000',
-  //     },
-  //     {
-  //       title: 'Harga + pajak 11%',
-  //       value: 'Rp149.850',
-  //     },
-  //     {
-  //       title: 'Jumlah member Per grup',
-  //       value: '5',
-  //     },
-  //     {
-  //       title: 'Harga Patungan',
-  //       value: 'Rp149.850 ÷ 5 = Rp29.970',
-  //     },
-  //     {
-  //       title: 'Biaya Admin Seakun',
-  //       value: 'Rp0',
-  //     },
-  //     {
-  //       title: 'Harga Paket Bulanan',
-  //       value: 'Rp29.970',
-  //     },
-  //     {
-  //       title: 'Harga Paket 3 Bulan',
-  //       value: 'Rp29.970 x 3 = Rp89.910',
-  //       is_total: true,
-  //     },
-  //   ],
-  // },
   {
-    name: 'Google One',
-    slug: 'google-one',
-    title: 'Harga Paket Google One (Reguler)',
-    img: '/images/product/brand/google-one.png',
-    screenshot: '/images/price-scheme/desktop/google-one-premium.webp',
-    screenshotMobile: '/images/price-scheme/mobile/google-one-premium.webp',
-    desc: 'Google One Paket Premium',
+    name: 'Apple One',
+    slug: 'apple-one',
+    title: 'Harga Paket Apple One (User Host)',
+    img: '/images/product/brand/apple-one.png',
+    screenshot: '/images/price-scheme/desktop/apple-one-host.webp',
+    screenshotMobile: '/images/price-scheme/mobile/apple-one-host.webp',
+    desc: 'Apple One Paket Premium Host Bulanan',
     member: 5,
     schemes: [
-      'Seakun membuat akun gmail dan membeli Paket Premium Google',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 5 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+      'Seakun akan berikan apple id Seakun yang perlu di aktivasi oleh Host',
+      'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
+      'Host melakukan setup pada iTunes dan subscribe paket Apple One Family',
+      'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Google One</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Paket Patungan pada <b>Apple One User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Google One (Bulanan)',
+        value: 'User Host (Bulanan)',
         is_total: true,
       },
       {
         title: 'Harga Provider',
-        value: 'Rp135.000',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp149.850',
+        value: 'Rp199.000',
       },
       {
         title: 'Jumlah member Per grup',
@@ -1074,165 +686,61 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp149.850 ÷ 5 = Rp29.970',
+        value: 'Rp199.000 ÷ 5 = Rp39.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.530',
+        value: 'Rp0',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp36.500',
+        value: 'Rp39.800',
         is_total: true,
       },
     ],
   },
   {
-    name: 'Nord VPN',
-    slug: 'nord-vpn',
-    title: 'Harga Paket NordVPN (Bulanan)',
-    img: '/images/product/brand/nord-vpn.png',
-    screenshot: '/images/price-scheme/desktop/nord-vpn.webp',
-    screenshotMobile: '/images/price-scheme/mobile/nord-vpn.webp',
-    desc: 'Paket Nord VPN bulanan',
-    member: 6,
+    name: 'Apple One',
+    slug: 'apple-one',
+    title: 'Harga Paket Apple One (User Reguler)',
+    img: '/images/product/brand/apple-one.png',
+    screenshot: '/images/price-scheme/desktop/apple-one-reguler.webp',
+    screenshotMobile: '/images/price-scheme/mobile/apple-one-reguler.webp',
+    desc: 'Apple One Paket Premium Bulanan',
+    member: 5,
     schemes: [
-      'Seakun membuat akun dan membeli Paket Premium Nord VPN',
+      'Seakun membuat akun dan membeli Paket Apple One Family',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 6 member dalam 1 grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Nord VPN</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+      'Paket Patungan pada <b>Apple One User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Nord VPN (Bulanan)',
+        value: 'User Reguler (Bulanan)',
         is_total: true,
       },
       {
         title: 'Harga Provider',
-        value: '$13.49',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: '$14.97 = Rp244.011',
+        value: 'Rp199.000',
       },
       {
         title: 'Jumlah member Per grup',
-        value: '6',
+        value: '5',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp244.011 ÷ 6 = Rp40.669',
+        value: 'Rp199.000 ÷ 5 = Rp39.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.332',
+        value: 'Rp5.700',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp47.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Nord VPN',
-    slug: 'nord-vpn',
-    title: 'Harga Paket NordVPN 1 Tahun',
-    img: '/images/product/brand/nord-vpn.png',
-    screenshot: '/images/price-scheme/desktop/nord-vpn-year.webp',
-    screenshotMobile: '/images/price-scheme/mobile/nord-vpn-year.webp',
-    desc: 'Paket Nord VPN Tahunan',
-    member: 6,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium Nord VPN 1 tahun',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 6 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Nord VPN</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Nord VPN (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: '$74.85',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: '$83.08 = Rp1.354.204',
-      },
-      {
-        title: 'Jumlah member Per grup',
-        value: '6',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp1.354.204 ÷ 6 = Rp225.701',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp84.299',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp310.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Amazon Prime Video',
-    slug: 'amazon-prime',
-    title: 'Paket Premium Amazon Prime Video (Bulanan)',
-    img: '/images/product/brand/amazon-prime.png',
-    screenshot: '/images/price-scheme/desktop/amazon-prime.webp',
-    screenshotMobile: '/images/price-scheme/mobile/amazon-prime.webp',
-    desc: 'Paket Amazon Prime Video Reguler',
-    member: 3,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium Prime Video',
-      'Dalam 1 akun tersebut, Seakun membuat 3 profile',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium Amazon Prime Video sesuai dengan durasi berlangganan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Prime Video</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Prime Video (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp79.000',
-      },
-      {
-        title: 'Jumlah member Per grup',
-        value: '3',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp79.000 ÷ 3 = Rp26.333,33',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp6.666,67',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp33.000',
+        value: 'Rp45.500',
         is_total: true,
       },
     ],
@@ -1427,6 +935,342 @@ export const providerList = [
     ],
   },
   {
+    name: 'Google One',
+    slug: 'google-one',
+    title: 'Harga Paket Google One (Reguler)',
+    img: '/images/product/brand/google-one.png',
+    screenshot: '/images/price-scheme/desktop/google-one-premium.webp',
+    screenshotMobile: '/images/price-scheme/mobile/google-one-premium.webp',
+    desc: 'Google One Paket Premium',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun gmail dan membeli Paket Premium Google',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Google One</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Google One (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp135.000',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp149.850',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp149.850 ÷ 5 = Rp29.970',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.530',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp36.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Google Gemini',
+    slug: 'google-gemini',
+    title: 'Google Gemini',
+    img: '/images/product/brand/google-gemini.png',
+    screenshot: '/images/price-scheme/desktop/google-gemini.webp',
+    screenshotMobile: '/images/price-scheme/mobile/google-gemini.webp',
+    desc: 'Google Gemini Paket Premium 1 Bulan',
+
+    member: 5,
+    schemes: [
+      'Seakun membuat akun gmail dan membeli Paket Premium Gemini Advanced',
+      'Seakun bertindak sebagai manager family dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Akun dishare hanya ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      '<b>Syarat & Ketentuan :</b> <br/> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>-</p>Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Gmail kamu belum pernah berpindah family selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>-</p>Tidak sedang aktif tergabung pada family Google<p></p></section></div> ',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Google Gemini Bulanan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp309.000',
+      },
+      {
+        title: 'Harga + Pajak (11%)',
+        value: 'Rp342.990',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan (Rp342.990 ÷ 5) ',
+        value: ' Rp68.598',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp8.902',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp77.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Canva',
+    slug: 'canva',
+    title: 'Harga Paket Canva Teams (Bulanan)',
+    img: '/images/product/brand/canva.png',
+    screenshot: '/images/price-scheme/desktop/canva.webp',
+    screenshotMobile: '/images/price-scheme/mobile/canva.webp',
+    desc: 'Canva Paket Premium Bulanan',
+    member: 4,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Teams Canva',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 4 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Canva (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp190.000',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp190.000 ÷ 4 = Rp47.500',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.500',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp54.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Canva',
+    slug: 'canva',
+    title: 'Harga Paket Canva Teams (1 Tahun)',
+    img: '/images/product/brand/canva.png',
+    screenshot: '/images/price-scheme/desktop/canva.webp',
+    screenshotMobile: '/images/price-scheme/mobile/canva.webp',
+    desc: 'Canva Paket Premium Tahunan',
+    member: 4,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Teams Canva',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 4 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Canva (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp1.900.000',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.900.000 ÷ 4 = Rp475.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp70.000',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp545.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Disney+ Hotstar',
+    slug: 'disney-hotstar',
+    title: 'Harga Paket Disney+ Hotstar Host 1 Tahun',
+    img: '/images/product/brand/disney-hotstar.png',
+    screenshot: '/images/price-scheme/desktop/disney-hotstar-host.webp',
+    screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-host.webp',
+    desc: 'Disney+ Hotstar Paket Premium User Host',
+    member: 3,
+    schemes: [
+      'User melakukan pendaftaran ke Disney+ menggunakan nomor pribadi',
+      'Admin login pada akun Disney user host dan subscribe Plan Yearly seharga Rp799.000 menggunakan payment Seakun',
+      'Setelah Admin berhasil melakukan purchase & set up, menginfokan user host untuk melakukan pembayaran di Seakun sebesar Rp266.333',
+      'User dapat menikmati fitur Premium selama 1 tahun sebagai user host',
+      'Berkomitmen merespon chat dan membantu user reguler untuk login pada Disney+',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Disney+ User Host</b> merupakan produk <b>Pre-Order</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran menggunakan nomor HP pada Disney+. Pembayaran provider akan dilakukan oleh Seakun dan user host <b>Berkomitmen</b> membantu user reguler untuk login pada Disney+. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Host (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp799.000',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp799.000 ÷ 3 = Rp266.333',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp266.333',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Disney+ Hotstar',
+    slug: 'disney-hotstar',
+    title: 'Harga Paket Disney+ Hotstar Reguler 1 Tahun',
+    img: '/images/product/brand/disney-hotstar.png',
+    screenshot: '/images/price-scheme/desktop/disney-hotstar-reguler.webp',
+    screenshotMobile: '/images/price-scheme/mobile/disney-hotstar-reguler.webp',
+    desc: 'Disney+ Hotstar Paket Premium Reguler',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Disney+ Hotstar',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Disney+ User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Reguler (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp799.000',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp799.000 ÷ 3 = Rp266.333',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp29.667',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp296.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Amazon Prime Video',
+    slug: 'amazon-prime',
+    title: 'Paket Premium Amazon Prime Video (Bulanan)',
+    img: '/images/product/brand/amazon-prime.png',
+    screenshot: '/images/price-scheme/desktop/amazon-prime.webp',
+    screenshotMobile: '/images/price-scheme/mobile/amazon-prime.webp',
+    desc: 'Paket Amazon Prime Video Reguler',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Prime Video',
+      'Dalam 1 akun tersebut, Seakun membuat 3 profile',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium Amazon Prime Video sesuai dengan durasi berlangganan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Prime Video</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Prime Video (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp79.000',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp79.000 ÷ 3 = Rp26.333,33',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.666,67',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp33.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
     name: 'Iqiyi',
     slug: 'iqiyi',
     title: 'Harga Paket Premium',
@@ -1472,106 +1316,6 @@ export const providerList = [
       },
     ],
   },
-  {
-    name: 'Zoom',
-    slug: 'zoom',
-    title: 'Harga Paket Pro',
-    img: '/images/product/brand/zoom.png',
-    screenshot: '/images/price-scheme/desktop/zoom.webp',
-    screenshotMobile: '/images/price-scheme/mobile/zoom.webp',
-    desc: 'Zoom Reguler',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Pro di Zoom',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Pro selama 1 bulan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Zoom</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Zoom (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp232.345',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp257.902,95',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp257.902,95 ÷ 5 = Rp51.580,59',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp6.419,4',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp58.000',
-        is_total: true,
-      },
-    ],
-  },
-  // {
-  //   name: 'Vidio',
-  //   slug: 'vidio',
-  //   title: 'Harga Paket Diamond EPL',
-  //   img: '/images/product/brand/vidio.webpng  //   screenshot: '/images/price-scheme/desktop/vidio.webp',
-  //   screenshotMobile: '/images/price-scheme/mobile/vidio.webp',
-  //   desc: '',
-  //   schemes: [
-  //     'Seakun membuat akun dan membeli Paket Diamond EPL di Vidio',
-  //     'Seakun bertindak sebagai user Host dalam grup',
-  //     'Akun dishare HANYA ke 2 member dalam 1 grup',
-  //     'Member yang telah join ke grup dapat menikmati fitur Diamond EPL selama 1 tahun',
-  //   ],
-  //   notes:
-  //     'Harga Promo ini (Rp450.000) berlaku sampai 5 Agustus 2022. Selanjutnya akan mengikuti harga normal (Rp631.000)',
-  //   informations: [
-  //     {
-  //       title: 'Nama Paket',
-  //       value: 'Paket Vidio Diamond EPL',
-  //       is_total: true,
-  //     },
-  //     {
-  //       title: 'Harga Paket Vidio Diamond EPL',
-  //       value: 'Rp450.000',
-  //     },
-  //     {
-  //       title: 'Harga + pajak 11%',
-  //       value: 'Rp499.500',
-  //     },
-  //     {
-  //       title: 'Jumlah Member Per Grup',
-  //       value: '2',
-  //     },
-  //     {
-  //       title: 'Harga Patungan',
-  //       value: 'Rp499.500 ÷ 2 = Rp249.750',
-  //     },
-  //     {
-  //       title: 'Biaya Admin Seakun',
-  //       value: 'Rp35.250',
-  //     },
-  //     {
-  //       title: 'Harga Paket Setahun',
-  //       value: 'Rp285.000',
-  //       is_total: true,
-  //     },
-  //   ],
-  // },
   {
     name: 'HBO Go',
     slug: 'hbo-go',
@@ -1673,258 +1417,6 @@ export const providerList = [
     ],
   },
   {
-    name: 'Scribd',
-    slug: 'scribd',
-    title: 'Harga Paket Premium',
-    img: '/images/product/brand/scribd.png',
-    screenshot: '/images/price-scheme/desktop/scribd.webp',
-    screenshotMobile: '/images/price-scheme/mobile/scribd.webp',
-    desc: 'Paket Scribd Premium',
-    member: 3,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Scribd',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Scribd</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Scribd (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp70.000',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp77.700',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '3',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp77.700 ÷ 3 = Rp25.900',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp5.100',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp31.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'McAfee',
-    slug: 'mcafee',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/mcafee.png',
-    screenshot: '/images/price-scheme/desktop/mcafee.webp',
-    screenshotMobile: '/images/price-scheme/mobile/mcafee.webp',
-    desc: 'Paket McAfee',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di McAfee',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>McAfee</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga Rp550.000 hanya berlaku untuk tahun pertama. Tahun berikut nya akan menggunakan harga Rp800.000 per tahun',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'McAfee (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp550.000',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp550.000 ÷ 5 = Rp110.000',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp29.000',
-      },
-      {
-        title: 'Harga Paket Tahunan',
-        value: 'Rp139.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Setapp',
-    slug: 'setapp',
-    title: 'Harga Paket Premium 1 Bulan',
-    img: '/images/product/brand/setapp.png',
-    screenshot: '/images/price-scheme/desktop/setapp.webp',
-    screenshotMobile: '/images/price-scheme/mobile/setapp.webp',
-    desc: 'Paket Setapp',
-    member: 4,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Setapp',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 4 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Setapp</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Setapp (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp232.345',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp257.902,95',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '4',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp257.902,95 ÷ 4 = Rp64.475,74',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp.6.524,26',
-      },
-      {
-        title: 'Harga Paket Bulanan',
-        value: 'Rp71.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Bitdefender',
-    slug: 'bitdefender',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/bitdefender.png',
-    screenshot: '/images/price-scheme/desktop/bitdefender.webp',
-    screenshotMobile: '/images/price-scheme/mobile/bitdefender.webp',
-    desc: '',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Bitdefender',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Bitdefender</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Bitdefender (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp512.955',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp569.380,05',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp569.380,05 ÷ 5 = Rp113.876,01',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp78.123,99',
-      },
-      {
-        title: 'Harga Paket Tahunan',
-        value: 'Rp192.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'LastPass',
-    slug: 'lastpass',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/lastpass.png',
-    screenshot: '/images/price-scheme/desktop/lastpass.webp',
-    screenshotMobile: '/images/price-scheme/mobile/lastpass.webp',
-    desc: 'Paket LastPass',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di LastPass',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>LastPass</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'LastPass (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp720.000',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp799.200',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp799.200 ÷ 5 = Rp159.840',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp74.160',
-      },
-      {
-        title: 'Harga Paket Tahunan',
-        value: 'Rp234.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
     name: 'WeTV',
     slug: 'wetv',
     title: 'Harga Paket VIP 1 Bulan',
@@ -2012,6 +1504,573 @@ export const providerList = [
       {
         title: 'Harga Paket 3 Bulanan',
         value: 'Rp82.500',
+        is_total: true,
+      },
+    ],
+  },
+
+  // {
+  //   name: 'Youtube',
+  //   slug: 'youtube',
+  //   title: 'Harga Paket Premium User Host 6 Bulan',
+  //   img: '/images/product/brand/youtube.webp'png  //   screenshot: '/images/price-scheme/desktop/youtube.webp',
+  //   screenshotMobile: '/images/price-scheme/mobile/youtube.webp',
+  //   desc: 'Youtube Paket Premium User Host 6 Bulan',
+  //   member: 5,
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket Premium di Youtube',
+  //     'Member bertindak sebagai user Host dalam grup',
+  //     'Seakun akan menggunakan No. hp User Host untuk OTP',
+  //     'Seakun mengundang User Host untuk join grup Premium',
+  //     'Member yang telah join ke grup dapat menikmati fitur Premium',
+  //   ],
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Paket Premium User Host 6 Bulan',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Paket Premium Youtube',
+  //       value: 'Rp99.000',
+  //     },
+  //     {
+  //       title: 'Harga + pajak 11%',
+  //       value: 'Rp109.890',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Per Grup',
+  //       value: '5',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp109.890 ÷ 5 = Rp21.978',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp0 (FREE)',
+  //     },
+  //     {
+  //       title: 'Harga Paket Bulanan',
+  //       value: 'Rp21.978',
+  //     },
+  //     {
+  //       title: 'Harga Paket 6 Bulan',
+  //       value: 'Rp21.978 x 6 = Rp131.868',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: 'Google One',
+  //   slug: 'google-one',
+  //   title: 'Harga Paket Google One (Userhost) 3 Bulan',
+  //   img: '/images/product/brand/google-one.webpng  //   screenshot: '/images/price-scheme/desktop/google-one-premium.webp',
+  //   screenshotMobile: '/images/price-scheme/mobile/google-one-premium.webp',
+  //   desc: 'Google One Paket Premium Host 3 Bulan',
+  //   member: 5,
+  //   schemes: [
+  //     'Seakun membuat akun gmail dan membeli Paket Premium Google',
+  //     'Member bertindak sebagai user Host dalam grup',
+  //     'Seakun akan menggunakan No. hp User Host untuk OTP',
+  //     'Seakun mengundang User Host untuk join grup Premium',
+  //     'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
+  //   ],
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Paket Premium User Host',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Paket Google One',
+  //       value: 'Rp135.000',
+  //     },
+  //     {
+  //       title: 'Harga + pajak 11%',
+  //       value: 'Rp149.850',
+  //     },
+  //     {
+  //       title: 'Jumlah member Per grup',
+  //       value: '5',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp149.850 ÷ 5 = Rp29.970',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp0',
+  //     },
+  //     {
+  //       title: 'Harga Paket Bulanan',
+  //       value: 'Rp29.970',
+  //     },
+  //     {
+  //       title: 'Harga Paket 3 Bulan',
+  //       value: 'Rp29.970 x 3 = Rp89.910',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
+
+  {
+    name: 'Nord VPN',
+    slug: 'nord-vpn',
+    title: 'Harga Paket NordVPN (Bulanan)',
+    img: '/images/product/brand/nord-vpn.png',
+    screenshot: '/images/price-scheme/desktop/nord-vpn.webp',
+    screenshotMobile: '/images/price-scheme/mobile/nord-vpn.webp',
+    desc: 'Paket Nord VPN bulanan',
+    member: 6,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Nord VPN',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 6 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Nord VPN</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Nord VPN (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '$13.49',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: '$14.97 = Rp244.011',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '6',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp244.011 ÷ 6 = Rp40.669',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.332',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp47.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Nord VPN',
+    slug: 'nord-vpn',
+    title: 'Harga Paket NordVPN 1 Tahun',
+    img: '/images/product/brand/nord-vpn.png',
+    screenshot: '/images/price-scheme/desktop/nord-vpn-year.webp',
+    screenshotMobile: '/images/price-scheme/mobile/nord-vpn-year.webp',
+    desc: 'Paket Nord VPN Tahunan',
+    member: 6,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium Nord VPN 1 tahun',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 6 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Nord VPN</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Nord VPN (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '$74.85',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: '$83.08 = Rp1.354.204',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '6',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.354.204 ÷ 6 = Rp225.701',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp84.299',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp310.000',
+        is_total: true,
+      },
+    ],
+  },
+
+  {
+    name: 'Zoom',
+    slug: 'zoom',
+    title: 'Harga Paket Pro',
+    img: '/images/product/brand/zoom.png',
+    screenshot: '/images/price-scheme/desktop/zoom.webp',
+    screenshotMobile: '/images/price-scheme/mobile/zoom.webp',
+    desc: 'Zoom Reguler',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Pro di Zoom',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Pro selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Zoom</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Zoom (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp232.345',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp257.902,95',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp257.902,95 ÷ 5 = Rp51.580,59',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.419,4',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp58.000',
+        is_total: true,
+      },
+    ],
+  },
+  // {
+  //   name: 'Vidio',
+  //   slug: 'vidio',
+  //   title: 'Harga Paket Diamond EPL',
+  //   img: '/images/product/brand/vidio.webpng  //   screenshot: '/images/price-scheme/desktop/vidio.webp',
+  //   screenshotMobile: '/images/price-scheme/mobile/vidio.webp',
+  //   desc: '',
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket Diamond EPL di Vidio',
+  //     'Seakun bertindak sebagai user Host dalam grup',
+  //     'Akun dishare HANYA ke 2 member dalam 1 grup',
+  //     'Member yang telah join ke grup dapat menikmati fitur Diamond EPL selama 1 tahun',
+  //   ],
+  //   notes:
+  //     'Harga Promo ini (Rp450.000) berlaku sampai 5 Agustus 2022. Selanjutnya akan mengikuti harga normal (Rp631.000)',
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Paket Vidio Diamond EPL',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Paket Vidio Diamond EPL',
+  //       value: 'Rp450.000',
+  //     },
+  //     {
+  //       title: 'Harga + pajak 11%',
+  //       value: 'Rp499.500',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Per Grup',
+  //       value: '2',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp499.500 ÷ 2 = Rp249.750',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp35.250',
+  //     },
+  //     {
+  //       title: 'Harga Paket Setahun',
+  //       value: 'Rp285.000',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
+
+  {
+    name: 'Scribd',
+    slug: 'scribd',
+    title: 'Harga Paket Premium',
+    img: '/images/product/brand/scribd.png',
+    screenshot: '/images/price-scheme/desktop/scribd.webp',
+    screenshotMobile: '/images/price-scheme/mobile/scribd.webp',
+    desc: 'Paket Scribd Premium',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Scribd',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Scribd</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Scribd (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp70.000',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp77.700',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp77.700 ÷ 3 = Rp25.900',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.100',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp31.000',
+        is_total: true,
+      },
+    ],
+  },
+
+  {
+    name: 'McAfee',
+    slug: 'mcafee',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/mcafee.png',
+    screenshot: '/images/price-scheme/desktop/mcafee.webp',
+    screenshotMobile: '/images/price-scheme/mobile/mcafee.webp',
+    desc: 'Paket McAfee',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di McAfee',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>McAfee</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga Rp550.000 hanya berlaku untuk tahun pertama. Tahun berikut nya akan menggunakan harga Rp800.000 per tahun',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'McAfee (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp550.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp550.000 ÷ 5 = Rp110.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp29.000',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp139.000',
+        is_total: true,
+      },
+    ],
+  },
+
+  {
+    name: 'Setapp',
+    slug: 'setapp',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/setapp.png',
+    screenshot: '/images/price-scheme/desktop/setapp.webp',
+    screenshotMobile: '/images/price-scheme/mobile/setapp.webp',
+    desc: 'Paket Setapp',
+    member: 4,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Setapp',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 4 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Setapp</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Setapp (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp232.345',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp257.902,95',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '4',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp257.902,95 ÷ 4 = Rp64.475,74',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp.6.524,26',
+      },
+      {
+        title: 'Harga Paket Bulanan',
+        value: 'Rp71.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'LastPass',
+    slug: 'lastpass',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/lastpass.png',
+    screenshot: '/images/price-scheme/desktop/lastpass.webp',
+    screenshotMobile: '/images/price-scheme/mobile/lastpass.webp',
+    desc: 'Paket LastPass',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di LastPass',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>LastPass</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'LastPass (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp720.000',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp799.200',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp799.200 ÷ 5 = Rp159.840',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp74.160',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp234.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Duolingo',
+    slug: 'duolingo',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/duolingo.png',
+    screenshot: '/images/price-scheme/desktop/duolingo.webp',
+    screenshotMobile: '/images/price-scheme/mobile/duolingo.webp',
+    desc: 'Duolingo Paket Premium',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Duolingo',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Duolingo</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Duolingo (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp599.000',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp664.890',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp664.890 ÷ 5 = Rp132.978',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp67.022',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp200.000',
         is_total: true,
       },
     ],
@@ -2118,402 +2177,6 @@ export const providerList = [
       {
         title: 'Harga Paket 1 Tahun',
         value: 'Rp264.214',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Kaspersky',
-    slug: 'kaspersky-total',
-    title: 'Harga Paket Total Security 1 Tahun',
-    img: '/images/product/brand/kaspersky-total.png',
-    screenshot: '/images/price-scheme/desktop/kaspersky-total.webp',
-    screenshotMobile: '/images/price-scheme/mobile/kaspersky-total.webp',
-    desc: 'Kaspersky Total Security',
-    member: 3,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Total Security di Kaspersky',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Total Security selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Total Security (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp555.500',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '3',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp555.500 ÷ 3 = Rp185.166,67',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp185.167',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Kaspersky',
-    slug: 'kaspersky-internet',
-    title: 'Harga Paket Total Security 1 Tahun',
-    img: '/images/product/brand/kaspersky-internet.png',
-    screenshot: '/images/price-scheme/desktop/kaspersky-internet.webp',
-    screenshotMobile: '/images/price-scheme/mobile/kaspersky-internet.webp',
-    desc: 'Kaspersky Internet Security',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Internet Security di Kaspersky',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Internet Security selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Internet Security (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp656.500',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp656.500 ÷ 5 = Rp131.300',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp131.300',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Medium',
-    slug: 'medium',
-    title: 'Harga Paket Premium 1 Bulan',
-    img: '/images/product/brand/medium.png',
-    screenshot: '/images/price-scheme/desktop/medium-month.webp',
-    screenshotMobile: '/images/price-scheme/mobile/medium-month.webp',
-    desc: 'Medium Paket Premium Bulanan',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Medium',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Medium</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Medium (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: '$5.00 = Rp80.500',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp80.500 ÷ 5 = Rp16.100',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp5.400',
-      },
-      {
-        title: 'Harga Paket 1 Bulan',
-        value: 'Rp21.500',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Medium',
-    slug: 'medium',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/medium.png',
-    screenshot: '/images/price-scheme/desktop/medium-annual.webp',
-    screenshotMobile: '/images/price-scheme/mobile/medium-annual.webp',
-    desc: 'Medium Paket Premium Tahunan',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Medium',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Medium</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Medium (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: '$50.00 = Rp805.000',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp805.000 ÷ 5 = Rp161.000',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp54.000',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp215.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Tiktok Music',
-    slug: 'tiktok-music',
-    title: 'Harga Paket Premium 3 Bulan',
-    img: '/images/product/brand/tiktok-music.png',
-    screenshot: '/images/price-scheme/desktop/tiktok-music.webp',
-    screenshotMobile: '/images/price-scheme/mobile/tiktok-music.webp',
-    desc: 'Tiktok Music Paket Premium',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Tiktok Music',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Tiktok Music</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Tiktok Music (3 Bulan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga 1 Bulan',
-        value: 'Rp79.000',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp87.690',
-      },
-      {
-        title: 'Harga 3 Bulan',
-        value: 'Rp87.690 x 3 = Rp263.070',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp263.070 ÷ 5 = Rp52.614',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp15.386',
-      },
-      {
-        title: 'Harga Paket 3 Bulan',
-        value: 'Rp68.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Freepik',
-    slug: 'freepik',
-    title: 'Harga Paket Premium 1 Bulan',
-    img: '/images/product/brand/freepik.png',
-    screenshot: '/images/price-scheme/desktop/freepik-month.webp',
-    screenshotMobile: '/images/price-scheme/mobile/freepik-month.webp',
-    desc: 'Freepik Paket Premium Bulanan',
-    member: 3,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Freepik',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Freepik</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Freepik (Bulanan)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: '€15',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: '€16.65 = Rp288.058',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '3',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp288.058 ÷ 3 = Rp96.019.33',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp9.980.67',
-      },
-      {
-        title: 'Harga Paket 1 Bulan',
-        value: 'Rp106.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Freepik',
-    slug: 'freepik',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/freepik.png',
-    screenshot: '/images/price-scheme/desktop/freepik-annual.webp',
-    screenshotMobile: '/images/price-scheme/mobile/freepik-annual.webp',
-    desc: 'Freepik Paket Premium Tahunan',
-    member: 3,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Freepik',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Freepik</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    notes:
-      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Freepik (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: '€108.00',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: '€119.88 = Rp2.074.044',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '3',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp2.074.044 ÷ 3 = Rp691.347.96',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp98.652.04',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp790.000',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Duolingo',
-    slug: 'duolingo',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/duolingo.png',
-    screenshot: '/images/price-scheme/desktop/duolingo.webp',
-    screenshotMobile: '/images/price-scheme/mobile/duolingo.webp',
-    desc: 'Duolingo Paket Premium',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Duolingo',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Duolingo</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Duolingo (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp599.000',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp664.890',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp664.890 ÷ 5 = Rp132.978',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp67.022',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp200.000',
         is_total: true,
       },
     ],
@@ -2660,6 +2323,397 @@ export const providerList = [
     ],
   },
   {
+    name: 'Tiktok Music',
+    slug: 'tiktok-music',
+    title: 'Harga Paket Premium 3 Bulan',
+    img: '/images/product/brand/tiktok-music.png',
+    screenshot: '/images/price-scheme/desktop/tiktok-music.webp',
+    screenshotMobile: '/images/price-scheme/mobile/tiktok-music.webp',
+    desc: 'Tiktok Music Paket Premium',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Tiktok Music',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Tiktok Music</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Tiktok Music (3 Bulan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga 1 Bulan',
+        value: 'Rp79.000',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp87.690',
+      },
+      {
+        title: 'Harga 3 Bulan',
+        value: 'Rp87.690 x 3 = Rp263.070',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp263.070 ÷ 5 = Rp52.614',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp15.386',
+      },
+      {
+        title: 'Harga Paket 3 Bulan',
+        value: 'Rp68.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Adobe Photoshop',
+    slug: 'adobe-photoshop',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-photoshop.png',
+    screenshot: '/images/price-scheme/desktop/adobe-photoshop-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/adobe-photoshop-annual.webp',
+    desc: 'Adobe Photoshop Paket Premium User Host',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe Photoshop',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Host (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.581.244',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp790.622',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Adobe Photoshop',
+    slug: 'adobe-photoshop',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-photoshop.png',
+    screenshot: '/images/price-scheme/desktop/adobe-photoshop-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/adobe-photoshop-annual.webp',
+    desc: 'Adobe Photoshop Paket Premium User Reguler',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe Photoshop',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Photoshop</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Reguler (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.581.244',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp99.378',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp890.000',
+        is_total: true,
+      },
+    ],
+  },
+
+  {
+    name: 'Adobe Illutstrator',
+    slug: 'adobe-illutstrator',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-illustrator.png',
+    screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
+    screenshotMobile:
+      '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
+    desc: 'Adobe Illustrator Paket Premium User Host',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe AI',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Host (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.581.244',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp790.622',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Adobe Illustrator',
+    slug: 'adobe-illustrator',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/adobe-illustrator.png',
+    screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
+    screenshotMobile:
+      '/images/price-scheme/mobile/adobe-illustrator-annual.webp',
+    desc: 'Adobe Illustrator Paket Premium User Reguler',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Adobe AI',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Harga dapat berubah sewaktu-waktu sesuai dengan penyesuaian harga. <br/><br/> Paket Patungan pada <b>Adobe Illutstrator</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'User Reguler (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Photoshop',
+        value: 'Rp1.581.244',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.581.244 ÷ 2 = Rp790.622',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp99.378',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp890.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Freepik',
+    slug: 'freepik',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/freepik.png',
+    screenshot: '/images/price-scheme/desktop/freepik-month.webp',
+    screenshotMobile: '/images/price-scheme/mobile/freepik-month.webp',
+    desc: 'Freepik Paket Premium Bulanan',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Freepik',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Freepik</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Freepik (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '€15',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: '€16.65 = Rp288.058',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp288.058 ÷ 3 = Rp96.019.33',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp9.980.67',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp106.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Freepik',
+    slug: 'freepik',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/freepik.png',
+    screenshot: '/images/price-scheme/desktop/freepik-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/freepik-annual.webp',
+    desc: 'Freepik Paket Premium Tahunan',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Freepik',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Freepik</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Freepik (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '€108.00',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: '€119.88 = Rp2.074.044',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp2.074.044 ÷ 3 = Rp691.347.96',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp98.652.04',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp790.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Envato',
+    slug: 'envato',
+    title: 'Envato',
+    img: '/images/product/brand/envato.png',
+    screenshot: '/images/price-scheme/desktop/envato.webp',
+    screenshotMobile: '/images/price-scheme/mobile/envato.webp',
+    desc: 'Envato Paket Premium 1 Tahun',
+
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Envato',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare hanya ke 5 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Envato</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'CapCut Tahunan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '$420 = Rp6.930.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan (Rp6.930.000 ÷ 5)',
+        value: 'Rp1.386.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp99.000',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp1.485.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
     name: 'Dropbox',
     slug: 'dropbox',
     title: 'Harga Paket Premium 1 Tahun',
@@ -2710,8 +2764,199 @@ export const providerList = [
       },
     ],
   },
+  {
+    name: 'ChatGPT Plus',
+    slug: 'chat-gpt-plus',
+    title: 'ChatGPT Plus',
+    img: '/images/product/brand/chat-gpt-plus.png',
+    screenshot: '/images/price-scheme/desktop/chat-gpt-web-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/chat-gpt-web-annual.webp',
+    desc: 'ChatGPT Plus Paket Premium 1 Bulan',
 
-  // zap seglowup
+    member: 6,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di ChatGPT',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 6 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>ChatGPT Plus</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran. Akun ChatGPT dikelola oleh Seakun dan akun akan dishare ke 6 member dalam 1 grup.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'ChatGPT Plus',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp328.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '6',
+      },
+      {
+        title: 'Harga Patungan',
+        value: '(Rp328.000 ÷ 6) = Rp54.666.67',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp8.333.33',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp63.000',
+        is_total: true,
+      },
+    ],
+  },
+
+  {
+    name: 'CapCut',
+    slug: 'capcut',
+    title: 'CapCut',
+    img: '/images/product/brand/capcut.png',
+    screenshot: '/images/price-scheme/desktop/capcut.webp',
+    screenshotMobile: '/images/price-scheme/mobile/capcut.webp',
+    desc: 'Capcut Paket Premium 1 Tahun',
+
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di CapCut',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare hanya ke 5 member dalam 1 grup',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>CapCut</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'CapCut Tahunan',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp720.000',
+      },
+      {
+        title: 'Harga + Pajak (11%)',
+        value: 'Rp799.200',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan (Rp799.200 ÷ 5)',
+        value: 'Rp159.840',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp79.160',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp239.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Medium',
+    slug: 'medium',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/medium.png',
+    screenshot: '/images/price-scheme/desktop/medium-month.webp',
+    screenshotMobile: '/images/price-scheme/mobile/medium-month.webp',
+    desc: 'Medium Paket Premium Bulanan',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Medium',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Medium</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Medium (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '$5.00 = Rp80.500',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp80.500 ÷ 5 = Rp16.100',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp5.400',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp21.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Medium',
+    slug: 'medium',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/medium.png',
+    screenshot: '/images/price-scheme/desktop/medium-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/medium-annual.webp',
+    desc: 'Medium Paket Premium Tahunan',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Medium',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Medium</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    notes:
+      'Harga paket dapat berubah sewaktu-waktu dikarenakan fluktuatif mengikuti kurs yang berlaku',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Medium (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: '$50.00 = Rp805.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp805.000 ÷ 5 = Rp161.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp54.000',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp215.000',
+        is_total: true,
+      },
+    ],
+  },
   {
     name: 'Zap',
     slug: 'zap',
@@ -3429,6 +3674,151 @@ export const providerList = [
       },
     ],
   },
+  // darisini
+  {
+    name: 'Bitdefender',
+    slug: 'bitdefender',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/bitdefender.png',
+    screenshot: '/images/price-scheme/desktop/bitdefender.webp',
+    screenshotMobile: '/images/price-scheme/mobile/bitdefender.webp',
+    desc: '',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Bitdefender',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Bitdefender</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Bitdefender (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp512.955',
+      },
+      {
+        title: 'Harga + pajak 11%',
+        value: 'Rp569.380,05',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp569.380,05 ÷ 5 = Rp113.876,01',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp78.123,99',
+      },
+      {
+        title: 'Harga Paket Tahunan',
+        value: 'Rp192.000',
+        is_total: true,
+      },
+    ],
+  },
+
+  {
+    name: 'Kaspersky',
+    slug: 'kaspersky-total',
+    title: 'Harga Paket Total Security 1 Tahun',
+    img: '/images/product/brand/kaspersky-total.png',
+    screenshot: '/images/price-scheme/desktop/kaspersky-total.webp',
+    screenshotMobile: '/images/price-scheme/mobile/kaspersky-total.webp',
+    desc: 'Kaspersky Total Security',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Total Security di Kaspersky',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Total Security selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Total Security (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp555.500',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp555.500 ÷ 3 = Rp185.166,67',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp185.167',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Kaspersky',
+    slug: 'kaspersky-internet',
+    title: 'Harga Paket Total Security 1 Tahun',
+    img: '/images/product/brand/kaspersky-internet.png',
+    screenshot: '/images/price-scheme/desktop/kaspersky-internet.webp',
+    screenshotMobile: '/images/price-scheme/mobile/kaspersky-internet.webp',
+    desc: 'Kaspersky Internet Security',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Internet Security di Kaspersky',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Member yang telah join ke grup dapat menikmati fitur Internet Security selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Internet Security (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp656.500',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp656.500 ÷ 5 = Rp131.300',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp131.300',
+        is_total: true,
+      },
+    ],
+  },
+
   // {
   //   name: 'Inshot',
   //   slug: 'inshot',

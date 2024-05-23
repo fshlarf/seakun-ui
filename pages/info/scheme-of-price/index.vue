@@ -87,7 +87,7 @@
             class="grid lg:grid-cols-2 lg:gap-x-6 gap-y-6 content-mobile space-y-6 lg:space-y-0 -mt-8 md:mt-0"
           >
             <div
-              v-for="(item, index) in productDigitalFilter(providerList)"
+              v-for="(item, index) in providerList"
               :key="index"
               class="sm:w-max sm:mx-auto md:w-full"
             >
