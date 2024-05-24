@@ -2962,6 +2962,7 @@ export const providerList = [
     slug: 'zap',
     series: 'Series 199Rb',
     title: 'Harga Paket 8x Treatment',
+    img: '/images/product/brand/zap.png',
     screenshot: '/images/price-scheme/desktop/zap-series-199.webp',
     screenshotMobile: '/images/price-scheme/mobile/zap-series-199.webp',
     desc: 'Zap Series 199K',
