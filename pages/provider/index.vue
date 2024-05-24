@@ -56,7 +56,7 @@
             <div class="flex items-center gap-1 lg:gap-3">
               <img
                 class="h-[20px] lg:h-[40px] shrink-0"
-                :src="`/images/icons/${provider.slug}.svg`"
+                :src="logoSrc(provider.slug)"
                 alt="provider logo"
               />
               <p class="text-[18px] lg:text-[24px] font-bold whitespace-nowrap">
@@ -788,6 +788,9 @@ export default {
         console.log(error);
       }
       this.isLoadingGroup = false;
+    },
+    logoSrc(slug) {
+      return `/images/icons/${slug}.svg`;
     },
     currencyFormat,
   },
