@@ -2470,8 +2470,8 @@ export const providerList = [
   },
 
   {
-    name: 'Adobe Illutstrator',
-    slug: 'adobe-illutstrator',
+    name: 'Adobe Illustrator',
+    slug: 'adobe-illustrator',
     title: 'Harga Paket Premium 1 Tahun',
     img: '/images/product/brand/adobe-illustrator.png',
     screenshot: '/images/price-scheme/desktop/adobe-illustrator-annual.webp',
