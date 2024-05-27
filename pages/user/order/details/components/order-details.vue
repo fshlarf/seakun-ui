@@ -37,7 +37,7 @@
       <div class="p-3 md:p-5 md:pb-4">
         <div class="flex justify-between items-center">
           <div>
-            <section class="flex gap-2 items-center text-sm font-bold">
+            <section class="flex gap-2 items-start md:items-center">
               <img
                 :src="[
                   orderDetails.status.value === 'Cancel' ||
@@ -47,15 +47,17 @@
                 ]"
                 alt="product"
               />
-              <h3>
-                {{ orderDetails.packageVariant.providerName }}
-                <span>
-                  (
-
+              <div class="flex flex-col sm:flex-row sm:gap-1">
+                <p class="text-xs sm:text-sm font-bold">
+                  {{ orderDetails.packageVariant.providerName }}
+                </p>
+                <p class="hidden sm:block font-bold text-sm">
+                  {{ `(${orderDetails.package.name})` }}
+                </p>
+                <p class="sm:hidden text-[11px]">
                   {{ orderDetails.package.name }}
-                  )
-                </span>
-              </h3>
+                </p>
+              </div>
             </section>
             <section class="flex gap-2 items-center text-xs md:text-sm mt-2">
               <img
