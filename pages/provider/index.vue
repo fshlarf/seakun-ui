@@ -790,9 +790,7 @@ export default {
       this.isLoadingGroup = false;
     },
     logoSrc(slug) {
-      if (slug == 'google-gemini') {
-        return '/images/icons/google-gemini-sparkling.svg';
-      } else return `/images/icons/${slug}.svg`;
+      return `/images/icons/${slug}.svg`;
     },
     currencyFormat,
   },

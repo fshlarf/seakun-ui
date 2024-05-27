@@ -2687,7 +2687,7 @@ export const providerList = [
     informations: [
       {
         title: 'Nama Paket',
-        value: 'CapCut Tahunan',
+        value: 'Envato Tahunan',
         is_total: true,
       },
       {
@@ -2827,7 +2827,8 @@ export const providerList = [
       'Akun dishare hanya ke 5 member dalam 1 grup',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>CapCut</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      'Paket Patungan pada <b>CapCut</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran <br/> Akun CapCut dikelola oleh Seakun dan akun akan digunakan bersama dengan teman grup.',
+
     informations: [
       {
         title: 'Nama Paket',
