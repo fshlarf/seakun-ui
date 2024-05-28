@@ -2,7 +2,7 @@
   <Modal :is-show="showModal" @onClose="onClose" size="xl:w-1/3">
     <div class="bg-white p-[10px]">
       <p>{{ donaturDetail.name }}</p>
-      <div v-if="donaturDetail.socialMedia && donaturDetail.accountName">
+      <!-- <div v-if="donaturDetail.socialMedia && donaturDetail.accountName">
         <a
           v-if="!donaturDetail.accountName.includes('*')"
           :href="`${
@@ -27,8 +27,14 @@
           alt="no social media"
         />
         <p class="text-[14px]">tidak tercantum</p>
-      </div>
-      <p class="text-[20px] font-bold tn:mt-2 text-secondary">
+      </div> -->
+      <p
+        v-if="donaturDetail.isHideNominal == 1"
+        class="text-[20px] font-bold tn:mt-2 text-secondary"
+      >
+        RpXXX
+      </p>
+      <p v-else class="text-[20px] font-bold tn:mt-2 text-secondary">
         {{ currencyFormat(donaturDetail.nominal) }}
       </p>
       <div class="tn:mt-5">

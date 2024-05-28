@@ -81,9 +81,10 @@ class MasterService {
   }
 
   addDonation(params) {
-    return this.serviceApi.post('/customer/donation', params, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    return this.serviceApiAuth.post('/customer/donation', params);
+  }
+  retryDonationPayment(id) {
+    return this.serviceApiAuth.post(`/customer/donation/${id}/retry`);
   }
 }
 

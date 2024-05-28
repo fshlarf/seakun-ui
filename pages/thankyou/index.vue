@@ -59,7 +59,7 @@
         >
           Konfirmasi pembayaranmu telah berhasil. Terimakasih sudah mengikuti
           <span class="font-bold"
-            >Program Patungan Qurban Seakun x Kitabisa</span
+            >Program Patungan Qurban Seakun x Kitabisa x Ecoqurban</span
           >. Untuk informasi tentang jadwal pelaksanaan proses qurban, akan
           diinformasikan mendekati hari H (Idul Adha).
         </p>
@@ -168,8 +168,8 @@
           whatsapp
           <a
             class="text-blue-500"
-            href="https://api.whatsapp.com/send?phone=6282124852232"
-            >082124852232</a
+            href="https://api.whatsapp.com/send?phone=6282124852235"
+            >082124852235</a
           >
         </p>
       </div>

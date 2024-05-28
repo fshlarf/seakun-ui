@@ -210,7 +210,7 @@ export default {
       } else {
         message = `Halo Admin, saya ${customerName} dengan nomor order ${orderNumber} sudah konfirmasi ikut menjadi User Host ${provider}. Saya tunggu selama 1 x 24 jam ya agar dipandu dalam proses selanjutnya, terimakasih.`;
       }
-      window.location.href = `https://api.whatsapp.com/send?phone=6282124852232&text=${encodeURIComponent(
+      window.location.href = `https://api.whatsapp.com/send?phone=6282124852235&text=${encodeURIComponent(
         message
       )}`;
     },

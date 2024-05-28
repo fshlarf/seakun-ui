@@ -56,7 +56,7 @@
             <div class="flex items-center gap-1 lg:gap-3">
               <img
                 class="h-[20px] lg:h-[40px] shrink-0"
-                :src="`/images/icons/${provider.slug}.svg`"
+                :src="logoSrc(provider.slug)"
                 alt="provider logo"
               />
               <p class="text-[18px] lg:text-[24px] font-bold whitespace-nowrap">
@@ -175,12 +175,6 @@
                   </p>
                 </div>
                 <div class="relative">
-                  <div
-                    class="absolute top-0 left-0 sm:left-4 sm:top-4 md:left-5 md:top-5 lg:top-0 lg:left-0 xl:left-3"
-                    v-if="pkg.packageName == 'Spotify'"
-                  >
-                    <THREnvelopeVue :envelopeKey="13" />
-                  </div>
                   <img
                     @click="onSelectPackage(pkg)"
                     class="w-full"
@@ -330,10 +324,6 @@
                 class="p-[12px] bg-[#F4FCFA]"
               >
                 <div v-html="priceScheme.additionalInfo"></div>
-                <p class="mt-2">
-                  Informasi terbaru mengenai pembayaran dan akun akan kami
-                  kirimkan via email
-                </p>
               </div>
 
               <div
@@ -523,15 +513,6 @@
         >
       </div>
     </div>
-    <THRChallengeVue
-      :isShow="$store.state.isShowPopupTHRChallenge"
-      @handleClose="
-        $store.commit(
-          'setShowPopupTHRChallenge',
-          !$store.state.isShowPopupTHRChallenge
-        )
-      "
-    />
   </div>
 </template>
 
@@ -544,8 +525,6 @@ import GroupCardShimmer from './views/group-card-shimmer.vue';
 import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
 import { mapActions, mapGetters } from 'vuex';
-import THREnvelopeVue from '../../components/organisms/ThrChallenge/THREnvelope.vue';
-import THRChallengeVue from '~/components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {
@@ -553,8 +532,6 @@ export default {
     GroupCard,
     Button,
     GroupCardShimmer,
-    THREnvelopeVue,
-    THRChallengeVue,
   },
   data() {
     return {
@@ -811,6 +788,9 @@ export default {
         console.log(error);
       }
       this.isLoadingGroup = false;
+    },
+    logoSrc(slug) {
+      return `/images/icons/${slug}.svg`;
     },
     currencyFormat,
   },

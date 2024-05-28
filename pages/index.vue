@@ -23,10 +23,6 @@
       @closeModal="onCloseModalSeakunHelp"
     />
     <ModalPromo />
-    <THRChallengeVue
-      :isShow="$store.state.isShowPopupTHRChallenge"
-      @handleClose="closeTHRPopup"
-    />
   </div>
 </template>
 
@@ -53,7 +49,6 @@ import ModalSekurbanBanner from '~/components/mollecules/ModalSekurbanBanner';
 import ModalSeakunHelp from '~/components/mollecules/ModalSeakunHelp';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
-import THRChallengeVue from '~/components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
 
 export default {
   components: {
@@ -77,7 +72,6 @@ export default {
     ModalSekurbanBanner,
     ModalSeakunHelp,
     ModalPromo,
-    THRChallengeVue,
   },
   data() {
     return {
@@ -156,12 +150,6 @@ export default {
     },
     onClickFloatingButton() {
       this.isShowModalSeakunHelp = true;
-    },
-    closeTHRPopup() {
-      this.$store.commit(
-        'setShowPopupTHRChallenge',
-        !this.$store.state.isShowPopupTHRChallenge
-      );
     },
   },
 };

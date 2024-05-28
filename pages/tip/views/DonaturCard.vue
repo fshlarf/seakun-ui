@@ -1,39 +1,21 @@
 <template>
   <div
     id="donatur-card"
-    class="tn:w-[300px] xl:w-full rounded-xl bg-white p-[20px] transition duration-500 cursor-pointer"
+    class="tn:w-[300px] xl:w-full rounded-xl bg-white p-[20px] transition duration-500 cursor-pointer text-gray-secondary h-[190px] md:h-[200px] lg:h-[214px]"
     @click="$emit('onClickDonaturCard', donaturData)"
   >
-    <p>{{ donaturData.name }}</p>
-    <div v-if="donaturData.socialMedia && donaturData.accountName">
-      <a
-        v-if="!donaturData.accountName.includes('*')"
-        :href="`${
-          donaturData.socialMedia === 'twitter'
-            ? 'https://twitter.com/'
-            : 'https://instagram.com/'
-        }${donaturData.accountName}`"
-        target="_blank"
-        class="flex space-x-1 items-center text-primary"
-      >
-        <i :class="`fa-brands fa-${donaturData.socialMedia}`"></i>
-        <p class="text-[14px]">{{ donaturData.accountName }}</p>
-      </a>
-      <div v-else class="flex space-x-1 items-center text-primary">
-        <i :class="`fa-brands fa-${donaturData.socialMedia}`"></i>
-        <p class="text-[14px]">{{ donaturData.accountName }}</p>
-      </div>
+    <p class="text-sm md:text-base">{{ donaturData.name }}</p>
+    <div class="text-[20px] font-bold mt-3 text-[#08A081]">
+      <p v-if="donaturData.isHideNominal == 1">RpXXX</p>
+      <p v-else>
+        {{ currencyFormat(donaturData.nominal) }}
+      </p>
     </div>
-    <div v-else class="flex space-x-2 items-center text-[#D9D9D9]">
-      <img src="/images/icons/atoms/link-disabled.svg" alt="no social media" />
-      <p class="text-[14px]">tidak tercantum</p>
-    </div>
-    <p class="text-[20px] font-bold tn:mt-2 text-secondary">
-      {{ currencyFormat(donaturData.nominal) }}
-    </p>
-    <div class="tn:mt-5">
+    <div class="mt-5 sm:mt-7 lg:mt-8">
       <img src="/images/icons/atoms/quote.svg" alt="quote icon" />
-      <p class="text-[14px] leading-[20px] tn:mt-2 two-lines overflow-hidden">
+      <p
+        class="text-[14px] leading-[20px] mt-3 sm:mt-2 lg:mt-3 two-lines overflow-hidden line-clamp-2"
+      >
         {{ donaturData.message }}
       </p>
     </div>

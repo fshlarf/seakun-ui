@@ -19,9 +19,6 @@
           Apa kata mereka yang menggunakan Seakun?
         </h1>
       </div>
-      <div class="absolute -top-4 -right-[62px]">
-        <THREnvelopeVue :envelopeKey="4" />
-      </div>
     </div>
     <div class="relative z-0">
       <ButtonChevron
@@ -47,7 +44,6 @@ import TiktokTestimony from './views/TiktokTestimony.vue';
 import InstagramTestimony from './views/InstagramTestimony.vue';
 import ButtonChevron from '~/components/atoms/ButtonChevron.vue';
 import Button from '~/components/atoms/Button.vue';
-import THREnvelopeVue from '../ThrChallenge/THREnvelope.vue';
 
 export default {
   components: {
@@ -56,7 +52,6 @@ export default {
     InstagramTestimony,
     ButtonChevron,
     Button,
-    THREnvelopeVue,
   },
   data() {
     return {

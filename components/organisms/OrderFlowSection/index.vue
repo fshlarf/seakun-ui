@@ -16,13 +16,6 @@
           :key="id"
           class="tn:w-[105px] md:w-[210px] relative"
         >
-          <div
-            class="absolute right-0 md:right-7 lg:right-0 top-0 md:top-5 lg:top-3 z-10 cursor-pointer"
-            a
-            v-if="id == 3"
-          >
-            <THREnvelopeVue :envelopeKey="3" />
-          </div>
           <img
             class="mx-auto relative z-20 pointer-events-none"
             :src="`/images/order flow/${flow.img}.svg`"
@@ -48,11 +41,8 @@
 </template>
 
 <script>
-import THREnvelopeVue from '../ThrChallenge/THREnvelope.vue';
 export default {
-  components: {
-    THREnvelopeVue,
-  },
+  components: {},
   data() {
     return {
       orderFlow: [

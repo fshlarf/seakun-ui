@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarBlank />
+    <NavbarBlank className="!bg-white shadow" />
     <div class="container-wrapper">
       <Nuxt />
     </div>

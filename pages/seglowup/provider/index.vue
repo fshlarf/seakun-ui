@@ -120,14 +120,6 @@
             >
               <div class="flex items-end justify-between">
                 <p class="text-[12px] font-bold">Skema Harga</p>
-                <div
-                  v-if="
-                    !isLoading &&
-                    priceScheme.informations[0].value == 'ZAP Series Rp299RB'
-                  "
-                >
-                  <THREnvelopeVue :envelopeKey="9" />
-                </div>
               </div>
               <div
                 v-for="(info, id) in priceScheme.informations"
@@ -415,14 +407,6 @@
           <div class="border rounded-[8px] p-4">
             <div class="flex justify-between items-center">
               <p class="font-medium">Skema Harga</p>
-              <div
-                v-if="
-                  !isLoading &&
-                  priceScheme.informations[0].value == 'ZAP Series Rp299RB'
-                "
-              >
-                <THREnvelopeVue :envelopeKey="9" />
-              </div>
             </div>
             <div
               v-for="(info, id) in priceScheme.informations"
@@ -532,15 +516,6 @@
       :show-modal="isShowModalBlackList"
       @onClose="closeModalBlackList"
     />
-    <THRChallengeVue
-      :isShow="$store.state.isShowPopupTHRChallenge"
-      @handleClose="
-        $store.commit(
-          'setShowPopupTHRChallenge',
-          !$store.state.isShowPopupTHRChallenge
-        )
-      "
-    />
   </div>
 </template>
 
@@ -558,8 +533,7 @@ import Chevron from '~/components/atoms/Chevron.vue';
 import OrderService from '~/services/OrderServices.js';
 import ModalBlackListWarning from '~/components/mollecules/ModalBlackListWarning.vue';
 import moment from 'moment';
-import THREnvelopeVue from '../../../components/organisms/ThrChallenge/THREnvelope.vue';
-import THRChallengeVue from '../../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
+
 export default {
   components: {
     NavbarProvider,
@@ -569,8 +543,6 @@ export default {
     Chevron,
     ModalBlackListWarning,
     PackageCard,
-    THREnvelopeVue,
-    THRChallengeVue,
   },
   data() {
     return {
@@ -676,6 +648,7 @@ export default {
           throw new Error(fetchCreateOrder);
         }
       } catch (error) {
+        this.isLoadingCreateOrder = false;
         console.log(error);
         if (
           error.response &&
@@ -686,7 +659,7 @@ export default {
           this.$router.push('/login');
         }
       }
-      this.isLoadingCreateOrder = false;
+      // this.isLoadingCreateOrder = false;
     },
     toPaymentPage(url) {
       window.location.href = url;

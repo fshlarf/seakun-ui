@@ -107,6 +107,13 @@ export default {
     right: 0.75rem;
     top: 1.25rem;
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   // [type='date'] {
   //   background: #fff url('/images/icons/atoms/calendar.svg') 97% 50% no-repeat;
   // }

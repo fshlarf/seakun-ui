@@ -32,19 +32,6 @@
           <div class="space-y-1">
             <div class="flex justify-between items-end my-2">
               <h1 class="text-lg xl:text-sm font-bold">Detail Harga</h1>
-              <div class="mb-2">
-                <THREnvelopeVue
-                  :envelopeKey="8"
-                  v-if="
-                    scheme.slug == 'adobe-photoshop' &&
-                    scheme.informations[0].value == 'User Host (1 Tahun)'
-                  "
-                />
-                <THREnvelopeVue
-                  :envelopeKey="10"
-                  v-if="scheme.slug == 'youtube'"
-                />
-              </div>
             </div>
             <div
               v-for="(info, id) in scheme.informations"
@@ -83,11 +70,10 @@
 
 <script>
 import Modal from '~/components/atoms/Modal.vue';
-import THREnvelopeVue from '../organisms/ThrChallenge/THREnvelope.vue';
+
 export default {
   components: {
     Modal,
-    THREnvelopeVue,
   },
   props: {
     dataScheme: {

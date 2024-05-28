@@ -6,15 +6,6 @@
     <ProductList />
     <ProductSubmitBanner />
     <Footer />
-    <THRChallengeVue
-      :isShow="$store.state.isShowPopupTHRChallenge"
-      @handleClose="
-        $store.commit(
-          'setShowPopupTHRChallenge',
-          !$store.state.isShowPopupTHRChallenge
-        )
-      "
-    />
   </div>
 </template>
 
@@ -25,7 +16,7 @@ import OrderFlow from './views/OrderFlow';
 import ProductList from './views/ProductList';
 import ProductSubmitBanner from './views/ProductSubmitBanner';
 import Footer from './views/Footer.vue';
-import THRChallengeVue from '../../components/organisms/ThrChallenge/ModalPopup/THRChallenge.vue';
+
 export default {
   components: {
     Navbar,
@@ -34,7 +25,6 @@ export default {
     ProductList,
     ProductSubmitBanner,
     Footer,
-    THRChallengeVue,
   },
 };
 </script>

@@ -42,11 +42,47 @@
       />
 
       <div class="mt-[24px] md:mt-[28px]">
+        <div v-if="!isAfterJune5">
+          <div v-if="orderData[0] && orderData[0].provider.slug == 'sekurban'">
+            <div class="flex items-center gap-2">
+              <CheckboxVue @getval="handleCheckisInstallmentPayments" />
+              <p class="text-gray-secondary font-medium text-sm">
+                Saya ingin melakukan cicilan
+              </p>
+            </div>
+            <div
+              class="mt-4 bg-[#E9FCF8] px-3 md:px-4 py-3 md:py-[11px] flex items-start gap-2 md:gap-3 rounded-lg border border-[#D6F5EF]"
+            >
+              <img
+                src="/images/illustration/installment-payment.webp"
+                alt="intallment"
+                class="w-[50px] h-[37px] hidden md:block"
+              />
+              <img
+                src="/images/icons/atoms/exclamation-mark-symbol.svg"
+                alt="warning"
+                class="w-4 h-4 md:hidden"
+              />
+              <p class="text-xs text-[#417465]">
+                Kamu akan melakukan dua kali cicilan qurban. Berikut ini adalah
+                pembayaran pertama, sedangkan pembayaran kedua harus dibayarkan
+                paling lambat tanggal 5 Juni 2024.
+              </p>
+            </div>
+            <hr class="my-7 border-[#E5E5E5]" />
+          </div>
+        </div>
         <h2 class="font-bold text-sm md:text-[20px]">Rincian Pembayaran</h2>
         <div class="mt-2 md:mt-4 text-sm md:text-base">
           <div class="flex justify-between items-center">
             <p>Biaya Langganan</p>
-            <p class="font-medium">{{ currencyFormat(totalPrice) }}</p>
+            <p class="font-medium">
+              {{
+                isInstallmentPayments
+                  ? currencyFormat(totalPrice / 2)
+                  : currencyFormat(totalPrice)
+              }}
+            </p>
           </div>
           <div class="flex justify-between items-center">
             <p>Biaya Transaksi & Tax</p>
@@ -56,7 +92,7 @@
           <div class="flex justify-between items-center">
             <p class="text-sm md:text-[20px] font-bold">Total Bayar</p>
             <p class="font-bold text-[#00BA88] md:text-[20px]">
-              {{ currencyFormat(totalPayment) }}
+              {{ handleFormatTotalFee(totalPayment) }}
             </p>
           </div>
         </div>
@@ -110,6 +146,8 @@ import { priceChangeList } from '../../constants/price-change';
 import ModalPriceScheme from '~/components/mollecules/ModalPriceScheme';
 import WarningPriceChange from './views/WarningPriceChange.vue';
 import { currencyFormat } from '~/helpers/word-transformation';
+import CheckboxVue from '../../components/atoms/Checkbox.vue';
+import moment from 'moment';
 
 export default {
   name: 'NewPayment',
@@ -126,6 +164,7 @@ export default {
     ModalPayment,
     ModalPriceScheme,
     WarningPriceChange,
+    CheckboxVue,
   },
   data() {
     return {
@@ -134,6 +173,8 @@ export default {
       OrderService,
       MasterService,
       PaymentService,
+      currentDate: moment(),
+      isInstallmentPayments: false,
       subcriptionPeriod: {
         name: '1 Bulan (Rp53.000)',
       },
@@ -248,8 +289,16 @@ export default {
         return providerSlugs.includes(provider.slug);
       });
     },
+    isAfterJune5() {
+      const june5th = moment('2024-06-05');
+      return this.currentDate.isAfter(june5th);
+    },
+  },
+  beforeDestroy() {
+    window.removeEventListener('pageshow', this.handleLoadingPaymentButton);
   },
   mounted() {
+    window.addEventListener('pageshow', this.handleLoadingPaymentButton);
     this.OrderService = new OrderService(this);
     this.MasterService = new MasterService(this);
     this.PaymentService = new PaymentService(this);
@@ -268,6 +317,9 @@ export default {
     this.getPaymentDigital(order_uid, customer_uid);
   },
   methods: {
+    handleLoadingPaymentButton() {
+      this.isLoadingPaymentButton = false;
+    },
     onSelectPaymentMethod(method) {
       this.selectedMethod = method;
       this.paymentMethod = [];
@@ -422,6 +474,22 @@ export default {
     },
     async createInvoice() {
       this.isLoadingPaymentButton = true;
+      if (this.isInstallmentPayments) {
+        const notesPayload = {
+          orderUid: this.orderData[0].orderUid,
+          customerUid: this.customerUid,
+          notes: 'Cicilan 2x',
+        };
+        const isNotesUpdated = await this.updateOrderNotes(notesPayload);
+        if (!isNotesUpdated) {
+          this.$alert.show({
+            status: 'error',
+            message: 'Terjadi kesalahan. Harap coba kembali',
+          });
+          this.isLoadingPaymentButton = false;
+          return;
+        }
+      }
       const { PaymentService } = this;
       const orders = this.orderData
         .filter((item) => item.checked)
@@ -431,11 +499,12 @@ export default {
         }));
       const payload = {
         customerUid: this.customerUid,
-        totalAmount: this.totalPayment,
+        totalAmount: this.checkInstallmentPayments(this.totalPayment),
         paymentMethod: this.paymentMethod,
         serviceFee: this.serviceFee,
         order: orders,
       };
+
       let counter = 0;
       do {
         try {
@@ -447,7 +516,6 @@ export default {
             if (dataResult) {
               counter = 5;
               window.location.href = dataResult.invoice_url;
-              this.isLoadingPaymentButton = false;
             } else {
               counter++;
             }
@@ -456,6 +524,7 @@ export default {
           }
         } catch (error) {
           counter++;
+          this.isLoadingPaymentButton = false;
           console.log(JSON.stringify(error, null, 2));
         }
       } while (counter < 3);
@@ -465,6 +534,21 @@ export default {
           status: 'error',
           message: 'Terjadi kesalahan. Harap coba kembali',
         });
+      }
+    },
+    async updateOrderNotes(payload) {
+      try {
+        const fetchUpdateNotes = await this.OrderService.updateOrderNotes(
+          payload
+        );
+        if (fetchUpdateNotes.data) {
+          return true;
+        } else {
+          return false;
+        }
+      } catch (error) {
+        console.log(error);
+        return false;
       }
     },
     manualPayment() {
@@ -527,6 +611,23 @@ export default {
     },
     OpenCloseModalPayment() {
       this.isShowModalPayment = !this.isShowModalPayment;
+    },
+    checkInstallmentPayments(amount) {
+      if (this.isInstallmentPayments) {
+        const fee = amount - this.serviceFee;
+        const result = fee / 2;
+        return result + this.serviceFee;
+      } else return amount;
+    },
+    handleCheckisInstallmentPayments(val) {
+      this.isInstallmentPayments = val;
+    },
+    handleFormatTotalFee(amount) {
+      if (this.isInstallmentPayments) {
+        const fee = amount - this.serviceFee;
+        const result = fee / 2;
+        return this.currencyFormat(result + this.serviceFee);
+      } else return this.currencyFormat(amount);
     },
     currencyFormat,
   },

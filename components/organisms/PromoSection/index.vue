@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full px-4 md:container pt-20">
+  <div id="promo-section" class="w-full" :class="addClass">
     <div class="w-full relative z-0">
       <template v-if="banners.length > 1">
         <!-- chevron left -->
@@ -43,7 +43,10 @@
           @click="onClickBanner(banner)"
           :id="`promo-${banner.id}`"
           class="w-full flex-none"
-          :class="`${banner.link ? 'cursor-pointer' : ''}`"
+          :class="[
+            banner.internalLink || banner.externalLink ? 'cursor-pointer' : '',
+            classImg,
+          ]"
           v-for="(banner, id) in banners"
           :key="id"
           :src="banner.img"
@@ -54,6 +57,7 @@
     <div
       v-if="banners.length > 1"
       class="-mt-[13px] md:mt-[20px] flex justify-center items-center gap-[4px] lg:gap-[8px] relative z-10"
+      :class="radioClass"
     >
       <div
         role="button"
@@ -71,35 +75,69 @@
 
 <script>
 export default {
+  props: {
+    addClass: {
+      typeof: String,
+      default: 'px-4 md:container pt-20',
+    },
+    classImg: {
+      typeof: String,
+      default: '',
+    },
+    radioClass: {
+      typeof: String,
+      default: '',
+    },
+  },
   data() {
     return {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/thr-mobile.webp',
-          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
+          img: '/images/promo/promo-yt-mobile.webp',
         },
         {
           id: 2,
-          img: '/images/promo/wa-mobile.webp',
+          img: '/images/promo/sequrban-mobile.webp',
+          internalLink: '/sekurban',
         },
         {
           id: 3,
+          img: '/images/promo/uang-kaget-mobile.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
+        },
+        {
+          id: 4,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 5,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/thr-desktop.webp',
-          link: 'https://x.com/OfficialSeakun/status/1777524408862777628',
+          img: '/images/promo/promo-yt-desktop.webp',
         },
         {
           id: 2,
-          img: '/images/promo/wa-desktop.webp',
+          img: '/images/promo/sequrban-desktop.webp',
+          internalLink: '/sekurban',
         },
         {
           id: 3,
+          img: '/images/promo/uang-kaget-desktop.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
+        },
+        {
+          id: 4,
+          img: '/images/promo/wa-desktop.webp',
+        },
+        {
+          id: 5,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
@@ -109,25 +147,39 @@ export default {
   },
   mounted() {
     this.selectBannersByScreenSize();
-    if (this.banners.length > 1) {
-      let slideCount = 0;
-      const slidePromo = setInterval(() => {
-        slideCount++;
-        this.scrollRight();
-        if (slideCount == this.banners.length - 1) {
-          clearInterval(slidePromo);
-        }
-      }, 10000);
-      // setTimeout(() => {
-      //   this.scrollRight();
-      // }, 10000);
-    }
+    const thisSeection = document.getElementById('promo-section');
+    this.observeScroll(thisSeection);
   },
   methods: {
     onClickBanner(banner) {
-      if (banner.link) {
-        window.open(banner.link, '_blank');
+      if (banner.internalLink) {
+        this.$router.push(banner.internalLink);
+      } else if (banner.externalLink) {
+        window.open(banner.externalLink, '_blank');
       }
+    },
+    observeScroll(element) {
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (this.banners.length > 1) {
+              let slideCount = 0;
+              const slidePromo = setInterval(() => {
+                slideCount++;
+                this.scrollRight();
+                if (slideCount == this.banners.length - 1) {
+                  clearInterval(slidePromo);
+                }
+              }, 10000);
+            }
+          }
+        },
+        {
+          root: null,
+          threshold: 0.1, // set offset 0.1 means trigger if atleast 10% of element in viewport
+        }
+      );
+      observer.observe(element);
     },
     selectBannersByScreenSize() {
       let screen = window.innerWidth;

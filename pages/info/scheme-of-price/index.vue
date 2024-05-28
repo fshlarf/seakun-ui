@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="!bg-white">
     <NavbarBlank />
-    <div class="scheme-price">
+    <div class="scheme-price" id="scheme-price-wrapper">
       <div class="container">
         <Title title="Bagaimana Seakun.id mengatur harga?" />
-        <div class="scheme-price__info">
+        <div class="text-sm">
           Dengan konsep patungan, melalui Seakun.id harga Paket Grup dari
           masing-masing provider akan dibagi rata per jumah member dalam suatu
           grup. Sedangkan harga final yang dibayarkan oleh member adalah harga
           patungan yang sudah termasuk biaya admin Seakun.id.
         </div>
         <br />
-        <div class="scheme-price__info">
+        <div class="text-sm">
           <b>Perlu diperhatikan</b> bahwa harga paket dari provider bisa saja
           tidak bulat, sehingga Seakun.id melakukan pembulatan harga patungan
           dengan tujuan untuk memudahkan member dalam melihat nominal yang akan
@@ -21,58 +21,128 @@
           melalui Seakun.id, member dinyatakan sudah mengerti dan setuju dengan
           skema harga yang sudah ditetapkan.
         </div>
-        <div class="flex justify-around flex-wrap content-mobile mb-[5px]">
-          <div v-for="(item, index) in providerList" :key="index">
-            <div v-if="item.slug !== 'zap'" class="card">
-              <div class="w-1/4">
-                <img
-                  :src="item.img"
-                  alt="provider"
-                  class="h-10 object-contain"
-                />
-              </div>
-              <div class="w-full my-2">
-                <img :src="item.screenshotMobile" alt="price scheme" />
-              </div>
-              <p class="font-bold text-sm md:text-base">Detail Harga</p>
+        <div class="flex flex-col md:flex-row items-start gap-10 md:mt-10">
+          <!-- mobile view -->
+          <div
+            class="w-full bg-white md:hidden flex justify-between items-center sticky top-[54px] pt-7 pb-5"
+          >
+            <section class="relative">
               <div
-                class="mb-[5px] pt-1 flex justify-between items-center"
-                v-for="(info, ind) in item.informations"
-                :key="ind"
+                class="content absolute bg-white top-[100%] mt-3 border-[#A0A3BD] shadow-sm overflow-y-scroll rounded-md px-3 space-y-2 transition-all ease-in-out"
+                :class="!isOpenProviderMenu ? 'h-0' : 'h-[306px] border py-3'"
               >
                 <div
-                  :class="`col-md-auto text-sm md:text-base ${
-                    info.is_total ? 'font-bold' : ''
-                  }`"
+                  v-for="(item, index) in siderbarLink(providerList)"
+                  :key="index"
                 >
-                  {{ info.title }}
-                </div>
-                <div
-                  :class="`col text-right text-sm md:text-base ${
-                    info.is_total ? 'font-bold' : ''
-                  }`"
-                >
-                  {{ info.value }}
+                  <p
+                    class="cursor-pointer"
+                    @click="
+                      scrollToElementWithOffset(item.slug, 100),
+                        (isOpenProviderMenu = !isOpenProviderMenu)
+                    "
+                  >
+                    {{ changeMenuFormat(item.slug) }}
+                  </p>
                 </div>
               </div>
-              <div v-if="item.notes" class="tn:my-2 md:my-3">
-                <p class="italic tn:text-sm md:text-base font-semibold">
-                  {{ item.notes }}
+
+              <div
+                class="px-3 py-2 border border-[#A0A3BD] rounded-[6px] flex justify-between items-center gap-6 cursor-pointer"
+                @click="isOpenProviderMenu = !isOpenProviderMenu"
+              >
+                <p class="text-[#A0A3BD]">Daftar Provider</p>
+                <img
+                  src="/images/icons/atoms/chevron-light-gray.svg"
+                  alt="open"
+                  class="transition-all ease-in"
+                  :class="[!isOpenProviderMenu ? 'rotate-180' : 'rotate-0']"
+                />
+              </div>
+            </section>
+            <section>
+              <p class="text-sm text-green-primary">Total: 35 Provider</p>
+            </section>
+          </div>
+
+          <!-- screen 768 + -->
+          <section class="min-w-[241px] sticky top-20 bg-white hidden md:block">
+            <p class="font-medium text-green-primary">Daftar Provider</p>
+            <div class="max-h-[650px] overflow-y-scroll space-y-4 mt-4 content">
+              <div
+                v-for="(item, index) in siderbarLink(providerList)"
+                :key="index"
+              >
+                <p
+                  class="cursor-pointer"
+                  @click="scrollToElementWithOffset(item.slug, 100)"
+                >
+                  {{ changeMenuFormat(item.slug) }}
                 </p>
               </div>
-              <div class="divider"></div>
-              <p class="font-bold">Skema Berlangganan</p>
-              <ol style="padding-left: 1rem" class="list-decimal">
-                <li
-                  class="pt-1 text-sm md:text-base"
-                  v-for="(scheme, indx) in item.schemes"
-                  :key="indx"
-                >
-                  {{ scheme }}
-                </li>
-              </ol>
             </div>
-          </div>
+          </section>
+
+          <section
+            class="grid lg:grid-cols-2 lg:gap-x-6 gap-y-6 content-mobile space-y-6 lg:space-y-0 -mt-8 md:mt-0"
+          >
+            <div
+              v-for="(item, index) in providerList"
+              :key="index"
+              class="sm:w-max sm:mx-auto md:w-full"
+            >
+              <!-- v-if="item.slug !== 'zap'" -->
+              <div class="card" :id="item.slug">
+                <div class="w-1/4">
+                  <img
+                    :src="item.img"
+                    alt="provider"
+                    class="h-10 object-contain"
+                  />
+                </div>
+                <div class="w-full my-2">
+                  <img :src="item.screenshotMobile" alt="price scheme" />
+                </div>
+                <p class="font-bold text-sm md:text-base">Detail Harga</p>
+                <div
+                  class="mb-[5px] pt-1 flex justify-between items-center"
+                  v-for="(info, ind) in item.informations"
+                  :key="ind"
+                >
+                  <div
+                    :class="`col-md-auto text-sm md:text-base ${
+                      info.is_total ? 'font-bold' : ''
+                    }`"
+                  >
+                    {{ info.title }}
+                  </div>
+                  <div
+                    :class="`col text-right text-sm md:text-base ${
+                      info.is_total ? 'font-bold' : ''
+                    }`"
+                  >
+                    {{ info.value }}
+                  </div>
+                </div>
+                <div v-if="item.notes" class="tn:my-2 md:my-3">
+                  <p class="italic tn:text-sm md:text-base font-semibold">
+                    {{ item.notes }}
+                  </p>
+                </div>
+                <div class="divider"></div>
+                <p class="font-bold">Skema Berlangganan</p>
+                <ol style="padding-left: 1rem" class="list-decimal">
+                  <li
+                    class="pt-1 text-sm md:text-base"
+                    v-for="(scheme, indx) in item.schemes"
+                    :key="indx"
+                  >
+                    {{ scheme }}
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -95,12 +165,62 @@ export default {
   data() {
     return {
       providerList,
+      isOpenProviderMenu: false,
     };
+  },
+  methods: {
+    productDigitalFilter(data) {
+      return data.filter((item) => item.slug !== 'zap');
+    },
+    siderbarLink(data) {
+      return data.filter(
+        (objek, indeks, self) =>
+          indeks === self.findIndex((o) => o.slug === objek.slug)
+      );
+    },
+    changeMenuFormat(text) {
+      const defaultText = text.split('-');
+      const convert = defaultText.map(function (word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      });
+      const result = convert.join(' ');
+      return result;
+    },
+    scrollToElementWithOffset(elementId, offset) {
+      const element = document.getElementById(elementId);
+      const elementPosition = element.getBoundingClientRect().top;
+      let offsetHeight = offset;
+      if (process.client && window.innerWidth <= 768) {
+        offsetHeight += 50;
+      }
+      const offsetPosition =
+        elementPosition + window.pageYOffset - offsetHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #f5f3f3;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #757272;
+}
 .scheme-price {
   padding: 100px 0px 40px !important;
 
@@ -121,7 +241,6 @@ export default {
     border: 1px solid #eeeeee;
     border-radius: 8px;
     box-shadow: 0px 0px 4px #dddddd;
-    margin: 3rem 0 0;
     max-width: 500px;
 
     .ss {

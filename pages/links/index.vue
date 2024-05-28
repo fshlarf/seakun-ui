@@ -102,7 +102,7 @@ export default {
     },
     goToWhatsapp() {
       window.location.href =
-        'https://api.whatsapp.com/send?phone=6282124852232';
+        'https://api.whatsapp.com/send?phone=6282124852235';
     },
     goToSeakunHelp() {
       window.location.href = 'https://forms.gle/t1AbaxnjEtJr8NAPA';

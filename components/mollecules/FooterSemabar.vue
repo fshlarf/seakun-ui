@@ -59,7 +59,7 @@
             >
           </li>
           <li>
-            <nuxt-link class="hover:no-underline" to="/"
+            <nuxt-link class="hover:no-underline" to="/privacy-policy"
               >Kebijakan Privasi</nuxt-link
             >
           </li>
@@ -72,13 +72,16 @@
             >
           </li>
           <li>
+            <nuxt-link to="/tip">TIP untuk Seakun</nuxt-link>
+          </li>
+          <!-- <li>
             <nuxt-link class="hover:no-underline" to="/"
               >Karir
               <span v-if="isHiring" class="hiring text-primary font-mono">
                 ..we're hiring</span
               >
             </nuxt-link>
-          </li>
+          </li> -->
         </ul>
       </div>
       <div class="tn:my-4 lg:mt-0">
@@ -96,7 +99,7 @@
               >Produk Non Digital</nuxt-link
             >
           </li>
-          <li>
+          <!-- <li>
             <nuxt-link class="hover:no-underline" to="/"
               >Program Patungan</nuxt-link
             >
@@ -105,10 +108,15 @@
             <nuxt-link class="hover:no-underline" to="/"
               >Program Sekeranjang</nuxt-link
             >
-          </li>
+          </li> -->
           <li class="relative max-w-max">
             <nuxt-link class="hover:no-underline" to="/sekurban"
               >Sequrban</nuxt-link
+            >
+          </li>
+          <li class="relative max-w-max">
+            <nuxt-link class="hover:no-underline" to="/seglowup"
+              >SeGlowUp</nuxt-link
             >
             <img
               class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-1 w-[9px]"
@@ -148,8 +156,8 @@
           </div> -->
           <div class="flex space-x-2 items-center">
             <img src="/images/footer/whatsapp.svg" alt="#" />
-            <a href="https://api.whatsapp.com/send?phone=6282124852232"
-              >082124852232</a
+            <a href="https://api.whatsapp.com/send?phone=6282124852235"
+              >082124852235</a
             >
           </div>
           <div class="flex space-x-2 items-start">

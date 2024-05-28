@@ -15,9 +15,8 @@
     </section>
     <section
       class="fixed top-0 left-0 bottom-0 right-0 bg-black/40 z-50 flex justify-center items-center sm:hidden"
-      v-if="isShowBanner"
     >
-      <div class="absolute" v-if="isShowBanner">
+      <div class="absolute">
         <img
           src="/images/banner/popup-update-odp.webp"
           alt="information"
@@ -27,7 +26,7 @@
           src="/images/icons/atoms/close.svg"
           alt="close"
           class="absolute -top-3 -right-3 bg-black/[35%] rounded-full p-1 w-7 h-7 cursor-pointer"
-          @click="isShowBanner = !isShowBanner"
+          @click="$emit('handleClose')"
         />
       </div>
     </section>
@@ -35,13 +34,7 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      isShowBanner: true,
-    };
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped></style>
