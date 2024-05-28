@@ -204,7 +204,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Spotify</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
+      '<p>Paket Patungan pada <b>Spotify</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Terkait aturan yang berlaku dari Spotify, sebelum melakukan pendaftaran pastikan akun kamu belum pernah bergabung ke family lain selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -251,7 +251,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>YouTube</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.',
+      '<p>Paket Patungan pada <b>YouTube</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Gmail kamu belum pernah berpindah family selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Tidak sedang aktif tergabung pada family Google.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></section></div> </div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -575,7 +575,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple Music User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      '<p>Paket Patungan pada <b>Apple Music User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Menggunakan device Apple.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></section></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -621,7 +621,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple Music User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      '<p>Paket Patungan pada <b>Apple Music User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -669,7 +669,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple One User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      '<p>Paket Patungan pada <b>Apple One User Host</b> merupakan produk <b>Ready</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Menggunakan device Apple.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></section></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -715,7 +715,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple One User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      '<p>Paket Patungan pada <b>Apple One User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -763,7 +763,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple One Premier User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      '<p>Paket Patungan pada <b>Apple One Premier User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Menggunakan device Apple.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></section></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -810,7 +810,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple One Premier User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      '<p>Paket Patungan pada <b>Apple One Premier User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -858,7 +858,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple TV User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      '<p>Paket Patungan pada <b>Apple TV User Host</b> merupakan produk <b>Ready</b>. User Host adalah user yang diberi wewenang untuk melakukan pendaftaran dan pembayaran langsung ke Apple id milik Seakun. Pembayaran provider akan sepenuhnya diganti oleh Seakun ketika pembayaran sudah terdebet. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Menggunakan device Apple.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></section></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -904,7 +904,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Apple TV User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      '<p>Paket Patungan pada <b>Apple TV User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Pastikan Apple id pribadi belum pernah atau sedang bergabung di family lain. Hal ini merupakan syarat agar dapat bergabung ke grup family Apple. Karena aturan dari Apple, satu akun tidak dapat pindah grup dalam waktu 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -951,7 +951,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Google One</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      '<p>Paket Patungan pada <b>Google One</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Gmail kamu belum pernah berpindah family selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Tidak sedang aktif tergabung pada family Google.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></section></div> </div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -999,11 +999,11 @@ export const providerList = [
       'Seakun membuat akun gmail dan membeli Paket Premium Gemini Advanced',
       'Seakun bertindak sebagai manager family dalam grup',
       'Member membuat/menyediakan akun masing-masing',
-      'Akun dishare hanya ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
-      '<b>Syarat & Ketentuan :</b> <br/> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>-</p>Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Gmail kamu belum pernah berpindah family selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>-</p>Tidak sedang aktif tergabung pada family Google<p></p></section></div> ',
+      '<b>Syarat & Ketentuan :</b> <br/> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Gmail kamu belum pernah berpindah family selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Tidak sedang aktif tergabung pada family Google.<p></p></section></div> ',
     informations: [
       {
         title: 'Nama Paket',
@@ -1148,7 +1148,7 @@ export const providerList = [
       'Berkomitmen merespon chat dan membantu user reguler untuk login pada Disney+',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Disney+ User Host</b> merupakan produk <b>Pre-Order</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran menggunakan nomor HP pada Disney+. Pembayaran provider akan dilakukan oleh Seakun dan user host <b>Berkomitmen</b> membantu user reguler untuk login pada Disney+. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.',
+      '<p>Paket Patungan pada <b>Disney+ User Host</b> merupakan produk <b>Pre-Order</b>. <b>User Host</b> adalah user yang diberi wewenang untuk melakukan pendaftaran menggunakan nomor HP pada Disney+. Pembayaran provider akan dilakukan oleh Seakun dan user host <b>Berkomitmen</b> membantu user reguler untuk login pada Disney+. Untuk detail user host bisa klik <a class="text-primary" href="/info/user-host" target="_blank">link berikut</a>.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Tidak memiliki langganan yang sedang berjalan atau dalam masa tenggang pada akun Disney kamu.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></div>',
     informations: [
       {
         title: 'Nama Paket',
@@ -1194,7 +1194,7 @@ export const providerList = [
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
-      'Paket Patungan pada <b>Disney+ User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+      '<p>Paket Patungan pada <b>Disney+ User Reguler</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.</p><div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></div>',
     informations: [
       {
         title: 'Nama Paket',
