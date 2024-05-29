@@ -5,7 +5,7 @@
         <label class="text-[16px] font-bold text-text-dark">Latest</label>
         <label class="text-[16px] font-bold text-primary"> Article</label>
       </div>
-      <div class="flex justify-end">
+      <!-- <div class="flex justify-end">
         <PaginationButton
           :disable="page === 1"
           @handleClick="prevPage"
@@ -51,167 +51,70 @@
             />
           </svg>
         </PaginationButton>
-      </div>
+      </div> -->
     </div>
     <div
+      v-if="articles && articles.list.length > 0"
       class="grid w-full grid-cols-1 items-center justify-between gap-5 md:grid-cols-3 md:gap-4 lg:grid-cols-4"
     >
       <Card
         label_type="light"
         show-label
         show-date
-        v-for="(article, id) in paginatedPage"
+        v-for="(article, id) in articles.list"
         :key="id"
         :article="article"
+      />
+    </div>
+    <div
+      v-if="isLoading"
+      class="grid w-full grid-cols-1 items-center justify-between gap-5 md:grid-cols-3 md:gap-4 lg:grid-cols-4"
+    >
+      <CardLoading />
+      <CardLoading />
+      <CardLoading />
+      <CardLoading />
+    </div>
+
+    <div
+      v-if="
+        !isLoading &&
+        articles.pagination &&
+        articles.pagination.numOfResults > articles.list.length
+      "
+      class="mt-8 w-full flex justify-center"
+    >
+      <Button
+        variant="secondary"
+        label="Lihat lainnya"
+        class="font-bold my-2 border"
+        @click="$emit('onClickShowMore')"
       />
     </div>
   </div>
 </template>
 
 <script>
-import Card from '~/components/mollecules/ArticleCardBlog.vue';
+import Card from './mollecules/ArticleCard.vue';
+import CardLoading from './mollecules/ArticleCardLoading.vue';
 import PaginationButton from '~/components/mollecules/PaginationButtonBlog.vue';
+import Button from '~/components/atoms/Button.vue';
 
 export default {
   components: {
     Card,
     PaginationButton,
+    Button,
+    CardLoading,
   },
-  data() {
-    return {
-      article_list: [
-        {
-          title: 'Top 3 Netflix Movies 2023',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/netflix.jpg',
-        },
-        {
-          title: 'Top 10 Most Streamed Songs on Spotify 2023',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/netflix.jpg',
-        },
-        {
-          title: 'Duolingo Tips That EVERY User Should Know',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/netflix.jpg',
-        },
-        {
-          title: 'What is Google One, and Is it Worth Paying For?',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/netflix.jpg',
-        },
-        {
-          title: 'Duolingo Tips That EVERY User Should Know',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/netflix.jpg',
-        },
-        {
-          title: 'What is Google One, and Is it Worth Paying For?',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/netflix.jpg',
-        },
-        {
-          title: 'The Mitchells vs. the Machines (2021)',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/film/mitchells.jpg',
-        },
-        {
-          title: 'Klaus (2019)',
-          created_at: '2024-02-03',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/film/klaus.jpg',
-        },
-        {
-          title: 'The Mother (2023)',
-          created_at: '2024-03-01',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/film/the_mother.jpg',
-        },
-        {
-          title: 'Heart of Stone (2023)',
-          created_at: '2024-01-04',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/film/heart_of_stone.jpg',
-        },
-        {
-          title: 'The Irishman (2019)',
-          created_at: '2024-03-02',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/film/irishman.jpg',
-        },
-        {
-          title: 'Over the Moon (2020)',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/film/over_the_moon.jpg',
-        },
-        {
-          title: 'Klaus (2019)',
-          created_at: '2024-02-03',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/film/klaus.jpg',
-        },
-        {
-          title: 'The Mother (2023)',
-          created_at: '2024-03-01',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/film/the_mother.jpg',
-        },
-        {
-          title: 'Heart of Stone (2023)',
-          created_at: '2024-01-04',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/film/heart_of_stone.jpg',
-        },
-        {
-          title: 'The Irishman (2019)',
-          created_at: '2024-03-02',
-          author: 'Seakun.id',
-          label: 'Film',
-          image: '/images/seakun-blog/film/irishman.jpg',
-        },
-        {
-          title: 'Over the Moon (2020)',
-          created_at: '2024-01-02',
-          author: 'Seakun.id',
-          label: 'Musik',
-          image: '/images/seakun-blog/film/over_the_moon.jpg',
-        },
-      ],
-      page: 1,
-      limit: 4,
-    };
-  },
-  computed: {
-    paginatedPage() {
-      const start = (this.page - 1) * this.limit;
-      const end = start + this.limit;
-      return this.article_list.slice(start, end);
+  props: {
+    articles: {
+      type: Object,
+      default: () => {},
     },
-    total() {
-      return Math.ceil(this.article_list.length / this.limit);
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
