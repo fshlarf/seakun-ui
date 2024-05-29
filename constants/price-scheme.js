@@ -571,7 +571,7 @@ export const providerList = [
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
       'Host melakukan setup pada iTunes dan subscribe paket Apple Music Family',
       'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
@@ -617,7 +617,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium Apple Music',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
@@ -665,7 +665,7 @@ export const providerList = [
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
       'Host melakukan setup pada iTunes dan subscribe paket Apple One Family',
       'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
@@ -711,7 +711,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Family',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
@@ -759,7 +759,7 @@ export const providerList = [
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
       'Host melakukan setup pada iTunes dan subscribe paket Apple One Premier',
       'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
@@ -806,7 +806,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple One Premier',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
@@ -854,7 +854,7 @@ export const providerList = [
       'Host melakukan aktivasi apple id Seakun dengan login pada device iphone/ipad/mac',
       'Host melakukan setup pada iTunes dan subscribe paket Apple TV+',
       'Setelah Host berhasil melakukan payment, Seakun akan mengirimkan invitation',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
     additionalInfo:
@@ -900,7 +900,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Apple TV',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
@@ -1985,7 +1985,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di LastPass',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
@@ -2037,7 +2037,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Duolingo',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
@@ -2334,7 +2334,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Tiktok Music',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
     ],
     additionalInfo:
@@ -2680,7 +2680,7 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Premium di Envato',
       'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare hanya ke 5 member dalam 1 grup',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
     ],
     additionalInfo:
       'Paket Patungan pada <b>Envato</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',

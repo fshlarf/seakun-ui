@@ -1,11 +1,11 @@
 <template>
-  <div id="navbar" class="w-full fixed top-0 z-40 py-3 px-2" :class="className">
+  <div id="navbar" class="w-full fixed top-0 z-40 py-3" :class="className">
     <div
-      class="!container static z-0 w-full text-gray-700 md:px-10 lg:flex lg:justify-between"
+      class="!container static z-0 w-full md:px-10 lg:flex lg:justify-between"
     >
       <nuxt-link to="/">
         <img
-          class="h-[30px] w-[175px]"
+          class="h-[30px] w-[163px] md:h-10"
           src="/images/navbar/new_brand_seakun.svg"
           alt="brand seakun"
         />
@@ -40,7 +40,7 @@ export default {
 }
 @media (min-width: 400px) {
   #navbar {
-    background-color: #f4f9f8;
+    background-color: #ffffff;
   }
 }
 @media (max-width: 800px) {
