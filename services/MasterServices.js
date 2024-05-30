@@ -83,8 +83,21 @@ class MasterService {
   addDonation(params) {
     return this.serviceApiAuth.post('/customer/donation', params);
   }
+
   retryDonationPayment(id) {
     return this.serviceApiAuth.post(`/customer/donation/${id}/retry`);
+  }
+
+  getBlogs(params) {
+    return this.serviceApi.get('/customer/blog', { params });
+  }
+
+  getCategoryBlog() {
+    return this.serviceApi.get('/customer/blog/category');
+  }
+
+  getBlogByUid(params) {
+    return this.serviceApi.get('/customer/blog/detail', { params });
   }
 }
 

@@ -1,98 +1,67 @@
 <template>
-  <div class="container-seakun-blog mt-3 flex flex-col gap-2 lg:flex-row">
-    <div class="relative h-[240px] w-full md:h-[400px]">
-      <!-- Card -->
-      <Card
-        show-label
-        :article="left_article"
-        label-type="dark"
-        size="large"
-        class="h-full"
-      />
-    </div>
-
-    <div class="grid w-full grid-cols-2 grid-rows-2 gap-2">
+  <div class="container-seakun-blog mb-4 md:mb-8">
+    <div v-if="!isLoading" class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
       <div
-        v-for="(article, index) in right_article"
-        class="relative h-[124px] max-h-[124px] md:h-[248px] md:max-h-full lg:h-full"
+        v-for="(article, id) in articles.list"
+        :key="id"
+        :class="`${
+          id == 0
+            ? 'col-span-2 row-span-2 relative h-[240px] w-full md:h-[400px]'
+            : 'relative h-[124px] max-h-[124px] md:h-[248px] md:max-h-full lg:h-full'
+        }`"
       >
         <!-- Card -->
         <Card
           show-label
           :article="article"
-          size="small"
           label-type="dark"
+          :size="id == 0 ? 'large' : 'small'"
           class="h-full"
+          @onClickCard="
+            (uid) => {
+              $emit('onClickCard', uid);
+            }
+          "
         />
       </div>
+    </div>
+
+    <div v-else class="grid grid-cols-2 md:grid-cols-4 gap-2">
+      <div
+        class="shimmer col-span-2 row-span-2 rounded-[6px] w-full h-[248px] md:h-full"
+      ></div>
+      <div class="shimmer w-full h-[130px] md:h-[180px] rounded-[6px]"></div>
+      <div class="shimmer w-full h-[130px] md:h-[180px] rounded-[6px]"></div>
+      <div class="shimmer w-full h-[130px] md:h-[180px] rounded-[6px]"></div>
+      <div class="shimmer w-full h-[130px] md:h-[180px] rounded-[6px]"></div>
     </div>
   </div>
 </template>
 
 <script>
-import CategoryTag from'~/components/mollecules/CategoryTagBlog.vue';
-import Card from '~/components/mollecules/FullImageCardBlog.vue';
+import CategoryTag from '~/components/mollecules/CategoryTagBlog.vue';
+import Card from './mollecules/FullArticleCard.vue';
 
 export default {
   components: {
     Card,
-    CategoryTag
+    CategoryTag,
   },
-  data() {
-    return {
-      article_list: [
-        {
-          title: "Top 3 Netflix Movies 2023",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Film",
-          image: "/images/seakun-blog/netflix.jpg",
-        },
-        {
-          title: "Top 10 Most Streamed Songs on Spotify 2023",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Musik",
-          image: "/images/seakun-blog/netflix.jpg",
-        },
-        {
-          title: "Duolingo Tips That EVERY User Should Know",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Film",
-          image: "/images/seakun-blog/netflix.jpg",
-        },
-        {
-          title: "What is Google One, and Is it Worth Paying For?",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Musik",
-          image: "/images/seakun-blog/netflix.jpg",
-        },
-        {
-          title: "How to Start a Vlog in 5 Easy Steps",
-          created_at: "2024-01-02",
-          author: "Seakun.id",
-          label: "Film",
-          image: "/images/seakun-blog/netflix.jpg",
-        },
-      ],
-    };
-  },
-  computed: {
-    left_article() {
-      return this.article_list[0];
+  props: {
+    articles: {
+      type: Object,
+      default: () => {},
     },
-    right_article() {
-      return this.article_list.slice(1);
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
   },
 };
 </script>
 
-
 <style scoped>
 .title-font {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 </style>
