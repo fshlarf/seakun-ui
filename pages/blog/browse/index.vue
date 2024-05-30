@@ -26,7 +26,7 @@
 
       <template v-if="blogList && blogList.list && blogList.list.length > 0">
         <div v-for="(blog, id) in blogList.list" class="mt-3 space-y-3 md:px-4">
-          <BlogCard :article="blog" />
+          <BlogCard :article="blog" @onClickCard="toDetailPage" />
         </div>
       </template>
 
@@ -120,6 +120,9 @@ export default {
     }
   },
   methods: {
+    toDetailPage(articleUid) {
+      this.$router.push(`/blog/detail?id=${articleUid}`);
+    },
     onClickShowMore() {
       this.blogParam.page += 1;
       this.getBlogList();
