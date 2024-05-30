@@ -8,7 +8,9 @@
       :src="`${article.blogThumbnail ? article.blogThumbnail.fileUrl : ''}`"
     />
     <div class="px-3 py-3">
-      <div :class="`text-sm ${cardTitleSize} font-bold text-text-dark`">
+      <div
+        :class="`text-sm ${cardTitleSize} font-bold text-text-dark line-clamp-2 overflow-hidden`"
+      >
         {{ article.title }}
       </div>
       <div class="flex items-center justify-between pt-2">
@@ -97,7 +99,7 @@ export default {
     },
     cardTitleSize() {
       return this.cardType === 'top' || this.cardType === 'article'
-        ? 'min-h-[2.5rem]'
+        ? 'md:min-h-[2.5rem]'
         : '';
     },
     imageSize() {

@@ -34,7 +34,7 @@
           }}</a>
         </li>
         <li><p>></p></li>
-        <li>
+        <li class="line-clamp-1 overflow-hidden">
           <a href="#" class="ms-1">{{ articleDetail.title }}</a>
         </li>
       </ol>
