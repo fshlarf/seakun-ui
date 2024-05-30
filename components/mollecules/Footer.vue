@@ -1,7 +1,8 @@
 <template>
   <div class="footer lg:pt-6 xl:pt-12 mt-12">
     <div
-      class="tn:px-3 md:!container text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
+      class="text-white p-4 md:grid md:grid-cols-2 md:justify-between lg:grid-cols-5 lg:gap-8 lg:justify-center"
+      :class="classContainer"
     >
       <div class="max-w-md md:row-span-3 lg:col-span-2 md:pr-10 xl:pr-16">
         <div class="tn:mt-8 tn:mb-6 md:mb-9">
@@ -177,6 +178,12 @@
 
 <script>
 export default {
+  props: {
+    classContainer: {
+      typeof: String,
+      default: 'tn:px-3 md:!container',
+    },
+  },
   data() {
     return {
       isHiring: false,

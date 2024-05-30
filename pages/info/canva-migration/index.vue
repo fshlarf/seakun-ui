@@ -1,17 +1,16 @@
 <template>
   <div>
     <NavbarBlank
-      className="!bg-[#ffffff]  border-b border-[#F2F5FA] -mx-4 sm:mx-0"
+      className="!bg-[#ffffff]  border-b border-[#F2F5FA]"
+      classContainer="container-seakun-blog"
     />
-    <main class="min-h-screen mt-[75px] sm:mt-24">
+    <main class="min-h-screen mt-[75px] sm:mt-24 w-full">
       <IntroBanner />
       <LatestPrice />
       <PriceChanges />
       <OptionInformation />
     </main>
-    <div class="px-2 sm:px-0 bg-[#2D2D2D]">
-      <Footer />
-    </div>
+    <Footer />
   </div>
 </template>
 
@@ -21,7 +20,7 @@ import IntroBanner from './components/IntroBanner.vue';
 import LatestPrice from './components/LatestPrice.vue';
 import PriceChanges from './components/PriceChanges.vue';
 import OptionInformation from './components/OptionInformation.vue';
-import Footer from './../../../components/mollecules/Footer.vue';
+import Footer from './../../../components/mollecules/FooterSemabar.vue';
 export default {
   components: {
     NavbarBlank,

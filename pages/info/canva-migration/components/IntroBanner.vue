@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-seakun-blog">
     <div
       v-if="!bannerSrc"
       class="w-full h-[180px] sm:h-[200px] animate-pulse bg-slate-200 rounded-[10px] sm:rounded-xl"
