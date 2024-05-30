@@ -77,7 +77,7 @@ export default {
       MasterService,
       blogParam: {
         page: 1,
-        limit: 1,
+        limit: 10,
         keyword: '',
       },
       blogList: {
