@@ -1,6 +1,6 @@
 <template>
   <div class="w-full md:bg-[#F5F1FF] mt-8 md:mt-10">
-    <div class="container md:pt-9 md:pb-11 lg:pt-12 lg:pb-14">
+    <div class="container-seakun-blog md:pt-9 md:pb-11 lg:pt-12 lg:pb-14">
       <header>
         <p class="font-bold text-base md:text-lg lg:text-[20px] text-center">
           Perubahan Harga di Seakun
