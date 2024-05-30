@@ -1,5 +1,8 @@
 <template>
-  <div class="rounded-[8px] shadow-md p-2 md:p-3 w-full flex gap-3">
+  <div
+    class="rounded-[8px] shadow-md p-2 md:p-3 w-full flex gap-3 cursor-pointer"
+    @click="$emit('onClickCard', article.uid)"
+  >
     <img
       :src="thumbnail"
       alt="thumbnail"
