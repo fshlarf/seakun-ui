@@ -1,29 +1,21 @@
 <template>
-  <div
-    :class="`w-full cursor-pointer ${cardShadow} h-full overflow-hidden rounded-md hover:rounded-md hover:shadow-md`"
-    @click="$emit('onClickCard', article.uid)"
-  >
-    <img
-      :class="`w-full object-cover ${imageSize} md:h-[130px]`"
-      :src="`${article.blogThumbnail ? article.blogThumbnail.fileUrl : ''}`"
-    />
-    <div class="px-3 py-3">
-      <div :class="`text-sm ${cardTitleSize} font-bold text-text-dark`">
-        {{ article.title }}
-      </div>
-      <div class="flex items-center justify-between pt-2">
-        <!-- Author -->
-        <template v-if="showAuthor">
-          <p class="text-sm font-normal text-mono">
-            {{ article.publisherName }}
-          </p>
-        </template>
+  <div class="flex gap-[12px] w-full items-center">
+    <div :class="`shimmer ${imageSize} rounded-[6px] shrink-0`"></div>
+    <div class="w-full">
+      <!-- Tag -->
+      <template v-if="showLabel">
+        <CategoryTag :label="article.blogCategory[0].name" />
+      </template>
 
+      <!-- Title -->
+      <div :class="`shimmer ${titleSize} mb-1 w-full`"></div>
+
+      <div class="flex items-center justify-between">
         <!-- Date -->
         <template v-if="showDate">
           <div class="flex items-center">
             <svg
-              :class="`${getColor} h-[14px] w-[14px] fill-current`"
+              :class="`${iconDate} ${getColor} h-[14px] w-[14px] fill-current`"
               viewBox="0 0 14 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -33,19 +25,20 @@
               />
             </svg>
 
-            <p :class="`${getColor} px-2 text-[10px] text-date md:text-xs`">
-              {{ unixToIndonesianDate(article.publishedAt) }}
-            </p>
+            <div class="shimmer h-3 w-[100px]"></div>
           </div>
         </template>
 
-        <!-- Label -->
-        <template v-if="showLabel">
-          <CategoryTag
-            :label="article.blogCategory ? article.blogCategory[0].name : ''"
-          />
+        <!-- Tag -->
+        <template v-if="showLabelMedium">
+          <CategoryTag :label="article.blogCategory[0].name" />
         </template>
       </div>
+
+      <!-- Author -->
+      <template v-if="showAuthor">
+        <div class="shimmer h-4 w-1/2"></div>
+      </template>
     </div>
   </div>
 </template>
@@ -56,16 +49,19 @@ import { unixToIndonesianDate } from '~/helpers/word-transformation.js';
 
 export default {
   props: {
-    article: {
-      type: Object,
-      required: true,
-      default: () => ({}),
-    },
-    cardType: {
+    size: {
       type: String,
-      default: 'article',
+      default: 'small',
+    },
+    image: {
+      type: String,
+      default: 'small',
     },
     showLabel: {
+      type: Boolean,
+      default: false,
+    },
+    showLabelMedium: {
       type: Boolean,
       default: false,
     },
@@ -81,32 +77,37 @@ export default {
       type: String,
       default: 'article',
     },
-    label: {
+    dateType: {
       type: String,
-    },
-    type: {
-      type: String,
+      default: 'article',
     },
   },
   components: {
     CategoryTag,
   },
   computed: {
-    cardShadow() {
-      return this.cardType === 'article' ? 'bg-white shadow-md ' : '';
-    },
-    cardTitleSize() {
-      return this.cardType === 'top' || this.cardType === 'article'
-        ? 'min-h-[2.5rem]'
-        : '';
+    titleSize() {
+      return this.size === 'small'
+        ? 'h-[12px] md:h-[14px] '
+        : 'h-[12px] md:h-[16px] mt-3';
     },
     imageSize() {
-      return this.cardType === 'top' || this.cardType === 'article'
-        ? 'h-[150px]'
-        : 'h-[120px] rounded-md';
+      if (this.image === 'small') {
+        return 'w-[54px] md:w-[54px] h-[54px] md:h-[54px]';
+      } else if (this.image === 'medium') {
+        return 'w-[60px] md:w-[64px] h-[60px] md:h-[64px]';
+      } else {
+        return 'w-[88px] md:w-[90px] h-[88px] md:h-[90px]';
+      }
     },
     getColor() {
       return this.color === 'hero' ? 'text-white' : 'text-[#66738F]';
+    },
+    iconDate() {
+      return this.dateType === 'blog_details' ? 'hidden' : 'inline-block';
+    },
+    padding() {
+      return this.dateType === 'blog_details' ? 'px-0' : 'px-2';
     },
   },
   methods: {

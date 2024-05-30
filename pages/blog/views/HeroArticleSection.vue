@@ -1,5 +1,5 @@
 <template>
-  <div class="container-seakun-blog">
+  <div class="container-seakun-blog mb-4 md:mb-8">
     <div v-if="!isLoading" class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
       <div
         v-for="(article, id) in articles.list"
@@ -17,12 +17,19 @@
           label-type="dark"
           :size="id == 0 ? 'large' : 'small'"
           class="h-full"
+          @onClickCard="
+            (uid) => {
+              $emit('onClickCard', uid);
+            }
+          "
         />
       </div>
     </div>
 
     <div v-else class="grid grid-cols-2 md:grid-cols-4 gap-2">
-      <div class="shimmer col-span-2 row-span-2 rounded-[6px] w-full"></div>
+      <div
+        class="shimmer col-span-2 row-span-2 rounded-[6px] w-full h-[248px] md:h-full"
+      ></div>
       <div class="shimmer w-full h-[130px] md:h-[180px] rounded-[6px]"></div>
       <div class="shimmer w-full h-[130px] md:h-[180px] rounded-[6px]"></div>
       <div class="shimmer w-full h-[130px] md:h-[180px] rounded-[6px]"></div>

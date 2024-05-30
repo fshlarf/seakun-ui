@@ -1,14 +1,16 @@
 <template>
-  <div class="main-font w-full">
-    <Navbar />
+  <div class="">
     <HeroArticleSection
+      v-if="!categoryUid"
       :is-loading="isLoadingTopBlogList"
       :articles="topBlogList"
+      @onClickCard="toDetailPage"
     />
     <LatestArticleSection
       :is-loading="isLoadingBlogList"
       :articles="blogList"
       @onClickShowMore="onClickShowMore"
+      @onClickCard="toDetailPage"
     />
 
     <!-- <div class="bg-[#C4C6D71A]/10 py-8">
@@ -22,7 +24,6 @@
 
     <!-- <PopularArticleSection />
     <CategorySection /> -->
-    <Footer />
   </div>
 </template>
 
@@ -48,12 +49,14 @@ export default {
     CategorySection,
     Footer,
   },
+  layout: 'blog',
   data() {
     return {
       MasterService,
       blogParam: {
         page: 1,
         limit: 8,
+        category: '',
       },
       topBlogParam: {
         page: 1,
@@ -68,25 +71,66 @@ export default {
         list: [],
         pagination: {},
       },
+      categoryUid: '',
       isLoadingBlogList: true,
       isLoadingTopBlogList: true,
     };
   },
+  watch: {
+    $route(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        const { category } = newVal.query;
+        if (category) {
+          this.categoryUid = category;
+          this.blogParam = {
+            ...this.blogParam,
+            category,
+            page: 1,
+          };
+        } else {
+          this.categoryUid = '';
+          this.blogParam = {
+            ...this.blogParam,
+            category: '',
+            page: 1,
+          };
+          this.getTopBlogList();
+        }
+        this.blogList = {
+          list: [],
+          pagination: {},
+        };
+        this.getBlogList();
+      }
+    },
+  },
   mounted() {
     this.MasterService = new MasterService(this);
+    const { category } = this.$route.query;
+    if (category) {
+      this.categoryUid = category;
+      this.blogParam.category = category;
+    } else {
+      this.categoryUid = '';
+      this.blogParam.category = '';
+      this.getTopBlogList();
+    }
     this.getBlogList();
-    this.getTopBlogList();
   },
   methods: {
     onClickShowMore() {
       this.blogParam.page += 1;
       this.getBlogList();
     },
+    toDetailPage(articleUid) {
+      this.$router.push(`/blog/detail?id=${articleUid}`);
+    },
     async getBlogList() {
       this.isLoadingBlogList = true;
       try {
         const fetchBlog = await this.MasterService.getBlogs(this.blogParam);
-        const { data, pagination } = fetchBlog.data;
+        let { data, pagination } = fetchBlog.data;
+        data = data || [];
         this.blogList = {
           list: [...this.blogList.list, ...data],
           pagination,
@@ -114,8 +158,4 @@ export default {
 };
 </script>
 
-<style>
-#sekurban-page {
-  font-family: 'Nunito Sans', sans-serif !important;
-}
-</style>
+<style></style>

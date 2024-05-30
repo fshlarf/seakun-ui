@@ -41,9 +41,7 @@
 
         <!-- Label -->
         <template v-if="showLabel">
-          <CategoryTag
-            :label="article.blogCategory ? article.blogCategory[0].name : ''"
-          />
+          <CategoryTag :label="article.blogCategory[0].name" />
         </template>
       </div>
     </div>

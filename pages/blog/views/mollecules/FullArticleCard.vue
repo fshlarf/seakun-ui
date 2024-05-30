@@ -4,6 +4,7 @@
     :style="`background-image: url('${
       article && article.blogThumbnail ? article.blogThumbnail.fileUrl : ''
     }')`"
+    @click="$emit('onClickCard', article.uid)"
   >
     <div
       :class="`h-full w-full ${captionPadding} relative flex items-end rounded-[6px] bg-black/40`"

@@ -92,6 +92,10 @@ class MasterService {
     return this.serviceApi.get('/customer/blog', { params });
   }
 
+  getCategoryBlog() {
+    return this.serviceApi.get('/customer/blog/category');
+  }
+
   getBlogByUid(params) {
     return this.serviceApi.get('/customer/blog/detail', { params });
   }

@@ -1,7 +1,7 @@
 <template>
-  <div class="container py-3 md:pt-6 md:pb-[44px]">
+  <div class="container-seakun-blog pb-3 md:pb-[44px]">
     <div class="flex justify-between items-center">
-      <div class="title-font mb-5 mt-6">
+      <div class="title-font mb-5">
         <label class="text-[16px] font-bold text-text-dark">Latest</label>
         <label class="text-[16px] font-bold text-primary"> Article</label>
       </div>
@@ -53,17 +53,32 @@
         </PaginationButton>
       </div> -->
     </div>
+
+    <div
+      v-if="!isLoading && articles && articles.list.length == 0"
+      class="flex flex-col justify-center items-center w-full mt-8"
+    >
+      <img
+        class="w-[120px] h-[120px] md:w-[150px] md:h-[150px]"
+        src="/images/seakun-blog/not-found.svg"
+        alt="tidak ditemukan"
+      />
+      <p class="mt-3 text-xs md:text-base">
+        Maaf, hasil pencarian tidak ditemukan
+      </p>
+    </div>
     <div
       v-if="articles && articles.list.length > 0"
       class="grid w-full grid-cols-1 items-center justify-between gap-5 md:grid-cols-3 md:gap-4 lg:grid-cols-4"
     >
       <Card
+        v-for="(article, id) in articles.list"
+        :key="id"
         label_type="light"
         show-label
         show-date
-        v-for="(article, id) in articles.list"
-        :key="id"
         :article="article"
+        @onClickCard="(uid) => $emit('onClickCard', uid)"
       />
     </div>
     <div
@@ -88,6 +103,7 @@
         variant="secondary"
         label="Lihat lainnya"
         class="font-bold my-2 border"
+        add-class="text-sm md:text-base py-2"
         @click="$emit('onClickShowMore')"
       />
     </div>
