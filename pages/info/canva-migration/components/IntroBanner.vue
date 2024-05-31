@@ -8,7 +8,7 @@
       v-else
       :src="bannerSrc"
       alt="banner"
-      class="w-full h-[200px] sm:h-[200px] rounded-[10px] sm:rounded-xl"
+      class="w-full rounded-[10px] sm:rounded-xl"
     />
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     handleResize() {
-      if (window.innerWidth <= 600) {
+      if (window.innerWidth <= 430) {
         this.bannerSrc =
           '/images/canva-migration/intro-banner/banner-mobile.webp';
       } else
