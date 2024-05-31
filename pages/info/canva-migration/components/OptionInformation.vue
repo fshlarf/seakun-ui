@@ -2,15 +2,16 @@
   <div class="container-seakun-blog mt-8 md:mt-10">
     <LazyImage
       alt="information"
-      className="h-[145px] sm:h-[140px] md:h-[160px] rounded-[10px] md:rounded-xl w-full"
+      className="rounded-[10px] md:rounded-xl w-full"
       :src="bannerSrc"
     />
-    <div class="mt-3 sm:mt-5 md:mt-8 sm:w-full sm:mx-auto">
+    <div class="mt-3 sm:mt-5 md:mt-8 sm:w-max sm:mx-auto">
       <p
-        class="text-xs sm:text-sm font-bold max-w-[328px] sm:max-w-none md:max-w-[80%] lg:max-w-none sm:mx-0 mx-auto text-center sm:text-left"
+        class="text-xs sm:text-sm font-bold max-w-[328px] sm:max-w-none lg:max-w-none sm:mx-0 mx-auto text-center sm:text-left"
       >
         Sebagai wujud perhatian Seakun kepada pengguna agar tetap dapat
-        menikmati Canva dengan harga terjangkau, <br class="hidden lg:block" />
+        menikmati <br class="hidden sm:block lg:hidden" />
+        Canva dengan harga terjangkau, <br class="hidden lg:block" />
         berikut adalah beberapa opsi yang kami sediakan.
       </p>
       <div class="space-y-6 mt-4 relative">
