@@ -8,7 +8,7 @@
     <img
       src="/images/canva-migration/latest-price.webp"
       alt="latest price"
-      class="w-full h-[190px] sm:h-[270px] md:h-[370px] lg:h-[581px] xl:h-[651px] rounded-lg border border-[#F1F6F6]"
+      class="w-full h-auto rounded-lg border border-[#F1F6F6]"
     />
   </div>
 </template>
