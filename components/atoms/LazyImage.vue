@@ -25,7 +25,7 @@ export default {
   props: {
     className: {
       typeof: String,
-      default: 'w-full h-full',
+      default: 'w-full h-auto',
     },
     src: {
       typeof: String,
