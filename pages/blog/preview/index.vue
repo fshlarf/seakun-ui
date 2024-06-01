@@ -10,7 +10,7 @@
         class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
       >
         <li class="inline-flex items-center">
-          <a href="#" class="inline-flex items-center">
+          <nuxt-link to="/blog" class="inline-flex items-center">
             <svg
               width="16"
               height="16"
@@ -23,19 +23,23 @@
                 fill="#A0A3BD"
               />
             </svg>
-          </a>
+          </nuxt-link>
         </li>
         <li><p>></p></li>
         <li>
-          <a href="#" class="ms-1">{{
-            articleDetail.blogCategory
-              ? articleDetail.blogCategory[0].name
-              : 'Film'
-          }}</a>
+          <nuxt-link
+            :to="`/blog?category=${relatedArticleParam.category}`"
+            class="ms-1"
+            >{{
+              articleDetail.blogCategory
+                ? articleDetail.blogCategory[0].name
+                : ''
+            }}</nuxt-link
+          >
         </li>
         <li><p>></p></li>
-        <li>
-          <a href="#" class="ms-1">{{ articleDetail.title }}</a>
+        <li class="line-clamp-1 overflow-hidden">
+          <p class="ms-1">{{ articleDetail.title }}</p>
         </li>
       </ol>
     </nav>
@@ -258,6 +262,7 @@ import CardRelatedLoading from './views/RelatedCardLoading.vue';
 import PaginationButton from '~/pages/blog/views/atoms/PaginationButton.vue';
 import CategoryTag from '~/components/mollecules/CategoryTagBlog.vue';
 import MasterService from '~/services/MasterServices.js';
+import { mapActions } from 'vuex';
 
 export default {
   layout: 'blog',
@@ -314,6 +319,9 @@ export default {
     this.getLatestArticle();
   },
   methods: {
+    ...mapActions({
+      setActiveCategory: 'blog/setActiveCategory',
+    }),
     toDetailPage(articleUid) {
       this.$router.push(`/blog/detail?id=${articleUid}`);
       window.scrollTo(0, 0);
@@ -328,6 +336,7 @@ export default {
         this.articleDetail = data;
         this.relatedArticleParam.category = data.blogCategory[0].uid;
         this.blogContent = data.content ? JSON.parse(data.content) : {};
+        this.setActiveCategory(data.blogCategory[0]);
         this.getRelatedArticle();
       } catch (error) {
         console.log(error);

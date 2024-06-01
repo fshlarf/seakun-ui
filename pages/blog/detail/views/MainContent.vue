@@ -33,7 +33,10 @@
         <!-- Share Icon -->
         <div class="mt-3 flex gap-2 md:mt-0">
           <!-- twitter -->
-          <div class="rounded-full bg-[#F5F8FF] p-2 md:p-2 cursor-pointer">
+          <div
+            class="rounded-full bg-[#F5F8FF] flex justify-center items-center w-[34px] h-[34px] cursor-pointer"
+            @click="sharePost('twitter')"
+          >
             <svg
               width="16"
               height="14"
@@ -61,7 +64,10 @@
           </div>
 
           <!-- email -->
-          <div class="rounded-full bg-[#F5F8FF] p-2 md:p-2 cursor-pointer">
+          <div
+            class="rounded-full bg-[#F5F8FF] flex justify-center items-center w-[34px] h-[34px] cursor-pointer"
+            @click="sharePost('email')"
+          >
             <svg
               width="18"
               height="18"
@@ -77,7 +83,10 @@
           </div>
 
           <!-- whatsapp -->
-          <div class="rounded-full bg-[#F5F8FF] p-2 md:p-2 cursor-pointer">
+          <div
+            class="rounded-full bg-[#F5F8FF] flex justify-center items-center w-[34px] h-[34px] cursor-pointer"
+            @click="sharePost('whatsapp')"
+          >
             <svg
               width="18"
               height="18"
@@ -93,7 +102,10 @@
           </div>
 
           <!-- copy link -->
-          <div class="rounded-full bg-[#F5F8FF] p-2 md:p-2 cursor-pointer">
+          <div
+            class="rounded-full bg-[#F5F8FF] flex justify-center items-center w-[34px] h-[34px] cursor-pointer"
+            @click="sharePost('copy-link')"
+          >
             <svg
               width="16"
               height="16"
@@ -175,15 +187,71 @@ export default {
     },
   },
   methods: {
-    shareTwitter() {
+    sharePost(media) {
+      let fullURL = window.location.href;
+      if (media === 'twitter') {
+        this.shareByTwitter(fullURL);
+      } else if (media === 'email') {
+        this.shareByEmail(fullURL);
+      } else if (media === 'whatsapp') {
+        this.shareByWhatsapp(fullURL);
+      } else if (media === 'copy-link') {
+        this.clickCopyHandler('link', fullURL);
+      }
+    },
+    shareByTwitter(url) {
       window.open(
-        'http://twitter.com/share?url=' +
-          encodeURIComponent(url) +
-          '&text=' +
-          encodeURIComponent(text),
+        'http://x.com/share?url=' + encodeURIComponent(url),
         '',
         'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
       );
+    },
+    shareByEmail(url) {
+      window.open(`mailto:?subject=${this.blog.title}&body=${url}`);
+    },
+    shareByWhatsapp(url) {
+      window.open(`whatsapp://send?text=${encodeURIComponent(url)}`);
+    },
+    clickCopyHandler(name, value) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(value).then(
+          () => {
+            this.$alert.show({
+              status: 'success',
+              message: `${name} berhasil disalin`,
+            });
+          },
+          (err) => console.log(err)
+        );
+      } else {
+        this.fallbackCopyText(name, value);
+      }
+    },
+    fallbackCopyText(name, value) {
+      let textArea = document.createElement('textarea');
+      textArea.value = value;
+
+      // Avoid scrolling to bottom
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.position = 'fixed';
+
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        let successful = document.execCommand('copy');
+        if (successful) {
+          this.$alert.show({
+            status: 'success',
+            message: `${name} berhasil disalin`,
+          });
+        }
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+      document.body.removeChild(textArea);
     },
     unixToIndonesianDate,
   },
