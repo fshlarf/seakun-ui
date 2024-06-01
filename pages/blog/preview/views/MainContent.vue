@@ -200,11 +200,7 @@ export default {
       }
     },
     shareByTwitter(url) {
-      window.open(
-        'http://x.com/share?url=' + encodeURIComponent(url),
-        '',
-        'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0'
-      );
+      window.open(`https://twitter.com/intent/tweet?text=${url}`);
     },
     shareByEmail(url) {
       window.open(`mailto:?subject=${this.blog.title}&body=${url}`);
