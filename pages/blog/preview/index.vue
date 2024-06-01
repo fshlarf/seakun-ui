@@ -323,7 +323,6 @@ export default {
       try {
         const fetchArticle = await this.MasterService.getBlogByUid({
           uid: this.blogUid,
-          isCustomer: '1',
         });
         const { data } = fetchArticle.data;
         this.articleDetail = data;
