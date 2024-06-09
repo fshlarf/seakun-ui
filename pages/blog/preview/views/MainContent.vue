@@ -122,56 +122,66 @@
         </div>
       </div>
 
-      <!-- Intro Content -->
-      <div v-for="(block, id) in content.blocks" :key="id">
-        <!-- image -->
-        <template v-if="block.type == 'image'">
-          <div :class="`${id == 0 ? 'my-4' : 'mt-3 mb-2'}`">
-            <img
-              class="max-h-[325px] w-full rounded-[10px] object-cover"
-              :src="block.data.url"
-            />
-            <span class="mt-2 text-xs font-normal">{{
-              block.data.caption
-            }}</span>
-          </div>
-        </template>
+      <!-- Content -->
+      <div class="mt-4 space-y-2">
+        <div v-for="(block, id) in content.blocks" :key="id">
+          <!-- image -->
+          <template v-if="block.type == 'image'">
+            <div>
+              <img
+                class="max-h-[325px] w-full rounded-[10px] object-cover"
+                :src="block.data.url"
+              />
+              <span class="mt-2 text-xs font-normal">{{
+                block.data.caption
+              }}</span>
+            </div>
+          </template>
+          <!-- image -->
 
-        <!-- paragraph -->
-        <template v-if="block.type == 'paragraph'">
-          <p class="text-sm font-normal leading-6" v-html="block.data.text"></p>
-        </template>
+          <!-- paragraph -->
+          <template v-if="block.type == 'paragraph'">
+            <p
+              class="text-sm font-normal leading-6"
+              v-html="block.data.text"
+            ></p>
+          </template>
+          <!-- paragraph -->
 
-        <!-- header -->
-        <template v-if="block.type == 'header'">
-          <h2
-            v-if="block.data.level == 3"
-            class="text-xl font-bold my-5"
-            v-html="block.data.text"
-          ></h2>
-          <h3
-            v-else-if="block.data.level == 4"
-            class="text-base font-bold"
-            v-html="block.data.text"
-          ></h3>
-        </template>
+          <!-- header -->
+          <template v-if="block.type == 'header'">
+            <h2
+              v-if="block.data.level == 3"
+              class="text-xl font-bold pt-2"
+              v-html="block.data.text"
+            ></h2>
+            <h3
+              v-else-if="block.data.level == 4"
+              class="text-base font-bold pt-2"
+              v-html="block.data.text"
+            ></h3>
+          </template>
+          <!-- header -->
 
-        <!-- list -->
-        <template v-if="block.type == 'list'">
-          <ul
-            class="my-3 pl-4 text-sm font-normal leading-6"
-            :class="`${
-              block.data.style == 'unordered' ? 'list-disc' : 'list-decimal'
-            }`"
-          >
-            <li
-              v-for="(item, id) in block.data.items"
-              :key="id"
-              v-html="item"
-            ></li>
-          </ul>
-        </template>
+          <!-- list -->
+          <template v-if="block.type == 'list'">
+            <ul
+              class="pl-4 text-sm font-normal leading-6"
+              :class="`${
+                block.data.style == 'unordered' ? 'list-disc' : 'list-decimal'
+              }`"
+            >
+              <li
+                v-for="(item, id) in block.data.items"
+                :key="id"
+                v-html="item"
+              ></li>
+            </ul>
+          </template>
+          <!-- list -->
+        </div>
       </div>
+      <!-- Content -->
     </div>
   </div>
 </template>
@@ -262,4 +272,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+</style>
