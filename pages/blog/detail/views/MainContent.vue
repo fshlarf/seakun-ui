@@ -139,17 +139,21 @@
 
         <!-- paragraph -->
         <template v-if="block.type == 'paragraph'">
-          <p class="text-sm font-normal leading-6">{{ block.data.text }}</p>
+          <p class="text-sm font-normal leading-6" v-html="block.data.text"></p>
         </template>
 
         <!-- header -->
         <template v-if="block.type == 'header'">
-          <h2 v-if="block.data.level == 3" class="text-xl font-bold my-5">
-            {{ block.data.text }}
-          </h2>
-          <h3 v-else-if="block.data.level == 4" class="text-base font-bold">
-            {{ block.data.text }}
-          </h3>
+          <h2
+            v-if="block.data.level == 3"
+            class="text-xl font-bold my-5"
+            v-html="block.data.text"
+          ></h2>
+          <h3
+            v-else-if="block.data.level == 4"
+            class="text-base font-bold"
+            v-html="block.data.text"
+          ></h3>
         </template>
 
         <!-- list -->
@@ -160,7 +164,11 @@
               block.data.style == 'unordered' ? 'list-disc' : 'list-decimal'
             }`"
           >
-            <li v-for="(item, id) in block.data.items" :key="id">{{ item }}</li>
+            <li
+              v-for="(item, id) in block.data.items"
+              :key="id"
+              v-html="item"
+            ></li>
           </ul>
         </template>
       </div>

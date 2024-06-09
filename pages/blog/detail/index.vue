@@ -114,7 +114,10 @@
         </div>
 
         <!-- Related Article -->
-        <div v-if="relatedArticle.list.length > 0" class="mt-0 md:mt-14">
+        <div
+          v-if="relatedArticle.list && relatedArticle.list.length > 0"
+          class="mt-0 md:mt-14"
+        >
           <div class="flex items-center justify-between mb-5">
             <div class="title-font">
               <label class="text-[16px] font-bold text-main">Related</label>
@@ -331,7 +334,6 @@ export default {
       try {
         const fetchArticle = await this.MasterService.getBlogByUid({
           uid: this.blogUid,
-          isCustomer: '1',
         });
         const { data } = fetchArticle.data;
         this.articleDetail = data;
