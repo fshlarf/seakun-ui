@@ -216,6 +216,36 @@ module.exports = {
             paddingRight: '10rem',
           },
         },
+        '.container-about-us': {
+          width: '100%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          '@screen tn': {
+            maxWidth: '640px',
+            paddingLeft: '1.25rem',
+            paddingRight: '1.25rem',
+          },
+          '@screen sm': {
+            maxWidth: '640px',
+            paddingLeft: '1.5rem',
+            paddingRight: '1.5rem',
+          },
+          '@screen md': {
+            maxWidth: '768px',
+            paddingLeft: '2rem',
+            paddingRight: '2rem',
+          },
+          '@screen lg': {
+            maxWidth: '1024px',
+            paddingLeft: '2.25rem',
+            paddingRight: '2.25rem',
+          },
+          '@screen xl': {
+            maxWidth: '1440px',
+            paddingLeft: '10rem',
+            paddingRight: '10rem',
+          },
+        },
       });
     }),
   ],
