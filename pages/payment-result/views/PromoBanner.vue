@@ -98,11 +98,6 @@ export default {
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
-        {
-          id: 2,
-          img: '/images/thankyou-promo/sekurban.webp',
-          internalLink: '/sekurban',
-        },
       ],
       banners: [],
       activeSlider: {},

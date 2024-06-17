@@ -94,42 +94,32 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/sequrban-mobile.webp',
-          internalLink: '/sekurban',
-        },
-        {
-          id: 2,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/wa-mobile.webp',
         },
         {
-          id: 4,
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/sequrban-desktop.webp',
-          internalLink: '/sekurban',
-        },
-        {
-          id: 2,
           img: '/images/promo/uang-kaget-desktop.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/wa-desktop.webp',
         },
         {
-          id: 4,
+          id: 3,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
