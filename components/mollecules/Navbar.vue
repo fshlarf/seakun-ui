@@ -184,8 +184,8 @@ export default {
     window.onscroll = () => {
       this.handleScrollEffect();
     };
-    const username = this.$cookies.get('username');
-    if (username) {
+    const accessToken = this.$cookies.get('ATS');
+    if (accessToken) {
       if (!this.avatar) {
         const ava = this.$cookies.get('avatar');
         const newAva = ava ? ava : 'default';
