@@ -207,4 +207,11 @@ export default {
       },
     },
   },
+  /*
+   ** Server Middleware configuration
+   ** See https://v2.nuxt.com/docs/configuration-glossary/configuration-servermiddleware
+   */
+  serverMiddleware: [
+    { path: '/', handler: '~/server-middleware/x-frame-options.js' },
+  ],
 };
