@@ -94,18 +94,9 @@ export default {
       desktopBanners: [
         {
           id: 1,
-          img: '/images/thankyou-promo/youtube.webp',
-        },
-        {
-          id: 2,
           img: '/images/thankyou-promo/kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
-        },
-        {
-          id: 3,
-          img: '/images/thankyou-promo/sekurban.webp',
-          internalLink: '/sekurban',
         },
       ],
       banners: [],

@@ -4,7 +4,7 @@
     :class="classBtn"
     v-bind="$props"
     @click="handleOnClick"
-    :disabled="isLoading"
+    :disabled="isLoading || disabled"
   >
     <div v-if="isLoading">
       <div>
@@ -48,6 +48,10 @@ export default {
     addClass: {
       type: String,
       default: '',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

@@ -32,6 +32,7 @@
           }"
           @click="$emit('onClickOrder')"
           :is-loading="isLoadingProviderSekurban || isLoadingOrder"
+          :disabled="!isSekurbanOpen"
         >
           Daftar Sekarang
         </Button>
@@ -53,6 +54,11 @@ import { mapGetters } from 'vuex';
 export default {
   components: {
     Button,
+  },
+  data() {
+    return {
+      isSekurbanOpen: false,
+    };
   },
   computed: {
     ...mapGetters({

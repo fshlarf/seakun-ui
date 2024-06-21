@@ -84,7 +84,9 @@
           <button
             class="bg-primary rounded-lg py-3 px-4 w-full mt-4 lg:mt-6 text-white font-bold text-xs md:text-sm lg:text-base"
             @click="$emit('onClickOrder')"
-            :disabled="isLoadingProviderSekurban || isLoadingOrder"
+            :disabled="
+              isLoadingProviderSekurban || isLoadingOrder || !isSekurbanOpen
+            "
           >
             <div class="" v-if="isLoadingProviderSekurban || isLoadingOrder">
               <div>
@@ -112,6 +114,11 @@ import Button from '~/components/atoms/Button.vue';
 export default {
   components: {
     Button,
+  },
+  data() {
+    return {
+      isSekurbanOpen: false,
+    };
   },
   computed: {
     ...mapGetters({

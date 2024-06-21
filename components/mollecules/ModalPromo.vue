@@ -70,50 +70,32 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/promo-yt-mobile.webp',
-        },
-        {
-          id: 2,
-          img: '/images/promo/sequrban-mobile.webp',
-          internalLink: '/sekurban',
-        },
-        {
-          id: 3,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 4,
+          id: 2,
           img: '/images/promo/wa-mobile.webp',
         },
         {
-          id: 5,
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/promo-yt.webp',
-        },
-        {
-          id: 2,
-          img: '/images/promo/sequrban.webp',
-          internalLink: '/sekurban',
-        },
-        {
-          id: 3,
           img: '/images/promo/uang-kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 4,
+          id: 2,
           img: '/images/promo/wa.webp',
         },
         {
-          id: 5,
+          id: 3,
           img: '/images/promo/netflix-info.webp',
         },
       ],

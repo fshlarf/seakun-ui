@@ -98,6 +98,7 @@
             }"
             @click="$emit('onClickOrder')"
             :is-loading="isLoadingProviderSekurban || isLoadingOrder"
+            :disabled="!isSekurbanOpen"
           >
             Daftar Sekarang
           </Button>
@@ -249,6 +250,7 @@ export default {
   },
   data() {
     return {
+      isSekurbanOpen: false,
       slider: 1,
       activeSlider: 1,
       cowInformations: [
