@@ -14,7 +14,7 @@
               src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
             />
-            <img src="/images/ramadan/ramadan-icon.svg" alt="ramadan" />
+            <!-- <img src="/images/ramadan/ramadan-icon.svg" alt="ramadan" /> -->
           </div>
         </nuxt-link>
         <div

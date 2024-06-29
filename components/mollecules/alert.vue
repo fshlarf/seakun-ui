@@ -12,6 +12,7 @@
         <div class="w-[5px] items-stretch shrink-0" :class="borderColor"></div>
         <div class="flex justify-center items-center shrink-0 py-[14px]">
           <img
+            v-if="status"
             class="w-[28px] md:w-[32px] xl:w-[42px]"
             :src="`/images/icons/alert/${status}.svg`"
             alt="alert icon"
