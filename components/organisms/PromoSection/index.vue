@@ -94,13 +94,13 @@ export default {
       mobileBanners: [
         {
           id: 1,
-          img: '/images/promo/uang-kaget-mobile.webp',
-          externalLink:
-            'https://x.com/OfficialSeakun/status/1788089320072781888',
+          img: '/images/promo/wa-mobile.webp',
         },
         {
           id: 2,
-          img: '/images/promo/wa-mobile.webp',
+          img: '/images/promo/uang-kaget-mobile.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
           id: 3,
@@ -110,13 +110,13 @@ export default {
       desktopBanners: [
         {
           id: 1,
-          img: '/images/promo/uang-kaget-desktop.webp',
-          externalLink:
-            'https://x.com/OfficialSeakun/status/1788089320072781888',
+          img: '/images/promo/wa-desktop.webp',
         },
         {
           id: 2,
-          img: '/images/promo/wa-desktop.webp',
+          img: '/images/promo/uang-kaget-desktop.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
           id: 3,
