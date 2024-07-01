@@ -1,7 +1,7 @@
 <template>
   <div
     id="navbar-about-us"
-    class="w-full fixed z-40 top-0 tn:py-3 lg:py-0 bg-none"
+    class="w-full fixed z-40 top-0 tn:py-3 lg:py-0 bg-none border md:border-none"
   >
     <div
       v-if="open"
@@ -139,7 +139,7 @@ export default {
       this.open = false;
     },
     scrollToSection(menu) {
-      this.scrollToElementWithOffset(menu.tag, 25);
+      this.scrollToElementWithOffset(menu.tag, 65);
       this.open = false;
     },
     scrollToElementWithOffset(elementId, offset) {
