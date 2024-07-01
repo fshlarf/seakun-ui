@@ -181,9 +181,7 @@ export default {
     }),
   },
   mounted() {
-    window.onscroll = () => {
-      this.handleScrollEffect();
-    };
+    window.addEventListener('scroll', this.handleScrollEffect);
     const accessToken = this.$cookies.get('ATS');
     if (accessToken) {
       if (!this.avatar) {
@@ -210,6 +208,9 @@ export default {
     // setInterval(() => {
     //   this.showSpark3 = !this.showSpark3;
     // }, 900);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScrollEffect);
   },
   methods: {
     ...mapActions({

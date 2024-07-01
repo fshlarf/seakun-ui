@@ -68,17 +68,18 @@ export default {
     };
   },
   mounted() {
-    this.checkDropDown();
+    document.addEventListener('click', this.checkDropDown);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.checkDropDown);
   },
   methods: {
-    checkDropDown() {
-      document.addEventListener('click', function handleClickOutsideBox(event) {
-        const box = document.getElementById('dropdown-search');
+    checkDropDown(event) {
+      const box = document.getElementById('dropdown-search');
 
-        if (!box.contains(event.target)) {
-          box.style.display = 'none';
-        }
-      });
+      if (!box.contains(event.target)) {
+        box.style.display = 'none';
+      }
     },
     checkDataList(e) {
       this.activeList = [];
