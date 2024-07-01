@@ -101,24 +101,25 @@ export default {
     },
   },
   mounted() {
-    this.checkOutsideClick();
+    document.addEventListener('click', this.checkOutsideClick);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.checkOutsideClick);
   },
   methods: {
     click() {
       this.$emit('click');
     },
-    checkOutsideClick() {
-      document.addEventListener('click', (event) => {
-        const box = document.getElementById(
-          `select-option-${this.dataList[this.dataList.length - 1].text}-${
-            this.dataList[this.dataList.length - 1].value
-          }`
-        );
+    checkOutsideClick(event) {
+      const box = document.getElementById(
+        `select-option-${this.dataList[this.dataList.length - 1].text}-${
+          this.dataList[this.dataList.length - 1].value
+        }`
+      );
 
-        if (!box.contains(event.target)) {
-          this.$emit('hideDropDown');
-        }
-      });
+      if (!box.contains(event.target)) {
+        this.$emit('hideDropDown');
+      }
     },
   },
 };
