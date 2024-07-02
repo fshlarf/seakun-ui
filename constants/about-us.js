@@ -76,6 +76,26 @@ export const seakunJourney = [
 
 export const seakunTeams = [
   {
+    fullName: 'Faishal Arif',
+    position: 'Founder & CEO',
+    socialMedia: {
+      instagram: '@fshlarf',
+      x: '@faishal_arf',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/fshlarf/',
+    },
+  },
+  {
+    fullName: 'Aadilah Aziz',
+    position: 'COO',
+    socialMedia: {
+      instagram: '@adilahziz',
+      x: '@adilahziz',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/aadilah-aziz/',
+    },
+  },
+  {
     fullName: 'Ibnu Hazar',
     position: 'Software Engineer',
     socialMedia: {
@@ -316,16 +336,7 @@ export const seakunTeams = [
       linkedIN: 'https://www.linkedin.com/in/ridho-zuhriyal-568466196/',
     },
   },
-  {
-    fullName: 'Aadilah Aziz',
-    position: 'COO',
-    socialMedia: {
-      instagram: '@adilahziz',
-      x: '@adilahziz',
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/aadilah-aziz/',
-    },
-  },
+
   {
     fullName: 'Siti Nur Aisyah',
     position: 'Admin Ops',
