@@ -92,42 +92,42 @@ export default {
   data() {
     return {
       mobileBanners: [
+        // {
+        //   id: 1,
+        //   img: '/images/promo/wa-mobile.webp',
+        // },
         {
           id: 1,
-          img: '/images/promo/wa-mobile.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/netflix-error-mobile.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 4,
+          id: 3,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       desktopBanners: [
+        // {
+        //   id: 1,
+        //   img: '/images/promo/wa-desktop.webp',
+        // },
         {
           id: 1,
-          img: '/images/promo/wa-desktop.webp',
-        },
-        {
-          id: 2,
           img: '/images/promo/netflix-error-desktop.webp',
         },
         {
-          id: 3,
+          id: 2,
           img: '/images/promo/uang-kaget-desktop.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 4,
+          id: 3,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
