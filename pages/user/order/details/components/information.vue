@@ -1,25 +1,47 @@
 <template>
   <div v-if="this.details.packageVariant.providerSlug !== 'zap'">
-    <p class="text-[#00BA88] text-sm lg:text-base font-medium lg:font-bold">
-      Informasi Tambahan
-    </p>
     <div class="mt-3 space-y-2">
-      <section v-if="details.account && details.account.netflix">
-        <Netflix :information="details.account" />
+      <section v-if="details.account && details.account[hasAProfile(details)]">
+        <p
+          class="text-[#00BA88] text-sm lg:text-base font-medium lg:font-bold pb-1"
+        >
+          Informasi Tambahan
+        </p>
+        <ProviderProfile :information="details.account" :slug="providerSlug" />
       </section>
       <section v-else-if="details.account && details.account.spotify">
+        <p
+          class="text-[#00BA88] text-sm lg:text-base font-medium lg:font-bold pb-3"
+        >
+          Informasi Tambahan
+        </p>
         <Spotify :information="details.account.spotify" />
       </section>
       <section v-else-if="details.account && details.account.disney">
+        <p
+          class="text-[#00BA88] text-sm lg:text-base font-medium lg:font-bold pb-3"
+        >
+          Informasi Tambahan
+        </p>
         <Disney :phoneNumber="details.account.disney.phoneNumber" />
       </section>
       <section v-else-if="isShowAccountInfo">
+        <p
+          class="text-[#00BA88] text-sm lg:text-base font-medium lg:font-bold pb-3"
+        >
+          Informasi Tambahan
+        </p>
         <EmailPasswordAccount :information="isShowAccountInfo" />
       </section>
       <section v-if="customerNeeds">
         <BannerAddtionalInformation :message="customerNeeds" class="pt-5" />
       </section>
       <section v-if="details.packageVariant.providerSlug === 'tiktok-music'">
+        <p
+          class="text-[#00BA88] text-sm lg:text-base font-medium lg:font-bold pb-3"
+        >
+          Informasi Tambahan
+        </p>
         <InvitationLink :information="details.account.tiktokMusic" />
       </section>
     </div>
@@ -27,7 +49,7 @@
 </template>
 
 <script>
-import Netflix from './additional-information/netflix.vue';
+import ProviderProfile from './additional-information/provider-profile.vue';
 import Spotify from './additional-information/spotify.vue';
 import EmailPasswordAccount from './additional-information/email-password-account.vue';
 import BannerAddtionalInformation from './additional-information/banner-addtional-information.vue';
@@ -41,7 +63,7 @@ export default {
     },
   },
   components: {
-    Netflix,
+    ProviderProfile,
     Spotify,
     EmailPasswordAccount,
     BannerAddtionalInformation,
@@ -123,6 +145,9 @@ export default {
         return this.details.account[slug].invitationLink;
       } else return null;
     },
+    providerSlug() {
+      return this.details.packageVariant.providerSlug;
+    },
   },
   methods: {
     convertToCamelCase(input) {
@@ -135,6 +160,24 @@ export default {
       const camelCaseString = words.join('');
 
       return camelCaseString;
+    },
+    replaceSlug(details) {
+      const slug = details?.packageVariant?.providerSlug;
+      if (slug == 'amazon-prime') {
+        return 'primeVideo';
+      }
+      if (slug == 'disney-hotstar') {
+        return 'disney';
+      } else return slug;
+    },
+    hasAProfile(details) {
+      const provider = ['netflix', 'amazon-prime', 'crunchyroll'];
+      const slug = details?.packageVariant?.providerSlug;
+      const replaceSlug = this.replaceSlug(details);
+      if (provider.includes(slug)) {
+        console.log('replaceSlug', replaceSlug);
+        return replaceSlug;
+      } else return false;
     },
   },
 };
