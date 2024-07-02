@@ -70,32 +70,40 @@ export default {
       promoImageMobile: [
         {
           id: 1,
+          img: '/images/promo/wa-mobile.webp',
+        },
+        {
+          id: 2,
+          img: '/images/promo/netflix-error-mobile.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 2,
-          img: '/images/promo/wa-mobile.webp',
-        },
-        {
-          id: 3,
+          id: 4,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
+          img: '/images/promo/wa.webp',
+        },
+        {
+          id: 2,
+          img: '/images/promo/netflix-error.webp',
+        },
+        {
+          id: 3,
           img: '/images/promo/uang-kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 2,
-          img: '/images/promo/wa.webp',
-        },
-        {
-          id: 3,
+          id: 4,
           img: '/images/promo/netflix-info.webp',
         },
       ],
