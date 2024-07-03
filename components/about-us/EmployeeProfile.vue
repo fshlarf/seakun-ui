@@ -18,6 +18,7 @@
           class="animate-pulse bg-slate-200 top-0 left-0 bottom-0 right-0 absolute z-40 h-[132px] sm:h-[424px]"
         ></div>
         <div
+          v-show="!isLoading"
           @click="isLoading ? null : $emit('onClick')"
           @mouseenter="isLoading ? null : $emit('onHover')"
           @mouseleave="isLoading ? null : $emit('mouseleave')"
@@ -25,17 +26,17 @@
           class="!bg-black/30 absolute top-0 left-0 right-0 bottom-0 hidden sm:block h-[132px] sm:h-[424px] w-full rounded-[10px]"
         ></div>
         <img
+          v-show="!isLoading"
           :src="backgroundCartoon"
           @click="isLoading ? null : $emit('onClick')"
           @mouseenter="isLoading ? null : $emit('onHover')"
           @mouseleave="isLoading ? null : $emit('mouseleave')"
           class="absolute top-0 left-0 right-0 bottom-0 rounded-[10px] transition-all ease-in-out duration-500 bg-black object-cover h-[132px] sm:h-[424px] w-full"
-          @load="handleLoad"
           :class="[showPreview == cardId ? 'opacity-0 ' : 'opacity-100 z-30']"
         />
 
         <!-- end cartoon -->
-        <div>
+        <div v-show="!isLoading">
           <img
             :src="backgroundPhoto"
             :alt="profile.fullName"

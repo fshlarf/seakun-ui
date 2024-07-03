@@ -203,7 +203,7 @@ export const seakunTeams = [
     },
   },
   {
-    fullName: 'Firdaus Yulia Fila Maulidya',
+    fullName: 'Firdaus Yulia Fika Maulidya',
     position: 'OPERASIONAL ADMIN',
     socialMedia: {
       instagram: 'firmaulidya',
