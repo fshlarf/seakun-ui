@@ -75,6 +75,12 @@ export default {
       isShowPripacyPolicy: false,
     };
   },
+  mounted() {
+    const { show } = this.$route.query;
+    if (show) {
+      this.isShowPripacyPolicy = true;
+    }
+  },
   methods: {
     waitForElement,
     toKebabCase(text) {
