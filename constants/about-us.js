@@ -27,10 +27,6 @@ export const seakunJourney = [
         description:
           'Founder kami berkomitmen penuh pada Seakun.id. Ia memutuskan resign dari pekerjaannya untuk fokus membangun Seakun.id, dengan tujuan memberikan pelayanan terbaik kepada pengguna dan menciptakan lebih banyak lapangan pekerjaan.',
       },
-      {
-        description:
-          'Kami gagal mendapatkan pendanaan meski Seakun.id telah memiliki lebih dari 10.000 pengguna. Upaya kami untuk mendapatkan modal dari sebuah Venture Capital tidak berhasil, namun kami tetap berlapang dada dan terus maju.',
-      },
     ],
   },
   {
@@ -116,23 +112,54 @@ export const seakunTeams = [
     },
   },
   {
-    fullName: 'Mutia Annya',
-    position: 'Talent Creative',
+    fullName: 'Mega Maahiroh',
+    position: 'HR Staff',
     socialMedia: {
-      instagram: '@mutiannya',
-      x: '@mutiannya',
-      tiktok: '@mutiannya',
-      linkedIN: 'http://linkedin.com/in/mutia-annya-0237a41a4',
+      instagram: '@maa_rh00',
+      x: null,
+      tiktok: '@meimei00001',
+      linkedIN: 'www.linkedin.com/in/mega-maahiroh',
+    },
+  },
+
+  {
+    fullName: 'Amelia Bustazar Rahmi',
+    position: 'Assisten Manager',
+    socialMedia: {
+      instagram: '@bustazar',
+      x: null,
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/ameliarahmi',
     },
   },
   {
-    fullName: 'Azzahra Zweida Harahap',
-    position: 'Growth (Intern)',
+    fullName: 'Amelda Tiara Citra',
+    position: 'Lead Admin Ops',
     socialMedia: {
-      instagram: '@zweiazzahra',
-      x: '@lusa_sukses',
+      instagram: 'ameldatiara',
+      x: 'soobiinny',
       tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/azzahra-zweida-harahap-a85738184/',
+      linkedIN: 'https://id.linkedin.com/in/amelda-tiara-citra-a5aa601a5',
+    },
+  },
+  {
+    fullName: 'Dian Astika',
+    position: 'Lead Admin',
+    socialMedia: {
+      instagram: '@dianastika',
+      x: '@dynstka',
+      tiktok: '@dianastikarini',
+      linkedIN: null,
+    },
+  },
+  {
+    fullName: 'Nurovi Andiyani',
+    position: 'Lead Admin Operasional',
+    socialMedia: {
+      instagram: '@nurovi98',
+      x: null,
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/nurovi-andiyani-34001b255/',
     },
   },
   {
@@ -146,13 +173,23 @@ export const seakunTeams = [
     },
   },
   {
-    fullName: 'Khoirotul Umma',
-    position: 'Admin Operasional (Part time)',
+    fullName: 'Siti Nur Aisyah',
+    position: 'Admin Ops',
     socialMedia: {
-      instagram: '@k_ummaa',
-      x: '@UmmaKhoirotul',
-      tiktok: 'Tidak punya',
-      linkedIN: 'https://www.linkedin.com/in/khoirotul-umma-583553291/',
+      instagram: null,
+      x: '@Cicajoli',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/siti-nur-aisyah/',
+    },
+  },
+  {
+    fullName: 'Zulhafni Adha',
+    position: 'Admin Operasional',
+    socialMedia: {
+      instagram: 'hafnirangkuti',
+      x: 'H42251Hafni',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/zulhafni-adha-45409a315/',
     },
   },
   {
@@ -163,6 +200,120 @@ export const seakunTeams = [
       x: '@yonaprestica',
       tiktok: '@yonaprestica18',
       linkedIN: 'Yona prestica',
+    },
+  },
+  {
+    fullName: 'Firdaus Yulia Fila Maulidya',
+    position: 'OPERASIONAL ADMIN',
+    socialMedia: {
+      instagram: 'firmaulidya',
+      x: 'firmaulidya',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/fika-maulidya-380644217/',
+    },
+  },
+  {
+    fullName: 'Nadila Putri Surbakti',
+    position: 'Admin Operasional',
+    socialMedia: {
+      instagram: '@naput_surbakti',
+      x: null,
+      tiktok: '@naput_s',
+      linkedIN: 'https://id.linkedin.com/in/nadila-putri-surbakti-7ba00a255',
+    },
+  },
+
+  {
+    fullName: 'Khoirunnisa Azizah',
+    position: 'Admin Operasional',
+    socialMedia: {
+      instagram: 'khoirunnza',
+      x: null,
+      tiktok: null,
+      linkedIN: null,
+    },
+  },
+  {
+    fullName: 'Masruroh',
+    position: 'Admin operation',
+    socialMedia: {
+      instagram: 'rororuri',
+      x: 'rororuri',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/masruroh-8b839911b/',
+    },
+  },
+  {
+    fullName: 'Mutia Annya',
+    position: 'Talent Creative',
+    socialMedia: {
+      instagram: '@mutiannya',
+      x: '@mutiannya',
+      tiktok: '@mutiannya',
+      linkedIN: 'http://linkedin.com/in/mutia-annya-0237a41a4',
+    },
+  },
+
+  {
+    fullName: 'imaniah',
+    position: 'Content Specialist - GROWTH',
+    socialMedia: {
+      instagram: 'imaniah15',
+      x: 'xxmanisxya',
+      tiktok: 'hainami_',
+      linkedIN: 'https://www.linkedin.com/in/imaniah',
+    },
+  },
+  {
+    fullName: 'Ridho Zuhriyal Lubis',
+    position: 'Software Engineer',
+    socialMedia: {
+      instagram: '@ridhozuhriyal',
+      x: '@zuhriyal',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/ridho-zuhriyal-568466196/',
+    },
+  },
+  {
+    fullName: 'Indriyani Puspita',
+    position: 'UI/UX Designer',
+    socialMedia: {
+      instagram: '@indriyani_pusp',
+      x: null,
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/indriyanipuspita/',
+    },
+  },
+  {
+    fullName: 'Khoirotul Umma',
+    position: 'Admin Operasional (Part time)',
+    socialMedia: {
+      instagram: '@k_ummaa',
+      x: '@UmmaKhoirotul',
+      tiktok: 'Tidak punya',
+      linkedIN: 'https://www.linkedin.com/in/khoirotul-umma-583553291/',
+    },
+  },
+
+  {
+    fullName: 'Rani Fanika',
+    position: 'Finance',
+    socialMedia: {
+      instagram: null,
+      x: '@ranfaaa',
+      tiktok: null,
+      linkedIN:
+        'Lihat profil Rani Fanika di LinkedIn https://id.linkedin.com/in/ranifanika',
+    },
+  },
+  {
+    fullName: 'Dian arista sari',
+    position: 'Admin operasional',
+    socialMedia: {
+      instagram: 'dianaristaa',
+      x: null,
+      tiktok: null,
+      linkedIN: 'Dian Arista Sari',
     },
   },
   {
@@ -185,46 +336,7 @@ export const seakunTeams = [
       linkedIN: 'https://www.linkedin.com/in/khairiah-afriza-55a2ba314/',
     },
   },
-  {
-    fullName: 'Nadila Putri Surbakti',
-    position: 'Admin Operasional',
-    socialMedia: {
-      instagram: '@naput_surbakti',
-      x: null,
-      tiktok: '@naput_s',
-      linkedIN: 'https://id.linkedin.com/in/nadila-putri-surbakti-7ba00a255',
-    },
-  },
-  {
-    fullName: 'Nurovi Andiyani',
-    position: 'Lead Admin Operasional',
-    socialMedia: {
-      instagram: '@nurovi98',
-      x: null,
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/nurovi-andiyani-34001b255/',
-    },
-  },
-  {
-    fullName: 'Masruroh',
-    position: 'Admin operation',
-    socialMedia: {
-      instagram: 'rororuri',
-      x: 'rororuri',
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/masruroh-8b839911b/',
-    },
-  },
-  {
-    fullName: 'Khoirunnisa Azizah',
-    position: 'Admin Operasional',
-    socialMedia: {
-      instagram: 'khoirunnza',
-      x: null,
-      tiktok: null,
-      linkedIN: null,
-    },
-  },
+
   {
     fullName: 'Nurul hidayati',
     position: 'Admin operasional',
@@ -235,126 +347,15 @@ export const seakunTeams = [
       linkedIN: 'Nurul Hidayati',
     },
   },
-  {
-    fullName: 'Dian arista sari',
-    position: 'Admin operasional',
-    socialMedia: {
-      instagram: 'dianaristaa',
-      x: null,
-      tiktok: null,
-      linkedIN: 'Dian Arista Sari',
-    },
-  },
-  {
-    fullName: 'Dian Astika',
-    position: 'Lead Admin',
-    socialMedia: {
-      instagram: '@dianastika',
-      x: '@dynstka',
-      tiktok: '@dianastikarini',
-      linkedIN: null,
-    },
-  },
-  {
-    fullName: 'Amelda Tiara Citra',
-    position: 'Lead Admin Ops',
-    socialMedia: {
-      instagram: 'ameldatiara',
-      x: 'soobiinny',
-      tiktok: null,
-      linkedIN: 'https://id.linkedin.com/in/amelda-tiara-citra-a5aa601a5',
-    },
-  },
-  {
-    fullName: 'Amelia Bustazar Rahmi',
-    position: 'Assisten Manager',
-    socialMedia: {
-      instagram: '@bustazar',
-      x: null,
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/ameliarahmi',
-    },
-  },
-  {
-    fullName: 'Indriyani Puspita',
-    position: 'UI/UX Designer',
-    socialMedia: {
-      instagram: '@indriyani_pusp',
-      x: null,
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/indriyanipuspita/',
-    },
-  },
-  {
-    fullName: 'Zulhafni Adha',
-    position: 'Admin Operasional',
-    socialMedia: {
-      instagram: 'hafnirangkuti',
-      x: 'H42251Hafni',
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/zulhafni-adha-45409a315/',
-    },
-  },
-  {
-    fullName: 'FIRDAUS YULIA FIKA MAULIDYA',
-    position: 'OPERASIONAL ADMIN',
-    socialMedia: {
-      instagram: 'firmaulidya',
-      x: 'firmaulidya',
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/fika-maulidya-380644217/',
-    },
-  },
-  {
-    fullName: 'imaniah',
-    position: 'Content Specialist - GROWTH',
-    socialMedia: {
-      instagram: 'imaniah15',
-      x: 'xxmanisxya',
-      tiktok: 'hainami_',
-      linkedIN: 'https://www.linkedin.com/in/imaniah',
-    },
-  },
-  {
-    fullName: 'Rani Fanika',
-    position: 'Finance',
-    socialMedia: {
-      instagram: null,
-      x: '@ranfaaa',
-      tiktok: null,
-      linkedIN:
-        'Lihat profil Rani Fanika di LinkedIn https://id.linkedin.com/in/ranifanika',
-    },
-  },
-  {
-    fullName: 'Ridho Zuhriyal Lubis',
-    position: 'Software Engineer',
-    socialMedia: {
-      instagram: '@ridhozuhriyal',
-      x: '@zuhriyal',
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/ridho-zuhriyal-568466196/',
-    },
-  },
 
   {
-    fullName: 'Siti Nur Aisyah',
-    position: 'Admin Ops',
+    fullName: 'Azzahra Zweida Harahap',
+    position: 'Growth (Intern)',
     socialMedia: {
-      instagram: null,
-      x: '@Cicajoli',
+      instagram: '@zweiazzahra',
+      x: '@lusa_sukses',
       tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/siti-nur-aisyah/',
-    },
-  },
-  {
-    fullName: 'Mega Maahiroh',
-    position: 'HR Staff',
-    socialMedia: {
-      instagram: '@maa_rh00',
-      x: null,
-      tiktok: '@meimei00001',
-      linkedIN: 'www.linkedin.com/in/mega-maahiroh',
+      linkedIN: 'https://www.linkedin.com/in/azzahra-zweida-harahap-a85738184/',
     },
   },
 ];
