@@ -14,21 +14,21 @@
       >
         <!-- cartoon -->
         <div
-          v-if="isLoad"
+          v-if="isLoading"
           class="animate-pulse bg-slate-200 top-0 left-0 bottom-0 right-0 absolute z-40 h-[132px] sm:h-[424px]"
         ></div>
         <div
-          @click="$emit('onClick')"
-          @mouseenter="$emit('onHover')"
-          @mouseleave="$emit('mouseleave')"
+          @click="isLoading ? null : $emit('onClick')"
+          @mouseenter="isLoading ? null : $emit('onHover')"
+          @mouseleave="isLoading ? null : $emit('mouseleave')"
           :class="[showPreview == cardId ? 'opacity-0' : 'opacity-100 z-40']"
           class="!bg-black/30 absolute top-0 left-0 right-0 bottom-0 hidden sm:block h-[132px] sm:h-[424px] w-full rounded-[10px]"
         ></div>
         <img
           :src="backgroundCartoon"
-          @click="$emit('onClick')"
-          @mouseenter="$emit('onHover')"
-          @mouseleave="$emit('mouseleave')"
+          @click="isLoading ? null : $emit('onClick')"
+          @mouseenter="isLoading ? null : $emit('onHover')"
+          @mouseleave="isLoading ? null : $emit('mouseleave')"
           class="absolute top-0 left-0 right-0 bottom-0 rounded-[10px] transition-all ease-in-out duration-500 bg-black object-cover h-[132px] sm:h-[424px] w-full"
           @load="handleLoad"
           :class="[showPreview == cardId ? 'opacity-0 ' : 'opacity-100 z-30']"
@@ -39,7 +39,8 @@
           <img
             :src="backgroundPhoto"
             :alt="profile.fullName"
-            class="w-full object-cover relative z-20 sm:h-[346px] transition-all duration-500"
+            @load="handleLoad"
+            class="w-full object-cover object-center relative z-20 sm:h-[346px] transition-all duration-500"
             :class="[
               showPreview == cardId
                 ? 'h-[342px]  rounded-t-[10px]'
@@ -116,7 +117,7 @@ export default {
   data() {
     return {
       backgroundCartoon: '',
-      isLoad: true,
+      isLoading: true,
     };
   },
   computed: {
@@ -185,14 +186,14 @@ export default {
     },
     handleLoad() {
       setTimeout(() => {
-        this.isLoad = false;
+        this.isLoading = false;
       }, 500);
     },
   },
   watch: {
     profile(_, newval) {
       this.updateBackgroundCartoon();
-      this.isLoad = true;
+      this.isLoading = true;
     },
   },
   mounted() {

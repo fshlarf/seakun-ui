@@ -153,10 +153,7 @@
                     <a class="text-primary" href="/terms-of-use" target="_blank"
                       >Syarat dan Ketentuan Seakun</a
                     >, serta
-                    <a
-                      class="text-primary"
-                      href="/privacy-policy"
-                      target="_blank"
+                    <a class="text-primary" href="/terms-of-use" target="_blank"
                       >Kebijakan Privasi</a
                     >
                   </p>
