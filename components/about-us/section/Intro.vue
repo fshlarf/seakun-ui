@@ -55,7 +55,7 @@
           </div>
           <div class="bg-[#D2F2EC] lg:bg-transparent rounded-[10px]">
             <img
-              src="/images/about-us/illustration/intro.webp"
+              src="/images/about-us/illustration/intro-illustration.webp"
               alt="illustration"
               class="mx-auto pt-[29px] w-full pl-[2px] pr-2 lg:p-0"
             />
