@@ -199,7 +199,7 @@ export const seakunTeams = [
       instagram: '@yonaprestica',
       x: '@yonaprestica',
       tiktok: '@yonaprestica18',
-      linkedIN: 'Yona prestica',
+      linkedIN: 'https://www.linkedin.com/in/yona-prestica-a551a71b5/',
     },
   },
   {
@@ -302,8 +302,7 @@ export const seakunTeams = [
       instagram: null,
       x: '@ranfaaa',
       tiktok: null,
-      linkedIN:
-        'Lihat profil Rani Fanika di LinkedIn https://id.linkedin.com/in/ranifanika',
+      linkedIN: 'https://id.linkedin.com/in/ranifanika',
     },
   },
   {
@@ -313,7 +312,7 @@ export const seakunTeams = [
       instagram: 'dianaristaa',
       x: null,
       tiktok: null,
-      linkedIN: 'Dian Arista Sari',
+      linkedIN: 'https://www.linkedin.com/in/dian-arista-s-b0798a1bb/',
     },
   },
   {
@@ -324,6 +323,16 @@ export const seakunTeams = [
       x: null,
       tiktok: null,
       linkedIN: 'www.linkedin.com/in/nurhatikaputriseptiana/',
+    },
+  },
+  {
+    fullName: 'Silvia Nur Chairina',
+    position: 'Content Editor',
+    socialMedia: {
+      instagram: '@silvianchairinalbs',
+      x: 'hipiakk',
+      tiktok: 'hipiak',
+      linkedIN: 'https://www.linkedin.com/in/silvianurchairina/',
     },
   },
   {
@@ -344,7 +353,7 @@ export const seakunTeams = [
       instagram: 'nurul22hidayah',
       x: null,
       tiktok: null,
-      linkedIN: 'Nurul Hidayati',
+      linkedIN: 'https://www.linkedin.com/in/nurul-hidayati-6b275017a/',
     },
   },
 
@@ -358,4 +367,5 @@ export const seakunTeams = [
       linkedIN: 'https://www.linkedin.com/in/azzahra-zweida-harahap-a85738184/',
     },
   },
+  // https://www.linkedin.com/in/silvianurchairina/
 ];
