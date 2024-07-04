@@ -28,8 +28,13 @@
     </header>
 
     <div
-      class="flex gap-5 sm:gap-5 flex-col sm:flex-row sm:justify-between mt-10 overflow-x-scroll hide-scrollbar"
+      class="flex gap-5 flex-col sm:flex-row mt-10 overflow-x-scroll hide-scrollbar"
       v-if="!isLoading"
+      :class="[
+        paginatedItems.length == itemsPerPage
+          ? 'sm:justify-between '
+          : 'sm:justify-start ',
+      ]"
       ref="scrollContainer"
     >
       <section v-for="(item, index) in paginatedItems" :key="index">
@@ -113,6 +118,8 @@ export default {
       const windowWidth = window.innerWidth;
       if (windowWidth < 640) {
         return 3;
+      } else if (windowWidth < 768) {
+        return 4;
       } else if (windowWidth < 1024) {
         return 5;
       } else if (windowWidth < 1280) {

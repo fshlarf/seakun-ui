@@ -7,7 +7,7 @@
           [
             showPreview == cardId
               ? 'h-[428px] sm:w-[306px] z-30'
-              : 'w-[100%] sm:w-[143px]',
+              : 'w-[100%] sm:w-[133px] md:w-[125px] lg:w-[143px]',
           ])
         "
         class="flex flex-col justify-between relative rounded-[10px] cursor-pointer h-[132px] sm:h-[424px] transition-all ease-in-out duration-500"
