@@ -83,12 +83,33 @@ export const seakunTeams = [
   },
   {
     fullName: 'Aadilah Aziz',
-    position: 'COO',
+    position: 'Co Founder & COO',
     socialMedia: {
       instagram: '@adilahziz',
       x: '@adilahziz',
       tiktok: null,
       linkedIN: 'https://www.linkedin.com/in/aadilah-aziz/',
+    },
+  },
+
+  {
+    fullName: 'Marlina Dian Safitri',
+    position: 'Commisioner',
+    socialMedia: {
+      instagram: '@marlinadiansafitri',
+      x: null,
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/marlina-dian-safitri-090090185/',
+    },
+  },
+  {
+    fullName: 'Harry Kurniawan',
+    position: 'Tech Lead',
+    socialMedia: {
+      instagram: '@mzhar91',
+      x: '@Mzhar91',
+      tiktok: null,
+      linkedIN: 'https://www.linkedin.com/in/harry-kurniawan-71533665/',
     },
   },
   {
@@ -103,7 +124,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Fara Nur Azizah',
-    position: 'Operasional',
+    position: 'Jr. Manager Operation',
     socialMedia: {
       instagram: '@_franaz',
       x: null,
@@ -134,7 +155,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Amelda Tiara Citra',
-    position: 'Lead Admin Ops',
+    position: 'Lead Admin Operasional',
     socialMedia: {
       instagram: 'ameldatiara',
       x: 'soobiinny',
@@ -144,7 +165,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Dian Astika',
-    position: 'Lead Admin',
+    position: 'Lead Admin Operasional',
     socialMedia: {
       instagram: '@dianastika',
       x: '@dynstka',
@@ -164,7 +185,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Nungki Kusumawardani Syahputri',
-    position: 'Operasional Admin',
+    position: 'Admin Operasional',
     socialMedia: {
       instagram: 'gkikus',
       x: null,
@@ -174,7 +195,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Siti Nur Aisyah',
-    position: 'Admin Ops',
+    position: 'Admin Operasional',
     socialMedia: {
       instagram: null,
       x: '@Cicajoli',
@@ -204,7 +225,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Firdaus Yulia Fika Maulidya',
-    position: 'OPERASIONAL ADMIN',
+    position: 'Admin Operasional',
     socialMedia: {
       instagram: 'firmaulidya',
       x: 'firmaulidya',
@@ -222,6 +243,16 @@ export const seakunTeams = [
       linkedIN: 'https://id.linkedin.com/in/nadila-putri-surbakti-7ba00a255',
     },
   },
+  {
+    fullName: 'Annisa Sakinah',
+    position: 'B2B Account Executive',
+    socialMedia: {
+      instagram: '@ans.skinah',
+      x: null,
+      tiktok: '@ichaabnt ',
+      linkedIN: 'http://linkedin.com/in/annisa-sakinah-21998223a',
+    },
+  },
 
   {
     fullName: 'Khoirunnisa Azizah',
@@ -235,7 +266,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Masruroh',
-    position: 'Admin operation',
+    position: 'Admin Operasional ',
     socialMedia: {
       instagram: 'rororuri',
       x: 'rororuri',
@@ -256,7 +287,7 @@ export const seakunTeams = [
 
   {
     fullName: 'imaniah',
-    position: 'Content Specialist - GROWTH',
+    position: 'Content Specialist',
     socialMedia: {
       instagram: 'imaniah15',
       x: 'xxmanisxya',
@@ -286,7 +317,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Khoirotul Umma',
-    position: 'Admin Operasional (Part time)',
+    position: 'Admin Operasional',
     socialMedia: {
       instagram: '@k_ummaa',
       x: '@UmmaKhoirotul',
@@ -317,7 +348,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Eka Nurhatika Putri Septiana',
-    position: 'Admin part time',
+    position: 'Admin Operasional',
     socialMedia: {
       instagram: '@nurhatikaps',
       x: null,
@@ -359,7 +390,7 @@ export const seakunTeams = [
 
   {
     fullName: 'Azzahra Zweida Harahap',
-    position: 'Growth (Intern)',
+    position: 'Growth',
     socialMedia: {
       instagram: '@zweiazzahra',
       x: '@lusa_sukses',
@@ -367,5 +398,4 @@ export const seakunTeams = [
       linkedIN: 'https://www.linkedin.com/in/azzahra-zweida-harahap-a85738184/',
     },
   },
-  // https://www.linkedin.com/in/silvianurchairina/
 ];
