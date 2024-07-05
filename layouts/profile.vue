@@ -99,7 +99,7 @@
             </nuxt-link>
           </div>
           <div
-            class="mt-3 p-3 flex items-center gap-3 cursor-pointer"
+            class="mt-3 p-3 flex items-center gap-3 cursor-pointer text-[#83858A]"
             @click="logout"
           >
             <img src="/images/icons/logout.svg" alt="logout" />
