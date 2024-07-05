@@ -12,7 +12,7 @@ export const seakunJourney = [
       },
       {
         description:
-          'Karyawan pertama. Posisi admin operasional menjadi posisi pertama yang dibuka di Seakun.id. Posisi ini kami buka karena jumlah pengguna kami yang terus bertambah signifikan dan sudah saatnya untuk meningkatkan pelayanan kepada pengguna.',
+          'Karyawan pertama. Posisi Admin Operation menjadi posisi pertama yang dibuka di Seakun.id. Posisi ini kami buka karena jumlah pengguna kami yang terus bertambah signifikan dan sudah saatnya untuk meningkatkan pelayanan kepada pengguna.',
       },
     ],
   },
@@ -53,6 +53,10 @@ export const seakunJourney = [
         description:
           'Di tahun 2023, Seakun berekspansi dengan membuka kantor cabang baru untuk menjangkau lebih banyak pengguna dan meningkatkan pelayanan. Inovasi kami juga melahirkan beberapa bisnis baru, sehingga memperluas cakupan layanan.',
       },
+      {
+        description:
+          'Setelah tahun 2021 Founder kami memutuskan untuk berkarir full di Seakun, selanjutnya di tahun 2023 ini, giliran Co Founder kami yang memutuskan untuk berkarir full di Seakun. Ini membuat tim kami semakin tumbuh lebih besar dan dapat memberikan layanan yang lebih baik lagi untuk seluruh pengguna.',
+      },
     ],
   },
   {
@@ -75,7 +79,7 @@ export const seakunTeams = [
     fullName: 'Faishal Arif',
     position: 'Founder & CEO',
     socialMedia: {
-      instagram: '@fshlarf',
+      instagram: null,
       x: '@faishal_arf',
       tiktok: null,
       linkedIN: 'https://www.linkedin.com/in/fshlarf/',
@@ -145,7 +149,7 @@ export const seakunTeams = [
 
   {
     fullName: 'Amelia Bustazar Rahmi',
-    position: 'Assisten Manager',
+    position: 'Asisten Manager Operation',
     socialMedia: {
       instagram: '@bustazar',
       x: null,
@@ -155,7 +159,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Amelda Tiara Citra',
-    position: 'Lead Admin Operasional',
+    position: 'Lead Operation',
     socialMedia: {
       instagram: 'ameldatiara',
       x: 'soobiinny',
@@ -165,7 +169,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Dian Astika',
-    position: 'Lead Admin Operasional',
+    position: 'Lead Operation',
     socialMedia: {
       instagram: '@dianastika',
       x: '@dynstka',
@@ -175,7 +179,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Nurovi Andiyani',
-    position: 'Lead Admin Operasional',
+    position: 'Lead Operation',
     socialMedia: {
       instagram: '@nurovi98',
       x: null,
@@ -185,7 +189,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Nungki Kusumawardani Syahputri',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: 'gkikus',
       x: null,
@@ -195,7 +199,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Siti Nur Aisyah',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: null,
       x: '@Cicajoli',
@@ -205,7 +209,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Zulhafni Adha',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: 'hafnirangkuti',
       x: 'H42251Hafni',
@@ -215,7 +219,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Yona prestica',
-    position: 'Admin operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: '@yonaprestica',
       x: '@yonaprestica',
@@ -225,7 +229,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Firdaus Yulia Fika Maulidya',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: 'firmaulidya',
       x: 'firmaulidya',
@@ -235,7 +239,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Nadila Putri Surbakti',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: '@naput_surbakti',
       x: null,
@@ -256,7 +260,7 @@ export const seakunTeams = [
 
   {
     fullName: 'Khoirunnisa Azizah',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: 'khoirunnza',
       x: null,
@@ -266,7 +270,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Masruroh',
-    position: 'Admin Operasional ',
+    position: 'Admin Operation ',
     socialMedia: {
       instagram: 'rororuri',
       x: 'rororuri',
@@ -317,7 +321,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Khoirotul Umma',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: '@k_ummaa',
       x: '@UmmaKhoirotul',
@@ -338,7 +342,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Dian arista sari',
-    position: 'Admin operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: 'dianaristaa',
       x: null,
@@ -348,7 +352,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Eka Nurhatika Putri Septiana',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: '@nurhatikaps',
       x: null,
@@ -358,7 +362,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Silvia Nur Chairina',
-    position: 'Content Editor',
+    position: 'Content Designer',
     socialMedia: {
       instagram: '@silvianchairinalbs',
       x: 'hipiakk',
@@ -368,7 +372,7 @@ export const seakunTeams = [
   },
   {
     fullName: 'Khairiah Afriza',
-    position: 'Admin Operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: '@khairiahafriza_',
       x: '@khairiahafriza_',
@@ -379,7 +383,7 @@ export const seakunTeams = [
 
   {
     fullName: 'Nurul hidayati',
-    position: 'Admin operasional',
+    position: 'Admin Operation',
     socialMedia: {
       instagram: 'nurul22hidayah',
       x: null,
@@ -390,7 +394,7 @@ export const seakunTeams = [
 
   {
     fullName: 'Azzahra Zweida Harahap',
-    position: 'Growth',
+    position: 'Digital Marketing (Intern)',
     socialMedia: {
       instagram: '@zweiazzahra',
       x: '@lusa_sukses',

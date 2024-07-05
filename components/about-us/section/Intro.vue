@@ -6,7 +6,8 @@
   >
     <div>
       <section>
-        <header class="flex items-center gap-2 text-sm text-[#6D7588]">
+        <Breadcrumb text="Tentang Seakun" />
+        <!-- <header class="flex items-center gap-2 text-sm text-[#6D7588]">
           <img
             src="/images/about-us/icons/home.svg"
             alt="home"
@@ -18,7 +19,7 @@
             class="w-[5px]"
           />
           <p>Tentang Seakun</p>
-        </header>
+        </header> -->
         <div
           class="flex flex-col-reverse lg:flex-row justify-between gap-5 md:gap-8 lg:gap-10 mt-3"
         >
@@ -67,7 +68,11 @@
 </template>
 
 <script>
+import Breadcrumb from '../../atoms/Breadcrumb.vue';
 export default {
+  components: {
+    Breadcrumb,
+  },
   data() {
     return {
       navbarHeight: null,

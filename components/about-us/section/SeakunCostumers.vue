@@ -18,8 +18,8 @@
           <p class="text-lg md:text-xl lg:text-[36px] font-extrabold">
             Pengguna Seakun
           </p>
-          <p class="text-xs md:text-sm pt-2 leading-5">
-            Puluhan ribu pengguna telah menikmati benefit patungan layanan
+          <p class="text-xs md:text-sm pt-2 lg:pt-5 !leading-5 lg:!leading-6">
+            Lebih dari 75.000 pengguna telah menikmati benefit patungan layanan
             premium dengan aman. Bergabunglah dengan kami dan nikmati berbagai
             kemudahannya!
           </p>

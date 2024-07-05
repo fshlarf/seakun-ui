@@ -49,8 +49,11 @@
               >Tentang Kami</nuxt-link
             >
           </li>
-          <li @click="scrollTo('orderFlow')">
-            <nuxt-link class="hover:no-underline" to="/">Cara Pesan</nuxt-link>
+
+          <li>
+            <nuxt-link class="hover:no-underline" to="/info/scheme-of-price"
+              >Skema Harga</nuxt-link
+            >
           </li>
           <li>
             <nuxt-link class="hover:no-underline" to="/terms-of-use"
@@ -71,7 +74,7 @@
             >
           </li>
           <li>
-            <nuxt-link to="/tip">TIP untuk Seakun</nuxt-link>
+            <nuxt-link to="/tip">Tip untuk Seakun</nuxt-link>
           </li>
           <!-- <li>
             <nuxt-link class="hover:no-underline" to="/"
