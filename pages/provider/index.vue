@@ -7,9 +7,7 @@
     ></div>
     <div class="pt-20 px-[20px] md:w-full md:container dm-sans pb-28">
       <div class="flex items-center gap-2 text-sm">
-        <nuxt-link class="text-primary" to="/#provider">Beranda</nuxt-link>
-        <p>></p>
-        <p>{{ provider.name }}</p>
+        <Breadcrumb :text="provider.name" />
       </div>
       <template v-if="!isLoading">
         <div
@@ -525,6 +523,7 @@ import GroupCardShimmer from './views/group-card-shimmer.vue';
 import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
 import { mapActions, mapGetters } from 'vuex';
+import Breadcrumb from '../../components/atoms/Breadcrumb.vue';
 
 export default {
   components: {
@@ -532,6 +531,7 @@ export default {
     GroupCard,
     Button,
     GroupCardShimmer,
+    Breadcrumb,
   },
   data() {
     return {

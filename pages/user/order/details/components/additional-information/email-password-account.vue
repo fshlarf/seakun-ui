@@ -11,6 +11,7 @@
           class="w-[18px] h-[18px]"
         />
         <p>Email : {{ information.email }}</p>
+        <CopyButton :value="information.email" />
       </div>
       <div class="flex items-center gap-1" v-if="information.password">
         <img
@@ -44,7 +45,11 @@
 </template>
 
 <script>
+import CopyButton from '~/components/atoms/CopyButton.vue';
 export default {
+  components: {
+    CopyButton,
+  },
   props: {
     information: {
       typeof: Object,

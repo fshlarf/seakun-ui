@@ -104,8 +104,12 @@
           @click="$emit('onClickPage', item)"
           v-if="
             item > 1 &&
-            (item == currentPage || item === currentPage + 1) &&
-            currentPage - 1 < Math.ceil(totalPages / 2)
+            (item == currentPage ||
+              item === currentPage + 1 ||
+              (currentPage === Math.ceil(totalPages / 2) &&
+                item === Math.ceil(totalPages / 2) - 1)) &&
+            currentPage <= Math.ceil(totalPages / 2) &&
+            item <= Math.ceil(totalPages / 2)
           "
           class="w-7 h-7 flex items-center justify-center text-sm font-bold rounded-lg"
           :class="[
@@ -125,8 +129,9 @@
             item > 1 &&
             item != totalPages &&
             (item == currentPage || item === currentPage - 1) &&
+            item !== 6 &&
             item !== Math.ceil(totalPages / 2) &&
-            currentPage > Math.ceil(totalPages / 2)
+            item > Math.ceil(totalPages / 2)
           "
           class="w-7 h-7 flex items-center justify-center text-sm font-bold rounded-lg"
           :class="[
