@@ -57,7 +57,12 @@
               </nuxt-link>
             </section>
           </div>
-          <img src="/images/icons/logout.svg" alt="logout" @click="logout" />
+          <img
+            src="/images/icons/logout.svg"
+            alt="logout"
+            @click="logout"
+            class="md:hidden"
+          />
         </div>
 
         <aside
