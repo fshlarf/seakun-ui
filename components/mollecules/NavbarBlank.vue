@@ -24,7 +24,7 @@ export default {
   props: {
     className: {
       typeof: String,
-      default: 'bg-third tn:shadow',
+      default: 'bg-white tn:shadow',
     },
     classContainer: {
       typeof: String,
@@ -42,11 +42,7 @@ export default {
   position: fixed;
   top: 0px;
 }
-@media (min-width: 400px) {
-  #navbar {
-    background-color: #ffffff;
-  }
-}
+
 @media (max-width: 800px) {
   nav {
     text-transform: uppercase;

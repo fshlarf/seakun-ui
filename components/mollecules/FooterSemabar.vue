@@ -44,13 +44,14 @@
         </h1>
         <ul class="tn:text-sm md:text-base my-2 space-y-4 xl:space-y-4">
           <li>
-            <nuxt-link class="hover:no-underline" to="/"
+            <nuxt-link class="hover:no-underline" to="/about-us"
               >Tentang Kami</nuxt-link
             >
           </li>
-          <li @click="scrollTo('flow-semabar')">
-            <nuxt-link class="hover:no-underline" to="/semabar"
-              >Cara Pesan</nuxt-link
+
+          <li>
+            <nuxt-link class="hover:no-underline" to="/info/scheme-of-price"
+              >Skema Harga</nuxt-link
             >
           </li>
           <li>
@@ -72,7 +73,7 @@
             >
           </li>
           <li>
-            <nuxt-link to="/tip">TIP untuk Seakun</nuxt-link>
+            <nuxt-link to="/tip">Tip untuk Seakun</nuxt-link>
           </li>
           <!-- <li>
             <nuxt-link class="hover:no-underline" to="/"

@@ -8,7 +8,7 @@
           @click="toHomePage"
           src="/images/brand-seakun/seakun-green.svg"
           alt="seakun"
-          class="w-[120px] h-[29px] hidden md:block cursor-pointer"
+          class="lg:w-[140px] xl:w-[163px] hidden md:block cursor-pointer"
         />
         <img
           @click="$router.back()"
@@ -21,41 +21,48 @@
       <div
         class="mt-[30px] md:mt-[42px] lg:mt-[52px] md:flex gap-5 xl:gap-[28px]"
       >
-        <div
-          class="md:hidden flex gap-5 bg-[#D7F8F1] w-max mx-auto rounded-[30px] relative"
-        >
-          <div
-            class="w-1/2 h-full absolute left-0 top-0 bg-green-primary rounded-[30px] transition-all ease-in-out duration-200"
-            :class="{
-              'translate-x-full':
-                activePage == 'order' || activePage == 'details',
-            }"
-          ></div>
-          <section v-for="(menu, id) in menus" :key="id" class="z-30">
-            <nuxt-link
-              :to="`/user${menu.link}`"
-              class="flex gap-2 p-3 cursor-pointer z-40"
-            >
-              <img
-                :src="[
-                  menu.slug == activePage || menu.secondSlug == activePage
-                    ? `/images/profile-page/icons/${menu.icon}-active.svg`
-                    : `/images/profile-page/icons/${menu.icon}.svg`,
-                ]"
-                alt="icons"
-              />
-              <p
-                :class="[
-                  menu.slug == activePage || menu.secondSlug == activePage
-                    ? 'text-white'
-                    : 'text-green-primary',
-                ]"
+        <div class="flex items-center justify-center gap-4 md:hidden">
+          <div class="flex gap-5 bg-[#D7F8F1] w-max rounded-[30px] relative">
+            <div
+              class="w-1/2 h-full absolute left-0 top-0 bg-green-primary rounded-[30px] transition-all ease-in-out duration-200"
+              :class="{
+                'translate-x-full':
+                  activePage == 'order' || activePage == 'details',
+              }"
+            ></div>
+            <section v-for="(menu, id) in menus" :key="id" class="z-30">
+              <nuxt-link
+                :to="`/user${menu.link}`"
+                class="flex gap-2 p-3 cursor-pointer z-40"
               >
-                {{ menu.name }}
-              </p>
-            </nuxt-link>
-          </section>
+                <img
+                  :src="[
+                    menu.slug == activePage || menu.secondSlug == activePage
+                      ? `/images/profile-page/icons/${menu.icon}-active.svg`
+                      : `/images/profile-page/icons/${menu.icon}.svg`,
+                  ]"
+                  alt="icons"
+                />
+                <p
+                  :class="[
+                    menu.slug == activePage || menu.secondSlug == activePage
+                      ? 'text-white'
+                      : 'text-green-primary',
+                  ]"
+                >
+                  {{ menu.name }}
+                </p>
+              </nuxt-link>
+            </section>
+          </div>
+          <img
+            src="/images/icons/logout.svg"
+            alt="logout"
+            @click="logout"
+            class="md:hidden"
+          />
         </div>
+
         <aside
           class="hidden md:block w-full max-w-[210px] lg:max-w-[210px] xl:max-w-[298px] relative bg-white rounded-xl min-h-screen px-6"
           style="box-shadow: 0px 2px 7px 0px rgba(158, 161, 182, 0.1)"
@@ -70,6 +77,7 @@
           >
             Profile Saya
           </h1>
+
           <div v-for="(menu, id) in menus" :key="id" class="space-y-3">
             <nuxt-link :to="'/user' + menu.link">
               <section
@@ -92,6 +100,13 @@
                 <p class="whitespace-nowrap text-base">{{ menu.name }}</p>
               </section>
             </nuxt-link>
+          </div>
+          <div
+            class="mt-3 p-3 flex items-center gap-3 cursor-pointer text-[#83858A]"
+            @click="logout"
+          >
+            <img src="/images/icons/logout.svg" alt="logout" />
+            <p>Logout</p>
           </div>
         </aside>
         <main class="w-full">
