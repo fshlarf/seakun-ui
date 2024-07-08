@@ -8,7 +8,7 @@
           @click="toHomePage"
           src="/images/brand-seakun/seakun-green.svg"
           alt="seakun"
-          class="w-[120px] h-[29px] hidden md:block cursor-pointer"
+          class="lg:w-[140px] xl:w-[163px] hidden md:block cursor-pointer"
         />
         <img
           @click="$router.back()"
@@ -21,10 +21,8 @@
       <div
         class="mt-[30px] md:mt-[42px] lg:mt-[52px] md:flex gap-5 xl:gap-[28px]"
       >
-        <div class="flex items-center justify-center gap-4">
-          <div
-            class="md:hidden flex gap-5 bg-[#D7F8F1] w-max rounded-[30px] relative"
-          >
+        <div class="flex items-center justify-center gap-4 md:hidden">
+          <div class="flex gap-5 bg-[#D7F8F1] w-max rounded-[30px] relative">
             <div
               class="w-1/2 h-full absolute left-0 top-0 bg-green-primary rounded-[30px] transition-all ease-in-out duration-200"
               :class="{

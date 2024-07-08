@@ -90,7 +90,7 @@ export default {
       },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/images/favicon.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/images/favicon.ico' },
       // {
       //   rel: 'stylesheet',
       //   type: 'text/css',
