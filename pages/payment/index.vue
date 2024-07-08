@@ -26,6 +26,11 @@
         :orderData="orderData"
         @onChecked="onCheckedOrder"
       />
+      <div class="mt-4">
+        <BannerInformationNetflix
+          className="!text-sm lg:!text-base leading-5 md:leading-6"
+        />
+      </div>
       <div class="tn:mt-4 space-y-3">
         <WarningPriceChange
           v-for="(provider, id) in updatedProviderList"
@@ -148,6 +153,7 @@ import WarningPriceChange from './views/WarningPriceChange.vue';
 import { currencyFormat } from '~/helpers/word-transformation';
 import CheckboxVue from '../../components/atoms/Checkbox.vue';
 import moment from 'moment';
+import BannerInformationNetflix from '../../components/mollecules/BannerInformationNetflix.vue';
 
 export default {
   name: 'NewPayment',
@@ -165,6 +171,7 @@ export default {
     ModalPriceScheme,
     WarningPriceChange,
     CheckboxVue,
+    BannerInformationNetflix,
   },
   data() {
     return {

@@ -311,19 +311,23 @@
                       onSelectMenu(menu)
                   "
                 >
-                  <p class="px-[15px]">
-                    {{ menu.name }}
-                  </p>
+                  <p class="px-[15px]">{{ menu.name }}</p>
                 </div>
               </div>
             </div>
 
-            <div class="border rounded-b-[10px] p-[12px] bg-white text-sm">
-              <div
-                v-if="selectedMenu.value == 'information'"
-                class="p-[12px] bg-[#F4FCFA]"
-              >
-                <div v-html="priceScheme.additionalInfo"></div>
+            <div
+              class="border rounded-b-[10px] p-[12px] bg-white text-xs md:text-sm"
+            >
+              <div v-if="selectedMenu.value == 'information'">
+                <div class="p-[12px] bg-[#F4FCFA] leading-5 lg:leading-6">
+                  <div v-html="priceScheme.additionalInfo"></div>
+                </div>
+                <BannerInformationNetflix
+                  v-if="provider.slug === 'netflix'"
+                  class="mt-4"
+                  :with-icon="false"
+                />
               </div>
 
               <div
@@ -525,6 +529,7 @@ import GroupCardShimmer from './views/group-card-shimmer.vue';
 import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
 import { mapActions, mapGetters } from 'vuex';
+import BannerInformationNetflix from '../../components/mollecules/BannerInformationNetflix.vue';
 
 export default {
   components: {
@@ -532,6 +537,7 @@ export default {
     GroupCard,
     Button,
     GroupCardShimmer,
+    BannerInformationNetflix,
   },
   data() {
     return {
