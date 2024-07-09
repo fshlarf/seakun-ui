@@ -54,6 +54,7 @@
       </div>
 
       <BannerInformationNetflix
+        v-if="!isNetflixValid"
         class="mt-7"
         className="leading-5 md:leading-6 text-xs lg:text-sm"
       />
@@ -65,7 +66,6 @@ import Modal from '~/components/atoms/Modal';
 import { currencyFormat } from '~/helpers/word-transformation.js';
 import OrderLabel from '../../../components/atoms/OrderLabel.vue';
 import BannerInformationNetflix from '../../../components/mollecules/BannerInformationNetflix.vue';
-import { duration } from 'moment';
 
 export default {
   name: 'ModalDuration',
@@ -94,6 +94,10 @@ export default {
     isLoading: {
       type: Boolean,
       default: false,
+    },
+    isNetflixValid: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {

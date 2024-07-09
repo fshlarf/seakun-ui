@@ -732,8 +732,10 @@ export default {
             this.packages.forEach((pkg) => {
               const newPkg = {
                 ...pkg,
-                variants: pkg.variants.filter(
-                  (variant) => variant.duration == 1
+                variants: pkg.variants.filter((variant) =>
+                  variant.isHost === 1
+                    ? variant.duration == 1
+                    : variant.duration !== 1
                 ),
               };
               newPackages.push(newPkg);

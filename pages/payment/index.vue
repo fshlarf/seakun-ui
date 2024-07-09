@@ -26,7 +26,7 @@
         :orderData="orderData"
         @onChecked="onCheckedOrder"
       />
-      <div class="mt-4">
+      <div v-if="!isNetflixValid" class="mt-4">
         <BannerInformationNetflix
           className="!text-sm lg:!text-base leading-5 md:leading-6"
         />
@@ -104,10 +104,11 @@
       </div>
 
       <Button
-        label="Bayar"
+        :label="isNetflixValid ? 'Bayar' : netflixOneMonthWarning"
         class="w-full bg-green-seakun text-base text-white font-bold py-3 my-5"
         @click="createInvoice"
         :isLoading="isLoadingPaymentButton"
+        :disabled="!isNetflixValid"
       />
     </div>
     <ModalDuration
@@ -117,6 +118,7 @@
       @onClose="toggleModalDuration"
       @pickDuration="pickDuration"
       :isLoading="isLoadingVariant"
+      :isNetflixValid="isNetflixValid"
     />
     <ModalPayment
       :onClickOtomatis="createInvoice"
@@ -281,6 +283,8 @@ export default {
         },
       ],
       isAllowVa: false,
+      isNetflixValid: true,
+      netflixOneMonthWarning: 'Harap ubah durasi netflix',
     };
   },
   // beforeMount() {
@@ -406,6 +410,8 @@ export default {
             this.totalPrice = rest.provider.package.variant.grandTotal;
           }
 
+          this.validateNetflixOrder();
+
           // calculate service fee
           this.calculateServiceFee();
           this.checkAllowVa();
@@ -444,6 +450,7 @@ export default {
           total += copyArray[i].provider.package.variant.grandTotal;
         }
       }
+      this.validateNetflixOrder();
       this.totalPrice = total;
       this.orderData = copyArray;
       this.calculateServiceFee();
@@ -478,6 +485,19 @@ export default {
       } catch (err) {
         console.log(JSON.stringify(err, null, 2));
       }
+    },
+    validateNetflixOrder() {
+      const selectedOrders = this.orderData.filter((item) => item.checked);
+      const netflixOrders = selectedOrders.filter(
+        (item) => item.provider.slug === 'netflix'
+      );
+      const regulerNetflixOrders = netflixOrders.filter(
+        (item) => !item.provider.package.isHost
+      );
+      const hasOneMonth = regulerNetflixOrders.some(
+        (item) => item.provider.package.variant.duration === 1
+      );
+      this.isNetflixValid = !hasOneMonth;
     },
     async createInvoice() {
       this.isLoadingPaymentButton = true;
@@ -597,7 +617,9 @@ export default {
           let variants = [];
           data.forEach((variant) => {
             if (variant.providerName === 'Netflix') {
-              if (variant.duration === 1) {
+              if (this.pickedOrder.isHost && variant.duration === 1) {
+                variants.push(variant);
+              } else if (!this.pickedOrder.isHost && variant.duration !== 1) {
                 variants.push(variant);
               }
             } else {
