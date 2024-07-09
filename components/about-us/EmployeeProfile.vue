@@ -69,7 +69,7 @@
                   {{ profile.position }}
                 </p>
               </section>
-              <section
+              <!-- <section
                 class="flex items-center relative gap-1"
                 :class="{ 'z-30': showPreview == cardId }"
               >
@@ -81,7 +81,7 @@
                     @click="goToSocialMedia(key, val)"
                   />
                 </div>
-              </section>
+              </section> -->
             </div>
           </div>
         </div>
