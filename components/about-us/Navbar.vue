@@ -85,7 +85,7 @@ export default {
       navbarLink: [
         {
           id: 1,
-          label: 'Tetang Seakun',
+          label: 'Tentang Seakun',
           tag: 'about-seakun',
         },
         {
