@@ -26,6 +26,11 @@
         :orderData="orderData"
         @onChecked="onCheckedOrder"
       />
+      <div v-if="isNetflixReguler" class="mt-4">
+        <BannerInformationNetflix
+          className="!text-sm lg:!text-base leading-5 md:leading-6"
+        />
+      </div>
       <div class="tn:mt-4 space-y-3">
         <WarningPriceChange
           v-for="(provider, id) in updatedProviderList"
@@ -99,10 +104,11 @@
       </div>
 
       <Button
-        label="Bayar"
+        :label="isNetflixValid ? 'Bayar' : netflixOneMonthWarning"
         class="w-full bg-green-seakun text-base text-white font-bold py-3 my-5"
         @click="createInvoice"
         :isLoading="isLoadingPaymentButton"
+        :disabled="!isNetflixValid"
       />
     </div>
     <ModalDuration
@@ -112,6 +118,7 @@
       @onClose="toggleModalDuration"
       @pickDuration="pickDuration"
       :isLoading="isLoadingVariant"
+      :isNetflixValid="isNetflixValid"
     />
     <ModalPayment
       :onClickOtomatis="createInvoice"
@@ -148,6 +155,7 @@ import WarningPriceChange from './views/WarningPriceChange.vue';
 import { currencyFormat } from '~/helpers/word-transformation';
 import CheckboxVue from '../../components/atoms/Checkbox.vue';
 import moment from 'moment';
+import BannerInformationNetflix from '../../components/mollecules/BannerInformationNetflix.vue';
 
 export default {
   name: 'NewPayment',
@@ -165,6 +173,7 @@ export default {
     ModalPriceScheme,
     WarningPriceChange,
     CheckboxVue,
+    BannerInformationNetflix,
   },
   data() {
     return {
@@ -274,6 +283,9 @@ export default {
         },
       ],
       isAllowVa: false,
+      isNetflixReguler: false,
+      isNetflixValid: true,
+      netflixOneMonthWarning: 'Harap ubah durasi netflix',
     };
   },
   // beforeMount() {
@@ -399,6 +411,9 @@ export default {
             this.totalPrice = rest.provider.package.variant.grandTotal;
           }
 
+          this.checkNetflixReguler();
+          this.validateNetflixOrder();
+
           // calculate service fee
           this.calculateServiceFee();
           this.checkAllowVa();
@@ -437,6 +452,7 @@ export default {
           total += copyArray[i].provider.package.variant.grandTotal;
         }
       }
+      this.validateNetflixOrder();
       this.totalPrice = total;
       this.orderData = copyArray;
       this.calculateServiceFee();
@@ -471,6 +487,30 @@ export default {
       } catch (err) {
         console.log(JSON.stringify(err, null, 2));
       }
+    },
+    checkNetflixReguler() {
+      const netflixOrders = this.orderData.filter(
+        (item) => item.provider.slug === 'netflix'
+      );
+      const regulerNetflixOrders = netflixOrders.filter(
+        (item) => !item.provider.package.isHost
+      );
+      if (regulerNetflixOrders.length > 0) {
+        this.isNetflixReguler = true;
+      }
+    },
+    validateNetflixOrder() {
+      const selectedOrders = this.orderData.filter((item) => item.checked);
+      const netflixOrders = selectedOrders.filter(
+        (item) => item.provider.slug === 'netflix'
+      );
+      const regulerNetflixOrders = netflixOrders.filter(
+        (item) => !item.provider.package.isHost
+      );
+      const hasOneMonth = regulerNetflixOrders.some(
+        (item) => item.provider.package.variant.duration === 1
+      );
+      this.isNetflixValid = !hasOneMonth;
     },
     async createInvoice() {
       this.isLoadingPaymentButton = true;
@@ -590,7 +630,9 @@ export default {
           let variants = [];
           data.forEach((variant) => {
             if (variant.providerName === 'Netflix') {
-              if (variant.duration === 1) {
+              if (this.pickedOrder.isHost && variant.duration === 1) {
+                variants.push(variant);
+              } else if (!this.pickedOrder.isHost && variant.duration !== 1) {
                 variants.push(variant);
               }
             } else {

@@ -1,16 +1,19 @@
 <template>
-  <Modal :is-show="showModal" @onClose="onClose" size="xl:w-2/6">
+  <Modal :is-show="showModal" @onClose="onClose" size="xl:w-2/6" class="dmsans">
     <template v-slot:header>
-      <div class="font-bold text-lg">Ubah Durasi Berlangganan</div>
+      <div class="dmsans font-bold text-lg lg:text-[22px]">
+        Ubah Durasi Berlangganan
+      </div>
     </template>
-    <div class="flex items-center space-x-2 mb-8">
+    <div class="flex items-center justify-between space-x-2 mb-7">
       <img
         :src="`/images/product/brand/${orderData.packageName}.png`"
         alt="provider brand"
         class="w-20 h-auto"
       />
-      <p class="text-base font-bold ml-2">{{ orderData.orderNumber }}</p>
+      <OrderLabel :text="orderData.orderNumber" />
     </div>
+    <hr class="border-[#EAECFF] !mb-6" />
     <div v-if="isLoading">
       <div
         class="border rounded-xl py-3 px-6 mb-2 cursor-pointer"
@@ -21,15 +24,25 @@
       </div>
     </div>
     <div v-else>
+      <!-- v-bind:style="[
+        
+          ? { background: '#EBFCFF', border: '1.5px solid #8DCABE' }
+          : { border: '1.5px solid #ededed' },
+      ]" -->
       <div
         v-for="(item, index) in listDuration"
         :key="index"
-        v-bind:style="[
-          item.uid === orderData.variantUid
-            ? { background: '#EBFCFF', border: '1.5px solid #8DCABE' }
-            : { border: '1.5px solid #ededed' },
+        :class="[
+          {
+            'bg-[#F4F7F7] !cursor-not-allowed':
+              orderData.packageName == 'netflix' && item.duration == 1,
+          },
+          {
+            ' !border-[#8DCABE]  !bg-[#EBFCFF]':
+              item.uid === orderData.variantUid,
+          },
         ]"
-        class="border-2 rounded-xl py-3 px-6 mb-2 cursor-pointer"
+        class="border-[1.5px] border-black/[4%] rounded-xl py-3 px-6 mb-2 cursor-pointer"
         @click="$emit('pickDuration', item)"
       >
         <p v-if="item.duration === 12" class="text-lg font-normal">
@@ -39,17 +52,27 @@
           {{ item.duration }} Bulan ({{ currencyFormat(item.grandTotal) }})
         </p>
       </div>
+
+      <BannerInformationNetflix
+        v-if="!isNetflixValid"
+        class="mt-7"
+        className="leading-5 md:leading-6 text-xs lg:text-sm"
+      />
     </div>
   </Modal>
 </template>
 <script>
 import Modal from '~/components/atoms/Modal';
 import { currencyFormat } from '~/helpers/word-transformation.js';
+import OrderLabel from '../../../components/atoms/OrderLabel.vue';
+import BannerInformationNetflix from '../../../components/mollecules/BannerInformationNetflix.vue';
 
 export default {
   name: 'ModalDuration',
   components: {
     Modal,
+    OrderLabel,
+    BannerInformationNetflix,
   },
   data() {
     return {
@@ -71,6 +94,10 @@ export default {
     isLoading: {
       type: Boolean,
       default: false,
+    },
+    isNetflixValid: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
@@ -99,3 +126,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.dmsans {
+  font-family: 'DM Sans', sans-serif !important;
+}
+</style>

@@ -309,19 +309,25 @@
                       onSelectMenu(menu)
                   "
                 >
-                  <p class="px-[15px]">
-                    {{ menu.name }}
-                  </p>
+                  <p class="px-[15px]">{{ menu.name }}</p>
                 </div>
               </div>
             </div>
 
-            <div class="border rounded-b-[10px] p-[12px] bg-white text-sm">
-              <div
-                v-if="selectedMenu.value == 'information'"
-                class="p-[12px] bg-[#F4FCFA]"
-              >
-                <div v-html="priceScheme.additionalInfo"></div>
+            <div
+              class="border rounded-b-[10px] p-[12px] bg-white text-xs md:text-sm"
+            >
+              <div v-if="selectedMenu.value == 'information'">
+                <div class="p-[12px] bg-[#F4FCFA] leading-5 lg:leading-6">
+                  <div v-html="priceScheme.additionalInfo"></div>
+                </div>
+                <BannerInformationNetflix
+                  v-if="
+                    provider.slug === 'netflix' && selectedPackage.host === 0
+                  "
+                  class="mt-4"
+                  :with-icon="false"
+                />
               </div>
 
               <div
@@ -524,6 +530,7 @@ import MasterService from '~/services/MasterServices';
 import Button from '~/components/atoms/Button.vue';
 import { mapActions, mapGetters } from 'vuex';
 import Breadcrumb from '../../components/atoms/Breadcrumb.vue';
+import BannerInformationNetflix from '../../components/mollecules/BannerInformationNetflix.vue';
 
 export default {
   components: {
@@ -532,6 +539,7 @@ export default {
     Button,
     GroupCardShimmer,
     Breadcrumb,
+    BannerInformationNetflix,
   },
   data() {
     return {
@@ -726,8 +734,10 @@ export default {
             this.packages.forEach((pkg) => {
               const newPkg = {
                 ...pkg,
-                variants: pkg.variants.filter(
-                  (variant) => variant.duration == 1
+                variants: pkg.variants.filter((variant) =>
+                  variant.isHost === 1
+                    ? variant.duration == 1
+                    : variant.duration !== 1
                 ),
               };
               newPackages.push(newPkg);
