@@ -26,7 +26,7 @@
         :orderData="orderData"
         @onChecked="onCheckedOrder"
       />
-      <div v-if="!isNetflixValid" class="mt-4">
+      <div v-if="isNetflixReguler" class="mt-4">
         <BannerInformationNetflix
           className="!text-sm lg:!text-base leading-5 md:leading-6"
         />
@@ -283,6 +283,7 @@ export default {
         },
       ],
       isAllowVa: false,
+      isNetflixReguler: false,
       isNetflixValid: true,
       netflixOneMonthWarning: 'Harap ubah durasi netflix',
     };
@@ -410,6 +411,7 @@ export default {
             this.totalPrice = rest.provider.package.variant.grandTotal;
           }
 
+          this.checkNetflixReguler();
           this.validateNetflixOrder();
 
           // calculate service fee
@@ -484,6 +486,17 @@ export default {
         }
       } catch (err) {
         console.log(JSON.stringify(err, null, 2));
+      }
+    },
+    checkNetflixReguler() {
+      const netflixOrders = this.orderData.filter(
+        (item) => item.provider.slug === 'netflix'
+      );
+      const regulerNetflixOrders = netflixOrders.filter(
+        (item) => !item.provider.package.isHost
+      );
+      if (regulerNetflixOrders.length > 0) {
+        this.isNetflixReguler = true;
       }
     },
     validateNetflixOrder() {

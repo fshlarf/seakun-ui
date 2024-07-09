@@ -322,7 +322,9 @@
                   <div v-html="priceScheme.additionalInfo"></div>
                 </div>
                 <BannerInformationNetflix
-                  v-if="provider.slug === 'netflix'"
+                  v-if="
+                    provider.slug === 'netflix' && selectedPackage.host === 0
+                  "
                   class="mt-4"
                   :with-icon="false"
                 />
