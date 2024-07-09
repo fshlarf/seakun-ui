@@ -70,7 +70,8 @@
             v-if="dataProvider.slug === 'netflix'"
             class="tn:text-[8px] md:text-[10px] text-[#00BA88] bg-[#E9FAF5] tn:p-1 md:px-3 md:py-2 tn:rounded-[8px] md:rounded-[20px]"
           >
-            1 <span class="md:hidden">Bln</span
+            <span v-if="variant.isHost === 1">1 </span>
+            <span v-else>2, 3, 6 </span> <span class="md:hidden">Bln</span
             ><span class="tn:hidden md:inline-block">Bulan</span>
           </div>
           <div
