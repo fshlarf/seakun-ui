@@ -103,13 +103,12 @@
         <section
           @click="$emit('onClickPage', item)"
           v-if="
-            item > 1 &&
+            item !== 1 &&
+            currentPage < Math.ceil(totalPages / 2) &&
+            item - 1 < Math.ceil(totalPages / 2) &&
             (item == currentPage ||
-              item === currentPage + 1 ||
-              (currentPage === Math.ceil(totalPages / 2) &&
-                item === Math.ceil(totalPages / 2) - 1)) &&
-            currentPage <= Math.ceil(totalPages / 2) &&
-            item <= Math.ceil(totalPages / 2)
+              (item == currentPage + 1 && currentPage !== 3) ||
+              item == currentPage - 1)
           "
           class="w-7 h-7 flex items-center justify-center text-sm font-bold rounded-lg"
           :class="[
@@ -121,18 +120,18 @@
           <p>{{ item }}</p>
         </section>
 
-        <p v-if="item == Math.ceil(totalPages / 2)">...</p>
+        <p v-if="!isFirstPage && item > 1 && item + 2 === currentPage">...</p>
 
         <section
-          @click="$emit('onClickPage', item)"
           v-if="
-            item > 1 &&
-            item != totalPages &&
-            (item == currentPage || item === currentPage - 1) &&
-            item !== 6 &&
-            item !== Math.ceil(totalPages / 2) &&
-            item > Math.ceil(totalPages / 2)
+            currentPage >= Math.ceil(totalPages / 2) &&
+            item + 1 >= Math.ceil(totalPages / 2) &&
+            item < totalPages &&
+            (item == currentPage ||
+              item == currentPage + 1 ||
+              (item == currentPage - 1 && currentPage !== totalPages - 2))
           "
+          @click="$emit('onClickPage', item)"
           class="w-7 h-7 flex items-center justify-center text-sm font-bold rounded-lg"
           :class="[
             item == currentPage
@@ -142,6 +141,17 @@
         >
           <p>{{ item }}</p>
         </section>
+
+        <p
+          v-if="
+            item === totalPages &&
+            currentPage < totalPages - 2 &&
+            item > Math.ceil(totalPages / 2) &&
+            currentPage !== totalPages
+          "
+        >
+          ...
+        </p>
 
         <section
           @click="$emit('onClickPage', item)"
