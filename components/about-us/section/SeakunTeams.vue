@@ -64,7 +64,7 @@
       </section>
     </div>
     <EmployeePagination
-      class="sm:hidden w-[240px] mt-8 mx-auto"
+      class="sm:hidden w-[280px] mt-8 mx-auto"
       :current-page="currentPage"
       :total-pages="totalPages"
       @onPrev="handlePrevPage"
