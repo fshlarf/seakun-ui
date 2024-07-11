@@ -106,16 +106,16 @@ export const seakunTeams = [
       linkedIN: 'https://www.linkedin.com/in/marlina-dian-safitri-090090185/',
     },
   },
-  {
-    fullName: 'Harry Kurniawan',
-    position: 'Tech Lead',
-    socialMedia: {
-      instagram: '@mzhar91',
-      x: '@Mzhar91',
-      tiktok: null,
-      linkedIN: 'https://www.linkedin.com/in/harry-kurniawan-71533665/',
-    },
-  },
+  // {
+  //   fullName: 'Harry Kurniawan',
+  //   position: 'Tech Lead',
+  //   socialMedia: {
+  //     instagram: '@mzhar91',
+  //     x: '@Mzhar91',
+  //     tiktok: null,
+  //     linkedIN: 'https://www.linkedin.com/in/harry-kurniawan-71533665/',
+  //   },
+  // },
   {
     fullName: 'Ibnu Hazar',
     position: 'Software Engineer',
