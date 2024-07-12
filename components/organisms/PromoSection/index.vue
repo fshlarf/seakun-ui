@@ -92,13 +92,10 @@ export default {
   data() {
     return {
       mobileBanners: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/wa-mobile.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/netflix-error-mobile.webp',
+          img: '/images/promo/ambassador-mobile.webp',
+          externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
           id: 2,
@@ -112,13 +109,10 @@ export default {
         },
       ],
       desktopBanners: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/wa-desktop.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/netflix-error-desktop.webp',
+          img: '/images/promo/ambassador-desktop.webp',
+          externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
           id: 2,

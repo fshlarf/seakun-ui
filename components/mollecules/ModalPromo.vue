@@ -68,13 +68,10 @@ export default {
       isShowModal: true,
       promoImages: [],
       promoImageMobile: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/wa-mobile.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/netflix-error-mobile.webp',
+          img: '/images/promo/ambassador-mobile.webp',
+          externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
           id: 2,
@@ -88,13 +85,10 @@ export default {
         },
       ],
       promoImageDesktop: [
-        // {
-        //   id: 1,
-        //   img: '/images/promo/wa.webp',
-        // },
         {
           id: 1,
-          img: '/images/promo/netflix-error.webp',
+          img: '/images/promo/ambassador.webp',
+          externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
           id: 2,

@@ -94,6 +94,24 @@ export default {
       desktopBanners: [
         {
           id: 1,
+          img: '/images/thankyou-promo/ambassador-desktop.webp',
+          externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
+        },
+        {
+          id: 2,
+          img: '/images/thankyou-promo/kaget.webp',
+          externalLink:
+            'https://x.com/OfficialSeakun/status/1788089320072781888',
+        },
+      ],
+      mobileBanners: [
+        {
+          id: 1,
+          img: '/images/thankyou-promo/ambassador-desktop.webp',
+          externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
+        },
+        {
+          id: 2,
           img: '/images/thankyou-promo/kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
@@ -140,8 +158,15 @@ export default {
       observer.observe(element);
     },
     selectBannersByScreenSize() {
-      this.banners = this.desktopBanners;
-      this.activeSlider = this.desktopBanners[0];
+      let screen = window.innerWidth;
+      if (screen <= 500) {
+        this.banners = this.mobileBanners;
+      } else {
+        this.banners = this.desktopBanners;
+      }
+      this.activeSlider = this.banners[0];
+      // this.banners = this.desktopBanners;
+      // this.activeSlider = this.desktopBanners[0];
     },
     scrollTo(id) {
       const container = document.getElementById('promo-scroll');
