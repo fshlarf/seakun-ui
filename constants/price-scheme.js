@@ -2856,7 +2856,7 @@ export const providerList = [
         value: 'Rp79.160',
       },
       {
-        title: 'Harga Paket 1 Bulan',
+        title: 'Harga Paket 1 Tahun',
         value: 'Rp239.000',
         is_total: true,
       },
