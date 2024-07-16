@@ -3681,149 +3681,149 @@ export const providerList = [
     ],
   },
   // darisini
-  {
-    name: 'Bitdefender',
-    slug: 'bitdefender',
-    title: 'Harga Paket Premium 1 Tahun',
-    img: '/images/product/brand/bitdefender.png',
-    screenshot: '/images/price-scheme/desktop/bitdefender.webp',
-    screenshotMobile: '/images/price-scheme/mobile/bitdefender.webp',
-    desc: '',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Premium di Bitdefender',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Bitdefender</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Bitdefender (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp512.955',
-      },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp569.380,05',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp569.380,05 ÷ 5 = Rp113.876,01',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp78.123,99',
-      },
-      {
-        title: 'Harga Paket Tahunan',
-        value: 'Rp192.000',
-        is_total: true,
-      },
-    ],
-  },
+  // {
+  //   name: 'Bitdefender',
+  //   slug: 'bitdefender',
+  //   title: 'Harga Paket Premium 1 Tahun',
+  //   img: '/images/product/brand/bitdefender.png',
+  //   screenshot: '/images/price-scheme/desktop/bitdefender.webp',
+  //   screenshotMobile: '/images/price-scheme/mobile/bitdefender.webp',
+  //   desc: '',
+  //   member: 5,
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket Premium di Bitdefender',
+  //     'Seakun bertindak sebagai user Host dalam grup',
+  //     'Akun dishare HANYA ke 5 member dalam 1 grup',
+  //     'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+  //   ],
+  //   additionalInfo:
+  //     'Paket Patungan pada <b>Bitdefender</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Bitdefender (1 Tahun)',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Provider',
+  //       value: 'Rp512.955',
+  //     },
+  //     {
+  //       title: 'Harga + pajak 11%',
+  //       value: 'Rp569.380,05',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Per Grup',
+  //       value: '5',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp569.380,05 ÷ 5 = Rp113.876,01',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp78.123,99',
+  //     },
+  //     {
+  //       title: 'Harga Paket Tahunan',
+  //       value: 'Rp192.000',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
 
-  {
-    name: 'Kaspersky',
-    slug: 'kaspersky-total',
-    title: 'Harga Paket Total Security 1 Tahun',
-    img: '/images/product/brand/kaspersky-total.png',
-    screenshot: '/images/price-scheme/desktop/kaspersky-total.webp',
-    screenshotMobile: '/images/price-scheme/mobile/kaspersky-total.webp',
-    desc: 'Kaspersky Total Security',
-    member: 3,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Total Security di Kaspersky',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Total Security selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Total Security (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp555.500',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '3',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp555.500 ÷ 3 = Rp185.166,67',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp185.167',
-        is_total: true,
-      },
-    ],
-  },
-  {
-    name: 'Kaspersky',
-    slug: 'kaspersky-internet',
-    title: 'Harga Paket Total Security 1 Tahun',
-    img: '/images/product/brand/kaspersky-internet.png',
-    screenshot: '/images/price-scheme/desktop/kaspersky-internet.webp',
-    screenshotMobile: '/images/price-scheme/mobile/kaspersky-internet.webp',
-    desc: 'Kaspersky Internet Security',
-    member: 5,
-    schemes: [
-      'Seakun membuat akun dan membeli Paket Internet Security di Kaspersky',
-      'Seakun bertindak sebagai user Host dalam grup',
-      'Akun dishare HANYA ke 5 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Internet Security selama 1 tahun',
-    ],
-    additionalInfo:
-      'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
-    informations: [
-      {
-        title: 'Nama Paket',
-        value: 'Internet Security (1 Tahun)',
-        is_total: true,
-      },
-      {
-        title: 'Harga Provider',
-        value: 'Rp656.500',
-      },
-      {
-        title: 'Jumlah Member Per Grup',
-        value: '5',
-      },
-      {
-        title: 'Harga Patungan',
-        value: 'Rp656.500 ÷ 5 = Rp131.300',
-      },
-      {
-        title: 'Biaya Admin Seakun',
-        value: 'Rp0',
-      },
-      {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp131.300',
-        is_total: true,
-      },
-    ],
-  },
+  // {
+  //   name: 'Kaspersky',
+  //   slug: 'kaspersky-total',
+  //   title: 'Harga Paket Total Security 1 Tahun',
+  //   img: '/images/product/brand/kaspersky-total.png',
+  //   screenshot: '/images/price-scheme/desktop/kaspersky-total.webp',
+  //   screenshotMobile: '/images/price-scheme/mobile/kaspersky-total.webp',
+  //   desc: 'Kaspersky Total Security',
+  //   member: 3,
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket Total Security di Kaspersky',
+  //     'Seakun bertindak sebagai user Host dalam grup',
+  //     'Akun dishare HANYA ke 3 member dalam 1 grup',
+  //     'Member yang telah join ke grup dapat menikmati fitur Total Security selama 1 tahun',
+  //   ],
+  //   additionalInfo:
+  //     'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Total Security (1 Tahun)',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Provider',
+  //       value: 'Rp555.500',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Per Grup',
+  //       value: '3',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp555.500 ÷ 3 = Rp185.166,67',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp0',
+  //     },
+  //     {
+  //       title: 'Harga Paket 1 Tahun',
+  //       value: 'Rp185.167',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'Kaspersky',
+  //   slug: 'kaspersky-internet',
+  //   title: 'Harga Paket Total Security 1 Tahun',
+  //   img: '/images/product/brand/kaspersky-internet.png',
+  //   screenshot: '/images/price-scheme/desktop/kaspersky-internet.webp',
+  //   screenshotMobile: '/images/price-scheme/mobile/kaspersky-internet.webp',
+  //   desc: 'Kaspersky Internet Security',
+  //   member: 5,
+  //   schemes: [
+  //     'Seakun membuat akun dan membeli Paket Internet Security di Kaspersky',
+  //     'Seakun bertindak sebagai user Host dalam grup',
+  //     'Akun dishare HANYA ke 5 member dalam 1 grup',
+  //     'Member yang telah join ke grup dapat menikmati fitur Internet Security selama 1 tahun',
+  //   ],
+  //   additionalInfo:
+  //     'Paket Patungan pada <b>Kaspersky</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+  //   informations: [
+  //     {
+  //       title: 'Nama Paket',
+  //       value: 'Internet Security (1 Tahun)',
+  //       is_total: true,
+  //     },
+  //     {
+  //       title: 'Harga Provider',
+  //       value: 'Rp656.500',
+  //     },
+  //     {
+  //       title: 'Jumlah Member Per Grup',
+  //       value: '5',
+  //     },
+  //     {
+  //       title: 'Harga Patungan',
+  //       value: 'Rp656.500 ÷ 5 = Rp131.300',
+  //     },
+  //     {
+  //       title: 'Biaya Admin Seakun',
+  //       value: 'Rp0',
+  //     },
+  //     {
+  //       title: 'Harga Paket 1 Tahun',
+  //       value: 'Rp131.300',
+  //       is_total: true,
+  //     },
+  //   ],
+  // },
 
   // {
   //   name: 'Inshot',
