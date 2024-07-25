@@ -1045,7 +1045,7 @@ export const providerList = [
     screenshot: '/images/price-scheme/desktop/canva.webp',
     screenshotMobile: '/images/price-scheme/mobile/canva.webp',
     desc: 'Canva Paket Premium Bulanan',
-    member: 4,
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
       'Seakun bertindak sebagai user Host dalam grup',
@@ -1063,15 +1063,15 @@ export const providerList = [
       },
       {
         title: 'Harga Provider',
-        value: 'Rp190.000',
+        value: 'Rp365.000',
       },
       {
         title: 'Jumlah member Per grup',
-        value: '4',
+        value: '5',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp190.000 ÷ 4 = Rp47.500',
+        value: 'Rp365.000 ÷ 5 = Rp73.000',
       },
       {
         title: 'Biaya Admin Seakun',
@@ -1079,7 +1079,7 @@ export const providerList = [
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp54.000',
+        value: 'Rp79.500',
         is_total: true,
       },
     ],

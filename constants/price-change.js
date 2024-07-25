@@ -9,21 +9,21 @@ export const priceChangeList = [
   //   slug: 'hbo-go',
   //   message: 'Provider Hbo Go memperbarui harga berlangganannya',
   // },
-  // {
-  //   name: 'Canva',
-  //   slug: 'canva',
-  //   message: 'Provider Canva memperbarui harga berlangganannya',
-  // },
+  {
+    name: 'Canva',
+    slug: 'canva',
+    message: 'Provider Canva memperbarui harga berlangganannya',
+  },
   // {
   //   name: 'Disney+ Hotstar',
   //   slug: 'disney-hotstar',
   //   message: 'Provider Disney+ Hotstar memperbarui harga berlangganannya',
   // },
-  {
-    name: 'Nord VPN',
-    slug: 'nord-vpn',
-    message: 'Provider Nord VPN memperbarui harga berlangganannya',
-  },
+  // {
+  //   name: 'Nord VPN',
+  //   slug: 'nord-vpn',
+  //   message: 'Provider Nord VPN memperbarui harga berlangganannya',
+  // },
   // {
   //   name: 'Setapp',
   //   slug: 'setapp',
