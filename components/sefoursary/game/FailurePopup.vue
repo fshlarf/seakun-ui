@@ -61,7 +61,7 @@
         </nuxt-link>
 
         <section
-          class="font-bold text-[10px] sm:text-base text-[#66738F] flex flex-col items-center"
+          class="font-bold text-[10px] sm:text-base text-[#66738F] flex flex-col items-center cursor-pointer"
           @click="$emit('onNext')"
         >
           <p>Next Level</p>

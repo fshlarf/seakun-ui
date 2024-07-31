@@ -71,6 +71,12 @@ export default {
         const { email, uid, level } = this;
         let title;
         let content;
+
+        if (level == 6) {
+          title = 'Challenge level 6 telah diverifikasi';
+          content = `Kamu mendapatkan mystery box`;
+        }
+
         if (level == 8) {
           title = 'Challenge level 8 telah diverifikasi';
           content = `Kode undian TWS berhasil dibuat`;
@@ -82,6 +88,10 @@ export default {
         if (level == 12) {
           title = 'Challenge level 12 telah diverifikasi';
           content = `Kode undian SmartTV berhasil dibuat`;
+        }
+        if (level == 14) {
+          title = 'Challenge level 14 telah diverifikasi';
+          content = `Challengen level 15 sudah terbuka`;
         }
         if (level == 15) {
           title = 'Challenge level 15 telah diverifikasi';
