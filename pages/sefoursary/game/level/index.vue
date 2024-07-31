@@ -172,13 +172,45 @@ export default {
       try {
         const parseLevel = parseInt(level);
         const WaitingForConfirmation = [6, 8, 10, 12, 14, 15];
-        if (parseLevel > this.currentLevel) {
+
+        if (parseLevel == 6) {
+          this.loadingChallenge = true;
+          const alreadyExixst = await this.checkUserRewards(
+            this.userInfo.email,
+            level
+          );
+          if (alreadyExixst) {
+            this.achievementUniqueCode = alreadyExixst.uniqueCode;
+            this.achievementModalType = 'lottery-numbers';
+            this.showAchievementPopup = true;
+          } else {
+            const getLottery = await this.checkIsGotLottery(
+              this.userInfo.email,
+              parseLevel
+            );
+            if (getLottery) {
+              this.achievementModalType = 'gift';
+              this.showAchievementPopup = true;
+            } else {
+              const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
+                this.userInfo.email,
+                parseLevel
+              );
+              if (
+                isWaitingForConfirmation &&
+                isWaitingForConfirmation.level === parseLevel
+              ) {
+                this.showWaitingForConfirmation = true;
+              }
+            }
+          }
+        } else if (parseLevel > this.currentLevel) {
           this.$router.replace({
             path: '/sefoursary/game/level',
             query: { id: this.currentLevel },
           });
         } else if (parseLevel < this.currentLevel) {
-          const mysteryBoxLevel = [2, 4, 6];
+          const mysteryBoxLevel = [2, 4];
           if (mysteryBoxLevel.includes(parseLevel)) {
             this.loadingGift = true;
             const getUniqueCode = await this.getUniqueCodeGift(
@@ -195,10 +227,7 @@ export default {
             }
           } else if (WaitingForConfirmation.includes(parseLevel)) {
             this.loadingChallenge = true;
-            if (parseLevel == 6) {
-              this.achievementModalType = 'gift';
-              this.showAchievementPopup = true;
-            } else if (parseLevel == 14) {
+            if (parseLevel == 14) {
               this.achievementModalType = 'star';
               this.showAchievementPopup = true;
             } else {
@@ -234,21 +263,7 @@ export default {
           parseLevel == this.currentLevel &&
           WaitingForConfirmation.includes(parseLevel)
         ) {
-          if (parseLevel == 6) {
-            this.loadingGift = true;
-            const getUniqueCode = await this.getUniqueCodeGift(
-              this.userInfo.email,
-              parseLevel
-            );
-            if (getUniqueCode) {
-              this.achievementUniqueCode = getUniqueCode;
-              this.achievementModalType = 'lottery-numbers';
-              this.showAchievementPopup = true;
-            } else {
-              this.showFailurePopup = true;
-              this.failureType = 'not-lucky';
-            }
-          } else if (parseLevel == 14) {
+          if (parseLevel == 14) {
             this.achievementModalType = 'star';
             this.showAchievementPopup = true;
           } else {
@@ -429,16 +444,19 @@ export default {
     async handleNextChallenge() {
       this.loadingGift = true;
       try {
-        await this.updateLevelQuestion();
         this.countWrongAnswer = 0;
         const levelFromQuery = this.$route.query.id;
         const level = parseInt(levelFromQuery);
+        if (this.currentLevel === level) {
+          await this.updateLevelQuestion();
+        }
+        this.currentLevel = level + 1;
+
         this.$router.replace({
           path: '/sefoursary/game/level',
           query: { id: level + 1 },
         });
         this.showAchievementPopup = false;
-        this.currentLevel = level + 1;
       } catch (error) {
         console.log('error next challenge', error);
       }
@@ -447,7 +465,10 @@ export default {
     async handleNextFailure() {
       this.loadingGift = true;
       try {
-        await this.updateLevelQuestion();
+        if (this.currentLevel === level) {
+          await this.updateLevelQuestion();
+        }
+        this.currentLevel = level + 1;
         this.countWrongAnswer = 0;
         const levelFromQuery = this.$route.query.id;
         const level = parseInt(levelFromQuery);
@@ -456,7 +477,6 @@ export default {
           query: { id: level + 1 },
         });
         this.showFailurePopup = false;
-        this.currentLevel = level + 1;
       } catch (error) {
         console.log('error next challenge', error);
       }

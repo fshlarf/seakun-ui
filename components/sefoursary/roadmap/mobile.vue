@@ -66,6 +66,7 @@
             />
             <img
               :src="checkLevels(item.level)"
+              @click="$emit('onClickLevel', item.level)"
               alt="game level"
               class="cursor-pointer w-9 h-9"
             />
