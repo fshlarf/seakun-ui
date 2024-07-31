@@ -172,6 +172,7 @@ export default {
       try {
         const parseLevel = parseInt(level);
         const WaitingForConfirmation = [6, 8, 10, 12, 14, 15];
+        const mysteryBoxLevel = [2, 4];
 
         if (parseLevel == 6) {
           this.loadingChallenge = true;
@@ -180,9 +181,14 @@ export default {
             level
           );
           if (alreadyExixst) {
-            this.achievementUniqueCode = alreadyExixst.uniqueCode;
-            this.achievementModalType = 'lottery-numbers';
-            this.showAchievementPopup = true;
+            if (alreadyExixst.uniqueCode == 'nothing') {
+              this.showFailurePopup = true;
+              this.failureType = 'not-lucky';
+            } else {
+              this.achievementUniqueCode = alreadyExixst.uniqueCode;
+              this.achievementModalType = 'lottery-numbers';
+              this.showAchievementPopup = true;
+            }
           } else {
             const getLottery = await this.checkIsGotLottery(
               this.userInfo.email,
@@ -209,8 +215,30 @@ export default {
             path: '/sefoursary/game/level',
             query: { id: this.currentLevel },
           });
+        } else if (
+          parseLevel == this.currentLevel &&
+          mysteryBoxLevel.includes(parseLevel)
+        ) {
+          this.loadingGift = true;
+          const alreadyExixst = await this.checkUserRewards(
+            this.userInfo.email,
+            level
+          );
+          if (alreadyExixst) {
+            const getUniqueCode = await this.getUniqueCodeGift(
+              this.userInfo.email,
+              parseLevel
+            );
+            if (getUniqueCode) {
+              this.achievementUniqueCode = getUniqueCode;
+              this.achievementModalType = 'lottery-numbers';
+              this.showAchievementPopup = true;
+            } else {
+              this.showFailurePopup = true;
+              this.failureType = 'not-lucky';
+            }
+          }
         } else if (parseLevel < this.currentLevel) {
-          const mysteryBoxLevel = [2, 4];
           if (mysteryBoxLevel.includes(parseLevel)) {
             this.loadingGift = true;
             const getUniqueCode = await this.getUniqueCodeGift(
@@ -409,6 +437,10 @@ export default {
             this.achievementModalType = 'lottery-numbers';
             this.showAchievementPopup = true;
           } else {
+            await this.postUserWin({
+              prizeCode: 'nothing',
+              uniqueCode: 'nothing',
+            });
             this.failureType = 'not-lucky';
             this.showFailurePopup = true;
           }
@@ -465,13 +497,13 @@ export default {
     async handleNextFailure() {
       this.loadingGift = true;
       try {
+        const levelFromQuery = this.$route.query.id;
+        const level = parseInt(levelFromQuery);
         if (this.currentLevel === level) {
           await this.updateLevelQuestion();
         }
         this.currentLevel = level + 1;
         this.countWrongAnswer = 0;
-        const levelFromQuery = this.$route.query.id;
-        const level = parseInt(levelFromQuery);
         this.$router.replace({
           path: '/sefoursary/game/level',
           query: { id: level + 1 },
@@ -504,7 +536,7 @@ export default {
       }
     },
     chancePrize() {
-      return Math.random() < 0.9;
+      return Math.random() < 0.3;
     },
   },
 };

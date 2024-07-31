@@ -6,7 +6,6 @@
         classImg="md:!h-[170px]"
         radioClass="!mt-2 md:!mt-3"
       />
-
       <section
         class="bg-[#E2FCF6] px-[33px] py-3 flex md:flex-row flex-col-reverse justify-between items-center gap-3 rounded-t-xl md:mt-4 mt-[100px]"
       >
@@ -220,6 +219,11 @@
       </div>
       <Article />
     </section> -->
+    <LotteryPaymentResult
+      v-if="isShowLotteryBanner"
+      :data-order="dataOrder[0]"
+      @onClose="isShowLotteryBanner = false"
+    />
   </div>
 </template>
 
@@ -233,6 +237,7 @@ import Article from './Article.vue';
 import PromoBanner from './PromoBanner.vue';
 import ZapOrderCard from '../../../components/mollecules/ZapOrderCard.vue';
 import SekurbanOrderCard from '../../../components/mollecules/SekurbanOrderCard.vue';
+import LotteryPaymentResult from '../../../components/sefoursary/LotteryPaymentResult.vue';
 export default {
   name: 'thankyou-page',
   components: {
@@ -242,6 +247,7 @@ export default {
     Article,
     SekurbanOrderCard,
     ZapOrderCard,
+    LotteryPaymentResult,
   },
   props: {
     dataOrder: {
@@ -263,6 +269,7 @@ export default {
       moment,
       bannerTIPWidth: '',
       bannerTIPSrc: '',
+      isShowLotteryBanner: false,
     };
   },
   computed: {
@@ -280,6 +287,7 @@ export default {
   mounted() {
     this.handleBannerTIPWidth();
     window.addEventListener('resize', this.handleBannerTIPWidth);
+    this.handleLottery();
   },
   methods: {
     toHomePage() {
@@ -306,6 +314,12 @@ export default {
           this.bannerTIPWidth = 'h-[170px]';
           this.bannerTIPSrc = '/images/general-gift/send-tip2.webp';
         }
+      }
+    },
+    handleLottery() {
+      const duration = this?.dataOrder[0]?.provider?.package?.variant?.duration;
+      if (duration == 12) {
+        this.isShowLotteryBanner = true;
       }
     },
   },
