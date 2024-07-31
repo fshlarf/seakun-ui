@@ -22,7 +22,19 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
-    <ModalPromo />
+    <ModalPromo v-if="isShowBannerPromo" />
+    <ModalBase
+      :is-show="isShowModalBase"
+      :show-shadow="false"
+      @onClose="onCloseModalSefoursary"
+    >
+      <img
+        @click="onClickSefoursary"
+        class="md:h-[600px] lg:h-[800px] cursor-pointer"
+        src="/images/promo/sefoursary-mobile.webp"
+        alt="seakun anniversary"
+      />
+    </ModalBase>
   </div>
 </template>
 
@@ -47,6 +59,7 @@ import SeakunHelpBanner from '~/components/organisms/SeakunHelpBanner';
 import SeakunHelpFloatingButton from '~/components/mollecules/SeakunHelpFloatingButton';
 import ModalSekurbanBanner from '~/components/mollecules/ModalSekurbanBanner';
 import ModalSeakunHelp from '~/components/mollecules/ModalSeakunHelp';
+import ModalBase from '~/components/atoms/ModalBase';
 import { mapActions, mapGetters } from 'vuex';
 import moment from 'moment';
 
@@ -72,11 +85,13 @@ export default {
     ModalSekurbanBanner,
     ModalSeakunHelp,
     ModalPromo,
+    ModalBase,
   },
   data() {
     return {
       isShowModalSeakunHelp: false,
       isShowModalBase: true,
+      isShowBannerPromo: false,
     };
   },
   computed: {
@@ -150,6 +165,13 @@ export default {
     },
     onClickFloatingButton() {
       this.isShowModalSeakunHelp = true;
+    },
+    onCloseModalSefoursary() {
+      this.isShowModalBase = false;
+      this.isShowBannerPromo = true;
+    },
+    onClickSefoursary() {
+      this.$router.push('/sefoursary');
     },
   },
 };

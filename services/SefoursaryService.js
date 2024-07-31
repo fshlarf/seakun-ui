@@ -1,13 +1,11 @@
 import { httpRequestAuth } from '~/helpers/httpRequest';
+import { API_NOTIFICATION_URL } from '~/constants/api.constants';
 
 export class SefoursaryService {
   constructor(ctx) {
     this.ctx = ctx;
 
-    this.serviceApiAuth = httpRequestAuth(
-      ctx,
-      'https://api-staging.seakun.id/notification'
-    ).serviceApi;
+    this.serviceApiAuth = httpRequestAuth(ctx, API_NOTIFICATION_URL).serviceApi;
   }
 
   uploadImage(payload) {

@@ -77,8 +77,7 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/sefoursary-mobile.webp',
-          externalLink: 'https://seakun.id/sefoursary',
+          img: '/images/promo/app-mobile.webp',
         },
         {
           id: 2,
@@ -99,8 +98,7 @@ export default {
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/sefoursary-mobile.webp',
-          externalLink: 'https://seakun.id/sefoursary',
+          img: '/images/promo/app.webp',
         },
         {
           id: 2,

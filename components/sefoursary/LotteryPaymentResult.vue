@@ -127,15 +127,13 @@ export default {
     async postLottery() {
       this.isLoading = true;
       try {
-        const userName = this.$cookies.get('username');
-
         const { customerEmail, customerPhone, orderNumber } = this.dataOrder;
         const ctx = {
           sheetName: 'UNDIAN',
           payload: {
             'Kode Hadiah': 'TAB',
             'Kode Unik': this.generateRandomCode(),
-            'User name': userName,
+            'User name': customerEmail,
             Email: customerEmail,
             'User WA': customerPhone,
             Level: orderNumber,
