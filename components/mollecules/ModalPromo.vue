@@ -46,7 +46,14 @@
           :href="activeSlider.externalLink"
           target="_blank"
         >
-          <img :src="`${activeSlider.img}`" alt="foto promo" />
+          <img
+            :src="`${activeSlider.img}`"
+            alt="foto promo"
+            :class="{
+              'w-[320px] md:w-[340px] h-[503px] md:h-[535px] mx-auto':
+                activeSlider.id == 1,
+            }"
+          />
         </a>
         <div v-else>
           <img :src="`${activeSlider.img}`" alt="foto promo" />
@@ -70,34 +77,44 @@ export default {
       promoImageMobile: [
         {
           id: 1,
+          img: '/images/promo/sefoursary-mobile.webp',
+          externalLink: 'https://seakun.id/sefoursary',
+        },
+        {
+          id: 2,
           img: '/images/promo/ambassador-mobile.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 2,
+          id: 3,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 3,
+          id: 4,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
+          img: '/images/promo/sefoursary-mobile.webp',
+          externalLink: 'https://seakun.id/sefoursary',
+        },
+        {
+          id: 2,
           img: '/images/promo/ambassador.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 2,
+          id: 3,
           img: '/images/promo/uang-kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 3,
+          id: 4,
           img: '/images/promo/netflix-info.webp',
         },
       ],
