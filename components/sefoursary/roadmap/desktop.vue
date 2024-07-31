@@ -181,6 +181,10 @@ export default {
       const levelLocked = '/images/sefoursary/level-icon/locked/';
       const completed = '/images/sefoursary/level-icon/completed/';
 
+      if (myLevel == 15) {
+        return `${completed}${val}.svg`;
+      }
+
       if (myLevel > val) {
         return `${completed}${val}.svg`;
       } else if (myLevel == val) {

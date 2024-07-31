@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     isChallenge() {
-      return this.currentChallenges.type === 'quest';
+      return this?.currentChallenges?.type === 'quest';
     },
   },
   data() {

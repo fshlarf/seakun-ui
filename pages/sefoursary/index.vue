@@ -20,8 +20,8 @@
 
 <script>
 import CustomNavbar from '../../components/mollecules/CustomNavbar.vue';
-import IntroBanner from '~/components/sefoursary/introbanner.vue';
-import HowToPlay from '~/components/sefoursary/howtoplay.vue';
+import IntroBanner from '~/components/sefoursary/IntroBanner.vue';
+import HowToPlay from '~/components/sefoursary/HowToPlay.vue';
 import SpecialGift from '../../components/sefoursary/SpecialGift.vue';
 import HowToClaim from '../../components/sefoursary/HowToClaim.vue';
 import LiveDraw from '../../components/sefoursary/LiveDraw.vue';

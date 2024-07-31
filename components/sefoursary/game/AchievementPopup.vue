@@ -23,6 +23,7 @@
         </nuxt-link>
 
         <section
+          v-if="level < 15"
           class="font-bold text-[10px] sm:text-base text-[#66738F] flex flex-col items-center cursor-pointer"
           @click="$emit('onNext')"
         >
@@ -67,6 +68,7 @@
         </nuxt-link>
 
         <section
+          v-if="level < 15"
           class="font-bold text-[10px] sm:text-base text-[#66738F] flex flex-col items-center cursor-pointer"
           @click="$emit('onNext')"
         >
@@ -118,6 +120,7 @@
         </nuxt-link>
 
         <section
+          v-if="level < 15"
           class="font-bold text-[10px] sm:text-base text-[#66738F] flex flex-col items-center cursor-pointer"
           @click="$emit('onNext')"
         >
@@ -143,6 +146,10 @@ export default {
     uniqueCode: {
       type: String,
       default: '',
+    },
+    level: {
+      type: Number,
+      default: 1,
     },
   },
   methods: {

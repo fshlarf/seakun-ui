@@ -23,12 +23,14 @@
         @onNext="handleNextChallenge"
         @clickMysterybox="handleMysteryBox"
         :uniqueCode="achievementUniqueCode"
+        :level="currentLevel"
       />
       <FailurePopup
         v-if="showFailurePopup"
         :failureType="failureType"
         :countdown="countWrongAnswer"
         @onClose="showFailurePopup = false"
+        @onNext="handleNextFailure"
       />
       <AchievementShimmer v-if="loadingGift" />
       <ChallengeShimmer v-if="loadingChallenge" />
@@ -169,7 +171,7 @@ export default {
     async checkLevel(level) {
       try {
         const parseLevel = parseInt(level);
-        const WaitingForConfirmation = [8, 10, 12, 15];
+        const WaitingForConfirmation = [6, 8, 10, 12, 14, 15];
         if (parseLevel > this.currentLevel) {
           this.$router.replace({
             path: '/sefoursary/game/level',
@@ -193,6 +195,64 @@ export default {
             }
           } else if (WaitingForConfirmation.includes(parseLevel)) {
             this.loadingChallenge = true;
+            if (parseLevel == 6) {
+              this.achievementModalType = 'gift';
+              this.showAchievementPopup = true;
+            } else if (parseLevel == 14) {
+              this.achievementModalType = 'star';
+              this.showAchievementPopup = true;
+            } else {
+              const isAlreadyExist = await this.checkIsGotLottery(
+                this.userInfo.email,
+                parseLevel
+              );
+              if (isAlreadyExist) {
+                this.achievementUniqueCode = isAlreadyExist.uniqueCode;
+                this.achievementModalType = 'lottery-numbers';
+                this.showAchievementPopup = true;
+              } else {
+                const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
+                  this.userInfo.email,
+                  parseLevel
+                );
+                if (
+                  isWaitingForConfirmation &&
+                  isWaitingForConfirmation.level === parseLevel
+                ) {
+                  this.showWaitingForConfirmation = true;
+                }
+              }
+            }
+
+            // CODE UNDIAN
+            this.loadingChallenge = false;
+          } else {
+            this.achievementModalType = 'star';
+            this.showAchievementPopup = true;
+          }
+        } else if (
+          parseLevel == this.currentLevel &&
+          WaitingForConfirmation.includes(parseLevel)
+        ) {
+          if (parseLevel == 6) {
+            this.loadingGift = true;
+            const getUniqueCode = await this.getUniqueCodeGift(
+              this.userInfo.email,
+              parseLevel
+            );
+            if (getUniqueCode) {
+              this.achievementUniqueCode = getUniqueCode;
+              this.achievementModalType = 'lottery-numbers';
+              this.showAchievementPopup = true;
+            } else {
+              this.showFailurePopup = true;
+              this.failureType = 'not-lucky';
+            }
+          } else if (parseLevel == 14) {
+            this.achievementModalType = 'star';
+            this.showAchievementPopup = true;
+          } else {
+            this.loadingChallenge = true;
             const isAlreadyExist = await this.checkIsGotLottery(
               this.userInfo.email,
               parseLevel
@@ -212,36 +272,6 @@ export default {
               ) {
                 this.showWaitingForConfirmation = true;
               }
-            }
-            // CODE UNDIAN
-            this.loadingChallenge = false;
-          } else {
-            this.achievementModalType = 'star';
-            this.showAchievementPopup = true;
-          }
-        } else if (
-          parseLevel == this.currentLevel &&
-          WaitingForConfirmation.includes(parseLevel)
-        ) {
-          this.loadingChallenge = true;
-          const isAlreadyExist = await this.checkIsGotLottery(
-            this.userInfo.email,
-            parseLevel
-          );
-          if (isAlreadyExist) {
-            this.achievementUniqueCode = isAlreadyExist.uniqueCode;
-            this.achievementModalType = 'lottery-numbers';
-            this.showAchievementPopup = true;
-          } else {
-            const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
-              this.userInfo.email,
-              parseLevel
-            );
-            if (
-              isWaitingForConfirmation &&
-              isWaitingForConfirmation.level === parseLevel
-            ) {
-              this.showWaitingForConfirmation = true;
             }
           }
         } else {
@@ -408,6 +438,24 @@ export default {
           query: { id: level + 1 },
         });
         this.showAchievementPopup = false;
+        this.currentLevel = level + 1;
+      } catch (error) {
+        console.log('error next challenge', error);
+      }
+      this.loadingGift = false;
+    },
+    async handleNextFailure() {
+      this.loadingGift = true;
+      try {
+        await this.updateLevelQuestion();
+        this.countWrongAnswer = 0;
+        const levelFromQuery = this.$route.query.id;
+        const level = parseInt(levelFromQuery);
+        this.$router.replace({
+          path: '/sefoursary/game/level',
+          query: { id: level + 1 },
+        });
+        this.showFailurePopup = false;
         this.currentLevel = level + 1;
       } catch (error) {
         console.log('error next challenge', error);
