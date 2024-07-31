@@ -1,0 +1,398 @@
+<template>
+  <div>
+    <Navbar />
+    <div v-if="isLoading" class="container-about-us">
+      <div
+        class="relative z-30 mt-[100px] sm:mt-[70px] lg:mt-[105px] w-full h-[241px] md:h-[382px] rounded-lg animate-pulse bg-slate-200 max-w-[520px] mx-auto"
+      />
+    </div>
+
+    <div v-else>
+      <div class="relative z-30 mt-[-55px] sm:mt-[-50px] lg:mt-[-85px]">
+        <BreadCrumb :level="currentLevel" />
+      </div>
+
+      <Game
+        @onClick="handleChallenge"
+        :level="currentLevel"
+        @submitChallenge="handleSubmitChallenge"
+      />
+      <AchievementPopup
+        v-if="showAchievementPopup"
+        :modalType="achievementModalType"
+        @onNext="handleNextChallenge"
+        @clickMysterybox="handleMysteryBox"
+        :uniqueCode="achievementUniqueCode"
+      />
+      <FailurePopup
+        v-if="showFailurePopup"
+        :failureType="failureType"
+        :countdown="countWrongAnswer"
+        @onClose="showFailurePopup = false"
+      />
+      <AchievementShimmer v-if="loadingGift" />
+      <ChallengeShimmer v-if="loadingChallenge" />
+      <WaitingForConfirmation v-if="showWaitingForConfirmation" />
+    </div>
+  </div>
+</template>
+
+<script>
+import Navbar from '../../../../components/sefoursary/game/Navbar.vue';
+import BreadCrumb from '../../../../components/sefoursary/BreadCrumb.vue';
+import Game from '~/components/sefoursary/game';
+import AchievementPopup from '../../../../components/sefoursary/game/AchievementPopup.vue';
+import FailurePopup from '../../../../components/sefoursary/game/FailurePopup.vue';
+import AchievementShimmer from '../../../../components/sefoursary/game/AchievementShimmer.vue';
+import ChallengeShimmer from '../../../../components/sefoursary/game/ChallengeShimmer.vue';
+import WaitingForConfirmation from '~/components/sefoursary/game/WaitingForConfirmation.vue';
+
+import moment from 'moment';
+import { getUserInfo, arrFindMaxValue } from '~/helpers/utils';
+
+import {
+  updateDataInGoogleSheet,
+  getDataFromGoogleSheet,
+  checkUserRewards,
+  getRemainingGifts,
+  patchPrize,
+  getUniqueCodeGift,
+  getIsWaitingForConfirmation,
+  checkIsGotLottery,
+} from '~/services/SefoursaryService.js';
+
+export default {
+  components: {
+    Navbar,
+    BreadCrumb,
+    Game,
+    AchievementPopup,
+    FailurePopup,
+    AchievementShimmer,
+    ChallengeShimmer,
+    WaitingForConfirmation,
+  },
+  data() {
+    return {
+      countWrongAnswer: 0,
+      currentLevel: 1,
+      showAchievementPopup: false,
+      achievementModalType: '',
+      userInfo: null,
+      failureType: '',
+      showFailurePopup: false,
+      isLoading: true,
+      loadingGift: false,
+      achievementUniqueCode: '',
+      loadingChallenge: false,
+      showWaitingForConfirmation: false,
+    };
+  },
+  computed: {
+    formattedDate() {
+      return moment().format('M/D/YYYY h:mm:ss');
+    },
+  },
+  mounted() {
+    this.userInfo = this.getUserInfo();
+    this.getLevel();
+  },
+  methods: {
+    updateDataInGoogleSheet,
+    getDataFromGoogleSheet,
+    getUserInfo,
+    arrFindMaxValue,
+    checkUserRewards,
+    getRemainingGifts,
+    patchPrize,
+    getUniqueCodeGift,
+    getIsWaitingForConfirmation,
+    checkIsGotLottery,
+
+    async handleSubmitChallenge() {
+      this.loadingChallenge = true;
+      try {
+        const customer = JSON.parse(localStorage.getItem('customer'));
+
+        const ctx = {
+          sheetName: 'USER',
+          payload: {
+            'User name': customer.name,
+            Email: customer.email,
+            'User WA': customer?.phoneNumber,
+            Level: this.currentLevel,
+            'Last Updated': this.formattedDate,
+            Passed: 'UPLOADED',
+          },
+        };
+        const resPostLevel = await this.updateDataInGoogleSheet(ctx);
+        if (resPostLevel) {
+          this.showWaitingForConfirmation = true;
+        }
+      } catch (error) {
+        this.$alert.show({
+          status: 'error',
+          message: 'Terjadi kesalahan. Silahkan coba lagi',
+        });
+        console.log('error submit challenge:', error);
+      }
+      this.loadingChallenge = false;
+    },
+
+    async checkLevel(level) {
+      try {
+        const parseLevel = parseInt(level);
+        const WaitingForConfirmation = [8, 10, 12, 15];
+        if (parseLevel > this.currentLevel) {
+          this.$router.replace({
+            path: '/sefoursary/game/level',
+            query: { id: this.currentLevel },
+          });
+        } else if (parseLevel < this.currentLevel) {
+          const mysteryBoxLevel = [2, 4, 6];
+          if (mysteryBoxLevel.includes(parseLevel)) {
+            this.loadingGift = true;
+            const getUniqueCode = await this.getUniqueCodeGift(
+              this.userInfo.email,
+              parseLevel
+            );
+            if (getUniqueCode) {
+              this.achievementUniqueCode = getUniqueCode;
+              this.achievementModalType = 'lottery-numbers';
+              this.showAchievementPopup = true;
+            } else {
+              this.showFailurePopup = true;
+              this.failureType = 'not-lucky';
+            }
+          } else if (WaitingForConfirmation.includes(parseLevel)) {
+            // this.loadingChallenge = true;
+            // CODE UNDIAN
+            // this.loadingChallenge = false;
+          } else {
+            this.achievementModalType = 'star';
+            this.showAchievementPopup = true;
+          }
+        } else if (
+          parseLevel == this.currentLevel &&
+          WaitingForConfirmation.includes(parseLevel)
+        ) {
+          this.loadingChallenge = true;
+          const isAlreadyExist = await this.checkIsGotLottery(
+            this.userInfo.email,
+            parseLevel
+          );
+          if (isAlreadyExist) {
+            this.achievementUniqueCode = isAlreadyExist.prizeCode;
+            this.achievementModalType = 'lottery-numbers';
+            this.showAchievementPopup = true;
+          } else {
+            const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
+              this.userInfo.email,
+              parseLevel
+            );
+            if (
+              isWaitingForConfirmation &&
+              isWaitingForConfirmation.level === parseLevel
+            ) {
+              this.showWaitingForConfirmation = true;
+            }
+          }
+        } else {
+          if (parseLevel !== this.currentLevel) {
+            this.$router.replace({
+              path: '/sefoursary/game/level',
+              query: { id: this.currentLevel },
+            });
+          }
+        }
+      } catch (error) {
+        console.log('error', error);
+      }
+      this.loadingGift = false;
+      this.loadingChallenge = false;
+    },
+    async getLevel() {
+      this.isLoading = true;
+      try {
+        const userData = this.userInfo;
+
+        const res = await this.getDataFromGoogleSheet(
+          'USER',
+          'Email',
+          userData.email
+        );
+        if (res) {
+          const findMyLevel = res.filter(
+            (item) => item.Email === userData.email
+          );
+          if (findMyLevel.length == 0) {
+            this.$router.push('/sefoursary/game/');
+          } else {
+            const findLevel = this.arrFindMaxValue(findMyLevel, 'level');
+
+            this.currentLevel = findLevel.level;
+          }
+        }
+      } catch (error) {
+        console.log('error:', error);
+      }
+      this.isLoading = false;
+      const levelFromParams = this.$route.query.id;
+      const path = this.$route.path;
+
+      if (path == '/sefoursary/game/level') {
+        this.checkLevel(levelFromParams);
+      }
+    },
+    async handleChallenge(ctx) {
+      const { answerKey, level } = ctx.question;
+      const correctAsnwer = ctx.selected === answerKey;
+      try {
+        if (!correctAsnwer) {
+          this.failureType = 'wrong-answer';
+          this.showFailurePopup = true;
+          if (this.countWrongAnswer === 0) {
+            this.countWrongAnswer = 5;
+          } else {
+            this.countWrongAnswer += 2;
+          }
+        } else {
+          const mysteryBox = [2, 4, 6];
+          if (mysteryBox.includes(level)) {
+            this.loadingGift = true;
+            const alreadyExixst = await this.checkUserRewards(
+              this.userInfo.email,
+              level
+            );
+            if (!alreadyExixst) {
+              this.achievementModalType = 'gift';
+              this.showAchievementPopup = true;
+            }
+          } else {
+            this.achievementModalType = 'star';
+            this.showAchievementPopup = true;
+          }
+        }
+      } catch (error) {
+        console.log('error', error);
+      }
+      this.loadingGift = false;
+    },
+    async handleMysteryBox() {
+      this.loadingGift = true;
+      try {
+        let lotteryKeyword;
+        if (this.currentLevel < 3) {
+          lotteryKeyword = {
+            provider: 'SPO',
+            ewallet: 'E20',
+          };
+        } else if (this.currentLevel < 5) {
+          lotteryKeyword = {
+            provider: 'SPO',
+            ewallet: 'E50',
+          };
+        } else if (this.currentLevel < 7) {
+          lotteryKeyword = {
+            provider: 'YOU',
+            ewallet: 'E100',
+          };
+        }
+        const remainingRes = await this.getRemainingGifts(lotteryKeyword);
+
+        if (remainingRes.length > 0) {
+          const getPrize = this.chancePrize();
+          if (getPrize) {
+            const myGift = remainingRes[0];
+            const { prizeCode, uniqueCode, prizeName, quota } = myGift;
+            const payload = {
+              'Kode Hadiah': prizeCode,
+              'Kode Unik': uniqueCode,
+              Hadiah: prizeName,
+              Quota: 0,
+            };
+            const updatePrize = this.patchPrize(payload);
+            await this.postUserWin({ prizeCode, uniqueCode });
+            this.achievementUniqueCode = uniqueCode;
+            this.achievementModalType = 'lottery-numbers';
+            this.showAchievementPopup = true;
+          } else {
+            this.failureType = 'not-lucky';
+            this.showFailurePopup = true;
+          }
+        } else {
+          this.failureType = 'not-lucky';
+          this.showFailurePopup = true;
+        }
+      } catch (error) {
+        console.log('error:', error);
+      }
+      this.loadingGift = false;
+    },
+    async updateLevelQuestion() {
+      try {
+        const customer = JSON.parse(localStorage.getItem('customer'));
+
+        const ctx = {
+          sheetName: 'USER',
+          payload: {
+            'User name': customer.name,
+            Email: customer.email,
+            'User WA': customer?.phoneNumber,
+            Level: this.currentLevel + 1,
+            'Last Updated': this.formattedDate,
+            Passed: true,
+          },
+        };
+        const resPostLevel = this.updateDataInGoogleSheet(ctx);
+      } catch (error) {
+        console.log('error:', error);
+      }
+    },
+    async handleNextChallenge() {
+      this.loadingGift = true;
+      try {
+        await this.updateLevelQuestion();
+        this.countWrongAnswer = 0;
+        const levelFromQuery = this.$route.query.id;
+        const level = parseInt(levelFromQuery);
+        this.$router.replace({
+          path: '/sefoursary/game/level',
+          query: { id: level + 1 },
+        });
+        this.showAchievementPopup = false;
+        this.currentLevel = level + 1;
+      } catch (error) {
+        console.log('error next challenge', error);
+      }
+      this.loadingGift = false;
+    },
+    async postUserWin({ prizeCode, uniqueCode }) {
+      try {
+        const customer = JSON.parse(localStorage.getItem('customer'));
+        const ctx = {
+          sheetName: 'WIN',
+          payload: {
+            'User name': customer.name,
+            Email: customer.email,
+            'User WA': customer?.phoneNumber,
+            WIN: true,
+            'Kode Hadiah': prizeCode,
+            'Kode Unik': uniqueCode,
+            Level: this.currentLevel,
+          },
+        };
+
+        const res = await this.updateDataInGoogleSheet(ctx);
+      } catch (error) {
+        console.log('error', error);
+      }
+    },
+    chancePrize() {
+      return Math.random() < 0.9;
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>

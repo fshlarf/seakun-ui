@@ -1,5 +1,5 @@
 <template>
-  <div id="navbar" class="w-full fixed z-40 tn:py-3 lg:py-0 bg-none">
+  <div id="navbar" class="w-full fixed z-40 tn:py-4 lg:py-0 bg-none">
     <div
       v-if="open"
       class="opacity-20 fixed inset-0 z-90 bg-black"
@@ -9,11 +9,21 @@
       <div class="container lg:flex lg:justify-between lg:items-center">
         <nuxt-link to="/">
           <div @click="scrollToTop" class="flex items-center gap-1">
-            <img
+            <!-- Seakun -->
+
+            <!-- <img
               class="tn:h-[40px]"
               src="/images/navbar/brand_seakun.svg"
               alt="brand seakun"
+            /> -->
+
+            <!-- Sefousary -->
+            <img
+              class="h-[34px] -mt-1.5 lg:h-[60px]"
+              src="/images/sefoursary/logo.svg"
+              alt="brand seakun"
             />
+
             <!-- <img src="/images/ramadan/ramadan-icon.svg" alt="ramadan" /> -->
           </div>
         </nuxt-link>
@@ -58,13 +68,36 @@
           >
             <div
               class="cursor-pointer tn:text-right tn:my-3 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-10 relative"
-              :class="`${navbar.tag === 'profile' ? 'lg:my-1' : 'lg:my-3'}`"
+              :class="[
+                `${navbar.tag === 'profile' ? 'lg:my-1' : 'lg:my-3'}`,
+                { 'right-7': navbar.tag === 'sefoursary' },
+              ]"
               @click="
-                navbar.tag == 'thr'
-                  ? (isShowModalTHR = !isShowModalTHR)
+                navbar.tag == 'sefoursary'
+                  ? $router.push('sefoursary')
                   : scrollToSection(navbar)
               "
             >
+              <div v-if="navbar.tag === 'sefoursary'">
+                <img
+                  class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-6 w-[9px]"
+                  :class="`${showSpark1 ? 'opacity-100' : 'opacity-20'}`"
+                  src="/images/icons/atoms/spark.svg"
+                  alt="spark"
+                />
+                <img
+                  class="transition-opacity ease-in-out delay-50 duration-500 absolute bottom-0 -right-6 w-[8px]"
+                  :class="`${showSpark2 ? '!opacity-100' : '!opacity-20'}`"
+                  src="/images/icons/atoms/spark.svg"
+                  alt="spark"
+                />
+                <img
+                  class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-9 w-[12px]"
+                  :class="`${showSpark3 ? '!opacity-100' : '!opacity-20'}`"
+                  src="/images/icons/atoms/spark.svg"
+                  alt="spark"
+                />
+              </div>
               <div v-if="navbar.tag === 'profile'">
                 <img
                   :src="`/images/profile-page/avatar/${avatar}.svg`"
@@ -136,6 +169,11 @@ export default {
       navbarLink: [
         {
           id: 1,
+          label: 'Sefoursary',
+          tag: 'sefoursary',
+        },
+        {
+          id: 1,
           label: 'Layanan',
           tag: 'provider',
         },
@@ -170,6 +208,10 @@ export default {
         //   tag: 'sekurban',
         // },
       ],
+      // sefoursary sparkling
+      showSpark1: false,
+      showSpark2: false,
+      showSpark3: false,
     };
   },
   components: {
@@ -199,15 +241,15 @@ export default {
     } else {
       this.isLoggedin = false;
     }
-    // setInterval(() => {
-    //   this.showSpark1 = !this.showSpark1;
-    // }, 700);
-    // setInterval(() => {
-    //   this.showSpark2 = !this.showSpark2;
-    // }, 800);
-    // setInterval(() => {
-    //   this.showSpark3 = !this.showSpark3;
-    // }, 900);
+    setInterval(() => {
+      this.showSpark1 = !this.showSpark1;
+    }, 700);
+    setInterval(() => {
+      this.showSpark2 = !this.showSpark2;
+    }, 800);
+    setInterval(() => {
+      this.showSpark3 = !this.showSpark3;
+    }, 900);
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScrollEffect);
