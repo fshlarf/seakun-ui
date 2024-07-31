@@ -127,19 +127,20 @@ export default {
         let lotteryCode;
         if (level == 8) {
           uniqueCode = 'TWS';
-          lotteryCode = `SE11-DC3BB`;
+          lotteryCode = this.generateRandomCode('SE11');
+          console.log('lotteryCode', lotteryCode);
         }
         if (level == 10) {
           uniqueCode = 'HP';
-          lotteryCode = `SE21-HH18K`;
+          lotteryCode = this.generateRandomCode('SE12');
         }
         if (level == 12) {
           uniqueCode = 'TV';
-          lotteryCode = `SE31-UT14K`;
+          lotteryCode = this.generateRandomCode('SE13');
         }
         if (level == 15) {
           uniqueCode = 'TAB';
-          lotteryCode = `SE41-ST2XY`;
+          lotteryCode = this.generateRandomCode('SE14');
         }
         const ctx = {
           sheetName: 'UNDIAN',
@@ -169,6 +170,17 @@ export default {
     },
     formattedName() {
       return this.name.replace(/-/g, ' ');
+    },
+    generateRandomCode(defaultCode) {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let result = '';
+      const charactersLength = characters.length;
+      for (let i = 0; i < 5; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+      }
+      return `${defaultCode}-${result}`;
     },
   },
 };
