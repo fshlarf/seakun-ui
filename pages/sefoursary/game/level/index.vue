@@ -95,7 +95,7 @@ export default {
     },
   },
   mounted() {
-    this.userInfo = this.getUserInfo();
+    this.userInfo = JSON.parse(localStorage.getItem('customer'));
     this.getLevel();
     this.checkAuth();
   },
@@ -112,33 +112,17 @@ export default {
     checkIsGotLottery,
     async checkAuth() {
       try {
-        const { atoken, rtoken } = this.$route.params;
-        if (atoken && rtoken) {
-          const res = await authorizeWebview(this, atoken, rtoken);
-          const accesToken = this.$cookies.get('ATS');
-          const refreshToken = this.$cookies.get('RTS');
-          if (!accesToken || !refreshToken) {
-            this.$alert.show({
-              status: 'error',
-              message: 'Silahkan login terlebih dahulu',
-            });
-            setTimeout(() => {
-              this.$router.push('/login');
-            }, 2000);
-          }
-        } else {
-          const accesToken = this.$cookies.get('ATS');
-          const refreshToken = this.$cookies.get('RTS');
+        const accesToken = this.$cookies.get('ATS');
+        const refreshToken = this.$cookies.get('RTS');
 
-          if (!accesToken || !refreshToken) {
-            this.$alert.show({
-              status: 'error',
-              message: 'Silahkan login terlebih dahulu',
-            });
-            setTimeout(() => {
-              this.$router.push('/login');
-            }, 2000);
-          }
+        if (!accesToken || !refreshToken) {
+          this.$alert.show({
+            status: 'error',
+            message: 'Silahkan login terlebih dahulu',
+          });
+          setTimeout(() => {
+            this.$router.push('/login');
+          }, 2000);
         }
       } catch (error) {
         this.$alert.show({
@@ -214,7 +198,7 @@ export default {
               parseLevel
             );
             if (isAlreadyExist) {
-              this.achievementUniqueCode = isAlreadyExist.prizeCode;
+              this.achievementUniqueCode = isAlreadyExist.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
               this.showAchievementPopup = true;
             } else {
@@ -245,7 +229,7 @@ export default {
             parseLevel
           );
           if (isAlreadyExist) {
-            this.achievementUniqueCode = isAlreadyExist.prizeCode;
+            this.achievementUniqueCode = isAlreadyExist.uniqueCode;
             this.achievementModalType = 'lottery-numbers';
             this.showAchievementPopup = true;
           } else {

@@ -138,25 +138,12 @@ export default {
         },
         {
           level: 6,
-          type: 'quest',
-          question: 'Berapa harga layanan ChatGPT di Seakun per-bulannya?',
-          answerKey: 'Rp63.000',
-          answer: [
-            {
-              option: 'Rp63.000',
-            },
-            {
-              option: 'Rp77.500',
-            },
-            {
-              option: 'Rp56.500',
-            },
-            {
-              option: 'Rp67.500',
-            },
-          ],
+          type: 'challenge',
+          challenge: 'Download aplikasi Seakun di Google Play / AppStore',
+          isDownloadApps: true,
+          task:
+            'Upload screenshot bukti kamu telah mendownload & install aplikasi',
         },
-
         {
           level: 7,
           type: 'quest',
@@ -185,13 +172,24 @@ export default {
         },
         {
           level: 9,
-          type: 'challenge',
-          challenge: 'Download aplikasi Seakun di Google Play / AppStore',
-          isDownloadApps: true,
-          task:
-            'Upload screenshot bukti kamu telah mendownload & install aplikasi',
+          type: 'quest',
+          question: 'Berapa harga layanan ChatGPT di Seakun per-bulannya?',
+          answerKey: 'Rp63.000',
+          answer: [
+            {
+              option: 'Rp63.000',
+            },
+            {
+              option: 'Rp77.500',
+            },
+            {
+              option: 'Rp56.500',
+            },
+            {
+              option: 'Rp67.500',
+            },
+          ],
         },
-
         {
           level: 10,
           type: 'challenge',

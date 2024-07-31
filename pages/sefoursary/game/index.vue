@@ -50,43 +50,29 @@ export default {
     this.CustomerService = new CustomerService(this);
   },
   mounted() {
-    this.fetchUser();
-    this.checkAuth();
+    this.initiate();
   },
   methods: {
     getDataFromGoogleSheet,
     updateDataInGoogleSheet,
     arrFindMaxValue,
-
+    async initiate() {
+      await this.checkAuth();
+      this.fetchUser();
+    },
     async checkAuth() {
       try {
-        const { atoken, rtoken } = this.$route.params;
-        if (atoken && rtoken) {
-          const res = await authorizeWebview(this, atoken, rtoken);
-          const accesToken = this.$cookies.get('ATS');
-          const refreshToken = this.$cookies.get('RTS');
-          if (!accesToken || !refreshToken) {
-            this.$alert.show({
-              status: 'error',
-              message: 'Silahkan login terlebih dahulu',
-            });
-            setTimeout(() => {
-              this.$router.push('/login');
-            }, 5000);
-          }
-        } else {
-          const accesToken = this.$cookies.get('ATS');
-          const refreshToken = this.$cookies.get('RTS');
+        const accesToken = this.$cookies.get('ATS');
+        const refreshToken = this.$cookies.get('RTS');
 
-          if (!accesToken || !refreshToken) {
-            this.$alert.show({
-              status: 'error',
-              message: 'Silahkan login terlebih dahulu',
-            });
-            setTimeout(() => {
-              this.$router.push('/login');
-            }, 5000);
-          }
+        if (!accesToken || !refreshToken) {
+          this.$alert.show({
+            status: 'error',
+            message: 'Silahkan login terlebih dahulu',
+          });
+          setTimeout(() => {
+            this.$router.push('/login');
+          }, 5000);
         }
       } catch (error) {
         this.$alert.show({

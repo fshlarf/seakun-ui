@@ -81,9 +81,9 @@ export default {
     async checkAuth() {
       this.isLoading = true;
       try {
-        const { atoken, rtoken } = this.$route.params;
-        if (atoken && rtoken) {
-          const res = await authorizeWebview(this, atoken, rtoken);
+        const { ats, rts } = this.$route.query;
+        if (ats && rts) {
+          await authorizeWebview(this, ats, rts);
           const accesToken = this.$cookies.get('ATS');
           const refreshToken = this.$cookies.get('RTS');
           if (!accesToken || !refreshToken) {
