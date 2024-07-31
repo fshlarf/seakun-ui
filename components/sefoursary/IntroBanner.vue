@@ -19,7 +19,7 @@
       </p>
       <div
         class="mt-6 play__button text-white w-[188px] xl:w-[270px] xl:h-[60px] h-11 flex justify-center items-center rounded-lg text-base xl:text-2xl font-bold cursor-pointer mx-auto"
-        @click="$router.push('sefoursary/game')"
+        @click="isLoading ? null : $router.push('sefoursary/game')"
       >
         Main Sekarang
       </div>
@@ -43,7 +43,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
 
 <style scoped>

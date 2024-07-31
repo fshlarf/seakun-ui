@@ -8,7 +8,7 @@
       :logo-class="navbarProps.logoClass"
       :humbuger-class="navbarProps.hamburgerClass"
     />
-    <IntroBanner />
+    <IntroBanner :is-loading="isLoading" />
     <HowToPlay />
     <SpecialGift />
     <HowToClaim />
@@ -27,6 +27,7 @@ import HowToClaim from '../../components/sefoursary/HowToClaim.vue';
 import LiveDraw from '../../components/sefoursary/LiveDraw.vue';
 import TermsAndConditions from '../../components/sefoursary/TermsAndConditions.vue';
 import Footer from '~/components/mollecules/Footer.vue';
+import { authorizeWebview } from '~/helpers/httpRequest';
 
 export default {
   components: {
@@ -41,6 +42,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       navbarProps: {
         navbarId: 'navbar-sefoursary',
         containerClass: 'container-about-us',
@@ -71,6 +73,41 @@ export default {
         ],
       },
     };
+  },
+  mounted() {
+    this.checkAuth();
+  },
+  methods: {
+    async checkAuth() {
+      this.isLoading = true;
+      try {
+        const { atoken, rtoken } = this.$route.params;
+        if (atoken && rtoken) {
+          const res = await authorizeWebview(this, atoken, rtoken);
+          const accesToken = this.$cookies.get('ATS');
+          const refreshToken = this.$cookies.get('RTS');
+          if (!accesToken || !refreshToken) {
+            this.$alert.show({
+              status: 'error',
+              message: 'Silahkan login terlebih dahulu',
+            });
+            setTimeout(() => {
+              this.$router.push('/login');
+            }, 5000);
+          }
+        }
+      } catch (error) {
+        this.$alert.show({
+          status: 'error',
+          message: 'Sesi berakhir. Silahkan login kembali',
+        });
+        setTimeout(() => {
+          this.$router.push('/login');
+        }, 5000);
+        console.log('Error', error);
+      }
+      this.isLoading = false;
+    },
   },
 };
 </script>
