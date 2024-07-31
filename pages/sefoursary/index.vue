@@ -6,6 +6,7 @@
       :containerClass="navbarProps.containerClass"
       :logo="navbarProps.logo"
       :logo-class="navbarProps.logoClass"
+      :humbuger-class="navbarProps.hamburgerClass"
     />
     <IntroBanner />
     <HowToPlay />
@@ -44,7 +45,8 @@ export default {
         navbarId: 'navbar-sefoursary',
         containerClass: 'container-about-us',
         logo: '/images/sefoursary/logo.svg',
-        logoClass: '!h-[38px] lg:!h-[60px] lg:mb-4 pb-1',
+        logoClass: '!h-[38px] sm:!h-[40px] md:!h-[50px] lg:!h-[60px] lg:mb-4',
+        hamburgerClass: 'sm:mt-1 md:mt-2 lg:mt-0',
         navbarLink: [
           {
             id: 1,

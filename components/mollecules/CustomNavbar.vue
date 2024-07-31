@@ -29,7 +29,7 @@
           :class="{ shadow: open, 'bg-white': open }"
         >
           <!-- hamburger icon -->
-          <div class="items-center">
+          <div class="items-center" :class="humbugerClass">
             <button
               class="lg:hidden rounded-lg focus:outline-none float-right"
               @click="open = !open"
@@ -100,6 +100,10 @@ export default {
       default: () => [],
     },
     containerClass: {
+      type: String,
+      default: '',
+    },
+    humbugerClass: {
       type: String,
       default: '',
     },

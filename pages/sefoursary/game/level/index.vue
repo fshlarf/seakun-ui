@@ -49,6 +49,7 @@ import WaitingForConfirmation from '~/components/sefoursary/game/WaitingForConfi
 
 import moment from 'moment';
 import { getUserInfo, arrFindMaxValue } from '~/helpers/utils';
+import { authorizeWebview } from '~/helpers/httpRequest';
 
 import {
   updateDataInGoogleSheet,
@@ -96,6 +97,7 @@ export default {
   mounted() {
     this.userInfo = this.getUserInfo();
     this.getLevel();
+    this.checkAuth();
   },
   methods: {
     updateDataInGoogleSheet,
@@ -108,6 +110,47 @@ export default {
     getUniqueCodeGift,
     getIsWaitingForConfirmation,
     checkIsGotLottery,
+    async checkAuth() {
+      try {
+        const { atoken, rtoken } = this.$route.params;
+        if (atoken && rtoken) {
+          const res = await authorizeWebview(this, atoken, rtoken);
+          const accesToken = this.$cookies.get('ATS');
+          const refreshToken = this.$cookies.get('RTS');
+          if (!accesToken || !refreshToken) {
+            this.$alert.show({
+              status: 'error',
+              message: 'Silahkan login terlebih dahulu',
+            });
+            setTimeout(() => {
+              this.$router.push('/login');
+            }, 2000);
+          }
+        } else {
+          const accesToken = this.$cookies.get('ATS');
+          const refreshToken = this.$cookies.get('RTS');
+
+          if (!accesToken || !refreshToken) {
+            this.$alert.show({
+              status: 'error',
+              message: 'Silahkan login terlebih dahulu',
+            });
+            setTimeout(() => {
+              this.$router.push('/login');
+            }, 2000);
+          }
+        }
+      } catch (error) {
+        this.$alert.show({
+          status: 'error',
+          message: 'Sesi berakhir. Silahkan login kembali',
+        });
+        setTimeout(() => {
+          this.$router.push('/login');
+        }, 2000);
+        console.log('Error', error);
+      }
+    },
 
     async handleSubmitChallenge() {
       this.loadingChallenge = true;
@@ -165,9 +208,29 @@ export default {
               this.failureType = 'not-lucky';
             }
           } else if (WaitingForConfirmation.includes(parseLevel)) {
-            // this.loadingChallenge = true;
+            this.loadingChallenge = true;
+            const isAlreadyExist = await this.checkIsGotLottery(
+              this.userInfo.email,
+              parseLevel
+            );
+            if (isAlreadyExist) {
+              this.achievementUniqueCode = isAlreadyExist.prizeCode;
+              this.achievementModalType = 'lottery-numbers';
+              this.showAchievementPopup = true;
+            } else {
+              const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
+                this.userInfo.email,
+                parseLevel
+              );
+              if (
+                isWaitingForConfirmation &&
+                isWaitingForConfirmation.level === parseLevel
+              ) {
+                this.showWaitingForConfirmation = true;
+              }
+            }
             // CODE UNDIAN
-            // this.loadingChallenge = false;
+            this.loadingChallenge = false;
           } else {
             this.achievementModalType = 'star';
             this.showAchievementPopup = true;

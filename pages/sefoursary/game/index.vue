@@ -24,6 +24,7 @@ import {
 } from '~/services/SefoursaryService.js';
 import CustomerService from '../../../services/CustomerServices';
 import { arrFindMaxValue } from '~/helpers/utils';
+import { authorizeWebview } from '~/helpers/httpRequest';
 
 export default {
   components: {
@@ -50,11 +51,54 @@ export default {
   },
   mounted() {
     this.fetchUser();
+    this.checkAuth();
   },
   methods: {
     getDataFromGoogleSheet,
     updateDataInGoogleSheet,
     arrFindMaxValue,
+
+    async checkAuth() {
+      try {
+        const { atoken, rtoken } = this.$route.params;
+        if (atoken && rtoken) {
+          const res = await authorizeWebview(this, atoken, rtoken);
+          const accesToken = this.$cookies.get('ATS');
+          const refreshToken = this.$cookies.get('RTS');
+          if (!accesToken || !refreshToken) {
+            this.$alert.show({
+              status: 'error',
+              message: 'Silahkan login terlebih dahulu',
+            });
+            setTimeout(() => {
+              this.$router.push('/login');
+            }, 5000);
+          }
+        } else {
+          const accesToken = this.$cookies.get('ATS');
+          const refreshToken = this.$cookies.get('RTS');
+
+          if (!accesToken || !refreshToken) {
+            this.$alert.show({
+              status: 'error',
+              message: 'Silahkan login terlebih dahulu',
+            });
+            setTimeout(() => {
+              this.$router.push('/login');
+            }, 5000);
+          }
+        }
+      } catch (error) {
+        this.$alert.show({
+          status: 'error',
+          message: 'Sesi berakhir. Silahkan login kembali',
+        });
+        setTimeout(() => {
+          this.$router.push('/login');
+        }, 5000);
+        console.log('Error', error);
+      }
+    },
     goToChallenge(level) {
       if (level <= this.myLevel) {
         this.$router.push({

@@ -4,7 +4,7 @@
     class="w-full bg-[#D9D9D9]/30 h-[441px] xl:h-[663px] relative z-20 mb-[64px] overflow-hidden"
   >
     <div
-      class="flex flex-col items-center justify-center top-0 w-full pt-[90px] xl:pt-[130px] relative z-20"
+      class="flex flex-col items-center justify-center top-0 w-full pt-[90px] lg:pt-[100px] xl:pt-[130px] relative z-20"
     >
       <img
         src="/images/sefoursary/sefoursary-mobile.svg"

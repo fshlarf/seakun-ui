@@ -1,12 +1,12 @@
 <template>
   <div
-    class="container-about-us mt-8 md:mt-12 lg:mt-[50px] xl:mt-[124px]"
+    class="container-about-us mt-8 md:mt-12 lg:mt-[90px] xl:mt-[124px]"
     id="sefoursary-how-to-play"
   >
     <div class="flex justify-center md:gap-[35px] xl:gap-[56px]">
       <section class="bg-[#E4F6F5] md:!bg-white rounded-xl p-5 md:p-0 h-min">
         <div
-          class="flex items-center gap-1 md:gap-3 justify-center md:bg-[#C3F8ED] md:py-2 md:rounded-[10px]"
+          class="flex items-center gap-1 md:gap-3 justify-center md:bg-[#C3F8ED] lg:py-2 md:rounded-[10px]"
         >
           <p
             class="text-[#2D2D2D] md:text-[#0D8B71] text-[20px] lg:text-[28px] font-bold"
@@ -50,11 +50,11 @@
           </div>
         </div>
       </section>
-      <div class="mt-[-60px] xl:mt-[-69px] hidden md:block">
+      <div class="lg:mt-[-48px] xl:mt-[-71px] hidden lg:block">
         <img
           src="/images/sefoursary/illustration/roadmap.webp"
           alt="game"
-          class="h-[400px] xl:h-[479px] object-fill"
+          class="h-[330px] xl:h-[479px]"
         />
       </div>
     </div>

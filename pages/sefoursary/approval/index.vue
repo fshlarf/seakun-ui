@@ -72,20 +72,20 @@ export default {
         let title;
         let content;
         if (level == 8) {
-          title = 'TWS';
-          content = `Kode Undian TWS`;
+          title = 'Challenge level 8 telah diverifikasi';
+          content = `Kode undian TWS berhasil dibuat`;
         }
         if (level == 10) {
-          title = 'HP';
-          content = `Kode Undian Smart Phone`;
+          title = 'Challenge level 10 telah diverifikasi';
+          content = `Kode undian Smartphone berhasil dibuat`;
         }
         if (level == 12) {
-          title = 'Smart Tv';
-          content = `Kode Undian Smart TV`;
+          title = 'Challenge level 12 telah diverifikasi';
+          content = `Kode undian SmartTV berhasil dibuat`;
         }
         if (level == 15) {
-          title = 'TAB';
-          content = `Kode Undian Smart TAB`;
+          title = 'Challenge level 15 telah diverifikasi';
+          content = `Kode undian TAB berhasil dibuat`;
         }
 
         const payload = {
@@ -134,9 +134,9 @@ export default {
         const ctx = {
           sheetName: 'UNDIAN',
           payload: {
-            'Kode Hadiah': lotteryCode,
-            'Kode Unik': uniqueCode,
-            'User name': name,
+            'Kode Hadiah': uniqueCode,
+            'Kode Unik': lotteryCode,
+            'User name': this.formattedName(name),
             Email: email,
             'User WA': phone,
             Level: level,
@@ -156,6 +156,9 @@ export default {
         });
         console.log('error:', error);
       }
+    },
+    formattedName() {
+      return this.name.replace(/-/g, ' ');
     },
   },
 };

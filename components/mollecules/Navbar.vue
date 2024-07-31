@@ -19,7 +19,7 @@
 
             <!-- Sefousary -->
             <img
-              class="h-[34px] -mt-1.5 lg:h-[60px]"
+              class="!h-[38px] sm:!h-[40px] md:!h-[50px] lg:!h-[60px] lg:mb-4"
               src="/images/sefoursary/logo.svg"
               alt="brand seakun"
             />
@@ -32,7 +32,8 @@
           :class="{ shadow: open, 'bg-white': open }"
         >
           <!-- hamburger icon -->
-          <div class="items-center">
+          <!-- sefoursary class (sm:mt-1 md:mt-2 lg:mt-0') -->
+          <div class="items-center sm:mt-1 md:mt-2 lg:mt-0">
             <button
               class="lg:hidden rounded-lg focus:outline-none float-right"
               @click="open = !open"
