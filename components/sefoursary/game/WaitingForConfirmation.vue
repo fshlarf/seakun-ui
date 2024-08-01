@@ -27,6 +27,17 @@
             />
           </section>
         </nuxt-link>
+        <section
+          class="font-bold text-[10px] sm:text-base text-[#66738F] flex flex-col items-center cursor-pointer"
+          @click="$emit('refresh')"
+        >
+          <p>Refresh</p>
+          <img
+            src="/images/sefoursary/icons/refresh.svg"
+            alt="menu"
+            class="w-[31px] sm:w-[50px] h-[33px] sm:h-[53px] mt-1 sm:mt-3"
+          />
+        </section>
       </div>
     </div>
   </div>
