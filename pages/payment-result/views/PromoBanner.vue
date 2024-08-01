@@ -94,11 +94,15 @@ export default {
       desktopBanners: [
         {
           id: 1,
+          img: '/images/thankyou-promo/app-desktop.webp',
+        },
+        {
+          id: 2,
           img: '/images/thankyou-promo/ambassador-desktop.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 2,
+          id: 3,
           img: '/images/thankyou-promo/kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
@@ -107,11 +111,15 @@ export default {
       mobileBanners: [
         {
           id: 1,
+          img: '/images/thankyou-promo/app-desktop.webp',
+        },
+        {
+          id: 2,
           img: '/images/thankyou-promo/ambassador-desktop.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 2,
+          id: 3,
           img: '/images/thankyou-promo/kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
