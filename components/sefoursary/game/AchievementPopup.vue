@@ -89,7 +89,7 @@
         <p
           class="text-sm sm:text-base text-gray-secondary font-bold text-center max-w-[243px] sm:max-w-[304px]"
         >
-          Screenshot bukti nomor unik dan laporkan ke admin untuk claim.
+          Screenshot bukti nomor unik dan laporkan ke admin untuk klaim.
         </p>
         <div
           class="sm:text-[28px] mt-4 sm:mt-7 bg-[#F1EFEF] w-max text-[#D23157] font-black h-[41px] sm:h-[60px] flex gap-1 sm:gap-2 justify-center items-center px-3 sm:px-4 rounded-[6px] mx-auto"

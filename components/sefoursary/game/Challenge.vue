@@ -73,7 +73,7 @@
               class="bg-[#19C09E] border border-[#15A386] w-[100px] sm:w-[140] sm:h-11 h-8 flex justify-center space-x-2 items-center text-white rounded-lg text-sm sm:text-base font-extrabold mx-auto"
             >
               <i class="fa-solid fa-circle-notch fa-spin"></i>
-              Loading...
+              <span> Loading... </span>
             </div>
           </div>
           <div v-else>Kirim</div>

@@ -489,6 +489,7 @@ export default {
           query: { id: level + 1 },
         });
         this.showAchievementPopup = false;
+        this.showFailurePopup = false;
       } catch (error) {
         console.log('error next challenge', error);
       }
@@ -509,6 +510,7 @@ export default {
           query: { id: level + 1 },
         });
         this.showFailurePopup = false;
+        this.showAchievementPopup = false;
       } catch (error) {
         console.log('error next challenge', error);
       }
