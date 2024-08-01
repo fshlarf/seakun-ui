@@ -3006,20 +3006,6 @@ export const providerList = [
         ],
       },
       {
-        title: 'Injection',
-        description: [
-          {
-            text: 'Insta Glow Serum Micro Injection',
-          },
-          {
-            text: 'Face PRP MIcro Injection (3cc)',
-          },
-          {
-            text: 'Hair Regrowth PRP Micro Injection (3cc)',
-          },
-        ],
-      },
-      {
         title: 'Body Treatment',
         description: [
           {
