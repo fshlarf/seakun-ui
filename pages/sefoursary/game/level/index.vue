@@ -34,7 +34,10 @@
       />
       <AchievementShimmer v-if="loadingGift" />
       <ChallengeShimmer v-if="loadingChallenge" />
-      <WaitingForConfirmation v-if="showWaitingForConfirmation" />
+      <WaitingForConfirmation
+        v-if="showWaitingForConfirmation"
+        @refresh="refreshLottery"
+      />
     </div>
   </div>
 </template>
@@ -98,8 +101,7 @@ export default {
   },
   mounted() {
     this.userInfo = JSON.parse(localStorage.getItem('customer'));
-    this.getLevel();
-    this.checkAuth();
+    this.initialization();
   },
   methods: {
     updateDataInGoogleSheet,
@@ -112,19 +114,43 @@ export default {
     getUniqueCodeGift,
     getIsWaitingForConfirmation,
     checkIsGotLottery,
+    async initialization() {
+      try {
+        await this.checkAuth();
+        await this.getLevel();
+      } catch (error) {
+        console.log('error', error);
+      }
+    },
     async checkAuth() {
       try {
-        const accesToken = this.$cookies.get('ATS');
-        const refreshToken = this.$cookies.get('RTS');
+        const { ats, rts } = this.$route.query;
+        if (ats && rts) {
+          await authorizeWebview(this, ats, rts);
+          const accesToken = this.$cookies.get('ATS');
+          const refreshToken = this.$cookies.get('RTS');
+          if (!accesToken || !refreshToken) {
+            this.$alert.show({
+              status: 'error',
+              message: 'Silahkan login terlebih dahulu',
+            });
+            setTimeout(() => {
+              this.$router.push('/login');
+            }, 5000);
+          }
+        } else {
+          const accesToken = this.$cookies.get('ATS');
+          const refreshToken = this.$cookies.get('RTS');
 
-        if (!accesToken || !refreshToken) {
-          this.$alert.show({
-            status: 'error',
-            message: 'Silahkan login terlebih dahulu',
-          });
-          setTimeout(() => {
-            this.$router.push('/login');
-          }, 2000);
+          if (!accesToken || !refreshToken) {
+            this.$alert.show({
+              status: 'error',
+              message: 'Silahkan login terlebih dahulu',
+            });
+            setTimeout(() => {
+              this.$router.push('/login');
+            }, 2000);
+          }
         }
       } catch (error) {
         this.$alert.show({
@@ -536,6 +562,37 @@ export default {
       } catch (error) {
         console.log('error', error);
       }
+    },
+    async refreshLottery() {
+      this.showWaitingForConfirmation = false;
+      this.loadingChallenge = true;
+      try {
+        const levelFromParams = this.$route.query.id;
+        const parseLevel = parseInt(levelFromParams);
+        const isAlreadyExist = await this.checkIsGotLottery(
+          this.userInfo.email,
+          parseLevel
+        );
+        if (isAlreadyExist) {
+          this.achievementUniqueCode = isAlreadyExist.uniqueCode;
+          this.achievementModalType = 'lottery-numbers';
+          this.showAchievementPopup = true;
+        } else {
+          const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
+            this.userInfo.email,
+            parseLevel
+          );
+          if (
+            isWaitingForConfirmation &&
+            isWaitingForConfirmation.level === parseLevel
+          ) {
+            this.showWaitingForConfirmation = true;
+          }
+        }
+      } catch (error) {
+        console.log('error', error);
+      }
+      this.loadingChallenge = false;
     },
     chancePrize() {
       return Math.random() < 0.3;

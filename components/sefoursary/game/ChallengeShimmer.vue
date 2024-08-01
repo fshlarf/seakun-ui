@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 left-0 bottom-0 right-0 bg-black/50 z-[60] flex justify-center"
+    class="fixed top-0 left-0 bottom-0 right-0 bg-black/50 z-[70] flex justify-center"
   >
     <div
       class="seafoursary__challenge w-[328px] sm:w-[520px] h-[241px] sm:h-[382px] bg-cover mt-[143px] relative flex justify-center items-center"
