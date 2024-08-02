@@ -117,13 +117,13 @@ export default {
     async initialization() {
       try {
         await this.checkAuth();
-        await this.getLevel();
       } catch (error) {
         console.log('error', error);
       }
     },
     async checkAuth() {
       try {
+        let isWebView = false;
         const { ats, rts } = this.$route.query;
         if (ats && rts) {
           await authorizeWebview(this, ats, rts);
@@ -137,6 +137,9 @@ export default {
             setTimeout(() => {
               this.$router.push('/login');
             }, 5000);
+          } else {
+            isWebView = true;
+            await this.getLevel(isWebView);
           }
         } else {
           const accesToken = this.$cookies.get('ATS');
@@ -150,6 +153,8 @@ export default {
             setTimeout(() => {
               this.$router.push('/login');
             }, 2000);
+          } else {
+            await this.getLevel(isWebView);
           }
         }
       } catch (error) {
@@ -208,9 +213,11 @@ export default {
           );
           if (alreadyExixst) {
             if (alreadyExixst.uniqueCode == 'nothing') {
+              this.showWaitingForConfirmation = false;
               this.showFailurePopup = true;
               this.failureType = 'not-lucky';
             } else {
+              this.showWaitingForConfirmation = false;
               this.achievementUniqueCode = alreadyExixst.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
               this.showAchievementPopup = true;
@@ -256,6 +263,7 @@ export default {
               parseLevel
             );
             if (getUniqueCode) {
+              this.showWaitingForConfirmation = false;
               this.achievementUniqueCode = getUniqueCode;
               this.achievementModalType = 'lottery-numbers';
               this.showAchievementPopup = true;
@@ -271,6 +279,7 @@ export default {
               this.userInfo.email,
               parseLevel
             );
+            this.showWaitingForConfirmation = false;
             if (getUniqueCode) {
               this.achievementUniqueCode = getUniqueCode;
               this.achievementModalType = 'lottery-numbers';
@@ -281,6 +290,7 @@ export default {
             }
           } else if (WaitingForConfirmation.includes(parseLevel)) {
             this.loadingChallenge = true;
+            this.showWaitingForConfirmation = false;
             if (parseLevel == 14) {
               this.achievementModalType = 'star';
               this.showAchievementPopup = true;
@@ -318,6 +328,7 @@ export default {
           WaitingForConfirmation.includes(parseLevel)
         ) {
           if (parseLevel == 14) {
+            this.showWaitingForConfirmation = false;
             this.achievementModalType = 'star';
             this.showAchievementPopup = true;
           } else {
@@ -327,6 +338,7 @@ export default {
               parseLevel
             );
             if (isAlreadyExist) {
+              this.showWaitingForConfirmation = false;
               this.achievementUniqueCode = isAlreadyExist.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
               this.showAchievementPopup = true;
@@ -357,7 +369,7 @@ export default {
       this.loadingGift = false;
       this.loadingChallenge = false;
     },
-    async getLevel() {
+    async getLevel(isWebView) {
       this.isLoading = true;
       try {
         const userData = this.userInfo;
@@ -386,7 +398,9 @@ export default {
       const levelFromParams = this.$route.query.id;
       const path = this.$route.path;
 
-      if (path == '/sefoursary/game/level') {
+      if (isWebView) {
+        this.checkLevel(this.currentLevel);
+      } else {
         this.checkLevel(levelFromParams);
       }
     },
@@ -564,35 +578,11 @@ export default {
       }
     },
     async refreshLottery() {
-      this.showWaitingForConfirmation = false;
-      this.loadingChallenge = true;
       try {
-        const levelFromParams = this.$route.query.id;
-        const parseLevel = parseInt(levelFromParams);
-        const isAlreadyExist = await this.checkIsGotLottery(
-          this.userInfo.email,
-          parseLevel
-        );
-        if (isAlreadyExist) {
-          this.achievementUniqueCode = isAlreadyExist.uniqueCode;
-          this.achievementModalType = 'lottery-numbers';
-          this.showAchievementPopup = true;
-        } else {
-          const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
-            this.userInfo.email,
-            parseLevel
-          );
-          if (
-            isWaitingForConfirmation &&
-            isWaitingForConfirmation.level === parseLevel
-          ) {
-            this.showWaitingForConfirmation = true;
-          }
-        }
+        await this.checkAuth();
       } catch (error) {
         console.log('error', error);
       }
-      this.loadingChallenge = false;
     },
     chancePrize() {
       return Math.random() < 0.3;
