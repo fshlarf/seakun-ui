@@ -54,6 +54,7 @@ export default {
           parseInt(level)
         );
         if (!isAlreadyExist) {
+          await this.postLottery();
           await this.sendLotteryNotif();
         } else {
           this.$alert.show({
@@ -62,7 +63,7 @@ export default {
           });
         }
       } catch (error) {
-        console.log('error', eror);
+        console.log('error', error);
       }
       this.isLoading = false;
     },
@@ -108,16 +109,12 @@ export default {
         };
 
         const res = await this.SefoursaryService.pushNotification(payload);
-
-        if (res.status == 200) {
-          await this.postLottery();
-        }
       } catch (error) {
         this.$alert.show({
           status: 'error',
           message: 'Gagal mengirimkan kode undian',
         });
-        console.log('error', eror);
+        console.log('error', error);
       }
     },
     async postLottery() {
