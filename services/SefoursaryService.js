@@ -165,7 +165,7 @@ export async function getUniqueCodeGift(email, level) {
     if (data) {
       const findData = data.find((item) => item.level == level);
       if (findData.uniqueCode !== 'nothing') {
-        return findData.uniqueCode;
+        return findData;
       } else {
         return false;
       }

@@ -211,7 +211,7 @@ export default {
         },
         {
           title:
-            'Hadiah akan dikirimkan serentak di hari Jumat, 30 Agustus 2024',
+            'Hadiah akan dikirimkan serentak di hari Senin, 9 September 2024',
         },
       ],
       lotteryPrize: [
@@ -219,7 +219,7 @@ export default {
           title: 'Salin nomor undian',
         },
         {
-          title: 'Pasang alarm PUNCAK LIVE UNDIAN 31 AGUSTUS',
+          title: 'Pasang alarm PUNCAK LIVE UNDIAN 9 SEPTEMBER',
         },
         {
           title: 'Hadiri LIVE di sosial media Seakun',

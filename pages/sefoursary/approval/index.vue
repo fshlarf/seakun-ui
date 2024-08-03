@@ -110,11 +110,20 @@ export default {
 
         const res = await this.SefoursaryService.pushNotification(payload);
       } catch (error) {
-        this.$alert.show({
-          status: 'error',
-          message: 'Gagal mengirimkan kode undian',
-        });
-        console.log('error', error);
+        if (error?.response?.status === 404) {
+          this.$alert.show({
+            status: 'error',
+            title: 'Gagal mengirim notifikasi',
+            message: 'User belum login di mobile app',
+            duration: 6000,
+          });
+        } else {
+          this.$alert.show({
+            status: 'error',
+            message: 'Gagal mengirimkan kode undian',
+          });
+        }
+        console.log('error', error.response);
       }
     },
     async postLottery() {

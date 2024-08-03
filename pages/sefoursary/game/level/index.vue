@@ -24,6 +24,7 @@
         @clickMysterybox="handleMysteryBox"
         :uniqueCode="achievementUniqueCode"
         :level="currentLevel"
+        :gift-name="giftName"
       />
       <FailurePopup
         v-if="showFailurePopup"
@@ -92,6 +93,29 @@ export default {
       achievementUniqueCode: '',
       loadingChallenge: false,
       showWaitingForConfirmation: false,
+      giftName: '',
+      giftInfo: [
+        {
+          code: 'SPO',
+          name: 'Gratis Spotify 1 bulan',
+        },
+        {
+          code: 'YOU',
+          name: 'Gratis Youtube 1 bulan',
+        },
+        {
+          code: 'E20',
+          name: 'Ewallet 20k',
+        },
+        {
+          code: 'E50',
+          name: 'Ewallet 50k',
+        },
+        {
+          code: 'E100',
+          name: 'Ewallet 100k',
+        },
+      ],
     };
   },
   computed: {
@@ -220,6 +244,10 @@ export default {
               this.showWaitingForConfirmation = false;
               this.achievementUniqueCode = alreadyExixst.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
+              const gift = this.giftInfo.find(
+                (item) => item.code === alreadyExixst.prizeCode
+              );
+              this.giftName = gift.name;
               this.showAchievementPopup = true;
             }
           } else {
@@ -264,8 +292,12 @@ export default {
             );
             if (getUniqueCode) {
               this.showWaitingForConfirmation = false;
-              this.achievementUniqueCode = getUniqueCode;
+              this.achievementUniqueCode = getUniqueCode.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
+              const gift = this.giftInfo.find(
+                (item) => item.code === getUniqueCode.prizeCode
+              );
+              this.giftName = gift.name;
               this.showAchievementPopup = true;
             } else {
               this.showFailurePopup = true;
@@ -281,8 +313,12 @@ export default {
             );
             this.showWaitingForConfirmation = false;
             if (getUniqueCode) {
-              this.achievementUniqueCode = getUniqueCode;
+              this.achievementUniqueCode = getUniqueCode.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
+              const gift = this.giftInfo.find(
+                (item) => item.code === getUniqueCode.prizeCode
+              );
+              this.giftName = gift.name;
               this.showAchievementPopup = true;
             } else {
               this.showFailurePopup = true;
@@ -302,6 +338,10 @@ export default {
               if (isAlreadyExist) {
                 this.achievementUniqueCode = isAlreadyExist.uniqueCode;
                 this.achievementModalType = 'lottery-numbers';
+                const gift = this.giftInfo.find(
+                  (item) => item.code === isAlreadyExist.prizeCode
+                );
+                this.giftName = gift.name;
                 this.showAchievementPopup = true;
               } else {
                 const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
@@ -341,6 +381,10 @@ export default {
               this.showWaitingForConfirmation = false;
               this.achievementUniqueCode = isAlreadyExist.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
+              const gift = this.giftInfo.find(
+                (item) => item.code === isAlreadyExist.prizeCode
+              );
+              this.giftName = gift.name;
               this.showAchievementPopup = true;
             } else {
               const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
@@ -389,6 +433,10 @@ export default {
             const findLevel = this.arrFindMaxValue(findMyLevel, 'level');
 
             this.currentLevel = findLevel.level;
+            this.$router.replace({
+              path: '/sefoursary/game/level',
+              query: { id: this.currentLevel },
+            });
           }
         }
       } catch (error) {
@@ -475,6 +523,7 @@ export default {
             await this.postUserWin({ prizeCode, uniqueCode });
             this.achievementUniqueCode = uniqueCode;
             this.achievementModalType = 'lottery-numbers';
+            this.giftName = prizeName;
             this.showAchievementPopup = true;
           } else {
             await this.postUserWin({
