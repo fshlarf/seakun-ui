@@ -40,7 +40,7 @@ export default {
     termsAndContions: [
       {
         term:
-          'Program berlangsung dari tanggal 1 Agustus hingga 31 Agustus 2024.',
+          'Program berlangsung dari tanggal 5 Agustus hingga 5 September 2024.',
       },
       {
         term:

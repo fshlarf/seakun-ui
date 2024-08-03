@@ -70,10 +70,10 @@
         >
           <div v-if="isLoading">
             <div
-              class="bg-[#19C09E] border border-[#15A386] w-[100px] sm:w-[140] sm:h-11 h-8 flex justify-center items-center text-white rounded-lg text-sm sm:text-base font-extrabold mx-auto"
+              class="bg-[#19C09E] border border-[#15A386] min-w-[100px] sm:min-w-[140] sm:h-11 h-8 flex justify-center items-center text-white rounded-lg text-sm sm:text-base font-extrabold mx-auto space-x-1 px-2"
             >
               <i class="fa-solid fa-circle-notch fa-spin"></i>
-              <span> Loading... </span>
+              <span>Loading... </span>
             </div>
           </div>
           <div v-else>Kirim</div>
