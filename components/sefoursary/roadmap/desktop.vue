@@ -121,10 +121,10 @@ export default {
         },
         {
           level: 12,
+          gift: 'smart-tv',
         },
         {
           level: 13,
-          gift: 'smart-tv',
         },
         {
           level: 14,
