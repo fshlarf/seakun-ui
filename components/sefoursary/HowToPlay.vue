@@ -70,7 +70,7 @@ export default {
           step: 'Login dulu di halaman Seakun',
         },
         {
-          step: 'Buka halaman Sefourserry',
+          step: 'Buka halaman Sefoursary',
         },
         {
           step: `Klik ‘Main Sekarang’`,
