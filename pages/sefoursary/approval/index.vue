@@ -11,6 +11,7 @@ import {
   SefoursaryService,
   updateDataInGoogleSheet,
 } from '~/services/SefoursaryService.js';
+import moment from 'moment';
 
 export default {
   components: {
@@ -27,6 +28,11 @@ export default {
       uid: '',
       passed: '',
     };
+  },
+  computed: {
+    formattedDate() {
+      return moment().format('D/M/YYYY h:mm:ss');
+    },
   },
   created() {
     this.SefoursaryService = new SefoursaryService(this);
@@ -55,6 +61,7 @@ export default {
         );
         if (!isAlreadyExist) {
           await this.postLottery();
+          await this.postUser();
           await this.sendLotteryNotif();
         } else {
           this.$alert.show({
@@ -75,28 +82,28 @@ export default {
 
         if (level == 6) {
           title = 'Challenge level 6 telah diverifikasi';
-          content = `Kamu mendapatkan mystery box`;
+          content = `Klik level 6 untuk membuka mystery box`;
         }
 
         if (level == 8) {
           title = 'Challenge level 8 telah diverifikasi';
-          content = `Kode undian TWS berhasil dibuat`;
+          content = `Klik level 8 untuk melihat Kode undian TWS`;
         }
         if (level == 10) {
           title = 'Challenge level 10 telah diverifikasi';
-          content = `Kode undian Smartphone berhasil dibuat`;
+          content = `Klik level 10 untuk melihat Kode undian Smartphone`;
         }
         if (level == 12) {
           title = 'Challenge level 12 telah diverifikasi';
-          content = `Kode undian SmartTV berhasil dibuat`;
+          content = `Klik level 12 untuk melihat Kode undian SmartTV`;
         }
         if (level == 14) {
           title = 'Challenge level 14 telah diverifikasi';
-          content = `Challengen level 15 sudah terbuka`;
+          content = `Challenge level 15 sudah terbuka`;
         }
         if (level == 15) {
           title = 'Challenge level 15 telah diverifikasi';
-          content = `Kode undian TAB berhasil dibuat`;
+          content = `Klik level 15 untuk melihat Kode undian TAB`;
         }
 
         const payload = {
@@ -159,18 +166,36 @@ export default {
             Level: level,
           },
         };
-        const resPostLevel = await this.updateDataInGoogleSheet(ctx);
-        if (resPostLevel) {
+        await this.updateDataInGoogleSheet(ctx);
+      } catch (error) {
+        this.$alert.show({
+          status: 'error',
+          message: 'Gagal menambahkan undian',
+        });
+        console.log('error:', error);
+      }
+    },
+    async postUser() {
+      try {
+        const ctx = {
+          sheetName: 'USER',
+          payload: {
+            'User name': this.name,
+            Email: this.email,
+            'User WA': this.phone,
+            Level: parseInt(this.level) + 1,
+            'Last Updated': this.formattedDate,
+            Passed: true,
+          },
+        };
+        const addUser = await this.updateDataInGoogleSheet(ctx);
+        if (addUser) {
           this.$alert.show({
             status: 'success',
             message: `Berhasil menambahkan kode undian`,
           });
         }
       } catch (error) {
-        this.$alert.show({
-          status: 'error',
-          message: 'Gagal menambahkan undian',
-        });
         console.log('error:', error);
       }
     },
