@@ -1,14 +1,40 @@
 <template>
   <div id="head" class="relative">
+    <!-- Sefoursary Decoration -->
+    <img
+      src="/images/sefoursary/background/navbar-home.webp"
+      alt="decoration"
+      class="hidden lg:block absolute left-0 right-0 top-0 h-[535px] z-30 object-cover"
+    />
+    <!-- Sefoursary Decoration -->
+
     <div
       class="absolute top-0 left-0 z-0 w-full tn:h-[411px] xl:h-[520px] bg-header"
     ></div>
     <div
-      class="tn:px-[24px] md:!container tn:pt-20 md:pt-28 lg:pt-36 relative z-20"
+      class="tn:px-[24px] md:!container tn:pt-20 md:pt-28 lg:pt-36 relative !z-[31]"
     >
       <div
-        class="w-full rounded-2xl bg-banner flex tn:flex-col md:flex-row md:justify-between md:items-end tn:py-8 md:p-0"
+        class="w-full relative rounded-2xl bg-banner flex tn:flex-col md:flex-row md:justify-between md:items-end tn:py-8 md:p-0"
       >
+        <!-- Sefoursary Decoration -->
+        <img
+          src="/images/sefoursary/banner/left-banner-decoration.webp"
+          alt="decoration"
+          class="absolute -top-[19px] -left-[3px] w-[93px] hidden md:block"
+        />
+        <img
+          src="/images/sefoursary/banner/right-banner-decoration.webp"
+          alt="decoration"
+          class="absolute top-0 right-0 w-[80px] sm:w-[93px]"
+        />
+        <img
+          src="/images/sefoursary/banner/4th-ballon.webp"
+          alt="decoration"
+          class="absolute -bottom-7 -left-7 xl:-bottom-10 xl:-left-10 md:w-[70px] lg:w-[76px] xl:w-[86px] hidden md:block"
+        />
+        <!-- Sefoursary Decoration -->
+
         <div
           class="tn:pt-[10px] md:py-[32px] lg:py-[42px] tn:px-[24px] md:pl-[40px] lg:pl-[63px] md:pr-0 md:w-[620px] lg:w-[610px] tn:order-2 md:order-1"
         >
@@ -38,9 +64,15 @@
         <div
           class="tn:px-[27px] md:px-0 md:pr-[42px] tn:order-1 md:order-2 relative"
         >
-          <img
+          <!-- <img
             class="md:w-[450px] lg:w-[445px] mx-auto"
             src="/images/header/header.svg"
+            alt="seakun"
+          /> -->
+          <!-- Sefoursary Illustration -->
+          <img
+            class="md:w-[450px] lg:w-[445px] mx-auto"
+            src="/images/sefoursary/illustration/header.webp"
             alt="seakun"
           />
         </div>

@@ -46,7 +46,14 @@
           :href="activeSlider.externalLink"
           target="_blank"
         >
-          <img :src="`${activeSlider.img}`" alt="foto promo" />
+          <img
+            :src="`${activeSlider.img}`"
+            alt="foto promo"
+            :class="{
+              'w-[320px] md:w-[340px] h-[503px] md:h-[535px] mx-auto':
+                activeSlider.id == 1,
+            }"
+          />
         </a>
         <div v-else>
           <img :src="`${activeSlider.img}`" alt="foto promo" />
