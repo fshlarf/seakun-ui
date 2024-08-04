@@ -115,6 +115,22 @@ export default {
           code: 'E100',
           name: 'Ewallet 100k',
         },
+        {
+          code: 'TWS',
+          name: 'BASEUS TWS',
+        },
+        {
+          code: 'HP',
+          name: 'SAMSUNG AO5',
+        },
+        {
+          code: 'TV',
+          name: 'TCL SMART TV 40”',
+        },
+        {
+          code: 'TABLET',
+          name: 'SAMSUNG GALAXY TAB A9+',
+        },
       ],
     };
   },
