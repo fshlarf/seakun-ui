@@ -107,8 +107,8 @@
           <p
             class="font--nunito text-[11px] sm:text-sm text-gray-secondary font-bold text-center mx-auto max-w-[250px] sm:max-w-[398px] tracking-[0%] mt-2 sm:mt-4 sm:mb-2"
           >
-            Screenshot bukti undian dan ikuti pengundian di IG/Tiktok @seakun.id
-            pada tanggal 9 September 2024.
+            Screenshot bukti undian dan ikuti pengundian di IG @seakun.id pada
+            tanggal 9 September 2024.
           </p>
         </div>
         <div

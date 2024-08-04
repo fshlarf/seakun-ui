@@ -318,7 +318,7 @@ export default {
     },
     handleLottery() {
       const duration = this?.dataOrder[0]?.provider?.package?.variant?.duration;
-      if (duration == 12) {
+      if ([6, 12].includes(duration)) {
         this.isShowLotteryBanner = true;
       }
     },

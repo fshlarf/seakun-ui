@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     formattedDate() {
-      return moment().format('M/D/YYYY h:mm:ss');
+      return moment().format('D/M/YYYY h:mm:ss');
     },
   },
   created() {
@@ -62,6 +62,11 @@ export default {
     },
     async checkAuth() {
       try {
+        const { ats, rts } = this.$route.query;
+        if (ats && rts) {
+          await authorizeWebview(this, ats, rts);
+        }
+
         const accesToken = this.$cookies.get('ATS');
         const refreshToken = this.$cookies.get('RTS');
 

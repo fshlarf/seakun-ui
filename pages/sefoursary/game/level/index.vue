@@ -9,7 +9,7 @@
 
     <div v-else>
       <div class="relative z-30 mt-[-55px] sm:mt-[-50px] lg:mt-[-85px]">
-        <BreadCrumb :level="currentLevel" />
+        <BreadCrumb :level="selectedLevel" />
       </div>
 
       <Game
@@ -82,6 +82,7 @@ export default {
   data() {
     return {
       countWrongAnswer: 0,
+      selectedLevel: 1,
       currentLevel: 1,
       showAchievementPopup: false,
       achievementModalType: '',
@@ -128,7 +129,7 @@ export default {
           name: 'TCL SMART TV 40”',
         },
         {
-          code: 'TABLET',
+          code: 'TAB',
           name: 'SAMSUNG GALAXY TAB A9+',
         },
       ],
@@ -136,11 +137,12 @@ export default {
   },
   computed: {
     formattedDate() {
-      return moment().format('M/D/YYYY h:mm:ss');
+      return moment().format('D/M/YYYY h:mm:ss');
     },
   },
   mounted() {
     this.userInfo = JSON.parse(localStorage.getItem('customer'));
+    this.selectedLevel = parseInt(this.$route.query.id);
     this.initialization();
   },
   methods: {
@@ -164,39 +166,39 @@ export default {
     async checkAuth() {
       try {
         let isWebView = false;
-        const { ats, rts } = this.$route.query;
-        if (ats && rts) {
-          await authorizeWebview(this, ats, rts);
-          const accesToken = this.$cookies.get('ATS');
-          const refreshToken = this.$cookies.get('RTS');
-          if (!accesToken || !refreshToken) {
-            this.$alert.show({
-              status: 'error',
-              message: 'Silahkan login terlebih dahulu',
-            });
-            setTimeout(() => {
-              this.$router.push('/login');
-            }, 5000);
-          } else {
-            isWebView = true;
-            await this.getLevel(isWebView);
-          }
-        } else {
-          const accesToken = this.$cookies.get('ATS');
-          const refreshToken = this.$cookies.get('RTS');
+        // const { ats, rts } = this.$route.query;
+        // if (ats && rts) {
+        //   await authorizeWebview(this, ats, rts);
+        //   const accesToken = this.$cookies.get('ATS');
+        //   const refreshToken = this.$cookies.get('RTS');
+        //   if (!accesToken || !refreshToken) {
+        //     this.$alert.show({
+        //       status: 'error',
+        //       message: 'Silahkan login terlebih dahulu',
+        //     });
+        //     setTimeout(() => {
+        //       this.$router.push('/login');
+        //     }, 5000);
+        //   } else {
+        //     isWebView = true;
+        //     await this.getLevel(isWebView);
+        //   }
+        // } else {
+        const accesToken = this.$cookies.get('ATS');
+        const refreshToken = this.$cookies.get('RTS');
 
-          if (!accesToken || !refreshToken) {
-            this.$alert.show({
-              status: 'error',
-              message: 'Silahkan login terlebih dahulu',
-            });
-            setTimeout(() => {
-              this.$router.push('/login');
-            }, 2000);
-          } else {
-            await this.getLevel(isWebView);
-          }
+        if (!accesToken || !refreshToken) {
+          this.$alert.show({
+            status: 'error',
+            message: 'Silahkan login terlebih dahulu',
+          });
+          setTimeout(() => {
+            this.$router.push('/login');
+          }, 2000);
+        } else {
+          await this.getLevel(isWebView);
         }
+        // }
       } catch (error) {
         this.$alert.show({
           status: 'error',
@@ -292,6 +294,7 @@ export default {
             path: '/sefoursary/game/level',
             query: { id: this.currentLevel },
           });
+          this.selectedLevel = this.currentLevel;
         } else if (
           parseLevel == this.currentLevel &&
           mysteryBoxLevel.includes(parseLevel)
@@ -421,6 +424,7 @@ export default {
               path: '/sefoursary/game/level',
               query: { id: this.currentLevel },
             });
+            this.selectedLevel = this.currentLevel;
           }
         }
       } catch (error) {
@@ -447,12 +451,11 @@ export default {
             this.$router.push('/sefoursary/game/');
           } else {
             const findLevel = this.arrFindMaxValue(findMyLevel, 'level');
-
             this.currentLevel = findLevel.level;
-            this.$router.replace({
-              path: '/sefoursary/game/level',
-              query: { id: this.currentLevel },
-            });
+            // this.$router.replace({
+            //   path: '/sefoursary/game/level',
+            //   query: { id: this.currentLevel },
+            // });
           }
         }
       } catch (error) {
@@ -460,6 +463,7 @@ export default {
       }
       this.isLoading = false;
       const levelFromParams = this.$route.query.id;
+      // this.currentLevel = parseInt(levelFromParams);
       const path = this.$route.path;
 
       if (isWebView) {
@@ -496,6 +500,7 @@ export default {
             this.achievementModalType = 'star';
             this.showAchievementPopup = true;
           }
+          this.updateLevelQuestion();
         }
       } catch (error) {
         console.log('error', error);
@@ -506,17 +511,17 @@ export default {
       this.loadingGift = true;
       try {
         let lotteryKeyword;
-        if (this.currentLevel < 3) {
+        if (this.selectedLevel < 3) {
           lotteryKeyword = {
             provider: 'SPO',
             ewallet: 'E20',
           };
-        } else if (this.currentLevel < 5) {
+        } else if (this.selectedLevel < 5) {
           lotteryKeyword = {
             provider: 'SPO',
             ewallet: 'E50',
           };
-        } else if (this.currentLevel < 7) {
+        } else if (this.selectedLevel < 7) {
           lotteryKeyword = {
             provider: 'YOU',
             ewallet: 'E100',
@@ -553,6 +558,7 @@ export default {
           this.failureType = 'not-lucky';
           this.showFailurePopup = true;
         }
+        // this.updateLevelQuestion();
       } catch (error) {
         console.log('error:', error);
       }
@@ -584,15 +590,16 @@ export default {
         this.countWrongAnswer = 0;
         const levelFromQuery = this.$route.query.id;
         const level = parseInt(levelFromQuery);
-        if (this.currentLevel === level) {
-          await this.updateLevelQuestion();
-        }
+        // if (this.currentLevel === level) {
+        //   await this.updateLevelQuestion();
+        // }
         this.currentLevel = level + 1;
 
         this.$router.replace({
           path: '/sefoursary/game/level',
           query: { id: level + 1 },
         });
+        this.selectedLevel = level + 1;
         this.showAchievementPopup = false;
         this.showFailurePopup = false;
       } catch (error) {
@@ -605,15 +612,16 @@ export default {
       try {
         const levelFromQuery = this.$route.query.id;
         const level = parseInt(levelFromQuery);
-        if (this.currentLevel === level) {
-          await this.updateLevelQuestion();
-        }
+        // if (this.currentLevel === level) {
+        //   await this.updateLevelQuestion();
+        // }
         this.currentLevel = level + 1;
         this.countWrongAnswer = 0;
         this.$router.replace({
           path: '/sefoursary/game/level',
           query: { id: level + 1 },
         });
+        this.selectedLevel = level + 1;
         this.showFailurePopup = false;
         this.showAchievementPopup = false;
       } catch (error) {
@@ -633,7 +641,7 @@ export default {
             WIN: true,
             'Kode Hadiah': prizeCode,
             'Kode Unik': uniqueCode,
-            Level: this.currentLevel,
+            Level: this.selectedLevel,
           },
         };
 
