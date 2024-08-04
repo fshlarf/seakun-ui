@@ -143,7 +143,7 @@
                   {{ id + 1 }}
                 </p>
               </div>
-              <p>{{ item.title }}</p>
+              <p v-html="item.title"></p>
             </section>
           </div>
         </section>
@@ -207,11 +207,12 @@ export default {
           title: 'Screenshot bukti menang dan salin kode hadiah',
         },
         {
-          title: 'Kirim ke Admin (wa.me/6285774642738)',
+          title:
+            'Kirim ke Admin Sefoursary (<a class="text-blue-500 underline" href="https://wa.me/6285774642738" target="_blank">085774642738</a>)',
         },
         {
           title:
-            'Hadiah akan dikirimkan serentak di hari Senin, 9 September 2024',
+            'Hadiah akan dikirimkan serentak di hari Jumat, 6 September 2024',
         },
       ],
       lotteryPrize: [
@@ -223,7 +224,7 @@ export default {
         },
         {
           title: 'Hadiri LIVE di sosial media Seakun',
-          sosmed: '(IG dan Tiktok @seakun.id)',
+          sosmed: '(IG @seakun.id)',
         },
       ],
     };

@@ -627,11 +627,7 @@ export default {
       }
     },
     async refreshLottery() {
-      try {
-        await this.checkAuth();
-      } catch (error) {
-        console.log('error', error);
-      }
+      window.location.reload();
     },
     chancePrize() {
       return Math.random() < 0.3;
