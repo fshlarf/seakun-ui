@@ -164,6 +164,8 @@ export default {
     { src: '~plugins/google-analytics.js', mode: 'client' },
     { src: '~/plugins/color-thief.js', mode: 'client' },
     { src: '~/plugins/alert.js', mode: 'client' },
+    { src: '~/plugins/google-ad-1.js', mode: 'client' },
+    { src: '~/plugins/google-ad-2.js', mode: 'client' },
     // { src: '~/plugins/qontak-webchat.js', mode: 'client' },
     // '~/plugins/qontak-webchat.js',
   ],
