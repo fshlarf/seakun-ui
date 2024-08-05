@@ -166,24 +166,26 @@ export default {
     async checkAuth() {
       try {
         let isWebView = false;
-        // const { ats, rts } = this.$route.query;
-        // if (ats && rts) {
-        //   await authorizeWebview(this, ats, rts);
-        //   const accesToken = this.$cookies.get('ATS');
-        //   const refreshToken = this.$cookies.get('RTS');
-        //   if (!accesToken || !refreshToken) {
-        //     this.$alert.show({
-        //       status: 'error',
-        //       message: 'Silahkan login terlebih dahulu',
-        //     });
-        //     setTimeout(() => {
-        //       this.$router.push('/login');
-        //     }, 5000);
-        //   } else {
-        //     isWebView = true;
-        //     await this.getLevel(isWebView);
-        //   }
-        // } else {
+        const { ats, rts } = this.$route.query;
+        if (ats && rts) {
+          await authorizeWebview(this, ats, rts);
+          // const accesToken = this.$cookies.get('ATS');
+          // const refreshToken = this.$cookies.get('RTS');
+          // if (!accesToken || !refreshToken) {
+          //   this.$alert.show({
+          //     status: 'error',
+          //     message: 'Silahkan login terlebih dahulu',
+          //   });
+          //   setTimeout(() => {
+          //     this.$router.push('/login');
+          //   }, 5000);
+          // } else {
+          //   isWebView = true;
+          //   await this.getLevel(isWebView);
+          // }
+          isWebView = true;
+        }
+        // else {
         const accesToken = this.$cookies.get('ATS');
         const refreshToken = this.$cookies.get('RTS');
 
