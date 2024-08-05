@@ -57,7 +57,7 @@
                     {{ id + 1 }}
                   </p>
                 </div>
-                <p>{{ item.title }}</p>
+                <p v-html="item.title"></p>
               </section>
             </div>
           </div>
