@@ -7,7 +7,7 @@
       class="flex flex-col items-center justify-center top-0 w-full pt-[90px] lg:pt-[100px] xl:pt-[130px] relative z-20"
     >
       <img
-        src="/images/sefoursary/sefoursary-mobile.svg"
+        src="/images/sefoursary/banner/intro-logo.webp"
         alt="sefoursary"
         class="w-[220px] sm:w-[280px] md:w-[300px] xl:w-[380px] mx-auto"
       />
