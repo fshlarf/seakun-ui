@@ -557,6 +557,10 @@ export default {
             this.showFailurePopup = true;
           }
         } else {
+          await this.postUserWin({
+            prizeCode: 'nothing',
+            uniqueCode: 'nothing',
+          });
           this.failureType = 'not-lucky';
           this.showFailurePopup = true;
         }
