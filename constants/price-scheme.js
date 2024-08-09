@@ -1040,7 +1040,101 @@ export const providerList = [
   {
     name: 'Canva',
     slug: 'canva',
-    title: 'Harga Paket Canva Teams (Bulanan)',
+    title: 'Harga Paket Canva Teams (Tahunan)',
+    img: '/images/product/brand/canva.png',
+    screenshot: '/images/price-scheme/desktop/canva.webp',
+    screenshotMobile: '/images/price-scheme/mobile/canva.webp',
+    desc: 'Canva Paket User Host 1 Tahun',
+    member: 5,
+    schemes: [
+      'Seakun membuat akun di Canva dan melakukan pembayaran',
+      'User Host dapat menikmati fitur Premium Canva menggunakan akun Seakun',
+      'Berkomitmen tidak mengubah subscription / informasi apapun pada akun',
+      'User Host dapat menikmati fitur Premium selama 1 tahun',
+    ],
+
+    additionalInfo: `<p>Paket Patungan pada <b>Canva</b> merupakan produk  <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran</p>
+      <p>User Host adalah user yang diberi wewenang dan tanggung jawab untuk menggunakan akun Canva dari Seakun. Untuk detail user host bisa klik <a class="text-blue-500" href="https://seakun.id/info/user-host" target="_blank">link berikut.</a></p>`,
+
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Canva (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp3.650.000',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp3.650.000 ÷ 5 = Rp730.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0 (FREE)',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp730.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Canva',
+    slug: 'canva',
+    title: 'Harga Paket Canva Teams (1 Bulan)',
+    img: '/images/product/brand/canva.png',
+    screenshot: '/images/price-scheme/desktop/canva.webp',
+    screenshotMobile: '/images/price-scheme/mobile/canva.webp',
+    desc: 'Canva Paket User Host 1 Bulan',
+    member: 4,
+    schemes: [
+      'Seakun membuat akun di Canva dan melakukan pembayaran',
+      'User Host dapat menikmati fitur Premium Canva menggunakan akun Seakun',
+      'Berkomitmen tidak mengubah subscription / informasi apapun pada akun',
+      'User Host dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo: `<p>Paket Patungan pada <b>Canva</b> merupakan produk  <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran</p>
+      <p>User Host adalah user yang diberi wewenang dan tanggung jawab untuk menggunakan akun Canva dari Seakun. Untuk detail user host bisa klik <a class="text-blue-500" href="https://seakun.id/info/user-host" target="_blank">link berikut.</a></p>`,
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Canva (1 Bulan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp365.000',
+      },
+      {
+        title: 'Jumlah member Per grup',
+        value: '5',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp365.000 ÷ 5 = Rp73.000',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp0 (FREE)',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: '73.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Canva',
+    slug: 'canva',
+    title: 'Harga Paket Canva Teams (1 Bulan)',
     img: '/images/product/brand/canva.png',
     screenshot: '/images/price-scheme/desktop/canva.webp',
     screenshotMobile: '/images/price-scheme/mobile/canva.webp',
@@ -1048,17 +1142,17 @@ export const providerList = [
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
-      'Seakun bertindak sebagai user Host dalam grup',
       'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 4 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 Bulan',
     ],
-    additionalInfo:
-      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    additionalInfo: ` Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.`,
+
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Canva (Bulanan)',
+        value: 'Canva (1 Bulan)',
         is_total: true,
       },
       {
@@ -1078,7 +1172,7 @@ export const providerList = [
         value: 'Rp6.500',
       },
       {
-        title: 'Harga Paket Bulanan',
+        title: 'Harga Paket 1 Tahun',
         value: 'Rp79.500',
         is_total: true,
       },
@@ -1092,45 +1186,46 @@ export const providerList = [
     screenshot: '/images/price-scheme/desktop/canva.webp',
     screenshotMobile: '/images/price-scheme/mobile/canva.webp',
     desc: 'Canva Paket Premium Tahunan',
-    member: 4,
+    member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
-      'Seakun bertindak sebagai user Host dalam grup',
       'Member membuat/menyediakan akun masing-masing',
-      'Seakun mengundang 4 member untuk join 1 grup Premium',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+      'Member membuat/menyediakan akun masing-masing',
+      'Seakun mengundang 5 member untuk join 1 grup Premium',
+      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 Tahun',
     ],
-    additionalInfo:
-      'Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    additionalInfo: ` Paket Patungan pada <b>Canva</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.`,
+
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Canva (1 Tahun)',
+        value: 'Canva (1 Bulan)',
         is_total: true,
       },
       {
         title: 'Harga Provider',
-        value: 'Rp1.900.000',
+        value: 'Rp3.650.000',
       },
       {
         title: 'Jumlah member Per grup',
-        value: '4',
+        value: '5',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp1.900.000 ÷ 4 = Rp475.000',
+        value: 'Rp3.650.000 ÷ 5 = Rp730.000',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp70.000',
+        value: 'Rp78.000',
       },
       {
-        title: 'Harga Paket 1 Tahun',
-        value: 'Rp545.000',
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp808.000',
         is_total: true,
       },
     ],
   },
+
   {
     name: 'Disney+ Hotstar',
     slug: 'disney-hotstar',
