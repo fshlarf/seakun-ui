@@ -659,19 +659,19 @@ export default {
     onSelectPackage(pkg) {
       if (pkg.packageName !== this.selectedPackage.packageName) {
         this.selectedPackage = pkg;
-        console.log(this.selectedPackage.providerSlug);
+
         if (this.providerSlug == 'apple-one') {
-          console.log('apple-one');
           const variants = this.selectedPackage.variants.filter(
             (variant) => variant.duration != 1
           );
           this.selectedPackage.variants = variants;
-          console.log(this.selectedPackage.variants);
         }
+
         this.selectedVariant = this.selectedPackage.variants[0];
         if (this.selectedVariant) {
           this.packageVariantUid = this.selectedVariant.uid;
         }
+
         const scheme = this.providerList.find((scheme) => {
           return scheme.desc === this.selectedVariant.notes;
         });
@@ -706,10 +706,7 @@ export default {
           this.packages = this.provider.packages.filter((pkg) => {
             return pkg.variants.some((variant) => variant.isDisplayed == 1);
           });
-          if (
-            this.provider.slug == 'canva' ||
-            this.provider.slug == 'microsoft-365'
-          ) {
+          if (this.provider.slug == 'microsoft-365') {
             let newPackages = [];
             this.packages[0].variants.forEach((variant) => {
               if (variant.isDisplayed == 1) {
@@ -728,6 +725,60 @@ export default {
                 newPackages.push(pkg);
               }
             });
+            this.packages = newPackages;
+          } else if (this.provider.slug == 'canva') {
+            let newPackages = [];
+            this.packages.forEach((pkg) => {
+              let newPakage = {};
+              if (pkg.host == 1) {
+                pkg.variants.forEach((variant) => {
+                  if (variant.isDisplayed == 1) {
+                    newPakage = {
+                      ...pkg,
+                      packageName:
+                        variant.duration == 1 ? 'Host Bulanan' : 'Host Tahunan',
+                      variants: pkg.variants,
+                    };
+                    newPackages.push(newPakage);
+                  }
+                });
+              } else {
+                pkg.variants.forEach((variant) => {
+                  if (variant.isDisplayed == 1) {
+                    newPakage = {
+                      ...pkg,
+                      packageName:
+                        variant.duration == 1
+                          ? 'Reguler Bulanan'
+                          : 'Reguler Tahunan',
+                      variants:
+                        variant.duration == 1
+                          ? pkg.variants.filter((vary) => vary.duration < 12)
+                          : pkg.variants.filter((vary) => vary.duration == 12),
+                    };
+                    newPackages.push(newPakage);
+                  }
+                });
+              }
+              // newPackages.push(newPakage);
+            });
+            // this.packages[0].variants.forEach((variant) => {
+            //   if (variant.isDisplayed == 1) {
+            //     const pkg = {
+            //       ...this.packages[0],
+            //       packageName: variant.duration == 1 ? 'Bulanan' : 'Tahunan',
+            //       variants:
+            //         variant.duration == 1
+            //           ? this.packages[0].variants.filter(
+            //               (vary) => vary.duration < 12
+            //             )
+            //           : this.packages[0].variants.filter(
+            //               (vary) => vary.duration == 12
+            //             ),
+            //     };
+            //     newPackages.push(pkg);
+            //   }
+            // });
             this.packages = newPackages;
           } else if (this.provider.slug == 'netflix') {
             let newPackages = [];
@@ -748,6 +799,7 @@ export default {
           this.selectedPackage = activePackage
             ? activePackage
             : this.packages[0];
+
           if (this.selectedPackage) {
             // const activeVariants = this.selectedPackage.variants.filter(
             //   (variant) => {
@@ -758,16 +810,20 @@ export default {
             //     }
             //   }
             // );
+
             if (this.providerSlug == 'apple-one') {
               const variants = this.selectedPackage.variants.filter(
                 (variant) => variant.duration != 1
               );
               this.selectedPackage.variants = variants;
             }
+
             this.selectedVariant = this.selectedPackage.variants[0];
+
             if (this.selectedVariant) {
               this.packageVariantUid = this.selectedVariant.uid;
             }
+
             const scheme = this.providerList.find((scheme) => {
               return scheme.desc === this.selectedVariant.notes;
             });
