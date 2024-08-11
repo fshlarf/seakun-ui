@@ -12,6 +12,7 @@ import {
   updateDataInGoogleSheet,
 } from '~/services/SefoursaryService.js';
 import moment from 'moment';
+import CustomerService from '~/services/CustomerServices';
 
 export default {
   components: {
@@ -19,6 +20,7 @@ export default {
   },
   data() {
     return {
+      CustomerService,
       SefoursaryService,
       isLoading: true,
       email: '',
@@ -36,6 +38,7 @@ export default {
   },
   created() {
     this.SefoursaryService = new SefoursaryService(this);
+    this.CustomerService = new CustomerService(this);
   },
   mounted() {
     const query = this.$route.query;
@@ -45,13 +48,45 @@ export default {
     this.level = query.level || '';
     this.uid = query.uid || '';
     this.passed = query.passed || '';
-    if (this.email) {
-      this.handleLottery();
+    // if (this.email) {
+    //   this.handleLottery();
+    // }
+    if (this.level && this.uid) {
+      this.generateUniqueCode();
     }
   },
   methods: {
     updateDataInGoogleSheet,
     checkIsGotLottery,
+    async generateUniqueCode() {
+      this.isLoading = true;
+      const { CustomerService } = this;
+      const payload = {
+        level: parseInt(this.level),
+        uid: this.uid,
+      };
+      try {
+        const generate = await CustomerService.generateUniqueCodeSefoursary(
+          payload
+        );
+        if (generate.data) {
+          console.log('generate', generate.data);
+          this.$alert.show({
+            status: 'success',
+            message: `Berhasil menambahkan kode undian`,
+          });
+        }
+      } catch (error) {
+        this.$alert.show({
+          status: 'error',
+          title: 'Gagal menambah kode undian',
+          message:
+            error?.response?.data?.message || 'Gagal mengirimkan kode undian',
+          duration: 16000,
+        });
+      }
+      this.isLoading = false;
+    },
     async handleLottery() {
       try {
         const { email, level } = this;

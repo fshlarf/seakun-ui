@@ -108,32 +108,27 @@ export default {
 
         const setToLocal = JSON.stringify(data);
         localStorage.setItem('customer', setToLocal);
-        this.getLevel();
+        await this.getLevel();
       } catch (error) {
         console.log('error fetch user', error);
       }
     },
     async getLevel() {
       try {
-        const userData = this.userInfo;
-
-        const res = await this.getDataFromGoogleSheet(
-          'USER',
-          'Email',
-          userData.email
-        );
-        if (res) {
-          const findMyLevel = res.filter(
-            (item) => item.Email === userData.email
-          );
-
-          if (findMyLevel.length == 0) {
+        const res = await this.CustomerService.getSefoursaryData({
+          sheet: 'USER',
+        });
+        const { data } = res.data;
+        if (data && data.length > 0) {
+          const currentLevel = this.arrFindMaxValue(data, 'level');
+          if (currentLevel.level == 0) {
             this.myLevel = 1;
-            this.postUser();
+            await this.postUser();
           } else {
-            const currentLevel = this.arrFindMaxValue(findMyLevel, 'level');
             this.myLevel = currentLevel.level;
           }
+        } else {
+          this.myLevel = 1;
         }
       } catch (error) {
         console.log('error:', error);
@@ -143,19 +138,9 @@ export default {
     async postUser() {
       try {
         const userData = this.userInfo;
-        const ctx = {
-          sheetName: 'USER',
-          payload: {
-            'User name': userData.name,
-            Email: userData.email,
-            'User WA': userData?.phoneNumber,
-            Level: 1,
-            'Last Updated': this.formattedDate,
-            Passed: true,
-          },
-        };
-
-        const res = await this.updateDataInGoogleSheet(ctx);
+        const res = await this.CustomerService.openNextLevelSefoursary({
+          level: 0,
+        });
       } catch (error) {
         console.log('eror post user:', error);
       }

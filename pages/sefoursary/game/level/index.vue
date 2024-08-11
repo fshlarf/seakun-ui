@@ -14,8 +14,8 @@
 
       <Game
         @onClick="handleChallenge"
-        :level="currentLevel"
         @submitChallenge="handleSubmitChallenge"
+        :level="currentLevel"
       />
       <AchievementPopup
         v-if="showAchievementPopup"
@@ -56,17 +56,7 @@ import WaitingForConfirmation from '~/components/sefoursary/game/WaitingForConfi
 import moment from 'moment';
 import { getUserInfo, arrFindMaxValue } from '~/helpers/utils';
 import { authorizeWebview } from '~/helpers/httpRequest';
-
-import {
-  updateDataInGoogleSheet,
-  getDataFromGoogleSheet,
-  checkUserRewards,
-  getRemainingGifts,
-  patchPrize,
-  getUniqueCodeGift,
-  getIsWaitingForConfirmation,
-  checkIsGotLottery,
-} from '~/services/SefoursaryService.js';
+import CustomerService from '~/services/CustomerServices';
 
 export default {
   components: {
@@ -81,6 +71,7 @@ export default {
   },
   data() {
     return {
+      CustomerService,
       countWrongAnswer: 0,
       selectedLevel: 1,
       currentLevel: 1,
@@ -146,18 +137,11 @@ export default {
     this.initialization();
   },
   methods: {
-    updateDataInGoogleSheet,
-    getDataFromGoogleSheet,
     getUserInfo,
     arrFindMaxValue,
-    checkUserRewards,
-    getRemainingGifts,
-    patchPrize,
-    getUniqueCodeGift,
-    getIsWaitingForConfirmation,
-    checkIsGotLottery,
     async initialization() {
       try {
+        this.CustomerService = new CustomerService(this);
         await this.checkAuth();
       } catch (error) {
         console.log('error', error);
@@ -169,20 +153,6 @@ export default {
         const { ats, rts } = this.$route.query;
         if (ats && rts) {
           await authorizeWebview(this, ats, rts);
-          // const accesToken = this.$cookies.get('ATS');
-          // const refreshToken = this.$cookies.get('RTS');
-          // if (!accesToken || !refreshToken) {
-          //   this.$alert.show({
-          //     status: 'error',
-          //     message: 'Silahkan login terlebih dahulu',
-          //   });
-          //   setTimeout(() => {
-          //     this.$router.push('/login');
-          //   }, 5000);
-          // } else {
-          //   isWebView = true;
-          //   await this.getLevel(isWebView);
-          // }
           isWebView = true;
         }
         // else {
@@ -213,48 +183,25 @@ export default {
       }
     },
 
-    async handleSubmitChallenge() {
-      this.loadingChallenge = true;
-      try {
-        const customer = JSON.parse(localStorage.getItem('customer'));
-
-        const ctx = {
-          sheetName: 'USER',
-          payload: {
-            'User name': customer.name,
-            Email: customer.email,
-            'User WA': customer?.phoneNumber,
-            Level: this.currentLevel,
-            'Last Updated': this.formattedDate,
-            Passed: 'UPLOADED',
-          },
-        };
-        const resPostLevel = await this.updateDataInGoogleSheet(ctx);
-        if (resPostLevel) {
-          this.showWaitingForConfirmation = true;
-        }
-      } catch (error) {
-        this.$alert.show({
-          status: 'error',
-          message: 'Terjadi kesalahan. Silahkan coba lagi',
-        });
-        console.log('error submit challenge:', error);
-      }
-      this.loadingChallenge = false;
-    },
-
     async checkLevel(level) {
       try {
         const parseLevel = parseInt(level);
         const WaitingForConfirmation = [6, 8, 10, 12, 14, 15];
         const mysteryBoxLevel = [2, 4];
+        if (parseLevel > this.currentLevel) {
+          this.$router.replace({
+            path: '/sefoursary/game/level',
+            query: { id: this.currentLevel },
+          });
 
-        if (parseLevel == 6) {
+          this.selectedLevel = this.currentLevel;
+          return;
+        } else if (parseLevel == 6) {
           this.loadingChallenge = true;
-          const alreadyExixst = await this.checkUserRewards(
-            this.userInfo.email,
-            level
-          );
+          const alreadyExixst = await this.checkUserRewards({
+            sheet: 'WIN',
+            level: parseLevel,
+          });
           if (alreadyExixst) {
             if (alreadyExixst.uniqueCode == 'nothing') {
               this.showWaitingForConfirmation = false;
@@ -271,16 +218,12 @@ export default {
               this.showAchievementPopup = true;
             }
           } else {
-            const getLottery = await this.checkIsGotLottery(
-              this.userInfo.email,
-              parseLevel
-            );
+            const getLottery = await this.checkIsGotLottery(parseLevel);
             if (getLottery) {
               this.achievementModalType = 'gift';
               this.showAchievementPopup = true;
             } else {
               const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
-                this.userInfo.email,
                 parseLevel
               );
               if (
@@ -291,55 +234,52 @@ export default {
               }
             }
           }
-        } else if (parseLevel > this.currentLevel) {
-          this.$router.replace({
-            path: '/sefoursary/game/level',
-            query: { id: this.currentLevel },
-          });
-          this.selectedLevel = this.currentLevel;
-        } else if (
-          parseLevel == this.currentLevel &&
-          mysteryBoxLevel.includes(parseLevel)
+        }
+        // else if (
+        //   parseLevel == this.currentLevel &&
+        //   mysteryBoxLevel.includes(parseLevel)
+        // ) {
+        //   this.loadingGift = true;
+        //   const getUniqueCode = await this.checkUserRewards({
+        //       sheet: 'WIN',
+        //       level: parseLevel,
+        //     });
+        //   console.log('alreadyExixst', alreadyExixst);
+        //   if (alreadyExixst) {
+        //     const getUniqueCode = await this.getUniqueCodeGift(
+        //       this.userInfo.email,
+        //       parseLevel
+        //     );
+        //     if (getUniqueCode) {
+        //       this.showWaitingForConfirmation = false;
+        //       this.achievementUniqueCode = getUniqueCode.uniqueCode;
+        //       this.achievementModalType = 'lottery-numbers';
+        //       const gift = this.giftInfo.find(
+        //         (item) => item.code === getUniqueCode.prizeCode
+        //       );
+        //       this.giftName = gift.name;
+        //       this.showAchievementPopup = true;
+        //     } else {
+        //       this.showFailurePopup = true;
+        //       this.failureType = 'not-lucky';
+        //     }
+        //   }
+        // }
+        else if (
+          parseLevel == this.currentLevel ||
+          parseLevel < this.currentLevel
         ) {
-          this.loadingGift = true;
-          const alreadyExixst = await this.checkUserRewards(
-            this.userInfo.email,
-            level
-          );
-          if (alreadyExixst) {
-            const getUniqueCode = await this.getUniqueCodeGift(
-              this.userInfo.email,
-              parseLevel
-            );
-            if (getUniqueCode) {
-              this.showWaitingForConfirmation = false;
-              this.achievementUniqueCode = getUniqueCode.uniqueCode;
-              this.achievementModalType = 'lottery-numbers';
-              const gift = this.giftInfo.find(
-                (item) => item.code === getUniqueCode.prizeCode
-              );
-              this.giftName = gift.name;
-              this.showAchievementPopup = true;
-            } else {
-              this.showFailurePopup = true;
-              this.failureType = 'not-lucky';
-            }
-          }
-        } else if (parseLevel < this.currentLevel) {
           if (mysteryBoxLevel.includes(parseLevel)) {
             this.loadingGift = true;
-            const getUniqueCode = await this.getUniqueCodeGift(
-              this.userInfo.email,
-              parseLevel
-            );
+            const getUniqueCode = await this.checkUserRewards({
+              sheet: 'WIN',
+              level: parseLevel,
+            });
             this.showWaitingForConfirmation = false;
-            if (getUniqueCode) {
+            if (getUniqueCode.uniqueCode !== 'nothing') {
               this.achievementUniqueCode = getUniqueCode.uniqueCode;
               this.achievementModalType = 'lottery-numbers';
-              const gift = this.giftInfo.find(
-                (item) => item.code === getUniqueCode.prizeCode
-              );
-              this.giftName = gift.name;
+              this.giftName = '';
               this.showAchievementPopup = true;
             } else {
               this.showFailurePopup = true;
@@ -349,13 +289,25 @@ export default {
             this.loadingChallenge = true;
             this.showWaitingForConfirmation = false;
             if (parseLevel == 14) {
-              this.achievementModalType = 'star';
-              this.showAchievementPopup = true;
+              if (this.currentLevel > 14) {
+                this.achievementModalType = 'star';
+                this.showAchievementPopup = true;
+
+                // Update current level for next button
+                this.currentLevel = 14;
+              } else {
+                const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
+                  parseLevel
+                );
+                if (
+                  isWaitingForConfirmation &&
+                  isWaitingForConfirmation.level === parseLevel
+                ) {
+                  this.showWaitingForConfirmation = true;
+                }
+              }
             } else {
-              const isAlreadyExist = await this.checkIsGotLottery(
-                this.userInfo.email,
-                parseLevel
-              );
+              const isAlreadyExist = await this.checkIsGotLottery(parseLevel);
               if (isAlreadyExist) {
                 this.achievementUniqueCode = isAlreadyExist.uniqueCode;
                 this.achievementModalType = 'lottery-numbers';
@@ -366,7 +318,6 @@ export default {
                 this.showAchievementPopup = true;
               } else {
                 const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
-                  this.userInfo.email,
                   parseLevel
                 );
                 if (
@@ -381,23 +332,36 @@ export default {
             // CODE UNDIAN
             this.loadingChallenge = false;
           } else {
-            this.achievementModalType = 'star';
-            this.showAchievementPopup = true;
+            if (parseLevel < this.currentLevel) {
+              this.achievementModalType = 'star';
+              this.showAchievementPopup = true;
+            }
           }
         } else if (
           parseLevel == this.currentLevel &&
           WaitingForConfirmation.includes(parseLevel)
         ) {
           if (parseLevel == 14) {
-            this.showWaitingForConfirmation = false;
-            this.achievementModalType = 'star';
-            this.showAchievementPopup = true;
+            if (this.currentLevel > 14) {
+              this.achievementModalType = 'star';
+              this.showAchievementPopup = true;
+
+              // Update current level for next button
+              this.currentLevel = 14;
+            } else {
+              const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
+                parseLevel
+              );
+              if (
+                isWaitingForConfirmation &&
+                isWaitingForConfirmation.level === parseLevel
+              ) {
+                this.showWaitingForConfirmation = true;
+              }
+            }
           } else {
             this.loadingChallenge = true;
-            const isAlreadyExist = await this.checkIsGotLottery(
-              this.userInfo.email,
-              parseLevel
-            );
+            const isAlreadyExist = await this.checkIsGotLottery(parseLevel);
             if (isAlreadyExist) {
               this.showWaitingForConfirmation = false;
               this.achievementUniqueCode = isAlreadyExist.uniqueCode;
@@ -409,7 +373,6 @@ export default {
               this.showAchievementPopup = true;
             } else {
               const isWaitingForConfirmation = await this.getIsWaitingForConfirmation(
-                this.userInfo.email,
                 parseLevel
               );
               if (
@@ -439,40 +402,39 @@ export default {
       this.isLoading = true;
       try {
         const userData = this.userInfo;
+        const res = await this.CustomerService.getSefoursaryData({
+          sheet: 'USER',
+        });
 
-        const res = await this.getDataFromGoogleSheet(
-          'USER',
-          'Email',
-          userData.email
-        );
-        if (res) {
-          const findMyLevel = res.filter(
-            (item) => item.Email === userData.email
-          );
-          if (findMyLevel.length == 0) {
-            this.$router.push('/sefoursary/game/');
+        const { data } = res.data;
+        if (data) {
+          if (data.length == 0) {
+            await this.CustomerService.openNextLevelSefoursary({ level: 0 });
           } else {
-            const findLevel = this.arrFindMaxValue(findMyLevel, 'level');
-            this.currentLevel = findLevel.level;
-            // this.$router.replace({
-            //   path: '/sefoursary/game/level',
-            //   query: { id: this.currentLevel },
-            // });
+            const findLevel = this.arrFindMaxValue(data, 'level');
+            if (findLevel.level == 0) {
+              this.$router.push('/sefoursary/game/');
+            } else {
+              if (findLevel.level >= 15) {
+                this.currentLevel = 15;
+              } else {
+                this.currentLevel = findLevel.level;
+              }
+            }
           }
+        }
+        const levelFromParams = this.$route.query.id;
+        const path = this.$route.path;
+
+        if (isWebView) {
+          this.checkLevel(this.currentLevel);
+        } else {
+          this.checkLevel(levelFromParams);
         }
       } catch (error) {
         console.log('error:', error);
       }
       this.isLoading = false;
-      const levelFromParams = this.$route.query.id;
-      // this.currentLevel = parseInt(levelFromParams);
-      const path = this.$route.path;
-
-      if (isWebView) {
-        this.checkLevel(this.currentLevel);
-      } else {
-        this.checkLevel(levelFromParams);
-      }
     },
     async handleChallenge(ctx) {
       const { answerKey, level } = ctx.question;
@@ -490,19 +452,20 @@ export default {
           const mysteryBox = [2, 4, 6];
           if (mysteryBox.includes(level)) {
             this.loadingGift = true;
-            const alreadyExixst = await this.checkUserRewards(
-              this.userInfo.email,
-              level
-            );
+            const alreadyExixst = await this.checkUserRewards({
+              sheet: 'WIN',
+              level,
+            });
             if (!alreadyExixst) {
               this.achievementModalType = 'gift';
               this.showAchievementPopup = true;
             }
           } else {
+            this.loadingGift = true;
+            await this.updateLevelQuestion();
             this.achievementModalType = 'star';
             this.showAchievementPopup = true;
           }
-          this.updateLevelQuestion();
         }
       } catch (error) {
         console.log('error', error);
@@ -511,60 +474,28 @@ export default {
     },
     async handleMysteryBox() {
       this.loadingGift = true;
-      try {
-        let lotteryKeyword;
-        if (this.selectedLevel < 3) {
-          lotteryKeyword = {
-            provider: 'SPO',
-            ewallet: 'E20',
-          };
-        } else if (this.selectedLevel < 5) {
-          lotteryKeyword = {
-            provider: 'SPO',
-            ewallet: 'E50',
-          };
-        } else if (this.selectedLevel < 7) {
-          lotteryKeyword = {
-            provider: 'YOU',
-            ewallet: 'E100',
-          };
-        }
-        const remainingRes = await this.getRemainingGifts(lotteryKeyword);
 
-        if (remainingRes.length > 0) {
-          const getPrize = this.chancePrize();
-          if (getPrize) {
-            const myGift = remainingRes[0];
-            const { prizeCode, uniqueCode, prizeName, quota } = myGift;
-            const payload = {
-              'Kode Hadiah': prizeCode,
-              'Kode Unik': uniqueCode,
-              Hadiah: prizeName,
-              Quota: 0,
-            };
-            const updatePrize = this.patchPrize(payload);
-            await this.postUserWin({ prizeCode, uniqueCode });
-            this.achievementUniqueCode = uniqueCode;
-            this.achievementModalType = 'lottery-numbers';
-            this.giftName = prizeName;
-            this.showAchievementPopup = true;
-          } else {
-            await this.postUserWin({
-              prizeCode: 'nothing',
-              uniqueCode: 'nothing',
-            });
-            this.failureType = 'not-lucky';
-            this.showFailurePopup = true;
-          }
-        } else {
-          await this.postUserWin({
-            prizeCode: 'nothing',
-            uniqueCode: 'nothing',
-          });
+      try {
+        const levelFromQuery = this.$route.query.id;
+        const level = parseInt(levelFromQuery);
+        const res = await this.CustomerService.drawRandomGiftSefoursary({
+          level,
+        });
+
+        const { data } = res.data;
+
+        if (!data.uniqueCode) {
           this.failureType = 'not-lucky';
           this.showFailurePopup = true;
+        } else {
+          this.achievementUniqueCode = data.uniqueCode;
+          this.achievementModalType = 'lottery-numbers';
+          this.giftName = data.prizeName;
+          this.showAchievementPopup = true;
         }
-        // this.updateLevelQuestion();
+        if (level !== 6) {
+          await this.updateLevelQuestion();
+        }
       } catch (error) {
         console.log('error:', error);
       }
@@ -572,62 +503,49 @@ export default {
     },
     async updateLevelQuestion() {
       try {
-        const customer = JSON.parse(localStorage.getItem('customer'));
-
-        const ctx = {
-          sheetName: 'USER',
-          payload: {
-            'User name': customer.name,
-            Email: customer.email,
-            'User WA': customer?.phoneNumber,
-            Level: this.currentLevel + 1,
-            'Last Updated': this.formattedDate,
-            Passed: true,
-          },
-        };
-        const resPostLevel = this.updateDataInGoogleSheet(ctx);
+        const levelFromQuery = this.$route.query.id;
+        const level = parseInt(levelFromQuery);
+        const resPostLevel = await this.CustomerService.openNextLevelSefoursary(
+          { level }
+        );
+        this.currentLevel = this.selectedLevel;
       } catch (error) {
         console.log('error:', error);
       }
     },
     async handleNextChallenge() {
-      this.loadingGift = true;
       try {
         this.countWrongAnswer = 0;
         const levelFromQuery = this.$route.query.id;
         const level = parseInt(levelFromQuery);
-        // if (this.currentLevel === level) {
-        //   await this.updateLevelQuestion();
-        // }
-        this.currentLevel = level + 1;
+
+        this.selectedLevel = level + 1;
 
         this.$router.replace({
           path: '/sefoursary/game/level',
-          query: { id: level + 1 },
+          query: { id: this.selectedLevel },
         });
-        this.selectedLevel = level + 1;
+        this.currentLevel = this.selectedLevel;
         this.showAchievementPopup = false;
         this.showFailurePopup = false;
       } catch (error) {
         console.log('error next challenge', error);
       }
-      this.loadingGift = false;
     },
     async handleNextFailure() {
       this.loadingGift = true;
       try {
         const levelFromQuery = this.$route.query.id;
         const level = parseInt(levelFromQuery);
-        // if (this.currentLevel === level) {
-        //   await this.updateLevelQuestion();
-        // }
-        this.currentLevel = level + 1;
+        // this.currentLevel = level + 1;
         this.countWrongAnswer = 0;
+
+        this.selectedLevel = level + 1;
         this.$router.replace({
           path: '/sefoursary/game/level',
-          query: { id: level + 1 },
+          query: { id: this.selectedLevel },
         });
-        this.selectedLevel = level + 1;
+        this.currentLevel = this.selectedLevel;
         this.showFailurePopup = false;
         this.showAchievementPopup = false;
       } catch (error) {
@@ -635,26 +553,73 @@ export default {
       }
       this.loadingGift = false;
     },
-    async postUserWin({ prizeCode, uniqueCode }) {
-      try {
-        const customer = JSON.parse(localStorage.getItem('customer'));
-        const ctx = {
-          sheetName: 'WIN',
-          payload: {
-            'User name': customer.name,
-            Email: customer.email,
-            'User WA': customer?.phoneNumber,
-            WIN: true,
-            'Kode Hadiah': prizeCode,
-            'Kode Unik': uniqueCode,
-            Level: this.selectedLevel,
-          },
-        };
 
-        const res = await this.updateDataInGoogleSheet(ctx);
+    async checkUserRewards({ sheet, level }) {
+      try {
+        const res = await this.CustomerService.getSefoursaryData({ sheet });
+        const { data } = res.data;
+
+        if (data) {
+          const findGift = data.find((item) => item.level === level);
+          return findGift;
+        }
       } catch (error) {
-        console.log('error', error);
+        console.log('error:', error);
       }
+    },
+    async checkIsGotLottery(level) {
+      try {
+        const res = await this.CustomerService.getSefoursaryData({
+          sheet: 'UNDIAN',
+        });
+        const { data } = res.data;
+        if (data) {
+          const findLottery = data.find((item) => item.level == level);
+          return findLottery || null;
+        }
+      } catch (error) {
+        console.error('Error retrieving data:', error);
+        return null;
+      }
+    },
+    async getIsWaitingForConfirmation(level) {
+      try {
+        const res = await this.CustomerService.getSefoursaryData({
+          sheet: 'USER',
+        });
+        const { data } = res?.data;
+        if (data) {
+          const findData = data.find(
+            (item) => item.level == level && item.passed == 'UPLOADED'
+          );
+          return findData;
+        } else {
+          return false;
+        }
+      } catch (error) {
+        console.log('error');
+        return false;
+      }
+    },
+    async handleSubmitChallenge(val) {
+      this.loadingChallenge = true;
+      try {
+        if (val) {
+          this.showWaitingForConfirmation = true;
+        } else {
+          this.$alert.show({
+            status: 'error',
+            message: 'Terjadi kesalahan. Silahkan coba lagi',
+          });
+        }
+      } catch (error) {
+        this.$alert.show({
+          status: 'error',
+          message: 'Terjadi kesalahan. Silahkan coba lagi',
+        });
+        console.log('error submit challenge:', error);
+      }
+      this.loadingChallenge = false;
     },
     async refreshLottery() {
       window.location.reload();

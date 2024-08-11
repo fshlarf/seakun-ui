@@ -8,7 +8,7 @@
     <Challenge
       v-else
       :challenge="currentChallenges"
-      @submitChallenge="$emit('submitChallenge')"
+      @submitChallenge="(val) => $emit('submitChallenge', val)"
     />
   </div>
 </template>
