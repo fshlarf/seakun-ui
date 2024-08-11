@@ -1143,7 +1143,6 @@ export const providerList = [
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
       'Member membuat/menyediakan akun masing-masing',
-      'Member membuat/menyediakan akun masing-masing',
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 Bulan',
     ],
@@ -1189,7 +1188,6 @@ export const providerList = [
     member: 5,
     schemes: [
       'Seakun membuat akun dan membeli Paket Teams Canva',
-      'Member membuat/menyediakan akun masing-masing',
       'Member membuat/menyediakan akun masing-masing',
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 Tahun',
