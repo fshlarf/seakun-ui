@@ -55,5 +55,16 @@
       "Silakan lakukan pembayaran ke Seakun Rp19.800 untuk biaya berlangganan",
       "Admin akan mengirimkan invitation melalui email dan mengirimkan penggantian dana sebesar Rp99.000 (jika tidak mendapat free trial)"
     ]
+  },
+  {
+    "name": "Canva",
+    "slug": "canva",
+    "flow": [
+      "Canva adalah pakat Pre-Order, dimana akan diproses hanya jika Seakun telah menginfokan bahwa kuota grup sudah terpenuhi 5 orang: 1 user host & 4 user reguler",
+      "User Host melakukan pembayaran ke Seakun sebesar durasi yang dipilih",
+      "Seakun membuat akun di Canva dan melakukan purchase",
+      "User Host dapat menikmati fitur Premium selama durasi yang dipilih",
+      "Berkomitmen tidak mengubah subscription / informasi apapun pada akun"
+    ]
   }
 ]
