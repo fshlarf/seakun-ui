@@ -194,7 +194,7 @@ export default {
           level: 10,
           type: 'challenge',
           challenge:
-            'Repost postingan terakhir Seakun di Twitter / IG / Tiktok kamu',
+            'Repost postingan Sefoursary Seakun di Twitter / IG / Tiktok kamu',
           task: 'Upload screenshot repost yang menampilkan username kamu',
         },
         {
