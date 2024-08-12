@@ -137,7 +137,7 @@ export default {
         const res = await this.SefoursaryService.uploadImage(newForm);
 
         if (res.status === 200) {
-          this.$emit('submitChallenge');
+          this.$emit('submitChallenge', true);
         }
       } catch (error) {
         this.$alert.show({

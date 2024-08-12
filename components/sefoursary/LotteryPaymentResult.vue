@@ -88,6 +88,8 @@ import {
   updateDataInGoogleSheet,
   checkIsGotLottery,
 } from '~/services/SefoursaryService.js';
+import CustomerService from '~/services/CustomerServices';
+
 export default {
   props: {
     dataOrder: {
@@ -97,16 +99,42 @@ export default {
   },
   data() {
     return {
+      CustomerService,
       uniqueCode: '',
       isLoading: true,
     };
   },
   mounted() {
-    this.checkLotteryInSheet();
+    this.CustomerService = new CustomerService(this);
+    // this.checkLotteryInSheet();
+    this.generateUniqueCode();
   },
   methods: {
     updateDataInGoogleSheet,
     checkIsGotLottery,
+    async generateUniqueCode() {
+      this.isLoading = true;
+      const { CustomerService } = this;
+      const { customerEmail, customerPhone, orderNumber } = this.dataOrder;
+      const payload = {
+        name: customerEmail,
+        email: customerEmail,
+        phone: customerPhone,
+        orderNumber,
+      };
+      try {
+        const generate = await CustomerService.generateUniqueCodeThankyouSefoursary(
+          payload
+        );
+        if (generate.data) {
+          const { data } = generate.data;
+          this.uniqueCode = data.uniqueCode;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      this.isLoading = false;
+    },
     async checkLotteryInSheet() {
       this.isLoading = true;
       try {
