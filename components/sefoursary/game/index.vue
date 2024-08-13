@@ -253,7 +253,8 @@ export default {
         {
           level: 15,
           type: 'challenge',
-          challenge: 'Order layanan apa saja di Seakun minimal 3 bulan',
+          challenge:
+            'Order layanan apa saja di Seakun dengan durasi langganan minimal 3 bulan',
           task:
             'Upload screenshot bukti berlangganan yang menampilkan No. Pesanan',
         },
