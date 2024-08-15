@@ -63,7 +63,7 @@
           <p
             class="font--dongle text-gray-secondary text-lg sm:text-xl max-w-[248px] sm:max-w-[350px] mx-auto leading-[14px] sm:leading-5 -mt-2 sm:-mt-3"
           >
-            Kamu berkesempatan mendapatkan ‘Tablet’ di Anniversary Seakun,
+            Kamu berkesempatan mendapatkan {{ prize }} di Anniversary Seakun,
             dengan nomor undian:
           </p>
           <div
@@ -104,6 +104,19 @@ export default {
       isLoading: true,
     };
   },
+  computed: {
+    prize() {
+      const { totalPrice } = this.dataOrder.payment;
+      if (totalPrice < 200000) {
+        return 'Smart Phone';
+      } else if (totalPrice >= 200000 && totalPrice <= 300000) {
+        return 'Smart TV';
+      } else if (totalPrice > 300000) {
+        return 'Tablet';
+      }
+      return 'Hadiah';
+    },
+  },
   mounted() {
     this.CustomerService = new CustomerService(this);
     // this.checkLotteryInSheet();
@@ -115,12 +128,18 @@ export default {
     async generateUniqueCode() {
       this.isLoading = true;
       const { CustomerService } = this;
-      const { customerEmail, customerPhone, orderNumber } = this.dataOrder;
+      const {
+        customerEmail,
+        customerPhone,
+        orderNumber,
+        payment,
+      } = this.dataOrder;
       const payload = {
         name: customerEmail,
         email: customerEmail,
         phone: customerPhone,
         orderNumber,
+        price: payment.totalPrice,
       };
       try {
         const generate = await CustomerService.generateUniqueCodeThankyouSefoursary(

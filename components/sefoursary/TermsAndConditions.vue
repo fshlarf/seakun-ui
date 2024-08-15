@@ -44,7 +44,11 @@ export default {
       },
       {
         term:
-          'Pemain Sefoursary mendapat kesempatan untuk memenangkan berbagai hadiah (secara acak dan selama kuota masih tersedia).',
+          'Pemain Sefoursary mendapat kesempatan untuk memenangkan berbagai hadiah langsung (secara acak dan selama kuota masih tersedia). Pemenang hanya dapat memenangkan satu hadiah acak yang diatur oleh Seakun.',
+      },
+      {
+        term:
+          'Pemenang hadiah undian dipilih dan diumumkan di event LIVE yang diadakan di IG Seakun @seakun.id.',
       },
       {
         term:
