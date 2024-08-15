@@ -98,21 +98,25 @@ export default {
         },
         {
           id: 2,
-          img: '/images/promo/app-mobile.webp',
+          img: '/images/promo/se4sary-mobile.webp',
         },
         {
           id: 3,
+          img: '/images/promo/app-mobile.webp',
+        },
+        {
+          id: 4,
           img: '/images/promo/ambassador-mobile.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 4,
+          id: 5,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 5,
+          id: 6,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
@@ -123,21 +127,25 @@ export default {
         },
         {
           id: 2,
-          img: '/images/promo/app-desktop.webp',
+          img: '/images/promo/se4sary-desktop.webp',
         },
         {
           id: 3,
+          img: '/images/promo/app-desktop.webp',
+        },
+        {
+          id: 4,
           img: '/images/promo/ambassador-desktop.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 4,
+          id: 5,
           img: '/images/promo/uang-kaget-desktop.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 5,
+          id: 6,
           img: '/images/promo/netflix-info-desktop.webp',
         },
       ],
