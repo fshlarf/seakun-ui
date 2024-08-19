@@ -22,7 +22,7 @@
       :show-modal="isShowModalSeakunHelp"
       @closeModal="onCloseModalSeakunHelp"
     />
-    <ModalPromo v-if="isShowBannerPromo" />
+    <ModalPromo :is-show="isShowModalPromo" @onClose="onCloseModalPromo" />
     <ModalBase
       :is-show="isShowModalBase"
       :show-shadow="false"
@@ -90,8 +90,8 @@ export default {
   data() {
     return {
       isShowModalSeakunHelp: false,
-      isShowModalBase: true,
-      isShowBannerPromo: false,
+      isShowModalBase: false,
+      isShowModalPromo: true,
     };
   },
   computed: {
@@ -168,7 +168,11 @@ export default {
     },
     onCloseModalSefoursary() {
       this.isShowModalBase = false;
-      this.isShowBannerPromo = true;
+      // this.isShowModalPromo = true;
+    },
+    onCloseModalPromo() {
+      this.isShowModalPromo = false;
+      this.isShowModalBase = true;
     },
     onClickSefoursary() {
       this.$router.push('/sefoursary');

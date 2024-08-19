@@ -1,5 +1,5 @@
 <template>
-  <ModalBase :is-show="isShowModal" @onClose="isShowModal = false">
+  <ModalBase :is-show="isShow" @onClose="onClose">
     <div>
       <div
         class="cow-gallery tn:w-full mx-auto lg:w-[500px] xl:w-[800px] overflow-hidden rounded-[15px] relative z-0"
@@ -70,6 +70,12 @@ export default {
   components: {
     ModalBase,
   },
+  props: {
+    isShow: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       isShowModal: true,
@@ -77,58 +83,66 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/spo-mobile.webp',
+          img: '/images/promo/wa-mobile.webp',
         },
         {
           id: 2,
-          img: '/images/promo/se4sary-mobile.webp',
+          img: '/images/promo/spo-mobile.webp',
         },
         {
           id: 3,
-          img: '/images/promo/app-mobile.webp',
+          img: '/images/promo/se4sary-mobile.webp',
         },
         {
           id: 4,
+          img: '/images/promo/app-mobile.webp',
+        },
+        {
+          id: 5,
           img: '/images/promo/ambassador-mobile.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 5,
+          id: 6,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 6,
+          id: 7,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/spo.webp',
+          img: '/images/promo/wa.webp',
         },
         {
           id: 2,
-          img: '/images/promo/se4sary.webp',
+          img: '/images/promo/spo.webp',
         },
         {
           id: 3,
-          img: '/images/promo/app.webp',
+          img: '/images/promo/se4sary.webp',
         },
         {
           id: 4,
+          img: '/images/promo/app.webp',
+        },
+        {
+          id: 5,
           img: '/images/promo/ambassador.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 5,
+          id: 6,
           img: '/images/promo/uang-kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 6,
+          id: 7,
           img: '/images/promo/netflix-info.webp',
         },
       ],
@@ -181,6 +195,9 @@ export default {
           container.clientWidth * this.activeSlider.id - container.clientWidth,
         behavior: 'smooth',
       });
+    },
+    onClose() {
+      this.$emit('onClose');
     },
   },
 };
