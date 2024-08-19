@@ -1171,7 +1171,7 @@ export const providerList = [
         value: 'Rp6.500',
       },
       {
-        title: 'Harga Paket 1 Tahun',
+        title: 'Harga Paket 1 Bulan',
         value: 'Rp79.500',
         is_total: true,
       },
@@ -1197,7 +1197,7 @@ export const providerList = [
     informations: [
       {
         title: 'Nama Paket',
-        value: 'Canva (1 Bulan)',
+        value: 'Canva (1 Tahun)',
         is_total: true,
       },
       {
@@ -1217,7 +1217,7 @@ export const providerList = [
         value: 'Rp78.000',
       },
       {
-        title: 'Harga Paket 1 Bulan',
+        title: 'Harga Paket 1 Tahun',
         value: 'Rp808.000',
         is_total: true,
       },
