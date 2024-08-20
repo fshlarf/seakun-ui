@@ -221,7 +221,7 @@
     </section> -->
     <LotteryPaymentResult
       v-if="isShowLotteryBanner"
-      :data-order="dataOrder[0]"
+      :data-order="selectedOrder"
       @onClose="isShowLotteryBanner = false"
     />
   </div>
@@ -270,6 +270,7 @@ export default {
       bannerTIPWidth: '',
       bannerTIPSrc: '',
       isShowLotteryBanner: false,
+      selectedOrder: null,
     };
   },
   computed: {
@@ -316,10 +317,35 @@ export default {
         }
       }
     },
+    isAllowedDate(paymentDate) {
+      const timeToCompare = moment.unix(paymentDate);
+      const startDate = moment('2024-08-05 00:00');
+      const endDate = moment('2024-09-06 00:00');
+      if (timeToCompare.isAfter(startDate) && timeToCompare.isBefore(endDate)) {
+        return true;
+      }
+      return false;
+    },
     handleLottery() {
-      const duration = this?.dataOrder[0]?.provider?.package?.variant?.duration;
-      if ([6, 12].includes(duration)) {
-        this.isShowLotteryBanner = true;
+      const allowedOrders = this.dataOrder.filter((ord) => {
+        return [6, 12].includes(ord.provider?.package?.variant?.duration);
+      });
+      if (allowedOrders.length > 0) {
+        const annualOrder = allowedOrders.find(
+          (ord) => ord.provider?.package?.variant?.duration === 12
+        );
+        if (annualOrder) {
+          this.selectedOrder = annualOrder;
+        } else {
+          this.selectedOrder = allowedOrders[0];
+        }
+
+        if (this.selectedOrder) {
+          const paymentDate = this.selectedOrder?.payment?.paymentDate;
+          if (this.isAllowedDate(paymentDate)) {
+            this.isShowLotteryBanner = true;
+          }
+        }
       }
     },
   },
