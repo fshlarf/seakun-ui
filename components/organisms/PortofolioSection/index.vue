@@ -57,7 +57,7 @@ export default {
         },
         {
           name: 'Layanan',
-          counter: '41',
+          counter: '45',
           icon: 'service',
         },
         {

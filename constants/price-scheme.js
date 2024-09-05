@@ -3052,6 +3052,348 @@ export const providerList = [
     ],
   },
   {
+    name: 'ILovePDF',
+    slug: 'ilovepdf',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/ilovepdf.png',
+    screenshot: '/images/price-scheme/desktop/ilovepdf.webp',
+    screenshotMobile: '/images/price-scheme/mobile/ilovepdf.webp',
+    desc: 'ILovePDF Paket Premium 1 Tahun',
+    member: 9,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di ILovePDF',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 9 member dalam 1 grup',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>ILovePDF</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'ILovePDF (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp292.800',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '9',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp292.800 ÷ 9 = 32.533',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp30.466',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp63.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Strava',
+    slug: 'strava',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/strava.png',
+    screenshot: '/images/price-scheme/desktop/strava.webp',
+    screenshotMobile: '/images/price-scheme/mobile/strava.webp',
+    desc: 'Strava Paket Premium 1 Tahun',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Strava',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Strava</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Strava (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp1.250.000',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp1.250.000 ÷ 3 = Rp416.666',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp82.333',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp499.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Catchplay',
+    slug: 'catchplay',
+    title: 'Harga Paket Premium Bulanan',
+    img: '/images/product/brand/catchplay.png',
+    screenshot: '/images/price-scheme/desktop/catchplay-month.webp',
+    screenshotMobile: '/images/price-scheme/mobile/catchplay-month.webp',
+    desc: 'Catchplay Paket Premium Bulanan',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Catchplay',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member dapat menikmati fitur Premium selama durasi berlangganan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Catchplay</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Catchplay (Bulanan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp45.000',
+      },
+      {
+        title: 'Harga + Pajak 11%',
+        value: 'Rp49.950',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp49.950 ÷ 2 = Rp24.975',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp6.525',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp31.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Catchplay',
+    slug: 'catchplay',
+    title: 'Harga Paket Premium Tahunan',
+    img: '/images/product/brand/catchplay.png',
+    screenshot: '/images/price-scheme/desktop/catchplay-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/catchplay-annual.webp',
+    desc: 'Catchplay Paket Premium 1 Tahun',
+    member: 2,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Catchplay',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 2 member dalam 1 grup',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Catchplay</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Catchplay (Tahunan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp540.000',
+      },
+      {
+        title: 'Harga + Pajak 11%',
+        value: 'Rp599.400',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '2',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp599.400 ÷ 2 = Rp299.700',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp68.300',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp368.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Grammarly',
+    slug: 'grammarly',
+    title: 'Harga Paket Premium 1 Bulan',
+    img: '/images/product/brand/grammarly.png',
+    screenshot: '/images/price-scheme/desktop/grammarly-1-month.webp',
+    screenshotMobile: '/images/price-scheme/mobile/grammarly-1-month.webp',
+    desc: 'Grammarly Paket Premium 1 Bulan',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Grammarly',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member dapat menikmati fitur Premium selama 1 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Grammarly</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Grammarly (1 Bulan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp429.000',
+      },
+      {
+        title: 'Harga + Pajak 11%',
+        value: 'Rp476.190',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp476.190 ÷ 3 = Rp158.730',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp9.770',
+      },
+      {
+        title: 'Harga Paket 1 Bulan',
+        value: 'Rp168.500',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Grammarly',
+    slug: 'grammarly',
+    title: 'Harga Paket Premium 3 Bulan',
+    img: '/images/product/brand/grammarly.png',
+    screenshot: '/images/price-scheme/desktop/grammarly-3-month.webp',
+    screenshotMobile: '/images/price-scheme/mobile/grammarly-3-month.webp',
+    desc: 'Grammarly Paket Premium 3 Bulan',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Grammarly',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member dapat menikmati fitur Premium selama 3 bulan',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Grammarly</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Grammarly (3 Bulan)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp890.000',
+      },
+      {
+        title: 'Harga + Pajak 11%',
+        value: 'Rp987.900',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp987.900 ÷ 3 = Rp329.300',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp29.700',
+      },
+      {
+        title: 'Harga Paket 3 Bulan',
+        value: 'Rp359.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
+    name: 'Grammarly',
+    slug: 'grammarly',
+    title: 'Harga Paket Premium 1 Tahun',
+    img: '/images/product/brand/grammarly.png',
+    screenshot: '/images/price-scheme/desktop/grammarly-annual.webp',
+    screenshotMobile: '/images/price-scheme/mobile/grammarly-annual.webp',
+    desc: 'Grammarly Paket Premium 1 Tahun',
+    member: 3,
+    schemes: [
+      'Seakun membuat akun dan membeli Paket Premium di Grammarly',
+      'Seakun bertindak sebagai user Host dalam grup',
+      'Akun dishare HANYA ke 3 member dalam 1 grup',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
+    ],
+    additionalInfo:
+      'Paket Patungan pada <b>Grammarly</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
+    informations: [
+      {
+        title: 'Nama Paket',
+        value: 'Grammarly (1 Tahun)',
+        is_total: true,
+      },
+      {
+        title: 'Harga Provider',
+        value: 'Rp1.983.868',
+      },
+      {
+        title: 'Harga + Pajak 11%',
+        value: 'Rp2.202.093,48',
+      },
+      {
+        title: 'Jumlah Member Per Grup',
+        value: '3',
+      },
+      {
+        title: 'Harga Patungan',
+        value: 'Rp2.202.093,48 ÷ 3 = Rp734.031,16',
+      },
+      {
+        title: 'Biaya Admin Seakun',
+        value: 'Rp118.968,84',
+      },
+      {
+        title: 'Harga Paket 1 Tahun',
+        value: 'Rp853.000',
+        is_total: true,
+      },
+    ],
+  },
+  {
     name: 'Zap',
     slug: 'zap',
     series: 'Series 199Rb',
