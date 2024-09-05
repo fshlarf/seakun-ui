@@ -219,11 +219,6 @@
       </div>
       <Article />
     </section> -->
-    <LotteryPaymentResult
-      v-if="isShowLotteryBanner"
-      :data-order="selectedOrder"
-      @onClose="isShowLotteryBanner = false"
-    />
   </div>
 </template>
 
@@ -232,12 +227,10 @@ import Button from '~/components/atoms/Button';
 import OrderCard from './OrderCard.vue';
 
 import { currencyFormat } from '~/helpers/word-transformation.js';
-import moment from 'moment';
 import Article from './Article.vue';
 import PromoBanner from './PromoBanner.vue';
 import ZapOrderCard from '../../../components/mollecules/ZapOrderCard.vue';
 import SekurbanOrderCard from '../../../components/mollecules/SekurbanOrderCard.vue';
-import LotteryPaymentResult from '../../../components/sefoursary/LotteryPaymentResult.vue';
 export default {
   name: 'thankyou-page',
   components: {
@@ -247,7 +240,6 @@ export default {
     Article,
     SekurbanOrderCard,
     ZapOrderCard,
-    LotteryPaymentResult,
   },
   props: {
     dataOrder: {
@@ -266,7 +258,6 @@ export default {
   data() {
     return {
       currencyFormat,
-      moment,
       bannerTIPWidth: '',
       bannerTIPSrc: '',
       isShowLotteryBanner: false,
@@ -288,7 +279,6 @@ export default {
   mounted() {
     this.handleBannerTIPWidth();
     window.addEventListener('resize', this.handleBannerTIPWidth);
-    this.handleLottery();
   },
   methods: {
     toHomePage() {
@@ -314,37 +304,6 @@ export default {
         } else {
           this.bannerTIPWidth = 'h-[170px]';
           this.bannerTIPSrc = '/images/general-gift/send-tip2.webp';
-        }
-      }
-    },
-    isAllowedDate(paymentDate) {
-      const timeToCompare = moment.unix(paymentDate);
-      const startDate = moment('2024-08-05 00:00');
-      const endDate = moment('2024-09-06 00:00');
-      if (timeToCompare.isAfter(startDate) && timeToCompare.isBefore(endDate)) {
-        return true;
-      }
-      return false;
-    },
-    handleLottery() {
-      const allowedOrders = this.dataOrder.filter((ord) => {
-        return [6, 12].includes(ord.provider?.package?.variant?.duration);
-      });
-      if (allowedOrders.length > 0) {
-        const annualOrder = allowedOrders.find(
-          (ord) => ord.provider?.package?.variant?.duration === 12
-        );
-        if (annualOrder) {
-          this.selectedOrder = annualOrder;
-        } else {
-          this.selectedOrder = allowedOrders[0];
-        }
-
-        if (this.selectedOrder) {
-          const paymentDate = this.selectedOrder?.payment?.paymentDate;
-          if (this.isAllowedDate(paymentDate)) {
-            this.isShowLotteryBanner = true;
-          }
         }
       }
     },
