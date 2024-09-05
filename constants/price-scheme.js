@@ -3064,7 +3064,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Premium di ILovePDF',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 9 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
       'Paket Patungan pada <b>ILovePDF</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
@@ -3110,7 +3110,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Premium di Strava',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
       'Paket Patungan pada <b>Strava</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
@@ -3156,7 +3156,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Premium di Catchplay',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium',
+      'Member dapat menikmati fitur Premium selama durasi berlangganan',
     ],
     additionalInfo:
       'Paket Patungan pada <b>Catchplay</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
@@ -3206,7 +3206,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Premium di Catchplay',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 2 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
       'Paket Patungan pada <b>Catchplay</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
@@ -3256,7 +3256,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Premium di Grammarly',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 bulan',
+      'Member dapat menikmati fitur Premium selama 1 bulan',
     ],
     additionalInfo:
       'Paket Patungan pada <b>Grammarly</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
@@ -3306,7 +3306,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Premium di Grammarly',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 3 bulan',
+      'Member dapat menikmati fitur Premium selama 3 bulan',
     ],
     additionalInfo:
       'Paket Patungan pada <b>Grammarly</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
@@ -3356,7 +3356,7 @@ export const providerList = [
       'Seakun membuat akun dan membeli Paket Premium di Grammarly',
       'Seakun bertindak sebagai user Host dalam grup',
       'Akun dishare HANYA ke 3 member dalam 1 grup',
-      'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
+      'Member dapat menikmati fitur Premium selama 1 tahun',
     ],
     additionalInfo:
       'Paket Patungan pada <b>Grammarly</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',

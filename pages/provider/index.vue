@@ -129,7 +129,7 @@
                 }`"
               >
                 <p>{{ info.title }}</p>
-                <p>{{ info.value }}</p>
+                <p class="text-right">{{ info.value }}</p>
               </div>
             </div>
           </div>
@@ -423,7 +423,7 @@
               }`"
             >
               <p>{{ info.title }}</p>
-              <p>{{ info.value }}</p>
+              <p class="text-right">{{ info.value }}</p>
             </div>
           </div>
 
