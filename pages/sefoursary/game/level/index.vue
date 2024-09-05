@@ -131,11 +131,14 @@ export default {
       return moment().format('D/M/YYYY h:mm:ss');
     },
   },
-  mounted() {
-    this.userInfo = JSON.parse(localStorage.getItem('customer'));
-    this.selectedLevel = parseInt(this.$route.query.id);
-    this.initialization();
+  beforeMount() {
+    this.$router.push('/sefoursary/game');
   },
+  // mounted() {
+  //   this.userInfo = JSON.parse(localStorage.getItem('customer'));
+  //   this.selectedLevel = parseInt(this.$route.query.id);
+  //   this.initialization();
+  // },
   methods: {
     getUserInfo,
     arrFindMaxValue,
