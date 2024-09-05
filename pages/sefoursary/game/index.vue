@@ -8,6 +8,7 @@
       :is-loading="isLoading"
     />
     <Footer />
+    <ModalSefoursaryEnd />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import moment from 'moment';
 
 import NavbarBlank from '~/components/mollecules/NavbarBlank.vue';
 import BreadCrumb from '../../../components/sefoursary/BreadCrumb.vue';
+import ModalSefoursaryEnd from '../../../components/sefoursary/game/ModalSefoursaryEnd.vue';
 import Roadmap from '~/components/sefoursary/roadmap';
 import Footer from '~/components/mollecules/Footer.vue';
 import {
@@ -32,6 +34,7 @@ export default {
     BreadCrumb,
     Roadmap,
     Footer,
+    ModalSefoursaryEnd,
   },
   data() {
     return {
@@ -50,7 +53,7 @@ export default {
     this.CustomerService = new CustomerService(this);
   },
   mounted() {
-    this.initiate();
+    // this.initiate();
   },
   methods: {
     getDataFromGoogleSheet,
