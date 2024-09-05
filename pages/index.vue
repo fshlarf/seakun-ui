@@ -23,18 +23,6 @@
       @closeModal="onCloseModalSeakunHelp"
     />
     <ModalPromo :is-show="isShowModalPromo" @onClose="onCloseModalPromo" />
-    <ModalBase
-      :is-show="isShowModalBase"
-      :show-shadow="false"
-      @onClose="onCloseModalSefoursary"
-    >
-      <img
-        @click="onClickSefoursary"
-        class="md:h-[600px] lg:h-[800px] cursor-pointer"
-        src="/images/promo/sefoursary-mobile.webp"
-        alt="seakun anniversary"
-      />
-    </ModalBase>
   </div>
 </template>
 
@@ -172,7 +160,6 @@ export default {
     },
     onCloseModalPromo() {
       this.isShowModalPromo = false;
-      this.isShowModalBase = true;
     },
     onClickSefoursary() {
       this.$router.push('/sefoursary');
