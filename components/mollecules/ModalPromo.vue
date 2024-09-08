@@ -83,50 +83,58 @@ export default {
       promoImageMobile: [
         {
           id: 1,
-          img: '/images/promo/spo-mobile.webp',
+          img: '/images/promo/sefoursary-live-mobile.webp',
         },
         {
           id: 2,
-          img: '/images/promo/app-mobile.webp',
+          img: '/images/promo/spo-mobile.webp',
         },
         {
           id: 3,
+          img: '/images/promo/app-mobile.webp',
+        },
+        {
+          id: 4,
           img: '/images/promo/ambassador-mobile.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 4,
+          id: 5,
           img: '/images/promo/uang-kaget-mobile.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 5,
+          id: 6,
           img: '/images/promo/netflix-info-mobile.webp',
         },
       ],
       promoImageDesktop: [
         {
           id: 1,
-          img: '/images/promo/spo.webp',
+          img: '/images/promo/sefoursary-live.webp',
         },
         {
           id: 2,
-          img: '/images/promo/app.webp',
+          img: '/images/promo/spo.webp',
         },
         {
           id: 3,
+          img: '/images/promo/app.webp',
+        },
+        {
+          id: 4,
           img: '/images/promo/ambassador.webp',
           externalLink: 'https://forms.gle/vcfzR8swQFwQGJrR8',
         },
         {
-          id: 4,
+          id: 5,
           img: '/images/promo/uang-kaget.webp',
           externalLink:
             'https://x.com/OfficialSeakun/status/1788089320072781888',
         },
         {
-          id: 5,
+          id: 6,
           img: '/images/promo/netflix-info.webp',
         },
       ],
