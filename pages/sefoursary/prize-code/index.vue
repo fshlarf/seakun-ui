@@ -18,54 +18,95 @@
           </div>
         </div>
       </div>
-      <div v-else class="space-y-3 max-w-[500px] mx-auto">
-        <template v-if="lotteryData.length == 0">
-          <div class="flex justify-center items-center w-full h-full pt-20">
-            <div class="text-slate-400">
-              <p class="text-center font-bold text-[50px]">Oops!</p>
-              <p>Kode undian tidak ditemukan</p>
-            </div>
-          </div>
-        </template>
-        <template v-else>
-          <div v-for="(data, index) in lotteryData" :key="index">
-            <div class="rounded-xl bg-white flex overflow-hidden shadow">
-              <div
-                class="w-[25%] bg-[#1E9E30] flex justify-center items-center text-white font-bol text-[28px] md:text-[32px]"
-              >
-                {{ data.prizeCode }}
-              </div>
-              <div class="p-3 w-[75%]">
-                <div class="flex space-x-2">
-                  <div
-                    class="rounded-full bg-orange-100 px-2 max-w-max text-sm"
-                  >
-                    {{ data.type }}
-                  </div>
-                  <div
-                    v-if="data.orderNumber"
-                    class="rounded-full bg-orange-100 px-2 max-w-max text-sm"
-                  >
-                    {{ data.orderNumber }}
-                  </div>
+      <div v-else class="mx-auto max-w-[500px]">
+        <div class="">
+          <template v-if="lotteryData.length == 0">
+            <div
+              class="flex justify-center items-center w-full h-full pt-8 md:pt-14"
+            >
+              <div>
+                <img
+                  src="/images/illustration/table-not-found.webp"
+                  alt="tidak ditemukan"
+                  class="mx-auto w-[180px] md:w-[220px]"
+                />
+                <div class="max-w-[284px] md:max-w-[381px] mt-4 text-center">
+                  <p class="text-[12px] md:text-sm">
+                    Maaf, kami tidak menemukan kode undian yang terhubung dengan
+                    akun kamu saat ini.
+                  </p>
                 </div>
+              </div>
+            </div>
+          </template>
+          <div v-else class="pt-6 md:pt-10 space-y-3">
+            <div v-for="(data, index) in lotteryData" :key="index">
+              <div class="rounded-xl bg-white flex overflow-hidden shadow">
                 <div
-                  class="flex space-x-2 items-center bg-[#F1EFEF] rounded-lg p-4 mt-2 justify-center w-full"
+                  class="w-[25%] bg-[#1E9E30] flex justify-center items-center text-white font-bol text-[28px] md:text-[32px]"
                 >
-                  <div class="text-lg font-bold text-[#D23157]">
-                    {{ data.uniqueCode }}
+                  {{ data.prizeCode }}
+                </div>
+                <div class="p-3 w-[75%]">
+                  <div class="flex space-x-2">
+                    <div
+                      class="rounded-full bg-orange-100 px-2 max-w-max text-sm"
+                    >
+                      {{ data.type }}
+                    </div>
+                    <div
+                      v-if="data.orderNumber"
+                      class="rounded-full bg-orange-100 px-2 max-w-max text-sm"
+                    >
+                      {{ data.orderNumber }}
+                    </div>
                   </div>
-                  <img
-                    src="/images/sefoursary/icons/copy.svg"
-                    alt="copy"
-                    class="sm:w-5 cursor-pointer"
-                    @click="clickCopyHandler(data.uniqueCode)"
-                  />
+                  <div
+                    class="flex space-x-2 items-center bg-[#F1EFEF] rounded-lg p-4 mt-2 justify-center w-full"
+                  >
+                    <div class="text-lg font-bold text-[#D23157]">
+                      {{ data.uniqueCode }}
+                    </div>
+                    <img
+                      src="/images/sefoursary/icons/copy.svg"
+                      alt="copy"
+                      class="sm:w-5 cursor-pointer"
+                      @click="clickCopyHandler(data.uniqueCode)"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </template>
+        </div>
+
+        <div
+          class="mt-10 rounded-[10px] bg-[#ECFFFB] border border-[#D9EBE7] p-[17px] md:p-[20px] text-[12px] md:text-base"
+        >
+          <p class="font-bold text-primary md:text-sm">
+            Terima kasih atas partisipasi Sekawan di program Sefoursary "Seakun
+            4 Anniversary"
+          </p>
+          <p class="mt-2 md:text-sm">
+            Untuk memastikan proses yang adil dan transparan, kami melakukan
+            filter ulang terhadap nomor undian yang sudah didistribusikan dengan
+            ketentuan berikut:
+          </p>
+          <div class="mt-3 space-y-1 md:text-sm">
+            <div v-for="(text, id) in info">
+              <div class="flex space-x-2">
+                <div
+                  class="w-[18px] md:w-[22px] h-[18px] md:h-[22px] bg-primary flex justify-center items-center text-white flex-shrink-0 rounded-full"
+                >
+                  {{ id + 1 }}
+                </div>
+                <div>
+                  {{ text }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -84,6 +125,11 @@ export default {
       CustomerService,
       isLoading: true,
       lotteryData: [],
+      info: [
+        'Nomor undian dari level sebelumnya otomatis dianulir bagi pengguna yang telah berhasil memenangkan undian di level yang lebih tinggi',
+        'Setiap nomor HP yang mengikuti games, hanya berhak mendapatkan satu nomor undian',
+        'Nomor undian dengan hadiah TAB hanya diberikan kepada pengguna yang secara valid memiliki order baru atau perpanjangan dengan durasi minimal 3 bulan, atau order aktif dengan total transaksi di atas Rp300.000',
+      ],
     };
   },
   created() {
