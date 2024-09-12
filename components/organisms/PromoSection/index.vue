@@ -95,6 +95,8 @@ export default {
         {
           id: 1,
           img: '/images/promo/sefoursary-live-mobile.webp',
+          externalLink:
+            'https://www.instagram.com/p/C_z75SwvzU4/?igsh=eG15ZzlkNXkzNTY5',
         },
         {
           id: 2,
@@ -124,6 +126,8 @@ export default {
         {
           id: 1,
           img: '/images/promo/sefoursary-live-desktop.webp',
+          externalLink:
+            'https://www.instagram.com/p/C_z75SwvzU4/?igsh=eG15ZzlkNXkzNTY5',
         },
         {
           id: 2,
