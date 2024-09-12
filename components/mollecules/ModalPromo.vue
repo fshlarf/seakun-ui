@@ -46,14 +46,7 @@
           :href="activeSlider.externalLink"
           target="_blank"
         >
-          <img
-            :src="`${activeSlider.img}`"
-            alt="foto promo"
-            :class="{
-              'w-[320px] md:w-[340px] h-[503px] md:h-[535px] mx-auto':
-                activeSlider.id == 1,
-            }"
-          />
+          <img :src="`${activeSlider.img}`" alt="foto promo" />
         </a>
         <div v-else>
           <img :src="`${activeSlider.img}`" alt="foto promo" />
@@ -84,6 +77,8 @@ export default {
         {
           id: 1,
           img: '/images/promo/sefoursary-live-mobile.webp',
+          externalLink:
+            'https://www.instagram.com/p/C_z75SwvzU4/?igsh=eG15ZzlkNXkzNTY5',
         },
         {
           id: 2,
@@ -113,6 +108,8 @@ export default {
         {
           id: 1,
           img: '/images/promo/sefoursary-live.webp',
+          externalLink:
+            'https://www.instagram.com/p/C_z75SwvzU4/?igsh=eG15ZzlkNXkzNTY5',
         },
         {
           id: 2,
