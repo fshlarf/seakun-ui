@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <Navbar />
     <div v-if="isLoading" class="container-about-us">
@@ -133,12 +133,13 @@ export default {
   },
   beforeMount() {
     this.$router.push('/sefoursary/game');
+    this.$router.push('/');
   },
-  // mounted() {
-  //   this.userInfo = JSON.parse(localStorage.getItem('customer'));
-  //   this.selectedLevel = parseInt(this.$route.query.id);
-  //   this.initialization();
-  // },
+  mounted() {
+    this.userInfo = JSON.parse(localStorage.getItem('customer'));
+    this.selectedLevel = parseInt(this.$route.query.id);
+    this.initialization();
+  },
   methods: {
     getUserInfo,
     arrFindMaxValue,
@@ -634,4 +635,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped></style> -->
