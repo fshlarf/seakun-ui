@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="bg-slate-50 min-h-screen">
     <NavbarProvider />
     <div class="md:container px-3 pt-20 pb-4 md:pb-20">
@@ -133,6 +133,7 @@ export default {
     };
   },
   created() {
+    this.$router.push('/');
     this.CustomerService = new CustomerService(this);
   },
   mounted() {
@@ -271,4 +272,4 @@ export default {
     transform: rotate(360deg);
   }
 }
-</style>
+</style> -->

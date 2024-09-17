@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <ChallengeShimmer v-if="isLoading" />
   </div>
@@ -37,6 +37,7 @@ export default {
     },
   },
   created() {
+    this.$router.push('/');
     this.SefoursaryService = new SefoursaryService(this);
     this.CustomerService = new CustomerService(this);
   },
@@ -48,9 +49,6 @@ export default {
     this.level = query.level || '';
     this.uid = query.uid || '';
     this.passed = query.passed || '';
-    // if (this.email) {
-    //   this.handleLottery();
-    // }
     if (this.level && this.uid) {
       this.generateUniqueCode();
     }
@@ -252,4 +250,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped></style> -->
