@@ -10,17 +10,9 @@
         <nuxt-link to="/">
           <div @click="scrollToTop" class="flex items-center gap-1">
             <!-- Seakun -->
-
-            <!-- <img
+            <img
               class="tn:h-[40px]"
               src="/images/navbar/brand_seakun.svg"
-              alt="brand seakun"
-            /> -->
-
-            <!-- Sefousary -->
-            <img
-              class="!h-[38px] sm:!h-[40px] md:!h-[50px] lg:!h-[60px] lg:mb-4"
-              src="/images/sefoursary/logo.svg"
               alt="brand seakun"
             />
 
@@ -69,36 +61,9 @@
           >
             <div
               class="cursor-pointer tn:text-right tn:my-3 tn:text-sm md:text-[14px] font-semibold md:font-bold text-secondary rounded-lg md:py-0 md:mt-0 hover:opacity-50 focus:opacity-50 lg:ml-8 xl:ml-10 relative"
-              :class="[
-                `${navbar.tag === 'profile' ? 'lg:my-1' : 'lg:my-3'}`,
-                { 'right-7': navbar.tag === 'sefoursary' },
-              ]"
-              @click="
-                navbar.tag == 'sefoursary'
-                  ? $router.push('sefoursary')
-                  : scrollToSection(navbar)
-              "
+              :class="[`${navbar.tag === 'profile' ? 'lg:my-1' : 'lg:my-3'}`]"
+              @click="scrollToSection(navbar)"
             >
-              <div v-if="navbar.tag === 'sefoursary'">
-                <img
-                  class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-6 w-[9px]"
-                  :class="`${showSpark1 ? 'opacity-100' : 'opacity-20'}`"
-                  src="/images/icons/atoms/spark.svg"
-                  alt="spark"
-                />
-                <img
-                  class="transition-opacity ease-in-out delay-50 duration-500 absolute bottom-0 -right-6 w-[8px]"
-                  :class="`${showSpark2 ? '!opacity-100' : '!opacity-20'}`"
-                  src="/images/icons/atoms/spark.svg"
-                  alt="spark"
-                />
-                <img
-                  class="transition-opacity ease-in-out delay-50 duration-500 absolute top-0 -right-9 w-[12px]"
-                  :class="`${showSpark3 ? '!opacity-100' : '!opacity-20'}`"
-                  src="/images/icons/atoms/spark.svg"
-                  alt="spark"
-                />
-              </div>
               <div v-if="navbar.tag === 'profile'">
                 <img
                   :src="`/images/profile-page/avatar/${avatar}.svg`"
@@ -168,11 +133,6 @@ export default {
       isLoggedin: true,
       isShowModalTHR: false,
       navbarLink: [
-        {
-          id: 1,
-          label: 'Sefoursary',
-          tag: 'sefoursary',
-        },
         {
           id: 1,
           label: 'Layanan',

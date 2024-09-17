@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <CustomNavbar
       :navbar-id="navbarProps.navbarId"
@@ -75,6 +75,7 @@ export default {
     };
   },
   mounted() {
+    this.$router.push('/');
     this.checkAuth();
   },
   methods: {
@@ -112,4 +113,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped></style> -->

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <NavbarBlank classContainer="container-about-us" />
     <BreadCrumb />
@@ -50,10 +50,11 @@ export default {
     },
   },
   created() {
+    this.$router.push('/');
     this.CustomerService = new CustomerService(this);
   },
   mounted() {
-    // this.initiate();
+    this.initiate();
   },
   methods: {
     getDataFromGoogleSheet,
@@ -152,4 +153,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped></style> -->
