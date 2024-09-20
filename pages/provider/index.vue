@@ -318,7 +318,16 @@
               class="border rounded-b-[10px] p-[12px] bg-white text-xs md:text-sm"
             >
               <div v-if="selectedMenu.value == 'information'">
-                <div class="p-[12px] bg-[#F4FCFA] leading-5 lg:leading-6">
+                <div
+                  v-if="priceScheme.importantNotes"
+                  class="p-[12px] border border-[#FFC0C0] bg-[#FFE1E1] leading-5 lg:leading-6 mb-3 rounded-[4px]"
+                >
+                  <p class="font-bold">Catatan:</p>
+                  <div v-html="priceScheme.importantNotes"></div>
+                </div>
+                <div
+                  class="p-[12px] bg-[#F4FCFA] leading-5 lg:leading-6 rounded-[4px]"
+                >
                   <div v-html="priceScheme.additionalInfo"></div>
                 </div>
                 <BannerInformationNetflix
