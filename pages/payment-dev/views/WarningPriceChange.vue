@@ -25,7 +25,7 @@
             role="button"
             class="font-bold text-secondary underline"
             @click="$emit('click', provider)"
-            >klik di sini</span
+            >Klik di sini</span
           >
           untuk melihat skema harga yang baru.
         </p>
