@@ -29,11 +29,12 @@ export const priceChangeList = [
   //   slug: 'setapp',
   //   message: 'perubahan kurs Rupiah terhadap Dollar',
   // },
-  // {
-  //   name: 'Youtube',
-  //   slug: 'youtube',
-  //   message: 'kenaikan harga provider youtube dari Rp89.000 menjadi Rp99.000',
-  // },
+  {
+    name: 'Youtube',
+    slug: 'youtube',
+    message:
+      'kenaikan harga provider Youtube dari Rp99.000/bulan menjadi Rp139.000/bulan',
+  },
   // {
   //   name: 'Google One',
   //   slug: 'google-one',
@@ -64,4 +65,10 @@ export const priceChangeList = [
   //   slug: 'apple-tv',
   //   message: 'kenaikan biaya berlangganan seluruh provider Apple',
   // },
+  {
+    name: 'Duolingo',
+    slug: 'duolingo',
+    message:
+      'kenaikan harga provider Duolingo dari Rp599.000/tahun menjadi Rp1.859.000/tahun',
+  },
 ];

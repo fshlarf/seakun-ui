@@ -250,6 +250,8 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium',
     ],
+    importantNotes:
+      '<p>Sesuai informasi terbaru dari Youtube, terdapat kenaikan harga sejak tanggal <b>20 September 2024</b>.</p>',
     additionalInfo:
       '<p>Paket Patungan pada <b>YouTube</b> merupakan produk <b>Ready</b>. Untuk dapat berlangganan paket ini, kamu dapat langsung mendaftar dan melakukan pembayaran. Kami akan langsung proses pesanan kamu setelah pembayaran berhasil.</p><div class="mt-2"><p><b>Syarat & Ketentuan :</b> <br/></p> <div class="mt-2 space-y-2 "><section class="flex items-start gap-2"><p>&#9679;</p>Terkait aturan yang berlaku dari Google, sebelum melakukan pendaftaran pastikan akun Gmail kamu belum pernah berpindah family selama 12 bulan terakhir.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Tidak sedang aktif tergabung pada family Google.<p></p></section><section class="flex items-start gap-2"><p>&#9679;</p>Berada di negara Indonesia.<p></p></section></div> </div>',
     informations: [
@@ -260,11 +262,11 @@ export const providerList = [
       },
       {
         title: 'Harga Provider',
-        value: 'Rp99.000',
+        value: 'Rp139.000',
       },
       {
         title: 'Harga + pajak 11%',
-        value: 'Rp109.890',
+        value: 'Rp154.290',
       },
       {
         title: 'Jumlah Member Per Grup',
@@ -272,15 +274,15 @@ export const providerList = [
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp109.890 ÷ 5 = Rp21.978',
+        value: 'Rp154.290 ÷ 5 = Rp30.858',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp6.022',
+        value: 'Rp6.042',
       },
       {
         title: 'Harga Paket Bulanan',
-        value: 'Rp28.000',
+        value: 'Rp36.900',
         is_total: true,
       },
     ],
@@ -2133,6 +2135,8 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    importantNotes:
+      '<p>Sesuai informasi terbaru dari Duolingo, terdapat kenaikan harga sejak tanggal <b>19 September 2024</b>.</p>',
     additionalInfo:
       'Paket Patungan pada <b>Duolingo</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
@@ -2143,27 +2147,27 @@ export const providerList = [
       },
       {
         title: 'Harga Provider',
-        value: 'Rp599.000',
+        value: 'Rp1.859.000',
       },
-      {
-        title: 'Harga + pajak 11%',
-        value: 'Rp664.890',
-      },
+      // {
+      //   title: 'Harga + pajak 11%',
+      //   value: 'Rp664.890',
+      // },
       {
         title: 'Jumlah Member Per Grup',
         value: '5',
       },
       {
         title: 'Harga Patungan',
-        value: 'Rp664.890 ÷ 5 = Rp132.978',
+        value: 'Rp1.859.000 ÷ 5 = Rp371.800',
       },
       {
         title: 'Biaya Admin Seakun',
-        value: 'Rp67.022',
+        value: 'Rp68.200',
       },
       {
         title: 'Harga Paket 1 Tahun',
-        value: 'Rp200.000',
+        value: 'Rp440.000',
         is_total: true,
       },
     ],
