@@ -32,7 +32,8 @@ export const priceChangeList = [
   {
     name: 'Youtube',
     slug: 'youtube',
-    message: 'kenaikan harga provider Youtube dari Rp99.000 menjadi Rp139.000',
+    message:
+      'kenaikan harga provider Youtube dari Rp99.000/bulan menjadi Rp139.000/bulan',
   },
   // {
   //   name: 'Google One',

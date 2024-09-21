@@ -2135,6 +2135,8 @@ export const providerList = [
       'Seakun mengundang 5 member untuk join 1 grup Premium',
       'Member yang telah join ke grup dapat menikmati fitur Premium selama 1 tahun',
     ],
+    importantNotes:
+      '<p>Sesuai informasi terbaru dari Duolingo, terdapat kenaikan harga sejak tanggal <b>19 September 2024</b>.</p>',
     additionalInfo:
       'Paket Patungan pada <b>Duolingo</b> merupakan produk <b>Pre-Order</b>, kamu harus menunggu terlebih dahulu sampai group nya sudah penuh. Begitu slot sudah penuh, kamu akan dihubungi oleh Admin Seakun untuk melakukan pembayaran.',
     informations: [
